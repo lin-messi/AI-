@@ -9,6 +9,7 @@ import {
   IMPORTANCE_KEYWORDS,
   CATEGORY_RULES,
   TAG_RULES,
+  AI_FILTER_KEYWORDS,
 } from "./feeds.mjs";
 import { enrichItems } from "./enrich.mjs";
 
@@ -120,7 +121,7 @@ function pickImage(entry) {
 async function fetchFeed(feed) {
   try {
     const parsed = await parser.parseURL(feed.url);
-    const items = (parsed.items || []).map((entry) => {
+    let items = (parsed.items || []).map((entry) => {
       let title = stripHtml(entry.title || "");
       const refined = refineSource(feed.source, title);
       title = refined.title;
@@ -160,6 +161,16 @@ async function fetchFeed(feed) {
       item.id = hostPath(url) || normTitle(title);
       return item;
     });
+    // 综合科技媒体：仅保留 AI 相关条目，剔除非 AI 噪音
+    if (feed.aiOnly) {
+      const before = items.length;
+      items = items.filter((it) => {
+        const text = (it.title_zh + " " + it.title_en + " " + it.summary_zh + " " + it.summary_en).toLowerCase();
+        return AI_FILTER_KEYWORDS.some((k) => text.includes(k));
+      });
+      console.log(`  ✓ ${feed.source}: ${items.length} 条（AI 过滤后，原 ${before} 条）`);
+      return items;
+    }
     console.log(`  ✓ ${feed.source}: ${items.length} 条 (${feed.url.slice(0, 50)}…)`);
     return items;
   } catch (e) {

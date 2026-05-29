@@ -75,12 +75,57 @@ export const FEEDS = [
     lang: "zh",
     weight: 2,
   },
+  // 国内大厂 AI 动态（百度/阿里/腾讯/字节/华为）
+  {
+    url: "https://news.google.com/rss/search?q=(%E7%99%BE%E5%BA%A6%20OR%20%E9%98%BF%E9%87%8C%20OR%20%E8%85%BE%E8%AE%AF%20OR%20%E5%AD%97%E8%8A%82%20OR%20%E5%8D%8E%E4%B8%BA)%20%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%20when:3d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+    source: "Google 新闻",
+    lang: "zh",
+    weight: 2,
+  },
+  // 国产大模型（DeepSeek/通义/文心/豆包/Kimi/智谱）
+  {
+    url: "https://news.google.com/rss/search?q=(DeepSeek%20OR%20%E9%80%9A%E4%B9%89%20OR%20%E6%96%87%E5%BF%83%E4%B8%80%E8%A8%80%20OR%20%E8%B1%86%E5%8C%85%20OR%20Kimi%20OR%20%E6%99%BA%E8%B0%B1)%20when:3d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+    source: "Google 新闻",
+    lang: "zh",
+    weight: 3,
+  },
+  // 中国 AI 政策 / 产业 / 芯片
+  {
+    url: "https://news.google.com/rss/search?q=%E4%B8%AD%E5%9B%BD%20(%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%20OR%20AI%E8%8A%AF%E7%89%87%20OR%20%E7%AE%97%E5%8A%9B%20OR%20%E5%A4%A7%E6%A8%A1%E5%9E%8B)%20when:3d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+    source: "Google 新闻",
+    lang: "zh",
+    weight: 2,
+  },
+  // —— 中国本土科技媒体（综合源，aiOnly 表示仅保留 AI 相关条目）——
+  {
+    url: "https://36kr.com/feed",
+    source: "36氪",
+    lang: "zh",
+    weight: 2,
+    aiOnly: true,
+  },
+  {
+    url: "https://www.ithome.com/rss/",
+    source: "IT之家",
+    lang: "zh",
+    weight: 2,
+    aiOnly: true,
+  },
   {
     url: "https://www.jiqizhixin.com/rss",
     source: "机器之心",
     lang: "zh",
     weight: 3,
   },
+];
+
+// AI 相关性关键词：用于过滤综合科技媒体（aiOnly 源），剔除非 AI 内容
+export const AI_FILTER_KEYWORDS = [
+  "ai", "人工智能", "大模型", "大语言模型", "语言模型", "机器学习", "深度学习",
+  "神经网络", "生成式", "aigc", "多模态", "智能体", "agent", "llm", "gpt",
+  "chatgpt", "openai", "anthropic", "claude", "gemini", "deepseek", "通义",
+  "文心一言", "文心", "豆包", "kimi", "智谱", "月之暗面", "qwen", "llama",
+  "算力", "ai芯片", "智算", "机器人", "自动驾驶", "具身智能", "数字人",
 ];
 
 // 重要性关键词（命中加分）
