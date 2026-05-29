@@ -9,6 +9,7 @@ export default function NewsCard({ item }) {
   const { lang, role, favs, reads, toggleFav, toggleRead } = useApp();
   const t = STRINGS[lang === "en" ? "en" : "zh"];
   const [copied, setCopied] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const isFav = favs.has(item.id);
   const isRead = reads.has(item.id);
@@ -30,6 +31,8 @@ export default function NewsCard({ item }) {
     item.summary_en
   );
   const { main: why, alt: whyAlt } = pick(item.why_zh, item.why_en);
+  // 摘要较长时折叠，提供“展开全文”，让你在卡片内读完、无需跳转
+  const longSummary = (summary || "").length > 140;
 
   const onShare = async () => {
     const shareData = { title, text: summary, url: item.url };
@@ -70,10 +73,16 @@ export default function NewsCard({ item }) {
         {titleAlt && <span className="alt">{titleAlt}</span>}
       </h3>
 
-      <p className="card-summary">
+      <p className={`card-summary ${longSummary && !expanded ? "clamp" : ""}`}>
         {summary}
-        {summaryAlt && <span className="alt">{summaryAlt}</span>}
+        {summaryAlt && expanded && <span className="alt">{summaryAlt}</span>}
       </p>
+
+      {longSummary && (
+        <button className="expand-btn" onClick={() => setExpanded((v) => !v)}>
+          {expanded ? t.collapse : t.expand}
+        </button>
+      )}
 
       {showWhy && why && (
         <div className="why">

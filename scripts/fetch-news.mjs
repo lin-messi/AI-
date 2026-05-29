@@ -49,7 +49,7 @@ function stripHtml(s = "") {
     .trim();
 }
 
-function truncate(s, n = 220) {
+function truncate(s, n = 600) {
   if (!s) return "";
   return s.length > n ? s.slice(0, n).trim() + "…" : s;
 }
@@ -124,9 +124,18 @@ async function fetchFeed(feed) {
       let title = stripHtml(entry.title || "");
       const refined = refineSource(feed.source, title);
       title = refined.title;
-      const summary = truncate(
-        stripHtml(entry.contentSnippet || entry.summary || entry.content || "")
-      );
+      // 取最丰富的正文：content:encoded / content / 摘要 / 片段，择其长者
+      const candidates = [
+        entry["content:encoded"],
+        entry.content,
+        entry.contentSnippet,
+        entry.summary,
+        entry.description,
+      ]
+        .filter(Boolean)
+        .map((s) => stripHtml(s));
+      const richest = candidates.sort((a, b) => b.length - a.length)[0] || "";
+      const summary = truncate(richest);
       const url = entry.link || entry.guid || "";
       const publishedAt = entry.isoDate || entry.pubDate || new Date().toISOString();
       const searchText = (title + " " + summary).toLowerCase();
