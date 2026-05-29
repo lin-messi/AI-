@@ -1,0 +1,47 @@
+name: 每日抓取 AI 新闻
+
+# 在云端（GitHub 服务器）定时运行，无需你的电脑开机，
+# 也不受本地网络限制（可正常访问 Google/arXiv 等源）。
+on:
+  schedule:
+    # UTC 时间，每天 00:00 与 12:00 各跑一次（约北京时间 08:00 / 20:00）
+    - cron: "0 0 * * *"
+    - cron: "0 12 * * *"
+  workflow_dispatch: {} # 也支持在 Actions 页面手动触发
+
+permissions:
+  contents: write # 允许提交抓取结果
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装 Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: 安装依赖
+        run: npm ci
+
+      - name: 抓取新闻（含翻译/摘要，需在仓库 Settings → Secrets 配置 AI_API_KEY）
+        run: npm run fetch
+        env:
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
+          AI_BASE_URL: ${{ secrets.AI_BASE_URL }}
+          AI_MODEL: ${{ secrets.AI_MODEL }}
+
+      - name: 提交更新的数据
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/archive data/index.json
+          if git diff --staged --quiet; then
+            echo "没有新数据，跳过提交"
+          else
+            git commit -m "chore: 自动更新每日 AI 新闻 $(date -u +%Y-%m-%d)"
+            git push
+          fi
