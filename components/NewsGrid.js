@@ -11,6 +11,7 @@ export default function NewsGrid({ items }) {
 
   const [query, setQuery] = useState("");
   const [cat, setCat] = useState("all");
+  const [region, setRegion] = useState("all");
   const [sort, setSort] = useState("importance");
   const [onlyFav, setOnlyFav] = useState(false);
   const { favs } = useApp();
@@ -24,6 +25,8 @@ export default function NewsGrid({ items }) {
   const filtered = useMemo(() => {
     let list = [...items];
     if (cat !== "all") list = list.filter((i) => i.category === cat);
+    if (region === "cn") list = list.filter((i) => i.lang === "zh");
+    else if (region === "global") list = list.filter((i) => i.lang !== "zh");
     if (onlyFav) list = list.filter((i) => favs.has(i.id));
     if (query.trim()) {
       const q = query.toLowerCase();
@@ -48,7 +51,7 @@ export default function NewsGrid({ items }) {
       );
     }
     return list;
-  }, [items, cat, query, sort, onlyFav, favs]);
+  }, [items, cat, region, query, sort, onlyFav, favs]);
 
   return (
     <>
@@ -82,6 +85,27 @@ export default function NewsGrid({ items }) {
             ★ {t.fav}
           </button>
         </div>
+      </div>
+
+      <div className="filters" style={{ marginTop: 4 }}>
+        <button
+          className={`btn ${region === "all" ? "active" : ""}`}
+          onClick={() => setRegion("all")}
+        >
+          {t.all}
+        </button>
+        <button
+          className={`btn ${region === "cn" ? "active" : ""}`}
+          onClick={() => setRegion("cn")}
+        >
+          {t.regionCn}
+        </button>
+        <button
+          className={`btn ${region === "global" ? "active" : ""}`}
+          onClick={() => setRegion("global")}
+        >
+          {t.regionGlobal}
+        </button>
       </div>
 
       <div className="filters" style={{ marginTop: 4 }}>
