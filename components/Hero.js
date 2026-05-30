@@ -3,8 +3,16 @@
 import { useApp } from "./AppProvider";
 import { STRINGS } from "@/lib/i18n";
 import { formatDateLong } from "@/lib/format";
+import LiveStatus from "./LiveStatus";
 
-export default function Hero({ date, count, avgImportance, sources }) {
+export default function Hero({
+  date,
+  count,
+  avgImportance,
+  sources,
+  generatedAt,
+  isLatest,
+}) {
   const { lang } = useApp();
   const t = STRINGS[lang === "en" ? "en" : "zh"];
 
@@ -15,6 +23,8 @@ export default function Hero({ date, count, avgImportance, sources }) {
         {lang === "en" ? "Today in AI" : "今日 AI 大事"}
       </h1>
       <p className="hero-desc">{t.heroDesc}</p>
+
+      {isLatest && <LiveStatus kind="news" generatedAt={generatedAt} />}
 
       <div className="hero-stats">
         <div className="stat">

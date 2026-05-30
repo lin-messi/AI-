@@ -3,6 +3,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PapersGrid from "@/components/PapersGrid";
+import LiveStatus from "@/components/LiveStatus";
 import { useApp } from "@/components/AppProvider";
 import { STRINGS } from "@/lib/i18n";
 import { formatDateLong } from "@/lib/format";
@@ -22,6 +23,7 @@ export default function PapersPage({ day }) {
           <div className="hero-date">{formatDateLong(day.date, lang)}</div>
           <h1 className="hero-title">{t.papersTitle}</h1>
           <p className="hero-desc">{t.papersDesc}</p>
+          <LiveStatus kind="papers" generatedAt={day.generatedAt} />
           <div className="hero-stats">
             <div className="stat">
               <div className="num">{items.length}</div>

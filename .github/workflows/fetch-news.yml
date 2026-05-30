@@ -4,9 +4,9 @@ name: 每日抓取 AI 新闻
 # 也不受本地网络限制（可正常访问 Google/arXiv 等源）。
 on:
   schedule:
-    # UTC 时间，每天 00:00 与 12:00 各跑一次（约北京时间 08:00 / 20:00）
-    - cron: "0 0 * * *"
-    - cron: "0 12 * * *"
+    # 每 2 小时跑一次（UTC 整点），让新闻实现「准实时」更新。
+    # 论文抓取较耗时/费 token，仅在 UTC 00:00、12:00（约北京 08:00 / 20:00）执行（见下方步骤判断）。
+    - cron: "0 */2 * * *"
   workflow_dispatch: {} # 也支持在 Actions 页面手动触发
 
 permissions:
@@ -34,8 +34,14 @@ jobs:
           AI_BASE_URL: ${{ secrets.AI_BASE_URL }}
           AI_MODEL: ${{ secrets.AI_MODEL }}
 
-      - name: 抓取学术论文（arXiv / bioRxiv，含中文精读翻译）
-        run: npm run fetch:papers
+      - name: 抓取学术论文（arXiv / bioRxiv，含中文精读翻译；仅 00/12 点或手动触发）
+        run: |
+          HOUR=$(date -u +%H)
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "$HOUR" = "00" ] || [ "$HOUR" = "12" ]; then
+            npm run fetch:papers
+          else
+            echo "当前 UTC $HOUR 点，非论文抓取时段，跳过（仅 00/12 点抓取论文以控制用量）"
+          fi
         env:
           AI_API_KEY: ${{ secrets.AI_API_KEY }}
           AI_BASE_URL: ${{ secrets.AI_BASE_URL }}
@@ -49,6 +55,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "没有新数据，跳过提交"
           else
-            git commit -m "chore: 自动更新每日 AI 新闻与论文 $(date -u +%Y-%m-%d)"
+            git commit -m "chore: 自动更新 AI 新闻与论文 $(date -u +'%Y-%m-%d %H:%MZ')"
             git push
           fi

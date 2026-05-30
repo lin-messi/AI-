@@ -24,6 +24,8 @@ export default function NewsPage({ day, dates, latest }) {
           count={count}
           avgImportance={avgImportance}
           sources={sources}
+          generatedAt={day.generatedAt}
+          isLatest={day.date === latest}
         />
         <DateNav date={day.date} dates={dates} latest={latest} />
         <FactCard facts={factsData.facts} />
