@@ -34,14 +34,21 @@ jobs:
           AI_BASE_URL: ${{ secrets.AI_BASE_URL }}
           AI_MODEL: ${{ secrets.AI_MODEL }}
 
+      - name: 抓取学术论文（arXiv / bioRxiv，含中文精读翻译）
+        run: npm run fetch:papers
+        env:
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
+          AI_BASE_URL: ${{ secrets.AI_BASE_URL }}
+          AI_MODEL: ${{ secrets.AI_MODEL }}
+
       - name: 提交更新的数据
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/archive data/index.json
+          git add data/archive data/index.json data/papers data/papers-index.json
           if git diff --staged --quiet; then
             echo "没有新数据，跳过提交"
           else
-            git commit -m "chore: 自动更新每日 AI 新闻 $(date -u +%Y-%m-%d)"
+            git commit -m "chore: 自动更新每日 AI 新闻与论文 $(date -u +%Y-%m-%d)"
             git push
           fi

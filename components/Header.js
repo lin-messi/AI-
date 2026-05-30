@@ -1,11 +1,15 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useApp } from "./AppProvider";
 import { STRINGS } from "@/lib/i18n";
 
 export default function Header() {
   const { theme, setTheme, lang, setLang, role, setRole } = useApp();
   const t = STRINGS[lang === "en" ? "en" : "zh"];
+  const pathname = usePathname();
+  const onPapers = pathname?.startsWith("/papers");
 
   return (
     <header className="site-header">
@@ -17,6 +21,15 @@ export default function Header() {
             <div className="brand-sub">{t.brandSub}</div>
           </div>
         </div>
+
+        <nav className="seg nav-tabs" title={t.navNews}>
+          <Link className={!onPapers ? "active" : ""} href="/">
+            {t.navNews}
+          </Link>
+          <Link className={onPapers ? "active" : ""} href="/papers">
+            {t.navPapers}
+          </Link>
+        </nav>
 
         <div className="header-actions">
           {/* 身份切换 */}
