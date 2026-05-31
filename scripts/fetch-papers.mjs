@@ -320,19 +320,43 @@ async function main() {
 
   // 写入归档
   const date = todayStr();
+  const file = path.join(PAPERS, `${date}.json`);
+
+  // 合并当天已有数据（支持一天多次抓取增量）：
+  // existing 排在前面，dedupe 会保留先遇到的同一篇论文，
+  // 因此先前抓到的论文（含已生成的中文标题/精读翻译）会被完整保留，
+  // 本次新发现的论文追加进来。不截断，确保「原来的」不会被覆盖丢失。
+  let existing = [];
+  if (fs.existsSync(file)) {
+    try {
+      existing = JSON.parse(fs.readFileSync(file, "utf8")).items || [];
+    } catch {}
+  }
+  const finalItems = dedupe([...existing, ...kept]);
+  // 按领域分组、组内按热度排序，保证展示有序
+  const fieldOrder = {};
+  FIELDS.forEach((f, i) => (fieldOrder[f.key] = i));
+  finalItems.sort(
+    (a, b) =>
+      (fieldOrder[a.field] ?? 99) - (fieldOrder[b.field] ?? 99) ||
+      (b.heat || 0) - (a.heat || 0)
+  );
+
   const payload = {
     date,
     generatedAt: new Date().toISOString(),
-    count: kept.length,
+    count: finalItems.length,
     fields: FIELDS.map((f) => ({
       key: f.key,
       label_zh: f.label_zh,
       label_en: f.label_en,
     })),
-    items: kept,
+    items: finalItems,
   };
-  const file = path.join(PAPERS, `${date}.json`);
   fs.writeFileSync(file, JSON.stringify(payload, null, 2), "utf8");
+  console.log(
+    `  合并：已有 ${existing.length} + 本次保留 ${kept.length} → 去重后 ${finalItems.length}`
+  );
 
   // 更新索引
   const dates = fs
@@ -347,7 +371,7 @@ async function main() {
     "utf8"
   );
 
-  console.log(`\n完成：${date} 共 ${kept.length} 篇论文，已写入 ${file}`);
+  console.log(`\n完成：${date} 共 ${finalItems.length} 篇论文，已写入 ${file}`);
 }
 
 main();
