@@ -4,9 +4,11 @@ name: 每日抓取 AI 新闻
 # 也不受本地网络限制（可正常访问 Google/arXiv 等源）。
 on:
   schedule:
-    # 每 2 小时跑一次（UTC 整点），让新闻实现「准实时」更新。
-    # 论文抓取较耗时/费 token，仅在 UTC 00:00、12:00（约北京 08:00 / 20:00）执行（见下方步骤判断）。
-    - cron: "0 */2 * * *"
+    # 新闻：每 2 小时（避开 00/12 点，那两个点交给下面的论文计划一并处理），实现「准实时」更新。
+    - cron: "0 2,4,6,8,10,14,16,18,20,22 * * *"
+    # 论文 + 新闻：UTC 00:00 / 12:00（约北京 08:00 / 20:00）。
+    # 用独立 cron 区分用途，靠 github.event.schedule 判断（计划值，不受 Actions 执行延迟影响）。
+    - cron: "0 0,12 * * *"
   workflow_dispatch: {} # 也支持在 Actions 页面手动触发
 
 permissions:
@@ -34,13 +36,14 @@ jobs:
           AI_BASE_URL: ${{ secrets.AI_BASE_URL }}
           AI_MODEL: ${{ secrets.AI_MODEL }}
 
-      - name: 抓取学术论文（arXiv / bioRxiv，含中文精读翻译；仅 00/12 点或手动触发）
+      - name: 抓取学术论文（arXiv / bioRxiv，含中文精读翻译；仅 00/12 点计划或手动触发）
         run: |
-          HOUR=$(date -u +%H)
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "$HOUR" = "00" ] || [ "$HOUR" = "12" ]; then
+          # 注意：用 github.event.schedule（计划的 cron 原文，固定不变），
+          # 不能用实际执行时间——因为 GitHub Actions 定时任务常延迟 40~70 分钟，会跨过整点。
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${{ github.event.schedule }}" = "0 0,12 * * *" ]; then
             npm run fetch:papers
           else
-            echo "当前 UTC $HOUR 点，非论文抓取时段，跳过（仅 00/12 点抓取论文以控制用量）"
+            echo "本次为新闻抓取计划（${{ github.event.schedule }}），跳过论文抓取以控制用量"
           fi
         env:
           AI_API_KEY: ${{ secrets.AI_API_KEY }}
