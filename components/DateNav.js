@@ -5,7 +5,14 @@ import { useRouter } from "next/navigation";
 import { useApp } from "./AppProvider";
 import { formatDateLong } from "@/lib/format";
 
-export default function DateNav({ date, dates, latest }) {
+// homeHref / archivePrefix 可选，默认用于新闻；论文页传入 "/papers" 即可复用
+export default function DateNav({
+  date,
+  dates,
+  latest,
+  homeHref = "/",
+  archivePrefix = "/archive",
+}) {
   const { lang } = useApp();
   const router = useRouter();
   const idx = dates.indexOf(date);
@@ -13,7 +20,7 @@ export default function DateNav({ date, dates, latest }) {
   const newer = idx > 0 ? dates[idx - 1] : null;
   const older = idx >= 0 && idx < dates.length - 1 ? dates[idx + 1] : null;
 
-  const hrefFor = (d) => (d === latest ? "/" : `/archive/${d}`);
+  const hrefFor = (d) => (d === latest ? homeHref : `${archivePrefix}/${d}`);
 
   const onSelect = (e) => {
     const d = e.target.value;

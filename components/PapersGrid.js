@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useApp } from "./AppProvider";
 import { STRINGS } from "@/lib/i18n";
 import PaperCard from "./PaperCard";
@@ -16,6 +16,9 @@ export default function PapersGrid({ items, fields }) {
   const [onlyFav, setOnlyFav] = useState(false);
   const [onlyFeatured, setOnlyFeatured] = useState(false);
   const [active, setActive] = useState(null); // 当前打开的论文
+
+  const PAGE = 60; // 每批渲染数量，避免一次渲染数百张卡片导致卡顿
+  const [visible, setVisible] = useState(PAGE);
 
   const labelMap = useMemo(() => {
     const m = {};
@@ -41,6 +44,13 @@ export default function PapersGrid({ items, fields }) {
     else list.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
     return list;
   }, [items, field, sort, onlyFav, onlyFeatured, query, favs]);
+
+  // 切换筛选/搜索/排序时重置可见数量，回到第一批
+  useEffect(() => {
+    setVisible(PAGE);
+  }, [field, sort, onlyFav, onlyFeatured, query]);
+
+  const shown = filtered.slice(0, visible);
 
   return (
     <>
@@ -103,7 +113,7 @@ export default function PapersGrid({ items, fields }) {
         <div className="empty">{t.papersEmpty}</div>
       ) : (
         <div className="grid">
-          {filtered.map((p) => (
+          {shown.map((p) => (
             <PaperCard
               key={p.id}
               paper={p}
@@ -111,6 +121,14 @@ export default function PapersGrid({ items, fields }) {
               onOpen={setActive}
             />
           ))}
+        </div>
+      )}
+
+      {visible < filtered.length && (
+        <div className="load-more">
+          <button className="btn" onClick={() => setVisible((v) => v + PAGE)}>
+            {t.loadMore}（{filtered.length - visible}）
+          </button>
         </div>
       )}
 
