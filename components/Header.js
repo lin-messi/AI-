@@ -10,6 +10,8 @@ export default function Header() {
   const t = STRINGS[lang === "en" ? "en" : "zh"];
   const pathname = usePathname();
   const onPapers = pathname?.startsWith("/papers");
+  const onGithub = pathname?.startsWith("/github");
+  const onNews = !onPapers && !onGithub;
 
   return (
     <header className="site-header">
@@ -23,11 +25,14 @@ export default function Header() {
         </div>
 
         <nav className="seg nav-tabs" title={t.navNews}>
-          <Link className={!onPapers ? "active" : ""} href="/">
+          <Link className={onNews ? "active" : ""} href="/">
             {t.navNews}
           </Link>
           <Link className={onPapers ? "active" : ""} href="/papers">
             {t.navPapers}
+          </Link>
+          <Link className={onGithub ? "active" : ""} href="/github">
+            {t.navGithub}
           </Link>
         </nav>
 
