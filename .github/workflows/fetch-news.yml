@@ -4,13 +4,15 @@ name: 每日抓取 AI 新闻
 # 也不受本地网络限制（可正常访问 Google/arXiv 等源）。
 on:
   schedule:
-    # 新闻：每 2 小时（避开 00/12 点，那两个点交给下面的论文计划一并处理），实现「准实时」更新。
-    - cron: "0 2,4,6,8,10,14,16,18,20,22 * * *"
-    # 论文 + 新闻：UTC 00:00 / 12:00（约北京 08:00 / 20:00）。
+    # 错峰：刻意避开整点（:00）这个全平台最拥堵的时刻，改用 :17 / :23 / :43 等
+    # 非 5 整除的"冷门"分钟，可显著减少 GitHub Actions 的排队延迟。
+    # 新闻：每 2 小时的 :17（避开 00/12 点，那两个点交给下面的论文计划一并处理），实现「准实时」更新。
+    - cron: "17 2,4,6,8,10,14,16,18,20,22 * * *"
+    # 论文 + 新闻：UTC 00:23 / 12:23（约北京 08:23 / 20:23）。
     # 用独立 cron 区分用途，靠 github.event.schedule 判断（计划值，不受 Actions 执行延迟影响）。
-    - cron: "0 0,12 * * *"
-    # 开源项目 + 新闻：UTC 01:00（约北京 09:00），每天 1 次。
-    - cron: "0 1 * * *"
+    - cron: "23 0,12 * * *"
+    # 开源项目 + 新闻：UTC 01:43（约北京 09:43），每天 1 次。
+    - cron: "43 1 * * *"
   workflow_dispatch: {} # 也支持在 Actions 页面手动触发
 
 permissions:
@@ -42,7 +44,7 @@ jobs:
         run: |
           # 注意：用 github.event.schedule（计划的 cron 原文，固定不变），
           # 不能用实际执行时间——因为 GitHub Actions 定时任务常延迟 40~70 分钟，会跨过整点。
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${{ github.event.schedule }}" = "0 0,12 * * *" ]; then
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${{ github.event.schedule }}" = "23 0,12 * * *" ]; then
             npm run fetch:papers
           else
             echo "本次为新闻抓取计划（${{ github.event.schedule }}），跳过论文抓取以控制用量"
@@ -55,7 +57,7 @@ jobs:
       - name: 抓取 GitHub 推荐开源项目（含中文简介翻译；仅 01:00 计划或手动触发，每天 1 次）
         run: |
           # 同样用 github.event.schedule 判断，避免 Actions 执行延迟跨过整点导致永不更新。
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${{ github.event.schedule }}" = "0 1 * * *" ]; then
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${{ github.event.schedule }}" = "43 1 * * *" ]; then
             npm run fetch:github
           else
             echo "本次非开源抓取计划（${{ github.event.schedule }}），跳过 GitHub 抓取以控制用量"
