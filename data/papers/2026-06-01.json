@@ -1,7 +1,7 @@
 {
   "date": "2026-06-01",
-  "generatedAt": "2026-06-01T02:26:46.290Z",
-  "count": 263,
+  "generatedAt": "2026-06-01T06:26:16.492Z",
+  "count": 277,
   "fields": [
     {
       "key": "vision",
@@ -35,6 +35,111 @@
     }
   ],
   "items": [
+    {
+      "id": "arxiv:2605.31075",
+      "arxiv_id": "2605.31075",
+      "source": "arXiv",
+      "cats": [
+        "cs.CV"
+      ],
+      "title_en": "Task-Focused Memorization for Multimodal Agents",
+      "title_zh": "面向多模态智能体的任务聚焦记忆",
+      "abstract_en": "Long-term memory is essential for multimodal agents to build coherent experience, accumulate world knowledge, and achieve continual learning. However, constructing effective memory goes beyond memory module design and basic requirements such as accuracy and fidelity; the key challenge lies in determining what to memorize. Multimodal agents, such as embodied agents, continuously perceive, reason, and act in real or virtual environments, receiving an unbounded stream of multimodal observations. From this combinatorial explosion of information, an agent must selectively retain content that is relevant to its role in the environment and valuable for future tasks. To bridge this gap, we frame memory generation as a learnable memorization policy and introduce TaskMem (Task-focused Memorization Policy Learning), a reinforcement-learning-based framework that enables the policy to dynamically adjust its focus to the demands of real tasks encountered in the environment. TaskMem adopts a two-phase training paradigm: Phase One learns how to memorize by optimizing memory quality under fundamental fidelity requirements; Phase Two occurs after deployment, where the agent learns what to memorize by tuning an adapter on its base MLLM, using recent environment tasks to define a reward model that guides the memorization policy toward task-relevant content. To evaluate our approach, we reformulate VideoMME, EgoLife, and EgoTempo into streaming benchmarks that simulate a realistic setting in which an agent processes streaming observations and handles tasks arriving online. To isolate memory assessment, the questions must be answered using only the agent's memory, without access to raw video. Built on Qwen3-VL-30B-A3B, TaskMem improves VQA accuracy by 6.3%, 7.0%, and 5.3% on these benchmarks, respectively.",
+      "abstract_zh": "",
+      "highlight_zh": "",
+      "digest_zh": "",
+      "authors": [
+        "Tao Zou",
+        "Yichen He",
+        "Tian Qiu",
+        "Yuan Lin",
+        "Hang Li"
+      ],
+      "url": "https://arxiv.org/abs/2605.31075v1",
+      "pdf_url": "https://arxiv.org/pdf/2605.31075",
+      "html_url": "https://arxiv.org/abs/2605.31075",
+      "published_at": "2026-05-29T09:43:35.000Z",
+      "upvotes": 16,
+      "heat": 851.3186422222223,
+      "featured": true,
+      "subtags": [
+        "多模态",
+        "基因组",
+        "大模型",
+        "强化学习"
+      ],
+      "image": "",
+      "field": "vision"
+    },
+    {
+      "id": "arxiv:2605.31039",
+      "arxiv_id": "2605.31039",
+      "source": "arXiv",
+      "cats": [
+        "cs.CV"
+      ],
+      "title_en": "GGT-100K: Generative Ground Truth for Generalizable Real-World Image Restoration",
+      "title_zh": "GGT-100K：面向通用真实世界图像恢复的生成式真值",
+      "abstract_en": "Real-world image restoration (IR) is bottlenecked by the scarcity of high-quality paired training data. Synthetic datasets are abundant but often fail to model real-world degradations, while real-world paired datasets are expensive and difficult to capture. As a result, IR models trained on these datasets show limited generalization in real-world scenarios. In this work, we propose Generative Ground Truth (GGT) by using generative multimodal foundation models (MFMs) to produce high-quality (HQ) targets from real-world low-quality (LQ) images. We first conduct a systematic evaluation of nine state-of-the-art MFMs, including Nano-Banana-2 and GPT-Image-2, on images of various scenes and degradation types. The results demonstrate that Nano-Banana-2 with VLM-based adaptive prompting shows the highest capability to synthesize perceptually realistic and content-faithful HQ targets, which can serve as the GGT for the LQ input. We then employ Nano-Banana-2 to build a GGT synthesis pipeline, which involves multi-stage quality control to ensure data reliability, and construct GGT-100K, an LQ-HQ paired dataset comprising 103,707 training pairs and covering diverse scenes and complex real-world degradations. A test set of 500 image pairs is also established. Extensive experiments show that GGT-100K consistently improves the real-world generalization of a wide range of IR models, with particularly strong benefits for finetuning generative models for IR tasks. Our results suggest that MFMs can serve as practical tools for restoration-oriented data generation, and GGT-100K is a useful resource to expand the generalization boundaries of real-world IR models.",
+      "abstract_zh": "",
+      "highlight_zh": "",
+      "digest_zh": "",
+      "authors": [
+        "Xiangtao Kong",
+        "Jixin Zhao",
+        "Lingchen Sun",
+        "Rongyuan Wu",
+        "Lei Zhang"
+      ],
+      "url": "https://arxiv.org/abs/2605.31039v1",
+      "pdf_url": "https://arxiv.org/pdf/2605.31039",
+      "html_url": "https://arxiv.org/abs/2605.31039",
+      "published_at": "2026-05-29T09:18:11.000Z",
+      "upvotes": 15,
+      "heat": 800.8953083333333,
+      "featured": true,
+      "subtags": [
+        "多模态",
+        "大模型"
+      ],
+      "image": "",
+      "field": "vision"
+    },
+    {
+      "id": "arxiv:2605.31158",
+      "arxiv_id": "2605.31158",
+      "source": "arXiv",
+      "cats": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "title_en": "Light Interaction: Training-Free Inference Acceleration for Interactive Video World Models",
+      "title_zh": "光交互：面向交互式视频世界模型的无训练推理加速",
+      "abstract_en": "Interactive video world models generate video chunk by chunk in response to user-controlled camera movements, enabling applications such as real-time game simulation, virtual scene navigation, and embodied AI training. However, scaling to long interactive trajectories is prohibitively expensive due to growing context memory, quadratic attention complexity, and repeated denoising steps. We present Light Interaction, a training-free inference acceleration framework for interactive video world models. Our key insight is that interaction naturally enables trajectory-dependent adaptive computation: retrieved spatial memory can be discarded during novel exploration, temporal context can be adjusted according to local latent dynamics, and early-step model outputs can be reused when the camera revisits familiar regions. Based on this insight, Light Interaction combines adaptive context management, denoising cache acceleration, and hardware-software co-designed 3D block sparse attention with fused Triton kernels. Evaluated on HY-WorldPlay and Matrix-Game-3.0, Light Interaction achieves up to 2.59x speedup without model retraining while maintaining competitive visual quality.",
+      "abstract_zh": "",
+      "highlight_zh": "",
+      "digest_zh": "",
+      "authors": [
+        "Jiacheng Lu",
+        "Haoyi Zhu",
+        "Sipei Yi",
+        "Enze Xie",
+        "Yu Li",
+        "Cheng Zhuo"
+      ],
+      "url": "https://arxiv.org/abs/2605.31158v1",
+      "pdf_url": "https://arxiv.org/pdf/2605.31158",
+      "html_url": "https://arxiv.org/abs/2605.31158",
+      "published_at": "2026-05-29T11:06:03.000Z",
+      "upvotes": 1,
+      "heat": 102.69308722222222,
+      "featured": false,
+      "subtags": [
+        "3D"
+      ],
+      "image": "",
+      "field": "vision"
+    },
     {
       "id": "arxiv:2605.31604",
       "arxiv_id": "2605.31604",
@@ -2303,6 +2408,372 @@
       "featured": false,
       "subtags": [
         "神经科学"
+      ],
+      "image": "",
+      "field": "bio"
+    },
+    {
+      "id": "doi:10.64898/2026.05.27.728114",
+      "arxiv_id": "",
+      "source": "bioRxiv",
+      "arxivCat": "",
+      "title_en": "Decoding Hierarchical Cell-Cell Communication in Spatial Multi-Omics with CellSTIC",
+      "title_zh": "利用CellSTIC解码空间多组学中的层级细胞间通讯",
+      "abstract_en": "Cell-cell communication helps to coordinate tissue development, homeostasis, and immune responses, but identifying signaling interactions within intact tissues remains difficult. Although single-cell transcriptomics has enabled systematic inference of ligand-receptor interactions, dissociation disrupts spatial context and limits the identification of bona fide local signaling and region-specific communication programs. Spatial transcriptomics and spatial multi-omics offer the opportunity to study communication in situ, but current approaches often either incompletely integrate heterogeneous modalities or return long lists of ligand-receptor pairs that are difficult to interpret mechanistically. Here, we present CellSTIC, a framework for resolving cell-cell communication in spatial multi-omics as structured communication programs grounded in tissue architecture. Rather than treating ligand-receptor interactions as isolated candidates, CellSTIC integrates multimodal evidence from local tissue neighborhoods and organizes communication into a hierarchical semantic representation that remains traceable to the underlying molecular interactions. This design enables communication to be analyzed not only at the level of individual ligand-receptor pairs but also across broader functional modules that can be compared across tissues, regions, and biological states. Across multimodal simulations with ground-truth annotations and multiple real tissue datasets, CellSTIC robustly recovered spatially coherent communication structure and spatial domains. It further resolved communication programs across three complementary dimensions: hierarchical organization in immune microenvironments, spatially restricted signaling in complex brain architecture, and developmental and regenerative remodeling across embryonic and post-injury contexts. Together, these results establish CellSTIC as a general framework for linking tissue architecture to intercellular signaling programs in situ and for generating mechanistic hypotheses from spatial multi-omic data.",
+      "abstract_zh": "",
+      "highlight_zh": "",
+      "digest_zh": "",
+      "authors": [
+        "Wang, S.",
+        "Wang, J.",
+        "Wang, J.",
+        "Yuan, Z.",
+        "Xu, Y."
+      ],
+      "url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728114",
+      "pdf_url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728114v1.full.pdf",
+      "html_url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728114v1.full",
+      "published_at": "2026-05-31T00:00:00.000Z",
+      "upvotes": 0,
+      "heat": 89.59225222222221,
+      "featured": true,
+      "subtags": [
+        "多模态",
+        "基因组",
+        "AI制药",
+        "神经科学"
+      ],
+      "image": "",
+      "field": "bio"
+    },
+    {
+      "id": "doi:10.64898/2026.05.27.728205",
+      "arxiv_id": "",
+      "source": "bioRxiv",
+      "arxivCat": "",
+      "title_en": "Antibody maturation increases rigidity in protein-contacting regions and flexibility at glycan interfaces",
+      "title_zh": "抗体成熟增加蛋白质接触区域的刚性并增强聚糖界面的柔性",
+      "abstract_en": "Antibody design is a challenging task that could be improved by understanding the conformational changes accompanying affinity maturation. Antibody maturation is a critical immune system process by which antibodies gain mutations that improve affinity and specificity for antigen targets. However, how these mutations change antibody dynamics, specifically whether antibodies become more rigid as they mature, remains a contested topic. Using adaptive sampling molecular dynamics simulations and over 8.5 milliseconds of Folding@home simulations of seven lineages, we discover that affinity maturation selectively tunes the dynamics of antibody paratope regions depending on whether they contact protein residues or glycans. We find that antibody regions that contact glycans evolve to become more flexible and, consistent with other studies, antibody regions that contact protein residues on the antigen become rigid. This pattern holds regardless of whether one includes the constant region in the simulations, indicating that the computational cost of all-atom antibody MD simulations can be reduced by half without sacrificing the accuracy of the variable region dynamics. We expect the principles identified in this study will enable precise, dynamics-based engineering of high-affinity antibodies and to inform immunogen design against challenging, glycan-shielded viral targets such as HIV.",
+      "abstract_zh": "抗体设计是一项具有挑战性的任务，通过理解伴随亲和力成熟的构象变化可以改进这一任务。抗体成熟是关键的免疫系统过程，抗体通过突变提高对抗原靶点的亲和力和特异性。然而，这些突变如何改变抗体动力学，特别是抗体是否随着成熟而变得更加刚性，仍是一个有争议的话题。利用自适应采样分子动力学模拟和Folding@home对七个谱系超过8.5毫秒的模拟，我们发现亲和力成熟选择性地调节抗体互补决定区（paratope）的动力学，具体取决于它们接触的是蛋白质残基还是聚糖。我们发现，接触聚糖的抗体区域进化得更加灵活，而接触抗原上蛋白质残基的抗体区域则变得刚性。无论模拟中是否包含恒定区，这一模式都成立，表明全原子抗体分子动力学模拟的计算成本可以减半，而不牺牲可变区动力学的准确性。我们期望本研究中发现的原理能够实现基于动力学的高亲和力抗体的精确工程，并为针对具有挑战性的聚糖屏蔽病毒靶点（如HIV）的免疫原设计提供信息。",
+      "highlight_zh": "抗体成熟中，接触蛋白质区域变刚，接触聚糖区域变柔。",
+      "digest_zh": "1. 研究问题：抗体在亲和力成熟过程中，其动力学特性（刚性与柔性）如何变化？具体来说，抗体与抗原结合的区域（互补决定区）在接触不同化学组分（蛋白质残基 vs. 聚糖）时，其运动性是否发生不同改变？\n2. 使用方法：研究者采用自适应采样分子动力学模拟，并利用Folding@home分布式计算平台，对7个抗体谱系进行了总计超过8.5毫秒的模拟。通过分析抗体不同区域的运动幅度，比较了接触蛋白质残基和接触聚糖的区域的动力学差异。\n3. 主要结果：发现接触蛋白质残基的抗体区域在成熟后变得更刚性（运动受限），而接触聚糖的区域则变得更柔性（运动增强）。这一规律在是否包含恒定区的模拟中均成立，提示可变区动力学不受恒定区影响，因此模拟时可忽略恒定区以节省计算资源。\n4. 重要性：该发现为基于动力学的高亲和力抗体设计提供了新原则，有助于工程化更有效的抗体药物。同时，对理解如何针对聚糖屏蔽的病毒（如HIV）设计免疫原具有指导意义，因为这类病毒利用聚糖逃避抗体，而本研究表明抗体可通过增加柔性来适应聚糖界面。",
+      "authors": [
+        "Solieva, S. O.",
+        "Park, J.",
+        "Miller, J. J.",
+        "Kriews, A.",
+        "Escolano, A.",
+        "Bowman, G. R."
+      ],
+      "url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728205",
+      "pdf_url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728205v1.full.pdf",
+      "html_url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728205v1.full",
+      "published_at": "2026-05-31T00:00:00.000Z",
+      "upvotes": 0,
+      "heat": 89.59225222222221,
+      "featured": true,
+      "subtags": [
+        "蛋白质",
+        "AI制药"
+      ],
+      "image": "",
+      "field": "bio"
+    },
+    {
+      "id": "doi:10.64898/2026.05.27.728338",
+      "arxiv_id": "",
+      "source": "bioRxiv",
+      "arxivCat": "",
+      "title_en": "Auranofin potentiates cisplatin response through context-dependent NOTCH-associated signaling states in endometrial cancer",
+      "title_zh": "金诺芬通过子宫内膜癌中情境依赖的NOTCH相关信号状态增强顺铂反应",
+      "abstract_en": "Therapeutic resistance remains a major challenge in advanced and recurrent endometrial cancer (EC). Aberrant NOTCH signaling has been associated with aggressive tumor behavior and therapeutic resistance across multiple malignancies, yet its therapeutic significance in EC remains incompletely defined. We investigated whether auranofin (AuR), a noncanonical modulator of NOTCH signaling through the transcriptional effector RBPJ, alters platinum responsiveness in EC models. Elevated NOTCH3 copy-number was associated with poorer overall survival in the TCGA-UCEC cohort. AuR treatment reduced RBPJ occupancy at canonical NOTCH target loci, including HES1 and HES4, across multiple EC models. Stable NOTCH3 depletion altered AuR responsiveness in a context-dependent manner while significantly enhancing cisplatin (CDDP) sensitivity in AN3CA cells. Pharmacologic AuR treatment similarly potentiated CDDP response in AN3CA cells and AN3CA xenografts, resulting in reduced tumor burden and prolonged endpoint-free survival following combination treatment. In contrast, ARK-1 xenografts demonstrated limited additional benefit from combined AuR plus CDDP therapy despite detectable suppression of RBPJ occupancy. Together, these findings identify context-dependent NOTCH-associated therapeutic vulnerabilities in EC and support further development of biomarker-guided AuR-based platinum-sensitization strategies.",
+      "abstract_zh": "治疗耐药仍然是晚期和复发性子宫内膜癌（EC）的主要挑战。异常的NOTCH信号与多种恶性肿瘤的侵袭性肿瘤行为和治疗耐药相关，但其在EC中的治疗意义尚未完全明确。我们研究了金诺芬（AuR），一种通过转录效应因子RBPJ非经典调节NOTCH信号的药物，是否改变EC模型中的铂类反应性。在TCGA-UCEC队列中，NOTCH3拷贝数升高与较差的总生存期相关。AuR处理降低了多个EC模型中RBPJ在经典NOTCH靶基因座（包括HES1和HES4）的占据。稳定的NOTCH3敲除以情境依赖的方式改变了AuR反应性，同时显著增强了AN3CA细胞对顺铂（CDDP）的敏感性。药理学AuR处理同样增强了AN3CA细胞和AN3CA异种移植瘤中的CDDP反应，导致联合治疗后肿瘤负荷减少并延长无终点生存期。相比之下，ARK-1异种移植瘤在联合AuR加CDDP治疗中获益有限，尽管检测到RBPJ占据的抑制。总之，这些发现确定了EC中情境依赖的NOTCH相关治疗脆弱性，并支持进一步开发基于生物标志物指导的AuR铂类增敏策略。",
+      "highlight_zh": "金诺芬通过NOTCH信号增强部分子宫内膜癌对顺铂的敏感性。",
+      "digest_zh": "1. 研究问题：子宫内膜癌（EC）治疗中，铂类药物耐药是主要难题。NOTCH信号通路异常与耐药相关，但能否通过靶向NOTCH来增敏铂类药物？金诺芬（一种抗风湿药）已知可非经典地调节NOTCH信号，本研究探索其是否能增强顺铂（一种铂类化疗药）在EC中的疗效。\n2. 使用方法：首先分析TCGA数据库，发现NOTCH3基因拷贝数高的EC患者预后更差。然后在多种EC细胞系中，用金诺芬处理，检测NOTCH靶基因（如HES1）的表达变化。通过基因敲除NOTCH3，观察细胞对金诺芬和顺铂的反应。最后在两种EC异种移植小鼠模型（AN3CA和ARK-1）中，测试金诺芬联合顺铂的治疗效果。\n3. 主要结果：金诺芬能抑制NOTCH信号（降低RBPJ蛋白在靶基因启动子的结合）。在AN3CA细胞中，敲除NOTCH3或使用金诺芬均能增强顺铂的杀伤作用，且联合治疗在小鼠模型中显著缩小肿瘤并延长生存。但在ARK-1细胞中，联合治疗无明显额外获益，尽管NOTCH信号也被抑制。\n4. 重要性：该研究揭示了NOTCH信号在EC中具有情境依赖的作用——部分肿瘤依赖NOTCH3生存，金诺芬可增敏顺铂；而另一些肿瘤则不依赖。这提示未来需根据生物标志物（如NOTCH3状态）筛选患者，实现精准的铂类增敏治疗，为克服EC耐药提供了新策略。",
+      "authors": [
+        "Lake, R. J.",
+        "Tshibangu, C.",
+        "Candia, N. J.",
+        "Abfalterer, Q. U.",
+        "Lagutina, I. V.",
+        "Pauken, C.",
+        "Leslie, K. K.",
+        "Steinkamp, M. P."
+      ],
+      "url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728338",
+      "pdf_url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728338v1.full.pdf",
+      "html_url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728338v1.full",
+      "published_at": "2026-05-31T00:00:00.000Z",
+      "upvotes": 0,
+      "heat": 89.59225222222221,
+      "featured": true,
+      "subtags": [
+        "AI制药"
+      ],
+      "image": "",
+      "field": "bio"
+    },
+    {
+      "id": "doi:10.64898/2026.05.27.728281",
+      "arxiv_id": "",
+      "source": "bioRxiv",
+      "arxivCat": "",
+      "title_en": "Matched pancreatic cancer liver metastatic model system reveals cancer cell-dependent organotropism and site-specific tumor microenvironment reflective of human disease",
+      "title_zh": "匹配的胰腺癌肝转移模型系统揭示癌症细胞依赖性器官趋向性和反映人类疾病的位点特异性肿瘤微环境",
+      "abstract_en": "Pancreatic ductal adenocarcinoma (PDAC) is a deadly, highly metastatic disease, driven by an interplay between cancer cells and the metastatic site-specific microenvironment. However, pre-clinical models that robustly capture these interactions within the context of matched primary and metastatic tumors are limited. Here, we present a novel transplant model system for matched pancreas and liver tumors to study PDAC metastatic progression. Using this model, we identified murine PDAC cell lines with distinct liver tropism potentials and defined a transcriptional program associated with enhanced liver metastasis. This signature was enriched in malignant cells from human PDAC liver metastases across multiple independent datasets and was predictive of survival. Integrative ligand-receptor interaction analyses, multiplex protein profiling, and spatial immune cell profiling revealed that PDAC liver metastases develop within a distinct immunosuppressive microenvironment characterized by predicted enhanced inhibitory signaling and altered immune organization. Notably, CD4 and CD8 T cells were more proximal to cancer cells in liver metastases compared to primary pancreatic tumors, suggesting site-specific tumor-immune interactions. Finally, we demonstrate the utility of these model systems for interrogating cell line-dependent and T cell-regulated mechanisms of metastatic progression. Collectively, this work establishes a tractable platform for studying matched primary and metastatic PDAC and identifies tumor-immune signaling networks associated with immunosuppressive liver metastatic progression.",
+      "abstract_zh": "",
+      "highlight_zh": "",
+      "digest_zh": "",
+      "authors": [
+        "Mandloi, A.",
+        "Larson, C. R.",
+        "Baines, J.",
+        "Tran, T. M.",
+        "Roy, S.",
+        "Fang, Y.-H. D.",
+        "Laube, R.",
+        "Patel, M."
+      ],
+      "url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728281",
+      "pdf_url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728281v1.full.pdf",
+      "html_url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728281v1.full",
+      "published_at": "2026-05-31T00:00:00.000Z",
+      "upvotes": 0,
+      "heat": 89.59225222222221,
+      "featured": false,
+      "subtags": [
+        "蛋白质"
+      ],
+      "image": "",
+      "field": "bio"
+    },
+    {
+      "id": "doi:10.64898/2026.05.27.728214",
+      "arxiv_id": "",
+      "source": "bioRxiv",
+      "arxivCat": "",
+      "title_en": "Gut Microbiota Dysbiosis Drives Myocardial Hypertrophy Through GBP2b/GBP1-Mediated Immune Reprogramming and Exosomal Signaling in Chronic Colitis",
+      "title_zh": "肠道菌群失调通过GBP2b/GBP1介导的免疫重编程和外泌体信号在慢性结肠炎中驱动心肌肥厚",
+      "abstract_en": "BACKGROUND: Patients with inflammatory bowel disease (IBD) are at increased risk of cardiovascular disease, yet the mechanisms linking chronic intestinal inflammation to cardiac dysfunction remain poorly understood. IBD is characterized by profound gut microbiota dysbiosis, which we hypothesize drives systemic immune dysregulation and contributes to cardiac dysfunction. METHODS: A chronic colitis mouse model was used to assess gut microbiota dysbiosis, systemic immune cell metabolism, and cardiac remodeling. Cardiac outcomes were evaluated by echocardiography, histology, and molecular analyses. Mechanisms were examined using fecal microbiota transplantation, immune cell depletion, exosome transfer, bone marrow chimeras, RNA-seq, co-immunoprecipitation, confocal microscopy, and siRNA-mediated gene silencing. RESULTS: Chronic DSS colitis induced cardiac dysfunction, hypertrophy, and fibrosis in mice. These changes were accompanied by sustained gut microbiota dysbiosis, metabolic reprogramming, and mitochondrial dysfunction in circulating immune cells. Fecal microbiota transfer experiments demonstrated that colitis-associated microbiota were sufficient to reprogram systemic immune cells and promote cardiac dysfunction. Immune cell depletion studies identified macrophages as key mediators of colitis-associated cardiac injury. Colitis increased systemic lipopolysaccharide (LPS) translocation, bone marrow chimera experiments demonstrated that hematopoietic TLR4 signaling was required for immune cell metabolic remodeling and cardiac dysfunction during chronic colitis. Transcriptomic analysis identified guanylate-binding protein 2b (GBP2b/GBP1, hereafter referred to as GBP1) as a key downstream effector of LPS-TLR4 signaling. Upon LPS stimulation, GBP1 localized to mitochondria, where it interacted with DRP1 and FIS1 to promote mitochondrial fission, oxidative stress, and enhanced immune cell migration into the heart. In addition, GBP1 was secreted via exosomes, which were taken up by cardiomyocytes and contributed to hypertrophic remodeling, and cardiac dysfunction. CONCLUSIONS: These findings establish the LPS-TLR4-GBP1 axis as a key driver of colitis-associated cardiovascular dysfunction and highlight this pathway as a promising therapeutic target for reducing cardiovascular risk in patients with IBD.",
+      "abstract_zh": "",
+      "highlight_zh": "",
+      "digest_zh": "",
+      "authors": [
+        "Wang, Y.",
+        "Li, J.",
+        "An, J.",
+        "Ngo, V.",
+        "Wang, S.",
+        "Hao, Z.",
+        "Li, C.",
+        "Abo, H."
+      ],
+      "url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728214",
+      "pdf_url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728214v1.full.pdf",
+      "html_url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728214v1.full",
+      "published_at": "2026-05-31T00:00:00.000Z",
+      "upvotes": 0,
+      "heat": 89.59225222222221,
+      "featured": false,
+      "subtags": [
+        "蛋白质",
+        "基因组",
+        "AI制药"
+      ],
+      "image": "",
+      "field": "bio"
+    },
+    {
+      "id": "doi:10.64898/2026.05.27.728314",
+      "arxiv_id": "",
+      "source": "bioRxiv",
+      "arxivCat": "",
+      "title_en": "Trichome acylsugar defenses are equally effective against leaf-mining and free-living insects",
+      "title_zh": "毛状体酰基糖防御对潜叶昆虫和自由生活昆虫同样有效",
+      "abstract_en": "Trichomes are epidermal projections, crucial components of plant defense systems. Whether these epidermal defenses are effective against leafminers, which infest the internal mesophyll layers, remains unclear. Using the devasting invasive tomato pest, Phthorimaea absoluta (tomato leafminer), and the trichome-rich wild tomato, Solanum pennellii, we demonstrate that trichome produced acylsugars effectively inhibit the growth of endophagous P. absoluta larvae feeding inside leaves. High spatial resolution leaf- and frass-metabolite analysis by MALDI-MSI and Stimulated Raman Scattering microscopy revealed that trichome-synthesized acylsugars are translocated into the mesophyll tissues when larvae infest leaves. We identified an ATP-binding cassette (ABC) transporter, SpABCB5, as the mediator of this translocation and as an essential component of defense against leafminers. These data reveal that epidermal trichomes not only defend against free-living (ectophagous) herbivores through direct contact or rapid deposition of chemical defenses onto leaf surfaces, but also defend against endophagous leafminers by rapidly depositing chemical defenses into internal tissues. By delivering mines against leaf miners, trichomes offer new avenues for breeding crops with resistance to leafminers.",
+      "abstract_zh": "",
+      "highlight_zh": "",
+      "digest_zh": "",
+      "authors": [
+        "Sun, Z.",
+        "Pan, X.",
+        "Bi, S.",
+        "Zhang, Y.",
+        "Dun, J.",
+        "Mahesati, D.",
+        "Lin, Y.",
+        "Fu, Y."
+      ],
+      "url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728314",
+      "pdf_url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728314v1.full.pdf",
+      "html_url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728314v1.full",
+      "published_at": "2026-05-31T00:00:00.000Z",
+      "upvotes": 0,
+      "heat": 89.59225222222221,
+      "featured": false,
+      "subtags": [
+        "基因组"
+      ],
+      "image": "",
+      "field": "bio"
+    },
+    {
+      "id": "doi:10.64898/2026.05.27.728258",
+      "arxiv_id": "",
+      "source": "bioRxiv",
+      "arxivCat": "",
+      "title_en": "Diel metabolic plasticity of CAM photosynthesis in MD-2 pineapple (Ananas comosus) under contrasting tropical environments: biochemical patterns and agronomic implications.",
+      "title_zh": "MD-2菠萝（Ananas comosus）在对比热带环境下CAM光合作用的昼夜代谢可塑性：生化模式与农学意义",
+      "abstract_en": "Abstract The current understanding of Crassulacean Acid Metabolism (CAM), including semi-controlled studies in pineapple, does not fully explain outcomes observed under commercial field conditions. Although empirical agronomy confirms a strong climatic influence on growth and development, mechanistic explanations at the metabolic level particularly for photosynthate allocation remain scarce. This study evaluated how environmental variation affects diel CAM outputs and how such effects can be agronomically interpreted. MD-2 pineapple plants were cultivated in contrasting natural environments across Costa Rica. Leaf samples were collected at defined phenological stages and at the end of CAM Phases I and IV. Field data revealed distinct metabolic balances between soluble sugar accumulation and nocturnal malic acid content. Under high radiation and temperature, sucrose concentrations increased markedly, reflecting shifts toward leaf growth over stem reserve storage. These shifts were associated with differences in harvest index, highlighting the role of sucrose dynamics in phenotypic plasticity. From a seed selection perspective, integrating CAM diel profiling into research protocols together with physiological age (thermal units) could provide a stronger basis for classifying planting material beyond current fresh-weight standards. Such integration would improve the prediction of photosynthetic performance, early establishment success, and ultimately, crop uniformity at harvest. Approximately 38% of diel metabolic patterns deviated from the classical CAM model, indicating dynamic regulatory mechanisms under field conditions. Understanding these patterns could improve the interpretation of yield variability, natural flowering incidence, and harvest index across agroecosystems. Recognizing these CAM particularities offers a path to bridge the gap between fundamental CAM biochemistry and agronomic application, enabling the development of precise management strategies that respond to metabolic plasticity under real-world conditions. Closing this gap is essential to enhance productivity, uniformity, and sustainability in pineapple agroecosystems. Keywords: photosynthate, sugar, malic-acid, metabolites, plasticity, hexose, partitioning.",
+      "abstract_zh": "",
+      "highlight_zh": "",
+      "digest_zh": "",
+      "authors": [
+        "Vasquez-Jimenez, J.",
+        "Bartholomew, D.",
+        "Trimino-Vasquez, H.",
+        "Villegas-Penaranda, L. R.",
+        "Vargas-Leiton, B.",
+        "Esquivel-Hernandez, G."
+      ],
+      "url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728258",
+      "pdf_url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728258v1.full.pdf",
+      "html_url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728258v1.full",
+      "published_at": "2026-05-31T00:00:00.000Z",
+      "upvotes": 0,
+      "heat": 89.59225222222221,
+      "featured": false,
+      "subtags": [
+        "基因组"
+      ],
+      "image": "",
+      "field": "bio"
+    },
+    {
+      "id": "doi:10.64898/2026.05.27.728280",
+      "arxiv_id": "",
+      "source": "bioRxiv",
+      "arxivCat": "",
+      "title_en": "Context-dependent modulation of social space by dopamine receptors in the Drosophila melanogaster mushroom body",
+      "title_zh": "果蝇蘑菇体中多巴胺受体对社会空间的上下文依赖性调节",
+      "abstract_en": "Social behavior takes many forms, yet the fundamental principles of social circuit function are thought to be evolutionarily conserved. Foundational behaviors that precede more complex interactions can reveal the mechanisms underlying these circuits. Social spacing, the regulation of preferred inter-individual distances, is one such behavior and can be quantified in the genetically tractable model Drosophila melanogaster. Dopamine and the mushroom body brain region regulate spacing in Drosophila, and extensive dopaminergic signaling occurs within this structure, but receptor-level contributions remain unclear. This report examines how the four dopamine receptors (DopEcR, Dop1R1, Dop1R2, Dop2R) mediate mushroom body-targeted dopaminergic signaling during spacing. Manipulating receptor expression in the entire mushroom body or specific lobes revealed spacing effects that depended on genetic background, receptor identity, sex, and lobe. Receptors could be organized into two opposing pairs: DopEcR and Dop1R1 manipulations increased inter-individual distance, whereas Dop1R2 and Dop2R manipulations decreased inter-individual distance. However, each receptor produced a distinct pattern of effects when male and female data were analyzed across all three mushroom body lobes. These findings support a model in which distributed dopaminergic input engages all four receptors to shape context-dependent spacing decisions, offering insight into social circuit organization in Drosophila and beyond.",
+      "abstract_zh": "",
+      "highlight_zh": "",
+      "digest_zh": "",
+      "authors": [
+        "Evans, M. R.",
+        "Simon, A. F."
+      ],
+      "url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728280",
+      "pdf_url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728280v1.full.pdf",
+      "html_url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728280v1.full",
+      "published_at": "2026-05-31T00:00:00.000Z",
+      "upvotes": 0,
+      "heat": 89.59225222222221,
+      "featured": false,
+      "subtags": [
+        "神经科学"
+      ],
+      "image": "",
+      "field": "bio"
+    },
+    {
+      "id": "doi:10.64898/2026.05.27.727970",
+      "arxiv_id": "",
+      "source": "bioRxiv",
+      "arxivCat": "",
+      "title_en": "Talin-1 determines the direction of primary mouse neutrophils migrating in vivo",
+      "title_zh": "Talin-1决定原代小鼠中性粒细胞体内迁移的方向",
+      "abstract_en": "Talin-1 is essential for {beta}2 integrin activation in neutrophils, yet its dynamic behavior during neutrophil trafficking in vivo remains poorly understood. Here, we generated EGFP-talin1 knock-in mice, enabling real-time visualization of talin-1 dynamics under physiological conditions. EGFP-talin1 is robustly expressed and preserves without altering {beta}2 integrin expression and activation. Using total internal reflection fluorescence (TIRF) microscopy under flow, we found that talin-1 was rapidly recruited to the plasma membrane during rolling and accumulates further during neutrophil arrest. Intravital microscopy revealed highly dynamic and stage-specific talin-1 redistribution during luminal crawling, transendothelial migration, and interstitial migration. Talin-1 preferentially accumulated at endothelial contact sites during crawling and polarized toward the leading edge during directional migration. These findings establish EGFP-talin1 knock-in mice as platform for visualizing integrin-associated cytoskeletal dynamics in vivo and identify dynamic talin-1 polarization as a feature of neutrophil trafficking.",
+      "abstract_zh": "",
+      "highlight_zh": "",
+      "digest_zh": "",
+      "authors": [
+        "Wang, Y.",
+        "Lyu, Q.",
+        "Parashar, S.",
+        "Fomin, M.",
+        "Liew, P. X.",
+        "Ginsberg, M. H.",
+        "Ley, K."
+      ],
+      "url": "https://www.biorxiv.org/content/10.64898/2026.05.27.727970",
+      "pdf_url": "https://www.biorxiv.org/content/10.64898/2026.05.27.727970v1.full.pdf",
+      "html_url": "https://www.biorxiv.org/content/10.64898/2026.05.27.727970v1.full",
+      "published_at": "2026-05-31T00:00:00.000Z",
+      "upvotes": 0,
+      "heat": 89.59225222222221,
+      "featured": false,
+      "subtags": [
+        "基因组"
+      ],
+      "image": "",
+      "field": "bio"
+    },
+    {
+      "id": "doi:10.64898/2026.05.27.728175",
+      "arxiv_id": "",
+      "source": "bioRxiv",
+      "arxivCat": "",
+      "title_en": "SCD-dependent lipid metabolism licenses alternative macrophage activation and macrophage plasticity",
+      "title_zh": "SCD依赖性脂质代谢许可替代性巨噬细胞激活与巨噬细胞可塑性",
+      "abstract_en": "Lipid metabolic reprogramming accompanies macrophage activation, yet our understanding of why macrophages profoundly reshape their lipid composition remains unclear. Here, we identify stearoyl-CoA desaturase (SCD) as a lipid-metabolic checkpoint required for the acquisition of the alternatively activated macrophage (AAM) cell state. We show that SCD maintains lipid desaturation balance by ensuring the conversion of newly synthesized saturated long-fatty acids (SFAs) into monounsaturated fatty acids (MUFAs). Critically, disruption of SCD resulted in the rapid accumulation of saturated phosphatidic acid (PA) and hyperactivation of mTORC1, which perturbed the acquisition of stable AAM epigenetic and transcriptional programs. Notably, inhibition of upstream lipogenic enzymes (e.g., ACC and FASN) did not impair AAM polarization, underscoring that an imbalance between newly synthesized saturated and monounsaturated fatty acids, not the loss of de novo lipogenesis, determines AAM identity. Unexpectedly, the loss of SCD redirected IL-4-activated macrophages into an aberrant cell state poised for pro-inflammatory responses, indicating that disruption of this lipid metabolic checkpoint leads to misinterpretation of anti-inflammatory instructional cues. Rescue of SCD-deficient macrophages via mTORC1 inhibition confirmed a causal role for the SCD-PA-mTORC1 axis in controlling macrophage plasticity. Finally, we find that SCD deficiency and resultant PA accumulation attenuated Toxoplasma gondii-driven AAM polarization and reduced pathogen burden. Together, these data establish the SCD-PA lipid signaling axis as a critical metabolic regulator of macrophage plasticity with direct consequences for host defense.",
+      "abstract_zh": "",
+      "highlight_zh": "",
+      "digest_zh": "",
+      "authors": [
+        "Hou, T.",
+        "Watson, R. L.",
+        "Bedard, A. H.",
+        "Hsieh, W.-Y.",
+        "Quintana, J.",
+        "Thind, A. C.",
+        "Su, B.",
+        "Uy, J. N."
+      ],
+      "url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728175",
+      "pdf_url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728175v1.full.pdf",
+      "html_url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728175v1.full",
+      "published_at": "2026-05-31T00:00:00.000Z",
+      "upvotes": 0,
+      "heat": 89.59225222222221,
+      "featured": false,
+      "subtags": [
+        "基因组"
+      ],
+      "image": "",
+      "field": "bio"
+    },
+    {
+      "id": "doi:10.64898/2026.05.27.728315",
+      "arxiv_id": "",
+      "source": "bioRxiv",
+      "arxivCat": "",
+      "title_en": "Elamipretide reverses female fertility decline during reproductive aging via regulating VEGF in oocytes",
+      "title_zh": "Elamipretide通过调节卵母细胞中VEGF逆转生殖衰老过程中的雌性生育力下降",
+      "abstract_en": "Aging is one of the primary drivers for the decline of female fertility, and oocyte quality is the main cause for ovary aging, which is related with infertility. Although some effective anti-aging natural components have been reported, highly efficient strategies for reversing ovary aging remain lacking. In this study, we reported that peptide elamipretide reserved ovary function for female fertility during maternal aging. Our findings demonstrated that elamipretide improved aged human oocyte maturation and fertilization. Elamipretide injection increased the litter size of aged mice, and improved oocyte quality with the reverse of follicle and embryo development defect. Metabolomic and transcriptomic analyses demonstrated that multiple biological processes in oocytes were significantly reserved. Both nuclear maturation and cytoplasmic maturation of aged oocytes were improved, showing with enhancing cytoskeletal dynamics, mitochondrial metabolism and organelle rearrangement. In vitro supplementation during culture also restored oocyte developmental competence in both mouse and porcine oocytes. Mechanistic analysis suggested that elamipretide reversed age-related ovarian damage via synergistic activation of the Vitamin B6-VEGF axis. Therefore, our study proposed a new peptide therapy for aging-induced infertility, showing that elamipretide reverses aged oocyte quality for fertility by promoting both nuclear and cytoplasmic maturation through the coordination with VEGF signaling pathway.",
+      "abstract_zh": "",
+      "highlight_zh": "",
+      "digest_zh": "",
+      "authors": [
+        "Zhang, H.-L.",
+        "Wang, Y.",
+        "Wang, C.",
+        "Guo, X.",
+        "Chen, H.",
+        "Hou, Y.-X.",
+        "Wu, X.",
+        "Wu, Z.-J."
+      ],
+      "url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728315",
+      "pdf_url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728315v1.full.pdf",
+      "html_url": "https://www.biorxiv.org/content/10.64898/2026.05.27.728315v1.full",
+      "published_at": "2026-05-31T00:00:00.000Z",
+      "upvotes": 0,
+      "heat": 89.59225222222221,
+      "featured": false,
+      "subtags": [
+        "基因组"
       ],
       "image": "",
       "field": "bio"
