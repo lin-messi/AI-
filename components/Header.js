@@ -11,7 +11,8 @@ export default function Header() {
   const pathname = usePathname();
   const onPapers = pathname?.startsWith("/papers");
   const onGithub = pathname?.startsWith("/github");
-  const onNews = !onPapers && !onGithub;
+  const onRobo = pathname?.startsWith("/robomaster");
+  const onNews = !onPapers && !onGithub && !onRobo;
 
   return (
     <header className="site-header">
@@ -33,6 +34,9 @@ export default function Header() {
           </Link>
           <Link className={onGithub ? "active" : ""} href="/github">
             {t.navGithub}
+          </Link>
+          <Link className={onRobo ? "active" : ""} href="/robomaster">
+            {t.navRobo}
           </Link>
         </nav>
 

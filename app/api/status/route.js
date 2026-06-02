@@ -2,6 +2,7 @@
 import { getLatest } from "@/lib/news";
 import { getLatestPapers } from "@/lib/papers";
 import { getLatestGithub } from "@/lib/github";
+import { getLatestRobo } from "@/lib/robomaster";
 
 export const dynamic = "force-dynamic";
 
@@ -9,6 +10,7 @@ export async function GET() {
   const news = getLatest();
   const papers = getLatestPapers();
   const github = getLatestGithub();
+  const robo = getLatestRobo();
   return Response.json(
     {
       news: {
@@ -25,6 +27,11 @@ export async function GET() {
         date: github.date || null,
         generatedAt: github.generatedAt || null,
         count: (github.items || []).length,
+      },
+      robomaster: {
+        date: robo.date || null,
+        generatedAt: robo.generatedAt || null,
+        count: (robo.papers?.items || []).length + (robo.repos?.items || []).length,
       },
     },
     { headers: { "Cache-Control": "no-store" } }
