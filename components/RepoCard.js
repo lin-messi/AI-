@@ -126,7 +126,9 @@ export default function RepoCard({ repo, tags }) {
       </div>
 
       <div className="card-foot">
-        <span className="time">{timeAgo(repo.pushed_at, lang)}</span>
+        <span className="time">
+          {repo.pushed_at ? timeAgo(repo.pushed_at, lang) : ""}
+        </span>
         <div className="card-actions">
           <button
             className={`iconbtn ${isFav ? "on" : ""}`}
