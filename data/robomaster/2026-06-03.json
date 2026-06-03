@@ -1,6 +1,6 @@
 {
   "date": "2026-06-03",
-  "generatedAt": "2026-06-02T23:01:03.912Z",
+  "generatedAt": "2026-06-03T05:37:46.695Z",
   "categories": [
     {
       "key": "aim",
@@ -49,7 +49,7 @@
     }
   ],
   "papers": {
-    "count": 30,
+    "count": 60,
     "items": [
       {
         "id": "arxiv:2606.02031",
@@ -124,6 +124,1031 @@
           "aim",
           "rl",
           "sim"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03994",
+        "arxiv_id": "2606.03994",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.RO"
+        ],
+        "title_en": "SimuScene: Simulation-Ready Compositional 3D Scene Reconstruction from a Single Image",
+        "title_zh": "SimuScene：从单张图像进行仿真就绪的组合式3D场景重建",
+        "abstract_en": "Reconstructing interactive, simulation-ready 3D scenes from a single image is a critical bottleneck for robotic manipulation. While recent single-image lifters recover plausible per-object shapes, composing them yields scenes that collapse under physical simulation due to interpenetrating, hovering, or sinking objects. Existing physics-aware methods address this strictly as a post-hoc layout correction, leaving the underlying geometric errors unresolved. To address this, we introduce SimuScene, a compositional 3D reconstruction pipeline that puts physics in the loop of shape and layout estimation. Rather than using physics merely for layout cleanup, we utilize the physics engine as a diagnostic measurement tool during the generative process itself. By diagnostically simulating reconstructed objects under gravity, we convert penetration and support failures into quantitative correction signals that drive gravity-axis stretching and amodal shape resampling. This physics-informed feedback loop mitigates accumulated reconstruction errors and produces a stable, simulation-ready compositional 3D scene. Extensive experiments demonstrate state-of-the-art performance on physical stability and geometric alignment benchmarks. We further highlight SimuScene's utility by deploying reconstructed environments in humanoid control and robot-arm manipulation tasks.",
+        "abstract_zh": "从单张图像重建可交互、可仿真的3D场景是机器人操作的关键瓶颈。现有方法虽能恢复合理的单个物体形状，但组合后常因物体相互穿透、悬浮或下沉而导致物理仿真崩溃。现有物理感知方法仅将其作为后处理布局修正，未解决底层几何误差。为此，我们提出SimuScene，一种将物理融入形状和布局估计的组合式3D重建流程。我们并非仅用物理进行布局清理，而是在生成过程中将物理引擎作为诊断测量工具。通过诊断性地模拟物体在重力下的行为，将穿透和支撑失败转化为定量修正信号，驱动重力轴拉伸和模态形状重采样。这种物理信息反馈循环减轻了累积重建误差，产生稳定、可仿真的组合式3D场景。大量实验表明，在物理稳定性和几何对齐基准上达到最先进性能。我们进一步通过在人形控制和机器人臂操作任务中部署重建环境，展示了SimuScene的实用性。",
+        "highlight_zh": "将物理引擎作为诊断工具融入重建过程，实现稳定可仿真的组合式3D场景。",
+        "digest_zh": "1. 研究问题：从单张图像重建可用于物理仿真的3D场景。现有方法重建的物体组合后常出现穿透、悬浮等问题，无法直接用于仿真。\n2. 方法：提出SimuScene流程，在形状和布局估计中引入物理反馈。具体地，利用物理引擎模拟物体在重力下的行为，检测穿透和支撑失败，并据此生成修正信号（如拉伸形状或重采样），从而迭代优化重建结果。\n3. 结果：在物理稳定性和几何对齐基准上达到最优性能。在人形控制和机器人臂操作任务中，重建场景可直接用于仿真，成功率高。\n4. 重要性：解决了单图像3D重建到物理仿真的关键瓶颈，为机器人操作等应用提供了实用方案。",
+        "authors": [
+          "Inhee Lee",
+          "Sangwon Baik",
+          "Sungjoo Kim",
+          "Hyeonwoo Kim",
+          "Hyunsoo Cha",
+          "Hanbyul Joo"
+        ],
+        "url": "https://arxiv.org/abs/2606.03994v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03994",
+        "html_url": "https://arxiv.org/abs/2606.03994",
+        "published_at": "2026-06-02T17:59:59.000Z",
+        "upvotes": 0,
+        "heat": 324.3868788888889,
+        "featured": true,
+        "categories": [
+          "rl",
+          "sim"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03980",
+        "arxiv_id": "2606.03980",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.CL"
+        ],
+        "title_en": "Skill-RM: Unifying Heterogeneous Evaluation Criteria via Agent Skill",
+        "title_zh": "Skill-RM：通过智能体技能统一异构评估标准",
+        "abstract_en": "Reward models (RMs) provide critical feedback signals for LLM post-training, notably in reinforced fine-tuning (RFT) and reinforcement learning (RL) pipelines. However, current reward evaluation relies on heterogeneous criteria such as rule-based verifiers, ground-truth references, procedural checklists, and complex rubrics, where a unified mechanism to integrate all types of evidence remains unexplored. To this end, we propose Skill Reward Model (Skill-RM), a unified framework that reformulates reward modeling as the execution of a reusable Reward-Evaluation Skill. By treating reward computation as a structured agentic task, Skill-RM provides a consistent interface to orchestrate heterogeneous resources, dynamically selecting and aggregating evidence tailored to the specific requirements of each input. This approach enables the reward model to move beyond static evaluation, ensuring consistency and transparency across diverse tasks. Extensive experiments on reward benchmarks and downstream applications, including best-of-N selection and reinforcement learning, demonstrate that Skill-RM consistently outperforms traditional judge baselines. Our findings suggest that Skill-RM not only provides a unified solution for reward modeling but also achieves superior performance through the strategic and dynamic orchestration of evidence. The code is at https://github.com/Qwen-Applications/Skill-RM.",
+        "abstract_zh": "奖励模型为LLM后训练（如强化微调和强化学习）提供关键反馈信号。然而，当前奖励评估依赖异构标准，如基于规则的验证器、真实参考、程序化检查表和复杂评分标准，缺乏统一机制来整合所有证据。为此，我们提出Skill-RM，一个统一框架，将奖励建模重新定义为可复用奖励评估技能的执行。通过将奖励计算视为结构化智能体任务，Skill-RM提供一致接口来编排异构资源，动态选择和聚合针对每个输入特定要求的证据。该方法使奖励模型超越静态评估，确保跨任务的连贯性和透明度。在奖励基准和下游应用（如Best-of-N选择和强化学习）上的大量实验表明，Skill-RM持续优于传统评判基线。我们的发现表明，Skill-RM不仅为奖励建模提供统一解决方案，还通过战略性和动态的证据编排实现更优性能。代码见https://github.com/Qwen-Applications/Skill-RM。",
+        "highlight_zh": "将奖励建模重构为智能体技能，动态编排异构证据实现统一评估。",
+        "digest_zh": "1. 研究问题：大语言模型后训练中，奖励模型需要整合多种异构评估标准（如规则、参考答案、检查清单等），但缺乏统一框架。\n2. 方法：提出Skill-RM，将奖励计算视为一个可复用的智能体技能。该技能能根据输入动态选择并聚合最相关的证据来源，从而统一处理不同评估标准。\n3. 结果：在多个奖励基准和下游任务（如Best-of-N选择、强化学习）中，Skill-RM优于传统评判模型。\n4. 重要性：为奖励建模提供了统一、透明且性能更优的解决方案，简化了LLM后训练中的评估流程。",
+        "authors": [
+          "Tao Chen",
+          "Gangwei Jiang",
+          "Pengyu Cheng",
+          "Siyuan Huang",
+          "Yihao Liu",
+          "Jingwei Ni",
+          "Jiaqi Guo",
+          "Mengyu Zhou"
+        ],
+        "url": "https://arxiv.org/abs/2606.03980v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03980",
+        "html_url": "https://arxiv.org/abs/2606.03980",
+        "published_at": "2026-06-02T17:56:57.000Z",
+        "upvotes": 0,
+        "heat": 324.3363233333333,
+        "featured": true,
+        "categories": [
+          "rl"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03963",
+        "arxiv_id": "2606.03963",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.AI"
+        ],
+        "title_en": "Self-Refining Agentic Reinforcement Learning for Vision-Conditioned UAV Navigation",
+        "title_zh": "自优化智能体强化学习用于视觉条件无人机导航",
+        "abstract_en": "Deep reinforcement learning has shown strong potential for enabling autonomous robots to learn complex navigational tasks. However, its practical use still depends heavily on human designed reward functions and repeated manual fine tuning, which is time consuming and does not guarantee high success in the desired task. This paper presents AgenticRL, agent guided reinforcement learning framework that increases autonomy in reward design, policy refinement, and real world deployment for unmanned aerial vehicles (UAV) navigation tasks. AgenticRL uses a multimodal generative pre-trained tansformer (GPT) agent to interpret task information and visual scene observations, generate task specific reward functions, train policies using Proximal Policy Optimization (PPO) algorithm, and then act as a critic by evaluating the trained policy through diagnosis packets to generate feedback. Based on this feedback, the agent identifies failure modes and refines the reward function in a closed loop self improvement process. To further leverage the multimodal GPT agent during inference, AgenticRL uses real world images and natural language task information to automatically identify the active scenario and select the appropriate trained policy for execution. The framework is evaluated on multiple navigational tasks, including gate traversal, obstacle avoidance, wall barrier crossing with landing, trajectory following, and motion behavior learning. Experimental results show that the closed loop refinement process improves policy behavior compared with initial rewards by 71%. We also demonstrate sim-to-real transfer of the proposed framework, achieving a real world success rate of 91% and a sim-to-real accuracy of 94%.",
+        "abstract_zh": "深度强化学习在自主机器人学习复杂导航任务方面展现出巨大潜力。然而，其实际应用仍高度依赖人工设计的奖励函数和重复手动调参，耗时且无法保证任务成功率。本文提出AgenticRL，一种智能体引导的强化学习框架，提高了无人机导航任务中奖励设计、策略优化和实际部署的自主性。AgenticRL使用多模态生成式预训练Transformer智能体来解读任务信息和视觉场景观察，生成任务特定奖励函数，使用PPO算法训练策略，然后作为评论家通过诊断包评估训练策略并生成反馈。基于此反馈，智能体识别失败模式并在闭环自改进过程中优化奖励函数。为在推理时进一步利用多模态GPT智能体，AgenticRL使用真实世界图像和自然语言任务信息自动识别当前场景并选择合适策略执行。该框架在多个导航任务上评估，包括穿越门、避障、穿越墙障并着陆、轨迹跟踪和运动行为学习。实验结果表明，闭环优化过程相比初始奖励使策略行为提升71%。我们还展示了该框架的仿真到现实迁移，实现了91%的真实世界成功率和94%的仿真到现实准确率。",
+        "highlight_zh": "利用GPT智能体自动设计奖励并闭环优化，实现无人机导航策略自改进。",
+        "digest_zh": "1. 研究问题：深度强化学习在无人机导航中依赖人工设计奖励函数和反复调参，效率低且效果不稳定。\n2. 方法：提出AgenticRL框架，使用多模态GPT智能体自动生成奖励函数、训练策略，并通过诊断反馈闭环优化奖励。推理时，智能体根据当前场景图像和任务描述自动选择合适策略。\n3. 结果：闭环优化使策略性能提升71%；仿真到真实迁移成功率达91%，准确率94%。\n4. 重要性：大幅减少了人工干预，提高了强化学习在无人机导航中的自主性和实用性。",
+        "authors": [
+          "Roohan Ahmed Khan",
+          "Yasheerah Yaqoot",
+          "Muhammad Ahsan Mustafa",
+          "Dzmitry Tsetserukou"
+        ],
+        "url": "https://arxiv.org/abs/2606.03963v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03963",
+        "html_url": "https://arxiv.org/abs/2606.03963",
+        "published_at": "2026-06-02T17:50:15.000Z",
+        "upvotes": 0,
+        "heat": 324.22465666666665,
+        "featured": true,
+        "categories": [
+          "aim",
+          "slam",
+          "nav"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03962",
+        "arxiv_id": "2606.03962",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.AI"
+        ],
+        "title_en": "Using Reward Uncertainty to Induce Diverse Behaviour in Reinforcement Learning",
+        "title_zh": "利用奖励不确定性在强化学习中诱导多样化行为",
+        "abstract_en": "Classical reinforcement learning (RL) typically seeks a deterministic policy that maximizes the expected sum of a scalar reward. Yet, modern applications such as language model fine-tuning or scientific discovery demand diversity. Existing remedies such as entropy regularization or diversity bonuses often require fragile trade-offs that sacrifice performance for stochasticity or rely on heuristic metrics that can misalign policy rankings. We argue that diversity is more naturally understood as the rational response to uncertainty in the reward. When the reward function is not perfectly known--as is the case with ambiguous preferences or imperfect reward models--committing to a single action can be sub-optimal. Building on this, we propose a fundamental reformulation of the RL objective by replacing the scalar reward with a distribution over reward functions, and applying a non-linear objective over sets of actions. The result is a framework in which calibrated behavioural diversity emerges naturally, remains controllable through the reward function distribution, and is obtained without sacrificing expected reward. Focusing on the contextual bandit setting, we derive a principled gradient estimator for this objective and prove that our formulation naturally generalizes both vanilla policy gradient and more recently developed action-set approaches. Our empirical results demonstrate that this framework offers a robust and theoretically grounded alternative for complex RL tasks where the traditional formulation of the problem fails to induce the desired breadth of agent behaviour.",
+        "abstract_zh": "经典强化学习通常寻求最大化标量奖励期望的确定性策略。然而，语言模型微调或科学发现等现代应用需要多样性。现有方法如熵正则化或多样性奖励往往需要脆弱的权衡，以性能换取随机性，或依赖可能错位策略排名的启发式指标。我们认为多样性更自然地应理解为对奖励不确定性的理性反应。当奖励函数不完全已知时（如模糊偏好或不完美奖励模型），承诺单一行动可能次优。基于此，我们提出对RL目标的基本重构：用奖励函数分布替代标量奖励，并对动作集应用非线性目标。结果是一个框架，其中校准的行为多样性自然出现，可通过奖励函数分布控制，且无需牺牲期望奖励。聚焦于上下文赌博机设置，我们推导了该目标的原理性梯度估计器，并证明我们的公式自然泛化了普通策略梯度和最近的动作集方法。实验结果表明，该框架为传统公式无法诱导所需行为广度的复杂RL任务提供了稳健且理论基础的替代方案。",
+        "highlight_zh": "将奖励不确定性引入RL目标，自然产生可控的多样化行为而不牺牲期望奖励。",
+        "digest_zh": "1. 研究问题：经典强化学习追求确定性策略，但许多应用需要多样化行为。现有方法（如熵正则化）常以性能为代价。\n2. 方法：提出新框架，将标量奖励替换为奖励函数分布，并对动作集应用非线性目标。这样，当奖励不确定时，智能体自然倾向于多样化行为，且可通过分布控制多样性程度。在上下文赌博机设置中，推导了梯度估计器，并证明该框架统一了多种现有方法。\n3. 结果：实验表明，该框架能诱导出校准的多样化行为，同时保持期望奖励不下降。\n4. 重要性：为需要多样性的RL任务（如语言模型微调）提供了理论严谨且实用的新范式。",
+        "authors": [
+          "Anthony GX-Chen",
+          "Ankit Anand",
+          "Gheorghe Comanici",
+          "Zaheer Abbas",
+          "Eser Aygün",
+          "David Smalling",
+          "Shibl Mourad",
+          "Doina Precup"
+        ],
+        "url": "https://arxiv.org/abs/2606.03962v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03962",
+        "html_url": "https://arxiv.org/abs/2606.03962",
+        "published_at": "2026-06-02T17:50:14.000Z",
+        "upvotes": 0,
+        "heat": 324.2243788888889,
+        "featured": true,
+        "categories": [
+          "slam",
+          "rl"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03949",
+        "arxiv_id": "2606.03949",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Preference-Calibrated Human-in-the-Loop Reinforcement Learning for Robotic Manipulation",
+        "title_zh": "偏好校准的人机协同强化学习用于机器人操作",
+        "abstract_en": "Human-in-the-loop reinforcement learning (HIL-RL) improves sample efficiency in real-robot manipulation through online human intervention. However, successful trajectories may include suboptimal actions that deviate from the desired task-execution path and force human intervention. Existing HIL-RL methods typically apply the consistent credit assignment principle to all transitions, uniformly propagating discounted terminal rewards through suboptimal segments, ignoring the actual contribution of each transition to task success. This overestimates Q-values for critic learning and indirectly misguides actor updates toward suboptimal behavior patterns. To this end, we propose PACT, a Preference-calibrated Actor-Critic Training framework that leverages the implicit preference signals induced by intervention to perform credit reassignment on identified suboptimal segments while directly guiding policy training for unbiased critic-actor learning. Specifically, we first design a progress model that learns from human demonstration and identifies suboptimal segments for credit correction. Then, from the human action and resampled policy action at the intervention state, we build preference pairs to define a counterfactual advantage that penalizes Bellman targets of the identified suboptimal segment, enabling directional credit calibration. Moreover, we directly align the policy with human corrective actions in the bounded mean space, providing an additional signal beyond critic-guided updates. Across five real-robot manipulation tasks, PACT improves the average success rate by 24.5% and achieves 1.3 times faster convergence, thereby improving both RL sample efficiency and performance. Code is available at https://anonymous.4open.science/r/HILRL-A1X-BC05.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Zeyi Liu",
+          "Guangyao Liu",
+          "Yinuo Qu",
+          "Yuquan Xue",
+          "Bofang Jia",
+          "Chunhua Yang",
+          "Weihua Gui",
+          "Keke Huang"
+        ],
+        "url": "https://arxiv.org/abs/2606.03949v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03949",
+        "html_url": "https://arxiv.org/abs/2606.03949",
+        "published_at": "2026-06-02T17:38:25.000Z",
+        "upvotes": 0,
+        "heat": 324.02743444444445,
+        "featured": false,
+        "categories": [
+          "slam",
+          "rl"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03943",
+        "arxiv_id": "2606.03943",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "PointAction: 3D Points as Universal Action Representations for Robot Control",
+        "title_zh": "PointAction: 3D点作为机器人控制的通用动作表示",
+        "abstract_en": "Video-Action Models (VAMs) leverage the broad visual dynamics captured by pre-trained video diffusion models, offering a promising path toward generalizable robot manipulation. However, RGB-only video rollouts are not directly actionable: they leave metric 3D motion, contact geometry, and fine-grained spatial constraints under-specified, making action grounding ambiguous. Meanwhile, scaling action supervision across diverse tasks and embodiments remains costly. We present PointAction, a framework that bridges video predictions to robot actions through explicit point-based 4D modeling. PointAction fine-tunes a foundation video generation model to jointly predict future RGB frames and dynamic 3D pointmaps, producing temporally consistent 3D motion of task-relevant scene geometry. These point dynamics serve as a structured, embodiment-agnostic action interface, which a diffusion-based action decoder maps to executable robot actions. By using metric 3D point dynamics as the interface between video prediction and control, PointAction reduces the ambiguity of RGB-only action grounding and supports transfer across tasks and embodiments with limited action supervision. Experiments show that PointAction achieves state-of-the-art 4D generation quality on robot scenes, outperforms existing baselines in simulation, and generalizes to two real robot arms unseen during pretraining.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Mutian Tong",
+          "Han Jiang",
+          "Qiao Feng",
+          "Lingjie Liu",
+          "Jiatao Gu"
+        ],
+        "url": "https://arxiv.org/abs/2606.03943v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03943",
+        "html_url": "https://arxiv.org/abs/2606.03943",
+        "published_at": "2026-06-02T17:30:50.000Z",
+        "upvotes": 0,
+        "heat": 323.9010455555556,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl",
+          "radar"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03931",
+        "arxiv_id": "2606.03931",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "eess.SY"
+        ],
+        "title_en": "Multi-Robot Bearing-only Pose Estimation via Angle Rigidity",
+        "title_zh": "基于角度刚性的多机器人仅方位姿态估计",
+        "abstract_en": "This letter proposes a novel distributed bearing-based pose estimator for time-varying multi-robot systems. The method uses angles computed from body-frame bearings to estimate the robots' positions in $\\mathbb{R}^3$ without knowledge of their orientations. The orientations in $\\mathrm{SO}(3)$ are recovered from the estimated positions, the bearings, and the bearing derivatives. The proposed observer only requires the (directed) sensing topology to be \\textit{angle-rigid}, a weaker condition than the commonly used ones like bearing rigidity. Local uniform exponential stability of the proposed observer is established under the assumption of persistently exciting motions for a subset of robots. Simulations are presented and discussed to evaluate the scheme's effectiveness and practicality.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "J. Francisco Presenza",
+          "Leonardo J. Colombo",
+          "Ignacio Mas",
+          "Juan I. Giribet"
+        ],
+        "url": "https://arxiv.org/abs/2606.03931v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03931",
+        "html_url": "https://arxiv.org/abs/2606.03931",
+        "published_at": "2026-06-02T17:22:48.000Z",
+        "upvotes": 0,
+        "heat": 323.76715666666666,
+        "featured": false,
+        "categories": [
+          "aim",
+          "radar",
+          "sim"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03905",
+        "arxiv_id": "2606.03905",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Semantic-weighted ICP for LiDAR Odometry: Class-Aware Residual Reweighting for Robust Scan Registration",
+        "title_zh": "语义加权ICP用于激光雷达里程计：类别感知残差重加权实现鲁棒扫描配准",
+        "abstract_en": "LiDAR odometry is a fundamental component of autonomous robotic systems, relying on geometric registration between consecutive point clouds to estimate ego-motion. However, traditional geometric approaches often degrade in dynamic or unstructured environments due to unreliable correspondences caused by moving objects, sparse geometric features, vegetation, and semantically ambiguous structures. Existing works have shown that, some of these limitations can be addressed by introducing semantic information from the environment in the registration process. In this work, we build on this, and show that not all elements in the environment are equally relevant for registration. Hence, we propose a semantic class-weighted ICP for LiDAR odometry. Instead of strictly filtering out points belonging to specific semantic classes, the proposed approach weights the residuals of points belonging to semantic categories based on their expected geometric stability. This strategy enables informative but potentially unstable structures, to contribute to the registration process while mitigating the influence of dynamic objects. The experimental evaluation was conducted on the SemanticKITTI and RELLIS-3D datasets, which include urban, highway, rural, and off-road environments. The empirical results show that the proposed Semantic-weighted ICP improves pose estimation, especially in challenging off-road scenarios where conventional rigid features are scarce. Furthermore, the analysis reveals that the effectiveness of this weighting strategy is highly environment-dependent, influenced by the structural and semantic composition of the scene.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Vasco Carvalho",
+          "Tiago Barros",
+          "Urbano J. Nunes"
+        ],
+        "url": "https://arxiv.org/abs/2606.03905v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03905",
+        "html_url": "https://arxiv.org/abs/2606.03905",
+        "published_at": "2026-06-02T17:00:29.000Z",
+        "upvotes": 0,
+        "heat": 323.3952122222222,
+        "featured": false,
+        "categories": [
+          "aim",
+          "slam",
+          "radar"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03877",
+        "arxiv_id": "2606.03877",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "MLP Splatting: Object-Centric Neural Fields",
+        "title_zh": "MLP Splatting: 以对象为中心的神经场",
+        "abstract_en": "3D representations are fundamental to scene rendering, understanding, and interaction. Recent approaches, such as 3D Gaussian Splatting and Neural Radiance Fields, achieve impressive photorealistic novel-view synthesis, but lack the ability to easily decompose scene elements into a few primitives, requiring additional segmentation or grouping for object-level manipulation. We present MLP-Splatting, a method that enables scene decomposition via a few expressive light-field primitives while providing photorealistic novel-view synthesis. MLP-Splatting models each primitive as an independent compact MLP with localized spatial support that predicts radiance and opacity. In contrast to low-level Gaussian primitives or a single global radiance field, our neural primitives provide greater expressive capacity while remaining spatially localized. Rendering is performed through efficient sparse volumetric compositing over ray-primitive interactions. Our primitives are supervised using RGB supervision alone, which yields primitives that represent local scene regions often corresponding to objects or object parts, enabling interactive object-level editing without segmentation masks by selecting a handful of primitives. Our method, augmented with optional semantic feature distillation, enables open-vocabulary scene interaction and open-set instant segmentation. Compared to state-of-the-art methods, we achieve substantially lower memory usage (1/15$\\times$) and faster rendering (3$\\times$), as we show in our experiments compared to semantic 3DGS methods. Project Page: https://shinjeongkim.com/mlp-splatting",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Shinjeong Kim",
+          "Yuzhou Cheng",
+          "Xin Kong",
+          "Paul H. J. Kelly",
+          "Andrew J. Davison"
+        ],
+        "url": "https://arxiv.org/abs/2606.03877v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03877",
+        "html_url": "https://arxiv.org/abs/2606.03877",
+        "published_at": "2026-06-02T16:46:16.000Z",
+        "upvotes": 0,
+        "heat": 323.1582677777778,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03875",
+        "arxiv_id": "2606.03875",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Seg2Track++: Probabilistic Track Validation and Data Association for Multi-Object Tracking and Segmentation",
+        "title_zh": "Seg2Track++: 多目标跟踪与分割的概率性轨迹验证和数据关联",
+        "abstract_en": "Autonomous systems require robust Multi-Object Tracking and Segmentation (MOTS) to operate reliably in dynamic environments, ensuring consistent object identities and precise mask-level delineation. Foundation models such as SAM2 have shown strong zero-shot generalization for segmentation, but their direct application to MOTS is limited by unreliable track association and false-positive propagation. This work introduces Seg2Track++, a framework that integrates instance segmentation with SAM2 and a novel track management module to perform zero-shot MOTS with enhanced temporal consistency. Tracks are associated using Mask Centroid Distance (MCD) and Confidence-Aware Cost Modulation (CCM), while Probabilistic Track Validation (PTV) employs a Bernoulli filter to validate track existence and suppress ghost tracks. Experimental results on KITTI MOTS demonstrate improved identity preservation, reduced false-positive propagation, and robust track management without fine-tuning.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Diogo Mendonça",
+          "Tiago Barros",
+          "Cristiano Premebida",
+          "Urbano J. Nunes"
+        ],
+        "url": "https://arxiv.org/abs/2606.03875v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03875",
+        "html_url": "https://arxiv.org/abs/2606.03875",
+        "published_at": "2026-06-02T16:43:00.000Z",
+        "upvotes": 0,
+        "heat": 323.10382305555555,
+        "featured": false,
+        "categories": [
+          "aim",
+          "radar"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03847",
+        "arxiv_id": "2606.03847",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Denoising Tells When to Replan: Denoising-Variance Adaptive Chunking for Flow-Based Robot Policies",
+        "title_zh": "去噪决定何时重新规划：基于去噪方差自适应分块的流式机器人策略",
+        "abstract_en": "Action chunking has become a common inference strategy for flow-based robot policies, improving action coherence by modeling multi-step temporal dependencies in demonstrations. However, the execution horizon is still typically set as an empirical fixed value, overlooking that predictable free-space motions and precision-critical interaction phases often require different replanning frequencies. In this work, we first show that the denoising process of flow-based policies contains an intrinsic signal of task phases: clean-action estimates remain stable during predictable motion phases, but fluctuate more strongly around contact-rich or precision-sensitive operations. Motivated by this observation, we propose DVAC (Denoising-Variance Adaptive Chunking), a test-time method that adaptively determines how many actions to execute from each predicted chunk. DVAC measures the variance of clean-action estimates over the final denoising steps, executes the stable low-variance prefix, and replans before high-variance future actions are committed. To transfer across tasks and rollouts, DVAC further calibrates the threshold with a rolling estimate of the local variance scale. Experiments on LIBERO, RoboTwin, CALVIN, and real-world manipulation show that DVAC improves task success while reducing replanning frequency. With a $π_{0.5}$-based policy, DVAC improves LIBERO success from 94.75% to 98.00% and reduces replanning by 43.0%, while also yielding aggregate gains on RoboTwin and CALVIN and improving real-world execution efficiency.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Xiangdong Feng",
+          "Yuxuan Cheng",
+          "Chen Shi",
+          "Boyao Han",
+          "Yuxuan Yan",
+          "Yitong Hong",
+          "Zhuotao Tian",
+          "Li Jiang"
+        ],
+        "url": "https://arxiv.org/abs/2606.03847v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03847",
+        "html_url": "https://arxiv.org/abs/2606.03847",
+        "published_at": "2026-06-02T16:26:32.000Z",
+        "upvotes": 0,
+        "heat": 322.8293786111111,
+        "featured": false,
+        "categories": [
+          "radar"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03834",
+        "arxiv_id": "2606.03834",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Let the Dynamics Flow: Stable Flow Matching Dynamical Systems",
+        "title_zh": "让动力学流动：稳定的流匹配动力系统",
+        "abstract_en": "Flow matching has recently emerged as a powerful approach for imitation learning, enabling scalable, expressive, and multimodal motion policies. However, incorporating formal stability guarantees into these generative models, a prerequisite to ensure safe and generalizable robot behaviors, remains a significant challenge. While modeling robot motions as dynamical systems allows for such stability-based inductive biases, existing frameworks struggle to capture the rich action distributions inherent in complex robotic tasks. This paper introduces Stable Flow Matching Dynamical Systems (SFMDS), a novel framework that bridges the gap between high-capacity generative modeling and formal Lyapunov stability guarantees. SFMDS parametrizes dynamical systems via flow matching while simultaneously constraining the model to a family of stable solutions. We propose two variants: a soft constraint based on a penalty term, and a hard structural constraint embedded directly in the model architecture. We further extend both formulations to Lie groups. Experiments on benchmark datasets, in simulation, and on a humanoid robot show that SFMDS learns stable, scalable, and multimodal dynamical systems in low- and high-dimensional state spaces, enabling safe and expressive robot motion generation.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Rodrigo Pérez-Dattari",
+          "Francisco Leiva",
+          "Andrea Testa",
+          "Leonel Rozo",
+          "Javier Ruiz del Solar",
+          "Noémie Jaquier"
+        ],
+        "url": "https://arxiv.org/abs/2606.03834v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03834",
+        "html_url": "https://arxiv.org/abs/2606.03834",
+        "published_at": "2026-06-02T16:17:26.000Z",
+        "upvotes": 0,
+        "heat": 322.67771194444447,
+        "featured": false,
+        "categories": [
+          "slam",
+          "rl",
+          "radar"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03804",
+        "arxiv_id": "2606.03804",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG"
+        ],
+        "title_en": "Easy-to-Use Shielding for Reinforcement Learning",
+        "title_zh": "易于使用的强化学习屏蔽方法",
+        "abstract_en": "Safe exploration is a key challenge in Reinforcement Learning (RL) that aims to prevent agents from making harmful decisions while exploring their environment. Safe exploration is a key challenge in Reinforcement Learning (RL) that aims to prevent agents from making harmful decisions while exploring their environment. Shielding is one such technique that assumes domain knowledge in the form of an environment model to decide upon action safety. Although well-established, shielding has seen limited adoption in RL due to the lack of accessible end-to-end infrastructure connecting formal shield synthesis with standard RL frameworks. Applying shielding typically requires expertise in formal methods and substantial engineering effort, keeping it outside the typical RL workflow. We address this by extending our shield synthesis tool Tempest into a practical backend for safe RL. Our core contribution is tempestpy, a Python library that integrates Tempest-based shield synthesis directly into the Gymnasium API, allowing shields to be synthesized and deployed within existing RL pipelines. This lowers the barrier to entry for shielding and turns formal safe-exploration methods into a usable component for RL practitioners. We also extend Tempest's algorithmic support to compute sound shields for stochastic multiplayer games, preserving formal safety guarantees. We demonstrate the resulting workflow end to end and evaluate shielded and unshielded RL across multiple environments. To facilitate modeling, we provide symbolic models for MiniGrid and introduce MiniGridSafe, a collection of playground environments designed to make shielding easily accessible and experimentally transparent. MiniGridSafe extends MiniGrid with safety-oriented scenarios featuring probabilistic transitions and additional agents, enabling the study of challenging safety aspects in a simple and intuitive setting.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Stefan Pranger",
+          "Bettina Könighofer"
+        ],
+        "url": "https://arxiv.org/abs/2606.03804v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03804",
+        "html_url": "https://arxiv.org/abs/2606.03804",
+        "published_at": "2026-06-02T15:50:34.000Z",
+        "upvotes": 0,
+        "heat": 322.2299341666667,
+        "featured": false,
+        "categories": [
+          "rl"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03800",
+        "arxiv_id": "2606.03800",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.AI"
+        ],
+        "title_en": "Trading Human Curation for Synthetic Augmentation in RLVR",
+        "title_zh": "在RLVR中用合成增强替代人工筛选",
+        "abstract_en": "The supply of high-quality training tasks is a central bottleneck for reinforcement learning from verifiable rewards (RLVR) on agentic language models. Each task requires a sandboxed setup, a prompt, and a hand-authored reward function, and only tasks that pass a quality bar produce useful training signal. Hand-curation at this quality bar does not scale economically to the task counts effective RL training requires, and the substitution rate between automatically generated task variants and human-authored ones is not yet established. We investigate using pre-specified, gate-filtered augmentations of a small hand-authored base as a substitute for additional human curation during RLVR. We formalize the cost-adjusted trade rate $ρ_{\\text{cost}}$ between augmented and human-authored tasks, measure it through a controlled ablation across training corpora with varying augmentation share, and characterize the end-to-end economics of the augmentation pipeline. Substituting augmented content for additional human-authored tasks retains aggregate held-out generalization on a ten-benchmark suite spanning code, instruction following, reasoning, and multi-turn agentic function-calling. The cost-adjusted trade rate $ρ_{\\text{cost}}$ between gated synthetic and human-authored RLVR tasks stays in $[1.4\\times, 11.6\\times]$ across the plausible $c_{\\text{human}}/c_{\\text{aug}}$ range.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Akshansh",
+          "Leonardo Rosa Rodrigues",
+          "Michael Korostelev",
+          "Youssef Hassan",
+          "Mark E. Whiting"
+        ],
+        "url": "https://arxiv.org/abs/2606.03800v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03800",
+        "html_url": "https://arxiv.org/abs/2606.03800",
+        "published_at": "2026-06-02T15:48:28.000Z",
+        "upvotes": 0,
+        "heat": 322.19493416666666,
+        "featured": false,
+        "categories": [
+          "rl"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03784",
+        "arxiv_id": "2606.03784",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Revisiting Embodied Chain-of-Thought for Generalizable Robot Manipulation",
+        "title_zh": "重新审视具身思维链以实现可泛化的机器人操作",
+        "abstract_en": "Embodied chain-of-thought (CoT) aims to bridge linguistic reasoning and robotic control, but its effective form and integration strategy remain underexplored. In this paper, we revisit embodied CoT for vision-language-action (VLA) models at large scale. We construct the largest embodied CoT corpus to date, comprising 978,743 trajectories, 226.3M samples, and 2592.5 hours of robot data. Through extensive experiments, we find that effective embodied CoT should ground high-level semantic understanding into concrete action guidance, such as end-effector movement descriptions and image-space trajectories, while high-level reasoning alone brings only marginal gains. We further show that explicit CoT does not scale reliably when used as an autoregressive action prefix, as it suffers from compounding inference errors and unstable reasoning-action coupling. To address these limitations, we propose ERVLA, a VLA model that uses embodied CoT as representation-shaping supervision rather than mandatory test-time reasoning. ERVLA is trained with a reasoning-dropout strategy, enabling the model to absorb rich reasoning traces during training while predicting actions directly without CoT decoding during inference. This design improves scalability with increasing pre-training data and avoids autoregressive instability. ERVLA achieves state-of-the-art performance on LIBERO-Plus with an 86.9% success rate and reaches 53.2% success rate on VLABench, demonstrating strong out-of-distribution generalization. In real-robot experiments, ERVLA further outperforms competitive state-of-the-art baselines, especially on tasks requiring semantic disambiguation and long-horizon execution. Code, data, and model checkpoints will be released.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Nan Sun",
+          "Yuan Zhang",
+          "Yongkun Yang",
+          "Wentao Zhao",
+          "Peiyan Li",
+          "Jun Guo",
+          "Wenxuan Song",
+          "Pengxiang Ding"
+        ],
+        "url": "https://arxiv.org/abs/2606.03784v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03784",
+        "html_url": "https://arxiv.org/abs/2606.03784",
+        "published_at": "2026-06-02T15:37:59.000Z",
+        "upvotes": 0,
+        "heat": 322.02021194444444,
+        "featured": false,
+        "categories": [
+          "aim"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03762",
+        "arxiv_id": "2606.03762",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.AI"
+        ],
+        "title_en": "Tool-Aware Optimization with Entropy Guidance for Efficient Agentic Reinforcement Learning",
+        "title_zh": "基于熵引导的工具感知优化用于高效智能体强化学习",
+        "abstract_en": "Agentic reinforcement learning (RL) equips large language models (LLMs) with tool-use capabilities that substantially improve reasoning on complex tasks. However, integrating external tools often destabilizes training: over-reliance on tools can induce input distribution shift, while overly conservative tool use limits effective exploration. To address this issue, we propose a unified framework TAO-RL that couples tool-aware trajectory filtering with entropy-guided exploration for efficient policy optimization. Specifically, at the data level, TAO-RL filters rollout trajectories along two criteria: discarding those where all tool invocations fail to execute, and removing those where all rollouts are either correct or incorrect, as both cases yield degenerate advantage estimates that contribute no discriminative learning signal. This joint filtering retains data that are both tool-capable and informative, establishing a high-quality training distribution. At the algorithmic level, we introduce a tool-aware entropy-guided bonus that reshapes the advantage function at post-tool-call tokens, encouraging the policy to explore more diverse reasoning paths at critical decision points. These two components are mutually reinforcing: trajectory filtering establishes a clean and informative training foundation, while entropy-guided exploration drives stronger reasoning behaviors at critical tool-interaction junctures. Extensive experiments on 7 challenging reasoning benchmarks across 3 model scales demonstrate the superiority of TAO-RL over existing methods.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Hongye Cao",
+          "Nuo Yan",
+          "Haoyuan Deng",
+          "Ziwei Wang",
+          "Tianpei Yang",
+          "Jing Huo",
+          "Yuyao Zhang",
+          "Yang Gao"
+        ],
+        "url": "https://arxiv.org/abs/2606.03762v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03762",
+        "html_url": "https://arxiv.org/abs/2606.03762",
+        "published_at": "2026-06-02T15:16:12.000Z",
+        "upvotes": 0,
+        "heat": 321.6571563888889,
+        "featured": false,
+        "categories": [
+          "slam",
+          "rl"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03756",
+        "arxiv_id": "2606.03756",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.LG"
+        ],
+        "title_en": "Neural Navigation Functions for Zero-Shot Generalizable Motion Planning",
+        "title_zh": "用于零样本可泛化运动规划的神经导航函数",
+        "abstract_en": "We introduce Neural Navigation Functions (Neural-NF), a learned reactive navigation function capable of zero-shot transfer across unseen environment geometries. Neural-NF places data-driven adaptation within a structured elliptic planner, where the navigation objective is learned while planner structure is preserved by construction. Specifically, intrinsic Laplacian-derived features are mapped to local PDE coefficients, and solving the resulting boundary value problem produces a globally consistent value function on each target domain. For every admissible learned model, the resulting policy is collision-free, provides monotonic descent and a global minimum at the goal by construction. This admits a linearly-solvable optimal-control interpretation for any parameter setting. Empirically, Neural-NF achieves strong zero-shot transfer across diverse geometries and outperforms learned planners that directly predict the value function by up to a $5\\times$ improvement.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Benjamin D. Shaffer",
+          "Pei-An Hsieh",
+          "Brooks Kinch",
+          "Nathaniel Trask",
+          "M. Ani Hsieh"
+        ],
+        "url": "https://arxiv.org/abs/2606.03756v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03756",
+        "html_url": "https://arxiv.org/abs/2606.03756",
+        "published_at": "2026-06-02T15:06:25.000Z",
+        "upvotes": 0,
+        "heat": 321.49410083333333,
+        "featured": false,
+        "categories": [
+          "planning",
+          "radar"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03748",
+        "arxiv_id": "2606.03748",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.AI"
+        ],
+        "title_en": "Ultralytics YOLO26: Unified Real-Time End-to-End Vision Models",
+        "title_zh": "Ultralytics YOLO26：统一的实时端到端视觉模型",
+        "abstract_en": "Real-time vision demands models that are accurate, efficient, and simple to deploy across diverse hardware. The YOLO family has become widely deployed for this reason, yet most YOLO detectors still rely on non-maximum suppression at inference, carry heavy detection heads due to Distribution Focal Loss, require long training schedules, and can leave the smallest objects without positive label assignments. We present Ultralytics YOLO26, a unified real-time vision model family that addresses these limitations through coordinated architecture and training advances. YOLO26 uses a dual-head design for native NMS-free end-to-end inference and removes DFL entirely, yielding a lighter head with unconstrained regression range. Its training pipeline combines MuSGD, a hybrid Muon-SGD optimizer adapted from large language model training; Progressive Loss, which shifts supervision toward the inference-time head; and STAL, a label assignment strategy that guarantees positive coverage for small objects. Beyond detection, YOLO26 introduces task-specific head and loss designs for instance segmentation, pose estimation, and oriented detection, producing consistent gains across tasks and scales. The family spans five scales (n/s/m/l/x) and supports detection, instance segmentation, pose estimation, classification, and oriented detection in a single pipeline, with an open-vocabulary extension, YOLOE-26, for text-, visual-, and prompt-free inference. Across all scales, YOLO26 achieves 40.9-57.5 mAP on COCO at 1.7-11.8 ms T4 TensorRT latency, advancing the accuracy-latency Pareto front over prior real-time detectors, while YOLOE-26x reaches 40.6 AP on LVIS minival under text prompting. Code and models are available at https://github.com/ultralytics/ultralytics.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Glenn Jocher",
+          "Jing Qiu",
+          "Mengyu Liu",
+          "Shuai Lyu",
+          "Fatih Cagatay Akyon",
+          "Muhammet Esat Kalfaoglu"
+        ],
+        "url": "https://arxiv.org/abs/2606.03748v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03748",
+        "html_url": "https://arxiv.org/abs/2606.03748",
+        "published_at": "2026-06-02T15:01:13.000Z",
+        "upvotes": 0,
+        "heat": 321.4074341666667,
+        "featured": false,
+        "categories": [
+          "aim",
+          "planning",
+          "rl"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03698",
+        "arxiv_id": "2606.03698",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG"
+        ],
+        "title_en": "Multi$^2$: Hierarchical Multi-Agent Decision-Making with LLM-Based Agents in Interactive Environments",
+        "title_zh": "Multi$^2$：交互环境中基于LLM智能体的分层多智能体决策",
+        "abstract_en": "A central goal of large language model (LLM) research is to build agentic systems that can plan, act, and adapt through sustained interaction with dynamic environments. While recent LLM-based agents exhibit impressive contextual reasoning, their long-horizon decision-making remains fragile, often suffering from objective drift, where goals and plans drift over extended interactions. We introduce Multi$^2$, a hierarchical multi-agent decision-making framework that explicitly decomposes agent behavior into complementary roles. A high-level agent (System 1) focuses on context-aware sub-goal generation using supervised fine-tuning (SFT), while a low-level agent (System 2) executes atomic actions through offline-to-online reinforcement learning (RL) in interactive environments. This separation enables stable long-horizon control, mitigates objective drift, and allows efficient adaptation. Across diverse interactive environments, Multi$^2$ consistently outperforms strong agentic baselines, demonstrating improved robustness and coordination in multi-turn interaction. Beyond performance, we introduce and release three hierarchical benchmark datasets, filling a long-standing gap in training and evaluating hierarchical decision-making for LLM-based agents.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Sangeun Park",
+          "Minhae Kwon"
+        ],
+        "url": "https://arxiv.org/abs/2606.03698v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03698",
+        "html_url": "https://arxiv.org/abs/2606.03698",
+        "published_at": "2026-06-02T14:20:09.000Z",
+        "upvotes": 0,
+        "heat": 320.7229897222222,
+        "featured": false,
+        "categories": [
+          "slam",
+          "rl"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03694",
+        "arxiv_id": "2606.03694",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.CV",
+          "cs.HC"
+        ],
+        "title_en": "Face versus Body Tracking for Human-Robot Interaction: An Egocentric Dataset",
+        "title_zh": "人机交互中面部与身体追踪的对比：一个自我中心数据集",
+        "abstract_en": "To enable meaningful human-robot interaction (HRI), a robot must continuously assess engagement by consistently tracking users over time. State-of-the-art computer vision models, however, are heavily optimized for surveillance or autonomous driving. A social robot faces distinct egocentric challenges, such as humans bouncing, obstructing each other, or leaving the frame. Frequent identity switches (IDSW) cause the robot to lose its footing mid-conversation. To address this, we introduce a novel, custom-annotated egocentric dataset collected via the Furhat robot to capture complex social dynamics. We present a systematic evaluation isolating detection errors from tracking logic, comparing face versus body tracking, and assessing the impact of extended spatial memory and appearance re-identification (ReID). Results indicate that increasing spatial memory mitigates prolonged occlusions but fails on complex dynamic events. Integrating ReID resolves complex switches but exhibits opposing effects: it substantially improves body tracking stability, yet causes facial IDSW to spike due to profile angle sensitivity. Ultimately, our optimized pipeline reduces IDSW by 49\\%, mitigating interaction breakdowns. Because standard benchmarks lack dense, close-quarter occlusions, this work highlights the critical need for natively captured social dynamics to truly validate HRI perception models.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Jessica Wenninger",
+          "Gabriel Skantze"
+        ],
+        "url": "https://arxiv.org/abs/2606.03694v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03694",
+        "html_url": "https://arxiv.org/abs/2606.03694",
+        "published_at": "2026-06-02T14:15:17.000Z",
+        "upvotes": 0,
+        "heat": 320.64187833333335,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl",
+          "radar"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03598",
+        "arxiv_id": "2606.03598",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.AI",
+          "cs.CV"
+        ],
+        "title_en": "PHASER: Phase-Aware and Semantic Experience Replay for Vision-Language-Action Models",
+        "title_zh": "PHASER：面向视觉-语言-动作模型的相位感知与语义经验回放",
+        "abstract_en": "Vision-Language-Action (VLA) models have achieved remarkable success in language-conditioned robotic manipulation. However, deploying these models in open-ended environments requires continuously acquiring novel skills, a process that inevitably triggers severe catastrophic forgetting of previously learned behaviors. While experience replay (ER) serves as a standard mitigating strategy, naive uniform sampling fundamentally misaligns with the temporal characteristics of manipulation trajectories. It systematically under-samples brief but causally critical sub-skills, leading to phase starvation, and completely overlooks the varying degrees of forgetting across historical tasks. To overcome these limitations, we introduce PHASER, an architecture-agnostic continual learning framework. PHASER employs a phase-centric capacity allocation to guarantee equal memory support for all sub-skills, coupled with a multi-modal interference routing strategy that dynamically prioritizes historical phases at high risk of forgetting. Furthermore, to enable fully autonomous lifelong adaptation, we integrate Auto-PC, a lightweight pipeline combining unsupervised action-signal change-point detection with VLM-based semantic verification to extract temporal boundaries without intensive manual supervision. Evaluated across three VLA backbones on LIBERO continual learning suites, PHASER yields substantial empirical improvements, increasing Average Success Rate (ASR) by up to 31% over matched-budget ER and achieving an 87.8% final ASR on the LIBERO-Goal CL setting.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Ziyang Chen",
+          "Shaoguang Wang",
+          "Weiyu Guo",
+          "Qianyi Cai",
+          "He Zhang",
+          "Pengteng Li",
+          "Yiren Zhao",
+          "Yandong Guo"
+        ],
+        "url": "https://arxiv.org/abs/2606.03598v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03598",
+        "html_url": "https://arxiv.org/abs/2606.03598",
+        "published_at": "2026-06-02T13:04:15.000Z",
+        "upvotes": 0,
+        "heat": 319.4579894444444,
+        "featured": false,
+        "categories": [
+          "aim",
+          "slam",
+          "rl"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03590",
+        "arxiv_id": "2606.03590",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "CANMOT: Class-Aware Noise Modeling for Multi-Object Tracking in Autonomous Driving",
+        "title_zh": "CANMOT：自动驾驶多目标跟踪中的类别感知噪声建模",
+        "abstract_en": "Kalman filter (KF)-based multi-object tracking (MOT) remains a strong baseline for autonomous driving due to its strong performance, computational efficiency and interpretability. In most practical systems, the process noise and measurement noise covariances are defined globally and shared across object classes, presuming identical uncertainty characteristics across heterogeneous traffic participants. This work revisits this assumption and proposes CANMOT, a class-aware and object-aligned noise modeling framework for KF-based 3D MOT. Class-specific diagonal process and measurement covariance matrices are introduced and optionally expressed in the object coordinate frame to preserve longitudinal-lateral anisotropy. Systematic experiments on the nuScenes benchmark show that class-aware and object-aligned noise modeling improves tracking performance and substantially reduces identity switches compared to state-of-the-art (SotA). In addition, the consistency of the estimated uncertainty is analyzed using the Average Normalized Estimation Error Squared (ANEES) and $χ^2$-based violation tests. The results reveal severe overconfidence in standard KF-based MOT baselines. While the proposed formulation improves calibration without modifying the underlying filtering framework, it still exhibits substantial inconsistency, highlighting the need for further research in this area. Code is available at https://github.com/rst-tu-dortmund/learned-3d-nms.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Timo Osterburg",
+          "Stefan Schütte",
+          "Torsten Bertram"
+        ],
+        "url": "https://arxiv.org/abs/2606.03590v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03590",
+        "html_url": "https://arxiv.org/abs/2606.03590",
+        "published_at": "2026-06-02T12:56:31.000Z",
+        "upvotes": 0,
+        "heat": 319.32910055555556,
+        "featured": false,
+        "categories": [
+          "slam",
+          "radar"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03581",
+        "arxiv_id": "2606.03581",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.RO"
+        ],
+        "title_en": "UnsOcc: 3D Semantic Occupancy Prediction in Unstructured Scene via Rendering Fusion",
+        "title_zh": "UnsOcc：通过渲染融合实现非结构化场景中的3D语义占用预测",
+        "abstract_en": "Unstructured scenes present unique challenges for autonomous driving, as irregular obstacles and sparse scene layouts undermine the effectiveness of traditional perception methods such as 3D object detection. 3D semantic occupancy prediction has emerged as a prominent focus due to its ability to provide dense spatial representations by assigning semantic labels to individual voxels in 3D space. However, directly applying 3D semantic occupancy prediction to unstructured scenes remains challenging because scene sparsity hinders effective cross-modal fusion and the more severe long-tail distribution in these scenarios further degrades prediction performance. To validate the effectiveness of our approach, we construct a dedicated dataset of unstructured scenes collected from open-pit mines. Based on this, we propose UnsOcc, a multi-modal 3D semantic occupancy prediction framework that improves robustness in unstructured environments. At its core, we introduce a rendering-based fusion module, RenderFusion, which enhances cross-modal feature alignment through bidirectional rendering supervision. Furthermore, we propose GSRefinement, a detail-aware auxiliary supervision method based on Gaussian Splatting that projects sparse 3D occupancy predictions into dense 2D semantic segmentation maps, enabling effective supervision for long-tail categories. Extensive experiments on both the open-pit mine dataset and the nuScenes dataset demonstrate that our method significantly outperforms existing state-of-the-art approaches.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Ye Wu",
+          "Ruiqi Song",
+          "Baiyong Ding",
+          "Nanxin Zeng",
+          "Junjie Cheng",
+          "Yunfeng Ai"
+        ],
+        "url": "https://arxiv.org/abs/2606.03581v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03581",
+        "html_url": "https://arxiv.org/abs/2606.03581",
+        "published_at": "2026-06-02T12:50:14.000Z",
+        "upvotes": 0,
+        "heat": 319.22437833333333,
+        "featured": false,
+        "categories": [
+          "aim"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03577",
+        "arxiv_id": "2606.03577",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Eliciting Complex Spatial Reasoning in MLLMs through Wide-Baseline Matching",
+        "title_zh": "通过宽基线匹配激发多模态大语言模型中的复杂空间推理",
+        "abstract_en": "Wide-baseline matching (WBM) requires integrating geometric understanding, viewpoint changes, fine-grained perception, and occlusion reasoning, making it a challenging testbed for spatial reasoning in multimodal large language models (MLLMs) deployed in physical environments. However, current MLLMs lack systematic evaluation and training frameworks for these capabilities. We introduce ReasonMatch-Bench, a benchmark stratified by viewpoint displacement and matching granularity across indoor, outdoor, and object-centric scenarios, and show that current MLLMs still struggle with fine-grained wide-baseline correspondence: on a difficult 90-sample subset, human annotators achieve 84.0 F1, while the best existing baseline reaches 37.2. To bridge this gap, we build a scalable data-generation pipeline that automatically extracts wide-baseline view pairs from large-scale video-3D corpora, including RGB-D videos and SfM reconstructions, yielding diverse and verifiable supervision. We further propose Dynamic Correspondence Reinforcement Learning (DCRL), which combines Image-Level Viewpoint Progression and Point-Level Correspondence Curriculum to improve WBM training through verifiable rewards without explicit CoT supervision. Extensive experiments show that DCRL substantially improves ReasonMatch-Bench and transfers to related spatial benchmarks, while maintaining general visual understanding performance with modest gains on several benchmarks.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Hao Zhong",
+          "Muzhi Zhu",
+          "Shenyan Zeng",
+          "Anzhou Li",
+          "Cong Chen",
+          "Hua Geng",
+          "Duochao Shi",
+          "Wentao Ye"
+        ],
+        "url": "https://arxiv.org/abs/2606.03577v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03577",
+        "html_url": "https://arxiv.org/abs/2606.03577",
+        "published_at": "2026-06-02T12:46:34.000Z",
+        "upvotes": 0,
+        "heat": 319.1632672222222,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03568",
+        "arxiv_id": "2606.03568",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.AI",
+          "cs.LG",
+          "cs.RO"
+        ],
+        "title_en": "Learned Non-Maximum Suppression for 3D Object Detection",
+        "title_zh": "",
+        "abstract_en": "Post-processing is a critical stage in LiDAR-based 3D object detection, where dense and overlapping proposals must be filtered for compact and reliable perception. This work introduces two learned filtering modules that replace heuristic non-maximum suppression (NMS) by leveraging relations among detections. D2D-Rescore employs transformer-based detection-to-detection (D2D) attention, while GossipNet3D adapts the 2D GossipNet concept to 3D through localized message passing in bird's-eye view. A metric-aware matching strategy aligned with the nuScenes evaluation protocol ensures consistent training and validation behavior, improving overall detection performance. Both approaches improve mean average precision (mAP), nuScenes detection score (NDS), and true positive quality compared to CircleNMS, particularly for small and infrequent classes, while adding minimal computational overhead. These results demonstrate that learned, detection-level filtering can enhance 3D detector reliability without modifying the base network, offering a principled alternative to heuristic suppression. Code is available at https://github.com/rst-tu-dortmund/learned-3d-nms .",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Timo Osterburg",
+          "Stefan Schütte",
+          "Torsten Bertram"
+        ],
+        "url": "https://arxiv.org/abs/2606.03568v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03568",
+        "html_url": "https://arxiv.org/abs/2606.03568",
+        "published_at": "2026-06-02T12:34:14.000Z",
+        "upvotes": 0,
+        "heat": 318.9577116666667,
+        "featured": false,
+        "categories": [
+          "aim",
+          "slam"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03545",
+        "arxiv_id": "2606.03545",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Static and Dynamic Representations for Tactile Contact-Angle Estimation with Event-Based Sensors",
+        "title_zh": "",
+        "abstract_en": "Event-based tactile sensing offers low-latency signal acquisition for contact-rich robotic interaction. This paper investigates contact-angle estimation using event streams from an event-based tactile sensor (NeuroTac) and compares three event-derived spatial contour representations: a dynamic representation capturing recent event activity, a static representation recovering a more persistent contact state, and their combined representation. Across the evaluated motion scenarios, all representation pipelines exhibited P99 processing latency below 10 ms at all tested sampling intervals, demonstrating their potential for high-frequency event-based tactile angle estimation in robotic manipulation. The static representation consistently achieved marginally better performance than the dynamic and combined representations under scenario-specific training, yielding a mean overall MAE of 0.160° during continuous sensor rolling and a stop-phase mean MAE of 0.251° during randomly inserted motion interruptions. It also exhibited smaller performance fluctuations across speed and indentation depth variations than the other two representations.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Yanhui Lu",
+          "Efi Psomopoulou",
+          "Benjamin Ward-Cherrier"
+        ],
+        "url": "https://arxiv.org/abs/2606.03545v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03545",
+        "html_url": "https://arxiv.org/abs/2606.03545",
+        "published_at": "2026-06-02T12:08:49.000Z",
+        "upvotes": 0,
+        "heat": 318.53410055555554,
+        "featured": false,
+        "categories": [
+          "radar"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03521",
+        "arxiv_id": "2606.03521",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.AI"
+        ],
+        "title_en": "Post-Hoc Robustness for Model-Based Reinforcement Learning",
+        "title_zh": "",
+        "abstract_en": "To improve the real-world applicability of reinforcement learning (RL), the field of adversarially robust RL studies how to train agents under adversarial environment perturbations. In this setting, a protagonist agent optimizes a policy under environmental perturbations from an adversary, resulting in a zero-sum Markov game. When adversarially robust RL is combined with model-based RL, the adversary can target a learned transition model instead of the training environment. Extending this idea, this work introduces post-hoc robustification of deep RL agents at inference time. By using the learned model in combination with a trained nominal policy, our approach performs a robust policy improvement step. The goal is to improve robustness without any additional training of neural networks. Specifically, we utilize model-predictive control under adversarial rollouts, which are approximated via projected gradient descent within a bounded uncertainty set. Furthermore, these offline rollouts are performed while considering and mitigating out-of-distribution issues. The proposed methodology is validated by demonstrating significant improvements in robustness when the algorithm is evaluated in perturbed Gymnasium MuJoCo environments, while considering the computational limitations of the post-hoc inference setting.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Siemen Herremans",
+          "Ali Anwar",
+          "Siegfried Mercelis"
+        ],
+        "url": "https://arxiv.org/abs/2606.03521v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03521",
+        "html_url": "https://arxiv.org/abs/2606.03521",
+        "published_at": "2026-06-02T11:43:13.000Z",
+        "upvotes": 0,
+        "heat": 318.10743388888886,
+        "featured": false,
+        "categories": [
+          "rl",
+          "sim"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03512",
+        "arxiv_id": "2606.03512",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.AI"
+        ],
+        "title_en": "SPADE: Sketch-guided Path Planning Augmented with Diffusion Experts",
+        "title_zh": "",
+        "abstract_en": "Path planning is essential for Autonomous Mobile Robots (AMRs). Conventional methods for incorporating human preferences into planning typically rely on either complex reward engineering or hardware-intensive solutions. Recent state-of-the-art frameworks leverage imitation learning to train behavior-specific path planning models from expert demonstrations. However, these approaches face two key limitations: limited generalization to unseen environments and low robustness in demonstration collection. To address these challenges, this work introduces an enhanced framework that focuses on two main contributions: an overhauled annotation tool built on ROS 2, and a novel training strategy that integrates diffusion-based augmentation into baseline behavioral cloning models. A dataset of expert demonstrations is provided and evaluated through ablation studies to assess the robustness of the proposed solution. The enhanced approach outperforms state-of-the-art methods with 39.1% lower Absolute Pose Error (APE) and 33.5% lower Fr'echet Inception Distance (FID) while having 93.8% less trainable parameters. Moreover it attains diffusion-level generalization while preserving the real-time, on-edge properties of state-of-the-art models.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Charbel Abi Hana",
+          "Tatiana Ghantous",
+          "Mikael Khalil",
+          "Anthony Rizk"
+        ],
+        "url": "https://arxiv.org/abs/2606.03512v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03512",
+        "html_url": "https://arxiv.org/abs/2606.03512",
+        "published_at": "2026-06-02T11:29:00.000Z",
+        "upvotes": 0,
+        "heat": 317.87048944444444,
+        "featured": false,
+        "categories": [
+          "slam",
+          "nav",
+          "planning"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03476",
+        "arxiv_id": "2606.03476",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Human2Humanoid: Physics-Aware Cross-Morphology Motion Retargeting for Humanoid Robots",
+        "title_zh": "",
+        "abstract_en": "Retargeting human motion to humanoid robots is critical for teleoperation, imitation learning and human-robot interaction. However, it remains challenging because of substantial morphological discrepancies between humans and robots, including differences in skeletal topology, limb proportions and degrees of freedom, as well as the scarcity of paired motion data. This paper presents Human2Humanoid, an unsupervised motion retargeting framework that transfers human motions to humanoid robot behaviors with high fidelity. To bridge the domain gap under unpaired data, we adopt a CycleGAN-based architecture equipped with a skeleton-aware graph convolutional network to capture topology-dependent motion features. To address cross-domain scale mismatches, we introduce a morphology-invariant end-effector consistency loss that aligns normalized end-effector trajectories to preserve motion semantics across embodiments. To improve physical plausibility and reduce contact artifacts, we impose explicit physics-aware feasibility constraints to encourage reproduction of the contact patterns in the source motion. Experimental results show that the proposed method successfully retargets human motion to the Unitree G1 humanoid robot without paired data, and outperforms existing methods in both downstream controllability and physical feasibility.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Tianchen Huang",
+          "Feiyang Yuan",
+          "Junchi Gu",
+          "Shurui Fang",
+          "Xiaohu Zhang",
+          "Yu Wang",
+          "Wei Gao",
+          "Shiwu Zhang"
+        ],
+        "url": "https://arxiv.org/abs/2606.03476v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03476",
+        "html_url": "https://arxiv.org/abs/2606.03476",
+        "published_at": "2026-06-02T10:53:06.000Z",
+        "upvotes": 0,
+        "heat": 317.2721561111111,
+        "featured": false,
+        "categories": [
+          "slam",
+          "rl",
+          "radar"
+        ],
+        "image": ""
+      },
+      {
+        "id": "arxiv:2606.03441",
+        "arxiv_id": "2606.03441",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.LG"
+        ],
+        "title_en": "PerchRL: Vision-Based Agile Perching on Inclined Platforms under Rapid and Irregular Motion",
+        "title_zh": "",
+        "abstract_en": "Autonomous vision-based perching of quadrotors on moving inclined platforms is critical for air-ground collaboration but remains challenging due to the limited field of view (FOV). In this paper, we propose PerchRL, a reinforcement learning (RL) framework for vision-based agile perching on inclined platforms under rapid and irregular motion. Specifically, we employ a two-stage learning strategy consisting of state-based pre-training followed by vision-based fine-tuning. To improve generalization across diverse platform motions, we employ randomized platform trajectories to prevent overfitting and temporal augmentation methods to capture latent motion patterns from historical observations. During vision-based fine-tuning, a hybrid learning framework consisting of visibility-aware state augmentation and active perception rewards is presented to improve robustness under intermittent visual loss. Extensive simulation and real-world experiments demonstrate the feasibility, stability, and real-time performance of PerchRL, while successful deployment across distinct quadrotor platforms further validates its adaptability. The source code will be released to benefit the community.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Zihong Lu",
+          "Zongzhuo Liu",
+          "Huaxu Li",
+          "Jinqiang Cui",
+          "Jie Mei",
+          "Youmin Gong",
+          "U Kei Cheang",
+          "Boyu Zhou"
+        ],
+        "url": "https://arxiv.org/abs/2606.03441v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.03441",
+        "html_url": "https://arxiv.org/abs/2606.03441",
+        "published_at": "2026-06-02T10:26:35.000Z",
+        "upvotes": 0,
+        "heat": 316.83021138888887,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl",
+          "radar"
         ],
         "image": ""
       },
