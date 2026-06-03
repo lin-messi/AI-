@@ -33,7 +33,7 @@ function fmtStars(n) {
   return String(n);
 }
 
-export default function RepoCard({ repo, tags }) {
+export default function RepoCard({ repo, tags, badge }) {
   const { lang, favs, reads, toggleFav, toggleRead } = useApp();
   const t = STRINGS[lang === "en" ? "en" : "zh"];
 
@@ -55,6 +55,11 @@ export default function RepoCard({ repo, tags }) {
           <span className="source-dot" />
           {repo.owner}
         </span>
+        {badge && (
+          <span className={`repo-badge ${badge.kind === "general" ? "general" : "native"}`}>
+            {badge.label}
+          </span>
+        )}
         {repo.stars > 0 && (
           <span className="heat" title={t.stars}>
             ★ {fmtStars(repo.stars)}

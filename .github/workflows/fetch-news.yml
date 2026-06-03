@@ -15,6 +15,8 @@ on:
     - cron: "43 1 * * *"
     # RoboMaster 算法资料 + 新闻：每 2 小时的 :47（错峰），实现「准实时」更新。
     - cron: "47 */2 * * *"
+    # RoboMaster 通用利器库 + 新闻：UTC 05:37（约北京 13:37），每天 1 次（通用库变化慢）。
+    - cron: "37 5 * * *"
   workflow_dispatch: {} # 也支持在 Actions 页面手动触发
 
 permissions:
@@ -84,11 +86,25 @@ jobs:
           AI_BASE_URL: ${{ secrets.AI_BASE_URL }}
           AI_MODEL: ${{ secrets.AI_MODEL }}
 
+      - name: 抓取 RoboMaster 通用利器库（通用优质库白名单+主题搜索，含中文用途；仅 05:37 计划或手动触发，每天 1 次）
+        run: |
+          # 用 github.event.schedule 判断，避免 Actions 执行延迟跨过整点导致跳过。
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${{ github.event.schedule }}" = "37 5 * * *" ]; then
+            npm run fetch:robomaster:general
+          else
+            echo "本次非 RM 通用库抓取计划（${{ github.event.schedule }}），跳过以控制用量"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
+          AI_BASE_URL: ${{ secrets.AI_BASE_URL }}
+          AI_MODEL: ${{ secrets.AI_MODEL }}
+
       - name: 提交更新的数据
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/archive data/index.json data/papers data/papers-index.json data/github data/github-index.json data/robomaster data/robomaster-index.json
+          git add data/archive data/index.json data/papers data/papers-index.json data/github data/github-index.json data/robomaster data/robomaster-index.json data/robomaster-general.json
           if git diff --staged --quiet; then
             echo "没有新数据，跳过提交"
           else

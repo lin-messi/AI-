@@ -138,6 +138,73 @@ export const REPO_BLOCK_KW = [
   "外挂", "游戏辅助", "辅助瞄准", "fps游戏", "吃鸡", "三角洲", "穿越火线",
 ];
 
+// ====== 通用利器库（General）======
+// 与 RM 原生库分开维护：收录「本身不带 robomaster，但能直接用于 RM 任务」的通用优质库，
+// 例如 YOLO（装甲板检测）、FAST-LIO（哨兵建图）、Nav2（自主导航）、Isaac Lab（RL 仿真）。
+// 来源 = 机构/仓库白名单（人工确保经典必收）+ 主题搜索补充（自动发现新项目，严格门槛）。
+
+// 白名单：直接按 owner/repo 收录（抓取时取其实时星标/简介/标签）。按经验精选的公认优质项目。
+export const GENERAL_WHITELIST = [
+  // —— 感知：检测 / 分割 / 跟踪 ——
+  "ultralytics/ultralytics",
+  "WongKinYiu/yolov7",
+  "meituan/YOLOv6",
+  "Megvii-BaseDetection/YOLOX",
+  "open-mmlab/mmdetection",
+  "open-mmlab/mmyolo",
+  "IDEA-Research/GroundingDINO",
+  "facebookresearch/segment-anything",
+  "ifzhang/ByteTrack",
+  "mikel-brostrom/boxmot",
+  // —— 定位：SLAM / 里程计 / 建图 ——
+  "hku-mars/FAST_LIO",
+  "hku-mars/FAST-LIVO2",
+  "TixiaoShan/LIO-SAM",
+  "gaoxiang12/slam_in_autonomous_driving",
+  "UZ-SLAMLab/ORB_SLAM3",
+  "cartographer-project/cartographer",
+  // —— 规划与导航：Nav2 / 路径规划 / 控制 ——
+  "ros-navigation/navigation2",
+  "ompl/ompl",
+  "ros-controls/ros2_control",
+  "ZJU-FAST-Lab/ego-planner",
+  "HKUST-Aerial-Robotics/Fast-Planner",
+  "AtsushiSakai/PythonRobotics",
+  // —— 学习与仿真：RL / sim-to-real ——
+  "isaac-sim/IsaacLab",
+  "DLR-RM/stable-baselines3",
+  "google-deepmind/mujoco",
+  "Farama-Foundation/Gymnasium",
+  "leggedrobotics/legged_gym",
+];
+
+// 主题搜索补充：偏机器人/视觉的 topic + 星标门槛，自动发现白名单之外的新项目。
+export const GENERAL_TOPIC_QUERIES = [
+  "topic:object-detection topic:robotics",
+  "topic:slam",
+  "topic:lidar-slam",
+  "topic:path-planning",
+  "topic:motion-planning",
+  "topic:multi-object-tracking",
+  "topic:reinforcement-learning topic:robotics",
+  "topic:ros2 topic:navigation",
+];
+
+// 主题搜索结果的相关性闸门：名称/简介/标签需命中以下机器人/视觉语境词之一，
+// 否则视为与 RM 无关（纯 NLP/纯前端等）剔除。配合 REPO_BLOCK_KW 黑名单使用。
+export const GENERAL_RELEVANCE_KW = [
+  "robot", "robotic", "ros", "ros2", "autonomous", "navigation", "slam",
+  "lidar", "odometry", "mapping", "localization", "perception", "detection",
+  "segmentation", "tracking", "object detection", "pose estimation", "keypoint",
+  "path planning", "motion planning", "trajectory", "planner", "control",
+  "reinforcement learning", "sim-to-real", "manipulation", "drone", "uav",
+  "quadruped", "legged", "embodied", "gimbal", "yolo",
+];
+
+export const GENERAL_MIN_STARS = 200; // 通用库最低星标（用户指定 ≥200）
+export const GENERAL_ACTIVE_DAYS = 365; // 仅保留近 N 天有提交的库（白名单不受此限）
+export const GENERAL_MAX = 40; // 通用库池上限（展示 30-40）
+
 // —— 限额 ——
 export const PAPERS_MAX = 30; // 每次保留论文上限（按热度排序后截断）
 export const REPOS_MAX = 50; // 每次保留开源库上限（用户指定 50 个/次）

@@ -14,23 +14,37 @@ import { formatDateLong } from "@/lib/format";
 
 const PAGE = 60;
 
-export default function RoboMasterPage({ day, dates = [], latest, curated }) {
+export default function RoboMasterPage({ day, dates = [], latest, curated, general }) {
   const { lang, favs } = useApp();
   const t = STRINGS[lang === "en" ? "en" : "zh"];
 
   const categories = day.categories || [];
   const papers = day.papers?.items || [];
-  const repos = day.repos?.items || [];
+  const nativeRepos = day.repos?.items || [];
+  const generalRepos = general?.items || [];
   const curatedItems = curated?.items || [];
   const isLatest = day.date === latest;
 
   const [view, setView] = useState("papers"); // papers | repos
+  const [repoSub, setRepoSub] = useState("all"); // all | rm | general
   const [cat, setCat] = useState("all");
   const [query, setQuery] = useState("");
   const [onlyFav, setOnlyFav] = useState(false);
   const [visible, setVisible] = useState(PAGE);
   const [active, setActive] = useState(null);
   const [curatedOpen, setCuratedOpen] = useState(true);
+
+  // 开源库子集：全部 = RM 原生 + 通用利器
+  const repos = useMemo(() => {
+    if (repoSub === "rm") return nativeRepos;
+    if (repoSub === "general") return generalRepos;
+    return [...nativeRepos, ...generalRepos];
+  }, [repoSub, nativeRepos, generalRepos]);
+
+  const badgeFor = (r) =>
+    r.source === "general"
+      ? { kind: "general", label: t.roboBadgeGeneral }
+      : { kind: "native", label: t.roboBadgeNative };
 
   useEffect(() => {
     try {
@@ -79,7 +93,7 @@ export default function RoboMasterPage({ day, dates = [], latest, curated }) {
 
   useEffect(() => {
     setVisible(PAGE);
-  }, [view, cat, onlyFav, query]);
+  }, [view, repoSub, cat, onlyFav, query]);
 
   const shown = filtered.slice(0, visible);
 
@@ -98,8 +112,12 @@ export default function RoboMasterPage({ day, dates = [], latest, curated }) {
               <div className="lbl">{t.roboPapers}</div>
             </div>
             <div className="stat">
-              <div className="num">{repos.length}</div>
-              <div className="lbl">{t.roboRepos}</div>
+              <div className="num">{nativeRepos.length}</div>
+              <div className="lbl">{t.roboNative}</div>
+            </div>
+            <div className="stat">
+              <div className="num">{generalRepos.length}</div>
+              <div className="lbl">{t.roboGeneral}</div>
             </div>
             <div className="stat">
               <div className="num">{categories.length}</div>
@@ -156,9 +174,32 @@ export default function RoboMasterPage({ day, dates = [], latest, curated }) {
             className={`btn ${!isPapers ? "active" : ""}`}
             onClick={() => setView("repos")}
           >
-            {t.roboViewRepos}（{repos.length}）
+            {t.roboViewRepos}（{nativeRepos.length + generalRepos.length}）
           </button>
         </div>
+
+        {!isPapers && (
+          <div className="filters subfilters" style={{ marginTop: 8 }}>
+            <button
+              className={`btn ${repoSub === "all" ? "active" : ""}`}
+              onClick={() => setRepoSub("all")}
+            >
+              {t.all}（{nativeRepos.length + generalRepos.length}）
+            </button>
+            <button
+              className={`btn ${repoSub === "rm" ? "active" : ""}`}
+              onClick={() => setRepoSub("rm")}
+            >
+              {t.roboBadgeNative}（{nativeRepos.length}）
+            </button>
+            <button
+              className={`btn ${repoSub === "general" ? "active" : ""}`}
+              onClick={() => setRepoSub("general")}
+            >
+              {t.roboBadgeGeneral}（{generalRepos.length}）
+            </button>
+          </div>
+        )}
 
         <div className="toolbar">
           <div className="search">
@@ -215,6 +256,7 @@ export default function RoboMasterPage({ day, dates = [], latest, curated }) {
                     key={r.id}
                     repo={r}
                     tags={(r.categories || []).map((k) => labelMap[k] || k)}
+                    badge={badgeFor(r)}
                   />
                 ))}
           </div>
