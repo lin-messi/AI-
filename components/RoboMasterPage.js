@@ -30,6 +30,23 @@ export default function RoboMasterPage({ day, dates = [], latest, curated }) {
   const [onlyFav, setOnlyFav] = useState(false);
   const [visible, setVisible] = useState(PAGE);
   const [active, setActive] = useState(null);
+  const [curatedOpen, setCuratedOpen] = useState(true);
+
+  useEffect(() => {
+    try {
+      const v = localStorage.getItem("robo_curated_open");
+      if (v !== null) setCuratedOpen(v === "1");
+    } catch {}
+  }, []);
+
+  const toggleCurated = () =>
+    setCuratedOpen((v) => {
+      const next = !v;
+      try {
+        localStorage.setItem("robo_curated_open", next ? "1" : "0");
+      } catch {}
+      return next;
+    });
 
   const labelMap = useMemo(() => {
     const m = {};
@@ -93,17 +110,30 @@ export default function RoboMasterPage({ day, dates = [], latest, curated }) {
 
         {curatedItems.length > 0 && (
           <section className="curated">
-            <h2 className="section-title">★ {t.roboCurated}</h2>
-            <p className="section-sub">{t.roboCuratedDesc}</p>
-            <div className="grid">
-              {curatedItems.map((r) => (
-                <RepoCard
-                  key={r.id}
-                  repo={r}
-                  tags={(r.categories || []).map((k) => labelMap[k] || k)}
-                />
-              ))}
-            </div>
+            <button
+              type="button"
+              className="section-head"
+              onClick={toggleCurated}
+              aria-expanded={curatedOpen}
+            >
+              <span className={`chevron ${curatedOpen ? "open" : ""}`}>▸</span>
+              <span className="section-title">★ {t.roboCurated}</span>
+              <span className="section-count">{curatedItems.length}</span>
+            </button>
+            {curatedOpen && (
+              <>
+                <p className="section-sub">{t.roboCuratedDesc}</p>
+                <div className="grid">
+                  {curatedItems.map((r) => (
+                    <RepoCard
+                      key={r.id}
+                      repo={r}
+                      tags={(r.categories || []).map((k) => labelMap[k] || k)}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
           </section>
         )}
 
