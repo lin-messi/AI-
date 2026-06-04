@@ -24,6 +24,7 @@ import {
 } from "./robomaster-feeds.mjs";
 import { translatePapersFull, translatePaperTitles } from "./enrich-papers.mjs";
 import { translateRepos } from "./enrich-github.mjs";
+import { assessRMUsage } from "./enrich-rm-usage.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -322,14 +323,34 @@ async function main() {
       existing.repos = prev.repos?.items || [];
     } catch {}
   }
-  const finalPapers = dedupeBy(
-    [...existing.papers, ...papers],
-    (p) => (p.arxiv_id ? `a:${p.arxiv_id}` : p.id)
-  ).sort((a, b) => (b.heat || 0) - (a.heat || 0));
-  const finalRepos = dedupeBy(
-    [...existing.repos, ...repos],
-    (r) => (r.id || "").toLowerCase()
-  ).sort((a, b) => (b.stars || 0) - (a.stars || 0));
+  const paperKey = (p) => (p.arxiv_id ? `a:${p.arxiv_id}` : p.id);
+  const repoKey = (r) => (r.id || "").toLowerCase();
+  const finalPapers = dedupeBy([...existing.papers, ...papers], paperKey).sort(
+    (a, b) => (b.heat || 0) - (a.heat || 0)
+  );
+  const finalRepos = dedupeBy([...existing.repos, ...repos], repoKey).sort(
+    (a, b) => (b.stars || 0) - (a.stars || 0)
+  );
+
+  // first_seen：条目「首次被收录」时间，用于「最新」排序与 NEW 角标。
+  // 已有则保留；历史条目（此前已存在却无此字段）回填发布/更新时间，避免被误标为新；
+  // 本次新发现的条目记为当前时间。
+  const now = new Date().toISOString();
+  const existedPaperKeys = new Set(existing.papers.map(paperKey));
+  for (const p of finalPapers) {
+    if (!p.first_seen)
+      p.first_seen = existedPaperKeys.has(paperKey(p)) ? p.published_at || now : now;
+  }
+  const existedRepoKeys = new Set(existing.repos.map(repoKey));
+  for (const r of finalRepos) {
+    if (!r.first_seen)
+      r.first_seen = existedRepoKeys.has(repoKey(r))
+        ? r.pushed_at || r.created_at || now
+        : now;
+  }
+
+  // RM 用途评估（仅论文；RM 原生库本身即 RoboMaster 项目，无需评估）。只评估缺失的条目。
+  await assessRMUsage(finalPapers, "paper");
 
   const payload = {
     date,

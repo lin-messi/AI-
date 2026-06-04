@@ -18,6 +18,7 @@ import {
   GENERAL_MAX,
 } from "./robomaster-feeds.mjs";
 import { translateGeneralRepos } from "./enrich-github.mjs";
+import { assessRMUsage } from "./enrich-rm-usage.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -209,17 +210,26 @@ async function main() {
     } catch {}
   }
   const existingMap = new Map(existing.map((r) => [(r.id || "").toLowerCase(), r]));
+  const now = new Date().toISOString();
   // 用已有译文回填本次抓到的同一仓库（避免重复翻译），并刷新实时星标
   for (const r of pool) {
     const prev = existingMap.get((r.id || "").toLowerCase());
     if (prev) {
       if (!r.description_zh && prev.description_zh) r.description_zh = prev.description_zh;
       if (!r.highlight_zh && prev.highlight_zh) r.highlight_zh = prev.highlight_zh;
+      if (!r.rm && prev.rm) r.rm = prev.rm; // 沿用已生成的 RM 用途评估，避免重复消耗
+      // first_seen：沿用历史值；历史条目缺失则回填其更新时间，避免被误标为新。
+      r.first_seen = prev.first_seen || prev.pushed_at || prev.created_at || now;
+    } else {
+      // 本次新发现的库：记为当前时间，供「最新」排序与 NEW 角标使用。
+      r.first_seen = now;
     }
   }
 
-  // 翻译 + 生成 RM 用途（仅缺失的）
+  // 翻译简介 + 一句话用途亮点（仅缺失的）
   await translateGeneralRepos(pool);
+  // 结构化 RM 用途评估（用途建议 + 对应赛事任务 + 实用度），仅评估缺失的条目
+  await assessRMUsage(pool, "repo");
   // 翻译后分类：中文简介/用途更丰富，分类更准
   for (const r of pool) {
     const text = `${r.full_name} ${r.description_en} ${r.description_zh} ${r.highlight_zh} ${(r.topics || []).join(" ")}`;

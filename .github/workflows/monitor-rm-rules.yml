@@ -1,0 +1,66 @@
+name: 监测 RoboMaster 规则更新
+
+# 每周检查官方规则页（data/rm-rules.json 的 monitorUrl）是否有变化。
+# 有变化 → 自动建 Issue 提醒「该重新跑 npm run rules:build 更新规则了」。
+# monitorUrl 为空时脚本安全跳过（不报错、不建 Issue）。
+on:
+  schedule:
+    # 每周一 UTC 06:11（约北京周一 14:11）。错峰，避开整点拥堵。
+    - cron: "11 6 * * 1"
+  workflow_dispatch: {} # 支持手动触发
+
+permissions:
+  contents: write # 提交更新后的指纹文件
+  issues: write # 允许建 Issue
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装 Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: 监测规则页变化
+        id: monitor
+        run: npm run rules:monitor
+
+      - name: 提交指纹文件
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/rm-rules-monitor.json
+          if git diff --staged --quiet; then
+            echo "指纹无变化，跳过提交"
+          else
+            git commit -m "chore: 更新 RoboMaster 规则页监测指纹 $(date -u +'%Y-%m-%d %H:%MZ')"
+            git push
+          fi
+
+      - name: 检测到变化则建 Issue
+        if: steps.monitor.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RULE_URL: ${{ steps.monitor.outputs.url }}
+        run: |
+          BODY="监测脚本发现官方规则页内容发生变化。
+
+          建议操作：
+          1. 下载最新规则手册 PDF，放入本地 rules/ 目录；
+          2. 运行 npm run rules:build 重新提炼 data/rm-rules.json；
+          3. 人工校对提炼结果（重点核对任务得分、数值、变化点）；
+          4. 提交并推送，搜索关键词与论文/开源用途评估会随新规则自动微调。
+
+          监测页面：${RULE_URL}
+
+          （本 Issue 由 monitor-rm-rules workflow 自动创建。）"
+          # 确保 rules 标签存在（已存在时忽略报错）
+          gh label create rules --color FBCA04 --description "RoboMaster 规则更新" 2>/dev/null || true
+          gh issue create \
+            --title "RoboMaster 规则页疑似更新（$(date -u +'%Y-%m-%d')）" \
+            --label "rules" \
+            --body "$BODY"

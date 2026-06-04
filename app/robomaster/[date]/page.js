@@ -5,6 +5,7 @@ import {
   getRoboIndex,
   getRoboCurated,
   getRoboGeneral,
+  getRoboRules,
 } from "@/lib/robomaster";
 import { notFound } from "next/navigation";
 
@@ -19,6 +20,7 @@ export default async function RobomasterDay({ params }) {
   const latest = getRoboIndex().latest;
   const curated = getRoboCurated();
   const general = getRoboGeneral();
+  const rules = getRoboRules();
   return (
     <RoboMasterPage
       day={day}
@@ -26,6 +28,7 @@ export default async function RobomasterDay({ params }) {
       latest={latest}
       curated={curated}
       general={general}
+      rules={rules}
     />
   );
 }

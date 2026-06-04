@@ -14,7 +14,14 @@ import { formatDateLong } from "@/lib/format";
 
 const PAGE = 60;
 
-export default function RoboMasterPage({ day, dates = [], latest, curated, general }) {
+// 条目的“时间”：优先首见时间 first_seen，其次发布/更新时间。用于“最新”排序与 NEW 角标。
+function itemTime(it) {
+  const ts = it.first_seen || it.published_at || it.pushed_at || it.created_at;
+  const n = ts ? new Date(ts).getTime() : 0;
+  return Number.isFinite(n) ? n : 0;
+}
+
+export default function RoboMasterPage({ day, dates = [], latest, curated, general, rules }) {
   const { lang, favs } = useApp();
   const t = STRINGS[lang === "en" ? "en" : "zh"];
 
@@ -33,6 +40,11 @@ export default function RoboMasterPage({ day, dates = [], latest, curated, gener
   const [visible, setVisible] = useState(PAGE);
   const [active, setActive] = useState(null);
   const [curatedOpen, setCuratedOpen] = useState(true);
+  const [rulesOpen, setRulesOpen] = useState(false);
+  // 排序方式（论文 / 开源库 各自独立记忆）：default = 热度/星标，new = 最新收录
+  const [sort, setSort] = useState({ papers: "default", repos: "default" });
+  // 上次访问时间（论文 / 开源库 各自独立）：用于标 NEW；首次访问为 null（不标）
+  const [lastVisit, setLastVisit] = useState({ papers: null, repos: null });
 
   // 开源库子集：全部 = RM 原生 + 通用利器
   const repos = useMemo(() => {
@@ -50,14 +62,53 @@ export default function RoboMasterPage({ day, dates = [], latest, curated, gener
     try {
       const v = localStorage.getItem("robo_curated_open");
       if (v !== null) setCuratedOpen(v === "1");
+      const vr = localStorage.getItem("robo_rules_open");
+      if (vr !== null) setRulesOpen(vr === "1");
+
+      // 读取记忆的排序方式
+      const sp = localStorage.getItem("robo_sort_papers");
+      const sr = localStorage.getItem("robo_sort_repos");
+      setSort((s) => ({
+        papers: sp === "new" || sp === "default" ? sp : s.papers,
+        repos: sr === "new" || sr === "default" ? sr : s.repos,
+      }));
+
+      // 读取上次访问时间（用于 NEW 角标），随后把本次访问时间写回，作为下次基准
+      const lp = localStorage.getItem("robo_lastvisit_papers");
+      const lr = localStorage.getItem("robo_lastvisit_repos");
+      setLastVisit({
+        papers: lp ? Number(lp) : null,
+        repos: lr ? Number(lr) : null,
+      });
+      const now = String(Date.now());
+      localStorage.setItem("robo_lastvisit_papers", now);
+      localStorage.setItem("robo_lastvisit_repos", now);
     } catch {}
   }, []);
+
+  const changeSort = (val) =>
+    setSort((s) => {
+      const key = view === "papers" ? "papers" : "repos";
+      try {
+        localStorage.setItem(`robo_sort_${key}`, val);
+      } catch {}
+      return { ...s, [key]: val };
+    });
 
   const toggleCurated = () =>
     setCuratedOpen((v) => {
       const next = !v;
       try {
         localStorage.setItem("robo_curated_open", next ? "1" : "0");
+      } catch {}
+      return next;
+    });
+
+  const toggleRules = () =>
+    setRulesOpen((v) => {
+      const next = !v;
+      try {
+        localStorage.setItem("robo_rules_open", next ? "1" : "0");
       } catch {}
       return next;
     });
@@ -69,6 +120,10 @@ export default function RoboMasterPage({ day, dates = [], latest, curated, gener
   }, [categories, lang]);
 
   const isPapers = view === "papers";
+  const curSort = isPapers ? sort.papers : sort.repos;
+  const curLastVisit = isPapers ? lastVisit.papers : lastVisit.repos;
+  // 仅当有上次访问记录时才标 NEW；首次访问（null）不标。
+  const isNew = (it) => curLastVisit != null && itemTime(it) > curLastVisit;
 
   const filtered = useMemo(() => {
     let list = isPapers ? [...papers] : [...repos];
@@ -86,10 +141,11 @@ export default function RoboMasterPage({ day, dates = [], latest, curated, gener
           .includes(q)
       );
     }
-    if (isPapers) list.sort((a, b) => (b.heat || 0) - (a.heat || 0));
+    if (curSort === "new") list.sort((a, b) => itemTime(b) - itemTime(a));
+    else if (isPapers) list.sort((a, b) => (b.heat || 0) - (a.heat || 0));
     else list.sort((a, b) => (b.stars || 0) - (a.stars || 0));
     return list;
-  }, [isPapers, papers, repos, cat, onlyFav, query, favs]);
+  }, [isPapers, papers, repos, cat, onlyFav, query, favs, curSort]);
 
   useEffect(() => {
     setVisible(PAGE);
@@ -155,6 +211,82 @@ export default function RoboMasterPage({ day, dates = [], latest, curated, gener
           </section>
         )}
 
+        {rules && (
+          <section className="curated rules-panel">
+            <button
+              type="button"
+              className="section-head"
+              onClick={toggleRules}
+              aria-expanded={rulesOpen}
+            >
+              <span className={`chevron ${rulesOpen ? "open" : ""}`}>▸</span>
+              <span className="section-title">📖 {t.roboRules}</span>
+              <span className="section-count">
+                {rules.season} · {rules.competition}
+              </span>
+            </button>
+            {rulesOpen && (
+              <div className="rules-body">
+                <p className="section-sub">{t.roboRulesDesc}</p>
+                {rules.summary_zh && lang !== "en" && (
+                  <p className="rules-summary">{rules.summary_zh}</p>
+                )}
+
+                {rules.changes_zh?.length > 0 && lang !== "en" && (
+                  <div className="rules-block">
+                    <h4>{t.roboRulesChanges}</h4>
+                    <ul>
+                      {rules.changes_zh.map((c, i) => (
+                        <li key={i}>{c}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {rules.tasks?.length > 0 && (
+                  <div className="rules-block">
+                    <h4>{t.roboRulesTasks}</h4>
+                    <div className="rules-tasks">
+                      {rules.tasks.map((task) => (
+                        <div className="rules-task" key={task.id}>
+                          <div className="rules-task-top">
+                            <span className="rules-task-name">{task.name_zh}</span>
+                            {(task.categories || []).map((k) => (
+                              <span className="field-chip" key={k}>
+                                {labelMap[k] || k}
+                              </span>
+                            ))}
+                          </div>
+                          {task.desc_zh && (
+                            <p className="rules-task-desc">{task.desc_zh}</p>
+                          )}
+                          {task.scoring_zh && (
+                            <p className="rules-task-score">
+                              <b>{t.roboRulesScoring}：</b>
+                              {task.scoring_zh}
+                            </p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {rules.sources?.length > 0 && (
+                  <div className="rules-block">
+                    <h4>{t.roboRulesSource}</h4>
+                    <ul className="rules-sources">
+                      {rules.sources.map((s, i) => (
+                        <li key={i}>{s}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )}
+          </section>
+        )}
+
         <DateNav
           date={day.date}
           dates={dates}
@@ -211,6 +343,13 @@ export default function RoboMasterPage({ day, dates = [], latest, curated, gener
             />
           </div>
           <div className="filters">
+            <label className="sort-select" title={t.roboSortLabel}>
+              <span className="sort-label">{t.roboSortLabel}</span>
+              <select value={curSort} onChange={(e) => changeSort(e.target.value)}>
+                <option value="default">{t.roboSortDefault}</option>
+                <option value="new">{t.roboSortNewest}</option>
+              </select>
+            </label>
             <button
               className={`btn ${onlyFav ? "active" : ""}`}
               onClick={() => setOnlyFav((v) => !v)}
@@ -249,6 +388,7 @@ export default function RoboMasterPage({ day, dates = [], latest, curated, gener
                     paper={p}
                     fieldLabel={labelMap[(p.categories || [])[0]] || t.roboOther}
                     onOpen={setActive}
+                    isNew={isNew(p)}
                   />
                 ))
               : shown.map((r) => (
@@ -257,6 +397,7 @@ export default function RoboMasterPage({ day, dates = [], latest, curated, gener
                     repo={r}
                     tags={(r.categories || []).map((k) => labelMap[k] || k)}
                     badge={badgeFor(r)}
+                    isNew={isNew(r)}
                   />
                 ))}
           </div>

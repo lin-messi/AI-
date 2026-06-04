@@ -1,5 +1,12 @@
 // RoboMaster 算法资料站的配置：分类体系 + 关键词规则 + arXiv 分类 + GitHub 查询 + 限额。
 // 论文与开源库共用一套分类（CATEGORIES），通过关键词规则（CATEGORY_RULES）做多标签归类。
+//
+// 注：以下关键词为长期稳定的基础集；模块加载时会再叠加 data/rm-rules.json 里赛事规则
+// 提炼出的关键词（见文件底部），使检索范围随每年新规则自动微调。
+
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 // —— 分类体系（按优先级排序，便于展示时分组与高亮）——
 export const CATEGORIES = [
@@ -212,3 +219,41 @@ export const RECENT_DAYS_PAPERS = 14; // 仅保留近 N 天论文
 export const REPO_MIN_STARS = 10; // 开源库最低星标
 export const FEATURED_TOP = 4; // 论文中标记为精选（生成精读）的数量
 export const TRANSLATE_TITLE_TOP = 20; // 预翻译标题的论文数量
+
+// ====== 叠加赛事规则驱动的检索关键词（data/rm-rules.json）======
+// 规则文件由 npm run rules:build 从官方手册提炼。这里把它的 searchKeywords 与各任务的
+// 英文关键词并入上面的基础集，使「论文/开源」的检索范围随新赛季规则自动调整。
+const __feedsDir = path.dirname(fileURLToPath(import.meta.url));
+
+function loadRMRules() {
+  try {
+    const p = path.join(__feedsDir, "..", "data", "rm-rules.json");
+    return JSON.parse(fs.readFileSync(p, "utf8"));
+  } catch {
+    return null;
+  }
+}
+
+export const RM_RULES = loadRMRules();
+
+function mergeUnique(target, extra) {
+  if (!Array.isArray(extra)) return;
+  const seen = new Set(target.map((s) => String(s).toLowerCase()));
+  for (const raw of extra) {
+    const v = String(raw || "").trim();
+    if (v && !seen.has(v.toLowerCase())) {
+      target.push(v);
+      seen.add(v.toLowerCase());
+    }
+  }
+}
+
+if (RM_RULES) {
+  const sk = RM_RULES.searchKeywords || {};
+  mergeUnique(PAPER_TOPIC_KW, sk.paperTopic);
+  mergeUnique(PAPER_CTX_KW, sk.paperCtx);
+  mergeUnique(GITHUB_QUERIES, sk.githubQueries);
+  mergeUnique(GENERAL_TOPIC_QUERIES, sk.generalTopics);
+  // 任务的英文关键词并入论文主题词，扩大召回（如 anti-spin / windmill / 6dof pose）。
+  for (const task of RM_RULES.tasks || []) mergeUnique(PAPER_TOPIC_KW, task.keywords_en);
+}

@@ -4,7 +4,7 @@ import { useApp } from "./AppProvider";
 import { STRINGS } from "@/lib/i18n";
 import { timeAgo } from "@/lib/format";
 
-export default function PaperCard({ paper, fieldLabel, onOpen }) {
+export default function PaperCard({ paper, fieldLabel, onOpen, isNew }) {
   const { lang, favs, reads, toggleFav, toggleRead } = useApp();
   const t = STRINGS[lang === "en" ? "en" : "zh"];
 
@@ -21,6 +21,10 @@ export default function PaperCard({ paper, fieldLabel, onOpen }) {
   const { main: title, alt: titleAlt } = pick(paper.title_zh, paper.title_en);
   const { main: abstract } = pick(paper.abstract_zh, paper.abstract_en);
 
+  const rmValue = paper.rm?.value;
+  const rmValueLabel =
+    rmValue === "high" ? t.roboUsageHigh : rmValue === "low" ? t.roboUsageLow : t.roboUsageMid;
+
   return (
     <article className={`card ${isRead ? "read" : ""}`}>
       <div className="card-top">
@@ -34,6 +38,16 @@ export default function PaperCard({ paper, fieldLabel, onOpen }) {
       </div>
 
       <div className="subtags">
+        {isNew && (
+          <span className="new-badge" title={t.roboNewHint}>
+            {t.roboNew}
+          </span>
+        )}
+        {rmValue && (
+          <span className={`usage-badge ${rmValue}`} title={t.roboUsageValue}>
+            {rmValueLabel}
+          </span>
+        )}
         <span className="field-chip">{fieldLabel}</span>
         {paper.featured && <span className="featured-badge">{t.featuredBadge}</span>}
         {paper.subtags?.map((s) => (

@@ -1,0 +1,111 @@
+{
+  "season": "2026",
+  "competition": "RMUC + RMUL",
+  "version": "RMUC V1.0.0 / RMUL V1.0.0",
+  "publishedAt": "2025-10-21",
+  "extractedAt": "2026-06-04T00:00:00.000Z",
+  "monitorUrl": "",
+  "sources": [
+    "RoboMaster 2026 机甲大师超级对抗赛比赛规则手册 V1.0.0（20251021）",
+    "RoboMaster 2026 机甲大师超级对抗赛参赛手册 V1.1.0（20251021）",
+    "RoboMaster 2026 机甲大师高校联盟赛比赛规则手册 V1.0.0（20251021）",
+    "RoboMaster 2026 机甲大师高校联盟赛参赛手册 V1.0.0（20251021）"
+  ],
+  "summary_zh": "RMUC 2026 超级对抗赛为 7v7 对抗，每方含英雄、工程、步兵、空中、哨兵、飞镖、雷达；通过发射弹丸攻击对方装甲板、能量机关、前哨站与基地获胜。RMUL 2026 高校联盟赛设 3V3 对抗赛（英雄/步兵/哨兵）、步兵对抗赛（1v1）、工程挑战赛（装配能量单元）。算法核心集中在：视觉自瞄、能量机关预测打击、哨兵全自动导航决策、雷达全场感知标记、飞镖目标瞄准、工程视觉装配。",
+  "changes_zh": [
+    "取消英雄、工程、步兵机器人的半自动控制方式，哨兵机器人新增半自动控制方式（全自动哨兵血量/性能更高）",
+    "取消大小资源岛、兑换站及矿石，新增资源区、科技核心及能量单元；工程机器人改为装配能量单元任务",
+    "调整雷达相关机制，新增反制空中机器人与雷达解析信息波功能",
+    "调整飞镖命中收益，新增末端移动目标（收益最高 1000）",
+    "调整能量机关、基地/前哨站、场地增益、经验与性能体系",
+    "RMUL 3V3：取消掩体与视觉标签、新增高地；工程挑战赛由兑换任务改为装配任务"
+  ],
+  "tasks": [
+    {
+      "id": "autoaim",
+      "name_zh": "自瞄 / 装甲板识别",
+      "categories": ["aim"],
+      "robots": ["英雄", "步兵", "哨兵", "空中"],
+      "desc_zh": "识别敌方装甲板（中心数字 + 两侧 LED 灯条），估计位姿，云台自动瞄准并补偿弹道与延迟后击打。需应对小陀螺/反陀螺、运动预测与多目标切换。",
+      "scoring_zh": "命中敌方机器人装甲板造成扣血；射击受初速度（17mm 上限 25m/s 等）、热量与冷却限制。",
+      "keywords_zh": ["自瞄", "装甲板", "灯条", "目标检测", "弹道", "反陀螺", "云台", "上位机", "步兵视觉"],
+      "keywords_en": ["armor plate detection", "auto-aim", "object detection", "keypoint detection", "pose estimation", "target tracking", "ekf tracking", "ballistic", "anti-spin"]
+    },
+    {
+      "id": "rune",
+      "name_zh": "能量机关 / 打符",
+      "categories": ["rune", "aim"],
+      "robots": ["步兵"],
+      "desc_zh": "用弹丸击打旋转的能量机关装甲模块以激活增益。大能量机关转速按正弦目标函数 spd=a·sin(ω·t)+b 周期变化（a∈[0.78,1.045]，ω∈[1.884,2.0]，b=2.09−a），与目标函数时间误差≤500ms，需识别流水灯/箭头并做转速估计与命中点预测；检测精度径向 1mm，装甲分 1~10 环。",
+      "scoring_zh": "按平均环数与激活灯臂数提供攻击/防御/热量冷却增益，环数越高、灯臂越多增益越强、持续越久。",
+      "keywords_zh": ["能量机关", "大符", "符叶", "风车", "转速预测", "命中预测"],
+      "keywords_en": ["power rune", "windmill", "fan blade detection", "rotation speed estimation", "trajectory prediction"]
+    },
+    {
+      "id": "sentry",
+      "name_zh": "哨兵自主导航与决策",
+      "categories": ["nav", "planning", "slam"],
+      "robots": ["哨兵"],
+      "desc_zh": "哨兵可全自动运行：需自主建图定位、跨越高地/公路/隧道/飞坡等地形、规划路径、自主决策占领增益点并自瞄交火；可接收雷达数据做全局决策。",
+      "scoring_zh": "占领基地/高地/前哨站/补给区等增益点获得增益与经济；存活与输出影响战局。",
+      "keywords_zh": ["哨兵", "导航", "决策", "避障", "行为树", "建图", "里程计"],
+      "keywords_en": ["autonomous navigation", "robot navigation", "obstacle avoidance", "behavior tree", "decision making", "slam", "lidar odometry", "costmap", "nav2"]
+    },
+    {
+      "id": "radar",
+      "name_zh": "雷达全场感知与标记",
+      "categories": ["radar"],
+      "robots": ["雷达"],
+      "desc_zh": "雷达自动获取全场信息，定位与标记敌方机器人位置并发送给己方；新增反制对方空中机器人与解析对方信息波功能。固定基座视角下需多相机/多目标检测、跟踪与全场定位。",
+      "scoring_zh": "标记敌方机器人可触发对其的易伤/增益，提升己方打击效率。",
+      "keywords_zh": ["雷达", "全场定位", "多目标跟踪", "重识别"],
+      "keywords_en": ["radar station", "multi-camera", "global localization", "multi-object tracking", "re-identification", "bird's eye view"]
+    },
+    {
+      "id": "dart",
+      "name_zh": "飞镖目标瞄准",
+      "categories": ["aim"],
+      "robots": ["飞镖"],
+      "desc_zh": "飞镖系统瞄准并击打对方前哨站/基地。新增末端移动目标，收益最高，需对固定/随机/移动目标做识别与瞄准修正。",
+      "scoring_zh": "固定目标 200、随机固定 300、随机移动 625、末端移动目标 1000。",
+      "keywords_zh": ["飞镖", "目标识别", "移动目标"],
+      "keywords_en": ["target detection", "moving target", "aiming", "visual servoing"]
+    },
+    {
+      "id": "engineer",
+      "name_zh": "工程视觉装配（能量单元）",
+      "categories": ["aim", "planning"],
+      "robots": ["工程"],
+      "desc_zh": "新赛季工程机器人改为装配能量单元任务（取消矿石兑换）。需对科技核心/能量单元做视觉定位与位姿估计，并控制机械臂完成抓取与精准装配。",
+      "scoring_zh": "综合装配难度与速度计分排名（RMUL 工程挑战赛）。",
+      "keywords_zh": ["机械臂", "视觉定位", "位姿估计", "抓取", "装配"],
+      "keywords_en": ["manipulation", "grasping", "pose estimation", "6dof pose", "visual servoing", "robotic arm"]
+    },
+    {
+      "id": "strategy",
+      "name_zh": "多机协同与策略学习",
+      "categories": ["rl", "nav"],
+      "robots": ["哨兵", "全队"],
+      "desc_zh": "哨兵/雷达多机通信与协同；可用强化学习/模仿学习训练自主交火、走位与团队策略，再迁移到实车。",
+      "scoring_zh": "团队整体经济、增益与击杀决定胜负。",
+      "keywords_zh": ["强化学习", "模仿学习", "多机协同", "策略"],
+      "keywords_en": ["reinforcement learning", "multi-agent reinforcement", "imitation learning", "sim-to-real", "policy"]
+    },
+    {
+      "id": "sim",
+      "name_zh": "仿真与 sim-to-real",
+      "categories": ["sim", "rl"],
+      "robots": ["全队"],
+      "desc_zh": "用仿真环境/数字孪生训练与验证感知、导航、策略算法，降低实车调试成本，再做 sim-to-real 迁移。",
+      "scoring_zh": "间接提升各任务表现。",
+      "keywords_zh": ["仿真", "数字孪生", "嵌入式", "下位机"],
+      "keywords_en": ["simulation", "simulator", "isaac", "mujoco", "gazebo", "digital twin", "sim-to-real"]
+    }
+  ],
+  "searchKeywords": {
+    "paperTopic": ["moving target detection", "6dof pose estimation", "manipulation grasping", "multi-agent reinforcement learning"],
+    "paperCtx": ["turret", "gimbal", "shooting"],
+    "githubQueries": ["robomaster engineer arm", "robomaster sentry slam"],
+    "generalTopics": ["topic:pose-estimation", "topic:manipulation"]
+  }
+}

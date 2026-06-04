@@ -33,7 +33,7 @@ function fmtStars(n) {
   return String(n);
 }
 
-export default function RepoCard({ repo, tags, badge }) {
+export default function RepoCard({ repo, tags, badge, isNew }) {
   const { lang, favs, reads, toggleFav, toggleRead } = useApp();
   const t = STRINGS[lang === "en" ? "en" : "zh"];
 
@@ -47,6 +47,10 @@ export default function RepoCard({ repo, tags, badge }) {
     return { main: zh || en, alt: null };
   };
   const { main: desc, alt: descAlt } = pick(repo.description_zh, repo.description_en);
+
+  const rmValue = repo.rm?.value;
+  const rmValueLabel =
+    rmValue === "high" ? t.roboUsageHigh : rmValue === "low" ? t.roboUsageLow : t.roboUsageMid;
 
   return (
     <article className={`card ${isRead ? "read" : ""}`}>
@@ -74,6 +78,17 @@ export default function RepoCard({ repo, tags, badge }) {
       </h3>
 
       <div className="subtags">
+        {isNew && (
+          <span className="new-badge" title={t.roboNewHint}>
+            {t.roboNew}
+          </span>
+        )}
+        {rmValue && (
+          <span className={`usage-badge ${rmValue}`} title={t.roboUsageValue}>
+            {rmValueLabel}
+          </span>
+        )}
+        {repo.rm?.task && <span className="task-chip">{repo.rm.task}</span>}
         {tags?.map((s) => (
           <span className="field-chip" key={s}>
             {s}

@@ -5,6 +5,7 @@ import {
   getRoboIndex,
   getRoboCurated,
   getRoboGeneral,
+  getRoboRules,
 } from "@/lib/robomaster";
 
 // ISR 缓存：RM 资料每 2 小时抓取一次，缓存 10 分钟可加速首屏；
@@ -23,6 +24,7 @@ export default function Robomaster() {
   const latest = getRoboIndex().latest;
   const curated = getRoboCurated();
   const general = getRoboGeneral();
+  const rules = getRoboRules();
   return (
     <RoboMasterPage
       day={day}
@@ -30,6 +32,7 @@ export default function Robomaster() {
       latest={latest}
       curated={curated}
       general={general}
+      rules={rules}
     />
   );
 }

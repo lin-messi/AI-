@@ -62,6 +62,10 @@ export default function PaperReader({ paper, onClose }) {
     ? `/api/paper-pdf?url=${encodeURIComponent(data.pdf_url)}`
     : "";
 
+  const rmValue = data.rm?.value;
+  const rmValueLabel =
+    rmValue === "high" ? t.roboUsageHigh : rmValue === "low" ? t.roboUsageLow : t.roboUsageMid;
+
   return (
     <div className="reader-mask" onClick={onClose}>
       <div className="reader" onClick={(e) => e.stopPropagation()}>
@@ -85,6 +89,23 @@ export default function PaperReader({ paper, onClose }) {
           <div className="why" style={{ marginTop: 12 }}>
             <b>{t.highlight}：</b>
             {data.highlight_zh}
+          </div>
+        )}
+
+        {data.rm?.usage && (
+          <div className="rm-usage">
+            <div className="rm-usage-head">
+              <span className="rm-usage-title">{t.roboUsage}</span>
+              {rmValue && (
+                <span className={`usage-badge ${rmValue}`}>{rmValueLabel}</span>
+              )}
+              {data.rm.task && (
+                <span className="task-chip">
+                  {t.roboUsageTask}：{data.rm.task}
+                </span>
+              )}
+            </div>
+            <p className="rm-usage-text">{data.rm.usage}</p>
           </div>
         )}
 

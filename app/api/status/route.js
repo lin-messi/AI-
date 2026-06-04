@@ -2,7 +2,7 @@
 import { getLatest } from "@/lib/news";
 import { getLatestPapers } from "@/lib/papers";
 import { getLatestGithub } from "@/lib/github";
-import { getLatestRobo, getRoboGeneral } from "@/lib/robomaster";
+import { getLatestRobo, getRoboGeneral, getRoboRules } from "@/lib/robomaster";
 
 export const dynamic = "force-dynamic";
 
@@ -12,6 +12,7 @@ export async function GET() {
   const github = getLatestGithub();
   const robo = getLatestRobo();
   const roboGeneral = getRoboGeneral();
+  const rules = getRoboRules();
   return Response.json(
     {
       news: {
@@ -37,6 +38,13 @@ export async function GET() {
           (robo.repos?.items || []).length +
           (roboGeneral.items || []).length,
       },
+      rules: rules
+        ? {
+            season: rules.season || null,
+            version: rules.version || null,
+            extractedAt: rules.extractedAt || null,
+          }
+        : null,
     },
     { headers: { "Cache-Control": "no-store" } }
   );
