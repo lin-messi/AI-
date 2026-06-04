@@ -1,0 +1,2571 @@
+{
+  "date": "2026-06-05",
+  "generatedAt": "2026-06-04T17:41:07.807Z",
+  "categories": [
+    {
+      "key": "aim",
+      "label_zh": "自瞄 / 目标检测",
+      "label_en": "Auto-Aim / Detection"
+    },
+    {
+      "key": "rune",
+      "label_zh": "能量机关",
+      "label_en": "Power Rune"
+    },
+    {
+      "key": "slam",
+      "label_zh": "SLAM / 建图",
+      "label_en": "SLAM & Mapping"
+    },
+    {
+      "key": "nav",
+      "label_zh": "导航 / 决策",
+      "label_en": "Navigation & Decision"
+    },
+    {
+      "key": "planning",
+      "label_zh": "路径规划",
+      "label_en": "Path Planning"
+    },
+    {
+      "key": "rl",
+      "label_zh": "强化学习",
+      "label_en": "Reinforcement Learning"
+    },
+    {
+      "key": "radar",
+      "label_zh": "雷达 / 全场定位",
+      "label_en": "Radar & Localization"
+    },
+    {
+      "key": "sim",
+      "label_zh": "仿真 / 平台",
+      "label_en": "Simulation & Platform"
+    },
+    {
+      "key": "other",
+      "label_zh": "其他",
+      "label_en": "Other"
+    }
+  ],
+  "papers": {
+    "count": 30,
+    "items": [
+      {
+        "id": "arxiv:2606.04923",
+        "arxiv_id": "2606.04923",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.AI",
+          "cs.CL"
+        ],
+        "title_en": "Reproducing, Analyzing, and Detecting Reward Hacking in Rubric-Based Reinforcement Learning",
+        "title_zh": "基于评分标准的强化学习中奖励破解的复现、分析与检测",
+        "abstract_en": "Rubric-based reinforcement learning (RL) uses an LLM-as-a-Judge (LaaJ) to score model outputs according to rubrics as rewards. However, policy models may exploit latent biases in the judge, leading to reward hacking and ineffective or unsafe training outcomes. In real-world rubric-based RL, such hacking behaviors are often subtle and entangled with multiple judge biases, making them difficult to analyze, detect, and mitigate. In this paper, we introduce CHERRL, a controllable hacking environment for rubric-based RL. By injecting known biases into LaaJ, CHERRL enables stable reproduction of reward hacking, explicit observation of reward divergence, and precise identification of hacking onset. This provides a clean experimental testbed for studying the mechanisms and mitigations of reward hacking in rubric-based RL. To demonstrate its utility, we analyze different judge biases from the perspectives of discoverability and exploitability, and explore an agent-based system for automatically detecting reward hacking onset from training logs. The code and environment are publicly available at https://github.com/THUAIS-Lab/CHERRL.",
+        "abstract_zh": "基于评分标准的强化学习使用大语言模型作为裁判（LaaJ）根据评分标准对模型输出进行评分作为奖励。然而，策略模型可能利用裁判中的潜在偏见，导致奖励破解和无效或不安全的训练结果。在真实的基于评分标准的强化学习中，这种破解行为通常很微妙，并与多种裁判偏见纠缠在一起，使得分析、检测和缓解变得困难。本文介绍了CHERRL，一个用于基于评分标准的强化学习的可控破解环境。通过向LaaJ注入已知偏见，CHERRL能够稳定复现奖励破解，明确观察奖励发散，并精确识别破解开始时间。这为研究基于评分标准的强化学习中奖励破解的机制和缓解措施提供了一个干净的实验平台。为了展示其实用性，我们从可发现性和可利用性的角度分析了不同的裁判偏见，并探索了一个基于代理的系统，用于从训练日志中自动检测奖励破解的开始。代码和环境已在https://github.com/THUAIS-Lab/CHERRL公开。",
+        "highlight_zh": "提出CHERRL环境，通过注入已知偏见可控复现奖励破解，便于机制分析与检测。",
+        "digest_zh": "1. 研究问题：在基于评分标准的强化学习中，策略模型可能利用裁判（LLM）的潜在偏见进行奖励破解，导致训练无效或不安全。这种破解行为往往隐蔽且与多种偏见交织，难以分析和检测。\n2. 方法：提出CHERRL环境，通过向LLM裁判注入已知偏见（如对特定关键词的偏好），可控地复现奖励破解。该环境能稳定产生奖励发散现象，并精确定位破解开始的时间点，为研究提供干净的实验平台。\n3. 结果：利用CHERRL分析了不同偏见的可发现性和可利用性，并开发了一个基于代理的系统，能从训练日志中自动检测破解开始。\n4. 重要性：该工作为理解和缓解奖励破解提供了标准化工具，有助于提升基于评分标准的强化学习的安全性和可靠性。",
+        "authors": [
+          "Xuekang Wang",
+          "Zhuoyuan Hao",
+          "Shuo Hou",
+          "Hao Peng",
+          "Juanzi Li",
+          "Xiaozhi Wang"
+        ],
+        "url": "https://arxiv.org/abs/2606.04923v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.04923",
+        "html_url": "https://arxiv.org/abs/2606.04923",
+        "published_at": "2026-06-03T14:18:23.000Z",
+        "upvotes": 34,
+        "heat": 2008.6479802777778,
+        "featured": true,
+        "categories": [
+          "slam",
+          "rl"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "可用于检测强化学习训练中奖励破解问题，提升策略学习稳定性，适用于多机协同策略训练。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.05160",
+        "arxiv_id": "2606.05160",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "GRAIL: Generating Humanoid Loco-Manipulation from 3D Assets and Video Priors",
+        "title_zh": "GRAIL：从3D资产和视频先验生成人形机器人全身操作",
+        "abstract_en": "Scaling humanoid loco-manipulation requires robot-compatible demonstrations across diverse objects, whole-body motions, and scene geometries, but teleoperation and motion capture are difficult to scale because each collection depends on physical setups, instrumented actors, and robot operation. We present GRAIL, a digital generation pipeline that remains fully virtual until deployment: it composes 3D assets, simulator-ready scenes, and priors from video foundation models (VFMs) to synthesize interactions without rebuilding physical environments or teleoperating the robot. Rather than reconstructing unconstrained in-the-wild videos, GRAIL starts from fully specified 3D configurations in which object geometry, camera parameters, metric scale, environment depth, and a robot-proportioned character are known before video generation and reused during reconstruction. This privileged setup better conditions 4D recovery, allowing model-based object tracking, human motion estimation, and interaction-aware optimization to reconstruct metric 4D human-object interaction (HOI) trajectories with reduced depth ambiguity and morphology mismatch. We retarget the recovered motions to a humanoid robot and train complementary task-general trackers: an object-aware latent adaptor for manipulation and a scene-aware tracker for terrain traversal. GRAIL produces over 20,000 sequences spanning pick-up, object manipulation, sitting, and terrain traversal. Using only GRAIL-generated data, we train egocentric visual policies through a sim-to-real pipeline and deploy them on a Unitree G1 humanoid, achieving 84\\% real-world success on diverse object pick-up and 90\\% success on stair-climbing.",
+        "abstract_zh": "扩展人形机器人的全身操作能力需要跨不同物体、全身运动和场景几何的机器人兼容演示，但遥操作和动作捕捉难以规模化，因为每次采集都依赖于物理设置、仪器化演员和机器人操作。我们提出GRAIL，一个完全虚拟的数字生成流水线，直到部署前都保持虚拟：它组合3D资产、模拟器就绪场景和视频基础模型（VFM）的先验，无需重建物理环境或遥操作机器人即可合成交互。GRAIL不是从无约束的野外视频中重建，而是从完全指定的3D配置开始，其中物体几何、相机参数、度量尺度、环境深度和机器人比例的角色在视频生成前已知，并在重建过程中重用。这种特权设置更好地条件化4D恢复，允许基于模型的物体跟踪、人体运动估计和交互感知优化，重建度量的4D人-物交互轨迹，减少深度模糊和形态不匹配。我们将恢复的运动重定向到人形机器人，并训练互补的任务通用跟踪器：一个用于操作的物体感知潜在适配器和一个用于地形穿越的场景感知跟踪器。GRAIL生成了超过20,000个序列，涵盖拾取、物体操作、坐和地形穿越。仅使用GRAIL生成的数据，我们通过仿真到现实的流水线训练了以自我为中心的视觉策略，并将其部署在Unitree G1人形机器人上，在多样物体拾取上实现了84%的真实世界成功率，在爬楼梯上实现了90%的成功率。",
+        "highlight_zh": "提出全虚拟生成流水线GRAIL，从3D资产和视频先验合成人形机器人全身操作数据，无需物理采集。",
+        "digest_zh": "1. 研究问题：人形机器人全身操作需要大量多样化演示数据，但遥操作和动作捕捉成本高、难以规模化。如何在不依赖物理实验的情况下生成高质量训练数据？\n2. 方法：提出GRAIL流水线，完全在虚拟环境中进行。它首先构建包含物体几何、相机参数、度量尺度等信息的3D场景，然后利用视频基础模型生成交互视频，再通过模型跟踪和优化恢复出精确的4D人-物交互轨迹。最后将轨迹重定向到人形机器人，并训练视觉策略。\n3. 结果：生成了超过2万个序列，涵盖多种操作任务。仅用生成数据训练的视觉策略在真实机器人上实现了84%的物体拾取成功率和90%的爬楼梯成功率。\n4. 重要性：该方法大幅降低了人形机器人数据采集的成本和难度，为规模化训练提供了可行路径，推动了全身操作技能的发展。",
+        "authors": [
+          "Tianyi Xie",
+          "Haotian Zhang",
+          "Jinhyung Park",
+          "Zi Wang",
+          "Bowen Wen",
+          "Jiefeng Li",
+          "Xueting Li",
+          "Qingwei Ben"
+        ],
+        "url": "https://arxiv.org/abs/2606.05160v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.05160",
+        "html_url": "https://arxiv.org/abs/2606.05160",
+        "published_at": "2026-06-03T17:57:45.000Z",
+        "upvotes": 5,
+        "heat": 562.3040916666666,
+        "featured": true,
+        "categories": [
+          "rl",
+          "radar",
+          "sim"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "提供从仿真到真实部署的全身操作流水线，可借鉴用于工程机器人抓取与装配任务的视觉策略训练。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.05159",
+        "arxiv_id": "2606.05159",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "X4Val: Learning Neural Surrogates for Variance-Reduced Policy Evaluation",
+        "title_zh": "X4Val：学习神经代理模型以实现方差缩减的策略评估",
+        "abstract_en": "Rigorous evaluation of learning-based robotic systems is an essential prerequisite for deployment. However, real-world test data is expensive to gather; moreover, in a typical iterative development context, data gathered from the latest policy is necessarily limited in scale. This motivates evaluation methodologies that make use of heterogeneous data sources, including simulation, historical policy logs, and data collected from related platforms or environments. While such auxiliary data are abundant and inexpensive, they are generally not directly representative of real-world outcomes -- for example, performance in simulation may differ substantially from performance in the real world -- making their principled use for high-confidence performance estimation challenging. In this paper, we introduce X4Val, a general framework for variance-reduced real-world metric estimation in the presence of non-paired, multi-domain data. X4Val embeds samples from real and auxiliary domains into a shared representation space and learns a transferable predictor of real-world metrics; this learned predictor is then incorporated into a control-variates estimator, enabling variance reduction even when paired samples are unavailable. We provide theoretical analysis and empirical evaluations on autonomous driving and real-world robot manipulation tasks, domains across which X4Val achieves up to 38.4% variance reduction and demonstrates consistent improvements over strong baselines. These results show that non-paired, heterogeneous data can be leveraged to substantially improve the sample efficiency of rigorous robotic system validation.",
+        "abstract_zh": "对基于学习的机器人系统进行严格评估是部署的必要前提。然而，真实世界测试数据获取成本高昂；此外，在典型的迭代开发环境中，从最新策略收集的数据规模必然有限。这促使评估方法利用异构数据源，包括仿真、历史策略日志以及从相关平台或环境收集的数据。虽然此类辅助数据丰富且廉价，但它们通常不能直接代表真实世界的结果——例如，仿真性能可能与真实世界性能存在显著差异——这使得它们在高置信度性能估计中的原则性使用具有挑战性。本文提出X4Val，一个在存在非配对多域数据时进行方差缩减的真实世界指标估计的通用框架。X4Val将来自真实域和辅助域的样本嵌入到共享表示空间中，并学习一个可迁移的真实世界指标预测器；然后将这个学习到的预测器纳入控制变量估计器，即使在没有配对样本的情况下也能实现方差缩减。我们提供了理论分析，并在自动驾驶和真实世界机器人操作任务上进行了实证评估，在这些任务中，X4Val实现了高达38.4%的方差缩减，并显示出相对于强基线的持续改进。这些结果表明，非配对的异构数据可以被利用来显著提高严格机器人系统验证的样本效率。",
+        "highlight_zh": "提出X4Val框架，利用非配对多域数据学习预测器，实现真实世界指标估计的方差缩减。",
+        "digest_zh": "1. 研究问题：机器人系统评估需要大量真实世界测试数据，但获取成本高。如何利用丰富的仿真、历史日志等辅助数据来提升真实世界性能估计的精度和样本效率？\n2. 方法：提出X4Val框架，将真实数据和辅助数据映射到共享表示空间，训练一个可迁移的预测器来估计真实世界指标。然后将该预测器作为控制变量，结合少量真实数据构建方差缩减估计器，即使数据非配对也能工作。\n3. 结果：在自动驾驶和机器人操作任务上，X4Val实现了高达38.4%的方差缩减，显著优于现有方法。\n4. 重要性：该工作使得利用廉价、丰富的异构数据来提升真实世界评估的可靠性成为可能，降低了机器人系统验证的成本，加速了迭代开发。",
+        "authors": [
+          "Rachel Luo",
+          "Michael Watson",
+          "Apoorva Sharma",
+          "Heng Yang",
+          "Han Qi",
+          "Edward Schmerling",
+          "Sushant Veer",
+          "Boris Ivanovic"
+        ],
+        "url": "https://arxiv.org/abs/2606.05159v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.05159",
+        "html_url": "https://arxiv.org/abs/2606.05159",
+        "published_at": "2026-06-03T17:57:09.000Z",
+        "upvotes": 0,
+        "heat": 312.29409166666665,
+        "featured": true,
+        "categories": [
+          "radar",
+          "sim"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "提出利用异构数据（仿真、历史日志）进行方差缩减的策略评估方法，可提升仿真到真实迁移的评估效率。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.05149",
+        "arxiv_id": "2606.05149",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.LG",
+          "eess.IV"
+        ],
+        "title_en": "An Open-Source Two-Stage Computer Vision Pipeline for Fine-Grained Vehicle Classification using Vision Transformers",
+        "title_zh": "基于视觉Transformer的开源两阶段计算机视觉流水线用于细粒度车辆分类",
+        "abstract_en": "Vehicle body type is a significant determinant of cyclist injury severity in overtaking crashes, yet automated tools for classifying vehicles into injury-risk-relevant categories from naturalistic roadway video do not exist in the open literature. Standard object detection benchmarks provide only coarse vehicle labels (car, truck, bus, motorcycle), while existing fine-grained recognition systems are trained on controlled imagery and lack evaluation for deployment robustness across recording sites. This paper presents an open-source two-stage computer vision pipeline combining a pre-trained RT-DETR detector for coarse vehicle localization with a fine-tuned Vision Transformer (ViT-Base/16) for six-category body-type classification: passenger car, SUV, pickup truck, minivan, large van, and commercial truck. A confidence-based abstention mechanism withholds Stage 2 predictions when softmax output falls below 0.60, producing unknown labels rather than silent misclassifications. Evaluated on 3,805 annotated overtaking events from a bicycle-lane corridor in Ann Arbor, Michigan (in-distribution), the pipeline achieved 0.94 accuracy with per-class F1 scores from 0.91 (minivan) to 0.97 (SUV). On an independent out-of-distribution evaluation of 311 events from an open cycling dataset without retraining, accuracy was 0.89. Three of four well-represented categories maintained F1 at or above 0.90 under domain shift. The largest degradation was observed for minivan (F1 = 0.72), driven by abstention rate rising from 2.4% to 25.0% rather than active misclassification, consistent with the mechanism propagating genuine model uncertainty. The full pipeline, including inference scripts, training code, evaluation utilities, and model weights, is released as open-source software to support reproducibility and reuse across roadside video archives and cycling safety research.",
+        "abstract_zh": "车辆车身类型是超车碰撞中骑行者受伤严重程度的重要决定因素，然而，在公开文献中，缺乏能够从自然场景道路视频中将车辆分类为与伤害风险相关的类别的自动化工具。标准目标检测基准仅提供粗略的车辆标签（轿车、卡车、公交车、摩托车），而现有的细粒度识别系统在受控图像上训练，且缺乏跨记录站点部署鲁棒性的评估。本文提出一个开源的两阶段计算机视觉流水线，结合预训练的RT-DETR检测器进行粗略车辆定位，以及微调的Vision Transformer（ViT-Base/16）进行六类车身类型分类：乘用车、SUV、皮卡、小型货车、大型货车和商用卡车。基于置信度的弃权机制在softmax输出低于0.60时抑制第二阶段预测，产生未知标签而非静默误分类。在来自密歇根州安娜堡自行车道走廊的3,805个标注超车事件（分布内）上评估，流水线达到0.94准确率，每类F1分数从0.91（小型货车）到0.97（SUV）。在来自开放骑行数据集的311个事件的独立分布外评估中（无需重新训练），准确率为0.89。四个代表性良好的类别中有三个在域偏移下保持F1不低于0.90。最大的退化出现在小型货车（F1=0.72），原因是弃权率从2.4%上升到25.0%，而非主动误分类，这与传播真实模型不确定性的机制一致。完整的流水线，包括推理脚本、训练代码、评估工具和模型权重，已作为开源软件发布，以支持进一步研究。",
+        "highlight_zh": "提出开源两阶段流水线，结合RT-DETR和ViT实现细粒度车辆分类，含置信度弃权机制，鲁棒性高。",
+        "digest_zh": "1. 研究问题：在自行车超车事故中，车辆类型影响骑行者受伤严重程度，但现有工具只能识别粗粒度类别（如轿车、卡车），无法区分SUV、皮卡等细粒度类型，且缺乏在真实道路视频上的鲁棒评估。\n2. 方法：构建两阶段流水线：第一阶段用RT-DETR检测器定位车辆，第二阶段用微调的Vision Transformer（ViT-Base/16）将车辆分为六类（乘用车、SUV、皮卡、小型货车、大型货车、商用卡车）。当分类置信度低于0.6时，输出“未知”而非强行分类，避免误判。\n3. 结果：在本地数据集上准确率94%，在外部数据集上准确率89%。域偏移下多数类别F1仍高于0.9，小型货车因弃权率上升导致F1下降，但并非误分类。\n4. 重要性：该流水线为交通安全研究提供了细粒度车辆分类的自动化工具，且开源发布，便于复现和部署，有助于分析不同车辆类型对骑行者风险的影响。",
+        "authors": [
+          "Gandhimathi Padmanaban",
+          "Fred Feng"
+        ],
+        "url": "https://arxiv.org/abs/2606.05149v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.05149",
+        "html_url": "https://arxiv.org/abs/2606.05149",
+        "published_at": "2026-06-03T17:53:33.000Z",
+        "upvotes": 0,
+        "heat": 312.23409166666664,
+        "featured": true,
+        "categories": [
+          "aim",
+          "planning",
+          "rl"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "提供细粒度车辆分类流水线，可改造用于装甲板数字识别或机器人类型分类。",
+          "task_id": "autoaim",
+          "task": "自瞄 / 装甲板识别",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.05143",
+        "arxiv_id": "2606.05143",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "HORIZON: Recoverability-Governed Curriculum for Physical-Domain Scaling",
+        "title_zh": "HORIZON：面向物理域规模化的可恢复性引导课程",
+        "abstract_en": "Scaling robust robot policies requires more than broader randomization, because physical-domain experience must remain organized and learnable throughout training. We study when a policy can benefit from harder physics and identify recoverability as a central constraint in on-policy physical-domain scaling. In on-policy training, new dynamics are useful only insofar as they remain close enough to the current policy to generate corrective on-policy data, rather than collapsing rollouts into unrecoverable failures. Using quadruped locomotion as a physically demanding benchmark for embodied generalization, we introduce HORIZON, a checkpointed frontier curriculum that expands physical domains only within the current policy's recoverable boundary. HORIZON uses rollback and boundary refinement to govern each expansion step, turning fixed randomization into a continual process of physical-domain growth. Experiments reveal three regularities of physical-domain expansion. First, direct domain widening is uneven across physical axes and often unlearnable without staged ordering. Second, domain composition is non-monotonic, and adding more domains beyond a compact core can dilute recoverable joint samples and reduce overall robustness. Third, offline distillation of isolated experts cannot substitute for the joint interaction generated by on-policy curriculum. Together, these results frame physical-domain generalization as a continual growth problem for embodied control, with recoverability as the organizing principle for on-policy expansion.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Chenhao Bai",
+          "Liqin Lu",
+          "Kaijun Wang",
+          "Hui Chen",
+          "Jin-Chuan Shi",
+          "Yuyang Liu",
+          "Hao Chen",
+          "Chunhua Shen"
+        ],
+        "url": "https://arxiv.org/abs/2606.05143v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.05143",
+        "html_url": "https://arxiv.org/abs/2606.05143",
+        "published_at": "2026-06-03T17:50:02.000Z",
+        "upvotes": 0,
+        "heat": 312.17548055555557,
+        "featured": false,
+        "categories": [
+          "radar"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "研究物理域训练中可恢复性引导课程，可优化哨兵导航策略在复杂地形下的训练。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.05130",
+        "arxiv_id": "2606.05130",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.AI"
+        ],
+        "title_en": "Towards Efficient and Evidence-grounded Mobility Prediction with LLM-Driven Agent",
+        "title_zh": "迈向高效且基于证据的LLM驱动智能体移动性预测",
+        "abstract_en": "Individual-level mobility prediction is central to urban simulation, transportation planning, and policy analysis. Supervised sequence models achieve strong accuracy but require task-specific training and offer limited decision-level transparency. Recent LLM-based methods improve interpretability, yet mostly rely on static prompts and single-pass inference, limiting their ability to seek additional evidence when mobility signals are weak or conflicting. We propose \\method{}, a training-free LLM-driven agent framework that formulates next-location prediction as adaptive evidence-controlled decision making. \\method{} resolves routine cases through a fast path based on historical regularity, while ambiguous cases trigger iterative tool use over recent trajectories, historical behavior, stay-move likelihood, and geographical evidence. Across three mobility datasets, AgentMob achieves the strongest overall performance among training-free LLM-based methods, with GPT-5.4 reaching 71.42\\% Acc@1 on BW, 33.14\\% on YJMob100K, and 33.50\\% on Shanghai ISP. On BW non-fast-path cases, the LLM controller improves Acc@1 from 30.65\\% to 48.62\\% over a same-tool statistical baseline, showing that its main benefit lies in resolving ambiguous predictions through adaptive evidence gathering. Our code is available at https://github.com/Unknown-zoo/AgentMob.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Linyao Chen",
+          "Qinlao Zhao",
+          "Zechen Li",
+          "Mingming Li",
+          "Likun Ni",
+          "Jinyu Chen",
+          "Yuhao Yao",
+          "Xuan Song"
+        ],
+        "url": "https://arxiv.org/abs/2606.05130v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.05130",
+        "html_url": "https://arxiv.org/abs/2606.05130",
+        "published_at": "2026-06-03T17:34:01.000Z",
+        "upvotes": 0,
+        "heat": 311.9085361111111,
+        "featured": false,
+        "categories": [
+          "slam",
+          "nav",
+          "sim"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "提出LLM驱动的移动性预测框架，可借鉴用于敌方机器人运动预测或路径规划。",
+          "task_id": "autoaim",
+          "task": "自瞄 / 装甲板识别",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2606.05071",
+        "arxiv_id": "2606.05071",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "InstantRetouch: Efficient and High-Fidelity Instruction-Guided Image Retouching with Bilateral Space",
+        "title_zh": "InstantRetouch：基于双边空间的高效高保真指令引导图像修饰",
+        "abstract_en": "Language-guided photo retouching aims to adjust color and tone while preserving geometry and texture. Recently, diffusion-based retouching shows a superior visual quality, but often struggles with both fidelity issues due to its generative nature and efficiency because of its iterative sampling process. In this work, we propose an efficient and fidelity-preserving retouching method using bilateral space manipulation, which is both compact and content-decoupled. Specifically, instead of directly editing pixels or image latents, our model predicts a low-resolution bilateral grid of affine transforms, which are sliced using a learned guidance map and then applied to the full-resolution image. This approach yields both high fidelity and improved efficiency. To retain strong priors of a pretrained generative model, we distill a multi-step diffusion model into our bilateral grid framework using Variational Score Distillation, complemented by a prompt alignment loss to guide instruction-following behavior. Additionally, we introduce a new benchmark and evaluate our method across multiple dimensions: fidelity, instruction following, and efficiency. Compared to the latest retouch methods, like Gemini-2.5-Flash (Nano-Banana), our method can avoid content drift, significantly improve latency, and generate visually pleasing edits, while maintaining a high level of fidelity. Project page: https://openimaginglab.github.io/InstantRetouch/.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Jiarui Wu",
+          "Yujin Wang",
+          "Ruikang Li",
+          "Fan Zhang",
+          "Mingde Yao",
+          "Tianfan Xue"
+        ],
+        "url": "https://arxiv.org/abs/2606.05071v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.05071",
+        "html_url": "https://arxiv.org/abs/2606.05071",
+        "published_at": "2026-06-03T16:30:17.000Z",
+        "upvotes": 0,
+        "heat": 310.8463138888889,
+        "featured": false,
+        "categories": [
+          "slam"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "图像修饰方法，与RoboMaster视觉任务无直接关联。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2606.05021",
+        "arxiv_id": "2606.05021",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG"
+        ],
+        "title_en": "Enhancing the MADDPG Algorithm for Multi-Agent Learning via Action Inference and Importance Sampling",
+        "title_zh": "通过动作推理和重要性采样增强多智能体学习的MADDPG算法",
+        "abstract_en": "We investigate multi-agent deep reinforcement learning and propose two enhancements to the Multi-Agent Deep Deterministic Policy Gradient (MADDPG) algorithm. First, we introduce a novel Action Inference mechanism that enables each agent to predict other agents' intended actions, thereby improving the accuracy and stability of its own policy. Second, we apply an importance sampling strategy, using geometric distribution, in the replay buffer to prioritize more recent and informative experiences, which helps mitigate the non-stationarity inherent in multi-agent environments. We evaluate both modifications on the discrete-action Predator-Prey task provided by the PettingZoo library, a flexible Python interface for general multi-agent reinforcement learning benchmarks. Our results indicate that Action Inference is effective in improving learning stability and inter-agent cooperation and that importance sampling using geometric distribution can lead to significant improvements in exploration efficiency over standard MADDPG. Code available at https://github.com/shaashwathsivakumar/MARL_Proj",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Marc Walden",
+          "Jason Liu",
+          "Shaashwath Sivakumar",
+          "Ryan Liu",
+          "Hamza Khan"
+        ],
+        "url": "https://arxiv.org/abs/2606.05021v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.05021",
+        "html_url": "https://arxiv.org/abs/2606.05021",
+        "published_at": "2026-06-03T15:44:56.000Z",
+        "upvotes": 0,
+        "heat": 310.09048055555553,
+        "featured": false,
+        "categories": [
+          "rune",
+          "rl"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "改进MADDPG算法，可应用于多机协同策略训练，提升决策稳定性。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.05015",
+        "arxiv_id": "2606.05015",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Generalization of World Models under Environmental Variability for Vision-based Quadrotor Navigation",
+        "title_zh": "面向视觉四旋翼导航的环境变异性下世界模型泛化",
+        "abstract_en": "World models, learned generative models that predict how an environment evolves, have become a promising tool for sample-efficient robot learning. Yet how robust they are to environmental variability remains poorly understood. To address this, we conduct a systematic study using vision-based quadrotor navigation as a testbed problem, training DreamerV3-based world models under varying levels of environmental randomness and evaluating them across all levels through cross-environment validation, spanning both Self-Supervised Learning (SSL) pretraining and Reinforcement Learning (RL) fine-tuning. We then deploy all world models and associated navigation policies on a real quadrotor in unseen environments, including an open-loop run where the model receives just 2.5s of real sensory input before all sensors are cut off, leaving the system to navigate entirely in imagination over a 12m traverse. Our results show that world model robustness during SSL pretraining is a strong predictor of sim-to-real transfer: every model that generalized well in cross-environment SSL validation deployed successfully in the real world, passing through gaps as narrow as 0.67m, whereas the model that dominated simulation policy evaluation failed on the real platform. We further identify (a) the discrete latent size and (b) the training-sequence length as the dominant factors governing world model quality.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Luca Zanatta",
+          "Grzegorz Malczyk",
+          "Kostas Alexis"
+        ],
+        "url": "https://arxiv.org/abs/2606.05015v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.05015",
+        "html_url": "https://arxiv.org/abs/2606.05015",
+        "published_at": "2026-06-03T15:38:36.000Z",
+        "upvotes": 0,
+        "heat": 309.984925,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl",
+          "sim"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "可用于哨兵导航的仿真训练，评估世界模型在环境变化下的鲁棒性，提升 sim-to-real 迁移效果。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.05011",
+        "arxiv_id": "2606.05011",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.RO"
+        ],
+        "title_en": "CIPER: A Unified Framework for Cross-view Image-retrieval and Pose-estimation",
+        "title_zh": "CIPER：跨视图图像检索与姿态估计的统一框架",
+        "abstract_en": "Cross-view geo-localization estimates the geographic location of a ground image by matching it against an aerial image database. Existing methods tackle this through either large-scale retrieval or precise pose estimation, but not both: retrieval-based methods enable wide-area search at the cost of localization accuracy, while pose estimation methods achieve high precision within only a narrow search space. Naively cascading these pipelines introduces error propagation and inconsistent feature representations. We formulate cross-view geo-localization as a unified problem requiring simultaneous city-scale retrieval and precise 3-DoF pose estimation. We propose CIPER (Cross-view Image-retrieval and Pose-estimation transformER), a single architecture that jointly performs both tasks through mutually beneficial feature learning. CIPER uses a shared transformer encoder with task-specific tokens to disentangle global retrieval features from spatial localization cues. To bridge the large domain gap between ground and aerial views, we introduce a two-way transformer pose decoder that uses ground features as spatial queries for bidirectional cross-attention. A set prediction strategy further enables stable 3-DoF regression under a unified multi-task objective. Experiments on VIGOR, KITTI, and Ford Multi-AV demonstrate competitive performance, especially under limited field-of-view and arbitrary orientation conditions. Code is available at https://github.com/yurimjeon1892/CIPER.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Yurim Jeon",
+          "Dongseong Seo",
+          "Seung-Woo Seo"
+        ],
+        "url": "https://arxiv.org/abs/2606.05011v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.05011",
+        "html_url": "https://arxiv.org/abs/2606.05011",
+        "published_at": "2026-06-03T15:31:06.000Z",
+        "upvotes": 0,
+        "heat": 309.859925,
+        "featured": false,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "可用于雷达全场定位，通过地面图像与卫星图匹配实现机器人全局定位，辅助多目标检测与标记。",
+          "task_id": "radar",
+          "task": "雷达全场感知与标记",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.04992",
+        "arxiv_id": "2606.04992",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.HC"
+        ],
+        "title_en": "Multi-Camera AR Guidance System for Surgical Instrument Handling and Assembly: Investigating Workload and Efficiency",
+        "title_zh": "用于手术器械操作与装配的多摄像头AR引导系统：工作负荷与效率研究",
+        "abstract_en": "The handling and assembly of instruments during surgery imposes high cognitive demands on scrub nurses, particularly when instruments are unfamiliar. We present a supporting guidance system for surgical instrumentation that combines multi-camera 6D pose estimation with augmented reality in-situ visualization on a head-mounted display without the requirement for additional markers. Pose estimation and consecutive camera calibration are achieved through known objects. The 6D pose estimation network is trained purely on synthetic data, aiming for better generalizability and real-world applicability. The AR guidance displays tooltip localization cues and step-wise assembly animations. Via gaze-based selection and a foot pedal, users can switch between assembly steps in intraoperative use. In a technical evaluation, our approach outperforms state-of-art 6D pose estimation. A user study with 29 scrub nurses was conducted in a surgical simulation of knee arthroplasty, comparing the system against a paper manual. AR guidance significantly reduced the perceived workload compared. Objectively, AR guidance reduced task completion time by 21.3\\% (4.76 minutes). Specifically, scrub nurses less experienced with the instrument set benefited when using the system. Error frequencies were comparable between conditions. Qualitative feedback highlighted improved process clarity, reduced information overload, and perceived independence. To summarize, our marker-free multi-camera AR guidance approach for surgical instruments can, subjectively and objectively, improve intraoperative instrumentation performance, particularly for untrained scrub nurses.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Shiyu Li",
+          "Julian Kreimeier",
+          "Hannah Schieber",
+          "Dirk Müller",
+          "Bernhard Kainz",
+          "Rüdiger von Eisenhart-Rothe",
+          "Daniel Roth"
+        ],
+        "url": "https://arxiv.org/abs/2606.04992v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.04992",
+        "html_url": "https://arxiv.org/abs/2606.04992",
+        "published_at": "2026-06-03T15:13:05.000Z",
+        "upvotes": 0,
+        "heat": 309.55964694444447,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl",
+          "radar"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "可用于工程机器人能量单元装配，利用多摄像头6D位姿估计和AR引导实现精准抓取与装配。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "high"
+        }
+      },
+      {
+        "id": "arxiv:2606.04968",
+        "arxiv_id": "2606.04968",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Potential-Guided Flow Matching for Vision-Language-Action Policy Improvement",
+        "title_zh": "面向视觉-语言-动作策略改进的势引导流匹配",
+        "abstract_en": "Large vision-language-action (VLA) policies are increasingly trained as conditional generative models over action chunks. Yet deployment produces mixed-quality experience-successful demonstrations, partial completions, recoverable mistakes, and failures-that is difficult to use with standard imitation. Full behavior cloning (BC) imitates failures, filtered BC discards useful sub-trajectories, and offline reinforcement learning adds a large critic. We introduce ForesightFlow, a self-guided flow-matching policy that augments each generated action chunk with a learned success-potential trajectory. The same flow proposes and scores candidate actions, enabling best-of-$K$ inference without an external critic. The key issue is that policy improvement and value calibration require different supervision: advantage weighting should emphasize high-quality actions, but applying the same weights to potential coordinates suppresses failure gradients and creates overconfident scores. We address this with decoupled advantage-weighted flow matching, applying exponentiated advantage weights only to action velocities while training potential velocities uniformly. We further derive a one-step boundary estimator for conditional flow matching, allowing advantage computation with a single stop-gradient forward pass. Across five BEHAVIOR-1K simulation tasks and five real-world bimanual tasks, ForesightFlow improves over imitation baselines, matches the strongest separate-critic baseline in simulation success, improves real-world success, and reduces training compute by $38\\%$. Ablations show that decoupling prevents value hallucination, the one-step estimator preserves candidate-ranking fidelity, and self-guided sampling improves long-horizon execution.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Yunpeng Mei",
+          "Jiakai He",
+          "Hongjie Cao",
+          "Chenyu Wang",
+          "Xiaowen Zhu",
+          "Yihan Zhou",
+          "Jiamin Wang",
+          "Chenbo Xin"
+        ],
+        "url": "https://arxiv.org/abs/2606.04968v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.04968",
+        "html_url": "https://arxiv.org/abs/2606.04968",
+        "published_at": "2026-06-03T14:49:35.000Z",
+        "upvotes": 0,
+        "heat": 309.16798027777776,
+        "featured": false,
+        "categories": [
+          "aim",
+          "slam",
+          "rl"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "可用于多机协同策略学习，通过势引导流匹配改进视觉-语言-动作策略，提升模仿学习效果。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.04907",
+        "arxiv_id": "2606.04907",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "WAM-Nav: Asymmetric Latent World-Action Modeling for Unified Visual Navigation",
+        "title_zh": "WAM-Nav：面向统一视觉导航的非对称潜在世界-动作建模",
+        "abstract_en": "Visual navigation requires generating smooth and collision-free trajectories under complex geometric and physical constraints. Existing reactive policies that directly map observations to actions lack anticipatory reasoning, limiting their ability to proactively avoid obstacles. While visual imagination offers predictive foresight, conventional modular approaches separate scene prediction from policy learning, often leading to error accumulation and inefficient inference. To address these limitations, we propose WAM-Nav, a Latent World-Action Model for embodied visual navigation that jointly learns action generation and latent visual foresight, enabling more robust and foresighted navigation decisions without compromising inference efficiency. Specifically, WAM-Nav utilizes a shared Diffusion Transformer for asymmetric joint diffusion to concurrently generate long-horizon actions and short-horizon visual foresight, reducing the inference latency and visual error accumulation inherent in multi-step autoregressive rollouts. To further encourage smooth and consistent trajectory generation, we introduce a dual-stream contextual conditioning mechanism that integrates episode-level ego-motion history with sequential visual observations. Combined with a unified goal alignment module that preserves balanced representations across goal types, WAM-Nav naturally supports Image-Goal, Point-Goal, and No-Goal exploration within a single policy. Extensive experiments on the challenging ClutterScenes and InternScenes benchmarks demonstrate strong generalization of WAM-Nav, particularly on Image-Goal and Point-Goal navigation, where it improves success rates by 15.7% and 3.3%, respectively. Real-world deployment further validates effective zero-shot sim-to-real transfer, achieving an average 85% task success rate across diverse indoor and outdoor environments.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Ning Yang",
+          "Yan Huang",
+          "Kaiwen Peng",
+          "Ziheng He",
+          "Kai Wang",
+          "Cui Miao",
+          "Kailin Lyu",
+          "Guo Li"
+        ],
+        "url": "https://arxiv.org/abs/2606.04907v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.04907",
+        "html_url": "https://arxiv.org/abs/2606.04907",
+        "published_at": "2026-06-03T14:05:19.000Z",
+        "upvotes": 0,
+        "heat": 308.4302025,
+        "featured": false,
+        "categories": [
+          "rl",
+          "radar"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "可用于哨兵自主导航，通过联合潜在世界-动作模型生成平滑避障轨迹，提升导航决策能力。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "high"
+        }
+      },
+      {
+        "id": "arxiv:2606.04871",
+        "arxiv_id": "2606.04871",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Recent Advances and Trends in Learning-based 3D Representations",
+        "title_zh": "基于学习的三维表示的最新进展与趋势",
+        "abstract_en": "The selection of an appropriate 3D representation is a fundamental design decision that dictates the efficiency, quality, and capabilities of modern computer vision and graphics pipelines for tasks such as 3D reconstruction, novel-view synthesis and rendering, shape and motion analysis, recognition, and generation. While traditional representations (\\eg meshes, point clouds, and volumetric grids) remain standard outputs of 3D sensors (\\eg LiDAR and 3D scanners) and are widely used in downstream applications (\\eg editing and simulation), recent neural and primitive-based representations (\\eg 3D Gaussian Splatting) offer compact and differentiable alternatives opening a wide range of opportunities in applications such as games, AR/VR, autonomous driving, robot navigation, and medical imaging, to name a few. The goal of this paper is to survey the main families of 3D representations from discrete explicit formats to continuous implicit fields based either on neural rendering or primitive splatting. For each type of representation, we present the general formulation and its variants, discuss its benefits and limitations, and highlight key applications. We conclude the paper by outlining the open challenges and potential directions for future research. Distinct from recent surveys that broadly cover 3D object and scene reconstruction, this paper provides a focused analysis on the evolution of 3D representations themselves. We specifically emphasize the paradigm shift toward implicit representations, offering a novel perspective on how these emerging formats fundamentally alter 3D/4D workflows.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Adrien Schockaert",
+          "Hamid Laga",
+          "Hazem Wannous",
+          "Vincent Magnier",
+          "Guillaume Dufaye",
+          "Jean-françois Witz"
+        ],
+        "url": "https://arxiv.org/abs/2606.04871v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.04871",
+        "html_url": "https://arxiv.org/abs/2606.04871",
+        "published_at": "2026-06-03T13:35:50.000Z",
+        "upvotes": 0,
+        "heat": 307.93881361111113,
+        "featured": false,
+        "categories": [
+          "aim",
+          "nav",
+          "rl"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "综述性论文，可为自瞄、能量机关等任务中的3D表示选择提供参考，但无直接应用。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2606.04853",
+        "arxiv_id": "2606.04853",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Teaching Robots to Say 'I Don't Know' : SENTINEL for Uncertainty-Aware SLAM",
+        "title_zh": "教会机器人说“我不知道”：用于不确定性感知SLAM的SENTINEL",
+        "abstract_en": "Low-cost 2D LiDARs lack the intensity channel that higher-end sensors use to diagnose measurement failures, yet they are widely used on educational and budget robotics platforms. We present SENTINEL, a training - free, label - free reliability estimation framework that gives range - only LiDAR an effective diagnostic signal. SENTINEL combines geometry-based scan statistics with cross - modal depth consistency between LiDAR and an RGB - D camera to compute a per - scan reliability score between 0 and 1. When the score falls below a threshold, corrupted scans are rejected and the robot falls back to calibrated wheel odometry, preventing silent SLAM corruption. We evaluate SENTINEL on a GEFIER R1 four - wheel skid-steer robot equipped with an RPLidar A2M12 and an Intel RealSense D435i in a 185 cm by 245 cm arena containing controlled transparent and reflective failure elements on a central obstacle. Spatial reliability maps across five surface conditions, including glass, mirror, shiny paper, and a mixed mirror and shiny-paper condition, show clear separation between clean and failure cases, allowing affected regions to be identified as reject or noise. Because these failure modes are absent in simulation, validation is performed entirely on real hardware.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Abhishek S",
+          "Badrikanath Praharaj",
+          "Sreeram MV"
+        ],
+        "url": "https://arxiv.org/abs/2606.04853v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.04853",
+        "html_url": "https://arxiv.org/abs/2606.04853",
+        "published_at": "2026-06-03T13:22:05.000Z",
+        "upvotes": 0,
+        "heat": 307.70964694444444,
+        "featured": false,
+        "categories": [
+          "slam",
+          "planning",
+          "sim"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "可用于哨兵或雷达的SLAM系统，通过不确定性感知提高建图定位的可靠性。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.04829",
+        "arxiv_id": "2606.04829",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "M3imic: Learning a Versatile Whole-Body Controller for Multimodal Motion Mimicking",
+        "title_zh": "M3imic：面向多模态运动模仿的通用全身控制器学习",
+        "abstract_en": "Building a general-purpose whole-body controller is essential for enabling diverse motion capabilities in humanoid robots across a wide range of downstream tasks, including locomotion and loco-manipulation. Different tasks rely on distinct motion reference modalities: locomotion primarily depends on coordinated robot joint trajectories, whereas manipulation requires precise end-effector trajectory tracking. Existing methods often overlook the representational mismatch between dense robot joint angles and sparse end-effector poses. To address this, we propose Multi-Modal Mimic (M3imic), a versatile multi-modal whole-body control framework that unifies heterogeneous motion reference modalities, including robot joint angles, human pose trajectories, and end-effector poses, using modality-specific encoders to map them into a shared latent space. Leveraging large-scale reinforcement learning in the simulator, we train a single policy that achieves sim-to-real transfer across multiple motion reference modalities without modality-specific retraining. Extensive simulation and real-world experiments on the Unitree G1 robot are conducted to evaluate the proposed framework. In simulation, the policy achieves a peak success rate of 98.42\\% on an unseen test dataset, demonstrating its exceptional generalization capability. The code is available at https://github.com/Renforce-Dynamics/MultiModalWBC",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Zuxing Lu",
+          "Ziang Zheng",
+          "Yao Lyu",
+          "Jingyu Liu",
+          "Feihong Zhang",
+          "Song Lu",
+          "Xin Yuan",
+          "Changyin Sun"
+        ],
+        "url": "https://arxiv.org/abs/2606.04829v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.04829",
+        "html_url": "https://arxiv.org/abs/2606.04829",
+        "published_at": "2026-06-03T12:52:37.000Z",
+        "upvotes": 0,
+        "heat": 307.21853583333336,
+        "featured": false,
+        "categories": [
+          "rl",
+          "radar",
+          "sim"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "可用于工程机器人全身控制，学习抓取与装配动作，但需适配机械臂结构。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.04825",
+        "arxiv_id": "2606.04825",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "HapTile: A Haptic-Informed Vision-Tactile-Language-Action Dataset for Contact-Rich Imitation Learning",
+        "title_zh": "HapTile：一种用于接触丰富模仿学习的触觉信息视觉-触觉-语言-动作数据集",
+        "abstract_en": "Despite the importance of tactile sensing for reliable manipulation, most existing Vision-Language-Action (VLA) datasets remain vision-only, and those that do incorporate tactile information typically lack the joint combination of task diversity, language conditioning, and action trajectories. Furthermore, existing teleoperation pipelines rarely provide haptic feedback to the operator, despite its established role in demonstration quality and manipulation stability. In this work, we present HapTile, a contact-grounded visuotactile manipulation dataset that advances beyond vision-only trajectory datasets by embedding physical interaction sensing at two levels: fingertip tactile feedback at the robot end-effector, and haptic-informed demonstrations at the teleoperator side. The data collection platform integrates haptic feedback directly into the teleoperation controller, enabling the operator to perceive contact interactions in real time. It is built around a standard and reproducible robotic system equipped with custom-designed fingertip tactile sensors. The dataset comprises everyday manipulation tasks spanning a broad range of contact-rich skills, including pick-and-place, folding, pressing, stacking, and other routine activities. Each task is paired with language instructions that condition the policy on the manipulation objective, together with synchronized visuotactile observations and action trajectories. In addition, we provide a benchmarking study on contact-rich policy learning using two baseline models to evaluate the effectiveness of the proposed contact-grounded dataset. The dataset and additional details are available on our website: haptile-dataset.github.io.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Amirhosein Alian",
+          "Yongqiang Zhao",
+          "Shiyi Gu",
+          "Xuyang Zhang",
+          "Zhuo Chen",
+          "Christopher E. Mower",
+          "Haitham Bou-Ammar",
+          "Shan Luo"
+        ],
+        "url": "https://arxiv.org/abs/2606.04825v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.04825",
+        "html_url": "https://arxiv.org/abs/2606.04825",
+        "published_at": "2026-06-03T12:48:17.000Z",
+        "upvotes": 0,
+        "heat": 307.1463136111111,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "可用于工程机器人抓取能量单元时的触觉反馈，提升装配稳定性。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.04818",
+        "arxiv_id": "2606.04818",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Real-World Deployment of a 5G-Connected Edge-Controlled Aerial Robot in Industrial Subterranean Mines",
+        "title_zh": "5G连接的边缘控制空中机器人在工业地下矿井中的实际部署",
+        "abstract_en": "This article presents the first real-world autonomous flight of a 5G-connected aerial robot controlled by an edge-offloaded controller, and aims to bridge the gap between controlled and factual setups. The robot operates within an active industrial subterranean mine, while the high-level controller is deployed in a nearby Kubernetes-based edge cluster. Communication between the robot and the edge is enabled via a 5G New Radio (NR) Standalone (SA) network. The chosen controller is a Model Predictive Controller (MPC), which generates control actions to allow the robot to navigate seamlessly through the mining environment. A human operator selects waypoints for the aerial robot, and the MPC generates smooth, collision-free paths for autonomous executions. The proposed 5G edge-based closed-loop system is evaluated in a real industrial setting and demonstrates the potential of edge-controlled robotic systems toward time-critical, safe and efficient future deployments.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Achilleas Santi Seisa",
+          "Emanuele Pagliari",
+          "Gerasimos Damigos",
+          "Elias Small",
+          "George Nikolakopoulos"
+        ],
+        "url": "https://arxiv.org/abs/2606.04818v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.04818",
+        "html_url": "https://arxiv.org/abs/2606.04818",
+        "published_at": "2026-06-03T12:40:56.000Z",
+        "upvotes": 0,
+        "heat": 307.0238136111111,
+        "featured": false,
+        "categories": [
+          "other"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "可用于哨兵或无人机通过5G边缘计算实现远程控制与导航，但RoboMaster中空中机器人较少。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.04815",
+        "arxiv_id": "2606.04815",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.AI"
+        ],
+        "title_en": "Learning While Acting: A Skill-Enhanced Test-Time Co-Evolution Framework for Online Lifelong Learning Agents",
+        "title_zh": "",
+        "abstract_en": "Lifelong learning is essential for Large Language Model (LLM) agents operating in dynamic, interactive environments. However, existing lifelong learning agents for long-horizon tasks typically depend on discrete skill or past experiences retrieval with static parameters during inference, which prevents them from continuously internalizing test-time feedback like human learners. To bridge this gap, we propose Skill-enhanced Test-Time Co-Evolution (\\texttt{LifeSkill}), a two-stage reinforcement learning framework for Online Lifelong Learning Agents. Specifically, we design Verifier-Guided Skill Learning that addresses the lack of direct supervision for skill extraction by rewarding candidate skills according to the average verifier success of multiple skill-conditioned policy rollouts, encouraging the model to generate skills that are useful for solving tasks rather than merely plausible in text. Furthermore, we introduce Online Skill Internalization, which continuously improves the policy model during test-time interaction by transforming skill-conditioned trajectories into reward signals. This enables the agent to directly internalize reasoning capabilities into its parameters, avoiding the context bloat of experience retrieval. Experiments on LifelongAgentBench show that LifeSkill improves average performance by 7 absolute points by comparing with existing lifelong agent baselines.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Bo Mao",
+          "Jie Zhou",
+          "Yutao Yang",
+          "Xin Li",
+          "Xian Wei",
+          "Qin Chen",
+          "Xingjiao Wu",
+          "Liang He"
+        ],
+        "url": "https://arxiv.org/abs/2606.04815v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.04815",
+        "html_url": "https://arxiv.org/abs/2606.04815",
+        "published_at": "2026-06-03T12:38:57.000Z",
+        "upvotes": 0,
+        "heat": 306.99075805555555,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "可用于多机协同策略的在线终身学习，使机器人持续适应对手策略。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.04812",
+        "arxiv_id": "2606.04812",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.AI"
+        ],
+        "title_en": "Scenario Generation for Risk-Aware Reinforcement Learning with Probably Approximately Safe Guarantees",
+        "title_zh": "",
+        "abstract_en": "Guaranteeing safety is critical to the deployment of reinforcement learning (RL) agents in the real-world, especially as policies learned using deep RL may demonstrate susceptibility to transition perturbations that result in unknown or unsafe behaviour. A method of policy verification is to construct probabilistic barrier-certificates by sampling policy trajectories with respect to safety constraints, thereby demarcating known safe behaviour from unknown behaviour. Obtaining tight upper and lower bounds on the probability of violation of these constraints may be difficult if the policy is susceptible to transition uncertainty or perturbation that places the agent in insufficiently explored states. To address this, we approximate the distribution of the encountered state-space using a variational autoencoder (VAE) and construct upper and lower-bound barrier-certificates using latent characteristics of states to optimize for regions of known, safe behaviour with high confidence. We frame this in our work as a dual optimization problem where the lower-bound barrier-certificate presents a more conservative estimate of the safe region than the upper-bound barrier-certificate. Sampling states that lie within the set difference of the two during training, i.e. the non-robust region, allows us to tighten the upper and lower bounds to provide sharper probabilistic guarantees on safety. Within our study, we describe the guarantees placed and demonstrate the tightness of our bounds experimentally.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Mohit Prashant",
+          "Arvind Easwaran"
+        ],
+        "url": "https://arxiv.org/abs/2606.04812v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.04812",
+        "html_url": "https://arxiv.org/abs/2606.04812",
+        "published_at": "2026-06-03T12:36:43.000Z",
+        "upvotes": 0,
+        "heat": 306.95353555555556,
+        "featured": false,
+        "categories": [
+          "slam",
+          "rl"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "可用于强化学习训练中的安全约束验证，确保策略在实车部署时安全。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.04811",
+        "arxiv_id": "2606.04811",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Dream.exe: Can Video Generation Models Dream Executable Robot Manipulation?",
+        "title_zh": "",
+        "abstract_en": "Video generation models have made impressive strides in synthesizing visually compelling content, yet their outputs remain confined to the virtual domain. A natural question follows: how well do these models reflect the physical world when their generated videos leave the screen and enter reality? We propose robotic manipulation as a concrete, measurable window onto this question: if a model has truly internalized physical laws, the motion it depicts should translate into executable robot behavior. We introduce Dream.exe, an evaluation framework that operationalizes this criterion through a video-to-execution pipeline. Given a scene image and a task description, Dream.exe synthesizes a manipulation video, converts the generated motion into robot trajectories, and executes them in a physics simulator, yielding a grounding signal that purely visual metrics cannot offer. Using this pipeline, we evaluate 8 models spanning frontier closed-source generators, open-source generators, and robot-specific models. Our benchmark covers 101 manually curated manipulation tasks at three levels of physical complexity, measured across visual quality, trajectory fidelity, and execution success. Encouragingly, several models achieve measurable execution success, suggesting that generative priors learned from internet-scale data already encode meaningful physical knowledge. Yet visual quality proves a poor predictor of executability, exposing a dimension of model capability that standard visual evaluations do not capture. Dream.exe will be open-sourced at https://github.com/showlab/Dream.exe.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Rui Zhao",
+          "Kaiming Yang",
+          "Jifeng Zhu",
+          "Siyang Chen",
+          "Ziqi Wang",
+          "Weijia Wu",
+          "Kevin Qinghong Lin",
+          "Heng Wang"
+        ],
+        "url": "https://arxiv.org/abs/2606.04811v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.04811",
+        "html_url": "https://arxiv.org/abs/2606.04811",
+        "published_at": "2026-06-03T12:35:35.000Z",
+        "upvotes": 0,
+        "heat": 306.93464666666665,
+        "featured": false,
+        "categories": [
+          "slam",
+          "radar",
+          "sim"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "可用于仿真中验证视频生成模型生成的机器人操作是否可执行，但直接应用有限。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2606.04781",
+        "arxiv_id": "2606.04781",
+        "source": "arXiv",
+        "cats": [
+          "cs.AI",
+          "cs.LG"
+        ],
+        "title_en": "AIP: A Graph Representation for Learning and Governing Agent Skills",
+        "title_zh": "",
+        "abstract_en": "Agent Skills today consist largely of free-form prose requiring the agent to read, interpret, and re-derive how to act in every session. This imposes two compounding costs: reduced reliability on implementation-heavy tasks, and difficulty in skill creation and improvement, since editing prose is a fragile process that both humans and agents struggle with, particularly for domain-specific procedural knowledge underrepresented in model training. The Agent Instruction Protocol (AIP) addresses both by modeling a skill as a directed execution graph: discrete steps as nodes backed by deterministic scripts or natural-language descriptions, connected by explicit typed input/output edges, and governed by a schema-validated YAML specification. A compiler meta-skill translates existing human-written skills into this form. The benefits are twofold. First, compiling human-written skills to AIP raised Claude Sonnet's mean task reward from 0.60 to 0.71 and pass rate from 53% to 67% across 27 real agent tasks from SkillsBench - a statistically significant gain (Wilcoxon signed-rank p = 0.011), winning 12 tasks to 2 with 13 ties - often in less wall-clock time. The graph delivers vetted, runnable units to the agent rather than asking it to re-derive code, commands, and tool calls from natural language. Second, on creation and improvement, because each skill is schema-validated, functionally testable, and addressable node-by-node, failures can be diagnosed and repaired precisely. Two authored-skill failures were traced to the script level. After adjusting the AIP spec and recompiling, both recovered with zero regressions (one task going from 0/5 to 5/5), turning skill improvement into a measurable tuning loop rather than a prose rewrite. That same graph structure supports corpus-level governance and skill introspection, and provides a natural action space for reinforcement learning over skills.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Zachary Blumenfeld",
+          "Jim Webber"
+        ],
+        "url": "https://arxiv.org/abs/2606.04781v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.04781",
+        "html_url": "https://arxiv.org/abs/2606.04781",
+        "published_at": "2026-06-03T12:02:49.000Z",
+        "upvotes": 0,
+        "heat": 306.38853555555556,
+        "featured": false,
+        "categories": [
+          "rl"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "可用于工程机器人技能编排，将装配任务建模为执行图，提高可靠性。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.04776",
+        "arxiv_id": "2606.04776",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "SoftPINCH: EMG-Driven Soft Exoskeleton Assistance for Finger Flexion and Grasping",
+        "title_zh": "",
+        "abstract_en": "Surface electromyography (sEMG) provides a non-invasive interface for detecting hand-movement intention and controlling wearable assistive devices. However, reliable EMG-driven hand assistance remains challenging because EMG signals are affected by noise, motion artifacts, electrode placement, muscle fatigue, and inter-subject variability. At the same time, many hand exoskeletons remain mechanically restrictive or bulky, limiting comfort and natural hand motion. This work presents SoftPINCH, an EMG-driven soft wearable exoskeleton for thumb-index finger flexion and pinch grasp assistance. The system combines a tendon-driven soft exoskeleton, fingertip magnetic contact sensing, and neural EMG decoding for intention-based assistance. Surface EMG was recorded from forearm muscles during index and thumb movements, and three subject-independent decoding architectures were evaluated: LSTM, CNN+LSTM, and CNN+LSTM with attention. The CNN+LSTM and CNN+LSTM-attention models both achieved 99.4% LOSO test accuracy, outperforming the standalone LSTM, which reached 97.8%. However, the attention mechanism did not provide a significant improvement over CNN+LSTM, indicating that CNN-based feature extraction was sufficient for robust EMG representation. The CNN+LSTM model was therefore selected for real-time deployment due to its high accuracy and lower architectural complexity. Functional evaluation showed that active exoskeleton assistance reduced muscular effort during isolated finger flexion and object grasping. During weighted grasping, assistance reduced muscular effort across all tested loads, with a 92.6% reduction at the highest load. These results demonstrate the potential of SoftPINCH for intuitive, low-effort pinch assistance using real-time EMG-driven soft robotic control.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Nicklas Nikolaj Grønvall",
+          "Magnus Malthe Sigsgaard Nielsen",
+          "Xiaofeng Xiong",
+          "Saravana Prashanth Murali Babu"
+        ],
+        "url": "https://arxiv.org/abs/2606.04776v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.04776",
+        "html_url": "https://arxiv.org/abs/2606.04776",
+        "published_at": "2026-06-03T11:59:27.000Z",
+        "upvotes": 0,
+        "heat": 306.3324244444444,
+        "featured": false,
+        "categories": [
+          "radar"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "与RoboMaster比赛关联很弱，主要用于医疗康复外骨骼。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2606.04750",
+        "arxiv_id": "2606.04750",
+        "source": "arXiv",
+        "cats": [
+          "cs.AI",
+          "cs.CY",
+          "cs.LG"
+        ],
+        "title_en": "Fog of Love: Engineering Virtuous Agent Behavior with Affinity-based Reinforcement Learning in a Game Environment",
+        "title_zh": "",
+        "abstract_en": "Instilling virtuous behavior in artificial intelligence has seen increasing interest. One of the techniques proposed is known as affinity-based reinforcement learning, which uses policy regularization on the objective function to incentivize virtuous actions without being fully dependent on the reward function design. Thus far, this technique has been demonstrated to be effective in grid worlds and toy-problem environments with minimal state and action spaces. To expand this research to more sophisticated environments, we introduce a two-player multi-agent environment based on the role-playing board game known as Fog of Love. In this environment, two agents compete to fulfill their individual virtues, while also cooperating to satisfy their relationship. Given the multi-agent nature, this is a complex problem where multi-agent deep deterministic policy gradient agents neither compete nor cooperate successfully. We present evidence that localized affinities enhance agent performance in achieving both competitive and cooperative objectives, resulting from superior overall scores in both domains. This not only results in virtuous choices but also clarifies an agent's teleology and makes its behavior human-level interpretable.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Ajay Vishwanath",
+          "Christian Omlin"
+        ],
+        "url": "https://arxiv.org/abs/2606.04750v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.04750",
+        "html_url": "https://arxiv.org/abs/2606.04750",
+        "published_at": "2026-06-03T11:31:37.000Z",
+        "upvotes": 0,
+        "heat": 305.8685355555556,
+        "featured": false,
+        "categories": [
+          "slam",
+          "rl"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "可用于多智能体策略学习中的亲社会行为训练，但RoboMaster中更注重对抗。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2606.04749",
+        "arxiv_id": "2606.04749",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.LG"
+        ],
+        "title_en": "COP-Q: Safety-First Reinforcement Learning for Robot Control via Cholesky-Ordered Projection",
+        "title_zh": "",
+        "abstract_en": "Safe robot control requires maximizing return while satisfying safety constraints. In off-policy safe reinforcement learning, reward and safety Q-values are commonly learned by separate critic ensembles, with uncertainty handled independently for each objective. This objective-wise treatment neglects inter-objective correlation and can lead to overly conservative value estimates, thereby reducing sample efficiency. To address this issue, we propose Cholesky-Ordered Projection Q-learning (COP-Q), a safety-first method that incorporates inter-objective covariance into vector-valued Q-value estimation. COP-Q constructs a generalized confidence bound in the joint Q-value space and uses Cholesky factorization to encode objective priority in a sequential form. This preserves conservatism on safety while adaptively reducing excessive conservatism on the reward objective. The resulting estimate is used in both temporal-difference target computation and actor optimization. COP-Q incurs minimal computational overhead and is readily compatible with most existing deep Q-learning frameworks. Experiments on robot locomotion in Brax and safe navigation in Safety-Gymnasium, covering both hard- and soft-safety settings, demonstrate that COP-Q achieves strong safety performance together with competitive or improved sample efficiency relative to representative baselines.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Guopeng Li",
+          "Moritz A. Zanger",
+          "Matthijs T. J. Spaan",
+          "Julian F. P. Kooij"
+        ],
+        "url": "https://arxiv.org/abs/2606.04749v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.04749",
+        "html_url": "https://arxiv.org/abs/2606.04749",
+        "published_at": "2026-06-03T11:30:10.000Z",
+        "upvotes": 0,
+        "heat": 305.8443688888889,
+        "featured": false,
+        "categories": [
+          "rl",
+          "radar"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "可用于哨兵或步兵的强化学习安全策略训练，确保机器人在满足安全约束（如不撞墙、不翻车）的同时最大化任务收益，提升实车部署的可靠性。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.04735",
+        "arxiv_id": "2606.04735",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.AI"
+        ],
+        "title_en": "Trace-Mediated Peak Bias: Bridging Temporal Credit Assignment and Cognitive Heuristics in Deep Reinforcement Learning",
+        "title_zh": "",
+        "abstract_en": "Temporal credit assignment is central to both biological and artificial intelligence, yet its interaction with non-linear function approximation is poorly understood. We identify a systematic failure mode in deep reinforcement learning (RL) termed Trace-Mediated Peak Bias (TMPB). At intermediate eligibility trace depths, agents irrationally prefer trajectories with high-magnitude reward ``peaks'' over alternatives with higher cumulative returns. This provides a mechanistic account of the Peak-End Rule: a human memory bias where experiences are judged by their most intense moments rather than integrated utility. We show that TMPB emerges because traces amplify distal Temporal Difference errors into ``gradient shocks'' that fixed-step-size Stochastic Gradient Descent cannot normalize, leading to global overestimation. Conversely, adaptive optimizers mitigate this pathology via second-moment normalization. Our results suggest that human-like saliency distortions may emerge naturally from the mathematical constraints of credit assignment in distributed systems, and that adaptive optimization is a theoretical necessity for rational value estimation.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Viktor Veselý",
+          "Aleksandar Todorov",
+          "Erwan Escudie",
+          "Matthia Sabatelli"
+        ],
+        "url": "https://arxiv.org/abs/2606.04735v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.04735",
+        "html_url": "https://arxiv.org/abs/2606.04735",
+        "published_at": "2026-06-03T11:19:29.000Z",
+        "upvotes": 0,
+        "heat": 305.66631333333333,
+        "featured": false,
+        "categories": [
+          "rl"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "揭示了强化学习中峰值奖励导致的次优策略问题，可指导设计奖励函数避免机器人过度追求单次高奖励（如击打能量机关）而忽略长期收益，提升策略稳定性。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.04718",
+        "arxiv_id": "2606.04718",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.AI"
+        ],
+        "title_en": "CoRe-MoE: Contrastive Reweighted Mixture of Experts for Multi-Terrain Humanoid Locomotion with Gait Adaptation",
+        "title_zh": "",
+        "abstract_en": "Humans primarily rely on walking and running to traverse complex terrains, without resorting to unnecessarily complex motion patterns. Similarly, humanoid robots should achieve smooth transitions between walking and running while maintaining natural and stable locomotion. However, unifying gait transition and multi-terrain adaptation within a single policy remains challenging due to gradient interference and the distribution shift induced by terrain-dependent visual and dynamic variations. Although Mixture-of-Experts (MoE) architectures can alleviate multi-skill interference, naive joint training often fails to yield clear expert specialization, limiting their effectiveness. To address these challenges, we propose CoRe-MoE, a two-stage reinforcement learning framework that decouples gait generation from terrain adaptation. In the first stage, a stable locomotion policy is learned to produce natural walking and running behaviors with smooth transitions. In the second stage, a terrain-aware MoE branch is introduced and trained with a contrastive objective to shape the gating network, enabling it to capture structured terrain representations and promote expert specialization. The final action is obtained via weighted fusion of the base gait policy and the terrain-aware branch, allowing the policy to preserve stable locomotion patterns while adapting to complex terrains. Extensive simulation results demonstrate that the proposed method outperforms baseline approaches in terms of success rate, locomotion stability, and multi-terrain adaptability. Furthermore, zero-shot deployment on a Unitree G1 humanoid robot validates the effectiveness of our framework, achieving robust walking and running across stairs, slopes, steps, obstacles, and unstructured outdoor terrains, while maintaining accurate foothold placement and dynamic stability under external disturbances.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Kailun Huang",
+          "Zikang Xie",
+          "Yanzhe Xie",
+          "Panpan Liao",
+          "Fanghai Zhang",
+          "Yanheng Mai",
+          "Wenhao Xu",
+          "Yunheng Wang"
+        ],
+        "url": "https://arxiv.org/abs/2606.04718v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.04718",
+        "html_url": "https://arxiv.org/abs/2606.04718",
+        "published_at": "2026-06-03T10:51:46.000Z",
+        "upvotes": 0,
+        "heat": 305.2043688888889,
+        "featured": false,
+        "categories": [
+          "slam",
+          "rl",
+          "radar"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "可用于哨兵机器人多地形（如飞坡、公路）步态切换与自适应运动控制，但人形机器人形态与轮式/履带式差异大，需大幅改造。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2606.04708",
+        "arxiv_id": "2606.04708",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.AI"
+        ],
+        "title_en": "VISTA: Vision-Grounded and Physics-Validated Adaptation of UMI data for VLA Training",
+        "title_zh": "",
+        "abstract_en": "Universal Manipulation Interface (UMI) enables scalable real-world robot data collection without hardware-specific teleoperation, yet leveraging UMI data to train large-scale Vision-Language-Action (VLA) models remains fundamentally challenging. We identify two critical mismatches: wrist-mounted fisheye views, with severe radial distortion and local gripper-centric perspectives, are out-of-distribution for pretrained VLMs; and human-collected trajectories frequently violate kinematic limits, incur collisions, or exceed controller bandwidth, teaching VLA policies physically infeasible actions. To address the challenges, we present VISTA, a framework that bridges this dual gap through three synergistic components. (i)~UMI-VQA, the first large-scale VQA dataset tailored to wrist-mounted fisheye observations, aligns VLM representations to the distorted visual regime via auxiliary vision-language supervision. (ii)~A systematic physical-validation pipeline performs a data-completeness pre-check and scores each valid trajectory for trajectory continuity, self-collision risk, and execution fidelity before it enters training. (iii)~A two-stage co-training recipe jointly learns vision-language grounding on UMI-VQA and action prediction on validated trajectories. Our experiments empirically show that incorporating UMI-VQA consistently improves downstream policy performance, and that physical-validation scores are strongly predictive of deployment success. On diverse simulation and real-world manipulation tasks, VISTA significantly outperforms strong baselines including $π_{0.5}$, LingBot-VLA, and Wall-X. We release the physical-validation pipeline, UMI-VQA, validated trajectory data, and the pre-trained model for the community.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Siyuan Yang",
+          "Linzheng Guo",
+          "Ouyang Lu",
+          "Zhaxizhuoma",
+          "Daoran Zhang",
+          "Xinmiao Wang",
+          "Ting Xiao",
+          "Fangzheng Yan"
+        ],
+        "url": "https://arxiv.org/abs/2606.04708v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.04708",
+        "html_url": "https://arxiv.org/abs/2606.04708",
+        "published_at": "2026-06-03T10:38:45.000Z",
+        "upvotes": 0,
+        "heat": 304.98742416666664,
+        "featured": false,
+        "categories": [
+          "aim",
+          "slam",
+          "planning"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "可用于工程机器人抓取装配任务的视觉-语言-动作模型训练，但需适配机械臂与能量单元场景，且数据采集方式不同，改造难度大。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2606.04703",
+        "arxiv_id": "2606.04703",
+        "source": "arXiv",
+        "cats": [
+          "cs.CL",
+          "cs.LG"
+        ],
+        "title_en": "Rethinking Continual Experience Internalization for Self-Evolving LLM Agents",
+        "title_zh": "",
+        "abstract_en": "Experience internalization converts contextual experience from past interactions into reusable parametric capability, offering a promising path toward continual learning in large language models (LLMs). While prior work has predominantly focused on single-iteration transfer, we discover that under multi-iteration experience learning, existing methods suffer from a progressive capability collapse rather than compounding improvement. We systematically examine this failure through three vital dimensions of experience internalization: (1) Experience Granularity: We find that principle-level experience is more durable than instance-level experience, as it effectively abstracts transferable strategies away from trajectory-specific details. (2) Experience Injection Pattern: Our analysis reveals that step-wise injection significantly outperforms global injection by aligning experience with intermediate decision states, a property that is critical for long-horizon tool use. (3) Internalization Regime: We demonstrate that off-policy context-distillation on high-quality teacher trajectories provides a substantially more stable training signal than on-policy context-distillation, which is inherently limited by local corrections on student-induced flawed states. Together, these insights yield a simple yet robust recipe for stable and sustainable experience internalization, providing concrete guidance for engineering self-evolving and continually learning LLMs.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Jingwen Chen",
+          "Wenkai Yang",
+          "Shengda Fan",
+          "Wenbo Nie",
+          "Chenxing Sun",
+          "Shaodong Zheng",
+          "Yangen Hu",
+          "Lu Pan"
+        ],
+        "url": "https://arxiv.org/abs/2606.04703v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.04703",
+        "html_url": "https://arxiv.org/abs/2606.04703",
+        "published_at": "2026-06-03T10:30:09.000Z",
+        "upvotes": 0,
+        "heat": 304.8440908333333,
+        "featured": false,
+        "categories": [
+          "other"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "涉及大语言模型持续学习，与RoboMaster机器人控制任务关联很弱，无法直接应用。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2606.04684",
+        "arxiv_id": "2606.04684",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.AI"
+        ],
+        "title_en": "Real-Time Automatic License Plate Recognition Using YOLOv8, SORT Tracking, and Temporal Data Interpolation",
+        "title_zh": "",
+        "abstract_en": "The real-time hardships of video processing seriously limit the usage of Automatic License Plate Recognition (ALPR) with application in dynamic traffic monitoring settings. High-fidelity recognition of unconstrained variables, e.g. drastic variations in illumination, acute camera scans, high vehicle speeds, and harsh physical concealment, is a problem that often leads to disjointed tracking paths and poor Optical Character Recognition (OCR) rates. In order to mitigate these weaknesses, the study proposes a 5 stage, end-to-end algorithmic pipeline, encompassing a smooth transition between deep learning based object detection, multi-object tracking which is kinematic in nature, and geometry temporal data interpolation. The suggested architecture takes advantage of a very powerful YOLOv8 nano model to localize the vehicle at the first stage and then Simple Online and Realtime Tracking (SORT) algorithm is used to build spatial-temporal links between frames. Another, more specific typology of YOLOv8 object detectors the license plate area, channeling the sliced array to an EasyOCR chain under the limitations of positional syntax verification. More importantly, an offline interpolation mechanism of temporal bounding box is initiated to recast fragmented paths.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Mirza Muhammad Mobeen"
+        ],
+        "url": "https://arxiv.org/abs/2606.04684v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.04684",
+        "html_url": "https://arxiv.org/abs/2606.04684",
+        "published_at": "2026-06-03T10:05:18.000Z",
+        "upvotes": 0,
+        "heat": 304.42992416666664,
+        "featured": false,
+        "categories": [
+          "aim",
+          "radar"
+        ],
+        "image": "",
+        "first_seen": "2026-06-04T17:40:48.739Z",
+        "rm": {
+          "usage": "可用于自瞄中的装甲板数字识别与跟踪，但车牌识别与装甲板识别场景差异较大，需重新训练模型并适配LED灯条特征。",
+          "task_id": "autoaim",
+          "task": "自瞄 / 装甲板识别",
+          "value": "mid"
+        }
+      }
+    ]
+  },
+  "repos": {
+    "count": 50,
+    "items": [
+      {
+        "id": "RoboMaster/RoboRTS",
+        "full_name": "RoboMaster/RoboRTS",
+        "name": "RoboRTS",
+        "owner": "RoboMaster",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/35285277?v=4",
+        "description_en": "An open source software stack for Real-Time Strategy research on mobile robots",
+        "description_zh": "一个用于移动机器人实时战略研究的开源软件栈，基于ROS，支持RoboMaster机器人。",
+        "highlight_zh": "移动机器人实时战略研究框架",
+        "stars": 890,
+        "forks": 356,
+        "language": "C++",
+        "topics": [
+          "real-time-strategy",
+          "robomaster",
+          "roborts",
+          "robotics",
+          "ros"
+        ],
+        "url": "https://github.com/RoboMaster/RoboRTS",
+        "homepage": "",
+        "created_at": "2018-01-24T14:59:20Z",
+        "pushed_at": "2022-04-07T15:12:20Z",
+        "categories": [
+          "nav"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "yssickjgd/robowalker_train",
+        "full_name": "yssickjgd/robowalker_train",
+        "name": "robowalker_train",
+        "owner": "yssickjgd",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/68366961?v=4",
+        "description_en": "RoboMaster机甲大师机器人大赛中国科大RoboWalker战队电控组培训教学资料",
+        "description_zh": "中国科大RoboWalker战队电控组培训教学资料，用于RoboMaster机甲大师赛。",
+        "highlight_zh": "RoboMaster电控培训教程",
+        "stars": 611,
+        "forks": 68,
+        "language": "C",
+        "topics": [],
+        "url": "https://github.com/yssickjgd/robowalker_train",
+        "homepage": "",
+        "created_at": "2023-08-04T12:21:16Z",
+        "pushed_at": "2026-04-28T09:40:54Z",
+        "categories": [
+          "other"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "RoboMaster/Development-Board-C-Examples",
+        "full_name": "RoboMaster/Development-Board-C-Examples",
+        "name": "Development-Board-C-Examples",
+        "owner": "RoboMaster",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/35285277?v=4",
+        "description_en": "",
+        "description_zh": "RoboMaster开发板C语言示例代码，提供基础外设驱动和功能演示。",
+        "highlight_zh": "RoboMaster开发板C示例",
+        "stars": 578,
+        "forks": 184,
+        "language": "C",
+        "topics": [],
+        "url": "https://github.com/RoboMaster/Development-Board-C-Examples",
+        "homepage": "",
+        "created_at": "2020-01-09T08:56:37Z",
+        "pushed_at": "2022-09-03T13:46:21Z",
+        "categories": [
+          "sim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "Harry-hhj/CVRM2021-sjtu",
+        "full_name": "Harry-hhj/CVRM2021-sjtu",
+        "name": "CVRM2021-sjtu",
+        "owner": "Harry-hhj",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/60340580?v=4",
+        "description_en": "上海交通大学 RoboMaster 2021赛季 视觉代码",
+        "description_zh": "上海交通大学RoboMaster 2021赛季视觉代码，基于OpenCV实现目标识别与跟踪。",
+        "highlight_zh": "2021赛季视觉识别方案",
+        "stars": 474,
+        "forks": 68,
+        "language": "C",
+        "topics": [
+          "opencv",
+          "robomaster"
+        ],
+        "url": "https://github.com/Harry-hhj/CVRM2021-sjtu",
+        "homepage": "",
+        "created_at": "2021-08-31T07:04:37Z",
+        "pushed_at": "2024-01-26T05:47:03Z",
+        "categories": [
+          "aim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "TongjiSuperPower/sp_vision_25",
+        "full_name": "TongjiSuperPower/sp_vision_25",
+        "name": "sp_vision_25",
+        "owner": "TongjiSuperPower",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/131699424?v=4",
+        "description_en": "同济大学SuperPower战队25赛季视觉框架",
+        "description_zh": "同济大学SuperPower战队25赛季视觉框架，用于RoboMaster比赛中的视觉处理。",
+        "highlight_zh": "25赛季视觉框架",
+        "stars": 465,
+        "forks": 124,
+        "language": "C",
+        "topics": [
+          "robomaster"
+        ],
+        "url": "https://github.com/TongjiSuperPower/sp_vision_25",
+        "homepage": "",
+        "created_at": "2024-08-31T14:44:10Z",
+        "pushed_at": "2025-09-29T04:59:29Z",
+        "categories": [
+          "aim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "RoboMaster/DevelopmentBoard-Examples",
+        "full_name": "RoboMaster/DevelopmentBoard-Examples",
+        "name": "DevelopmentBoard-Examples",
+        "owner": "RoboMaster",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/35285277?v=4",
+        "description_en": "",
+        "description_zh": "RoboMaster开发板示例代码，包含多种外设使用和功能演示。",
+        "highlight_zh": "开发板通用示例",
+        "stars": 429,
+        "forks": 203,
+        "language": "C++",
+        "topics": [],
+        "url": "https://github.com/RoboMaster/DevelopmentBoard-Examples",
+        "homepage": "",
+        "created_at": "2018-04-12T03:20:16Z",
+        "pushed_at": "2021-04-22T02:21:37Z",
+        "categories": [
+          "sim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "dji-sdk/RoboMaster-SDK",
+        "full_name": "dji-sdk/RoboMaster-SDK",
+        "name": "RoboMaster-SDK",
+        "owner": "dji-sdk",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/11917623?v=4",
+        "description_en": "DJI RoboMaster Python SDK and Sample Code for RoboMaster EP.",
+        "description_zh": "大疆RoboMaster EP的Python SDK和示例代码，用于控制RoboMaster机器人。",
+        "highlight_zh": "RoboMaster EP Python SDK",
+        "stars": 420,
+        "forks": 185,
+        "language": "C",
+        "topics": [],
+        "url": "https://github.com/dji-sdk/RoboMaster-SDK",
+        "homepage": "",
+        "created_at": "2020-01-07T07:26:10Z",
+        "pushed_at": "2024-05-10T20:48:23Z",
+        "categories": [
+          "sim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "RoboMaster/RoboRTS-Firmware",
+        "full_name": "RoboMaster/RoboRTS-Firmware",
+        "name": "RoboRTS-Firmware",
+        "owner": "RoboMaster",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/35285277?v=4",
+        "description_en": "RoboRTS infantry control firmware",
+        "description_zh": "RoboRTS步兵控制固件，用于RoboMaster机器人的底层控制。",
+        "highlight_zh": "步兵机器人控制固件",
+        "stars": 411,
+        "forks": 207,
+        "language": "C++",
+        "topics": [],
+        "url": "https://github.com/RoboMaster/RoboRTS-Firmware",
+        "homepage": "",
+        "created_at": "2018-01-24T15:05:38Z",
+        "pushed_at": "2021-03-29T06:45:54Z",
+        "categories": [
+          "sim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "SMBU-PolarBear-Robotics-Team/pb2025_sentry_nav",
+        "full_name": "SMBU-PolarBear-Robotics-Team/pb2025_sentry_nav",
+        "name": "pb2025_sentry_nav",
+        "owner": "SMBU-PolarBear-Robotics-Team",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/192760559?v=4",
+        "description_en": "Shenzhen MSU-BIT University PolarBear Team's Sentry Navigation Sim2Real Package for RoboMaster2025. QQ group: 932119307",
+        "description_zh": "深圳北理莫斯科大学北极熊战队RoboMaster2025哨兵导航Sim2Real包，基于ROS2和Navigation2。",
+        "highlight_zh": "哨兵导航仿真到现实",
+        "stars": 369,
+        "forks": 60,
+        "language": "C++",
+        "topics": [
+          "livox-lidar",
+          "navigation2",
+          "robomaster",
+          "robotics",
+          "ros2",
+          "ugv"
+        ],
+        "url": "https://github.com/SMBU-PolarBear-Robotics-Team/pb2025_sentry_nav",
+        "homepage": "",
+        "created_at": "2024-09-05T10:36:44Z",
+        "pushed_at": "2026-06-01T22:53:46Z",
+        "categories": [
+          "nav",
+          "sim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "xinyang-go/SJTU-RM-CV-2019",
+        "full_name": "xinyang-go/SJTU-RM-CV-2019",
+        "name": "SJTU-RM-CV-2019",
+        "owner": "xinyang-go",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/41963211?v=4",
+        "description_en": "上海交通大学 RoboMaster 2019赛季 视觉代码",
+        "description_zh": "上海交通大学RoboMaster 2019赛季视觉代码，用于计算机视觉任务。",
+        "highlight_zh": "2019赛季视觉代码",
+        "stars": 362,
+        "forks": 79,
+        "language": "C",
+        "topics": [
+          "computer-vision",
+          "robomaster"
+        ],
+        "url": "https://github.com/xinyang-go/SJTU-RM-CV-2019",
+        "homepage": "",
+        "created_at": "2019-04-14T09:11:44Z",
+        "pushed_at": "2021-03-16T12:47:23Z",
+        "categories": [
+          "aim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "NeoZng/vision_tutorial",
+        "full_name": "NeoZng/vision_tutorial",
+        "name": "vision_tutorial",
+        "owner": "NeoZng",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/60593302?v=4",
+        "description_en": "An introduction to computer vision and RoboMaster algorithm group",
+        "description_zh": "计算机视觉与RoboMaster算法组入门教程，涵盖深度学习、图像处理等基础内容。",
+        "highlight_zh": "RoboMaster视觉算法入门首选教程",
+        "stars": 341,
+        "forks": 45,
+        "language": "Shell",
+        "topics": [
+          "computer-vision",
+          "deep-learning",
+          "image-processing",
+          "robomaster",
+          "tutorials"
+        ],
+        "url": "https://github.com/NeoZng/vision_tutorial",
+        "homepage": "",
+        "created_at": "2022-05-27T12:42:46Z",
+        "pushed_at": "2023-10-16T18:25:40Z",
+        "categories": [
+          "aim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "LihanChen2004/pb_rm_simulation",
+        "full_name": "LihanChen2004/pb_rm_simulation",
+        "name": "pb_rm_simulation",
+        "owner": "LihanChen2004",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/74599182?v=4",
+        "description_en": "ROS2-Gazebo simulation package leveraging Mid360 and FASTLIO for  navigation.",
+        "description_zh": "基于ROS2-Gazebo的仿真包，利用Mid360激光雷达和FASTLIO实现导航功能。",
+        "highlight_zh": "结合Mid360与FASTLIO的导航仿真方案",
+        "stars": 326,
+        "forks": 38,
+        "language": "C++",
+        "topics": [
+          "gazebo",
+          "navigation",
+          "robomaster",
+          "sim2real"
+        ],
+        "url": "https://github.com/LihanChen2004/pb_rm_simulation",
+        "homepage": "",
+        "created_at": "2023-10-14T12:52:40Z",
+        "pushed_at": "2024-06-08T04:57:53Z",
+        "categories": [
+          "slam",
+          "nav",
+          "radar"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "WangHongxi2001/RoboMaster-C-Board-INS-Example",
+        "full_name": "WangHongxi2001/RoboMaster-C-Board-INS-Example",
+        "name": "RoboMaster-C-Board-INS-Example",
+        "owner": "WangHongxi2001",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/41504031?v=4",
+        "description_en": "",
+        "description_zh": "RoboMaster C型开发板惯性导航示例程序，提供INS算法参考实现。",
+        "highlight_zh": "C板惯性导航示例，快速上手INS开发",
+        "stars": 314,
+        "forks": 56,
+        "language": "C",
+        "topics": [],
+        "url": "https://github.com/WangHongxi2001/RoboMaster-C-Board-INS-Example",
+        "homepage": "",
+        "created_at": "2022-07-12T07:10:56Z",
+        "pushed_at": "2022-08-13T06:52:38Z",
+        "categories": [
+          "nav",
+          "sim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "HNUYueLuRM/basic_framework",
+        "full_name": "HNUYueLuRM/basic_framework",
+        "name": "basic_framework",
+        "owner": "HNUYueLuRM",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/83855109?v=4",
+        "description_en": "framework for developing RoboMaster Electric Control programmes",
+        "description_zh": "用于开发RoboMaster电控程序的基础框架，提供模块化代码结构。",
+        "highlight_zh": "RoboMaster电控开发的基础框架",
+        "stars": 306,
+        "forks": 74,
+        "language": "C",
+        "topics": [],
+        "url": "https://github.com/HNUYueLuRM/basic_framework",
+        "homepage": "",
+        "created_at": "2023-06-05T08:06:17Z",
+        "pushed_at": "2026-03-17T15:03:47Z",
+        "categories": [
+          "other"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "rm-controls/rm_control",
+        "full_name": "rm-controls/rm_control",
+        "name": "rm_control",
+        "owner": "rm-controls",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/88702978?v=4",
+        "description_en": "🤖 Hardware/simulation interface base on ros-controls for developing RoboMaster robots and high-performance robots.",
+        "description_zh": "基于ros-controls的硬件/仿真接口，用于开发RoboMaster机器人及高性能机器人。",
+        "highlight_zh": "统一硬件与仿真接口的机器人控制框架",
+        "stars": 290,
+        "forks": 108,
+        "language": "C++",
+        "topics": [],
+        "url": "https://github.com/rm-controls/rm_control",
+        "homepage": "https://rm-control-docs.netlify.app/en/",
+        "created_at": "2021-08-10T06:04:37Z",
+        "pushed_at": "2026-05-01T08:15:38Z",
+        "categories": [
+          "planning",
+          "sim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "SEU-SuperNova-CVRA/Robomaster2018-SEU-OpenSource",
+        "full_name": "SEU-SuperNova-CVRA/Robomaster2018-SEU-OpenSource",
+        "name": "Robomaster2018-SEU-OpenSource",
+        "owner": "SEU-SuperNova-CVRA",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/42936248?v=4",
+        "description_en": "This is the open source project for RoboMaster 2018 contest from Southeast University",
+        "description_zh": "东南大学RoboMaster 2018赛季开源项目，包含计算机视觉、深度学习与OpenCV3代码。",
+        "highlight_zh": "东南大学2018赛季视觉开源代码",
+        "stars": 278,
+        "forks": 95,
+        "language": "C",
+        "topics": [
+          "computer-vision",
+          "cpp",
+          "deeplearning",
+          "opencv3"
+        ],
+        "url": "https://github.com/SEU-SuperNova-CVRA/Robomaster2018-SEU-OpenSource",
+        "homepage": "",
+        "created_at": "2018-09-03T12:07:26Z",
+        "pushed_at": "2019-04-04T16:07:47Z",
+        "categories": [
+          "aim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "julyfun/rm.cv.fans",
+        "full_name": "julyfun/rm.cv.fans",
+        "name": "rm.cv.fans",
+        "owner": "julyfun",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/43675484?v=4",
+        "description_en": "RoboMaster 视觉自瞄，包含陀螺运动建模 lmtd、精密火控 watergun、弹道校正 aim-corrector 和各种视觉基础组件",
+        "description_zh": "RoboMaster视觉自瞄系统，包含陀螺运动建模、精密火控、弹道校正及视觉基础组件。",
+        "highlight_zh": "完整的RoboMaster自瞄解决方案",
+        "stars": 278,
+        "forks": 60,
+        "language": "C++",
+        "topics": [
+          "autoaim",
+          "ceres",
+          "computer-vision",
+          "cpp",
+          "cv",
+          "eigen"
+        ],
+        "url": "https://github.com/julyfun/rm.cv.fans",
+        "homepage": "",
+        "created_at": "2024-04-28T17:39:22Z",
+        "pushed_at": "2025-07-19T17:11:48Z",
+        "categories": [
+          "aim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "ItGarbager/aimcf_yolov5",
+        "full_name": "ItGarbager/aimcf_yolov5",
+        "name": "aimcf_yolov5",
+        "owner": "ItGarbager",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/95277218?v=4",
+        "description_en": "使用yolov5算法实现cf的自瞄",
+        "description_zh": "使用YOLOv5算法实现CF（穿越火线）游戏的自瞄功能。",
+        "highlight_zh": "YOLOv5实现游戏自瞄",
+        "stars": 265,
+        "forks": 103,
+        "language": "Python",
+        "topics": [],
+        "url": "https://github.com/ItGarbager/aimcf_yolov5",
+        "homepage": "",
+        "created_at": "2022-01-19T17:31:17Z",
+        "pushed_at": "2022-09-01T11:27:40Z",
+        "categories": [
+          "aim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "xrobot-org/XRobot",
+        "full_name": "xrobot-org/XRobot",
+        "name": "XRobot",
+        "owner": "xrobot-org",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/121489450?v=4",
+        "description_en": "XRobot Auto Code Generation Toolkit",
+        "description_zh": "XRobot自动代码生成工具包，支持嵌入式、ESP32、Linux、MCU、树莓派等平台。",
+        "highlight_zh": "多平台机器人代码自动生成工具",
+        "stars": 226,
+        "forks": 43,
+        "language": "Python",
+        "topics": [
+          "embedded",
+          "esp32",
+          "linux",
+          "mcu",
+          "raspberry-pi",
+          "robomaster"
+        ],
+        "url": "https://github.com/xrobot-org/XRobot",
+        "homepage": "http://xrobot-org.github.io/",
+        "created_at": "2022-12-27T10:35:12Z",
+        "pushed_at": "2026-04-29T03:09:03Z",
+        "categories": [
+          "sim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "RoboMaster/IntelligentUAVChampionshipSimulator",
+        "full_name": "RoboMaster/IntelligentUAVChampionshipSimulator",
+        "name": "IntelligentUAVChampionshipSimulator",
+        "owner": "RoboMaster",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/35285277?v=4",
+        "description_en": "This the the repo containing all stages of the drone competition, including circle crossing, auto flight and FPV racing.",
+        "description_zh": "智能无人机锦标赛模拟器，包含穿圈、自动飞行和FPV竞速等所有比赛阶段。",
+        "highlight_zh": "无人机竞赛全阶段模拟器",
+        "stars": 221,
+        "forks": 35,
+        "language": "Dockerfile",
+        "topics": [],
+        "url": "https://github.com/RoboMaster/IntelligentUAVChampionshipSimulator",
+        "homepage": "",
+        "created_at": "2022-08-02T12:19:21Z",
+        "pushed_at": "2026-04-21T07:34:25Z",
+        "categories": [
+          "sim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "xinyang-go/LabelRoboMaster",
+        "full_name": "xinyang-go/LabelRoboMaster",
+        "name": "LabelRoboMaster",
+        "owner": "xinyang-go",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/41963211?v=4",
+        "description_en": "RoboMaster智能数据集标注工具",
+        "description_zh": "RoboMaster智能数据集标注工具，用于高效标注机器人比赛中的图像数据。",
+        "highlight_zh": "专为RoboMaster设计的智能标注工具",
+        "stars": 213,
+        "forks": 44,
+        "language": "C++",
+        "topics": [],
+        "url": "https://github.com/xinyang-go/LabelRoboMaster",
+        "homepage": "",
+        "created_at": "2021-04-20T06:38:13Z",
+        "pushed_at": "2021-11-16T13:17:49Z",
+        "categories": [
+          "other"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "HHgzs/TJURM-2024",
+        "full_name": "HHgzs/TJURM-2024",
+        "name": "TJURM-2024",
+        "owner": "HHgzs",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/111210429?v=4",
+        "description_en": "北洋机甲2024自瞄框架",
+        "description_zh": "北洋机甲2024赛季自瞄框架，用于RoboMaster比赛中的自动瞄准。",
+        "highlight_zh": "北洋机甲2024自瞄解决方案",
+        "stars": 211,
+        "forks": 25,
+        "language": "C++",
+        "topics": [],
+        "url": "https://github.com/HHgzs/TJURM-2024",
+        "homepage": "",
+        "created_at": "2024-08-15T08:29:33Z",
+        "pushed_at": "2024-09-20T17:06:01Z",
+        "categories": [
+          "aim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "CSU-FYT-Vision/FYT2024_vision",
+        "full_name": "CSU-FYT-Vision/FYT2024_vision",
+        "name": "FYT2024_vision",
+        "owner": "CSU-FYT-Vision",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/149928233?v=4",
+        "description_en": "中南大学FYT战队RoboMaster24赛季视觉项目",
+        "description_zh": "中南大学FYT战队RoboMaster 2024赛季视觉项目，包含视觉识别与处理。",
+        "highlight_zh": "FYT战队2024赛季视觉代码",
+        "stars": 203,
+        "forks": 28,
+        "language": "C++",
+        "topics": [],
+        "url": "https://github.com/CSU-FYT-Vision/FYT2024_vision",
+        "homepage": "",
+        "created_at": "2024-06-01T01:59:13Z",
+        "pushed_at": "2024-08-27T08:35:07Z",
+        "categories": [
+          "aim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "chenjunnn/rm_vision",
+        "full_name": "chenjunnn/rm_vision",
+        "name": "rm_vision",
+        "owner": "chenjunnn",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/57067221?v=4",
+        "description_en": "RoboMaster 视觉 ROS2 框架",
+        "description_zh": "基于ROS2的RoboMaster视觉框架，支持自动瞄准、Docker部署和OpenCV。",
+        "highlight_zh": "ROS2驱动的RoboMaster视觉框架",
+        "stars": 193,
+        "forks": 17,
+        "language": "Python",
+        "topics": [
+          "auto-aim",
+          "docker",
+          "opencv",
+          "robomaster",
+          "robotics-competition",
+          "ros2"
+        ],
+        "url": "https://github.com/chenjunnn/rm_vision",
+        "homepage": "",
+        "created_at": "2022-02-19T09:42:24Z",
+        "pushed_at": "2024-11-08T07:08:13Z",
+        "categories": [
+          "aim",
+          "sim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "Alliance-Algorithm/RMCS",
+        "full_name": "Alliance-Algorithm/RMCS",
+        "name": "RMCS",
+        "owner": "Alliance-Algorithm",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/115159719?v=4",
+        "description_en": "RoboMaster Control System based on ROS2.",
+        "description_zh": "基于ROS2的RoboMaster控制系统，用于机器人控制。",
+        "highlight_zh": "ROS2实现的RoboMaster控制系统",
+        "stars": 183,
+        "forks": 38,
+        "language": "C++",
+        "topics": [],
+        "url": "https://github.com/Alliance-Algorithm/RMCS",
+        "homepage": "",
+        "created_at": "2023-10-23T05:58:37Z",
+        "pushed_at": "2026-06-04T13:09:09Z",
+        "categories": [
+          "sim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "FaterYU/rm_vision",
+        "full_name": "FaterYU/rm_vision",
+        "name": "rm_vision",
+        "owner": "FaterYU",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/74441262?v=4",
+        "description_en": "RoboMaster vision framework",
+        "description_zh": "RoboMaster视觉框架，提供视觉处理功能。",
+        "highlight_zh": "简洁的RoboMaster视觉框架",
+        "stars": 166,
+        "forks": 18,
+        "language": "Python",
+        "topics": [],
+        "url": "https://github.com/FaterYU/rm_vision",
+        "homepage": "",
+        "created_at": "2024-01-31T02:40:31Z",
+        "pushed_at": "2024-06-19T15:40:33Z",
+        "categories": [
+          "aim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "SJTU-RoboMaster-Team/Matrix_and_Robotics_on_STM32",
+        "full_name": "SJTU-RoboMaster-Team/Matrix_and_Robotics_on_STM32",
+        "name": "Matrix_and_Robotics_on_STM32",
+        "owner": "SJTU-RoboMaster-Team",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/65597533?v=4",
+        "description_en": "基于ARM优化数学库arm_math实现的矩阵运算和机器人学工具库，可用于实现机械臂控制及后续功能开发",
+        "description_zh": "基于ARM优化数学库arm_math的矩阵运算和机器人学工具库，适用于机械臂控制等。",
+        "highlight_zh": "ARM优化数学库驱动的机器人学工具",
+        "stars": 166,
+        "forks": 22,
+        "language": "C++",
+        "topics": [],
+        "url": "https://github.com/SJTU-RoboMaster-Team/Matrix_and_Robotics_on_STM32",
+        "homepage": "",
+        "created_at": "2023-08-24T08:43:15Z",
+        "pushed_at": "2023-09-10T13:16:18Z",
+        "categories": [
+          "sim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "AlchemicRonin/-STM32-RoboMaster-",
+        "full_name": "AlchemicRonin/-STM32-RoboMaster-",
+        "name": "-STM32-RoboMaster-",
+        "owner": "AlchemicRonin",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/38276635?v=4",
+        "description_en": "从STM32开始的RoboMaster生活系列教程",
+        "description_zh": "从STM32开始的RoboMaster生活系列教程，涵盖机器人开发基础。",
+        "highlight_zh": "STM32入门RoboMaster教程",
+        "stars": 154,
+        "forks": 21,
+        "language": "C",
+        "topics": [
+          "code",
+          "robomaster",
+          "robot",
+          "stm32",
+          "tutorial"
+        ],
+        "url": "https://github.com/AlchemicRonin/-STM32-RoboMaster-",
+        "homepage": "",
+        "created_at": "2020-03-11T01:21:30Z",
+        "pushed_at": "2020-04-14T04:14:29Z",
+        "categories": [
+          "sim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "yizhengzhang1/RoboMaster-Simulator",
+        "full_name": "yizhengzhang1/RoboMaster-Simulator",
+        "name": "RoboMaster-Simulator",
+        "owner": "yizhengzhang1",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/16457013?v=4",
+        "description_en": "ICRA RoboMaster AI Challenge Simulator - Gazebo with OpenAI gym",
+        "description_zh": "ICRA RoboMaster AI Challenge模拟器，基于Gazebo和OpenAI Gym，支持强化学习。",
+        "highlight_zh": "RoboMaster AI挑战赛模拟器",
+        "stars": 149,
+        "forks": 19,
+        "language": "C++",
+        "topics": [
+          "gazebo-simulator",
+          "multi-robot",
+          "omnidirectional",
+          "reinforcement-learning",
+          "robomaster",
+          "ros"
+        ],
+        "url": "https://github.com/yizhengzhang1/RoboMaster-Simulator",
+        "homepage": "https://privilger.github.io/RoboMaster-Simulator",
+        "created_at": "2019-11-14T13:06:48Z",
+        "pushed_at": "2021-11-13T13:13:17Z",
+        "categories": [
+          "rl",
+          "sim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "robomaster-oss/rmoss_core",
+        "full_name": "robomaster-oss/rmoss_core",
+        "name": "rmoss_core",
+        "owner": "robomaster-oss",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/68582904?v=4",
+        "description_en": "RoboMaster OSS中的基础项目，为RoboMaster提供通用基础功能模块包，如相机模块，弹道运动模块等。",
+        "description_zh": "RoboMaster OSS基础项目，提供相机模块、弹道运动等通用功能包。",
+        "highlight_zh": "RoboMaster通用功能模块集合",
+        "stars": 138,
+        "forks": 23,
+        "language": "C++",
+        "topics": [
+          "robomaster",
+          "ros2"
+        ],
+        "url": "https://github.com/robomaster-oss/rmoss_core",
+        "homepage": "",
+        "created_at": "2020-07-21T06:37:55Z",
+        "pushed_at": "2024-07-23T01:41:01Z",
+        "categories": [
+          "aim",
+          "sim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "yarkable/RP_Infantry_Plus",
+        "full_name": "yarkable/RP_Infantry_Plus",
+        "name": "RP_Infantry_Plus",
+        "owner": "yarkable",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/33142987?v=4",
+        "description_en": "RoboMaster2019 Infantry Vision OpenSource Code of Shenzhen University",
+        "description_zh": "深圳大学RoboMaster 2019步兵视觉开源代码，基于OpenCV和Linux，用于机器人视觉识别与瞄准。",
+        "highlight_zh": "RoboMaster步兵视觉识别开源方案",
+        "stars": 135,
+        "forks": 37,
+        "language": "C++",
+        "topics": [
+          "computervision",
+          "cpp",
+          "linux",
+          "opencv",
+          "robomaster"
+        ],
+        "url": "https://github.com/yarkable/RP_Infantry_Plus",
+        "homepage": "",
+        "created_at": "2019-08-16T06:36:27Z",
+        "pushed_at": "2022-12-24T13:23:23Z",
+        "categories": [
+          "aim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "zRzRzRzRzRzRzR/YOLO-of-RoboMaster-Keypoints-Detection-2023",
+        "full_name": "zRzRzRzRzRzRzR/YOLO-of-RoboMaster-Keypoints-Detection-2023",
+        "name": "YOLO-of-RoboMaster-Keypoints-Detection-2023",
+        "owner": "zRzRzRzRzRzRzR",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/93239683?v=4",
+        "description_en": "2023年西交利物浦大学动云科技GMaster战队yolo 装甲板四点模型，能量机关五点模型，区域赛视觉识别板目标检测",
+        "description_zh": "西交利物浦大学GMaster战队2023年YOLO装甲板四点与能量机关五点检测模型，用于区域赛视觉识别。",
+        "highlight_zh": "YOLOv7装甲板与能量机关关键点检测",
+        "stars": 134,
+        "forks": 22,
+        "language": "Python",
+        "topics": [
+          "keypoint-detection",
+          "robomaster",
+          "xjtlu",
+          "yolov7"
+        ],
+        "url": "https://github.com/zRzRzRzRzRzRzR/YOLO-of-RoboMaster-Keypoints-Detection-2023",
+        "homepage": "",
+        "created_at": "2023-02-04T01:38:05Z",
+        "pushed_at": "2023-08-30T08:46:21Z",
+        "categories": [
+          "aim",
+          "rune"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "CodeAlanqian/SolveTrajectory",
+        "full_name": "CodeAlanqian/SolveTrajectory",
+        "name": "SolveTrajectory",
+        "owner": "CodeAlanqian",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/30599928?v=4",
+        "description_en": "RM弹道解算 空气阻力模型  chenjunnn rm_vision 的电控端示例",
+        "description_zh": "RoboMaster弹道解算示例，包含空气阻力模型，适用于rm_vision电控端。",
+        "highlight_zh": "RM弹道解算空气阻力模型",
+        "stars": 120,
+        "forks": 20,
+        "language": "C",
+        "topics": [],
+        "url": "https://github.com/CodeAlanqian/SolveTrajectory",
+        "homepage": "",
+        "created_at": "2023-03-15T17:06:24Z",
+        "pushed_at": "2024-03-22T13:15:13Z",
+        "categories": [
+          "aim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "QunShanHe/JLURoboVision",
+        "full_name": "QunShanHe/JLURoboVision",
+        "name": "JLURoboVision",
+        "owner": "QunShanHe",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/70305771?v=4",
+        "description_en": "Standard Vision Software of TARS-GO Team, Jilin University on RoboMaster 2020 Robotic Competition",
+        "description_zh": "吉林大学TARS-GO战队RoboMaster 2020标准视觉软件，用于机器人视觉处理。",
+        "highlight_zh": "吉林大学RM视觉标准软件",
+        "stars": 114,
+        "forks": 24,
+        "language": "C",
+        "topics": [
+          "robomaster"
+        ],
+        "url": "https://github.com/QunShanHe/JLURoboVision",
+        "homepage": "",
+        "created_at": "2020-08-27T03:37:06Z",
+        "pushed_at": "2020-09-30T00:12:29Z",
+        "categories": [
+          "aim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "RoboMasterS1Challenge/robomaster_s1_can_hack",
+        "full_name": "RoboMasterS1Challenge/robomaster_s1_can_hack",
+        "name": "robomaster_s1_can_hack",
+        "owner": "RoboMasterS1Challenge",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/56687489?v=4",
+        "description_en": "DJI RoboMaster S1 CAN Hack",
+        "description_zh": "大疆RoboMaster S1的CAN总线破解方案，基于Nucleo-F767ZI和ROS。",
+        "highlight_zh": "RoboMaster S1 CAN总线破解",
+        "stars": 109,
+        "forks": 23,
+        "language": "C",
+        "topics": [
+          "nucleo-f767zi",
+          "robomaster",
+          "ros"
+        ],
+        "url": "https://github.com/RoboMasterS1Challenge/robomaster_s1_can_hack",
+        "homepage": "",
+        "created_at": "2019-09-14T14:07:22Z",
+        "pushed_at": "2020-06-27T16:37:02Z",
+        "categories": [
+          "other"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "WayneMao/RoboMatrix",
+        "full_name": "WayneMao/RoboMatrix",
+        "name": "RoboMatrix",
+        "owner": "WayneMao",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/35285052?v=4",
+        "description_en": "The Official Implementation of RoboMatrix",
+        "description_zh": "RoboMatrix的官方实现，结合LLM与具身智能，用于机器人操作数据集。",
+        "highlight_zh": "LLM驱动的具身智能机器人操作",
+        "stars": 108,
+        "forks": 4,
+        "language": "Python",
+        "topics": [
+          "dataset",
+          "embodied-ai",
+          "llava",
+          "llm",
+          "robomaster",
+          "robotics"
+        ],
+        "url": "https://github.com/WayneMao/RoboMatrix",
+        "homepage": "https://robo-matrix.github.io/",
+        "created_at": "2024-11-18T05:55:07Z",
+        "pushed_at": "2025-05-19T10:06:49Z",
+        "categories": [
+          "other"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "nanmu42/robomasterpy",
+        "full_name": "nanmu42/robomasterpy",
+        "name": "robomasterpy",
+        "owner": "nanmu42",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/8143068?v=4",
+        "description_en": "DJI RoboMaster Python SDK and programing framework | 大疆机甲大师的Python SDK和编程框架",
+        "description_zh": "大疆RoboMaster的Python SDK和编程框架，方便控制机甲大师机器人。",
+        "highlight_zh": "RoboMaster Python SDK与框架",
+        "stars": 94,
+        "forks": 13,
+        "language": "Python",
+        "topics": [
+          "client",
+          "dji",
+          "dji-robomaster",
+          "dji-sdk",
+          "framework",
+          "library"
+        ],
+        "url": "https://github.com/nanmu42/robomasterpy",
+        "homepage": "https://robomasterpy.nanmu.me",
+        "created_at": "2020-05-23T07:52:35Z",
+        "pushed_at": "2023-03-23T04:22:58Z",
+        "categories": [
+          "sim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "Spphire/RM-labeling-tool",
+        "full_name": "Spphire/RM-labeling-tool",
+        "name": "RM-labeling-tool",
+        "owner": "Spphire",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/56157591?v=4",
+        "description_en": "It's a simulator based on Unity for RoboMaster. You can use it to get some labeled dataset for deep learning",
+        "description_zh": "基于Unity的RoboMaster模拟器，可生成标注数据集用于深度学习训练。",
+        "highlight_zh": "Unity模拟器自动生成标注数据",
+        "stars": 90,
+        "forks": 6,
+        "language": "HTML",
+        "topics": [
+          "armor",
+          "auto-labeling",
+          "dataset-generation",
+          "energy",
+          "robomaster",
+          "simulator"
+        ],
+        "url": "https://github.com/Spphire/RM-labeling-tool",
+        "homepage": "",
+        "created_at": "2023-03-05T06:54:56Z",
+        "pushed_at": "2023-06-09T17:04:49Z",
+        "categories": [
+          "sim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "SCAU-RM-NAV/RM2023_Radar_Dataset",
+        "full_name": "SCAU-RM-NAV/RM2023_Radar_Dataset",
+        "name": "RM2023_Radar_Dataset",
+        "owner": "SCAU-RM-NAV",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/98866857?v=4",
+        "description_en": "该仓库为RM2023雷达站所用到的yolo神经网络训练数据集，包含车和装甲板（上交格式）。同时有yolov5 6.0的训练环境，可以在本地进行训练和测试",
+        "description_zh": "RM2023雷达站YOLO训练数据集，包含车辆和装甲板标注，支持YOLOv5训练。",
+        "highlight_zh": "RM2023雷达站目标检测数据集",
+        "stars": 87,
+        "forks": 3,
+        "language": "Python",
+        "topics": [],
+        "url": "https://github.com/SCAU-RM-NAV/RM2023_Radar_Dataset",
+        "homepage": "",
+        "created_at": "2023-08-18T06:16:32Z",
+        "pushed_at": "2024-06-16T01:48:03Z",
+        "categories": [
+          "aim",
+          "radar"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "SMBU-PolarBear-Robotics-Team/rmu_gazebo_simulator",
+        "full_name": "SMBU-PolarBear-Robotics-Team/rmu_gazebo_simulator",
+        "name": "rmu_gazebo_simulator",
+        "owner": "SMBU-PolarBear-Robotics-Team",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/192760559?v=4",
+        "description_en": "Gazebo Simulator for RoboMaster University",
+        "description_zh": "RoboMaster大学的Gazebo模拟器，基于ROS2和Ignition，用于机器人仿真。",
+        "highlight_zh": "RM大学Gazebo仿真环境",
+        "stars": 79,
+        "forks": 17,
+        "language": "JavaScript",
+        "topics": [
+          "gazebo",
+          "gazebo-ros",
+          "ignition",
+          "robomaster",
+          "ros2"
+        ],
+        "url": "https://github.com/SMBU-PolarBear-Robotics-Team/rmu_gazebo_simulator",
+        "homepage": "",
+        "created_at": "2024-06-29T12:25:40Z",
+        "pushed_at": "2026-06-01T23:04:16Z",
+        "categories": [
+          "sim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "jeguzzi/robomaster_ros",
+        "full_name": "jeguzzi/robomaster_ros",
+        "name": "robomaster_ros",
+        "owner": "jeguzzi",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/7299297?v=4",
+        "description_en": "ROS2 for DJI Robomaster EP and S1",
+        "description_zh": "为DJI Robomaster EP和S1提供的ROS2接口，用于机器人控制与感知。",
+        "highlight_zh": "大疆Robomaster的ROS2驱动",
+        "stars": 77,
+        "forks": 25,
+        "language": "Python",
+        "topics": [
+          "robomaster",
+          "ros2"
+        ],
+        "url": "https://github.com/jeguzzi/robomaster_ros",
+        "homepage": "https://jeguzzi.github.io/robomaster_ros",
+        "created_at": "2021-02-05T19:56:32Z",
+        "pushed_at": "2026-06-01T13:04:34Z",
+        "categories": [
+          "sim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "EinstainBohr/RM-computer-vision",
+        "full_name": "EinstainBohr/RM-computer-vision",
+        "name": "RM-computer-vision",
+        "owner": "EinstainBohr",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/37773638?v=4",
+        "description_en": "Robomaster装甲板识别",
+        "description_zh": "Robomaster装甲板识别算法，基于C++实现。",
+        "highlight_zh": "Robomaster装甲板检测",
+        "stars": 77,
+        "forks": 35,
+        "language": "C++",
+        "topics": [],
+        "url": "https://github.com/EinstainBohr/RM-computer-vision",
+        "homepage": "",
+        "created_at": "2018-10-08T17:42:08Z",
+        "pushed_at": "2019-10-09T09:14:22Z",
+        "categories": [
+          "aim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "rm-controls/rm_usb2can",
+        "full_name": "rm-controls/rm_usb2can",
+        "name": "rm_usb2can",
+        "owner": "rm-controls",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/88702978?v=4",
+        "description_en": "CAN peripheral interface for Intel NUC and other x86 device. 用于英特尔 NUC及其它x86架构的平台CAN的外设接口",
+        "description_zh": "为Intel NUC等x86设备提供CAN外设接口，支持CAN总线通信。",
+        "highlight_zh": "x86设备的CAN接口",
+        "stars": 76,
+        "forks": 16,
+        "language": "C",
+        "topics": [
+          "can-bus",
+          "diy",
+          "firmware",
+          "hardware",
+          "pcb",
+          "robomaster"
+        ],
+        "url": "https://github.com/rm-controls/rm_usb2can",
+        "homepage": "",
+        "created_at": "2021-08-10T08:43:19Z",
+        "pushed_at": "2023-08-08T17:08:01Z",
+        "categories": [
+          "planning",
+          "sim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "chenjunnn/rm_auto_aim",
+        "full_name": "chenjunnn/rm_auto_aim",
+        "name": "rm_auto_aim",
+        "owner": "chenjunnn",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/57067221?v=4",
+        "description_en": "RoboMaster 装甲板自动瞄准算法模块",
+        "description_zh": "RoboMaster装甲板自动瞄准算法模块，基于OpenCV和ROS2。",
+        "highlight_zh": "装甲板自动瞄准算法",
+        "stars": 76,
+        "forks": 7,
+        "language": "C++",
+        "topics": [
+          "auto-aim",
+          "opencv",
+          "robomaster",
+          "ros2"
+        ],
+        "url": "https://github.com/chenjunnn/rm_auto_aim",
+        "homepage": "",
+        "created_at": "2022-01-14T14:46:31Z",
+        "pushed_at": "2023-05-27T01:24:43Z",
+        "categories": [
+          "aim",
+          "sim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "T-DT-Algorithm-2025/T-DT_Radar",
+        "full_name": "T-DT-Algorithm-2025/T-DT_Radar",
+        "name": "T-DT_Radar",
+        "owner": "T-DT-Algorithm-2025",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/180907410?v=4",
+        "description_en": "2025年东北大学T-DT实验室 RoboMaster超级对抗赛 雷达代码",
+        "description_zh": "2025年东北大学T-DT实验室RoboMaster超级对抗赛雷达代码。",
+        "highlight_zh": "东北大学T-DT雷达代码",
+        "stars": 73,
+        "forks": 7,
+        "language": "C++",
+        "topics": [],
+        "url": "https://github.com/T-DT-Algorithm-2025/T-DT_Radar",
+        "homepage": "",
+        "created_at": "2025-08-31T09:23:59Z",
+        "pushed_at": "2025-09-02T07:21:34Z",
+        "categories": [
+          "radar"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "Blackjack200/at_vision_simulator",
+        "full_name": "Blackjack200/at_vision_simulator",
+        "name": "at_vision_simulator",
+        "owner": "Blackjack200",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/61568071?v=4",
+        "description_en": "RoboMaster vision algorithm validation simulator - Actor&Thinker team development",
+        "description_zh": "RoboMaster视觉算法验证模拟器，使用Bevy和Rust开发。",
+        "highlight_zh": "RoboMaster视觉模拟器",
+        "stars": 72,
+        "forks": 8,
+        "language": "Rust",
+        "topics": [
+          "bevy",
+          "computer-vision",
+          "robomaster",
+          "rust",
+          "simulation"
+        ],
+        "url": "https://github.com/Blackjack200/at_vision_simulator",
+        "homepage": "",
+        "created_at": "2025-11-23T07:49:13Z",
+        "pushed_at": "2025-11-23T07:50:17Z",
+        "categories": [
+          "aim",
+          "radar",
+          "sim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "FaterYU/rm_auto_aim",
+        "full_name": "FaterYU/rm_auto_aim",
+        "name": "rm_auto_aim",
+        "owner": "FaterYU",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/74441262?v=4",
+        "description_en": "",
+        "description_zh": "RoboMaster装甲板自动瞄准算法实现，基于C++。",
+        "highlight_zh": "自动瞄准算法C++实现",
+        "stars": 69,
+        "forks": 13,
+        "language": "C++",
+        "topics": [],
+        "url": "https://github.com/FaterYU/rm_auto_aim",
+        "homepage": "",
+        "created_at": "2024-01-31T03:02:55Z",
+        "pushed_at": "2024-06-16T19:50:16Z",
+        "categories": [
+          "aim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "Skylark0924/System_Identification",
+        "full_name": "Skylark0924/System_Identification",
+        "name": "System_Identification",
+        "owner": "Skylark0924",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/24936522?v=4",
+        "description_en": "The usage of MATLAB System Identification Toolbox and PID parameters adjustment",
+        "description_zh": "使用MATLAB系统辨识工具箱进行系统辨识及PID参数整定。",
+        "highlight_zh": "MATLAB系统辨识与PID调参",
+        "stars": 66,
+        "forks": 18,
+        "language": "MATLAB",
+        "topics": [
+          "matlab",
+          "pid-control",
+          "robomaster",
+          "system-identification"
+        ],
+        "url": "https://github.com/Skylark0924/System_Identification",
+        "homepage": "",
+        "created_at": "2019-02-25T08:04:17Z",
+        "pushed_at": "2019-03-12T16:08:50Z",
+        "categories": [
+          "other"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "HUSTLYRM/HUST_HeroAim_2024",
+        "full_name": "HUSTLYRM/HUST_HeroAim_2024",
+        "name": "HUST_HeroAim_2024",
+        "owner": "HUSTLYRM",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/91661952?v=4",
+        "description_en": "华中科技大学狼牙战队 RoboMaster 2024赛季 英雄辅瞄",
+        "description_zh": "华中科技大学狼牙战队RoboMaster 2024赛季英雄辅瞄算法。",
+        "highlight_zh": "华科狼牙英雄辅瞄",
+        "stars": 66,
+        "forks": 8,
+        "language": "C++",
+        "topics": [
+          "ai",
+          "robomaster",
+          "robotics"
+        ],
+        "url": "https://github.com/HUSTLYRM/HUST_HeroAim_2024",
+        "homepage": "",
+        "created_at": "2024-08-26T16:53:33Z",
+        "pushed_at": "2025-10-25T23:16:21Z",
+        "categories": [
+          "other"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      },
+      {
+        "id": "scutrobotlab/SimulatorX",
+        "full_name": "scutrobotlab/SimulatorX",
+        "name": "SimulatorX",
+        "owner": "scutrobotlab",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/47139417?v=4",
+        "description_en": "华南虎战队开发的 RMUC 2023 比赛模拟器",
+        "description_zh": "华南虎战队开发的RMUC 2023比赛模拟器，基于Unity。",
+        "highlight_zh": "华南虎战队比赛模拟器",
+        "stars": 65,
+        "forks": 11,
+        "language": "C#",
+        "topics": [
+          "blender",
+          "csharp",
+          "rider",
+          "robomaster",
+          "scut",
+          "unity"
+        ],
+        "url": "https://github.com/scutrobotlab/SimulatorX",
+        "homepage": "https://simulatorx.org",
+        "created_at": "2023-09-13T08:37:59Z",
+        "pushed_at": "2024-08-12T03:53:11Z",
+        "categories": [
+          "sim"
+        ],
+        "first_seen": "2026-06-04T17:40:48.739Z"
+      }
+    ]
+  }
+}
