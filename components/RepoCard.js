@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import { useApp } from "./AppProvider";
 import { STRINGS } from "@/lib/i18n";
 import { timeAgo } from "@/lib/format";
+import { downloadItem } from "@/lib/paperDownload";
 
 // 主语言对应的小圆点颜色（覆盖常见语言，其余用默认色）
 const LANG_COLORS = {
@@ -39,6 +41,19 @@ export default function RepoCard({ repo, tags, badge, isNew }) {
 
   const isFav = favs.has(repo.id);
   const isRead = reads.has(repo.id);
+  const [downloading, setDownloading] = useState(false);
+
+  const onDownload = async () => {
+    if (downloading) return;
+    setDownloading(true);
+    try {
+      await downloadItem(repo, { type: "repo" });
+    } catch (e) {
+      alert((lang === "en" ? "Download failed: " : "下载失败：") + e.message);
+    } finally {
+      setDownloading(false);
+    }
+  };
 
   const pick = (zh, en) => {
     if (lang === "en") return { main: en || zh, alt: null };
@@ -143,6 +158,9 @@ export default function RepoCard({ repo, tags, badge, isNew }) {
             {t.homepage}
           </a>
         )}
+        <button className="btn" onClick={onDownload} disabled={downloading}>
+          {downloading ? t.downloading : `↓ ${t.download}`}
+        </button>
       </div>
 
       <div className="card-foot">

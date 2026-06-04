@@ -28,7 +28,8 @@ export default function PapersGrid({ items, fields }) {
 
   const filtered = useMemo(() => {
     let list = [...items];
-    if (field !== "all") list = list.filter((p) => p.field === field);
+    if (field === "frontier") list = list.filter((p) => p.frontier);
+    else if (field !== "all") list = list.filter((p) => p.field === field);
     if (onlyFav) list = list.filter((p) => favs.has(p.id));
     if (onlyFeatured) list = list.filter((p) => p.featured);
     if (query.trim()) {

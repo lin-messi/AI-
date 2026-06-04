@@ -1,5 +1,7 @@
 // 抓取学术论文：arXiv（各分类 RSS）+ bioRxiv/medRxiv（API）+ HuggingFace 每日论文（热度）
-// → 清洗 → 去重 → 按领域归类 → 计算热度 → 截断 → 预翻译精选 → 写入 data/papers/<date>.json
+// → 清洗 → 去重 → 按领域归类 → 判定「交叉前沿」（AI+光学+芯片/生物+光学等）→ 计算热度
+// → 截断 → 前沿候选用 deepseek 打分过滤 → 预翻译精选 → 写入 data/papers/<date>.json
+// 「交叉前沿」为双重归属：既保留原基础领域，又额外带 frontier 标记单独成一栏。
 // 运行：npm run fetch:papers
 import Parser from "rss-parser";
 import fs from "node:fs";
@@ -12,8 +14,10 @@ import {
   FEATURED_TOP,
   RECENT_HOURS,
   SUBTAG_RULES,
+  FRONTIER,
 } from "./papers-feeds.mjs";
 import { translatePapersFull, translatePaperTitles } from "./enrich-papers.mjs";
+import { detectFrontier, fallbackFrontierField, scoreFrontier } from "./frontier.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -270,7 +274,10 @@ async function main() {
   const hfMap = await fetchHFHeat();
 
   // 收集所有源（arXiv 单次合并查询，避免限频）
-  const arxivCats = [...new Set(FIELDS.flatMap((f) => f.arxiv || []))];
+  // 在 6 大基础领域分类之外，并入「交叉前沿」额外分类（器件/硬件/交叉）。
+  const arxivCats = [
+    ...new Set([...FIELDS.flatMap((f) => f.arxiv || []), ...FRONTIER.extraArxiv]),
+  ];
   const all = [];
   all.push(...(await fetchArxivAll(arxivCats)));
   const bioServers = [...new Set(FIELDS.flatMap((f) => f.biorxiv || []))];
@@ -283,7 +290,12 @@ async function main() {
     (it) => hoursAgo(it.published_at) <= RECENT_HOURS
   );
   for (const it of merged) {
-    it.field = classifyField(it);
+    // 先判交叉前沿（用到 cats/标题/摘要）
+    const fr = detectFrontier(it);
+    it.frontier = fr.frontier;
+    it.crossTag = fr.crossTag;
+    // 基础领域；交叉论文若无基础领域则回退到就近领域，保证它也在原领域出现
+    it.field = classifyField(it) || (it.frontier ? fallbackFrontierField(it) : null);
     const text = (it.title_en + " " + it.abstract_en).toLowerCase();
     it.subtags = detectSubtags(text);
     it.heat = computeHeat(it, hfMap);
@@ -305,18 +317,48 @@ async function main() {
     console.log(`  · ${f.label_zh}: 保留 ${top.length}/${list.length}`);
   }
 
-  // 预翻译：精选（全文精读）+ 各领域前 N 标题
-  const featured = kept.filter((p) => p.featured);
+  // 交叉前沿：独立挑选（与基础领域并存）。用便宜模型打分丢弃误判（单学科）后取 Top N。
+  let frontierCands = merged.filter((it) => it.frontier);
+  frontierCands = await scoreFrontier(frontierCands);
+  frontierCands = frontierCands.filter((it) => it.frontierScore !== "low");
+  const scoreOrder = { high: 0, mid: 1 };
+  frontierCands.sort(
+    (a, b) =>
+      (scoreOrder[a.frontierScore] ?? 2) - (scoreOrder[b.frontierScore] ?? 2) ||
+      b.heat - a.heat
+  );
+  const frontierKept = frontierCands.slice(0, FRONTIER.maxPerField);
+  frontierKept.slice(0, FRONTIER.featuredTop).forEach((p) => (p.featured = true));
+  // 未入选（low 或超出上限）的论文撤销前沿标记，避免「交叉前沿」tab 出现未入选项。
+  const frontierSet = new Set(frontierKept.map((p) => p.id));
+  for (const it of merged) {
+    if (it.frontier && !frontierSet.has(it.id)) {
+      it.frontier = false;
+      it.crossTag = "";
+    }
+  }
+  console.log(`  · ${FRONTIER.label_zh}: 保留 ${frontierKept.length}/${frontierCands.length}`);
+
+  // 合并基础领域与交叉前沿（按 id 去重，保留同一对象引用）
+  const keptById = new Map();
+  for (const it of [...kept, ...frontierKept]) keptById.set(it.id, it);
+  const keptAll = [...keptById.values()];
+
+  // 预翻译：精选（全文精读）+ 各领域前 N 标题 + 交叉前沿标题
+  const featured = keptAll.filter((p) => p.featured);
   await translatePapersFull(featured);
 
-  const titleTodo = [];
+  const titleTodoSet = new Map();
   for (const f of FIELDS) {
-    const list = kept
+    keptAll
       .filter((p) => p.field === f.key && !p.title_zh)
-      .slice(0, TRANSLATE_TITLE_TOP);
-    titleTodo.push(...list);
+      .slice(0, TRANSLATE_TITLE_TOP)
+      .forEach((p) => titleTodoSet.set(p.id, p));
   }
-  await translatePaperTitles(titleTodo);
+  for (const p of keptAll) {
+    if (p.frontier && !p.title_zh) titleTodoSet.set(p.id, p);
+  }
+  await translatePaperTitles([...titleTodoSet.values()]);
 
   // 写入归档
   const date = todayStr();
@@ -332,7 +374,19 @@ async function main() {
       existing = JSON.parse(fs.readFileSync(file, "utf8")).items || [];
     } catch {}
   }
-  const finalItems = dedupe([...existing, ...kept]);
+  // 把本次新判定的「交叉前沿」标记叠加回 existing 中的同一篇论文，
+  // 否则旧数据（在前沿功能上线前抓到的）会因为 dedupe 优先保留而拿不到 frontier 标记。
+  const newById = new Map(keptAll.map((p) => [p.id, p]));
+  for (const ex of existing) {
+    const np = newById.get(ex.id);
+    if (!np) continue;
+    if (np.frontier) {
+      ex.frontier = true;
+      ex.crossTag = ex.crossTag || np.crossTag;
+    }
+    if (np.featured) ex.featured = true;
+  }
+  const finalItems = dedupe([...existing, ...keptAll]);
   // 按领域分组、组内按热度排序，保证展示有序
   const fieldOrder = {};
   FIELDS.forEach((f, i) => (fieldOrder[f.key] = i));
@@ -346,16 +400,20 @@ async function main() {
     date,
     generatedAt: new Date().toISOString(),
     count: finalItems.length,
-    fields: FIELDS.map((f) => ({
-      key: f.key,
-      label_zh: f.label_zh,
-      label_en: f.label_en,
-    })),
+    // 「交叉前沿」置于领域筛选最前（Q44）
+    fields: [
+      { key: FRONTIER.key, label_zh: FRONTIER.label_zh, label_en: FRONTIER.label_en },
+      ...FIELDS.map((f) => ({
+        key: f.key,
+        label_zh: f.label_zh,
+        label_en: f.label_en,
+      })),
+    ],
     items: finalItems,
   };
   fs.writeFileSync(file, JSON.stringify(payload, null, 2), "utf8");
   console.log(
-    `  合并：已有 ${existing.length} + 本次保留 ${kept.length} → 去重后 ${finalItems.length}`
+    `  合并：已有 ${existing.length} + 本次保留 ${keptAll.length} → 去重后 ${finalItems.length}`
   );
 
   // 更新索引

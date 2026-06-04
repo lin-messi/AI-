@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import { useApp } from "./AppProvider";
 import { STRINGS } from "@/lib/i18n";
 import { timeAgo } from "@/lib/format";
+import { downloadItem } from "@/lib/paperDownload";
 
 export default function PaperCard({ paper, fieldLabel, onOpen, isNew }) {
   const { lang, favs, reads, toggleFav, toggleRead } = useApp();
@@ -10,6 +12,19 @@ export default function PaperCard({ paper, fieldLabel, onOpen, isNew }) {
 
   const isFav = favs.has(paper.id);
   const isRead = reads.has(paper.id);
+  const [downloading, setDownloading] = useState(false);
+
+  const onDownload = async () => {
+    if (downloading) return;
+    setDownloading(true);
+    try {
+      await downloadItem(paper, { type: "paper" });
+    } catch (e) {
+      alert((lang === "en" ? "Download failed: " : "下载失败：") + e.message);
+    } finally {
+      setDownloading(false);
+    }
+  };
 
   const pick = (zh, en) => {
     if (lang === "en") return { main: en || zh, alt: null };
@@ -49,6 +64,7 @@ export default function PaperCard({ paper, fieldLabel, onOpen, isNew }) {
           </span>
         )}
         <span className="field-chip">{fieldLabel}</span>
+        {paper.crossTag && <span className="cross-chip">{paper.crossTag}</span>}
         {paper.featured && <span className="featured-badge">{t.featuredBadge}</span>}
         {paper.subtags?.map((s) => (
           <span className="tag" key={s}>
@@ -82,6 +98,9 @@ export default function PaperCard({ paper, fieldLabel, onOpen, isNew }) {
         <a className="btn" href={paper.url} target="_blank" rel="noopener noreferrer">
           {t.openOriginal} →
         </a>
+        <button className="btn" onClick={onDownload} disabled={downloading}>
+          {downloading ? t.downloading : `↓ ${t.download}`}
+        </button>
       </div>
 
       <div className="card-foot">

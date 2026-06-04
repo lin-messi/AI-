@@ -68,4 +68,101 @@ export const SUBTAG_RULES = [
   { tag: "大模型", kw: ["large language model", "llm", "foundation model", "gpt", "transformer"] },
   { tag: "强化学习", kw: ["reinforcement learning", "rlhf", "policy gradient", "reward model"] },
   { tag: "智能体", kw: ["agent", "agentic", "tool use", "planning"] },
+  // 交叉前沿子标签
+  { tag: "光子计算", kw: ["photonic comput", "optical neural", "photonic neural", "optical comput", "photonic accelerator"] },
+  { tag: "硅光", kw: ["silicon photonic", "photonic integrated", "integrated photonic"] },
+  { tag: "神经形态", kw: ["neuromorphic", "memristor", "spiking neural", "in-memory comput", "processing-in-memory", "in-sensor"] },
+  { tag: "生物光子", kw: ["biophoton", "optogenetic", "photoacoustic", "optical coherence tomograph", "fluorescence microscop"] },
+  { tag: "脑机接口", kw: ["brain-computer interface", "brain computer interface", "neural interface", "neuroprosthe"] },
+];
+
+// ===== 交叉前沿（跨学科）配置 =====
+// 目标：在 6 大基础领域之外，单独聚合「AI×光学×芯片融合、生物×光学、量子×AI、AI×材料、
+// 脑机接口、光子计算/神经形态/硅光」等前沿交叉论文。交叉论文同时保留在其基础领域里出现。
+export const FRONTIER = {
+  key: "frontier",
+  label_zh: "交叉前沿",
+  label_en: "Frontier",
+  // 在 6 大领域之外额外纳入抓取的 arXiv 分类（偏器件/硬件/交叉）。
+  extraArxiv: [
+    "physics.app-ph",
+    "cond-mat.mes-hall",
+    "cond-mat.mtrl-sci",
+    "cs.ET",
+    "cs.AR",
+    "eess.SP",
+    "physics.bio-ph",
+  ],
+  maxPerField: 50, // 每天最多保留的交叉前沿论文数
+  featuredTop: 5, // 取前 N 篇生成精读
+  // 「只命中前沿专属分类、没有基础领域」的交叉论文，回退到就近的基础领域，确保也在原领域出现。
+  fallback: [
+    { cats: ["cs.ET", "cs.AR", "eess.SP"], field: "ml" },
+    { cats: ["physics.app-ph", "cond-mat.mes-hall", "cond-mat.mtrl-sci"], field: "optics" },
+    { cats: ["physics.bio-ph"], field: "bio" },
+  ],
+};
+
+// 交叉信号「分组」：一篇论文按分类/关键词归入若干信号组；命中 >=2 个强组合即判为前沿。
+export const FRONTIER_GROUPS = {
+  ai: {
+    cats: ["cs.LG", "cs.CV", "cs.CL", "cs.AI", "cs.NE", "stat.ML"],
+    kw: [
+      "deep learning", "neural network", "machine learning", "transformer",
+      "large language model", "reinforcement learning", "diffusion model",
+      "foundation model", "artificial intelligence", "generative model",
+    ],
+  },
+  optics: {
+    cats: ["physics.optics", "physics.app-ph"],
+    kw: [
+      "photonic", "optic", "laser", "metasurface", "waveguide", "holograph",
+      "silicon photonic", "nanophotonic", "plasmonic", "lidar", "photonics",
+    ],
+  },
+  chip: {
+    cats: ["cs.AR", "cs.ET", "cond-mat.mes-hall", "eess.SP"],
+    kw: [
+      "chip", "semiconductor", "integrated circuit", "accelerator", "memristor",
+      "in-memory computing", "neuromorphic", "fpga", "asic", "analog computing",
+      "in-sensor", "processing-in-memory", "hardware accelerator", "vlsi", "wafer",
+    ],
+  },
+  bio: {
+    cats: ["q-bio.BM", "q-bio.GN", "q-bio.NC", "q-bio.QM", "q-bio.CB", "q-bio.MN", "physics.bio-ph", "physics.med-ph"],
+    kw: [
+      "protein", "genom", "biolog", "neuron", "medical imag", "clinical",
+      "biomolecul", "biophoton", "optogenetic", "brain-computer", "biosensor", "drug discovery",
+    ],
+  },
+  quantum: {
+    cats: ["quant-ph"],
+    kw: ["quantum"],
+  },
+  materials: {
+    cats: ["cond-mat.mtrl-sci", "cond-mat.mes-hall"],
+    kw: ["material", "crystal", "2d material", "nanomaterial", "metamaterial", "perovskite"],
+  },
+};
+
+// 强组合：命中其中任一对（两组都触发），即判前沿，并给出中文交叉标签。
+export const FRONTIER_COMBOS = [
+  { groups: ["optics", "ai"], tag: "光学+AI" },
+  { groups: ["optics", "chip"], tag: "光学+芯片" },
+  { groups: ["ai", "chip"], tag: "AI+芯片" },
+  { groups: ["bio", "optics"], tag: "生物+光学" },
+  { groups: ["ai", "bio"], tag: "AI+生物" },
+  { groups: ["quantum", "ai"], tag: "量子+AI" },
+  { groups: ["ai", "materials"], tag: "AI+材料" },
+];
+
+// 强关键词：命中即判前沿（即便分组组合未触发），并给出更细的交叉标签。
+export const FRONTIER_STRONG_KW = [
+  { tag: "光子计算", kw: ["photonic computing", "optical neural network", "photonic neural", "optical computing", "photonic accelerator"] },
+  { tag: "硅光", kw: ["silicon photonic", "photonic integrated circuit", "integrated photonic"] },
+  { tag: "神经形态", kw: ["neuromorphic", "memristor", "spiking neural network", "in-memory computing", "processing-in-memory", "in-sensor computing"] },
+  { tag: "生物光子", kw: ["biophotonic", "optogenetic", "photoacoustic", "optical coherence tomography"] },
+  { tag: "脑机接口", kw: ["brain-computer interface", "brain computer interface", "neural interface", "neuroprosthetic"] },
+  { tag: "量子机器学习", kw: ["quantum machine learning", "quantum neural network", "variational quantum"] },
+  { tag: "DNA存储", kw: ["dna storage", "dna data storage"] },
 ];

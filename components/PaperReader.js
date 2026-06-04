@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useApp } from "./AppProvider";
 import { STRINGS } from "@/lib/i18n";
+import { downloadItem } from "@/lib/paperDownload";
 
 // 站内精读弹层：展示中文精读 / 摘要，并可在站内打开 PDF。
 // 若该论文未预翻译，则按需调用 /api/translate 生成精读。
@@ -12,6 +13,19 @@ export default function PaperReader({ paper, onClose }) {
   const [data, setData] = useState(paper);
   const [loading, setLoading] = useState(false);
   const [showPdf, setShowPdf] = useState(false);
+  const [downloading, setDownloading] = useState(false);
+
+  const onDownload = async () => {
+    if (downloading) return;
+    setDownloading(true);
+    try {
+      await downloadItem(data, { type: "paper" });
+    } catch (e) {
+      alert((lang === "en" ? "Download failed: " : "下载失败：") + e.message);
+    } finally {
+      setDownloading(false);
+    }
+  };
 
   // 锁定背景滚动
   useEffect(() => {
@@ -148,6 +162,9 @@ export default function PaperReader({ paper, onClose }) {
               {t.openOriginal} →
             </a>
           )}
+          <button className="btn active" onClick={onDownload} disabled={downloading}>
+            {downloading ? t.downloading : `↓ ${t.download}`}
+          </button>
         </div>
       </div>
     </div>
