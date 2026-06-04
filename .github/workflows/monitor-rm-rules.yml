@@ -29,15 +29,15 @@ jobs:
         id: monitor
         run: npm run rules:monitor
 
-      - name: 提交指纹文件
+      - name: 提交指纹与变更快照
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/rm-rules-monitor.json
+          git add data/rm-rules-monitor.json data/rm-rules-monitor-archive 2>/dev/null || true
           if git diff --staged --quiet; then
             echo "指纹无变化，跳过提交"
           else
-            git commit -m "chore: 更新 RoboMaster 规则页监测指纹 $(date -u +'%Y-%m-%d %H:%MZ')"
+            git commit -m "chore: 更新 RoboMaster 规则监测指纹 $(date -u +'%Y-%m-%d %H:%MZ')"
             git push
           fi
 
@@ -46,21 +46,27 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RULE_URL: ${{ steps.monitor.outputs.url }}
+          CHANGED_COMPS: ${{ steps.monitor.outputs.changedComps }}
+          CHANGE_REASON: ${{ steps.monitor.outputs.reason }}
         run: |
-          BODY="监测脚本发现官方规则页内容发生变化。
+          BODY="监测脚本发现官方规则总入口的目录发生变化。
 
-          建议操作：
-          1. 下载最新规则手册 PDF，放入本地 rules/ 目录；
-          2. 运行 npm run rules:build 重新提炼 data/rm-rules.json；
-          3. 人工校对提炼结果（重点核对任务得分、数值、变化点）；
-          4. 提交并推送，搜索关键词与论文/开源用途评估会随新规则自动微调。
+          变化项：${CHANGE_REASON}
+          涉及赛事：${CHANGED_COMPS}
 
-          监测页面：${RULE_URL}
+          建议操作（按需）：
+          1. 先跑 npm run rules:fetch —— 自动发现最新规则文件入口地址，并刷新检索关键词建议（写入 data/rm-rules-web.json，不会覆盖权威规则）。
+          2. 若确属规则更新：下载最新规则手册 PDF 放入本地 rules/，运行 npm run rules:build 重新提炼 data/rm-rules.json。
+          3. 人工校对提炼结果（重点核对任务得分、数值、变化点），提交并推送。
+          搜索关键词与论文/开源用途评估会随新规则自动微调。
 
-          （本 Issue 由 monitor-rm-rules workflow 自动创建。）"
+          监测入口：${RULE_URL}
+          变更快照已存档于 data/rm-rules-monitor-archive/。
+
+          （本 Issue 由 monitor-rm-rules workflow 自动创建。仅供复核提醒，可能为站点结构调整而非规则改动。）"
           # 确保 rules 标签存在（已存在时忽略报错）
           gh label create rules --color FBCA04 --description "RoboMaster 规则更新" 2>/dev/null || true
           gh issue create \
-            --title "RoboMaster 规则页疑似更新（$(date -u +'%Y-%m-%d')）" \
+            --title "RoboMaster 规则疑似更新（$(date -u +'%Y-%m-%d')）" \
             --label "rules" \
             --body "$BODY"

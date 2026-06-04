@@ -7,7 +7,8 @@
 //
 // 说明：
 //   - PDF 不会被提交（见 .gitignore），只提交提炼后的 data/rm-rules.json。
-//   - 需要 AI_API_KEY（与翻译/摘要共用，写在 .env 或环境变量）。
+//   - 规则提炼用 deepseek-v4-pro（走 DeepSeek 的 Anthropic 兼容端点）：
+//     需要 AI_API_KEY（或单独的 AI_RULES_API_KEY），可用 AI_RULES_MODEL / AI_RULES_BASE_URL 覆盖。
 //   - 文本抽取优先用系统的 pdftotext，缺失时回退到 python + pypdf。
 
 import fs from "node:fs";
@@ -15,7 +16,7 @@ import path from "node:path";
 import os from "node:os";
 import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
-import { chatJSONWithRetry, getAIConfig } from "./ai.mjs";
+import { chatAnthropicJSONWithRetry, getRulesAIConfig } from "./ai.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -145,15 +146,14 @@ async function extractRulesWithAI(docs) {
     `1) tasks 覆盖所有需要算法的环节（自瞄、能量机关、哨兵导航决策、雷达、飞镖、工程视觉装配、多机协同/强化学习、仿真等），有则写、无则略。\n` +
     `2) categories 只能取这些值：${CATEGORIES.join("、")}。\n` +
     `3) scoring_zh 尽量引用手册里的具体数值（如初速度/热量上限、能量机关转速函数、飞镖各档收益、哨兵血量等）。\n` +
-    `4) searchKeywords 用于驱动论文与开源项目的检索，请给出最能反映本赛季算法重点的英文词。\n\n` +
+    `4) searchKeywords 用于驱动论文与开源项目的检索，请给出最能反映本赛季算法重点的英文词。\n` +
+    `5) 只输出一个 JSON 对象本身，不要任何解释文字，也不要用 \`\`\`json 代码块包裹。\n\n` +
     `手册文本如下：\n\n${corpus}`;
 
-  const result = await chatJSONWithRetry(
-    [
-      { role: "system", content: system },
-      { role: "user", content: user },
-    ],
-    { temperature: 0.2 }
+  // v4-pro 是推理模型，思考会占用 token，且本任务输出 JSON 较大，故给足额度。
+  const result = await chatAnthropicJSONWithRetry(
+    [{ role: "user", content: user }],
+    { system, temperature: 0.2, maxTokens: 16000 }
   );
   return result;
 }
@@ -174,11 +174,12 @@ function archiveOld() {
 }
 
 async function main() {
-  const cfg = getAIConfig();
+  const cfg = getRulesAIConfig();
   if (!cfg.enabled) {
-    console.error("✗ 缺少 AI_API_KEY，无法提炼规则。请在 .env 中配置后重试。");
+    console.error("✗ 缺少 AI_API_KEY / AI_RULES_API_KEY，无法提炼规则。请在 .env 中配置后重试。");
     process.exit(1);
   }
+  console.log(`规则提炼模型：${cfg.model}（${cfg.baseURL}）`);
 
   const pdfs = listPDFs();
   if (pdfs.length === 0) {
