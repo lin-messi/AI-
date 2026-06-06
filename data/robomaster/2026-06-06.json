@@ -1,6 +1,6 @@
 {
   "date": "2026-06-06",
-  "generatedAt": "2026-06-06T12:18:14.117Z",
+  "generatedAt": "2026-06-06T10:58:45.423Z",
   "categories": [
     {
       "key": "aim",
@@ -49,7 +49,7 @@
     }
   ],
   "papers": {
-    "count": 80,
+    "count": 91,
     "items": [
       {
         "id": "arxiv:2606.04703",
@@ -2294,7 +2294,7 @@
         "relevance": 6,
         "first_seen": "2026-06-06T10:34:55.394Z",
         "rm": {
-          "usage": "可用于工程机器人装配任务中的触觉模仿学习，提升抓取与装配的接触鲁棒性。",
+          "usage": "可用于工程机器人抓取能量单元时的触觉反馈，提升装配成功率。",
           "task_id": "engineer",
           "task": "工程视觉装配（能量单元）",
           "value": "mid"
@@ -2337,7 +2337,7 @@
         "relevance": 10,
         "first_seen": "2026-06-06T10:34:55.394Z",
         "rm": {
-          "usage": "可用于雷达或哨兵的点云下采样，加速实时处理，但非核心算法。",
+          "usage": "可用于雷达或哨兵的点云下采样，加速实时处理。",
           "task_id": "radar",
           "task": "雷达全场感知与标记",
           "value": "mid"
@@ -2379,7 +2379,7 @@
         "relevance": 2,
         "first_seen": "2026-06-06T10:34:55.394Z",
         "rm": {
-          "usage": "可用于哨兵导航中的连续时间SLAM，融合多传感器提升定位精度。",
+          "usage": "可用于哨兵或雷达的连续时间SLAM，融合多传感器数据。",
           "task_id": "sentry",
           "task": "哨兵自主导航与决策",
           "value": "mid"
@@ -2419,7 +2419,7 @@
         "relevance": 3,
         "first_seen": "2026-06-06T10:34:55.394Z",
         "rm": {
-          "usage": "可用于多机协同策略的强化学习训练，但需注意奖励设计避免作弊。",
+          "usage": "可用于多机协同策略训练，但需注意奖励设计避免作弊。",
           "task_id": "strategy",
           "task": "多机协同与策略学习",
           "value": "mid"
@@ -2464,7 +2464,7 @@
         "relevance": 5,
         "first_seen": "2026-06-06T10:34:55.394Z",
         "rm": {
-          "usage": "可用于仿真到实车的迁移，通过力矩自适应模块提升运动迁移鲁棒性。",
+          "usage": "可用于仿真到实车的运动迁移，提升机械臂装配的鲁棒性。",
           "task_id": "sim",
           "task": "仿真与 sim-to-real",
           "value": "mid"
@@ -2553,9 +2553,9 @@
         "relevance": 3,
         "first_seen": "2026-06-06T10:34:55.394Z",
         "rm": {
-          "usage": "可用于自瞄或哨兵中的主动感知预训练，但需改造为机器人视角。",
-          "task_id": "autoaim",
-          "task": "自瞄 / 装甲板识别",
+          "usage": "可用于仿真中模仿学习，但需改造为机器人视角，关联一般。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
           "value": "low"
         }
       },
@@ -2597,10 +2597,10 @@
         "relevance": 5,
         "first_seen": "2026-06-06T10:34:55.394Z",
         "rm": {
-          "usage": "可用于工程机器人或哨兵的复杂操作与导航运动规划，但需适配。",
-          "task_id": "engineer",
-          "task": "工程视觉装配（能量单元）",
-          "value": "mid"
+          "usage": "可用于哨兵或工程机器人的复杂运动规划，但需简化至轮式/履带平台。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "low"
         }
       },
       {
@@ -2771,6 +2771,482 @@
           "task_id": "engineer",
           "task": "工程视觉装配（能量单元）",
           "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.06060",
+        "arxiv_id": "2606.06060",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "ReCache: Learning Budget-Aware Caching Schedules for Diffusion Models via REINFORCE",
+        "title_zh": "",
+        "abstract_en": "Modern diffusion models generate high-quality images and videos, but their iterative denoising process makes inference expensive. Feature caching accelerates sampling by reusing or predicting intermediate activations across neighboring denoising steps, exploiting the redundancy of computations along the reverse trajectory. In this work, we focus on the caching schedule: selecting which denoising steps should be fully recomputed. Existing schedules are either fixed (e.g. uniform) or chosen adaptively from per-step error heuristics; in both cases, the actual compute cost is a side-effect of hand-tuned thresholds rather than a quantity the user can specify. We propose ReCache, which inverts this: given a target budget k, it learns the recomputation schedule that maximizes generation quality, turning compute into a directly controllable input. ReCache trains via policy gradients, sidestepping backpropagation through full diffusion inference, and uses no labelled data. Generations from uncached inference serve as matching targets, paired with a reward for generation quality. ReCache is compatible with any caching mechanism, including feature reuse and feature forecasting; for each mechanism, a single trained policy adapts across computational budgets at inference time. ReCache consistently outperforms scheduling baselines: under a $\\times5.04$ FLOPs reduction on FLUX, it reduces LPIPS by 31% (from 0.456 to 0.316) compared to DiCache; on Wan 2.1 at a $\\sim \\times2.6$ speedup, it drops LPIPS by 65% (from 0.480 to 0.169) and boosts the VBench score by 7% (5.6 points, from 70.4 to 76.0) over uniform HiCache. Code is available at https://github.com/thecrazymage/ReCache.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Mishan Aliev",
+          "Eva Neudachina",
+          "Ilya Bykov",
+          "Aleksandr Oganov",
+          "Kirill Struminsky",
+          "Aibek Alanov",
+          "Denis Rakitin"
+        ],
+        "url": "https://arxiv.org/abs/2606.06060v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.06060",
+        "html_url": "https://arxiv.org/abs/2606.06060",
+        "published_at": "2026-06-04T11:59:56.000Z",
+        "upvotes": 0,
+        "heat": 2113.081094722222,
+        "featured": false,
+        "categories": [
+          "rl"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 1,
+        "first_seen": "2026-06-06T10:58:32.829Z",
+        "rm": {
+          "usage": "用于优化扩散模型推理的缓存调度，与RoboMaster视觉任务无直接关联。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2606.06049",
+        "arxiv_id": "2606.06049",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "L-SDPPO: Policy Optimization of Spiking Diffusion Policy for Intra-vehicular Robotic Manipulation",
+        "title_zh": "",
+        "abstract_en": "Intra-vehicular robots in spacecraft help reduce astronaut workload and improve mission efficiency. Recent research focuses on using deep learning methods to achieve the acute control required for operations in these complex environments. However, objects exhibit unpredictable, unconstrained drift without gravitational damping. These factors demand robustness against complex multimodal action distributions. Diffusion policies (DP) can model these complex actions, but their iterative sampling process consumes too much energy for the limited power budgets of spacecraft. We therefore propose a low-energy intra-vehicular robotic manipulation framework, L-SDPPO, in which the Spiking Diffusion Policy (SDP) is optimized with a reinforcement learning (RL) algorithm. Furthermore, to address the insufficient perception of dynamic spatiotemporal features in microgravity, we propose the statedependent latency injection (SDLI) mechanism, which mimics biological neural delays to dynamically regulate the timing of input information. Evaluation on five representative intra-vehicular daily tasks (e.g., hatch opening and precision container capping) shows that our method consistently achieves higher success rates and lower energy consumption, compared to the state-of-the-art robotic manipulation methods. These results demonstrate our method is a viable intra-vehicular robotic manipulation method.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Liwen Zhang",
+          "Dong Zhou",
+          "Guanghui Sun",
+          "Yifei Zheng",
+          "Yuhui Hu",
+          "Kaihong Ouyang",
+          "Zuoquan Zhao"
+        ],
+        "url": "https://arxiv.org/abs/2606.06049v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.06049",
+        "html_url": "https://arxiv.org/abs/2606.06049",
+        "published_at": "2026-06-04T11:45:37.000Z",
+        "upvotes": 0,
+        "heat": 2112.842492222222,
+        "featured": false,
+        "categories": [
+          "rl"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 7,
+        "first_seen": "2026-06-06T10:58:32.829Z",
+        "rm": {
+          "usage": "可用于工程机器人装配任务中的机械臂控制，通过脉冲扩散策略处理复杂动作分布。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.06041",
+        "arxiv_id": "2606.06041",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.AI",
+          "cs.NE"
+        ],
+        "title_en": "Sample-efficient Low-level Motion Planning for Robotic Manipulation Tasks via Zero-shot Transfer Learning",
+        "title_zh": "",
+        "abstract_en": "As robotic systems become more sophisticated, the growing complexity of their motion planning models and the longer training times pose substantial challenges. Evolutionary algorithms such as the Sample-efficient Cross-Entropy Method (iCEM) have recently demonstrated promising potential for low-level real-time planning by leveraging efficient knowledge reuse strategies to improve performance. Although effective in many control tasks, iCEM's performance can be constrained in more complex scenarios, particularly those requiring stacking, sliding, and shelf placement. In this work, we propose a novel iCEM+TL framework that explicitly leverages Transfer Learning (TL), where key iCEM parameters are transferred from simpler upstream tasks to guide more complex downstream tasks. Additionally, we applied Reward Redesign (RR) through task decomposition for stacking objects and shelf placement to optimize task-specific performance. Results from the simulation show that our framework achieves success rate improvements of up to 23%. The framework is further validated on a real Franka Emika robot in a stacking task, demonstrating its practical feasibility for real-world deployment.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Yuanzhi He",
+          "Victor Romero-Cano",
+          "José J. Patiño",
+          "Juan David Hernández",
+          "William Sawtell",
+          "Gualtiero Colombo"
+        ],
+        "url": "https://arxiv.org/abs/2606.06041v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.06041",
+        "html_url": "https://arxiv.org/abs/2606.06041",
+        "published_at": "2026-06-04T11:34:50.000Z",
+        "upvotes": 0,
+        "heat": 2112.66277,
+        "featured": false,
+        "categories": [
+          "planning",
+          "radar",
+          "sim"
+        ],
+        "image": "",
+        "comment": "12 pages, 5 figures, International Conference on Artificial Neural Networks (ICANN) 2026 conference accepted",
+        "relevance": 7,
+        "first_seen": "2026-06-06T10:58:32.829Z",
+        "rm": {
+          "usage": "可用于工程机器人或飞镖系统的低层运动规划，通过零样本迁移提高样本效率。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.06033",
+        "arxiv_id": "2606.06033",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "RealDexUMI: A Wearable Universal Manipulation Interface for Dexterous Robot Learning",
+        "title_zh": "",
+        "abstract_en": "Learning dexterous manipulation requires demonstrations that preserve fine hand-object interactions while remaining executable at deployment. Existing pipelines either lose deployable dexterity through retargeting or embodiment conversion, or rely on robot-specific teleoperation that is costly to scale and often lacks intuitive, contact-aware control for dexterous data collection. We present RealDexUMI, a wearable universal manipulation interface built around a shared dexterous end-effector module that integrates a lightweight dexterous hand, in-hand vision, and fingertip tactile sensing. A palm-side isomorphic teleoperation glove maps human finger inputs to robot-hand joint commands, enabling real-time, retargeting-free, intuitive, and precise hand control. The shared hand and sensing modules yield zero-gap end-effector data, with matched in-hand observations, tactile signals, contacts, and hand actions between collection and deployment. Across eight real-robot tasks spanning fine-grained, contact-rich, long-horizon, and bimanual manipulation, policies trained on RealDexUMI data achieve an average success rate of 88.75%, generalize to unseen initial poses, and transfer across three embodiments. Website: https://research.beingbeyond.com/realdexumi",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Chaoyi Xu",
+          "Yixuan Jiang",
+          "Jiahui Huan",
+          "Yuhui Fu",
+          "Haoyu Zhou",
+          "Weitian Yuan",
+          "Jiayi Yu",
+          "Wanpeng Zhang"
+        ],
+        "url": "https://arxiv.org/abs/2606.06033v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.06033",
+        "html_url": "https://arxiv.org/abs/2606.06033",
+        "published_at": "2026-06-04T11:28:23.000Z",
+        "upvotes": 0,
+        "heat": 2112.55527,
+        "featured": false,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 4,
+        "first_seen": "2026-06-06T10:58:32.829Z",
+        "rm": {
+          "usage": "用于工程机器人装配任务的灵巧操作数据采集，通过可穿戴接口获取演示。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.06011",
+        "arxiv_id": "2606.06011",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.LG",
+          "cs.MA"
+        ],
+        "title_en": "Merging model-based control with multi-agent reinforcement learning for multi-agent cooperative teaming strategies",
+        "title_zh": "",
+        "abstract_en": "In this work, we propose a framework that combines multi-agent reinforcement learning (MARL) with model-based control to achieve safe, dynamically feasible actions in cooperative multi-agent tasks. Multi-agent reinforcement learning provides the advantage of learning cooperative policies for multi-agent teams from discrete non-differentiable rewards in a long planning horizon. Model-predictive control is robust and offers safe, dynamically feasible actions in a fast replanning framework for short horizons. We propose an algorithm that extends actor-critic model predictive control for MARL which we refer to as multi-agent actor-critic model predictive control (MA-AC-MPC). We demonstrate the capabilities of this algorithm by applying it to a multi-agent pursuit-evasion scenario. Specifically, we compare the evader team's strategy using the MA-AC-MPC model and a multi-layer perceptron model (MA-AC-MLP). The pursuer team uses augmented proportional navigation as it is accepted as an advanced adversarial control law. We also provide an example with a heterogeneous environment where a drone and omni-wheeled rover cooperate to achieve repeatable and successful landing with 100% success rate in hardware for MA-AC-MPC compared to 60% for MA-AC-MLP. We demonstrate the robustness of the proposed MA-AC-MPC algorithm in hardware for both environments.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Christian Llanes",
+          "Spencer W. Jensen",
+          "Samuel Coogan"
+        ],
+        "url": "https://arxiv.org/abs/2606.06011v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.06011",
+        "html_url": "https://arxiv.org/abs/2606.06011",
+        "published_at": "2026-06-04T11:01:00.000Z",
+        "upvotes": 0,
+        "heat": 2112.098881111111,
+        "featured": false,
+        "categories": [
+          "planning",
+          "rl"
+        ],
+        "image": "",
+        "comment": "12 pages, 8 figures, 7 tables",
+        "relevance": 5,
+        "first_seen": "2026-06-06T10:58:32.829Z",
+        "rm": {
+          "usage": "用于多机协同策略学习，结合模型预测控制与多智能体强化学习实现安全协同。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "high"
+        }
+      },
+      {
+        "id": "arxiv:2606.05975",
+        "arxiv_id": "2606.05975",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.RO"
+        ],
+        "title_en": "T-FunS3D: Task-Driven Hierarchical Open-Vocabulary 3D Functionality Segmentation",
+        "title_zh": "",
+        "abstract_en": "Open-vocabulary 3D functionality segmentation enables robots to localize functional object components in 3D scenes. It is a challenging task that requires spatial understanding and task interpretation. Current open-vocabulary 3D segmentation methods primarily focus on object-level recognition, while scene-wide part segmentation methods attempt to segment the entire scene exhaustively, making them highly resource-intensive and time consuming. Balancing segmentation performance in terms of granularity, accuracy, and speed remains a challenge. As one step towards alleviating this, we introduce T-FunS3D, a task-driven hierarchical open-vocabulary 3D functionality segmentation method that provides actionable perception for robotic applications. Our method takes as input the 3D point cloud and posed RGB-D images of an indoor scene. We construct an open-vocabulary scene graph by extracting instances and their visual embeddings in the environment. Given a task description, T-FunS3D identifies the most relevant instances in the scene graph and locates their functional components leveraging a vision-language model. Experiments on the SceneFun3D dataset demonstrate that T-FunS3D is comparable to state-of-the-art in open-vocabulary 3D functionality segmentation, while achieving faster runtime and reduced memory usage.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Jingkun Feng",
+          "Reza Sabzevari"
+        ],
+        "url": "https://arxiv.org/abs/2606.05975v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.05975",
+        "html_url": "https://arxiv.org/abs/2606.05975",
+        "published_at": "2026-06-04T10:16:39.000Z",
+        "upvotes": 0,
+        "heat": 2111.3597144444443,
+        "featured": false,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 5,
+        "first_seen": "2026-06-06T10:58:32.829Z",
+        "rm": {
+          "usage": "用于工程机器人装配任务中的物体部件识别与定位，实现开放词汇的功能性分割。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.05960",
+        "arxiv_id": "2606.05960",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Towards a Data Flywheel for Embodied Intelligence in Logistics",
+        "title_zh": "",
+        "abstract_en": "Embodied intelligence is moving from laboratory demonstrations toward industrial deployment, with the logistics industry serving as a key application scenario. Learning-based policies offer a promising path beyond traditional perception-planning-control pipelines, but their scalability depends on how embodied data can be collected, organized, and reused. This research studies a data-centric framework for industrial embodied intelligence by constructing a logistics data flywheel. Our framework converts daily operations into reusable data assets, uses World Models to generate reliable supervision for long-tail parcel manipulation, and feeds deployment feedback back into policy improvement. As an initial result, \\textit{WM-DAgger} introduces a World-Model-based data aggregation framework that synthesizes out-of-distribution recovery data for robust imitation learning. Building on this result, ongoing work explores how large-scale in-the-wild multimodal data, including labeled human demonstrations, unlabeled operational videos, and system-level robot logs, can be aligned for policy learning and transformed into feedback for continual system improvement.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Anlan Yu",
+          "Zaishu Chen",
+          "Zhiqing Hong",
+          "Daqing Zhang"
+        ],
+        "url": "https://arxiv.org/abs/2606.05960v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.05960",
+        "html_url": "https://arxiv.org/abs/2606.05960",
+        "published_at": "2026-06-04T09:58:55.000Z",
+        "upvotes": 0,
+        "heat": 2111.064158888889,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 6,
+        "first_seen": "2026-06-06T10:58:32.829Z",
+        "rm": {
+          "usage": "用于仿真与sim-to-real，通过数据飞轮和世界模型生成训练数据。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.05952",
+        "arxiv_id": "2606.05952",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.AI"
+        ],
+        "title_en": "Learning of Robot Safety Policies via Adversarial Synthetic Scenarios",
+        "title_zh": "",
+        "abstract_en": "In this work, we propose an agentic gamification framework for hazard-informed learning of robot safety policies through synthetic scenarios. We model scenario generation as an adversarial game between two agents: a Red Team that explores the space of potential failures by constructing hazardous situations, and a Blue Team that incrementally refines safety policies to prevent them. This iterative process enables efficient discovery of high-risk edge cases that are unlikely to be captured through random simulation or manual enumeration. By combining classical risk modeling with adversarial scenario generation and modern learning paradigms, this work provides a scalable pathway for embedding safety into Physical AI systems operating in complex real-world environments. The paper describes ongoing work. The contribution is a problem formulation and a proposed solution architecture.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Nikolai Dorofeev",
+          "Alexey Odinokov",
+          "Rostislav Yavorskiy"
+        ],
+        "url": "https://arxiv.org/abs/2606.05952v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.05952",
+        "html_url": "https://arxiv.org/abs/2606.05952",
+        "published_at": "2026-06-04T09:51:57.000Z",
+        "upvotes": 0,
+        "heat": 2110.9480475,
+        "featured": false,
+        "categories": [
+          "sim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 1,
+        "first_seen": "2026-06-06T10:58:32.829Z",
+        "rm": {
+          "usage": "用于哨兵导航决策中的安全策略学习，通过对抗场景生成发现高风险边缘情况。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.05880",
+        "arxiv_id": "2606.05880",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "TAGA: Terrain-aware Active Gaze Learning for Generalizable Agile Humanoid Locomotion",
+        "title_zh": "",
+        "abstract_en": "Agile humanoid locomotion across diverse challenging terrain demands both wide perceptual coverage and precise local geometry understanding. Motivated by the way humans selectively look at relevant terrain during locomotion, we introduce TAGA, a Terrain-aware Active Gaze learning framework for Attention-based humanoid control. By fusing vision, proprioception, and motion commands, our framework guides the model to learn anticipatory cues and actively attend to specific areas of the height scan, selectively using these informative regions for the downstream network. This adaptively increases the information density of observations under tight onboard computational constraints, thus enabling fine-grained perceptive locomotion over larger-scale terrains. We find that such gaze behaviors can naturally emerge through reinforcement learning alone, without requiring additional supervision or explicit guidance, significantly improve training efficiency. As a result, the trained policy demonstrates robust and generalizable locomotion in simulation and on hardware, including reliable terrain-aware foothold selection, elevated-platform traversal, competitive sparse-foothold traversal, and the largest reported real-world gap traversal distance of 1.2m among perceptive humanoid locomotion systems, while maintaining stability under severe perceptual disturbances and environmental interference.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Peizhuo Li",
+          "Hongyi Li",
+          "Mingfeng Fan",
+          "Fangzhou Xu",
+          "Shuhao Liao",
+          "Yuxuan Ma",
+          "Zicheng Zeng",
+          "Ze Wang"
+        ],
+        "url": "https://arxiv.org/abs/2606.05880v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.05880",
+        "html_url": "https://arxiv.org/abs/2606.05880",
+        "published_at": "2026-06-04T08:52:56.000Z",
+        "upvotes": 0,
+        "heat": 2109.9644363888888,
+        "featured": false,
+        "categories": [
+          "aim",
+          "slam",
+          "planning"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 3,
+        "first_seen": "2026-06-06T10:58:32.829Z",
+        "rm": {
+          "usage": "可用于哨兵导航中的地形感知，通过主动注视学习提升机器人对复杂地形的理解，辅助路径规划和越障决策。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.05873",
+        "arxiv_id": "2606.05873",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.AI",
+          "cs.CV",
+          "cs.LG"
+        ],
+        "title_en": "LadderMan: Learning Humanoid Perceptive Ladder Climbing",
+        "title_zh": "",
+        "abstract_en": "Humanoid robots hold great promise for operating in human-centered environments, yet ladder climbing remains one of the most challenging tasks due to sparse footholds and handholds, complex whole-body coordination, and sensitivity to perception and control errors. We present \\textbf{LadderMan}, a unified system that enables humanoid robots to robustly climb diverse ladders and perform manipulation under such constrained conditions. Our climbing policy is built on a scalable two-stage learning pipeline, where we use hybrid motion tracking to learn multiple climbing experts from a single reference motion, and distill these experts into a unified depth-based visuomotor climbing policy via hybrid imitation and reinforcement learning. To enable real-world deployment, we leverage vision foundation models to bridge the sim-to-real gap in depth perception. Building on the learned climbing policy, we further train a separate manipulation policy using a dual-agent formulation, allowing stable on-ladder manipulation via teleoperation. Experiments demonstrate that LadderMan achieves robust ladder climbing across a wide range of geometries, successfully transfers to real-world hardware in a zero-shot manner, and supports various manipulation tasks under challenging ladder constraints. Video results are available at https://ladderman-robot.github.io .",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Siheng Zhao",
+          "Yuanhang Zhang",
+          "Ziqi Lu",
+          "Pieter Abbeel",
+          "Rocky Duan",
+          "Koushil Sreenath",
+          "Yue Wang",
+          "C. Karen Liu"
+        ],
+        "url": "https://arxiv.org/abs/2606.05873v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.05873",
+        "html_url": "https://arxiv.org/abs/2606.05873",
+        "published_at": "2026-06-04T08:47:08.000Z",
+        "upvotes": 0,
+        "heat": 2109.8677697222224,
+        "featured": false,
+        "categories": [
+          "aim",
+          "planning",
+          "rl"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 9,
+        "first_seen": "2026-06-06T10:58:32.829Z",
+        "rm": {
+          "usage": "可用于工程机器人攀爬或越障场景，学习在稀疏立足点下的全身协调控制，辅助能量单元装配时的移动操作。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.05849",
+        "arxiv_id": "2606.05849",
+        "source": "arXiv",
+        "cats": [
+          "physics.optics",
+          "cs.CV"
+        ],
+        "title_en": "Inverse Design of Realizable Metasurface based Absorbers using Improved Conditioning and Diversity Enhanced Progressively Growing GANs",
+        "title_zh": "",
+        "abstract_en": "Metasurfaces enable precise manipulation of electromagnetic waves for applications such as beam steering, sensing, and stealth technology. However, inverse design of metasurfaces with targeted EM responses remains challenging due to the computational expense of iterative full wave simulation driven optimization and the limited conditioning fidelity and diversity of existing generative approaches. To address these challenges, this paper presents a generative inverse design framework for controllable and physically consistent metasurface synthesis under continuous spectral constraints. The proposed approach employs a progressively growing Wasserstein generative adversarial network with gradient penalty integrated with feature wise linear modulation based conditioning for stable propagation of continuous spectral and fabrication constraints. EM consistency is embedded directly into the generative learning process through a surrogate assisted spectral alignment loss, enabling physics constrained generation during training. Further, a determinantal point process based diversity regularization strategy is incorporated to generate geometrically diverse yet spectrally consistent realizations for the same target response. The effectiveness of the proposed framework is demonstrated through the generation of practically realizable metasurface absorbers exhibiting diverse reflection characteristics in the frequency range of 2 to 18 GHz. EM simulations validate that the generated designs meet the target specifications with high accuracy. The final proposed framework achieved an average mean squared error of 0.0052, diversity score of 0.8730, band alignment accuracy of 0.8533, and a valid EM design generation percentage of 89.57, clearly demonstrating its capability to generate highly accurate, diverse, electromagnetically consistent and fabrication realizable metasurface configurations.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Vineetha Joy",
+          "Mohammad Abdullah",
+          "Pramit Pal",
+          "Anshuman Kumar",
+          "Amit Sethi",
+          "Hema Singh"
+        ],
+        "url": "https://arxiv.org/abs/2606.05849v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.05849",
+        "html_url": "https://arxiv.org/abs/2606.05849",
+        "published_at": "2026-06-04T08:25:54.000Z",
+        "upvotes": 0,
+        "heat": 2109.5138722222223,
+        "featured": false,
+        "categories": [
+          "sim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 3,
+        "first_seen": "2026-06-06T10:58:32.829Z",
+        "rm": {
+          "usage": "与RoboMaster比赛关联很弱，主要涉及电磁超表面设计，无法直接用于机器人视觉、控制或决策任务。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
         }
       },
       {
