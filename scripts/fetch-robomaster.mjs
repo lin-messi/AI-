@@ -1,5 +1,7 @@
-// 抓取 RoboMaster 算法资料：arXiv 论文（机器人/视觉/ML，关键词过滤）+ GitHub 开源库
-// → 清洗 → 去重 → 多标签分类 → 论文热度 → 翻译（论文精读/标题、库简介/亮点）
+// 抓取 RoboMaster 算法资料：arXiv 论文（机器人/视觉/ML，各分类分开查询、关键词过滤）
+// + CVF openaccess 顶会论文（CVPR/ICCV/WACV）+ GitHub 开源库
+// → 清洗 → 去重 → 顶会识别（CVPR 等，加权+徽章）→ 多标签分类 → 论文热度 + 相关度评分
+// → 近窗优先/回溯补足凑约 60 篇 → 翻译（论文精读/标题、库简介/亮点）
 // → 增量合并写入 data/robomaster/<date>.json + data/robomaster-index.json
 // 运行：npm run fetch:robomaster
 import Parser from "rss-parser";
@@ -12,12 +14,16 @@ import {
   ARXIV_CATS,
   PAPER_TOPIC_KW,
   PAPER_CTX_KW,
+  STRONG_TOPIC_KW,
   GITHUB_QUERIES,
   REPO_RELEVANCE_KW,
   REPO_BLOCK_KW,
   PAPERS_MAX,
+  PAPERS_CUMULATIVE_MAX,
   REPOS_MAX,
   RECENT_DAYS_PAPERS,
+  BACKFILL_DAYS_PAPERS,
+  ARXIV_MAX,
   REPO_MIN_STARS,
   FEATURED_TOP,
   TRANSLATE_TITLE_TOP,
@@ -25,6 +31,9 @@ import {
 import { translatePapersFull, translatePaperTitles } from "./enrich-papers.mjs";
 import { translateRepos } from "./enrich-github.mjs";
 import { assessRMUsage } from "./enrich-rm-usage.mjs";
+import { detectConference } from "./conference.mjs";
+import { scorePaperRelevance, scoreRepoRelevance } from "./relevance.mjs";
+import { fetchCVFPapers } from "./cvf.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -38,6 +47,7 @@ const parser = new Parser({
     item: [
       ["author", "authorList", { keepArray: true }],
       ["category", "catList", { keepArray: true }],
+      ["arxiv:comment", "comment"],
     ],
   },
 });
@@ -98,10 +108,9 @@ function classify(text) {
   return ordered.length ? ordered.slice(0, 3) : ["other"];
 }
 
-// —— arXiv（合并查询，按提交时间倒序）——
-async function fetchArxivAll(cats) {
-  const q = cats.map((c) => `cat:${c}`).join("+OR+");
-  const url = `http://export.arxiv.org/api/query?search_query=${q}&sortBy=submittedDate&sortOrder=descending&max_results=300`;
+// —— arXiv（各分类分开查询，按提交时间倒序，提高召回 Q21）——
+async function fetchArxivCat(cat) {
+  const url = `http://export.arxiv.org/api/query?search_query=cat:${cat}&sortBy=submittedDate&sortOrder=descending&max_results=${ARXIV_MAX}`;
   for (let attempt = 0; attempt < 4; attempt++) {
     try {
       const parsed = await parser.parseURL(url);
@@ -148,17 +157,27 @@ async function fetchArxivAll(cats) {
           featured: false,
           categories: [],
           image: "",
+          comment: stripHtml(e.comment || ""), // arXiv:comment，用于顶会识别
         };
       });
-      console.log(`  ✓ arXiv（合并 ${cats.length} 分类）：${items.length} 条`);
+      console.log(`  ✓ arXiv ${cat}：${items.length} 条`);
       return items;
     } catch (e) {
-      console.log(`  · arXiv 第 ${attempt + 1} 次失败 (${e.message})，退避重试…`);
+      console.log(`  · arXiv ${cat} 第 ${attempt + 1} 次失败 (${e.message})，退避重试…`);
       await sleep(5000 * (attempt + 1));
     }
   }
-  console.log("  ✗ arXiv：多次重试仍失败");
+  console.log(`  ✗ arXiv ${cat}：多次重试仍失败`);
   return [];
+}
+
+async function fetchArxivAll(cats) {
+  const all = [];
+  for (const cat of cats) {
+    all.push(...(await fetchArxivCat(cat)));
+    await sleep(3000);
+  }
+  return all;
 }
 
 // —— HuggingFace 每日论文热度 ——
@@ -252,36 +271,84 @@ async function main() {
   // ===== 论文 =====
   console.log("\n[论文] arXiv…");
   const hfMap = await fetchHFHeat();
-  let papers = await fetchArxivAll(ARXIV_CATS);
+  let raw = await fetchArxivAll(ARXIV_CATS);
+  raw = dedupeBy(raw, (p) => (p.arxiv_id ? `a:${p.arxiv_id}` : p.id));
 
-  // 近窗过滤
-  papers = papers.filter(
-    (p) => hoursAgo(p.published_at) <= RECENT_DAYS_PAPERS * 24
-  );
-  // 关键词过滤：命中主题词 且 含机器人/自主语境
-  papers = papers.filter((p) => {
+  // 顶会识别（comment 优先，标题/摘要兜底）——后续过滤/加权都依赖它
+  for (const p of raw) {
+    const c = detectConference(p);
+    if (c) Object.assign(p, c);
+  }
+
+  // 关键词过滤（放宽 Q19/Q12）：强主题词单独命中 / 主题词+机器人语境 / 视觉顶会+主题词
+  const pool = raw.filter((p) => {
     const text = (p.title_en + " " + p.abstract_en).toLowerCase();
+    if (STRONG_TOPIC_KW.some((k) => text.includes(k.toLowerCase()))) return true;
     const topic = PAPER_TOPIC_KW.some((k) => text.includes(k.toLowerCase()));
+    if (!topic) return false;
     const ctx = PAPER_CTX_KW.some((k) => text.includes(k.toLowerCase()));
-    return topic && ctx;
+    if (ctx) return true;
+    return !!(p.conf && p.confVision); // 视觉顶会豁免机器人语境
   });
-  // 分类 + 热度
-  for (const p of papers) {
+
+  // 分类 + 热度（含顶会加权 Q6）
+  for (const p of pool) {
     const text = p.title_en + " " + p.abstract_en;
     p.categories = classify(text);
     p.upvotes = p.arxiv_id ? hfMap.get(p.arxiv_id) || 0 : 0;
-    const recency = Math.max(0, RECENT_DAYS_PAPERS * 24 - hoursAgo(p.published_at));
-    p.heat = p.upvotes * 50 + recency;
+    const recency = Math.max(0, BACKFILL_DAYS_PAPERS * 24 - hoursAgo(p.published_at));
+    p.heat = p.upvotes * 50 + recency + (p.confWeight || 0) * 20;
   }
-  papers = dedupeBy(papers, (p) => (p.arxiv_id ? `a:${p.arxiv_id}` : p.id))
-    .sort((a, b) => b.heat - a.heat)
-    .slice(0, PAPERS_MAX);
-  console.log(`  · 关键词过滤后保留论文：${papers.length}`);
+
+  // 近窗优先、不足再回溯补足（Q18/Q27）：先取近 RECENT 天，凑不够 PAPERS_MAX 再用近 BACKFILL 天补。
+  const recent = pool
+    .filter((p) => hoursAgo(p.published_at) <= RECENT_DAYS_PAPERS * 24)
+    .sort((a, b) => b.heat - a.heat);
+  const older = pool
+    .filter((p) => {
+      const h = hoursAgo(p.published_at);
+      return h > RECENT_DAYS_PAPERS * 24 && h <= BACKFILL_DAYS_PAPERS * 24;
+    })
+    .sort((a, b) => b.heat - a.heat);
+  let papers = recent.slice(0, PAPERS_MAX);
+  if (papers.length < PAPERS_MAX) {
+    papers = papers.concat(older.slice(0, PAPERS_MAX - papers.length));
+  }
+  console.log(
+    `  · 过滤后 近窗${recent.length} + 回溯${older.length} → 保留论文：${papers.length}`
+  );
+
+  // ===== CVF 顶会论文补入（需求1 选 c）=====
+  console.log("\n[论文] CVF openaccess…");
+  let cvf = await fetchCVFPapers();
+  for (const p of cvf) {
+    const c = detectConference(p);
+    if (c) Object.assign(p, c);
+    p.categories = classify(p.title_en + " " + p.abstract_en);
+    p.heat = (p.confWeight || 0) * 20; // CVF 无 arXiv/HF 热度，仅顶会权重
+  }
+  // 与 arXiv 论文按规整标题去重（CVPR 论文常同时挂 arXiv）
+  const titleKey = (s) => (s || "").toLowerCase().replace(/[^a-z0-9]+/g, "").slice(0, 60);
+  const seenTitles = new Set(papers.map((p) => titleKey(p.title_en)));
+  cvf = cvf.filter((p) => {
+    const k = titleKey(p.title_en);
+    if (!k || seenTitles.has(k)) return false;
+    seenTitles.add(k);
+    return true;
+  });
+  console.log(`  · CVF 去重后补入：${cvf.length} 篇`);
+  papers = papers.concat(cvf);
+
+  // 相关度评分（Q32/Q34）
+  for (const p of papers) p.relevance = scorePaperRelevance(p);
 
   // 标记精选 + 翻译
+  papers.sort((a, b) => b.heat - a.heat);
   papers.slice(0, FEATURED_TOP).forEach((p) => (p.featured = true));
   await translatePapersFull(papers.filter((p) => p.featured));
   await translatePaperTitles(papers.filter((p) => !p.title_zh).slice(0, TRANSLATE_TITLE_TOP));
+  // 翻译补全中文后重算相关度（中文标题/摘要可能新增命中）
+  for (const p of papers) p.relevance = scorePaperRelevance(p);
 
   // ===== 开源库 =====
   console.log("\n[开源库] GitHub Search…");
@@ -310,6 +377,7 @@ async function main() {
   for (const r of repos) {
     const text = `${r.full_name} ${r.description_en} ${r.description_zh} ${r.highlight_zh} ${(r.topics || []).join(" ")}`;
     r.categories = classify(text);
+    r.relevance = scoreRepoRelevance(r); // 相关度评分（Q33）
   }
 
   // ===== 增量合并写入 =====
@@ -325,9 +393,31 @@ async function main() {
   }
   const paperKey = (p) => (p.arxiv_id ? `a:${p.arxiv_id}` : p.id);
   const repoKey = (r) => (r.id || "").toLowerCase();
-  const finalPapers = dedupeBy([...existing.papers, ...papers], paperKey).sort(
-    (a, b) => (b.heat || 0) - (a.heat || 0)
-  );
+
+  // 把本次新算的 顶会信息 / 相关度 叠加回 existing 中的同一条目，
+  // 否则旧数据（在本功能上线前抓到的）会因 dedupe 优先保留而拿不到 conf/relevance 字段。
+  const newPaperById = new Map(papers.map((p) => [paperKey(p), p]));
+  for (const ex of existing.papers) {
+    const np = newPaperById.get(paperKey(ex));
+    if (!np) continue;
+    if (np.conf) {
+      ex.conf = np.conf;
+      ex.confYear = np.confYear;
+      ex.confTag = np.confTag;
+      ex.confWeight = np.confWeight;
+      ex.confVision = np.confVision;
+    }
+    if (np.relevance != null) ex.relevance = np.relevance;
+  }
+  const newRepoById = new Map(repos.map((r) => [repoKey(r), r]));
+  for (const ex of existing.repos) {
+    const nr = newRepoById.get(repoKey(ex));
+    if (nr && nr.relevance != null) ex.relevance = nr.relevance;
+  }
+
+  const finalPapers = dedupeBy([...existing.papers, ...papers], paperKey)
+    .sort((a, b) => (b.heat || 0) - (a.heat || 0))
+    .slice(0, PAPERS_CUMULATIVE_MAX); // 当天累计天花板（Q26）
   const finalRepos = dedupeBy([...existing.repos, ...repos], repoKey).sort(
     (a, b) => (b.stars || 0) - (a.stars || 0)
   );

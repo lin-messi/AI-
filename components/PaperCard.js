@@ -64,6 +64,7 @@ export default function PaperCard({ paper, fieldLabel, onOpen, isNew }) {
           </span>
         )}
         <span className="field-chip">{fieldLabel}</span>
+        {paper.confTag && <span className="conf-badge">{paper.confTag}</span>}
         {paper.crossTag && <span className="cross-chip">{paper.crossTag}</span>}
         {paper.featured && <span className="featured-badge">{t.featuredBadge}</span>}
         {paper.subtags?.map((s) => (

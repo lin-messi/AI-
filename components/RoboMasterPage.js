@@ -68,9 +68,10 @@ export default function RoboMasterPage({ day, dates = [], latest, curated, gener
       // 读取记忆的排序方式
       const sp = localStorage.getItem("robo_sort_papers");
       const sr = localStorage.getItem("robo_sort_repos");
+      const validSort = (v) => ["new", "default", "relevance"].includes(v);
       setSort((s) => ({
-        papers: sp === "new" || sp === "default" ? sp : s.papers,
-        repos: sr === "new" || sr === "default" ? sr : s.repos,
+        papers: validSort(sp) ? sp : s.papers,
+        repos: validSort(sr) ? sr : s.repos,
       }));
 
       // 读取上次访问时间（用于 NEW 角标），随后把本次访问时间写回，作为下次基准
@@ -142,6 +143,13 @@ export default function RoboMasterPage({ day, dates = [], latest, curated, gener
       );
     }
     if (curSort === "new") list.sort((a, b) => itemTime(b) - itemTime(a));
+    else if (curSort === "relevance")
+      // 按相关度排序；同分时论文退回热度、库退回星标（Q40）。缺失视为 0（Q48）。
+      list.sort(
+        (a, b) =>
+          (b.relevance || 0) - (a.relevance || 0) ||
+          (isPapers ? (b.heat || 0) - (a.heat || 0) : (b.stars || 0) - (a.stars || 0))
+      );
     else if (isPapers) list.sort((a, b) => (b.heat || 0) - (a.heat || 0));
     else list.sort((a, b) => (b.stars || 0) - (a.stars || 0));
     return list;
@@ -347,6 +355,7 @@ export default function RoboMasterPage({ day, dates = [], latest, curated, gener
               <span className="sort-label">{t.roboSortLabel}</span>
               <select value={curSort} onChange={(e) => changeSort(e.target.value)}>
                 <option value="default">{t.roboSortDefault}</option>
+                <option value="relevance">{t.roboSortRelevance}</option>
                 <option value="new">{t.roboSortNewest}</option>
               </select>
             </label>
