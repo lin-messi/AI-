@@ -1,6 +1,6 @@
 {
   "date": "2026-06-09",
-  "generatedAt": "2026-06-09T05:02:43.520Z",
+  "generatedAt": "2026-06-09T13:39:48.971Z",
   "categories": [
     {
       "key": "aim",
@@ -51,6 +51,51 @@
   "papers": {
     "count": 100,
     "items": [
+      {
+        "id": "arxiv:2606.07082",
+        "arxiv_id": "2606.07082",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.AI"
+        ],
+        "title_en": "On the Geometry of On-Policy Distillation",
+        "title_zh": "论在线策略蒸馏的几何特性",
+        "abstract_en": "On-policy distillation (OPD) is increasingly used to improve large language model reasoning, but its training dynamics remain poorly understood. We characterize the trajectory of OPD updates in parameter space and compare it with supervised fine-tuning (SFT) and reinforcement learning with verifiable rewards (RLVR). A suite of parameter-space diagnostics consistently places OPD in a relaxed off-principal regime: compared with SFT, its updates affect fewer weights and avoid principal directions more strongly, while compared with RLVR, they remain less tightly constrained. Beyond this static localization, OPD exhibits subspace locking: its cumulative updates rapidly enter a narrow low-dimensional channel. Constraining training to the update subspace formed early in training preserves OPD performance but substantially degrades SFT, indicating that the locked subspace is functionally sufficient for OPD. Control experiments further show that sparsifying the update tokens and shifting rollout generation off-policy preserve the rank dynamics, whereas mixing the OPD objective with RLVR changes them. Overall, these results suggest that OPD is not merely an intermediate point between SFT and RLVR, but induces its own update geometry in parameter space.",
+        "abstract_zh": "在线策略蒸馏（OPD）越来越多地用于提升大语言模型的推理能力，但其训练动态仍未被充分理解。我们刻画了OPD更新在参数空间中的轨迹，并将其与监督微调（SFT）和基于可验证奖励的强化学习（RLVR）进行比较。一系列参数空间诊断一致地将OPD置于一个宽松的非主成分区域：与SFT相比，其更新影响的权重更少，且更强烈地避开主方向；而与RLVR相比，其约束更宽松。除静态定位外，OPD还表现出子空间锁定：其累积更新迅速进入一个狭窄的低维通道。将训练限制在早期形成的更新子空间内能保持OPD性能，但会显著降低SFT，表明该锁定子空间对OPD功能充分。控制实验进一步表明，稀疏化更新token和将rollout生成移至离线策略能保持秩动态，而将OPD目标与RLVR混合则会改变它们。总体而言，这些结果表明OPD不仅是SFT和RLVR之间的中间点，而且在参数空间中诱导出自身独特的更新几何结构。",
+        "highlight_zh": "发现在线策略蒸馏在参数空间中具有独特的子空间锁定几何特性，不同于SFT和RLVR。",
+        "digest_zh": "1. 研究问题：在线策略蒸馏（OPD）是一种提升大语言模型推理能力的技术，但其训练过程中的参数更新规律尚不清楚。本文旨在揭示OPD在参数空间中的更新几何特性，并与监督微调（SFT）和基于可验证奖励的强化学习（RLVR）进行对比。\n2. 方法：作者通过一系列参数空间诊断工具，分析OPD、SFT和RLVR在训练过程中参数更新的方向、幅度和子空间结构。他们特别关注更新是否集中在少数主方向上，以及累积更新是否进入低维子空间。\n3. 结果：OPD的更新比SFT更稀疏，且更强烈地避开参数空间的主方向；与RLVR相比，其约束更宽松。更重要的是，OPD表现出“子空间锁定”现象：累积更新迅速进入一个狭窄的低维通道，且该子空间对OPD性能足够，但对SFT则不足。控制实验表明，稀疏化更新token或改变rollout生成策略不影响秩动态，但混合OPD与RLVR目标会改变。\n4. 重要性：该研究揭示了OPD并非SFT和RLVR的简单折中，而是一种具有独特几何特性的训练方法。这有助于理解大语言模型训练的本质，并为设计更高效的蒸馏算法提供理论指导。",
+        "authors": [
+          "Zhennan Shen",
+          "Yanshu Li",
+          "Qingyu Yin",
+          "Chak Tou Leong",
+          "Zhilin Wang",
+          "Yanxu Chen",
+          "Rongduo Han",
+          "Sunbowen Lee"
+        ],
+        "url": "https://arxiv.org/abs/2606.07082v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.07082",
+        "html_url": "https://arxiv.org/abs/2606.07082",
+        "published_at": "2026-06-05T09:20:15.000Z",
+        "upvotes": 52,
+        "heat": 4659.704648888889,
+        "featured": true,
+        "categories": [
+          "rl"
+        ],
+        "image": "",
+        "comment": "17 pages, 8 figures",
+        "relevance": 3,
+        "first_seen": "2026-06-09T13:39:42.252Z",
+        "rm": {
+          "usage": "该论文研究在线策略蒸馏的几何特性，与RoboMaster中的强化学习训练策略（如多机协同策略学习）有间接关联，可作为训练算法优化的理论参考，但非直接可用。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
+        }
+      },
       {
         "id": "arxiv:2606.07326",
         "arxiv_id": "2606.07326",
@@ -280,6 +325,51 @@
         "first_seen": "2026-06-08T19:16:30.373Z",
         "rm": {
           "usage": "可用于哨兵导航决策中的空间推理与路径规划，通过世界模拟器生成新视角辅助决策。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.07074",
+        "arxiv_id": "2606.07074",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.AI"
+        ],
+        "title_en": "SlimSearcher: Training Efficiency-Aware Web Agents via Adaptive Reward Gating",
+        "title_zh": "SlimSearcher：通过自适应奖励门控实现训练效率感知的Web智能体",
+        "abstract_en": "Deep research agents have demonstrated remarkable capabilities in complex information-seeking tasks, yet this power comes at a steep computational cost. Driven by accuracy-focused training paradigms, current models adopt brute-force strategies characterized by blind tool dependency and performative reasoning-generating long, redundant trajectories that are far from necessary for resolving these tasks, leading to wasteful tool calls and excessive token consumption. To overcome this efficiency trap, we propose SlimSearcher, a principled framework that pushes the Pareto frontier between accuracy and computational cost across both Supervised Fine-Tuning (SFT) and Reinforcement Learning (RL). In the SFT stage, SlimSearcher employs Pareto-efficient filtration to distill trajectories that are both successful and economical, guiding the model toward inherently efficiency-aware search behaviors. During RL, we introduce Adaptive Reward Gating, a dynamic reward-shaping mechanism that evaluates relative tool and token efficiency within a sampled cohort. By cascading these adaptive efficiency metrics with a strict correctness gate, our approach effectively avoids the brevity bias associated with absolute penalties and mitigates reward hacking. Extensive experiments on long-horizon benchmarks, including GAIA, BrowseComp, and XBenchDeepSearch, demonstrate that SlimSearcher reduces average tool-call rounds by 17%-58% while maintaining or improving accuracy.",
+        "abstract_zh": "深度研究智能体在复杂信息搜索任务中展现出卓越能力，但这种能力伴随着高昂的计算成本。受准确性驱动训练范式的影响，当前模型采用蛮力策略，表现为盲目依赖工具和表演性推理——生成长而冗余的轨迹，远非解决任务所必需，导致浪费的工具调用和过多的token消耗。为克服这一效率陷阱，我们提出SlimSearcher，一个原则性框架，在监督微调（SFT）和强化学习（RL）阶段推动准确性与计算成本之间的帕累托前沿。在SFT阶段，SlimSearcher采用帕累托高效过滤来提炼既成功又经济的轨迹，引导模型走向内在效率感知的搜索行为。在RL阶段，我们引入自适应奖励门控，一种动态奖励塑造机制，在采样群体中评估相对工具和token效率。通过将这些自适应效率指标与严格正确性门控级联，我们的方法有效避免了与绝对惩罚相关的简洁性偏差，并缓解了奖励黑客。在长视界基准（包括GAIA、BrowseComp和XBenchDeepSearch）上的大量实验表明，SlimSearcher在保持或提高准确性的同时，将平均工具调用轮数减少17%-58%。",
+        "highlight_zh": "提出自适应奖励门控框架，在保持准确率的同时大幅减少工具调用和token消耗。",
+        "digest_zh": "1. 研究问题：深度研究智能体在复杂信息搜索中表现优异，但现有模型采用蛮力策略，过度依赖工具和生成冗余推理，导致计算成本高昂。如何在保证准确性的前提下提升效率？\n2. 方法：提出SlimSearcher框架，在监督微调（SFT）阶段使用帕累托高效过滤，从成功轨迹中筛选出经济高效的样本，引导模型学习效率意识。在强化学习（RL）阶段引入自适应奖励门控，动态评估工具和token的相对效率，并与正确性门控结合，避免简单惩罚导致的简洁性偏差和奖励黑客。\n3. 结果：在GAIA、BrowseComp和XBenchDeepSearch等长视界基准上，SlimSearcher将平均工具调用轮数减少17%-58%，同时保持或提升准确率。\n4. 重要性：该工作首次系统性地在训练中引入效率感知，推动准确性与计算成本的帕累托前沿，为构建实用、经济的Web智能体提供了新范式。",
+        "authors": [
+          "Zequn Xie",
+          "Junjie Wang",
+          "Dan Yang",
+          "Jie Feng",
+          "Yue Shen",
+          "Jian Wang",
+          "Jinjie Gu"
+        ],
+        "url": "https://arxiv.org/abs/2606.07074v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.07074",
+        "html_url": "https://arxiv.org/abs/2606.07074",
+        "published_at": "2026-06-05T09:10:50.000Z",
+        "upvotes": 8,
+        "heat": 2459.5477044444447,
+        "featured": true,
+        "categories": [
+          "slam",
+          "rl"
+        ],
+        "image": "",
+        "comment": "17 pages, 8 figures,",
+        "relevance": 2,
+        "first_seen": "2026-06-09T13:39:42.252Z",
+        "rm": {
+          "usage": "SlimSearcher通过自适应奖励门控提升搜索效率，可借鉴其奖励塑造思想优化RoboMaster中哨兵导航决策或能量机关击打策略，减少无效动作和计算开销。",
           "task_id": "sentry",
           "task": "哨兵自主导航与决策",
           "value": "mid"
@@ -800,6 +890,52 @@
           "usage": "可用于自瞄中的装甲板识别与位姿估计，通过多视图图像预测3D语义和实例特征，提升对装甲板数字和灯条的识别一致性。",
           "task_id": "autoaim",
           "task": "自瞄 / 装甲板识别",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.09348",
+        "arxiv_id": "2606.09348",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.CL"
+        ],
+        "title_en": "PBSD: Privileged Bayesian Self-Distillation for Long-Horizon Credit Assignment",
+        "title_zh": "PBSD：用于长时域信用分配的特权贝叶斯自蒸馏",
+        "abstract_en": "Long-horizon agentic tasks pose a fundamental credit assignment challenge for outcome-base reinforcement learning: trajectory-level rewards verify final correctness but provide limited guidance on which intermediate reasoning steps or tool interactions contribute to the outcome. The difficulty is especially pronounced in multi-turn search agents, where successful trajectories may contain misleading actions and failed trajectories may contain valuable evidence-gathering steps. We propose PBSD (Privileged Bayesian Self-Distillation), a Bayes-calibrated self-distillation method for fine-grained credit assignment under sparse final rewards. PBSD measures trajectory quality through the posterior-to-prior probability ratio of the verified answer and applies Bayes' rule to convert this hard-to-estimate answer-side ratio into a tractable likelihood ratio between a standard student model and a privileged answer-conditioned teacher model. Autoregressive decomposition of this Bayesian evidence score yields turn-level signals that identify whether each intermediate turn supports or undermines the verified outcome. Consequently, PBSD provides a principled and elegant reweighting scheme that transforms sparse outcome supervision into Bayes-calibrated turn-level credit signals, while remaining fully compatible with standard policy optimization. Experiments demonstrate that PBSD consistently enhances performance across both in-domain and out-of-domain settings, and effectively transfers knowledge from short-context training to long-context inference, suggesting that its fine-grained credit assignment mechanism facilitates more effective policy learning and yields improved generalization.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Yang Tian",
+          "Rui Wang",
+          "Xumeng Wen",
+          "Junjie Li",
+          "Shizhao Sun",
+          "Lei Song",
+          "Jiang Bian",
+          "Bo Zhao"
+        ],
+        "url": "https://arxiv.org/abs/2606.09348v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.09348",
+        "html_url": "https://arxiv.org/abs/2606.09348",
+        "published_at": "2026-06-08T11:20:58.000Z",
+        "upvotes": 1,
+        "heat": 2183.7165941666667,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 2,
+        "first_seen": "2026-06-09T13:39:42.252Z",
+        "rm": {
+          "usage": "PBSD解决长时域信用分配问题，可应用于RoboMaster中多步决策任务（如哨兵自主导航或飞镖瞄准移动目标），帮助区分有效与无效中间步骤。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
           "value": "mid"
         }
       },
@@ -2946,6 +3082,49 @@
         }
       },
       {
+        "id": "arxiv:2606.09362",
+        "arxiv_id": "2606.09362",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.LG"
+        ],
+        "title_en": "Zero-Shot Semantic Re-Identification for Autonomous Driving: A VLM Baseline Study",
+        "title_zh": "",
+        "abstract_en": "Re-Identification (ReID) in autonomous driving is typically formulated as a visual matching problem, where observations of vehicles, pedestrians, and cyclists are associated across time, frames, or camera views using learned appearance embeddings, often complemented by motion, geometric, or multimodal cues. However, purely visual representations may be sensitive to viewpoint, occlusion, illumination, and sensor-domain variations, limiting their interpretability and robustness in complex driving scenes. We propose a baseline study of a zero-shot pipeline using Vision-Language Models (VLMs) to generate textual descriptions of detected traffic participants and evaluate whether these descriptions can support identity matching across observations. Instead of relying only on low-level visual similarity, the proposed formulation represents each object through structured semantic attributes, including category, color, shape, pose, visible parts, spatial context, and distinctive visual cues. This study provides an initial benchmark for language-based re-identification in autonomous-driving scenarios, discussing and evaluating the strengths and limitations of current VLMs for this task. Results demonstrate that zero-shot semantic descriptions can support effective object re-identification, achieving retrieval performance comparable to a supervised CNN baseline while offering greater interpretability through explicit identity cues. However, the experiments also reveal important challenges, including attribute inconsistency across viewpoints and limited fine-grained discrimination between visually similar instances.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Eduardo Borges",
+          "Manuel Abreu",
+          "Luís Garrote",
+          "Urbano J. Nunes"
+        ],
+        "url": "https://arxiv.org/abs/2606.09362v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.09362",
+        "html_url": "https://arxiv.org/abs/2606.09362",
+        "published_at": "2026-06-08T11:35:34.000Z",
+        "upvotes": 0,
+        "heat": 2133.9599294444442,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl",
+          "radar"
+        ],
+        "image": "",
+        "comment": "7 pages",
+        "relevance": 3,
+        "first_seen": "2026-06-09T13:39:42.252Z",
+        "rm": {
+          "usage": "该论文研究自动驾驶中的零样本语义重识别，可借鉴其VLM方法用于RoboMaster中装甲板数字识别或机器人重识别，提升跨视角鲁棒性。",
+          "task_id": "autoaim",
+          "task": "自瞄 / 装甲板识别",
+          "value": "mid"
+        }
+      },
+      {
         "id": "arxiv:2606.03577",
         "arxiv_id": "2606.03577",
         "source": "arXiv",
@@ -4397,184 +4576,6 @@
           "task": "哨兵自主导航与决策",
           "value": "mid"
         }
-      },
-      {
-        "id": "arxiv:2606.07127",
-        "arxiv_id": "2606.07127",
-        "source": "arXiv",
-        "cats": [
-          "cs.LG"
-        ],
-        "title_en": "Learning Explicit Behavioral Models with Adaptive Questions and World-Model Probes",
-        "title_zh": "",
-        "abstract_en": "Interactive agents trained only against task return can achieve high scores while failing to represent the mechanisms that make their actions succeed. This makes brittle behavior difficult to diagnose and limits adaptation when environment dynamics change. Existing LLM reflection and policy-code repair can revise behavior from failed trajectories, but questions and world-understanding tests are usually used only after training. We introduce an Explicit Symbolic Behavioral Model (ESBM), a trainable behavioral model that couples task performance with evidence-grounded question answering and executable mechanism prediction. An ESBM represents behavior through typed predicates, weighted rules, bounded options and mechanism memory; the mechanism layer predicts symbolic events, object changes, rewards and terminal consequences under action interventions. After each rollout, adaptive questions and active world-model probes convert score failures, QA errors and transition-prediction errors into constraints for local ESBM edits. Candidate models are selected by a multi-criterion rule that jointly evaluates task score, answerability and active world-model consistency. Under the tested Atari-style protocols, ESBM learns high-scoring policies while producing explicit answers and executable mechanism predictions, indicating that adaptive questions can serve as both training pressure and reusable benchmarks for mechanistic policy learning in this setting.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Hikaru Shindo",
-          "Yu Deng",
-          "Teng Cao",
-          "Quentin Delfosse",
-          "Christopher Tauchmann",
-          "Jannis Blüml",
-          "Gopika Sudhakaran",
-          "Kristian Kersting"
-        ],
-        "url": "https://arxiv.org/abs/2606.07127v1",
-        "pdf_url": "https://arxiv.org/pdf/2606.07127",
-        "html_url": "https://arxiv.org/abs/2606.07127",
-        "published_at": "2026-06-05T10:34:55.000Z",
-        "upvotes": 0,
-        "heat": 2079.3365480555553,
-        "featured": false,
-        "categories": [
-          "slam"
-        ],
-        "image": "",
-        "comment": "",
-        "relevance": 0,
-        "first_seen": "2026-06-08T19:16:30.373Z",
-        "rm": {
-          "usage": "可用于多机协同策略学习，通过显式行为模型和问题回答提升策略的可解释性和适应性。",
-          "task_id": "strategy",
-          "task": "多机协同与策略学习",
-          "value": "mid"
-        }
-      },
-      {
-        "id": "arxiv:2606.07118",
-        "arxiv_id": "2606.07118",
-        "source": "arXiv",
-        "cats": [
-          "cs.RO"
-        ],
-        "title_en": "QuadVerse: An Integrated Framework Aligning Visual-Physical Reality for Quadruped Simulation",
-        "title_zh": "",
-        "abstract_en": "Simulation is central to robot learning, yet the sim-to-real gap remains a major bottleneck.Existing approaches often tackle visual or dynamic gaps separately, overlooking how these individual mismatches accumulate and propagate throughout the robot's state evolution.In this paper, we introduce QuadVerse, an integrated framework that uses reconstructed scenes as a calibration substrate for aligning visual perception, physical interaction, and actuator dynamics.From captured RGB videos, we reconstruct geometry-constrained 3D Gaussian Splatting (3DGS) scenes that support batched photorealistic ego-view rendering and collision-ready semantic mesh extraction. The meshes further enable contact calibration by initializing spatially varying friction priors and refining them through trajectory-based posterior search.To address remaining actuator discrepancies, QuadVerse trains a residual dynamics compensator by replaying real-world trajectories on the contact-calibrated terrain, reducing the entanglement between terrain-induced contact errors and actuator non-idealities.Experiments show that QuadVerse improves reconstruction quality and locomotion tracking over relevant baselines.Leveraging this foundation, we demonstrate robust zero-shot visual-navigation policy deployment without task-specific real-world rollouts.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Yuxiang Chen",
-          "Yuanhao Wang",
-          "Ziheng Zhang",
-          "Meng Zhang",
-          "Yu Liu",
-          "Yufei Jia",
-          "Tiancai Wang",
-          "Erjin Zhou"
-        ],
-        "url": "https://arxiv.org/abs/2606.07118v1",
-        "pdf_url": "https://arxiv.org/pdf/2606.07118",
-        "html_url": "https://arxiv.org/abs/2606.07118",
-        "published_at": "2026-06-05T10:18:24.000Z",
-        "upvotes": 0,
-        "heat": 2079.06128,
-        "featured": false,
-        "categories": [
-          "rl",
-          "radar",
-          "sim"
-        ],
-        "image": "",
-        "comment": "",
-        "relevance": 7,
-        "first_seen": "2026-06-08T19:16:30.373Z",
-        "rm": {
-          "usage": "可用于仿真环境构建，通过重建场景对齐视觉和物理，缩小sim-to-real差距，提升仿真训练效果。",
-          "task_id": "sim",
-          "task": "仿真与 sim-to-real",
-          "value": "high"
-        }
-      },
-      {
-        "id": "arxiv:2606.07107",
-        "arxiv_id": "2606.07107",
-        "source": "arXiv",
-        "cats": [
-          "cs.RO"
-        ],
-        "title_en": "Coarse-to-Control: Action-Token Planning for Vision-Language-Action Models",
-        "title_zh": "",
-        "abstract_en": "Most vision-language-action (VLA) models map observations directly to actions without explicit intermediate planning, which limits performance on long-horizon tasks where early mistakes compound. We propose Coarse-to-Control, a plan-execute VLA that introduces planning natively in the action-token space. The key idea is to let the policy first predict a compact sequence of coarse action tokens that summarize the intended future trajectory, and then generate executable action tokens conditioned on this plan. Because both planning and execution share a unified discrete action vocabulary, the plan stays close to the control manifold and provides directly actionable guidance rather than an abstract hint that must be translated back to motor commands. Experiments on LIBERO, SimplerEnv-WidowX, and real-world manipulation tasks show that action-token planning consistently improves over direct action generation, with the largest gains on long-horizon multi-stage tasks.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Jinhao Wu",
-          "Shiduo Zhang",
-          "Yicheng Liu",
-          "Xiaopeng Yu",
-          "Sixian Li",
-          "Siyin Wang",
-          "Hang Zhao",
-          "Jing Huo"
-        ],
-        "url": "https://arxiv.org/abs/2606.07107v1",
-        "pdf_url": "https://arxiv.org/pdf/2606.07107",
-        "html_url": "https://arxiv.org/abs/2606.07107",
-        "published_at": "2026-06-05T10:01:37.000Z",
-        "upvotes": 0,
-        "heat": 2078.781557777778,
-        "featured": false,
-        "categories": [
-          "aim",
-          "radar"
-        ],
-        "image": "",
-        "comment": "",
-        "relevance": 2,
-        "first_seen": "2026-06-08T19:16:30.373Z",
-        "rm": {
-          "usage": "可用于哨兵或工程机器人的长时程任务规划，通过动作token规划提升复杂任务执行成功率。",
-          "task_id": "sentry",
-          "task": "哨兵自主导航与决策",
-          "value": "mid"
-        }
-      },
-      {
-        "id": "arxiv:2606.07100",
-        "arxiv_id": "2606.07100",
-        "source": "arXiv",
-        "cats": [
-          "cs.CV",
-          "cs.RO"
-        ],
-        "title_en": "LARA: Latent Action Representation Alignment for Vision-Language-Action Models",
-        "title_zh": "",
-        "abstract_en": "Visual-language action (VLA) models enable robots to predict actions directly from observations and language instructions, but their performance depends on large-scale, high-quality data and is limited by the scarcity of real-world robot action datasets. To facilitate VLA model learning with abundant unlabeled human videos, Latent Action Models (LAM) learn latent action representations from visual dynamics to provide additional supervision for VLA learning. However, LAM and VLA are typically trained separately, leaving LAM ungrounded during VLA training and VLA models constrained by frozen LAM representations. To address these issues, we propose Latent Action Representation Alignment (LARA), a plug-and-play framework that jointly optimizes LAM and VLA via representation alignment. This enables reciprocal benefits where LAMs learn with action trajectories to avoid spurious visual changes, while VLAs are regularized by forward dynamics learned within LAMs to reduce hallucinations of functionally ineffective trajectories. We demonstrate LARA versatility and effectiveness for pre-training, post-training enhancement of pre-trained VLA models, and LAM refinement, achieving an average of ~10%, ~5%, and ~15% improvement over 3 simulation and 1 meticulously designed real-world robotic manipulation benchmarks.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Mengya Liu",
-          "Baoxiong Jia",
-          "Jiangyong Huang",
-          "Jingze Zhang",
-          "Siyuan Huang"
-        ],
-        "url": "https://arxiv.org/abs/2606.07100v1",
-        "pdf_url": "https://arxiv.org/pdf/2606.07100",
-        "html_url": "https://arxiv.org/abs/2606.07100",
-        "published_at": "2026-06-05T09:51:25.000Z",
-        "upvotes": 0,
-        "heat": 2078.6115577777778,
-        "featured": false,
-        "categories": [
-          "aim",
-          "sim"
-        ],
-        "image": "",
-        "comment": "",
-        "relevance": 3,
-        "first_seen": "2026-06-08T19:16:30.373Z",
-        "rm": {
-          "usage": "可用于机器人视觉-语言-动作模型训练，通过潜在动作对齐利用无标签人类视频数据，提升自瞄或导航的泛化能力。",
-          "task_id": "autoaim",
-          "task": "自瞄 / 装甲板识别",
-          "value": "mid"
-        }
       }
     ]
   },
@@ -4630,7 +4631,7 @@
         "categories": [
           "other"
         ],
-        "relevance": 7.79,
+        "relevance": 7.8,
         "first_seen": "2026-06-08T19:16:30.373Z"
       },
       {
@@ -4704,7 +4705,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.67,
+        "relevance": 12.68,
         "first_seen": "2026-06-08T19:16:30.373Z"
       },
       {
@@ -5164,7 +5165,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.31,
+        "relevance": 7.31,
         "first_seen": "2026-06-08T19:16:30.373Z"
       },
       {
@@ -5195,7 +5196,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 25.29,
+        "relevance": 20.29,
         "first_seen": "2026-06-08T19:16:30.373Z"
       },
       {
@@ -5218,7 +5219,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 14.26,
+        "relevance": 9.26,
         "first_seen": "2026-06-08T19:16:30.373Z"
       },
       {
@@ -5574,7 +5575,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 11.96,
+        "relevance": 21.96,
         "first_seen": "2026-06-08T19:16:30.373Z"
       },
       {
@@ -5598,7 +5599,7 @@
           "aim",
           "radar"
         ],
-        "relevance": 12.94,
+        "relevance": 7.94,
         "first_seen": "2026-06-08T19:16:30.373Z"
       },
       {
@@ -5790,7 +5791,7 @@
           "radar",
           "sim"
         ],
-        "relevance": 13.86,
+        "relevance": 13.87,
         "first_seen": "2026-06-08T19:16:30.373Z"
       },
       {
