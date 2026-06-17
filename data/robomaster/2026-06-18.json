@@ -1,6 +1,6 @@
 {
   "date": "2026-06-18",
-  "generatedAt": "2026-06-17T16:36:40.228Z",
+  "generatedAt": "2026-06-17T19:19:38.778Z",
   "categories": [
     {
       "key": "aim",
@@ -49,8 +49,225 @@
     }
   ],
   "papers": {
-    "count": 80,
+    "count": 87,
     "items": [
+      {
+        "id": "arxiv:2606.16993",
+        "arxiv_id": "2606.16993",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "DreamX-World 1.0: A General-Purpose Interactive World Model",
+        "title_zh": "DreamX-World 1.0：通用交互式世界模型",
+        "abstract_en": "DreamX-World 1.0 is a general-purpose interactive text/image-to-video world model for controllable long-horizon generation. It supports camera navigation, revisits to previously observed regions, and promptable events across photorealistic, game-style, and stylized domains. Our data engine combines camera-accurate Unreal Engine rendering, action-rich gameplay recordings, and real-world videos with recovered camera geometry. For camera control, we introduce E-PRoPE, a lightweight variant of projective positional encoding that retains PRoPE's projective camera geometry while applying camera-aware attention to spatially reduced tokens. We convert a bidirectional video generator into a few-step autoregressive world model using causal forcing, DMD-style distillation, and long-rollout training. Training on self-generated long-horizon contexts exposes the model to its own generated history and reduces the style and color drift that accumulates across autoregressive chunks. Memory-Conditioned Scene Persistence retrieves earlier views through camera-geometry-based retrieval, while residual recycling makes the conditioning path less sensitive to imperfect memory latents. Event Instruction Tuning adds composable event control, and reinforcement learning alignment recovers camera control and visual quality after distillation. With mixed-precision DiT execution, residual reuse, 75\\%-pruned VAE decoding, and asynchronous pipeline parallelism, DreamX-World 1.0 reaches up to 16\\,FPS on eight RTX\\,5090 GPUs. On our 5-second basic evaluation, DreamX-World 1.0 achieves a camera-control score of 73.75 and an overall score of 84.76, outperforming HY-WorldPlay 1.5 and LingBot-World in overall score, which achieve 80.79 and 80.45, respectively.",
+        "abstract_zh": "DreamX-World 1.0是一个通用的交互式文本/图像到视频的世界模型，用于可控的长时程生成。它支持相机导航、重新访问先前观察过的区域，以及跨逼真、游戏风格和风格化领域的可提示事件。我们的数据引擎结合了相机精确的虚幻引擎渲染、动作丰富的游戏录制以及带有恢复相机几何结构的真实世界视频。对于相机控制，我们引入了E-PRoPE，一种投影位置编码的轻量级变体，它保留了PRoPE的投影相机几何结构，同时对空间缩减的token应用相机感知注意力。我们通过因果强制、DMD风格蒸馏和长展开训练，将双向视频生成器转换为几步自回归世界模型。在自生成的长时程上下文上训练，使模型暴露于自身生成的历史中，减少了跨自回归块累积的风格和颜色漂移。记忆条件场景持久性通过基于相机几何的检索来检索早期视图，而残差循环使条件路径对不完美的记忆潜在变量不那么敏感。事件指令微调增加了可组合的事件控制，强化学习对齐在蒸馏后恢复了相机控制和视觉质量。通过混合精度DiT执行、残差重用、75%剪枝的VAE解码和异步流水线并行，DreamX-World 1.0在八块RTX 5090 GPU上达到16 FPS。在我们的5秒基础评估中，DreamX-World 1.0的相机控制得分为73.75，总体得分为84.76，优于HY-WorldPlay 1.5和LingBot-World，后两者的总体得分分别为80.79和80.45。",
+        "highlight_zh": "提出通用交互式世界模型，支持长时程可控视频生成，性能超越现有方法。",
+        "digest_zh": "1. 研究问题：如何构建一个通用的交互式世界模型，能够根据文本或图像输入，生成可控的长时程视频，并支持相机导航、事件控制等交互功能？\n2. 方法：提出了DreamX-World 1.0模型。数据方面，结合了虚幻引擎渲染、游戏录制和真实视频，确保相机控制精确。模型架构上，引入E-PRoPE实现相机控制，通过因果强制和蒸馏将双向视频生成器转为自回归模型。训练时使用自生成的长序列减少漂移，记忆条件场景持久性通过相机几何检索早期视图，残差循环降低对记忆质量的依赖。事件指令微调实现事件控制，强化学习对齐恢复蒸馏后的性能。推理时采用混合精度、残差重用、剪枝VAE和异步流水线并行加速。\n3. 结果：在5秒视频生成任务上，DreamX-World 1.0的相机控制得分73.75，总体得分84.76，优于HY-WorldPlay 1.5（80.79）和LingBot-World（80.45）。\n4. 重要性：首次实现了通用、可控、长时程的交互式视频生成，为世界模型在游戏、仿真、内容创作等领域的应用奠定了基础。",
+        "authors": [
+          "DreamX Team",
+          "Yancheng Bai",
+          "Rui Chen",
+          "Xiangxiang Chu",
+          "Rujing Dang",
+          "Hao Dou",
+          "Bingjie Gao",
+          "Qiwen Gu"
+        ],
+        "url": "https://arxiv.org/abs/2606.16993v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.16993",
+        "html_url": "https://arxiv.org/abs/2606.16993",
+        "published_at": "2026-06-15T17:30:33.000Z",
+        "upvotes": 94,
+        "heat": 6810.215767777778,
+        "featured": true,
+        "categories": [
+          "slam",
+          "rl"
+        ],
+        "image": "",
+        "comment": "Project page: https://amap-ml.github.io/DreamX_World, Code: https://github.com/AMAP-ML/DreamX-World",
+        "relevance": 4,
+        "first_seen": "2026-06-17T19:19:34.098Z",
+        "rm": {
+          "usage": "可用于仿真环境中的长时程场景生成与相机控制，辅助哨兵导航决策的仿真测试与视觉算法验证。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.17200",
+        "arxiv_id": "2606.17200",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "ACE-Ego-0: Unifying Egocentric Human and Robotic Data for VLA Pretraining",
+        "title_zh": "ACE-Ego-0：统一第一人称人类与机器人数据用于VLA预训练",
+        "abstract_en": "Vision-Language-Action (VLA) models benefit from large-scale and diverse embodied data, yet scaling robot trajectory collection is costly and labor-intensive. Recent advances show that large-scale egocentric human videos provide complementary real-world supervision in pretraining. However, joint training on human and robot data remains challenging due to divergences in action spaces, embodiment structures, temporal dynamics, and supervision quality. We introduce ACE-EGO-0, a unified VLA pretraining framework jointly leveraging heterogeneous data sources. To extract large-scale pretraining supervision from egocentric human videos, we build a scalable egocentric video-to-action pipeline that converts raw human videos into robot-format pseudo-action trajectories. To make these labels comparable with robot demonstrations, ACE-EGO-0 uses a unified action representation based on camera-space actions, morphology conditioning, and time-aligned action chunking. To robustly leverage noisy pseudo-action supervision from egocentric human videos, we formulate a reliability-aware training objective with a human auxiliary loss that concentrates supervision on reliable signals. We instantiate ACE-EGO-0 on 4.53K hours of robot and simulation data, together with 1.48K hours of pseudo-action-labeled egocentric human data. Experiments show that incorporating large-scale human supervision under reliability-aware weighting consistently improves both unified joint pretraining and supervised fine-tuning. ACE-EGO-0 achieves state-of-the-art performance on RoboCasa GR1 TableTop and RoboTwin 2.0, while demonstrating strong transfer to real-world bimanual manipulation.",
+        "abstract_zh": "视觉-语言-动作（VLA）模型受益于大规模和多样化的具身数据，但扩展机器人轨迹收集成本高昂且劳动密集。最近的进展表明，大规模第一人称人类视频在预训练中提供了互补的真实世界监督。然而，由于动作空间、具身结构、时间动态和监督质量的差异，联合训练人类和机器人数据仍然具有挑战性。我们引入了ACE-EGO-0，一个统一的VLA预训练框架，联合利用异构数据源。为了从第一人称人类视频中提取大规模预训练监督，我们构建了一个可扩展的第一人称视频到动作流水线，将原始人类视频转换为机器人格式的伪动作轨迹。为了使这些标签与机器人演示可比，ACE-EGO-0使用基于相机空间动作、形态条件化和时间对齐动作分块的统一动作表示。为了稳健地利用来自第一人称人类视频的噪声伪动作监督，我们制定了一个可靠性感知的训练目标，带有人类辅助损失，将监督集中在可靠信号上。我们在4.53K小时的机器人和模拟数据以及1.48K小时的伪动作标记的第一人称人类数据上实例化ACE-EGO-0。实验表明，在可靠性感知加权下纳入大规模人类监督，一致地改善了统一联合预训练和监督微调。ACE-EGO-0在RoboCasa GR1 TableTop和RoboTwin 2.0上实现了最先进的性能，并展示了向真实世界双臂操作的强迁移能力。",
+        "highlight_zh": "提出统一人类与机器人数据的VLA预训练框架，利用第一人称视频提升机器人操作性能。",
+        "digest_zh": "1. 研究问题：如何利用大规模第一人称人类视频数据来辅助机器人VLA模型的预训练，以克服机器人数据收集成本高、多样性有限的问题？\n2. 方法：提出了ACE-EGO-0框架。首先，构建了一个从第一人称人类视频到机器人伪动作轨迹的流水线，将人类动作转换为机器人可理解的格式。然后，使用统一的动作表示（基于相机空间动作、形态条件化和时间对齐动作分块）使人类和机器人数据可比。为了处理人类伪动作中的噪声，设计了可靠性感知训练目标，通过人类辅助损失聚焦于可靠信号。框架在4.53K小时机器人和模拟数据以及1.48K小时人类数据上训练。\n3. 结果：在RoboCasa GR1 TableTop和RoboTwin 2.0基准上达到最先进性能，并成功迁移到真实世界双臂操作任务。\n4. 重要性：首次有效融合大规模人类视频与机器人数据，显著降低了VLA模型对昂贵机器人数据的依赖，为具身智能的规模化训练提供了新途径。",
+        "authors": [
+          "Hao Li",
+          "Ganlong Zhao",
+          "Yufei Liu",
+          "Haotian Hou",
+          "Guoquan Ye",
+          "Tongyan Fang",
+          "Chunxiao Liu",
+          "Siyuan Huang"
+        ],
+        "url": "https://arxiv.org/abs/2606.17200v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.17200",
+        "html_url": "https://arxiv.org/abs/2606.17200",
+        "published_at": "2026-06-15T18:40:18.000Z",
+        "upvotes": 40,
+        "heat": 4111.378276666666,
+        "featured": true,
+        "categories": [
+          "aim",
+          "sim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 3,
+        "first_seen": "2026-06-17T19:19:34.098Z",
+        "rm": {
+          "usage": "可用于工程视觉装配任务，通过人类视频预训练提升机械臂抓取与装配的视觉-语言-动作模型性能。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.16767",
+        "arxiv_id": "2606.16767",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Text-Vision Co-Instructed Image Editing",
+        "title_zh": "文本-视觉联合指导的图像编辑",
+        "abstract_en": "Existing image editing methods can be generally categorized into textual instruction-based and visual prompt-based ones. Textual instructions are semantically expressive, but are limited by the coarse granularity of spatial control of the editing results. In contrast, visual prompts such as drag and point can provide precise spatial guidance, but are limited by the inherent ambiguity in semantic intent. To unify the strength of textual and visual prompts, we present Text-Vision Co-Instructed Image Editing, which jointly models textual instructions as semantic intent and sparse visual instructions as spatial guidance, aiming to achieve precise and intent-faithful image manipulation. To this end, we first construct a textual-visual instruction paired dataset with more than 23K samples derived from dynamic videos, enabling aligned supervision for cross-modal instruction. We then propose TV-Edit, a Textual-Visual instruction unified Editing framework to contextualize drag or point-based visual instructions with image-text semantics and lift them into semantic-aware control representations for pretrained editing backbones. By integrating semantic intent and spatial constraints, TV-Edit leads to more precise spatial control, less instruction ambiguity, and stronger structural consistency than text-only or drag-based alternatives. Finally, we establish TV-Edit-Bench, a deliberately designed benchmark to evaluate semantic faithfulness, spatial alignment, and visual consistency with ground-truth references and controlled textual-visual variations for reliable assessment. Our experiments across multiple editing backbones demonstrate that TV-Edit consistently yields more precise and intent-faithful edits, significantly outperforming state-of-the-art instruction-based and drag-based baselines.",
+        "abstract_zh": "现有的图像编辑方法通常可分为基于文本指令和基于视觉提示两类。文本指令语义表达丰富，但受限于空间控制的粗粒度。相比之下，拖拽和点等视觉提示可以提供精确的空间指导，但受限于语义意图的固有模糊性。为了统一文本和视觉提示的优势，我们提出了文本-视觉联合指导的图像编辑，将文本指令作为语义意图，稀疏视觉指令作为空间指导，旨在实现精确且意图忠实的图像操作。为此，我们首先构建了一个包含超过23K个样本的文本-视觉指令配对数据集，这些样本来自动态视频，实现了跨模态指令的对齐监督。然后，我们提出了TV-Edit，一个文本-视觉指令统一编辑框架，将拖拽或点为基础的视觉指令与图像-文本语义上下文化，并将其提升为语义感知的控制表示，用于预训练的编辑骨干。通过整合语义意图和空间约束，TV-Edit比纯文本或纯拖拽方法实现了更精确的空间控制、更少的指令歧义和更强的结构一致性。最后，我们建立了TV-Edit-Bench，一个精心设计的基准，用于评估语义忠实度、空间对齐和视觉一致性，并带有真实参考和受控的文本-视觉变化，以实现可靠评估。我们在多个编辑骨干上的实验表明，TV-Edit一致地产生更精确和意图忠实的编辑，显著优于最先进的基于指令和基于拖拽的方法。",
+        "highlight_zh": "提出文本与视觉联合指导的图像编辑框架，实现精确且意图忠实的图像操作。",
+        "digest_zh": "1. 研究问题：如何结合文本指令的语义表达能力和视觉提示（如拖拽、点）的精确空间控制，实现既符合语义意图又空间精确的图像编辑？\n2. 方法：提出了TV-Edit框架。首先，从动态视频中构建了超过23K个文本-视觉指令配对数据集，用于跨模态对齐监督。然后，TV-Edit将拖拽或点等视觉指令与图像-文本语义融合，生成语义感知的控制表示，输入预训练编辑模型。通过同时考虑语义意图和空间约束，实现更精确的编辑。此外，建立了TV-Edit-Bench基准，用于评估语义忠实度、空间对齐和视觉一致性。\n3. 结果：在多个编辑骨干上，TV-Edit在空间控制精度、指令歧义减少和结构一致性方面均优于纯文本或纯拖拽方法，达到最先进性能。\n4. 重要性：首次统一了文本和视觉两种指令模态，解决了各自局限，为交互式图像编辑提供了更自然、更精确的控制方式，具有广泛的应用前景。",
+        "authors": [
+          "Chenxi Xie",
+          "Yuhui Wu",
+          "Qiaosi Yi",
+          "Lei Zhang"
+        ],
+        "url": "https://arxiv.org/abs/2606.16767v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.16767",
+        "html_url": "https://arxiv.org/abs/2606.16767",
+        "published_at": "2026-06-15T14:16:05.000Z",
+        "upvotes": 11,
+        "heat": 2656.9746566666668,
+        "featured": true,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 2,
+        "first_seen": "2026-06-17T19:19:34.098Z",
+        "rm": {
+          "usage": "可用于自瞄任务中辅助装甲板识别与位姿估计的图像编辑，但关联较弱，需大量改造。",
+          "task_id": "autoaim",
+          "task": "自瞄 / 装甲板识别",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2606.15534",
+        "arxiv_id": "2606.15534",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Track2View: 4D-Consistent Camera-Controlled Video Generation via Paired 3D Point Tracks",
+        "title_zh": "Track2View：通过配对3D点轨迹实现4D一致的相机控制视频生成",
+        "abstract_en": "Re-rendering an existing video from a novel camera viewpoint requires the output to follow the prescribed camera trajectory while preserving the appearance and dynamics of the original scene across every frame. Existing methods rely on per-frame pose embeddings, noisy point-cloud renderings, or implicit learned correspondences, none of which provides an explicit, temporally continuous link between source and target pixels. We propose Track2View, which conditions a video diffusion transformer on paired 3D point tracks: sparse trajectories of scene points projected into both the source and target camera views. These tracks provide explicit spatiotemporal correspondences that are temporally continuous by construction, encoding what content should appear where and when. At the core of Track2View is a dual-view track conditioner that transfers visual context from source to target view through parameter-free geometric operations and learned temporal aggregation, ensuring generalization to arbitrary camera trajectories without memorizing specific motions. We further introduce a data curation pipeline that extracts one-to-one track correspondences by running a 3D point tracker on temporally concatenated multi-camera view pairs. On a 400-video benchmark spanning static and dynamic scenes, Track2View achieves state-of-the-art results across visual quality, view synchronization, and camera accuracy, reducing rotation error by 30-65% and translation error by 61-72% relative to leading baselines. Project page is available at this https URL: https://qjizhi.github.io/track2view",
+        "abstract_zh": "从新视角重新渲染现有视频需要输出遵循指定相机轨迹，同时保持每一帧原始场景的外观和动态。现有方法依赖每帧姿态嵌入、噪声点云渲染或隐式学习对应关系，这些都无法提供源像素与目标像素之间显式、时间连续的链接。我们提出Track2View，它通过配对3D点轨迹（即投影到源视图和目标视图的场景点稀疏轨迹）来条件化视频扩散Transformer。这些轨迹提供了显式的时空对应关系，在构造上具有时间连续性，编码了内容应出现的位置和时间。Track2View的核心是双视图轨迹调节器，通过无参数几何操作和学习的时间聚合将视觉上下文从源视图传递到目标视图，确保对任意相机轨迹的泛化能力。我们还引入数据整理流程，通过在时间上拼接的多相机视图对上运行3D点跟踪器来提取一对一轨迹对应。在包含静态和动态场景的400个视频基准上，Track2View在视觉质量、视图同步和相机精度方面达到最先进水平，相对于领先基线将旋转误差降低30-65%，平移误差降低61-72%。",
+        "highlight_zh": "利用配对3D点轨迹显式建立时空对应，实现高质量新视角视频生成。",
+        "digest_zh": "1. 研究问题：如何从任意新相机视角重新渲染现有视频，同时保持场景外观和动态的一致性？现有方法要么依赖每帧姿态嵌入（缺乏时间连续性），要么使用噪声点云渲染（不精确），要么隐式学习对应关系（不显式），导致生成视频出现闪烁或视角不一致。\n2. 方法：Track2View提出使用配对3D点轨迹——即场景中关键点在源视图和目标视图中的投影轨迹——作为显式时空对应信号，条件化视频扩散Transformer。核心模块是双视图轨迹调节器，它通过无参数几何操作（如投影和扭曲）将源视图的视觉特征沿轨迹传递到目标视图，再通过时间聚合模块整合多帧信息，从而生成连续一致的视频帧。此外，作者设计数据整理流程，利用3D点跟踪器从多相机视频中提取精确的轨迹对应。\n3. 结果：在400个视频的基准测试中，Track2View在视觉质量、视图同步和相机精度上均超越现有方法，旋转误差降低30-65%，平移误差降低61-72%。\n4. 重要性：该方法首次将显式3D点轨迹引入视频扩散模型，解决了新视角合成中时间一致性的核心难题，为电影制作、虚拟现实等应用提供了更可靠的视频重渲染技术。",
+        "authors": [
+          "Feng Qiao",
+          "Zhaochong An",
+          "Zhexiao Xiong",
+          "Serge Belongie",
+          "Nathan Jacobs"
+        ],
+        "url": "https://arxiv.org/abs/2606.15534v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.15534",
+        "html_url": "https://arxiv.org/abs/2606.15534",
+        "published_at": "2026-06-14T01:23:50.000Z",
+        "upvotes": 9,
+        "heat": 2520.1038227777776,
+        "featured": true,
+        "categories": [
+          "radar"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 2,
+        "first_seen": "2026-06-17T19:19:34.098Z",
+        "rm": {
+          "usage": "可用于雷达全场感知中的多视角视频生成与相机控制，辅助定位与标记算法验证。",
+          "task_id": "radar",
+          "task": "雷达全场感知与标记",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.17043",
+        "arxiv_id": "2606.17043",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.LG"
+        ],
+        "title_en": "Hierarchical Advantage Weighting for Online RL Fine-Tuning of VLAs from Sparse Episode Outcomes",
+        "title_zh": "基于层次化优势加权的在线RL微调VLA策略从稀疏回合结果",
+        "abstract_en": "When pretrained VLA policies are fine-tuned through online RL, each rollout episode produces only a single binary outcome (success or failure), yet the actor update requires per-transition supervision. Existing approaches commonly reduce this sparse outcome to a single scalar reward or advantage signal, which conflates distinct forms of transition-level feedback and provides limited guidance once basic task success becomes achievable. First, a single scalar signal conflates the two objectives of viability and efficiency; once basic success is achieved, the binary label provides no gradient to distinguish efficient completions from slow ones. Second, real-world rollouts mix autonomous and intervention segments; naively assigning episode outcomes across these boundaries introduces incorrect credit assignment. To address these issues, we propose Hierarchical Advantage-Weighted Behavior Cloning (HABC), which trains separate critic heads for these two objectives on different data subsets and combines their outputs with a state-adaptive balance. A state-adaptive gate $g_t$ merges their one-step advantages, prioritizing viability when success is uncertain and shifting to efficiency only when viability is high, and converts the result into per-transition weights on the actor loss. Intervention-aware credit assignment further restricts outcome labels to segments executed by the current policy, preventing supervision from leaking across intervention boundaries. In real-robot experiments on three contact-rich bimanual tasks, HABC raises success from supervised fine-tuning (SFT) baselines of 36%, 44%, and 12% to 92%, 88%, and 38%.",
+        "abstract_zh": "当预训练的VLA策略通过在线强化学习微调时，每次 rollout 回合仅产生一个二元结果（成功或失败），但 actor 更新需要每个时间步的监督信号。现有方法通常将此稀疏结果简化为单个标量奖励或优势信号，这混淆了不同形式的过渡级反馈，一旦基本任务成功变得可实现，提供的指导就有限。首先，单个标量信号混淆了可行性和效率两个目标；一旦基本成功实现，二元标签无法提供区分高效完成与缓慢完成的梯度。其次，真实世界 rollout 混合了自主和干预片段；跨边界简单分配回合结果会导致错误的信用分配。为解决这些问题，我们提出层次化优势加权行为克隆（HABC），它在不同数据子集上为这两个目标训练独立的评论家头，并通过状态自适应平衡组合它们的输出。状态自适应门 g_t 合并它们的一步优势，当成功不确定时优先考虑可行性，仅在可行性高时转向效率，并将结果转换为 actor 损失上的每时间步权重。干预感知的信用分配进一步将结果标签限制在当前策略执行的片段，防止监督跨干预边界泄漏。在三个接触丰富的双臂任务上的真实机器人实验中，HABC 将成功率从监督微调基线的 36%、44% 和 12% 提高到 92%、88% 和 38%。",
+        "highlight_zh": "提出层次化优势加权，分离可行性与效率目标，显著提升稀疏奖励下的机器人微调效果。",
+        "digest_zh": "1. 研究问题：如何利用在线强化学习微调预训练的视觉-语言-动作（VLA）策略，当每个回合只给出成功/失败标签（稀疏结果）时？现有方法将整个回合的二元结果简化为一个标量信号，无法区分“能否完成任务”和“完成得是否高效”这两个目标，导致策略在基本成功后就停滞不前；同时，真实场景中人类干预的片段会污染信用分配。\n2. 方法：提出层次化优势加权行为克隆（HABC）。核心思想是训练两个独立的评论家网络：一个专注于可行性（能否成功），另一个专注于效率（多快完成）。通过一个状态自适应门 g_t 动态融合两者的优势信号：当成功不确定时，优先采用可行性优势；当成功有保障时，转向效率优势。此外，引入干预感知的信用分配，只将回合结果分配给由当前策略自主执行的片段，避免人类干预带来的错误监督。\n3. 结果：在三个双臂接触任务（如拧瓶盖、插销）的真实机器人实验中，HABC 将成功率从监督微调（SFT）的 36%、44%、12% 大幅提升至 92%、88%、38%。\n4. 重要性：该方法解决了稀疏奖励下机器人学习的关键瓶颈——如何从二元结果中提取更丰富的学习信号。通过分离可行性与效率，并处理干预数据，HABC 使得预训练模型能高效适应新任务，对机器人从仿真到真实世界的迁移具有重要价值。",
+        "authors": [
+          "Tongyan Fang",
+          "Siyuan Huang",
+          "Naiyu Fang",
+          "Ganlong Zhao",
+          "Zhongjin Luo",
+          "Jianbo Liu",
+          "Xiaogang Wang",
+          "Ying Dong"
+        ],
+        "url": "https://arxiv.org/abs/2606.17043v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.17043",
+        "html_url": "https://arxiv.org/abs/2606.17043",
+        "published_at": "2026-06-15T17:57:14.000Z",
+        "upvotes": 8,
+        "heat": 2510.660498888889,
+        "featured": true,
+        "categories": [
+          "aim",
+          "slam"
+        ],
+        "image": "",
+        "comment": "Website: https://acerobotics-vla.github.io/HABC-Website",
+        "relevance": 2,
+        "first_seen": "2026-06-17T19:19:34.098Z",
+        "rm": {
+          "usage": "可用于多机协同与策略学习，通过在线强化学习微调策略，提升自主决策与成功率。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "high"
+        }
+      },
       {
         "id": "arxiv:2606.16870",
         "arxiv_id": "2606.16870",
@@ -523,6 +740,50 @@
           "task_id": "sentry",
           "task": "哨兵自主导航与决策",
           "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.16202",
+        "arxiv_id": "2606.16202",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.AI",
+          "cs.RO"
+        ],
+        "title_en": "EgoPhys: Learning Generalizable Physics Models of Deformable Objects from Egocentric Video",
+        "title_zh": "EgoPhys：从自我中心视频学习可变形物体的通用物理模型",
+        "abstract_en": "Humans naturally understand object physics through everyday interactions, but faithfully predicting complex deformable dynamics, such as elastic materials and fabrics, remains a major challenge for computer vision and robotics. We present EgoPhys, a framework that constructs deformable physical digital twins from egocentric RGB-only video using generalizable priors. EgoPhys overcomes the limitations of existing methods to enable controllable deformable digital twin generation from egocentric videos by distilling per-object inverse-physics solutions into a compact codebook, enabling prediction of dense spring stiffness fields for unseen objects without per-spring test-time optimization. Trained with generalizable priors from diverse egocentric interactions, EgoPhys outperforms baselines in reconstruction, future prediction, and zero-shot generalization. To support training and evaluation, we curate an egocentric interaction dataset covering diverse deformable objects, scenes, and manipulation styles. We deploy EgoPhys on a real xArm6 robot, demonstrating that a digital twin initialized from a single egocentric human play video can serve as an internal world representation to aid in deformable-object planning, highlighting egocentric RGB observations as a scalable path toward real-to-sim pipelines.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Hyunjin Kim",
+          "Ri-Zhao Qiu",
+          "Guangqi Jiang",
+          "Xiaolong Wang"
+        ],
+        "url": "https://arxiv.org/abs/2606.16202v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.16202",
+        "html_url": "https://arxiv.org/abs/2606.16202",
+        "published_at": "2026-06-15T04:25:15.000Z",
+        "upvotes": 1,
+        "heat": 2147.1274422222223,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl",
+          "sim"
+        ],
+        "image": "",
+        "comment": "Project Page: https://hjhyunjinkim.github.io/EgoPhys",
+        "relevance": 4,
+        "first_seen": "2026-06-17T19:19:34.098Z",
+        "rm": {
+          "usage": "可用于仿真环境中可变形物体的物理建模，但RoboMaster中无直接对应任务，关联很弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
         }
       },
       {
@@ -1681,6 +1942,51 @@
           "task_id": "",
           "task": "",
           "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2606.15768",
+        "arxiv_id": "2606.15768",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.AI"
+        ],
+        "title_en": "LaWAM: Latent World Action Models for Efficient Dynamics-Aware Robot Policies",
+        "title_zh": "LaWAM：用于高效动力学感知机器人策略的潜在世界动作模型",
+        "abstract_en": "Vision-Language-Action models (VLAs) leverage large-scale vision-language pretraining for semantic robot control, but often lack explicit foresight into how robot actions change the scene. World-Action Models (WAMs) address this limitation by conditioning policies on predicted futures, yet existing approaches typically rely on computationally expensive video generation with substantial pixel-level redundancy. We present LaWAM, a Latent World Action Model that exposes predictive dynamics to robot policies through compact latent visual subgoals instead of reconstructed future video. At the core of LaWAM is a latent-action-conditioned Latent World Model (LaWM). We obtain LaWM by training a latent action model in the latent space of a pretrained vision foundation model and repurposing its forward decoder to predict future observation features for scene evolution. LaWAM then conditions action generation on these predicted latent visual subgoals to enable dynamics-aware robot control. LaWAM achieves state-of-the-art or competitive success rates (SRs) across LIBERO (98.6% SR), RoboTwin (91.22% SR), and real-world manipulation tasks while retaining low-latency inference. LaWAM runs in 187 ms per action-chunk prediction and achieves up to 24x lower wall-clock latency than pixel-space WAMs.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Jialei Chen",
+          "Kai Wang",
+          "Kang Chen",
+          "Shuaihang Chen",
+          "Feng Gao",
+          "Wenhao Tang",
+          "Zhiyuan Li",
+          "Weilin Liu"
+        ],
+        "url": "https://arxiv.org/abs/2606.15768v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.15768",
+        "html_url": "https://arxiv.org/abs/2606.15768",
+        "published_at": "2026-06-14T12:06:58.000Z",
+        "upvotes": 1,
+        "heat": 2130.8227197222222,
+        "featured": false,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 3,
+        "first_seen": "2026-06-17T19:19:34.098Z",
+        "rm": {
+          "usage": "可用于哨兵自主导航决策中的动力学感知策略学习，通过潜在世界模型预测未来状态辅助规划。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
         }
       },
       {
@@ -3665,7 +3971,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 8.61,
+        "relevance": 13.61,
         "first_seen": "2026-06-17T16:35:52.519Z"
       },
       {
@@ -4323,7 +4629,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.08,
+        "relevance": 7.08,
         "first_seen": "2026-06-17T16:35:52.519Z"
       },
       {
@@ -4465,7 +4771,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 11.96,
+        "relevance": 11.95,
         "first_seen": "2026-06-17T16:35:52.519Z"
       },
       {
