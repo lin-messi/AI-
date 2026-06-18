@@ -1,6 +1,6 @@
 {
   "date": "2026-06-18",
-  "generatedAt": "2026-06-18T05:30:30.421Z",
+  "generatedAt": "2026-06-18T11:07:47.124Z",
   "categories": [
     {
       "key": "aim",
@@ -184,6 +184,52 @@
           "usage": "可用于工程机器人装配任务中的视觉-语言-动作系统，通过工具使用框架实现机械臂对能量单元的抓取与装配，提升泛化能力。",
           "task_id": "engineer",
           "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.17539",
+        "arxiv_id": "2606.17539",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.AI"
+        ],
+        "title_en": "Reinforcing Dual-Path Reasoning in Spatial Vision Language Models",
+        "title_zh": "强化空间视觉语言模型中的双路径推理",
+        "abstract_en": "Spatial VLMs have made substantial progress in geometric perception, yet complex spatial reasoning requiring multi-step inference over depth, distance, and scene relations remains challenging. Moreover, different spatial queries call for fundamentally different strategies: some are best addressed through purely linguistic, step-by-step deduction, while others require explicit 3D grounding before quantitative inference. We present Dual-Path Spatial Reasoning via Reinforcement Learning for Spatial VLMs (SR-REAL), a unified framework that equips a spatial VLM with two complementary reasoning paths: Language-Only Reasoning (LOR), which performs step-by-step linguistic deduction, and Detect-Then-Reason (DTR), which detects 3D geometric cues (e.g., centers or bounding boxes) via region tokens before explicit geometric inference. SR-REAL begins with a cold-start supervised fine-tuning stage that constructs LOR and DTR chain-of-thought supervision and exposes a region-to-3D interface, followed by RL that optimizes the policy model with accuracy and format rewards; for DTR, a discrete center-based detection reward further refines geometric alignment. Across diverse spatial benchmarks, SR-REAL significantly outperforms spatial VLM baselines: (i) a single RL-trained model supports both reasoning paths, with DTR excelling in region-aware tasks through precise 3D localization and LOR enhancing general spatial reasoning; (ii) jointly training both paths fosters mutual reinforcement; (iii) high-quality, blended cold-start data is crucial for stable RL optimization; and (iv) the model generalizes across datasets and domains without per-task tuning, demonstrating positive transfer between LOR and DTR.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Yatai Ji",
+          "An-Chieh Cheng",
+          "Yang Fu",
+          "Yukang Chen",
+          "Han Zhang",
+          "Zhaojing Yang",
+          "Wei Huang",
+          "Ka Chun Cheung"
+        ],
+        "url": "https://arxiv.org/abs/2606.17539v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.17539",
+        "html_url": "https://arxiv.org/abs/2606.17539",
+        "published_at": "2026-06-16T05:32:39.000Z",
+        "upvotes": 12,
+        "heat": 2706.445703611111,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 4,
+        "first_seen": "2026-06-18T11:07:44.641Z",
+        "rm": {
+          "usage": "可用于提升自瞄中多目标切换时的空间推理能力，例如通过双路径推理结合语言与3D信息来优化目标选择与优先级判断。",
+          "task_id": "autoaim",
+          "task": "自瞄 / 装甲板识别",
           "value": "mid"
         }
       },
@@ -1013,6 +1059,50 @@
           "task_id": "engineer",
           "task": "工程视觉装配（能量单元）",
           "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2606.18375",
+        "arxiv_id": "2606.18375",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "PAIWorld: A 3D-Consistent World Foundation Model for Robotic Manipulation",
+        "title_zh": "PAIWorld：面向机器人操作的3D一致世界基础模型",
+        "abstract_en": "World foundation models (WFMs) are powerful simulators, yet they predominantly operate in a single-view setting and lack the multi-view 3D consistency required for robotic manipulation. While robotic systems rely on multiple cameras (egocentric, eye-to-hand, and wrist-mounted) for policy learning, current multi-view world models simply concatenate view tokens without explicit geometric reasoning. This causes cross-view object drift, depth inconsistency, and texture misalignment. We trace these failures to two deficiencies: the absence of an explicit inter-view communication mechanism and the lack of a 3D geometric prior. We argue that resolving both simultaneously is necessary and sufficient. To address this, we present PAIWorld, a framework that augments diffusion-transformer world models via three core components: (1) Geometry-Aware Cross-View Attention blocks that establish an explicit pathway across views, (2) Geometric Rotary Position Embedding that encodes camera ray directions and extrinsic poses into the attention mechanism, and (3) Latent 3D-REPA, which distills 3D-aware features from frozen 3D foundation models to ensure 3D consistency. Built upon a DiT-based world foundation model, PAIWorld achieves state-of-the-art multi-view 3D consistency on robotic manipulation benchmarks, ranking 1st on the WorldArena leaderboard and 2nd on the AgiBot-Challenge2026 leaderboard, while enabling downstream applications such as model-based planning, world action models, and multi-view policy post-training.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Yuhang Huang",
+          "Xuan Lv",
+          "Junyan Xu",
+          "Zhiyuan Yu",
+          "Jiazhao Zhang",
+          "Ruizhen Hu",
+          "Wancheng Feng",
+          "Shilong Zou"
+        ],
+        "url": "https://arxiv.org/abs/2606.18375v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.18375",
+        "html_url": "https://arxiv.org/abs/2606.18375",
+        "published_at": "2026-06-16T18:23:23.000Z",
+        "upvotes": 2,
+        "heat": 2219.2912686111113,
+        "featured": false,
+        "categories": [
+          "sim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 4,
+        "first_seen": "2026-06-18T11:07:44.641Z",
+        "rm": {
+          "usage": "可用于仿真环境构建，提供多视角一致的3D世界模型，提升机器人操作（如工程装配）的仿真真实度，辅助sim-to-real迁移。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "mid"
         }
       },
       {
@@ -4377,92 +4467,6 @@
           "task": "能量机关 / 打符",
           "value": "mid"
         }
-      },
-      {
-        "id": "arxiv:2606.17598",
-        "arxiv_id": "2606.17598",
-        "source": "arXiv",
-        "cats": [
-          "cs.RO",
-          "cs.CV"
-        ],
-        "title_en": "MuseVLA: An Adaptive Multimodal Sensing Vision-Language-Action Model for Robotic Manipulation",
-        "title_zh": "MuseVLA：用于机器人操作的适应性多模态感知视觉-语言-动作模型",
-        "abstract_en": "Humans naturally leverage diverse sensing modalities to interact with the physical world, while most Vision-Language-Action (VLA) models for robotics rely solely on RGB observations. This limits their ability to perceive physical properties that are difficult or impossible to infer from RGB cameras, such as temperature, sound, or radar response. We present MuseVLA, an adaptive multimodal sensing VLA model that integrates novel sensors as on-demand tools for robotic manipulation. Given a task instruction and visual context, MuseVLA first generates a sensor token and target description that select the sensing modality to invoke and what to attend to, analogous to a tool call with arguments. It then converts the selected sensor measurement into a grounded sensor image, a unified intermediate representation that encodes heterogeneous readings for multimodal fusion and action generation. This design decouples sensor-specific processing from the VLA backbone, enabling efficient integration of diverse modalities. To reduce the need for expensive multisensory robot datasets, we further introduce a data synthesis pipeline that augments existing RGB video datasets with grounded sensor images, enabling generalization to unseen sensor-guided tasks. We evaluate MuseVLA on a real-world robot across challenging dexterous hand manipulation tasks that require multimodal sensing inputs, including temperature-guided pick-and-place, audio-driven object search, and radar-assisted hidden object retrieval. MuseVLA achieves 80.6% success rate on average, outperforming RGB-only and multisensory VLA baselines significantly, and exhibits strong zero-shot capabilities on unseen tasks.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Xingyuming Liu",
-          "Ruichun Ma",
-          "Heyu Guo",
-          "Qixiu Li",
-          "Qingwen Yang",
-          "Lin Luo",
-          "Shiqi Jiang",
-          "Chenren Xu"
-        ],
-        "url": "https://arxiv.org/abs/2606.17598v1",
-        "pdf_url": "https://arxiv.org/pdf/2606.17598",
-        "html_url": "https://arxiv.org/abs/2606.17598",
-        "published_at": "2026-06-16T07:04:13.000Z",
-        "upvotes": 0,
-        "heat": 2126.50341,
-        "featured": false,
-        "categories": [
-          "aim"
-        ],
-        "image": "",
-        "comment": "",
-        "relevance": 3,
-        "first_seen": "2026-06-17T16:35:52.519Z",
-        "rm": {
-          "usage": "该论文提出多模态感知VLA模型用于机器人操作，可用于工程机器人抓取能量单元的视觉定位与机械臂控制。",
-          "task_id": "engineer",
-          "task": "工程视觉装配（能量单元）",
-          "value": "high"
-        }
-      },
-      {
-        "id": "arxiv:2606.17561",
-        "arxiv_id": "2606.17561",
-        "source": "arXiv",
-        "cats": [
-          "cs.CV"
-        ],
-        "title_en": "RT-Counter: Real-Time Text-Guided Open-Vocabulary Object Counting",
-        "title_zh": "",
-        "abstract_en": "Text-guided open-vocabulary object counting (TOOC) aims to count objects belonging to the categories specified by natural language descriptions. Although vision-language pre-trained models have been successful applied to TOOC tasks, they still struggle with fine-grained spatial understanding and real-time inference requirements in counting scenarios. To address these limitations, this paper proposes a real-time TOOC framework, called the Real-Time Counter (RT-Counter), that achieves not only good counting accuracy but also high computational efficiency. RT-Counter designs a novel Visual Prototype Textualization (VPT) module that can project learned visual features into a text feature space and then generate features containing the abstract information that is hard to capture with visual prototypes and the detailed prototype information that is difficult to describe in text, enhancing the object-level visual-language model's counting capabilities. Additionally, RT-Counter incorporates our Weaving Transformer (Weaformer) layers, maintaining high descriptive power at a fraction of the computational cost. The Weaformer layer adopts a novel hybrid attention mechanism that can efficiently weave together local and global visual features. Extensive experiments on three public datasets show that RT-Counter successfully breaks the accuracy-speed trade-off in TOOC. While achieving a competitive MAE of 13.30 on FSC147, RT-Counter operates at 112.48 FPS, making it 7.4x faster and over 4$\\times$ more parameter-efficient than the existing leading methods in TOOC. Our work aims at balancing high accuracy and real-time performance in TOOC. Code is available at: https://github.com/Jason-Mar1/RT-Counter.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Hao-Yuan Ma",
-          "Li Zhang",
-          "Zhiwei Zhu",
-          "Jie Gao"
-        ],
-        "url": "https://arxiv.org/abs/2606.17561v1",
-        "pdf_url": "https://arxiv.org/pdf/2606.17561",
-        "html_url": "https://arxiv.org/abs/2606.17561",
-        "published_at": "2026-06-16T06:06:23.000Z",
-        "upvotes": 0,
-        "heat": 2125.539511666667,
-        "featured": false,
-        "categories": [
-          "aim",
-          "planning"
-        ],
-        "image": "",
-        "comment": "",
-        "relevance": 2,
-        "first_seen": "2026-06-17T16:35:52.519Z",
-        "rm": {
-          "usage": "该论文提出实时文本引导开放词汇目标计数，可用于自瞄中识别敌方装甲板数字，但需适配实时性要求。",
-          "task_id": "autoaim",
-          "task": "自瞄 / 装甲板识别",
-          "value": "mid"
-        }
       }
     ]
   },
@@ -4661,7 +4665,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 13.61,
+        "relevance": 8.61,
         "first_seen": "2026-06-17T16:35:52.519Z"
       },
       {
@@ -5051,7 +5055,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.32,
+        "relevance": 12.32,
         "first_seen": "2026-06-17T16:35:52.519Z"
       },
       {
@@ -5082,7 +5086,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 20.31,
+        "relevance": 25.31,
         "first_seen": "2026-06-17T16:35:52.519Z"
       },
       {
@@ -5105,7 +5109,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 9.27,
+        "relevance": 14.27,
         "first_seen": "2026-06-17T16:35:52.519Z"
       },
       {
@@ -5514,7 +5518,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 14.91,
+        "relevance": 14.92,
         "first_seen": "2026-06-17T16:35:52.519Z"
       },
       {
@@ -5723,7 +5727,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 6.85,
+        "relevance": 11.85,
         "first_seen": "2026-06-17T16:35:52.519Z"
       },
       {
