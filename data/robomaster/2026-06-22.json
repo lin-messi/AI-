@@ -1,6 +1,6 @@
 {
   "date": "2026-06-22",
-  "generatedAt": "2026-06-22T06:23:50.138Z",
+  "generatedAt": "2026-06-22T12:45:28.192Z",
   "categories": [
     {
       "key": "aim",
@@ -49,7 +49,7 @@
     }
   ],
   "papers": {
-    "count": 80,
+    "count": 83,
     "items": [
       {
         "id": "arxiv:2606.15133",
@@ -962,6 +962,50 @@
           "task_id": "engineer",
           "task": "工程视觉装配（能量单元）",
           "value": "high"
+        }
+      },
+      {
+        "id": "arxiv:2606.17480",
+        "arxiv_id": "2606.17480",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.RO"
+        ],
+        "title_en": "GeneralVLA-2: Geometry-Aware Reconstruction and Governed Memory for Robot Planning",
+        "title_zh": "GeneralVLA-2：面向机器人规划的几何感知重建与受控记忆",
+        "abstract_en": "Generalist vision-language-action systems need object-centric 3D evidence and reusable manipulation experience to plan reliable robot trajectories. GeneralVLA provides a hierarchical interface for converting language and RGB-D observations into 3D end-effector paths, but two bottlenecks remain. First, monocular SAM3D-style object reconstruction can hallucinate pose and unseen geometry, while manipulation benefits from stable object shape when calibrated multi-view observations are available. Second, the original KnowledgeBank mainly retrieves semantically similar snippets and appends new knowledge, which makes it difficult to control memory quality, conflicts, confidence, and geometric relevance. To address the first challenge, we introduce GeoFuse-MV3D, a geometry-prior-guided MV-SAM3D reconstruction branch that verifies external geometry cues with input-view masks, applies soft visual-hull support, performs axis-wise refinement, and fuses only geometry while preserving appearance. To address the second challenge, we upgrade KnowledgeBank into a governed long-term memory system with explicit quality, confidence, lifecycle, verifier, and conflict metadata, together with precision-oriented retrieval. Finally, we evaluate the reconstruction branch on GSO-30 and the memory module on Terminal-Bench 2.0 and SWE-Bench Verified; GeoFuse-MV3D improves over the MV-SAM3D baseline by reducing CD and LPIPS by 2.20% and 2.02% while increasing PSNR and SSIM by 2.36% and 1.03%, and KnowledgeBank improves over ReasoningBank by 4.53% on Terminal-Bench SR and 3.73% on SWE-Bench resolve rate, while reducing AS by 4.95% and 5.65%, respectively. Code: https://github.com/AIGeeksGroup/GeneralVLA-2. Website: https://aigeeksgroup.github.io/GeneralVLA-2.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Haoyu Wang",
+          "Guoqing Ma",
+          "Zeyu Zhang",
+          "Yandong Guo",
+          "Boxin Shi",
+          "Hao Tang"
+        ],
+        "url": "https://arxiv.org/abs/2606.17480v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.17480",
+        "html_url": "https://arxiv.org/abs/2606.17480",
+        "published_at": "2026-06-16T03:45:24.000Z",
+        "upvotes": 3,
+        "heat": 2157.0304194444443,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 3,
+        "first_seen": "2026-06-22T12:45:25.338Z",
+        "rm": {
+          "usage": "可用于工程机器人抓取能量单元时的视觉定位与位姿估计，通过多视角重建获得稳定物体形状，辅助机械臂精准装配。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
         }
       },
       {
@@ -2748,6 +2792,93 @@
         }
       },
       {
+        "id": "arxiv:2606.20092",
+        "arxiv_id": "2606.20092",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "EventVLA: Event-Driven Visual Evidence Memory for Long-Horizon Vision-Language-Action Policies",
+        "title_zh": "",
+        "abstract_en": "Memory remains a critical bottleneck for long-horizon robotic manipulation, as standard Vision-Language-Action (VLA) policies often fail when task-relevant cues become occluded or unobservable over time. While existing memory-augmented methods utilize historical context, they either suffer from severe information bottlenecks, incur high latency via decoupled dual systems, or rely on unselective buffers that accumulate massive visual redundancies. To address these limitations, we introduce EventVLA, an end-to-end framework founded on the concept of sparse visual evidence memory that comprises two core components: foundational visual anchors to retain initial and short-term contexts, and a dynamic Keyframe Evidence Memory (KEM) module. Specifically, KEM directly predicts future keyframe probabilities from the VLA's latent embeddings to autonomously capture and store sparse, task-critical visual events. This foresight-driven mechanism empowers the policy to dynamically evaluate the future causal utility of current observations, preserving transient visual evidence before it becomes unobservable. Furthermore, we propose RoboTwin-MeM, a diagnostic benchmark specifically designed to evaluate non-Markovian manipulation tasks with interactive visual evidence. Extensive evaluations show that across 17 memory-requiring simulation tasks and 4 real-world bimanual tasks, EventVLA achieves an average success rate improvement of +40% over state-of-the-art memory-augmented VLAs.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Ganlin Yang",
+          "Zhangzheng Tu",
+          "Yuqiang Yang",
+          "Sitong Mao",
+          "Junyi Dong",
+          "Tianxing Chen",
+          "Jiaqi Peng",
+          "Jing Xiong"
+        ],
+        "url": "https://arxiv.org/abs/2606.20092v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.20092",
+        "html_url": "https://arxiv.org/abs/2606.20092",
+        "published_at": "2026-06-18T11:11:37.000Z",
+        "upvotes": 0,
+        "heat": 2062.4673577777776,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rune",
+          "sim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 4,
+        "first_seen": "2026-06-22T12:45:25.338Z",
+        "rm": {
+          "usage": "可用于哨兵或工程机器人在长时任务中记忆关键视觉信息，例如在导航或装配过程中处理遮挡和时序依赖。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.20053",
+        "arxiv_id": "2606.20053",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG"
+        ],
+        "title_en": "Comparative Study of Neural Surrogate Architectures for Autoregressive Prediction of Internal Battery States",
+        "title_zh": "",
+        "abstract_en": "The Doyle-Fuller-Newman (DFN) model resolves internal electrochemical states in lithium-ion batteries with high fidelity. However, the numerical solution of its governing equations is computationally prohibitive for real-time deployment, limiting scalability from individual cells to pack and fleet-scale applications. While machine learning surrogates can substantially reduce inference latency through GPU acceleration, most existing approaches learn solution approximations tied to specific operating conditions rather than learning generalizable state-evolution dynamics. This work presents a systematic comparison of four neural network architectures (MLP, ResNet, U-Net, FNO) formulated as autoregressive state-transition operators that predict full DFN internal states across a wide range of operating conditions. To ensure a controlled architectural comparison, all models are trained under a unified framework using multi-step unrolling and current-conditioning, isolating the impact of spatial inductive bias. Results demonstrate that the U-Net's multi-scale feature hierarchy achieves a mean final-step nRMSE of 3% averaged across all internal state variables after 300-step autoregressive rollouts, while providing a 5.38x speed-up over the numerical solver. These findings highlight spatial inductive bias as a critical determinant of surrogate performance, advancing the development of surrogates for internal state observability for next-generation battery management systems and digital twins.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Gihyun Lee",
+          "Thorben Menne",
+          "Simon Olma",
+          "Jakob Hilgert",
+          "Sangyoung Park"
+        ],
+        "url": "https://arxiv.org/abs/2606.20053v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.20053",
+        "html_url": "https://arxiv.org/abs/2606.20053",
+        "published_at": "2026-06-18T10:27:36.000Z",
+        "upvotes": 0,
+        "heat": 2061.733744722222,
+        "featured": false,
+        "categories": [
+          "sim"
+        ],
+        "image": "",
+        "comment": "8 pages, 5 figures",
+        "relevance": 2,
+        "first_seen": "2026-06-22T12:45:25.338Z",
+        "rm": {
+          "usage": "与RoboMaster比赛任务关联很弱，主要涉及电池状态预测，不直接适用于机器人感知、决策或控制。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
         "id": "cvf:CVPR2026:CME-CAD: Heterogeneous Collaborative Multi-Expert Reinforcem",
         "arxiv_id": "",
         "source": "CVPR",
@@ -3722,7 +3853,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 8.61,
+        "relevance": 13.61,
         "first_seen": "2026-06-21T20:22:56.227Z"
       },
       {
@@ -4113,7 +4244,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.32,
+        "relevance": 7.32,
         "first_seen": "2026-06-21T20:22:56.227Z"
       },
       {
@@ -4144,7 +4275,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 25.31,
+        "relevance": 20.31,
         "first_seen": "2026-06-21T20:22:56.227Z"
       },
       {
@@ -4168,7 +4299,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 14.27,
+        "relevance": 9.28,
         "first_seen": "2026-06-21T20:22:56.227Z"
       },
       {
@@ -4191,7 +4322,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 9.23,
+        "relevance": 9.24,
         "first_seen": "2026-06-21T20:22:56.227Z"
       },
       {
@@ -4786,7 +4917,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 11.85,
+        "relevance": 6.85,
         "first_seen": "2026-06-21T20:22:56.227Z"
       },
       {
