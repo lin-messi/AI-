@@ -1,6 +1,6 @@
 {
   "date": "2026-06-26",
-  "generatedAt": "2026-06-25T22:17:09.152Z",
+  "generatedAt": "2026-06-26T00:07:52.430Z",
   "categories": [
     {
       "key": "aim",
@@ -49,7 +49,7 @@
     }
   ],
   "papers": {
-    "count": 80,
+    "count": 100,
     "items": [
       {
         "id": "arxiv:2606.25319",
@@ -2818,6 +2818,881 @@
         }
       },
       {
+        "id": "arxiv:2606.26002",
+        "arxiv_id": "2606.26002",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.AI",
+          "math.OC"
+        ],
+        "title_en": "Hierarchical Reinforcement Learning for Neural Network Compression (HiReLC): Pruning and Quantization",
+        "title_zh": "神经网络压缩的层次强化学习（HiReLC）：剪枝与量化",
+        "abstract_en": "We present HiReLC, a hierarchical ensemble-reinforcement learning framework for automated joint quantization and structured pruning of deep neural networks. The framework decomposes the compression search across two levels of abstraction: low-level agents (LLAs) operate independently per block, selecting per-kernel configurations over a multi-discrete action space spanning bitwidth, pruning keep-ratio, quantization type, and granularity, while high-level agents (HLAs) coordinate global budget allocation via ensemble voting guided by Fisher Information-based sensitivity estimates. To mitigate the computational cost of policy evaluation, an iterative active learning loop interleaves surrogate-guided RL optimization with post-compression fine-tuning, using a lightweight MLP surrogate to amortize expensive evaluations and a logit-MSE proxy during cold-start. The surrogate is used for reward shaping rather than as a replacement for final post-compression evaluation. The controller is architecture-agnostic by design, with a modular layer abstraction decoupling the RL environment from the underlying network topology. Experiments across Vision Transformer and CNN benchmarks demonstrate effective parameter-storage compression ratios of 5.99 - 6.72$\\times$ with a 3.83 % gain in one setting and 0.55 - 5.62 % accuracy drops elsewhere, supporting hierarchical policy decomposition and sensitivity-aware guidance as practical design choices for joint neural network compression.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Kamar Hibatallah Baghdadi",
+          "Kawther Guoual Belhamidi",
+          "Sara Belhadj",
+          "Aissa Boulmerka",
+          "Nadir Farhi"
+        ],
+        "url": "https://arxiv.org/abs/2606.26002v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.26002",
+        "html_url": "https://arxiv.org/abs/2606.26002",
+        "published_at": "2026-06-24T16:19:29.000Z",
+        "upvotes": 0,
+        "heat": 2128.2316794444446,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 4,
+        "first_seen": "2026-06-26T00:07:38.026Z",
+        "rm": {
+          "usage": "可用于自瞄或能量机关任务中，通过剪枝和量化压缩神经网络模型，降低计算延迟，提升嵌入式设备上的推理速度。",
+          "task_id": "autoaim",
+          "task": "自瞄 / 装甲板识别",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.25978",
+        "arxiv_id": "2606.25978",
+        "source": "arXiv",
+        "cats": [
+          "cs.MA",
+          "cs.AI",
+          "cs.LG"
+        ],
+        "title_en": "Multi-Agent Goal Recognition with Team- and Goal-Conditioned Reinforcement Learning and Factorized Branch-and-Bound",
+        "title_zh": "基于团队与目标条件强化学习及分解分支定界的多智能体目标识别",
+        "abstract_en": "Multi-agent goal recognition asks an observer to jointly infer which agents act together and what each team is trying to achieve, so the hypothesis space grows combinatorially with the number of team partitions and goals per team. Real applications such as drone surveillance and collaborative robotics expose only the agents' trajectory, which forces the observer to rank team-goal hypotheses from behavior alone. Multi-Agent Goal Recognition with Branch-and-Bound (MAGR-BB) addresses this setting with a shared team- and goal-conditioned policy used as the scoring model inside a factorized branch-and-bound search. On a controlled multi-agent Blocksworld benchmark, MAGR-BB returns the same top-ranked hypothesis as exhaustive search throughout the trajectory while cutting hypothesis materialization by orders of magnitude and reducing cumulative recognition runtime substantially.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Thiago Thomas",
+          "Gabriel de Oliveira Ramos",
+          "Felipe Meneguzzi"
+        ],
+        "url": "https://arxiv.org/abs/2606.25978v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.25978",
+        "html_url": "https://arxiv.org/abs/2606.25978",
+        "published_at": "2026-06-24T15:50:39.000Z",
+        "upvotes": 0,
+        "heat": 2127.7511238888887,
+        "featured": false,
+        "categories": [
+          "slam",
+          "rl"
+        ],
+        "image": "",
+        "comment": "12 pages, 1 figure, 2 tables",
+        "relevance": 6,
+        "first_seen": "2026-06-26T00:07:38.026Z",
+        "rm": {
+          "usage": "可用于多机协同中推断敌方机器人团队意图和编队，辅助哨兵和雷达进行全局决策。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.25964",
+        "arxiv_id": "2606.25964",
+        "source": "arXiv",
+        "cats": [
+          "cs.AI",
+          "cs.LG"
+        ],
+        "title_en": "WinDOM: Self-Family Distillation for Small-Model GUI Grounding",
+        "title_zh": "WinDOM：面向小模型GUI定位的自家族蒸馏",
+        "abstract_en": "Small ($\\sim$2B) GUI-grounding agents are attractive for on-device deployment, accessibility tooling, and low-cost iteration, but at this scale they face two open recipe questions: how to obtain bounding-box training data without expensive human annotation, and how to combine supervised fine-tuning with reinforcement learning. We address both, with the explicit goal of pushing small-model performance rather than scaling up. WinDOM is a $54{,}425$-record grounding corpus harvested by driving an open-source Windows 11 web reimplementation under headless Playwright, with bounding boxes read directly off the DOM and no OCR or human annotation. Self-Family Distillation (SFD) is a single rejection-sampling cold-start parameterised only by the teacher choice: either an EMA of the student (no external model) or a frozen larger same-family teacher. We then treat the saturation depth of the SFD cold-start as an explicit GRPO hyperparameter. On a Qwen3.5-2B student, the under-saturated cold-start is a better GRPO initialiser than the converged one: SFD-4B with Early-init RL gains $+5.4$ OOD-mean ($+3.5$ ScreenSpot-Pro, $+7.0$ OSWorld-G, $+5.8$ ScreenSpot-V2) over the base. The same-size EMA mode lands within roughly one OOD-mean point of the cross-size $4$B variant ($65.2$ vs $66.3$) without an external teacher.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Chengheng Li-Chen",
+          "Zhiqian Zhou",
+          "Hao Chen",
+          "Nicolas Chauvin"
+        ],
+        "url": "https://arxiv.org/abs/2606.25964v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.25964",
+        "html_url": "https://arxiv.org/abs/2606.25964",
+        "published_at": "2026-06-24T15:35:29.000Z",
+        "upvotes": 0,
+        "heat": 2127.498346111111,
+        "featured": false,
+        "categories": [
+          "rl"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 2,
+        "first_seen": "2026-06-26T00:07:38.026Z",
+        "rm": {
+          "usage": "关联很弱，GUI定位与RoboMaster视觉任务差异大，难以直接应用。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2606.25953",
+        "arxiv_id": "2606.25953",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.CV"
+        ],
+        "title_en": "DSP-SLAM++: A Unified Framework for Multi-Class, High-Fidelity Object SLAM in the Wild",
+        "title_zh": "DSP-SLAM++：野外多类高保真物体SLAM的统一框架",
+        "abstract_en": "Existing object-aware SLAM systems force a trade-off between real-time performance, multi-class support, and the generation of high-fidelity, semantically coherent object models. To address this trade-off, we present DSP-SLAM++, which extends the DSP-SLAM framework with an asynchronous mapping pipeline for real-time performance and dedicated sensor fusion adaptations for a monocular fisheye-LiDAR suite. Experiments demonstrate that our system generates fine-grained, geometrically-complete shapes for multiple object classes while eliminating severe mapping thread bottlenecks by reducing maximum object processing latency by up to 70\\% compared to the state-of-the-art baseline, enabling robust, real-time performance on a challenging 25 Hz multi-class datasets. This work makes high-fidelity, multi-class object SLAM more practical for real-world applications like autonomous driving and robotic manipulation by enabling its use on platforms with common fisheye-LiDAR sensor setups. The open-source code is available at: [github.com/AUBVRL/DSP-SLAMpp].",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Ahmad Kourani",
+          "Ghina Daoud",
+          "Daniel Asmar",
+          "Imad Elhajj"
+        ],
+        "url": "https://arxiv.org/abs/2606.25953v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.25953",
+        "html_url": "https://arxiv.org/abs/2606.25953",
+        "published_at": "2026-06-24T15:27:23.000Z",
+        "upvotes": 0,
+        "heat": 2127.363348611111,
+        "featured": false,
+        "categories": [
+          "slam",
+          "rl"
+        ],
+        "image": "",
+        "comment": "9 pages, 9 figures",
+        "relevance": 7,
+        "first_seen": "2026-06-26T00:07:38.026Z",
+        "rm": {
+          "usage": "可用于哨兵导航中的物体级SLAM，构建高保真环境地图，提升定位与障碍物感知精度。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.25923",
+        "arxiv_id": "2606.25923",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG"
+        ],
+        "title_en": "$\\text{DT}^2$: Decision-Targeted Digital Twins",
+        "title_zh": "DT²：面向决策的数字孪生",
+        "abstract_en": "A digital twin (DT) is a virtual model of a real-world system that can assist decision-making by simulating scenarios induced by different policies. However, typical machine learning-based DTs do not optimise for this use case. We prove that, when model capacity is limited, training DTs to minimise one-step transition errors can produce suboptimal models for ranking sets of policies according to a reward function. We further show that this holds empirically, even with expressive model classes. To address this, we introduce $\\text{DT}^2$, a decision-targeted DT training paradigm. Firstly, $\\text{DT}^2$ uses fitted Q-evaluation to estimate values of candidate policies from offline data. A DT is then trained to generate rollouts that preserve pairwise policy rankings derived from these proxy ground-truth values with an architecture-agnostic loss function. We empirically demonstrate the efficacy of our method across a range of settings and architectures. $\\text{DT}^2$ consistently improves policy ranking and reduces decision regret during policy selection relative to conventional DT training, both for policies used during training and for unseen policies, while maintaining a good level of raw simulation fidelity.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Harry Amad",
+          "Mihaela van der Schaar"
+        ],
+        "url": "https://arxiv.org/abs/2606.25923v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.25923",
+        "html_url": "https://arxiv.org/abs/2606.25923",
+        "published_at": "2026-06-24T15:02:24.000Z",
+        "upvotes": 0,
+        "heat": 2126.9469572222224,
+        "featured": false,
+        "categories": [
+          "sim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 0,
+        "first_seen": "2026-06-26T00:07:38.026Z",
+        "rm": {
+          "usage": "可用于仿真环境构建数字孪生，优化策略训练，降低sim-to-real迁移成本。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.25880",
+        "arxiv_id": "2606.25880",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "USS: Unified Spatial-Semantic Prompts for Embodied Visual Tracking with Latent Dynamics Learning",
+        "title_zh": "USS：基于潜在动力学学习的具身视觉跟踪统一空间语义提示",
+        "abstract_en": "Embodied Visual Tracking (EVT) requires an agent to continuously follow a specified target while actively moving through dynamic environments. However, prevailing EVT paradigms predominantly rely on language-based target indication. While language is expressive and convenient, cluttered scenes often contain multiple objects that satisfy the same semantic description, leading to ambiguous target grounding. We therefore propose a paradigm shift, reframing target indication in EVT from text-only specification to unified spatial-semantic prompting. Based on this paradigm, we introduce Unified Spatial-Semantic Prompts for Embodied Visual Tracking with Latent Dynamics Learning, USS, an end-to-end embodied tracking framework that supports text, point, bounding box, and mask prompts within a unified architecture. USS encodes heterogeneous prompts with modality-specific encoders, fuses prompt tokens with visual features through hybrid attention, and decodes compact prompt-conditioned representations into egocentric waypoints. To further improve temporal robustness, USS incorporates a latent world model that predicts future representations through self-supervised alignment. Real-robot experiments demonstrate that explicit spatial target cues yield higher success rates than text-only prompts, particularly in scenarios involving similar distractors and longer-horizon tracking where maintaining instance-level target identity is critical. In the simulation benchmark, USS also achieves state-of-the-art performance among non-MLLM-based methods and competitive results against recent MLLM-based approaches with faster inference speed. Our findings reveal that spatial-semantic prompting provides a more precise and flexible target indication interface for embodied visual tracking. Project site: https://arescheah.github.io/uss-project-page/.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Yuchen Xie",
+          "Xinyu Zhou",
+          "Kuangji Zuo",
+          "Yanshuo Lu",
+          "Fengrui Huang",
+          "Boyu Ma",
+          "Jianfei Yang"
+        ],
+        "url": "https://arxiv.org/abs/2606.25880v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.25880",
+        "html_url": "https://arxiv.org/abs/2606.25880",
+        "published_at": "2026-06-24T14:25:05.000Z",
+        "upvotes": 0,
+        "heat": 2126.3250152777778,
+        "featured": false,
+        "categories": [
+          "planning",
+          "rl",
+          "sim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 2,
+        "first_seen": "2026-06-26T00:07:38.026Z",
+        "rm": {
+          "usage": "可用于工程机器人视觉装配中，通过空间语义提示引导机械臂抓取和装配能量单元。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.25852",
+        "arxiv_id": "2606.25852",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.AI"
+        ],
+        "title_en": "Semantic Consistency Policy Optimization for Reinforcement Learning of LLM Agents",
+        "title_zh": "面向LLM智能体强化学习的语义一致性策略优化",
+        "abstract_en": "Group-based reinforcement learning effectively post-trains LLM agents for long-horizon, sparse-reward tasks by deriving step-level credit from trajectory outcomes. However, this ties a step's credit to its rollout's final outcome: semantically near-identical intermediate steps receive opposite credit depending on whether their trajectory eventually succeeded or failed. Such semantic credit inconsistency sends conflicting gradients to similar actions and wastes the partially-correct progress inside failed rollouts. Motivated by this, we propose Semantic Consistency Policy Optimization (SCPO), a value-free reward-shaping method that mitigates this inconsistency by recovering step-level credit from successful siblings in the same rollout group. Concretely, SCPO scores each failed step against a successful sibling and adds positive step-level credit for new progress along that sibling. On ALFWorld and WebShop, SCPO matches or exceeds strong group-based baselines, reaching 93.7+/-4.1 percent success on ALFWorld and 74.8+/-2.0 percent on WebShop at 1.5B parameters, with gains concentrated on the hardest multi-step tasks.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Peng Xu",
+          "Sijia Chen",
+          "Junzhuo Li",
+          "Xuming Hu"
+        ],
+        "url": "https://arxiv.org/abs/2606.25852v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.25852",
+        "html_url": "https://arxiv.org/abs/2606.25852",
+        "published_at": "2026-06-24T14:02:13.000Z",
+        "upvotes": 0,
+        "heat": 2125.9439016666665,
+        "featured": false,
+        "categories": [
+          "rl",
+          "radar"
+        ],
+        "image": "",
+        "comment": "16 pages, 7 figures, 5 tables. Under review at EMNLP 2026",
+        "relevance": 2,
+        "first_seen": "2026-06-26T00:07:38.026Z",
+        "rm": {
+          "usage": "可用于多机协同策略的强化学习训练，解决稀疏奖励下的信用分配问题，提升策略学习效率。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.25800",
+        "arxiv_id": "2606.25800",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.RO"
+        ],
+        "title_en": "ROAD-VLA: Robust Online Adaptation via Self-Distillation for Vision-Language-Action Models",
+        "title_zh": "",
+        "abstract_en": "Effective online adaptation of vision-language-action (VLA) models remains challenging, as sparse rewards provide weak supervision for high-dimensional autoregressive action policies. Although self-distillation can in principle provide denser training signals, we find that text-based privileged teachers conditioned on demonstrations, retrieved experiences, or high-level plans are ineffective for VLA adaptation, exposing a modality gap between symbolic guidance and low-level robot actions. We propose ROAD-VLA, an advantage-guided self-distillation framework that constructs a proximal teacher directly in action space by perturbing action-token logits with calibrated advantage estimates. This converts sparse rewards into dense token-level supervision while keeping the teacher close to the current policy. We further derive a policy-improvement lower bound under calibrated advantages and accurate teacher matching. Across seven robotic manipulation environments with in-distribution and out-of-distribution shifts, ROADVLA outperforms PPO in nearly all settings, demonstrating robust online VLA adaptation.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Kejing Wang",
+          "Toan Nguyen",
+          "Minh Hoang Nguyen",
+          "Simon Khan",
+          "Flora D. Salim"
+        ],
+        "url": "https://arxiv.org/abs/2606.25800v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.25800",
+        "html_url": "https://arxiv.org/abs/2606.25800",
+        "published_at": "2026-06-24T13:17:59.000Z",
+        "upvotes": 0,
+        "heat": 2125.2066794444445,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 3,
+        "first_seen": "2026-06-26T00:07:38.026Z",
+        "rm": {
+          "usage": "可用于自瞄或工程视觉中，通过自蒸馏实现模型在线自适应，应对环境变化。",
+          "task_id": "autoaim",
+          "task": "自瞄 / 装甲板识别",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.25732",
+        "arxiv_id": "2606.25732",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Efficient Real-World Dehazing via Physics-Inspired Global-Local Decoupling",
+        "title_zh": "",
+        "abstract_en": "Real-world single image dehazing is highly ill-posed due to spatially and spectrally varying scattering, while practical deployment demands lightweight and low-latency models. Existing approaches either rely on fragile physical inversion under simplified assumptions or adopt heavy blind architectures unsuitable for edge deployment. To overcome these limitations, we propose PGL-Net (Physics-Inspired Global-Local Decoupling Network), a lightweight framework that incorporates physical inductive biases via operator-level emulation, avoiding explicit parameter estimation. It decouples dehazing into global distribution rectification and local structural refinement. A Physics-Inspired Affine Fusion (PAF) module performs globally conditioned alignment across hierarchical skip connections to compensate for haze-induced bias, while a compact Degradation-Aware Modulation (DAM) block adaptively restores spatially and spectrally variant details through dynamic feature modulation. Extensive experiments on multiple real-world benchmarks demonstrate that PGL-Net achieves state-of-the-art restoration quality with significantly reduced complexity. Compared with the recent SOTA SGDN, the Tiny variant (PGL-Net-T) improves PSNR by up to 2.6dB and consistently enhances downstream object detection accuracy, while achieving over a 10x reduction in inference latency. Code is publicly available at: https://github.com/sc-30-bit/PGL-Net.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Yifei Qu",
+          "Ru Li",
+          "Junjie Chen",
+          "Jinyuan Wu"
+        ],
+        "url": "https://arxiv.org/abs/2606.25732v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.25732",
+        "html_url": "https://arxiv.org/abs/2606.25732",
+        "published_at": "2026-06-24T11:58:29.000Z",
+        "upvotes": 0,
+        "heat": 2123.8816819444446,
+        "featured": false,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 3,
+        "first_seen": "2026-06-26T00:07:38.026Z",
+        "rm": {
+          "usage": "可用于自瞄或雷达任务中的图像去雾预处理，提升雨雾天气下的识别准确率，但需适配实时性要求。",
+          "task_id": "autoaim",
+          "task": "自瞄 / 装甲板识别",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.25700",
+        "arxiv_id": "2606.25700",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.RO"
+        ],
+        "title_en": "Memory-Efficient Policy Libraries with Low-Rank Adaptation in Reinforcement Learning",
+        "title_zh": "",
+        "abstract_en": "When fine-tuning Large Language Models (LLMs), there has been success in minimizing both memory usage and computation with Parameter-Efficient Fine-Tuning (PEFT), like Low Rank Adaptation (LoRA). In this article, we have explored whether this approach is transferable to the world of robotics and Reinforcement Learning (RL), allowing learning with reduced memory usage and improved computational performance. Specifically, we focused on a version of multi-task robotics, where a library of specialist policies are created. In such a library memory efficiency is especially important. We used a Proximal Policy Optimization (PPO) algorithm and fine-tuned a baseline model to different tasks using LoRA. Our results demonstrate that, depending on the hyperparameters, LoRA can minimize memory usage by a factor of 20-160 compared to full fine-tuning of all layers. This implies a 90-95% storage saving when deploying a library of many (10-50) specialized policies, which can be the differentiating factor between being able to store the entire library in memory or having to use swap-memory in an applied robotics setting. At the same time, our results indicate that there is no significant difference in the success-rate between full fine-tuning and LoRA fine-tuning for the selected tasks.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Samuel Valland Lyngset",
+          "Tor Viljen Raanaas",
+          "Gard Sveipe",
+          "Eirik Møller Nilsen",
+          "Jim Torresen",
+          "Kai Olav Ellefsen",
+          "Tobias Lømo"
+        ],
+        "url": "https://arxiv.org/abs/2606.25700v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.25700",
+        "html_url": "https://arxiv.org/abs/2606.25700",
+        "published_at": "2026-06-24T11:15:42.000Z",
+        "upvotes": 0,
+        "heat": 2123.1686238888888,
+        "featured": false,
+        "categories": [
+          "rl"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 4,
+        "first_seen": "2026-06-26T00:07:38.026Z",
+        "rm": {
+          "usage": "可用于多机协同策略的强化学习训练，通过低秩适配高效存储多个策略库，降低内存占用。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.25652",
+        "arxiv_id": "2606.25652",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Auto-Labelling-Based Domain Transfer for 3D Object Detection on a Bicycle-Mounted LiDAR Platform",
+        "title_zh": "",
+        "abstract_en": "Reliable 3D perception of vulnerable road users (VRUs) such as cyclists and pedestrians is essential for their safety in urban traffic and a core requirement for autonomous driving (AD). Alongside advances in vehicle-based perception, research increasingly equips bicycles with sensors to study traffic from a perspective native to VRUs. Such platforms still rely on LiDAR detectors originally trained on vehicle data, yet annotated 3D data from a cyclist's perspective is scarce. How well these detectors generalise to this setting has not been evaluated. We present a 3D object detection benchmark of 1,027 annotated LiDAR keyframes (over 18,000 3D bounding boxes) from the FUSE-Bike platform in urban Munich. We evaluate four nuScenes-pre-trained detectors against 1,854 human-verified ground-truth (GT) boxes both in their original form and after finetuning on training labels produced by a VRU-dedicated auto-labelling pipeline that requires no manual annotation. The zero-shot domain gap is concentrated on the VRU classes. Finetuning recovers most of it, improving mean average precision (mAP) by up to 23.4 points with the largest gains on pedestrians and cyclists, and the adapted detectors even surpass the quality of the auto-labels they were trained on. The benchmark provides a reproducible baseline for VRU-centric 3D detection and shows that auto-labels are a viable substitute for manual annotation when adapting vehicle-trained detectors to a cyclist platform.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Mario Finkbeiner",
+          "Max A. Buettner",
+          "Kanak Mazumder",
+          "Fabian B. Flohr"
+        ],
+        "url": "https://arxiv.org/abs/2606.25652v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.25652",
+        "html_url": "https://arxiv.org/abs/2606.25652",
+        "published_at": "2026-06-24T10:08:17.000Z",
+        "upvotes": 0,
+        "heat": 2122.0450152777776,
+        "featured": false,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 5,
+        "first_seen": "2026-06-26T00:07:38.026Z",
+        "rm": {
+          "usage": "可用于哨兵导航中的3D目标检测，但针对的是自行车平台，需迁移到机器人视角，关联较弱。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2606.25620",
+        "arxiv_id": "2606.25620",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.CV",
+          "eess.IV"
+        ],
+        "title_en": "1000 Rallies: An Event-Camera Dataset and Real-Time Learned Ball-State Estimation for Robotic Table Tennis",
+        "title_zh": "",
+        "abstract_en": "Robotic table tennis has emerged as a compelling benchmark for real-time robotic perception due to its fast ball dynamics and stringent timing requirements. Accurate, high-frequency, and low-latency ball state estimation is critical for reliable trajectory prediction and timely control. Traditional frame-based cameras face an inherent trade-off: low frame rates leave temporal blind spots that miss fast-moving objects and high frame rates raise data and computational cost. Event cameras instead offer microsecond temporal resolution and, under sufficient illumination, remain largely free of motion blur even at high ball speeds. However, the community lacks large-scale datasets to develop and benchmark event-based perception in realistic sports scenarios. We address this gap by introducing the first large-scale event-camera dataset for table tennis, comprising over 1000 rallies from a diverse group of players ranging from amateurs to elite-level athletes. Each recording captures the event stream alongside 14 synchronized high-speed frame-based cameras at 200 FPS, which we use to produce 1 kHz pseudo ground-truth labels for ball position, velocity, and spin. Building on this dataset, we train a convolutional neural network robust to background player motion that jointly estimates the ball's position and velocity in the image-plane from events. Treating the predicted velocity as an additional measurement in the Kalman filter reduces bounce-point prediction error by 36% relative to a position-only baseline. Finally, we close the perception-action loop by integrating the event-based system with a Stäubli robotic arm, enabling the first real-time human-robot table tennis rallies driven by event-based perception.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Raphaela Kreiser",
+          "Asude Aydin",
+          "Yin Bi",
+          "Claudio Fanconi",
+          "Peter Dürr",
+          "Naoya Takahashi"
+        ],
+        "url": "https://arxiv.org/abs/2606.25620v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.25620",
+        "html_url": "https://arxiv.org/abs/2606.25620",
+        "published_at": "2026-06-24T09:28:21.000Z",
+        "upvotes": 0,
+        "heat": 2121.3794597222222,
+        "featured": false,
+        "categories": [
+          "radar"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 5,
+        "first_seen": "2026-06-26T00:07:38.026Z",
+        "rm": {
+          "usage": "可用于飞镖任务中的高速移动目标状态估计，事件相机低延迟特性适合预测末端移动目标。",
+          "task_id": "dart",
+          "task": "飞镖目标瞄准",
+          "value": "high"
+        }
+      },
+      {
+        "id": "arxiv:2606.25619",
+        "arxiv_id": "2606.25619",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "ScaleHP: Estimating Hand Pose in Metric Space",
+        "title_zh": "",
+        "abstract_en": "Accurate metric-space hand pose estimation (HPE) is essential for immersive human-computer interaction and robotics. However, most existing methods predict poses in a root-relative coordinate system and cannot estimate the hand in absolute metric scale. In this work, we observe that the intrinsic proportional relationships among human hand bones encode stable anthropometric priors that implicitly correlate with the overall metric size of the hand. Leveraging this insight, we present ScaleHP, an end-to-end one-stage hand pose estimation framework that bypasses fragile extrinsic depth modules to recover the hand in metric space. ScaleHP employs a transformer-based decoder with a novel scale token to fuse multi-scale morphological and appearance features. By solving for metric coordinates through a perspective-constrained least-squares approach, we achieve high-precision pose estimation in the camera coordinate system. ScaleHP delivers state-of-the-art performance, including 35.8 CS-MPJPE on FreiHand and 4.6/5.9 PA-MPJPE on DexYCB and HO3Dv3. These results demonstrate that internal biological constraints significantly reduce relative geometry and absolute metric errors, offering a robust solution for generalized, real-world hand tracking.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Ruitao Jing",
+          "Xingyu Chen",
+          "Hongyang Li",
+          "Qing Jiang",
+          "Yukai Shi",
+          "Lei Zhang"
+        ],
+        "url": "https://arxiv.org/abs/2606.25619v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.25619",
+        "html_url": "https://arxiv.org/abs/2606.25619",
+        "published_at": "2026-06-24T09:26:24.000Z",
+        "upvotes": 0,
+        "heat": 2121.3469594444446,
+        "featured": false,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "27 pages, 8 figures, 6 tables; includes supplementary material",
+        "relevance": 6,
+        "first_seen": "2026-06-26T00:07:38.026Z",
+        "rm": {
+          "usage": "可用于工程视觉装配中的机械臂手部姿态估计，但需从人手姿态迁移到机械臂，关联较弱。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2606.25593",
+        "arxiv_id": "2606.25593",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.AI"
+        ],
+        "title_en": "Low-Complexity Policy Tessellations in Structured Markov Decision Processes",
+        "title_zh": "",
+        "abstract_en": "We study optimal-policy geometry in structured Markov decision processes. While approximate dynamic programming and reinforcement learning typically approximate high-dimensional value functions, we show that optimal policies induce simpler decision tessellations. We propose boundary-based policy approximations that learn policy regions directly. A policy-loss decomposition links performance degradation to action margins and explains why errors concentrate near indifference boundaries. Inventory control and queue admission experiments show lower policy error, smaller value gaps, faster error decay, and stability than reinforcement learning baselines.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Fredy Pokou"
+        ],
+        "url": "https://arxiv.org/abs/2606.25593v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.25593",
+        "html_url": "https://arxiv.org/abs/2606.25593",
+        "published_at": "2026-06-24T09:00:16.000Z",
+        "upvotes": 0,
+        "heat": 2120.9114016666667,
+        "featured": false,
+        "categories": [
+          "rl"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 3,
+        "first_seen": "2026-06-26T00:07:38.026Z",
+        "rm": {
+          "usage": "可用于策略学习中的策略简化，但理论性较强，需改造才能应用于实际决策，关联较弱。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2606.25556",
+        "arxiv_id": "2606.25556",
+        "source": "arXiv",
+        "cats": [
+          "cs.CL",
+          "cs.AI",
+          "cs.LG"
+        ],
+        "title_en": "BiPACE: Bisimulation-Guided Policy Optimization with Action Counterfactual Estimation for LLM Agents",
+        "title_zh": "",
+        "abstract_en": "Stepwise group-based RL is an attractive way to train long-horizon LLM agents without a learned critic: it reuses multiple sampled rollouts to estimate local advantages. Its weakness is less visible but more fundamental: every group-relative estimator assumes that the steps it compares are equivalent for credit assignment. We show that current agentic variants violate this assumption through a state-action credit mismatch. The observation-hash partition is overly fine on the state side, creating singleton groups with zero step-level signal, while a single within-group mean is too coarse on the action side, mixing state-value estimation with action-specific credit. We introduce BiPACE (Bisimulation-Guided Policy Optimization with Action Counterfactual Estimation), a drop-in advantage estimator that fixes both sides without adding a critic, auxiliary loss, or extra rollouts. BiGPO clusters steps by cosine distance in the actor's own hidden-state geometry, an empirical policy-induced proxy for bisimulation that substantially lowers the singleton rate left by observation hashing. PACE then recenters returns within each behavioral cluster using action-conditioned peer baselines; its Q-style instance estimates a local Q(s,a)-V(s) nonparametrically. On ALFWorld/Qwen2.5-7B, BiPACE_Q raises overall validation success from GiGPO's 90.8 to $97.1\\pm0.9$ over three seeds, and crosses the 95% threshold on every seed, which GiGPO never does within the same budget. On Qwen2.5-1.5B it reaches $93.5\\pm1.2$ versus GiGPO's 86.7, and on WebShop and TextCraft it improves over GRPO and GiGPO at both model scales. The measured BiPACE-specific overhead is 11.3% of a single training-step wall time. Yet it changes the estimator's comparison unit from surface identity to approximate behavioral equivalence plus action-side counterfactuals. The code is available at https://github.com/TianxiangZhao/BiPACE.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Hanyang Wang",
+          "Weijieying Ren",
+          "Yuxiang Zhang",
+          "Ding Cao",
+          "Zhizhao Zeng",
+          "Ke Zeng",
+          "Tianxiang Zhao"
+        ],
+        "url": "https://arxiv.org/abs/2606.25556v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.25556",
+        "html_url": "https://arxiv.org/abs/2606.25556",
+        "published_at": "2026-06-24T08:32:42.000Z",
+        "upvotes": 0,
+        "heat": 2120.451957222222,
+        "featured": false,
+        "categories": [
+          "slam",
+          "sim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 0,
+        "first_seen": "2026-06-26T00:07:38.026Z",
+        "rm": {
+          "usage": "可用于多机协同策略的强化学习，但针对LLM代理，需改造才能用于机器人决策，关联较弱。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2606.25527",
+        "arxiv_id": "2606.25527",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG"
+        ],
+        "title_en": "Beyond One-Size-Fits-All: Diagnosis-Driven Online Reinforcement Learning with Offline Priors",
+        "title_zh": "",
+        "abstract_en": "Online reinforcement learning (RL) agents increasingly depend on knowledge acquired offline to achieve practical efficiency. Originally studied in offline-to-online RL, this paradigm now spans foundation model post-training and embodied intelligence, with prior types expanding from offline datasets and pre-trained policies to increasingly diverse knowledge sources such as multimodal foundation models and generative world models. Offline priors have become central to how deep RL is developed and deployed. However, this reliance introduces a challenge that the prevailing benchmark-driven paradigm cannot resolve: because prior validity varies across deployments and shifts during training, no single approach to managing it is universally optimal, and benchmark rankings offer limited guidance for real-world deployments. Rather than pursuing universal solutions, we argue that the field should shift to diagnosis-driven tension management, in which deployment-specific evidence guides how the learner relates to its priors throughout training, enabling both flexible and adaptive deployment. We support this position with a framework characterizing how priors reshape online optimization through three functional roles, controlled experiments demonstrating help-or-hurt reversals, cross-domain evidence from foundation model post-training to embodied intelligence, and engagement with five substantive counterarguments.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Guozheng Ma",
+          "Lu Li",
+          "Zilin Wang",
+          "Pierre-Luc Bacon",
+          "Dacheng Tao"
+        ],
+        "url": "https://arxiv.org/abs/2606.25527v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.25527",
+        "html_url": "https://arxiv.org/abs/2606.25527",
+        "published_at": "2026-06-24T08:05:28.000Z",
+        "upvotes": 0,
+        "heat": 2119.9980683333333,
+        "featured": false,
+        "categories": [
+          "rl"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 3,
+        "first_seen": "2026-06-26T00:07:38.026Z",
+        "rm": {
+          "usage": "可用于仿真到实车的策略迁移，通过离线先验加速在线学习，但需适配具体任务。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.25526",
+        "arxiv_id": "2606.25526",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.MA"
+        ],
+        "title_en": "Low Variance Trust Region Optimization with Independent Actors and Sequential Updates in Cooperative Multi-agent Reinforcement Learning",
+        "title_zh": "",
+        "abstract_en": "Cooperative multi-agent reinforcement learning assumes each agent shares the same reward function and can be trained effectively using the Trust Region framework of single-agent. Instead of relying on other agents' actions, the independent actors setting considers each agent to act based only on its local information, thus having more flexible applications. However, in the sequential update framework, it is required to re-estimate the joint advantage function after each individual agent's policy step. Despite the practical success of importance sampling, the updated advantage function suffers from exponentially high variance problems, which likely result in unstable convergence. In this work, we first analyze the high variance advantage both empirically and theoretically. To overcome this limitation, we introduce a clipping objective to control the upper bounds of the advantage fluctuation in sequential updates. With the proposed objective, we provide a monotonic bound with sub-linear convergence to $ε$-Nash Equilibria. We further derive two new practical algorithms using our clipping objective. The experiment results on three popular multi-agent reinforcement learning benchmarks show that our proposed method outperforms the tested baselines in most environments. By carefully analyzing different training settings, our proposed method is highlighted with both stable convergence properties and the desired low advantage variance estimation. For reproducibility purposes, our source code is publicly available at https://github.com/giangbang/Low-Variance-Trust-Region-MARL.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Bang Giang Le",
+          "Viet Cuong Ta"
+        ],
+        "url": "https://arxiv.org/abs/2606.25526v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.25526",
+        "html_url": "https://arxiv.org/abs/2606.25526",
+        "published_at": "2026-06-24T08:05:11.000Z",
+        "upvotes": 0,
+        "heat": 2119.9933458333335,
+        "featured": false,
+        "categories": [
+          "rl"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 3,
+        "first_seen": "2026-06-26T00:07:38.026Z",
+        "rm": {
+          "usage": "可用于多机协同策略学习，如哨兵与雷达的协同决策，通过独立演员和顺序更新优化团队策略。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.25503",
+        "arxiv_id": "2606.25503",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.CV"
+        ],
+        "title_en": "AISPO: Enhancing Depth Reliability for Robotic Manipulation of Non-Lambertian Objects via Affine-Invariant Shape Prior",
+        "title_zh": "",
+        "abstract_en": "Reliable depth perception is critical for robotic manipulation, especially for non-Lambertian objects such as transparent or highly specular surfaces, where raw depth measurements are often corrupted or missing. These failures frequently propagate to motion planning, resulting in invalid grasp poses and execution errors. We propose AISPO, a depth completion framework that improves depth reliability for manipulation in challenging sensing conditions. AISPO combines multi-scale RGB-D feature fusion with an affine-invariant shape prior to enforce geometric consistency and mitigate catastrophic depth failures. Unlike methods that focus primarily on average depth accuracy, our approach emphasizes physical plausibility and structural integrity of the predicted depth maps. Extensive benchmark evaluations demonstrate competitive performance and strong generalization to unseen objects and novel scenes. Real-world grasping experiments further show that enhanced depth reliability significantly improves manipulation success rates, particularly for transparent objects where many existing methods fail to produce physically usable depth estimates.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Zhiming Chen",
+          "Linfang Zheng",
+          "Kun Zhang",
+          "Hyung Jin Chang",
+          "Wei Zhang",
+          "Hongyu Yu",
+          "Hua Chen"
+        ],
+        "url": "https://arxiv.org/abs/2606.25503v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.25503",
+        "html_url": "https://arxiv.org/abs/2606.25503",
+        "published_at": "2026-06-24T07:37:11.000Z",
+        "upvotes": 0,
+        "heat": 2119.5266816666667,
+        "featured": false,
+        "categories": [
+          "planning",
+          "radar"
+        ],
+        "image": "",
+        "comment": "Published in IEEE Robotics and Automation Letters. 8 pages. Accepted April 2026",
+        "relevance": 6,
+        "first_seen": "2026-06-26T00:07:38.026Z",
+        "rm": {
+          "usage": "可用于工程机器人视觉装配中，对透明或高反光能量单元进行深度补全，提高抓取和装配的可靠性。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "high"
+        }
+      },
+      {
+        "id": "arxiv:2606.25449",
+        "arxiv_id": "2606.25449",
+        "source": "arXiv",
+        "cats": [
+          "cs.CL",
+          "cs.AI",
+          "cs.LG"
+        ],
+        "title_en": "Reclaim Evaluation: A Lossy Memory Is Worse Than an Empty One",
+        "title_zh": "",
+        "abstract_en": "A language model's memory can be worse than having no memory at all. Give a model a memory that kept a wrong conclusion but dropped the work behind it, and it emits that stale value as a confident answer; give the same model an empty memory and it abstains. Across seven models this direction never reverses, a clean kill condition that none breaks. We call this brittle memory: behavioral, not the near-immediate information bound beneath it; only its magnitude is disposition- and task-dependent, not its direction. We measure it with reclaim evaluation: compress a drifted interaction at a fixed budget, then test whether a correction recovers the known answer, scored against ground truth with no judge. Correctability is bottlenecked by whether the answer-determining source survives, not by capability. A one-line source-first policy (keep the recomputable source, drop the re-derivable conclusion) restores correctability at equal budget where that source is compact and identifiable; a length-matched control rules out added text as the cause. The hand-built oracle reaches 1.00; a one-prompt deployable version reclaims 0.49-0.88. The stake compounds: chained through a memory loop, a single dropped-source error corrupts a growing span of downstream steps and stays uncorrectable, while source-first holds to a bounded budget horizon. The wall and fix replicate across three deployed memory systems and on real dialogue (MultiWOZ), and past the budget where the source no longer fits, the fix fails silently unless the note records completeness. This is a controlled study of a mechanism, not a benchmark: judge-free exact scoring, matched-budget controls, and validators built to come out false. We release the harness, conditions, and validators.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Alex Kwon"
+        ],
+        "url": "https://arxiv.org/abs/2606.25449v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.25449",
+        "html_url": "https://arxiv.org/abs/2606.25449",
+        "published_at": "2026-06-24T06:24:53.000Z",
+        "upvotes": 0,
+        "heat": 2118.321679166667,
+        "featured": false,
+        "categories": [
+          "slam"
+        ],
+        "image": "",
+        "comment": "26 pages, 3 figures. Code, data, and reproduction harness: https://github.com/collapseindex/reclaim-eval",
+        "relevance": 1,
+        "first_seen": "2026-06-26T00:07:38.026Z",
+        "rm": {
+          "usage": "与RoboMaster比赛任务关联很弱，主要讨论语言模型记忆问题，无法直接应用于机器人视觉或控制。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2606.25437",
+        "arxiv_id": "2606.25437",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "LinStereo: Linear-Complexity Global Attention for Multi-Scale Iterative Stereo Matching",
+        "title_zh": "",
+        "abstract_en": "Existing Vision Foundation Model (VFM)-based iterative stereo pipelines under-exploit three information pathways: multi-scale backbone features are collapsed into single-level correlations, geometric priors remain untapped at initialization, and context propagates only locally. These gaps widen under degraded photometric cues, making underwater scenes a stringent generalization test. To address this, we propose LinStereo, built upon Depth Anything V3, whose core is a Position-Aware Linear Attention (PALA) module that replaces local recurrence with global aggregation at linear cost, propagating reliable estimates from well-matched regions into degraded areas while preserving disparity structure. PALA is made effective by two enabling components: Hierarchical Semantic Cost Volumes (HSCV), which supply scale-aligned correlations from the VFM feature hierarchy, and a Depth Prior Initialization (DPI) that converts monocular depth into a metrically calibrated warm start. LinStereo achieves state-of-the-art-level accuracy on standard benchmarks and strong cross-domain generalization, particularly on underwater scene where severe photometric degradation makes stereo matching particularly challenging, attaining the best overall accuracy with consistent gains 28% lower AbsRel on TartanAir-UW, 26% on SQUID, a real-world underwater dataset).",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Yiran Wang",
+          "Oliver Turner",
+          "Viorela Ila"
+        ],
+        "url": "https://arxiv.org/abs/2606.25437v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.25437",
+        "html_url": "https://arxiv.org/abs/2606.25437",
+        "published_at": "2026-06-24T05:58:03.000Z",
+        "upvotes": 0,
+        "heat": 2117.8744594444443,
+        "featured": false,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 0,
+        "first_seen": "2026-06-26T00:07:38.026Z",
+        "rm": {
+          "usage": "可用于自瞄或雷达中的立体匹配，通过全局注意力提升深度估计精度，尤其在光照变化场景下。",
+          "task_id": "autoaim",
+          "task": "自瞄 / 装甲板识别",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.25427",
+        "arxiv_id": "2606.25427",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Gastroendoscopy View Synthesis: A New Real Dataset and Evaluation",
+        "title_zh": "",
+        "abstract_en": "Novel view synthesis (NVS) is an active research topic in computer vision, owing to the success of neural radiance field (NeRF) and 3D Gaussian splatting (3DGS) methods. While NVS opens the door to potential applications in gastroendoscopy, such as extending the field of view of endoscopic images and enabling digital twins for 3D archiving and endoscopist manipulation training, the dataset is insufficient to evaluate NVS for gastroendoscopy. In this paper, we present the first real gastroscopy dataset for NVS, namely the GastroNVS dataset, which contains a set of gastroscopic images, camera poses, and a point cloud for real gastroendoscopy inspection. To assess the suitability of the GastroNVS dataset, we evaluate several 3DGS methods and discuss the challenges for future development. The dataset is available on request from our project page.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Masaki Minai",
+          "Yusuke Monno",
+          "Masatoshi Okutomi",
+          "Sho Suzuki"
+        ],
+        "url": "https://arxiv.org/abs/2606.25427v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.25427",
+        "html_url": "https://arxiv.org/abs/2606.25427",
+        "published_at": "2026-06-24T05:36:49.000Z",
+        "upvotes": 0,
+        "heat": 2117.5205705555554,
+        "featured": false,
+        "categories": [
+          "aim",
+          "sim"
+        ],
+        "image": "",
+        "comment": "Accepted for EMBC 2026. Project page: http://www.ok.sc.e.titech.ac.jp/res/GastroNVS/GastroGS/",
+        "relevance": 3,
+        "first_seen": "2026-06-26T00:07:38.026Z",
+        "rm": {
+          "usage": "与RoboMaster比赛任务关联很弱，主要针对内窥镜视图合成，无法直接用于机器人感知或控制。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
         "id": "cvf:CVPR2026:CME-CAD: Heterogeneous Collaborative Multi-Expert Reinforcem",
         "arxiv_id": "",
         "source": "CVPR",
@@ -3554,45 +4429,6 @@
           "task": "工程视觉装配（能量单元）",
           "value": "high"
         }
-      },
-      {
-        "id": "cvf:CVPR2026:ReAttnCLIP: Training-Free Open-Vocabulary Remote Sensing Ima",
-        "arxiv_id": "",
-        "source": "CVPR",
-        "cats": [],
-        "title_en": "ReAttnCLIP: Training-Free Open-Vocabulary Remote Sensing Image Segmentation via Re-defined Attention in CLIP",
-        "title_zh": "",
-        "abstract_en": "Remote sensing image segmentation is critical for a range of applications, including natural disaster monitoring and precision agriculture. Open-vocabulary segmentation enhances flexibility by removing fixed category constraints, enabling more fine-grained and adaptive scene understanding. Unlike CLIP&#x27;s original pretraining objective, which emphasizes global image-text alignment, segmentation tasks require accurate and discriminative patch-level representations to support precise pixel-wise predictions. As a result, the quality of attention maps--particularly those generated in the final transformer layers--plays a pivotal role in guiding inter-region interactions. However, current methods generate suboptimal representations when capturing the complex spatial hierarchies in remote sensing. We address this gap by optimizing CLIP&#x27;s 197x197 attention matrix through three key modifications: (1) substituting the 196x196 patch-to-patch submatrix with intermediate-layer feature similarities to preserve spatial structures; (2) prioritizing intermediate-layer attention for global-to-local (class-to-patch) token alignment to reduce classification interference; (3) disabling the \\texttt [CLS] token&#x27;s self-attention to mitigate bias. Extensive experiments on eight remote sensing benchmarks and two building/road extraction datasets demonstrate that our method achieves state-of-the-art performance among existing training-free approaches.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [],
-        "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Niu_ReAttnCLIP_Training-Free_Open-Vocabulary_Remote_Sensing_Image_Segmentation_via_Re-defined_Attention_CVPR_2026_paper.html",
-        "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Niu_ReAttnCLIP_Training-Free_Open-Vocabulary_Remote_Sensing_Image_Segmentation_via_Re-defined_Attention_CVPR_2026_paper.pdf",
-        "html_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Niu_ReAttnCLIP_Training-Free_Open-Vocabulary_Remote_Sensing_Image_Segmentation_via_Re-defined_Attention_CVPR_2026_paper.html",
-        "published_at": "2026-06-01T00:00:00.000Z",
-        "upvotes": 0,
-        "heat": 120,
-        "featured": false,
-        "categories": [
-          "rl",
-          "radar"
-        ],
-        "image": "",
-        "comment": "Accepted to CVPR 2026",
-        "conf": "CVPR",
-        "confYear": 2026,
-        "confTag": "CVPR 2026",
-        "confWeight": 6,
-        "confVision": true,
-        "relevance": 7,
-        "first_seen": "2026-06-25T20:42:11.075Z",
-        "rm": {
-          "usage": "可用于雷达或哨兵的开放词汇分割，但针对遥感图像，需改造以适应RoboMaster场景，关联较弱。",
-          "task_id": "radar",
-          "task": "雷达全场感知与标记",
-          "value": "low"
-        }
       }
     ]
   },
@@ -3791,7 +4627,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 13.61,
+        "relevance": 8.61,
         "first_seen": "2026-06-25T20:42:11.075Z"
       },
       {
@@ -4181,7 +5017,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.32,
+        "relevance": 12.32,
         "first_seen": "2026-06-25T20:42:11.075Z"
       },
       {
@@ -4212,7 +5048,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 20.31,
+        "relevance": 25.31,
         "first_seen": "2026-06-25T20:42:11.075Z"
       },
       {
@@ -4235,7 +5071,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 9.27,
+        "relevance": 14.27,
         "first_seen": "2026-06-25T20:42:11.075Z"
       },
       {
@@ -4853,7 +5689,7 @@
         "categories": [
           "other"
         ],
-        "relevance": 6.85,
+        "relevance": 11.85,
         "first_seen": "2026-06-25T20:42:11.075Z"
       },
       {
