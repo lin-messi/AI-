@@ -1,6 +1,6 @@
 {
   "date": "2026-07-01",
-  "generatedAt": "2026-07-01T05:22:20.328Z",
+  "generatedAt": "2026-07-01T10:40:15.576Z",
   "categories": [
     {
       "key": "aim",
@@ -52,6 +52,49 @@
     "count": 100,
     "items": [
       {
+        "id": "arxiv:2606.29513",
+        "arxiv_id": "2606.29513",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.GR"
+        ],
+        "title_en": "Scenes as Objects, Not Primitives: Instance-Structured 3D Tokenization from Unposed Views",
+        "title_zh": "场景即对象，而非基元：来自无位姿视图的实例结构化3D标记化",
+        "abstract_en": "A 3D scene is understood through its objects, not the primitives that compose them. Yet feed-forward reconstruction methods output dense, unstructured sets of points or Gaussians, leaving object-level structure to be recovered after the fact. We propose a feed-forward framework that decomposes a scene into instance-structured 3D token groups directly from unposed multi-view images -- compact object-centric units from which reconstruction, segmentation, and manipulation all follow. Each token group pairs an instance token capturing entity-level identity with anchor tokens that encode local geometry and appearance, which are decoded into a set of 3D Gaussians. This two-level factorization decouples object identity from local appearance, making object instances a native interface of the representation rather than a derived product. The token groups are learned through differentiable rendering with joint reconstruction and segmentation supervision, requiring no 3D annotations. Our feed-forward model surpasses per-scene optimization baselines in class-agnostic instance segmentation while remaining competitive in novel view synthesis. Beyond these metrics, the same token groups directly unlock instance-level scene editing -- removing, translating, or inserting objects by operating on their groups -- as well as efficient open-vocabulary 3D instance retrieval, where retrieval complexity scales with the number of instances rather than primitives.",
+        "abstract_zh": "3D场景是通过其对象来理解的，而不是构成对象的基元。然而，前馈重建方法输出密集、无结构的点或高斯集合，将对象级结构留待事后恢复。我们提出了一种前馈框架，直接从无位姿的多视图图像中将场景分解为实例结构化的3D标记组——紧凑的对象中心单元，重建、分割和操作都由此而来。每个标记组将一个捕获实体级身份的实例标记与编码局部几何和外观的锚点标记配对，这些锚点标记被解码为一组3D高斯。这种两级分解将对象身份与局部外观解耦，使对象实例成为表示的原生接口而非派生产物。标记组通过可微渲染学习，联合重建和分割监督，无需3D注释。我们的前馈模型在类无关实例分割上超越了每场景优化基线，同时在新型视图合成上保持竞争力。除了这些指标，相同的标记组直接解锁了实例级场景编辑——通过操作其组来移除、平移或插入对象——以及高效的开词汇3D实例检索，其中检索复杂度随实例数量而非基元数量扩展。",
+        "highlight_zh": "提出实例结构化3D标记化，从无位姿视图直接分解场景为对象级单元。",
+        "digest_zh": "1. 研究问题：如何从无位姿的多视图图像中直接重建出带有对象级结构的3D场景，而非输出无结构的点云或高斯？\n2. 方法：提出前馈框架，将场景分解为实例结构化的3D标记组。每个组包含一个实例标记（表示对象身份）和多个锚点标记（编码局部几何和外观），解码为3D高斯。通过可微渲染联合优化重建和分割，无需3D标注。\n3. 结果：在类无关实例分割上超越每场景优化方法，新型视图合成性能相当。标记组直接支持实例级编辑（删除、平移、插入对象）和高效开词汇3D实例检索。\n4. 重要性：将对象实例作为表示的原生接口，简化了场景理解、编辑和检索，避免了事后分割的麻烦。",
+        "authors": [
+          "Mijin Yoo",
+          "In Cho",
+          "Subin Jeon",
+          "Jiwoo Lee",
+          "Eunbyung Park",
+          "Seon Joo Kim"
+        ],
+        "url": "https://arxiv.org/abs/2606.29513v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.29513",
+        "html_url": "https://arxiv.org/abs/2606.29513",
+        "published_at": "2026-06-28T17:21:45.000Z",
+        "upvotes": 17,
+        "heat": 2944.7206288888888,
+        "featured": true,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "Project page: https://yoomimi.github.io/instok3d",
+        "relevance": 3,
+        "first_seen": "2026-07-01T10:40:13.516Z",
+        "rm": {
+          "usage": "可用于工程机器人视觉装配任务，通过实例结构化3D标记化实现对能量单元等对象的精准定位与位姿估计，辅助机械臂抓取与装配。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
+      },
+      {
         "id": "arxiv:2606.29705",
         "arxiv_id": "2606.29705",
         "source": "arXiv",
@@ -95,6 +138,48 @@
           "task_id": "engineer",
           "task": "工程视觉装配（能量单元）",
           "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.31537",
+        "arxiv_id": "2606.31537",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.MA"
+        ],
+        "title_en": "DataEvolver: Self-Evolving Multi-Agent Data Construction for Text-Rich Image Generation",
+        "title_zh": "DataEvolver：用于富文本图像生成的自进化多智能体数据构建",
+        "abstract_en": "Text-rich image generation is one of the most challenging settings in image generation, since models must simultaneously produce visually realistic images and render legible, semantically aligned, and layout-consistent text. Existing data pipelines usually follow a static crawl-filter-freeze paradigm. They collect candidate samples, filter them once, and freeze the accepted data for training. However, rejected samples are usually discarded, although they often contain useful failure signals such as OCR errors and semantic mismatches. As a result, later construction rounds may repeat the same failure modes. To address these limitations, we propose DataEvolver, a self-evolving multi-agent framework for text-rich image data construction. DataEvolver treats data construction as feedback-driven construction policy evolution. A Retriever collects candidate samples, a Verifier assigns quality scores and rejection causes, a Critic summarizes round-level feedback into semantic feedback, and a Generator completes under-covered regions through targeted synthesis. The updated feedback memory then guides the next construction round. Experiments on text-rich image generation benchmarks show that DataEvolver produces more useful training data than fixed-dataset baselines under matched data budgets. At the 0.75M scale on PixArt-alpha, DataEvolver improves OCR-F1 over the strongest baseline by 85.3 percent on TextScenesHQ and 35.3 percent on LongTextBench. The improvements are consistent across both evaluated benchmarks and also transfer to Show-o2, indicating that the benefit of DataEvolver is not tied to a single downstream generator. These results suggest that rejected samples can provide actionable feedback for improving text-rich image data construction.",
+        "abstract_zh": "富文本图像生成是图像生成中最具挑战性的场景之一，因为模型必须同时生成视觉上逼真的图像并呈现清晰、语义对齐且布局一致的文本。现有数据流水线通常遵循静态的爬取-过滤-冻结范式。它们收集候选样本，过滤一次，然后冻结接受的数据用于训练。然而，被拒绝的样本通常被丢弃，尽管它们通常包含有用的失败信号，如OCR错误和语义不匹配。因此，后续构建轮次可能重复相同的失败模式。为了解决这些局限性，我们提出了DataEvolver，一个用于富文本图像数据构建的自进化多智能体框架。DataEvolver将数据构建视为反馈驱动的构建策略进化。检索器收集候选样本，验证器分配质量分数和拒绝原因，评论家将轮次级反馈总结为语义反馈，生成器通过目标合成完成覆盖不足的区域。更新后的反馈记忆随后指导下一构建轮次。在富文本图像生成基准上的实验表明，在匹配数据预算下，DataEvolver比固定数据集基线产生更有用的训练数据。在PixArt-alpha上以0.75M规模，DataEvolver在TextScenesHQ上将OCR-F1比最强基线提高85.3%，在LongTextBench上提高35.3%。改进在两个评估基准上一致，并迁移到Show-o2，表明DataEvolver的好处不依赖于单个下游生成器。这些结果表明，被拒绝的样本可以为改进富文本图像数据构建提供可操作的反馈。",
+        "highlight_zh": "利用被拒绝样本的失败信号，自进化多智能体框架优化富文本图像数据构建。",
+        "digest_zh": "1. 研究问题：如何改进富文本图像生成的数据构建，避免静态过滤丢弃有用失败信号？\n2. 方法：提出DataEvolver，一个自进化多智能体框架。包含检索器（收集候选）、验证器（评分并给出拒绝原因）、评论家（总结轮次反馈为语义反馈）、生成器（针对覆盖不足区域合成数据）。反馈记忆更新后指导下一轮构建。\n3. 结果：在PixArt-alpha上，0.75M数据规模下，OCR-F1在TextScenesHQ提升85.3%，LongTextBench提升35.3%，且改进迁移到Show-o2。\n4. 重要性：证明被拒绝样本的反馈可有效提升数据质量，打破静态过滤局限，为数据构建提供新范式。",
+        "authors": [
+          "Siyu Yan",
+          "Yizhen Gao",
+          "Yilin Wang",
+          "Dongxing Mao",
+          "Alex Jinpeng Wang"
+        ],
+        "url": "https://arxiv.org/abs/2606.31537v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.31537",
+        "html_url": "https://arxiv.org/abs/2606.31537",
+        "published_at": "2026-06-30T11:52:22.000Z",
+        "upvotes": 8,
+        "heat": 2537.2309077777777,
+        "featured": true,
+        "categories": [
+          "other"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 0,
+        "first_seen": "2026-07-01T10:40:13.516Z",
+        "rm": {
+          "usage": "关联很弱，主要针对富文本图像生成，与RoboMaster视觉任务无直接关系。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
         }
       },
       {
@@ -4526,84 +4611,6 @@
           "task": "自瞄 / 装甲板识别",
           "value": "mid"
         }
-      },
-      {
-        "id": "cvf:CVPR2026:APPO: Attention-guided Perception Policy Optimization for Vi",
-        "arxiv_id": "",
-        "source": "CVPR",
-        "cats": [],
-        "title_en": "APPO: Attention-guided Perception Policy Optimization for Video Reasoning",
-        "title_zh": "",
-        "abstract_en": "Complex video reasoning, actually, relies excessively on fine-grained perception rather than on expert (e.g., Ph.D, Science)-level reasoning.Through extensive empirical observation, we have recognized the critical impact of perception.In particular, when perception ability is almost fixed, enhancing reasoning from Qwen3-8B to OpenAI-o3 yields only 0.7% performance improvement. Conversely, even minimal change in perception model scale (from 7B to 32B) boosts performance by 1.4%, indicating enhancing perception, rather than reasoning, is more critical to improve performance.Therefore, exploring how to enhance perception ability through reasoning without the need for expensive fine-grained annotation information is worthwhile.To achieve this goal, we specially propose APPO, the Attention-guided Perception Policy Optimization algorithm that leverages token-level dense rewards to improve model&#x27;s fine-grained perception.The core idea behind APPO is to optimize those tokens from different responses that primarily focus on the same crucial video frame (called intra-group perception tokens).Experimental results on diverse video benchmarks and models with different scales (3/7B) demonstrate APPO consistently outperforms GRPO and DAPO (0.5% 4%). We hope our work provides a promising approach to effectively enhance model&#x27;s perception abilities through reasoning in a low-cost manner, serving diverse scenarios and demands.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [],
-        "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Du_APPO_Attention-guided_Perception_Policy_Optimization_for_Video_Reasoning_CVPR_2026_paper.html",
-        "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Du_APPO_Attention-guided_Perception_Policy_Optimization_for_Video_Reasoning_CVPR_2026_paper.pdf",
-        "html_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Du_APPO_Attention-guided_Perception_Policy_Optimization_for_Video_Reasoning_CVPR_2026_paper.html",
-        "published_at": "2026-06-01T00:00:00.000Z",
-        "upvotes": 0,
-        "heat": 120,
-        "featured": false,
-        "categories": [
-          "rl"
-        ],
-        "image": "",
-        "comment": "Accepted to CVPR 2026",
-        "conf": "CVPR",
-        "confYear": 2026,
-        "confTag": "CVPR 2026",
-        "confWeight": 6,
-        "confVision": true,
-        "relevance": 7,
-        "first_seen": "2026-06-30T18:30:34.071Z",
-        "rm": {
-          "usage": "可用于自瞄任务中，通过注意力引导的感知策略优化提升视频推理能力，辅助多目标跟踪和运动预测。",
-          "task_id": "autoaim",
-          "task": "自瞄 / 装甲板识别",
-          "value": "mid"
-        }
-      },
-      {
-        "id": "cvf:CVPR2026:PhysHead: Simulation-Ready Gaussian Head Avatars",
-        "arxiv_id": "",
-        "source": "CVPR",
-        "cats": [],
-        "title_en": "PhysHead: Simulation-Ready Gaussian Head Avatars",
-        "title_zh": "",
-        "abstract_en": "Realistic digital avatars require expressive and dynamic hair motion; however, most existing head avatar methods assume rigid hair movement. These methods often fail to disentangle hair from the head, representing it as a simple outer shell and failing to capture its natural volumetric behavior. In this paper, we address these limitations by introducing PhysHead, a hybrid representation for animatable head avatars with realistic hair dynamics learned from multiview video. At the core is a 3D Gaussian-based layered representation of the head. Our approach combines a 3D parametric mesh for the head with strand-based hair, which can be directly simulated using physics engines. For the appearance model, we employ Gaussian primitives attached to both the head mesh and hair segments. This representation enables the creation of photorealistic head avatars with dynamic hair behavior, such as wind-blown motion, overcoming the constraints of rigid hair in existing methods. However, these animation capabilities also require new training schemes. In particular, we propose the use of VLM-based models to generate appearance of regions that are occluded in the dynamic training sequences. In quantitative and qualitative studies, we demonstrate the capabilities of the proposed model and compare it with existing baselines. We show that our method can synthesize physically plausible hair motion besides expression and camera control. For additional results and code, please refer to https://physhead.github.io",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [],
-        "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Kabadayi_PhysHead_Simulation-Ready_Gaussian_Head_Avatars_CVPR_2026_paper.html",
-        "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Kabadayi_PhysHead_Simulation-Ready_Gaussian_Head_Avatars_CVPR_2026_paper.pdf",
-        "html_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Kabadayi_PhysHead_Simulation-Ready_Gaussian_Head_Avatars_CVPR_2026_paper.html",
-        "published_at": "2026-06-01T00:00:00.000Z",
-        "upvotes": 0,
-        "heat": 120,
-        "featured": false,
-        "categories": [
-          "slam",
-          "radar",
-          "sim"
-        ],
-        "image": "",
-        "comment": "Accepted to CVPR 2026",
-        "conf": "CVPR",
-        "confYear": 2026,
-        "confTag": "CVPR 2026",
-        "confWeight": 6,
-        "confVision": true,
-        "relevance": 7,
-        "first_seen": "2026-06-30T18:30:34.071Z",
-        "rm": {
-          "usage": "关联很弱，主要用于数字人头发仿真，与RoboMaster机器人视觉或控制无关。",
-          "task_id": "",
-          "task": "",
-          "value": "low"
-        }
       }
     ]
   },
@@ -4733,7 +4740,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.68,
+        "relevance": 17.68,
         "first_seen": "2026-06-30T18:30:34.071Z"
       },
       {
@@ -5170,7 +5177,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.32,
+        "relevance": 12.32,
         "first_seen": "2026-06-30T18:30:34.071Z"
       },
       {
@@ -5193,7 +5200,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.32,
+        "relevance": 7.32,
         "first_seen": "2026-06-30T18:30:34.071Z"
       },
       {
@@ -5224,7 +5231,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 25.31,
+        "relevance": 20.31,
         "first_seen": "2026-06-30T18:30:34.071Z"
       },
       {
@@ -5248,7 +5255,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 14.28,
+        "relevance": 9.28,
         "first_seen": "2026-06-30T18:30:34.071Z"
       },
       {
@@ -5462,7 +5469,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.08,
+        "relevance": 12.08,
         "first_seen": "2026-06-30T18:30:34.071Z"
       },
       {
@@ -5597,7 +5604,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.96,
+        "relevance": 7.97,
         "first_seen": "2026-06-30T18:30:34.071Z"
       },
       {
@@ -5768,7 +5775,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 27.9,
+        "relevance": 22.9,
         "first_seen": "2026-06-30T18:30:34.071Z"
       },
       {
@@ -5868,7 +5875,7 @@
         "categories": [
           "other"
         ],
-        "relevance": 11.85,
+        "relevance": 6.85,
         "first_seen": "2026-06-30T18:30:34.071Z"
       },
       {
