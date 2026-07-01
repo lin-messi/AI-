@@ -1,6 +1,6 @@
 {
   "date": "2026-07-01",
-  "generatedAt": "2026-06-30T23:57:11.599Z",
+  "generatedAt": "2026-07-01T05:22:20.328Z",
   "categories": [
     {
       "key": "aim",
@@ -49,7 +49,7 @@
     }
   ],
   "papers": {
-    "count": 81,
+    "count": 100,
     "items": [
       {
         "id": "arxiv:2606.29705",
@@ -135,6 +135,54 @@
           "task_id": "sim",
           "task": "仿真与 sim-to-real",
           "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.30811",
+        "arxiv_id": "2606.30811",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.MM",
+          "cs.SD",
+          "eess.AS"
+        ],
+        "title_en": "AVTok: 1D Unified Tokenization for Holistic Audio-Video Generation",
+        "title_zh": "AVTok：面向整体音视频生成的一维统一分词",
+        "abstract_en": "Audio-video generation has recently gained unprecedented research attention, aiming to synthesize high-quality sounding video content with fine-grained synchronization and semantic alignment between the auditory and visual components. The preceding methods predominantly adopt a dual-branch design with separate tokenization and generation modules per modality, neglecting the representation gap while necessitating intensive computational resources for proper training. Inspired by recent advancements in one-dimensional visual tokenization, we present \\textbf{AVTok}, a novel unified tokenizer designated for holistic audio-video generation. AVTok features a dual-stream transformer-based architecture with shared encoder-decoder and modal-specific learnable queries to efficiently and effectively encode an audio-video pair into a compact one-dimensional latent representation with a unified codebook. To cope with the heterogeneous information imbalance that hinders AVTok from exploiting aligned audio-visual information, we devise a hierarchical training strategy to progressively realize reconstruction capabilities for each modality. Extensive experiments demonstrate that AVTok excels both in audio-video reconstruction and when integrated into downstream pipelines for audio-to-video, video-to-audio, and class-conditional joint audio-video generation. AVTok paves the way for the challenge of joint audio-video tokenization and provides a potential direction to build unified large multimodal models for audio-video generation.",
+        "abstract_zh": "音视频生成最近获得了前所未有的研究关注，旨在合成高质量的有声视频内容，并在听觉和视觉组件之间实现细粒度同步和语义对齐。先前的方法主要采用双分支设计，每个模态有单独的分词和生成模块，忽略了表示差距，同时需要大量计算资源进行适当训练。受最近一维视觉分词进展的启发，我们提出了AVTok，一种新颖的统一分词器，专为整体音视频生成而设计。AVTok采用基于双流Transformer的架构，具有共享的编码器-解码器和模态特定的可学习查询，以高效有效地将音视频对编码为紧凑的一维潜在表示，并带有统一码本。为了应对阻碍AVTok利用对齐音视频信息的异质信息不平衡，我们设计了一种分层训练策略，逐步实现每个模态的重建能力。大量实验表明，AVTok在音视频重建以及集成到下游管道（如音频到视频、视频到音频和类别条件联合音视频生成）中均表现出色。AVTok为联合音视频分词的挑战铺平了道路，并为构建用于音视频生成的统一大型多模态模型提供了潜在方向。",
+        "highlight_zh": "提出统一音视频分词器AVTok，实现紧凑一维潜在表示与高效联合生成。",
+        "digest_zh": "1. 研究问题：如何用一个统一的模型同时处理音频和视频的生成，避免传统双分支方法带来的表示不一致和高计算成本？\n2. 方法：提出AVTok，一种基于双流Transformer的架构，共享编码器-解码器，但为音频和视频分别设置可学习的查询，将两者编码到同一个紧凑的一维潜在空间，并使用统一码本。为解决音频和视频信息不平衡问题，采用分层训练策略，先分别训练各模态重建，再联合训练。\n3. 结果：AVTok在音视频重建任务上表现优异，并成功应用于音频生成视频、视频生成音频以及联合生成，性能超过现有方法。\n4. 重要性：首次实现了音视频的联合分词，为构建统一的多模态生成模型奠定了基础，有望简化音视频内容创作流程。",
+        "authors": [
+          "Kien T. Pham",
+          "I Chieh Chen",
+          "Qifeng Chen",
+          "Long Chen"
+        ],
+        "url": "https://arxiv.org/abs/2606.30811v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.30811",
+        "html_url": "https://arxiv.org/abs/2606.30811",
+        "published_at": "2026-06-29T18:35:17.000Z",
+        "upvotes": 3,
+        "heat": 2395.250343611111,
+        "featured": true,
+        "categories": [
+          "other"
+        ],
+        "image": "",
+        "comment": "ECCV 2026",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 7,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于多机协同中音视频信息融合，但RoboMaster主要依赖视觉和雷达，音频作用有限，关联弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
         }
       },
       {
@@ -286,6 +334,474 @@
         }
       },
       {
+        "id": "arxiv:2606.31918",
+        "arxiv_id": "2606.31918",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "DriveWeaver: Point-Conditioned Video Inpainting for Controllable Vehicle Insertion in Autonomous Driving Simulation",
+        "title_zh": "DriveWeaver：面向自动驾驶仿真中可控车辆插入的点条件视频修复",
+        "abstract_en": "A pivotal step in autonomous driving simulation involves inserting foreground vehicles with predefined trajectories into simulated scenes. This process enhances scene diversity and facilitates the creation of various corner cases for testing and improving autonomous driving models. However, existing methods often rely on pre-reconstructed 3D assets, which frequently lead to lighting inconsistencies between the inserted foreground and the background. Moreover, the reliance on limited, manually-curated 3D assets hinders large-scale deployment. To address these challenges, we propose DriveWeaver, a novel framework for controllable vehicle insertion in autonomous driving simulation. Specifically, for a masked target insertion area, DriveWeaver performs video inpainting conditioned on vehicle point clouds to generate high-quality, temporally consistent vehicles. This video-inpainting-based approach ensures seamless blending between the foreground and background, while the readily available point cloud conditions enable superior generalization. To support long-term generation, we further design a global-to-local hierarchical inpainting strategy, ensuring the consistent identity and appearance of the inserted vehicles. Meanwhile, we extract explicit 3D Gaussian representations of the inserted vehicles through an urban reconstruction pipeline to enable real-time rendering for autonomous driving simulation. Extensive experiments across diverse datasets demonstrate that our method outperforms existing baselines in visual realism and geometric consistency, providing a robust tool for scalable autonomous driving scene augmentation.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Junzhe Jiang",
+          "Zipei Ma",
+          "Zijie Pan",
+          "Li Zhang"
+        ],
+        "url": "https://arxiv.org/abs/2606.31918v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.31918",
+        "html_url": "https://arxiv.org/abs/2606.31918",
+        "published_at": "2026-06-30T16:23:32.000Z",
+        "upvotes": 0,
+        "heat": 2267.054511111111,
+        "featured": false,
+        "categories": [
+          "rl",
+          "sim"
+        ],
+        "image": "",
+        "comment": "Accepted at ECCV 2026, Project Page: https://github.com/LogosRoboticsGroup/DriveWeaver",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 11,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于哨兵导航仿真中生成可控车辆插入场景，增加仿真多样性，但需改造为机器人场景。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.31834",
+        "arxiv_id": "2606.31834",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.AI"
+        ],
+        "title_en": "Real-Time Source-Free Object Detection",
+        "title_zh": "实时无源目标检测",
+        "abstract_en": "Real-world detectors for autonomous driving, surveillance, and robotics must handle domain-shifts under strict latency and memory constraints, yet existing source-free object detection (SFOD) methods rely on heavyweight architectures that prioritize accuracy alone. We show this trade-off is unnecessary: building on YOLOv10, an NMS-free dual-head detector, we achieve state-of-the-art adaptation accuracy while being faster and more compact. We observe that directly applying vanilla mean-teacher self-training to dual-head detectors leads to suboptimal adaptation performance due to two key factors. First, simple pseudo-label generation strategies, such as using a single head or directly combining high-confidence predictions from both heads, yield suboptimal supervision under domain-shift. We propose DHF (Dual-Head Pseudo-Label Fusion) which selectively admits one-to-one (O2O) and one-to-many (O2M) head predictions, preserving precision and recovering missed objects. Second, we observe domain-shift collapses multi-scale feature discriminability. We propose the use of our MARD (Multi-scale Adaptive Representation Diversification) loss which mitigates this by enforcing detection-aware variance and covariance constraints on multi-scale feature maps. Both modules are training-time only, leaving inference unchanged. Across domain-shift benchmarks, our method, RT-SFOD yields 1.4 to 3.5\\% mAP gains, 1.3$\\times$ higher throughput, with $\\sim$2$\\times$ fewer parameters than prior state-of-the-art SFOD methods, thus advancing the Pareto frontier of the speed-accuracy-model size trade-off. We report main results with YOLOv10, and demonstrate generalizability with additional YOLO- and DETR-based dual-head detectors. Code is available here: https://github.com/Sairam13001/RT-SFOD/",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Sairam VCR",
+          "Varun Gopal",
+          "Poornima Jain",
+          "Vineeth N Balasubramanian",
+          "Muhammad Haris Khan"
+        ],
+        "url": "https://arxiv.org/abs/2606.31834v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.31834",
+        "html_url": "https://arxiv.org/abs/2606.31834",
+        "published_at": "2026-06-30T15:38:56.000Z",
+        "upvotes": 0,
+        "heat": 2266.3111775,
+        "featured": false,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "Accepted to ECCV 2026",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 14,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于自瞄中的实时目标检测，YOLOv10轻量高效，适合嵌入式部署，直接提升检测速度与精度。",
+          "task_id": "autoaim",
+          "task": "自瞄 / 装甲板识别",
+          "value": "high"
+        }
+      },
+      {
+        "id": "arxiv:2606.31772",
+        "arxiv_id": "2606.31772",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Autonomous UAV Navigation for Individual Wildlife Re-Identification",
+        "title_zh": "面向个体野生动物重新识别的自主无人机导航",
+        "abstract_en": "Reliable individual re-identification (re-ID) of wildlife is essential for population monitoring, behavioral tracking, and conservation policy evaluation, yet large-scale data collection remains labor-intensive, relying on manual efforts by ecologists or citizen scientists. We propose an autonomous drone navigation system that actively optimizes image capture for downstream re-ID, moving beyond passive aerial sensing. The system combines YOLOv11 object detection with a DINOv2-based pose classifier to guide real-time flight decisions: detecting animals, orienting to expose the lateral flank (the surface of interest for pattern-based re-ID), and approaching until the subject meets a minimum bounding-box threshold. Unlike prior drone systems that optimize for group-level behavioral video, ours targets the specific image-quality requirements of individual-identification models. We demonstrate feasibility through a case study on zebra using footage collected in Kenya, and show the approach generalizes to other species with diagnostic surface patterns, including giraffes, tigers, and elephants. Our work establishes a framework for task-aware embodied AI for ecological data collection, in which downstream re-ID requirements drive real-time perception and control.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Claire Sun",
+          "Tanya Berger-Wolf",
+          "Jenna Kline"
+        ],
+        "url": "https://arxiv.org/abs/2606.31772v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.31772",
+        "html_url": "https://arxiv.org/abs/2606.31772",
+        "published_at": "2026-06-30T14:56:04.000Z",
+        "upvotes": 0,
+        "heat": 2265.5967416666667,
+        "featured": false,
+        "categories": [
+          "aim",
+          "slam",
+          "radar"
+        ],
+        "image": "",
+        "comment": "Accepted at 2026 CV4Animals Workshop at CVPR",
+        "conf": "CVPR",
+        "confYear": 0,
+        "confTag": "CVPR",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 20,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于工程视觉装配中无人机对能量单元的自主定位与抓取，但需调整目标为机器人而非野生动物。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.31703",
+        "arxiv_id": "2606.31703",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Phantom: A Unified Face-Swap Deepfake Protection Framework with Latent and Spatial Constraints",
+        "title_zh": "Phantom：一种具有潜在和空间约束的统一换脸深度伪造防护框架",
+        "abstract_en": "Face-swapping deepfakes pose an escalating threat to personal privacy by enabling unauthorized identity manipulation. While adversarial approaches have demonstrated success against black-box face recognition (FR) models, their applicability to face-swapping scenarios remains underexplored. In particular, reliance on fixed or random targets yields ambiguous latent guidance, and the lack of explicit spatial constraints causes perturbations to spill into identity-irrelevant regions. These issues are further exacerbated by identity-style disentanglement, which suppresses adversarial signals during deepfake generation. In this paper, we present Phantom, a unified face-swap deepfake protection framework that jointly constrains perturbations in latent and spatial domains. Phantom adaptively synthesizes identity-shifted yet attribute-preserving targets to guide identity-aware latent optimization, and applies masked perturbations confined to semantically relevant facial regions. Extensive experiments on state-of-the-art face-swapping deepfakes demonstrate that Phantom improves protection success rates in dodging scenarios by 27.8%, 25.6%, and 16.6% on UniFace, INSwapper, and SimSwap, respectively, while also enhancing visual quality. Furthermore, Phantom generalizes to impersonation scenario, yielding up to 10.2% higher protection while improving perceptual fidelity. These results underscore the effectiveness of jointly leveraging latent and spatial constraints for robust and coherent facial privacy protection.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Jungkon Kim",
+          "Cheolseung Jung",
+          "Jong-Min Choi",
+          "Juseong Lee"
+        ],
+        "url": "https://arxiv.org/abs/2606.31703v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.31703",
+        "html_url": "https://arxiv.org/abs/2606.31703",
+        "published_at": "2026-06-30T14:10:38.000Z",
+        "upvotes": 0,
+        "heat": 2264.8395108333334,
+        "featured": false,
+        "categories": [
+          "other"
+        ],
+        "image": "",
+        "comment": "Accepted to CVPR 2026 (Findings)",
+        "conf": "CVPR",
+        "confYear": 2026,
+        "confTag": "CVPR 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 7,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "涉及人脸换脸防护，与RoboMaster机器人对抗无关，关联很弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2606.31471",
+        "arxiv_id": "2606.31471",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Think While You Map: Asynchronous Vision-Language Agents for Incremental 3D Scene Graphs",
+        "title_zh": "边建图边思考：用于增量式3D场景图的异步视觉-语言智能体",
+        "abstract_en": "Open-vocabulary 3D scene graph methods typically operate in two stages: first reconstruct, then enrich with vision-language models, leaving the graph unqueryable during exploration. We argue that this sequential coupling is unnecessary and propose an asynchronous architecture in which lightweight online mapping runs concurrently with heavyweight semantic refinement. A probabilistic voxel-based backbone maintains stable object identities incrementally, while background VLM agents progressively enrich the graph. This framework resolves duplicate object tracks through semantic loop closure, attaches fine-grained visual attributes and derives spatial relations between objects. A multi-target frame scheduler amortizes VLM cost by selecting a small set of informative frames that jointly cover multiple targets. The resulting scene graph is queryable during exploration and grows in semantic richness over time. Our method matches or outperforms existing open-vocabulary 3D scene graph methods on semantic segmentation (ScanNet, Replica) and surpasses the prior state-of-the-art across three visual grounding benchmarks (Sr3D+, Nr3D, ScanRefer) by 15.3 to 18.8 A@0.25. Project page: https://denizbickici.github.io/thinkgraphs/",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Deniz Bickici",
+          "Michael Pabst",
+          "Shohei Mori",
+          "Dieter Schmalstieg"
+        ],
+        "url": "https://arxiv.org/abs/2606.31471v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.31471",
+        "html_url": "https://arxiv.org/abs/2606.31471",
+        "published_at": "2026-06-30T10:49:21.000Z",
+        "upvotes": 0,
+        "heat": 2261.484788333333,
+        "featured": false,
+        "categories": [
+          "aim",
+          "slam"
+        ],
+        "image": "",
+        "comment": "Accepted to ECCV 2026. Project page: https://denizbickici.github.io/thinkgraphs/",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 8,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于哨兵导航中增量式3D场景图构建，实现实时建图与语义理解，提升自主导航能力。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.31456",
+        "arxiv_id": "2606.31456",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG"
+        ],
+        "title_en": "Zero-Shot Quantization for Object Detectors using Off-the-Shelf Generative Models",
+        "title_zh": "利用现成生成模型的目标检测器零样本量化",
+        "abstract_en": "With an increasing number of Object Detection (OD) models being deployed on edge devices, Zero-Shot Quantization for OD (ZSQ-OD) aims to quantize these models when access to the original training data is prohibited. Existing research on Zero-Shot Quantization-Aware Training (QAT) for OD synthesizes training sets through noise optimization. However, this approach struggles to maintain performance in low-bit regions. In this paper, we introduce GoodQ (Generative off-the-shelf models for object detector Quantization), a QAT pipeline that utilizes off-the-shelf generative models to construct a training set. We first identify three challenges that arise when introducing a generative model to the ZSQ-OD task: 1) each image contains dense information with multiple instances, 2) the class-wise distribution in the original dataset is imbalanced, and 3) the pseudo-labels assigned to the generated images can potentially act as noisy signals during QAT. GoodQ addresses these challenges by 1) introducing an Information-Dense Prompting strategy to generate multi-instance images, 2) applying Intrinsic Distribution-Aware Selection to match the pretrained class distribution, and 3) employing Teacher-guided Adaptive Noise Reduction to mitigate noise arising from the QAT process. Our framework achieves state-of-the-art performance in low-bit ZSQ (W4A4) and extends quantization to extreme bit-widths (W3A3). Furthermore, we conduct an extensive analysis to uncover the underlying factors contributing to the efficacy of GoodQ.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Hyunho Lee",
+          "Kyomin Hwang",
+          "Hyeonjin Kim",
+          "Suyoung Kim",
+          "Sunghyun Wee",
+          "Nojun Kwak"
+        ],
+        "url": "https://arxiv.org/abs/2606.31456v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.31456",
+        "html_url": "https://arxiv.org/abs/2606.31456",
+        "published_at": "2026-06-30T10:29:15.000Z",
+        "upvotes": 0,
+        "heat": 2261.149786388889,
+        "featured": false,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "Published at ECCV 2026",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 9,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于自瞄或雷达检测模型的量化部署，降低模型大小和计算量，适合边缘设备。",
+          "task_id": "autoaim",
+          "task": "自瞄 / 装甲板识别",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.31388",
+        "arxiv_id": "2606.31388",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "One Video, One World: Turning Monocular Video into Physical 4D Scenes",
+        "title_zh": "一视频一世界：将单目视频转化为物理4D场景",
+        "abstract_en": "We introduce \\textbf{OVOW}, the first training-free system that reconstructs \\emph{instance-level, simulation-ready} 4D mesh scenes from a single monocular video. Recent 4D reconstruction achieves impressive rendering quality, but its outputs (\\eg, implicit fields, Gaussian primitives, or point clouds) lack the watertight topology, instance separation, and standardized physical interfaces required by physics simulators and embodied AI. OVOW closes this gap with a four-stage pipeline: a vision-language model discovers, labels, and motion-classifies all instances; category-aware reconstruction yields per-instance meshes for rigid objects and topology-consistent mesh sequences for deformable ones; an iterative render-match-optimize procedure recovers metric scale and 6-DoF pose trajectories; and physics-grounded assembly enforces ground contact and inter-object support. Crucially, we model all motion, rigid and non-rigid, through direct vertex deformation without category-specific priors or skeleton rigging, producing watertight mesh scenes ready for downstream physics simulation and editing. We further establish the first benchmark for \\emph{structured Video-to-4D} evaluation, with metrics for geometric correctness, instance separation, and physical plausibility beyond visual fidelity; the same pipeline doubles as a scalable engine for \\emph{synthesizing} paired video-to-4D simulation data for future 4D world models and embodied AI. Across two synthetic benchmarks (static and 4D), OVOW attains the best overall layout and geometry accuracy and the lowest photometric and semantic error among all baselines, and on monocular video runs one to two orders of magnitude faster than the baselines, while downstream physics simulation confirms its physical stability.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Junhao Chen",
+          "Boran Zhang",
+          "Mingjin Chen",
+          "Henghaofan Zhang",
+          "Saining Zhang",
+          "Congcong Zhu",
+          "Hao Zhao",
+          "Ruqi Huang"
+        ],
+        "url": "https://arxiv.org/abs/2606.31388v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.31388",
+        "html_url": "https://arxiv.org/abs/2606.31388",
+        "published_at": "2026-06-30T09:16:21.000Z",
+        "upvotes": 0,
+        "heat": 2259.9347883333335,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl",
+          "radar"
+        ],
+        "image": "",
+        "comment": "Accepted by ECCV 2026. Project Page: https://OneVideoOneWorld.github.io/",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 10,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于仿真中从单目视频重建物理4D场景，生成仿真环境，但需处理机器人场景而非通用场景。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.31278",
+        "arxiv_id": "2606.31278",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Editing Everything Everywhere All at Once",
+        "title_zh": "一次性编辑一切万物",
+        "abstract_en": "Editing multiple elements of an image in a single forward pass is a practical alternative to multi-turn image manipulation, offering improved efficiency and potentially better harmonization. However, when several instructions target different regions, semantic interference often leads to attribute leakage and poor edit disentanglement, especially as the number of edits increases. In this work, we propose MICE (Multi-Instance Concurrent Editing), a training-free strategy for scalable multi-instance image editing with Multimodal Diffusion Transformers. MICE modifies the additive bias of joint attention to regulate interactions between instance-specific edit instructions, latent, and context tokens identified via user-provided segmentation masks. Specifically, MICE allows intra-instance attention, penalizes interactions between neighboring region tokens, and suppresses unrelated cross-instance attention. As a result, our method enforces attribute binding while preserving global visual consistency. We evaluate MICE on LoMOE-Bench and introduce MICE-Bench, a more challenging benchmark with an average of 8.5 concurrent edits per image. The experiments demonstrate that our approach outperforms strong baselines and recent competitors in terms of visual quality preservation and faithfulness to the editing instructions.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Fabio Quattrini",
+          "Carmine Zaccagnino",
+          "Enis Simsar",
+          "Marta Tintoré Gazulla",
+          "Rita Cucchiara",
+          "Alessio Tonioni",
+          "Silvia Cascianelli"
+        ],
+        "url": "https://arxiv.org/abs/2606.31278v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.31278",
+        "html_url": "https://arxiv.org/abs/2606.31278",
+        "published_at": "2026-06-30T07:52:46.000Z",
+        "upvotes": 0,
+        "heat": 2258.5417327777777,
+        "featured": false,
+        "categories": [
+          "other"
+        ],
+        "image": "",
+        "comment": "Accepted at ECCV 2026",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 8,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于自瞄中的多目标识别与装甲板数字编辑，但需改造为实时检测，关联较弱。",
+          "task_id": "autoaim",
+          "task": "自瞄 / 装甲板识别",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2606.31209",
+        "arxiv_id": "2606.31209",
+        "source": "arXiv",
+        "cats": [
+          "cs.AI",
+          "cs.RO"
+        ],
+        "title_en": "Long-term Traffic Simulation via Structured Autoregressive Modeling",
+        "title_zh": "基于结构化自回归建模的长期交通仿真",
+        "abstract_en": "Interactive traffic simulation is a vital world model for autonomous driving. A central challenge in long-horizon simulation is modeling sustained multi-agent interactions, which is further exacerbated by dynamic token cardinality as agents continuously enter and exit the scene. In this work, we propose that the solution lies in the synergy between the architectural inductive biases and statistical priors of large-scale sequence models, e.g., Large Language Models (LLMs). Our probing experiments reveal that the transferability of attention mechanisms and the distributional consistency between motion tokens and natural language enable small-scale, heavily frozen LLMs to rapidly adapt to traffic modeling. Building on this insight, we introduce RosettaSim, a unified framework that projects scene topology, agent states, and spawning intents into a structured autoregressive stream with variable length, achieving both strong short-term accuracy and stable long-horizon simulation fidelity. Furthermore, evaluating extended rollouts presents yet another hurdle, as one-to-one agent correspondence inevitably fades over time. To address this, we introduce Retrieval-based Traffic Evaluation (RTE), which retrieves semantically similar real-world scenarios as context-aware reference anchors. Experiments on the Waymo Open Sim Agent Challenge (WOSAC) demonstrate that RosettaSim achieves state-of-the-art performance in both short- and long-term simulation. Furthermore, RTE exhibits a stronger correlation with standard metrics ($r=0.83$) than existing approaches ($r=0.74$), indicating improved alignment with long-horizon simulation fidelity.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Lingyu Xiao",
+          "Zexin Feng",
+          "Xintao Yan"
+        ],
+        "url": "https://arxiv.org/abs/2606.31209v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.31209",
+        "html_url": "https://arxiv.org/abs/2606.31209",
+        "published_at": "2026-06-30T06:41:28.000Z",
+        "upvotes": 0,
+        "heat": 2257.3534080555555,
+        "featured": false,
+        "categories": [
+          "rl",
+          "radar",
+          "sim"
+        ],
+        "image": "",
+        "comment": "ECCV 2026 Accepted",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 7,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于哨兵导航中的长期多智能体交互仿真，辅助路径规划与决策。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.31172",
+        "arxiv_id": "2606.31172",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "HSDF-Lane: Height-Aligned Signed Distance Field with Semantic Lane Prior for 3D Lane Detection",
+        "title_zh": "HSDF-Lane：具有语义车道先验的高度对齐符号距离场用于3D车道检测",
+        "abstract_en": "Monocular 3D lane detection plays a critical role in autonomous driving, yet recovering reliable 3D geometry from a single image remains challenging due to inherent depth ambiguity. Prior methods project image features into Bird's-Eye-View (BEV) space under a flat-ground assumption, causing geometric distortion on real-world roads. Recent methods instead predict explicit height maps to capture non-planar surfaces, but still rely on sparse anchor-based regression and exploit the recovered geometry merely for spatial transformation rather than semantic understanding. To overcome these limitations, we propose HSDF-Lane, which implicitly models the road surface as a Height-aligned Signed Distance Field (HSDF) over a densely sampled 3D feature volume. Through differentiable rendering, the HSDF jointly produces an accurate height map and surface-aligned features. We further introduce Lane-aware Semantic Positional Encoding (LSPE), which injects a lane-existence prior derived from the surface-aligned features into the transformer queries, coupling geometric structure with semantic guidance. Extensive experiments on the OpenLane benchmark show that HSDF-Lane achieves state-of-the-art performance in both 3D lane detection and height map estimation.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Jiyong Boo",
+          "Byeongin Joung",
+          "Hyemin Yang",
+          "Kuk-Jin Yoon"
+        ],
+        "url": "https://arxiv.org/abs/2606.31172v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.31172",
+        "html_url": "https://arxiv.org/abs/2606.31172",
+        "published_at": "2026-06-30T06:02:59.000Z",
+        "upvotes": 0,
+        "heat": 2256.7120105555555,
+        "featured": false,
+        "categories": [
+          "radar"
+        ],
+        "image": "",
+        "comment": "ECCV 2026, Project page: https://jiyongboo.github.io/HSDF-Lane-project-page",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 11,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于哨兵导航中的3D车道检测，但RoboMaster场地非道路场景，关联弱。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "low"
+        }
+      },
+      {
         "id": "arxiv:2606.30598",
         "arxiv_id": "2606.30598",
         "source": "arXiv",
@@ -333,6 +849,57 @@
         }
       },
       {
+        "id": "arxiv:2606.31101",
+        "arxiv_id": "2606.31101",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Efficient Sim-to-Real Transfer of World-Action Models from Synthetic Priors",
+        "title_zh": "基于合成先验的世界-动作模型的高效仿真到现实迁移",
+        "abstract_en": "Bridging the sim-to-real gap is a core challenge in deploying learned manipulation policies. Sim-to-real learning is attractive because it can replace expensive real robot demonstrations with scalable synthetic data, yet world-action models have not previously been shown to transfer from simulation to real robotic manipulation. We study whether a world-action model can be trained from synthetic priors and deployed zero-shot in the real world. To this end, we build upon Cosmos Policy, a video diffusion model adapted for visuomotor control. We construct simulation environments with extensive domain randomization and generate demonstrations using the AnyTask motion planning pipeline. We evaluate our approach across object lifting, drawer opening, and pick-and-place tasks using ${\\sim}800$ synthetic demonstrations per task and no real demonstrations. When deployed zero-shot on a Franka Robot, our policy attains a 35\\% average success rate. To our knowledge, this represents the first successful sim-to-real transfer of a world-action model for robotic manipulation.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Zixing Wang",
+          "Kausik Sivakumar",
+          "Jinghuan Shang",
+          "Yafei Hu",
+          "Zhaoming Xie",
+          "Ran Gong",
+          "Xiaohan Zhang",
+          "Karl Schmeckpeper"
+        ],
+        "url": "https://arxiv.org/abs/2606.31101v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.31101",
+        "html_url": "https://arxiv.org/abs/2606.31101",
+        "published_at": "2026-06-30T03:49:31.000Z",
+        "upvotes": 0,
+        "heat": 2254.4875744444444,
+        "featured": false,
+        "categories": [
+          "slam",
+          "planning",
+          "rl"
+        ],
+        "image": "",
+        "comment": "This work is accepted by CVPR'26, Embodied AI Workshop. This paper represent a part of early result of our official world-action model zero-shot sim-to-real transfer work, which will be released soon",
+        "conf": "CVPR",
+        "confYear": 0,
+        "confTag": "CVPR",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 14,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "直接用于仿真到现实的策略迁移，适用于工程视觉装配或哨兵导航的sim-to-real。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "high"
+        }
+      },
+      {
         "id": "arxiv:2606.30545",
         "arxiv_id": "2606.30545",
         "source": "arXiv",
@@ -371,6 +938,100 @@
         "first_seen": "2026-06-30T18:30:34.071Z",
         "rm": {
           "usage": "可用于稀疏视角下的3D重建，提升哨兵导航中的建图定位精度，但需适配到机器人场景。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.31096",
+        "arxiv_id": "2606.31096",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Horizon3D: Sparse Radar-Camera Fusion for Long-Range 3D Perception in Autonomous Driving",
+        "title_zh": "Horizon3D：面向自动驾驶中远距离3D感知的稀疏雷达-相机融合",
+        "abstract_en": "Long-range 3D object detection is critical for safe autonomous driving at highway speeds, yet existing radar-camera fusion methods remain limited at extended ranges. BEV-based methods capture scene-level context but incur rapidly growing computation and often lose fine-grained object detail, while query-based methods are efficient but provide limited scene-level context. Temporal fusion further requires both multi-frame accumulation for sparse distant observations and object-level motion modeling for fast-moving objects. We propose Horizon3D, a sparse radar-camera fusion framework for long-range 3D object detection that combines Gaussian primitives with sparse BEV features. Horizon3D initializes Gaussian primitives at radar- and camera-estimated object keypoints using Keypoint-Guided Gaussian Initialization, refines them through Object-Centric Sparse Fusion, and splats them onto the BEV plane to fuse object-level detail with sparse radar BEV context. It further introduces Dual-Path Temporal Fusion, which aggregates temporal cues through a BEV path for scene-level accumulation and a Gaussian path for object-level motion propagation. Experiments on TruckScenes show that Horizon3D achieves state-of-the-art radar-camera 3D detection performance. On the validation set, it outperforms the previous best method by +3.0 NDS and +1.6 mAP while maintaining competitive inference speed.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Geonho Bang",
+          "Geunju Baek",
+          "Dongyoung Lee",
+          "Wonjun Jeong",
+          "Jun Won Choi"
+        ],
+        "url": "https://arxiv.org/abs/2606.31096v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.31096",
+        "html_url": "https://arxiv.org/abs/2606.31096",
+        "published_at": "2026-06-30T03:36:00.000Z",
+        "upvotes": 0,
+        "heat": 2254.2622880555555,
+        "featured": false,
+        "categories": [
+          "aim",
+          "slam",
+          "radar"
+        ],
+        "image": "",
+        "comment": "Accepted to ECCV 2026. Project page: https://geonhobang.github.io/horizon3d-project-page. Code: https://github.com/geonhobang/ECCV2026_Horizon3D",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 15,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于雷达全场感知中的远距离多传感器融合定位，提升敌方标记精度。",
+          "task_id": "radar",
+          "task": "雷达全场感知与标记",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.31071",
+        "arxiv_id": "2606.31071",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.RO"
+        ],
+        "title_en": "Hierarchical 3D Scene Graph Construction and Belief-based Planning for Semantic Navigation",
+        "title_zh": "用于语义导航的层次化3D场景图构建与基于信念的规划",
+        "abstract_en": "Semantic navigation is a fundamental task for embodied agents operating in unseen environments, requiring both semantic understanding and long-term decision-making. Recent foundation models have empowered agents with rich semantic priors for this task. However, without structured global representations, decision-making often falls back on local observations and greedy strategies, resulting in inefficient exploration and myopic behaviors, especially in long-distance navigation. To address these challenges, we propose a zero-shot semantic navigation framework. Our method incrementally maintains an online Hierarchical 3D Scene Graph (HSG) to form a multi-granular semantic topology over objects, zones, and regions, serving as a compact state abstraction for global planning. Building on this memory, we introduce a hierarchical belief-based planning framework that fuses semantic priors with exploration evidence on the HSG, and performs finite-horizon rollouts on an HSG-based simulator to explicitly estimate the long-term expected returns of candidate macro-actions. This enables globally consistent decisions and reduces redundant backtracking. Extensive experiments in high-fidelity simulation environments across multiple tasks and datasets demonstrate that our method outperforms existing state-of-the-art methods, particularly in long-distance scenarios, where our approach improves SR and SPL by an average of 9.4\\% and 5.0\\%, respectively.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Bing Wu",
+          "Zuyao Chen",
+          "Changwen Chen"
+        ],
+        "url": "https://arxiv.org/abs/2606.31071v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.31071",
+        "html_url": "https://arxiv.org/abs/2606.31071",
+        "published_at": "2026-06-30T03:01:44.000Z",
+        "upvotes": 0,
+        "heat": 2253.6911855555554,
+        "featured": false,
+        "categories": [
+          "slam",
+          "sim"
+        ],
+        "image": "",
+        "comment": "Camera-ready version accepted at ECCV 2026",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 8,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于哨兵自主导航中的层次化场景图构建与长期规划，提升探索效率。",
           "task_id": "sentry",
           "task": "哨兵自主导航与决策",
           "value": "mid"
@@ -473,6 +1134,56 @@
         }
       },
       {
+        "id": "arxiv:2606.31026",
+        "arxiv_id": "2606.31026",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.AI"
+        ],
+        "title_en": "OTCache: Optimal Transport for Geometry-Aware Caching in Diffusion Models",
+        "title_zh": "OTCache: 扩散模型中几何感知缓存的最优传输",
+        "abstract_en": "We propose OTCache, a training-free framework for accelerating diffusion sampling via caching schedule prediction. Existing graph-based caching methods reduce redundant computation by optimizing shortest-path objectives, but rely on an additive independence assumption, which often breaks down in the low NFE regime. To address this issue, OTCache models caching schedules across inference budgets as a smooth evolution in policy space, inspired by Optimal Transport (OT). The framework consists of three stages: (1) obtaining a high-fidelity \\textbf{reference schedule} using a graph-based caching method under a conservative budget; (2) performing a lightweight anchor search under an extreme low-budget setting via Optuna optimization with an end-to-end perceptual objective; and (3) predicting schedules for target budgets via quantile interpolation between the reference and anchor policies using continuous warping representations. Experiments on FLUX.1 [dev], Qwen-Image, and HunyuanVideo show that OTCache achieves 4.5x, 4.7x, and 3.66x acceleration, respectively, while consistently improving generation fidelity over state-of-the-art caching baselines. This work provides a new perspective on accelerating diffusion models through Optimal-Transport-inspired schedule modeling. Code:https://github.com/UnicomAI/OTCache",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Huanlin Gao",
+          "Fang Zhao",
+          "Qiang Hui",
+          "Fuyuan Shi",
+          "Shaoan Zhao",
+          "Yantao Li",
+          "Chao Tan",
+          "Ting Lu"
+        ],
+        "url": "https://arxiv.org/abs/2606.31026v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.31026",
+        "html_url": "https://arxiv.org/abs/2606.31026",
+        "published_at": "2026-06-30T01:46:54.000Z",
+        "upvotes": 0,
+        "heat": 2252.4439530555555,
+        "featured": false,
+        "categories": [
+          "other"
+        ],
+        "image": "",
+        "comment": "ECCV 2026",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 6,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于加速仿真或视觉模型推理，但非核心任务，关联弱。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "low"
+        }
+      },
+      {
         "id": "arxiv:2606.30215",
         "arxiv_id": "2606.30215",
         "source": "arXiv",
@@ -516,6 +1227,55 @@
           "usage": "可用于雷达或自瞄的多模态融合（可见光+热红外），提升夜间或低光照条件下的目标检测鲁棒性。",
           "task_id": "radar",
           "task": "雷达全场感知与标记",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.31993",
+        "arxiv_id": "2606.31993",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "OopsieVerse: A Safety Benchmark with Damage-Aware Simulation for Robot Manipulation",
+        "title_zh": "OopsieVerse: 面向机器人操作且具有损伤感知仿真的安全基准",
+        "abstract_en": "While robotic manipulation capabilities have advanced rapidly, physical safety remains a major barrier to deploying household robots: task success is insufficient if the robot damages itself or its surroundings. Simulation offers a harm-free alternative to costly and dangerous real-world training and evaluation, yet existing simulators lack general mechanisms to detect, quantify, and represent damage. To address this gap, we introduce OOPSIEVERSE, a unified simulation framework and benchmark for damage-aware household manipulation. OOPSIEVERSE provides damage as an explicit, physically-grounded, and taskagnostic signal by converting sources such as contact forces, temperature changes, and liquid interactions into corresponding mechanical, thermal or fluid damage. OOPSIEVERSE comprises two core elements: (1) DAMAGESIM, a simulator-agnostic framework for detecting and quantifying damage during navigation and manipulation, and (2) a suite of household tasks designed to evaluate common damage modes and distinguish between task completion and safe execution. We demonstrate the generality of our framework by instantiating DAMAGESIM in two simulators with different physics backends, OmniGibson (Nvidia Omniverse) and RoboCasa (MuJoCo). We further showcase the utility of OOPSIEVERSE across multiple use cases, including (1) guiding safer demonstration collection via real-time damage feedback, (2) learning safer manipulation policies through damage-conditioned imitation learning and reinforcement learning, (3) benchmarking the safety of state-of-the-art Vision Language Action policies, and (4) improving real-world safety of sim-to-real transferred policies. Together, our results highlight the potential of OOPSIEVERSE as an open-source foundation for systematic, scalable research on safe robot manipulation. For code and more information, please refer to https://robin-lab.cs.utexas.edu/oopsieverse/",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Arnav Balaji",
+          "Arpit Bahety",
+          "Sriniket Ambatipudi",
+          "Daniel Lam",
+          "Junhong Xu",
+          "Roberto Martín-Martín"
+        ],
+        "url": "https://arxiv.org/abs/2606.31993v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.31993",
+        "html_url": "https://arxiv.org/abs/2606.31993",
+        "published_at": "2026-06-30T17:30:05.000Z",
+        "upvotes": 0,
+        "heat": 2248.163686388889,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl",
+          "sim"
+        ],
+        "image": "",
+        "comment": "Project website: https://robin-lab.cs.utexas.edu/oopsieverse/. The first two authors contributed equally; order decided by dice roll. Accepted to Robotics: Science and Systems (RSS 2026)",
+        "conf": "RSS",
+        "confYear": 2026,
+        "confTag": "RSS 2026",
+        "confWeight": 5,
+        "confVision": false,
+        "relevance": 16,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于工程视觉装配中的损伤感知仿真，提升安全训练，但非直接任务。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
           "value": "mid"
         }
       },
@@ -570,6 +1330,196 @@
         }
       },
       {
+        "id": "arxiv:2606.31912",
+        "arxiv_id": "2606.31912",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Learning Locomotion on Discrete Terrain via Minimal Proximity Sensing",
+        "title_zh": "通过最小接近感知学习离散地形上的运动",
+        "abstract_en": "Learning-based control has revolutionized dynamic locomotion, yet navigating unstructured terrain remains limited by a robot's incomplete awareness of imminent ground contact. While global perception systems such as LiDARs and depth cameras provide environmental context, they are frequently plagued by latencies, occlusions, and the high computational cost of dense geometric reconstruction. On the other hand, proprioceptive feedback is purely reactive, initiating corrections only after impact has occurred. This work explores embedding a minimal suite of low-cost, high-frequency infrared proximity sensors directly into the feet of a quadrupedal robot. These sensors provide \"pre-contact\" feedback that is robust to self-occlusions and significantly less computationally demanding than conventional vision-based pipelines. By integrating these localized signals into a reinforcement learning framework, we enable the robot to anticipate terrain discontinuities such as gaps and stepping stones that are problematic for traditional perception stacks due to occlusions or state estimation drift. We demonstrate that such sparse, near-field sensing can be reliably modeled in simulation and transferred to the real world with high fidelity. Experimental results show that local proximity sensing substantially improves traversal robustness over discrete terrain and offers a low-power, low-latency alternative or complement to complex global perception suites in unpredictable environments. For more information about results and methods, please see the project website: https://sites.google.com/view/foot-tof/home.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Jiale Fan",
+          "Connor Flynn",
+          "Tianao Xu",
+          "Junzhe He",
+          "Andrei Cramariuc",
+          "Marco Hutter",
+          "Robert Baines"
+        ],
+        "url": "https://arxiv.org/abs/2606.31912v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.31912",
+        "html_url": "https://arxiv.org/abs/2606.31912",
+        "published_at": "2026-06-30T16:16:37.000Z",
+        "upvotes": 0,
+        "heat": 2246.9392419444443,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl",
+          "radar"
+        ],
+        "image": "",
+        "comment": "Accepted at IROS 2026",
+        "conf": "IROS",
+        "confYear": 2026,
+        "confTag": "IROS 2026",
+        "confWeight": 5,
+        "confVision": false,
+        "relevance": 11,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于哨兵导航中的地形感知，通过低成本红外传感器快速检测地面接触，辅助跨越复杂地形（如飞坡、高地），减少对高成本全局感知的依赖。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.31909",
+        "arxiv_id": "2606.31909",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "CoDex: Learning Compositional Dexterous Functional Manipulation without Demonstrations",
+        "title_zh": "CoDex: 无需演示学习组合式灵巧功能性操作",
+        "abstract_en": "In this work, we study Compositional Dexterous Functional Object Manipulation (CD-FOM): tasks such as aiming and actuating a spray bottle on a plant or a glue gun on wood, which require both actuating an object's internal mechanism and controlling its pose to apply the object's function to the environment. These tasks pose significant challenges for robots due to the demanding integration of semantic understanding of the object's function, actuation mode, and application area with intricate physical dexterity to manage grasp stability, movement trajectory, and actuation. We introduce CoDex, a zero-demonstration framework that autonomously discovers CD-FOM manipulation strategies. CoDex uses vision-language models (VLMs) to infer semantic constraints from the task and scene. These constraints guide analytic constrained optimization to generate a short list of functional grasp candidates that can be efficiently refined with reinforcement learning to generate full grasp-move-actuate policies transferable from simulation to the real world. We evaluate CoDex on a 7-DoF robot arm with a 16-DoF multi-fingered hand across six CD-FOM tasks involving previously unseen objects with internal mechanisms, including spray bottles, hot glue guns, air dusters, flashlights, and pepper grinders, and their application to unseen target objects, showcasing its ability to autonomously discover and execute complex, physically viable dexterous behaviors without human demonstrations. More information at https://robin-lab.cs.utexas.edu/CoDex/.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Bowen Jiang",
+          "William Painter Reger",
+          "Roberto Martin-Martin"
+        ],
+        "url": "https://arxiv.org/abs/2606.31909v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.31909",
+        "html_url": "https://arxiv.org/abs/2606.31909",
+        "published_at": "2026-06-30T16:12:30.000Z",
+        "upvotes": 0,
+        "heat": 2246.8706308333335,
+        "featured": false,
+        "categories": [
+          "aim",
+          "slam",
+          "rl"
+        ],
+        "image": "",
+        "comment": "IEEE International Conference on Robotics and Automation (ICRA) 2026. Project page: https://robin-lab.cs.utexas.edu/CoDex/",
+        "conf": "ICRA",
+        "confYear": 2026,
+        "confTag": "ICRA 2026",
+        "confWeight": 5,
+        "confVision": false,
+        "relevance": 13,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于工程机器人装配能量单元任务，学习如何抓取并操作物体（如科技核心），实现精准装配。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "high"
+        }
+      },
+      {
+        "id": "arxiv:2606.30875",
+        "arxiv_id": "2606.30875",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.AI",
+          "cs.LG"
+        ],
+        "title_en": "The Label Imitation Game: Turing Test Network for Zero-Shot Pseudo-Label Pruning",
+        "title_zh": "标签模仿游戏: 用于零样本伪标签剪枝的图灵测试网络",
+        "abstract_en": "Foundation model pseudo-labeling - labeling data strictly via zero-shot inference - enables massive scale, but performance is undermined by hallucinations that evade standard thresholds. To eliminate these errors, we introduce the Turing-inspired Label Imitation Game (LIG), a framework that formalizes pseudo-label pruning as an adversarial interrogation. Rather than filtering labels via isolated thresholds, we use the LIG to train a Turing Test Network (TTN), a task-agnostic \"judge\" that evaluates candidate pseudo-labels within a dataset-wide context. Experiments across four diverse datasets demonstrate the TTN's robustness, consistently enhancing label accuracy for three state-of-the-art vision-language models without costly supervision or retraining. Crucially, we demonstrate that learned semantic-contextual logic is a robust alternative to spatial-geometric verification, enabling a unique zero-shot task transfer capability - a TTN trained strictly on image classification datasets can effectively prune complex object detection pseudo-labels. This pruning yields F1-score gains of 28% for the worst-performing baseline categories and 44% with task-specific fine-tuning. Significantly, we also observe Category Revival, where the TTN pruning \"detoxifies\" the training signal for downstream models and enables them to recover from zero recall on transfer-vulnerable classes. The pre-trained TTN models and code are available at https://github.com/voxel51/ttn.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Brent A. Griffin",
+          "Jason J. Corso"
+        ],
+        "url": "https://arxiv.org/abs/2606.30875v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.30875",
+        "html_url": "https://arxiv.org/abs/2606.30875",
+        "published_at": "2026-06-29T20:06:58.000Z",
+        "upvotes": 0,
+        "heat": 2246.7783991666665,
+        "featured": false,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "ECCV 2026",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 9,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于自瞄或雷达中的伪标签筛选，提升零样本标注质量，但需改造以适应装甲板或机器人检测场景。",
+          "task_id": "autoaim",
+          "task": "自瞄 / 装甲板识别",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.31807",
+        "arxiv_id": "2606.31807",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Reinforcement Learning-Based Control for an Inline Skating Humanoid Robot",
+        "title_zh": "基于强化学习的直排轮滑人形机器人控制",
+        "abstract_en": "As humanoid robots become increasingly dynamic, coupling them with reinforcement learning offers a promising approach to solving the complex, underactuated mechanics of passive inline skating. Equipping a humanoid robot with passive inline skating wheels presents an opportunity to combine the versatile agility of humanoids with the high-speed, energy-efficient locomotion strategies utilized by human skaters. In this paper, we train and deploy a reinforcement learning control policy that enables novel locomotion strategies for a humanoid robot modified to equip consumer inline skates instead of conventional feet. Unlike previous work limited to quadrupedal robots or actively driven wheels, our system allows for precise 6-DoF control of the skates to execute dynamic, edge-driven propulsion strategies. Our skating strategies emerge entirely from our reward structure, without reliance on human motion data, imitation learning, or kinematic priors. We overcome the inherent instability of passive wheels and simulation contact artifacts by utilizing different geometric wheel models (spherical and ellipsoidal) during training and validation, along with a custom success-based command curriculum and a specialized rolling reward. Consequently, our policy demonstrates up to a 50% reduction in Cost of Transport (CoT) compared to standard walking gaits. The resulting policy successfully transfers zero-shot to the physical Booster T1 hardware. Real-world deployments demonstrate dynamic balance, the ability to reject active physical perturbations, and agile locomotion strategies capable of turning at speed. A video of our results can be found at https://www.youtube.com/watch?v=-_APcOS7uFo.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Ethan Marot",
+          "Thomas Bi",
+          "Clemens Schwarke",
+          "Victor Klemm",
+          "Marco Hutter",
+          "Raffaello D'Andrea"
+        ],
+        "url": "https://arxiv.org/abs/2606.31807v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.31807",
+        "html_url": "https://arxiv.org/abs/2606.31807",
+        "published_at": "2026-06-30T15:25:06.000Z",
+        "upvotes": 0,
+        "heat": 2246.0806305555557,
+        "featured": false,
+        "categories": [
+          "slam",
+          "planning",
+          "rl"
+        ],
+        "image": "",
+        "comment": "8 pages, 7 figures, 7 tables, Accepted at IROS 2026",
+        "conf": "IROS",
+        "confYear": 2026,
+        "confTag": "IROS 2026",
+        "confWeight": 5,
+        "confVision": false,
+        "relevance": 14,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于哨兵导航中的运动控制，但直排轮滑与轮式底盘差异大，需大量改造，关联较弱。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "low"
+        }
+      },
+      {
         "id": "arxiv:2606.29941",
         "arxiv_id": "2606.29941",
         "source": "arXiv",
@@ -616,6 +1566,52 @@
           "usage": "可用于工程机器人抓取能量单元时的触觉感知，通过视觉-触觉策略实现更精细的接触操作。",
           "task_id": "engineer",
           "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.30777",
+        "arxiv_id": "2606.30777",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Unveiling Transferability in Trajectory Prediction via Latent Scene Embeddings",
+        "title_zh": "通过潜在场景嵌入揭示轨迹预测中的可迁移性",
+        "abstract_en": "The growing availability of trajectory datasets has fueled major advances in data-driven motion prediction. Yet, models trained on one dataset often fail to generalize beyond their training domain as a result of differences in scene layouts, agent behaviors, and sensing conditions. A framework that learns latent representations of datasets and quantifies their similarity using distributional metrics is presented. This large-scale study covers 24 major datasets, including the most widely used motion-prediction benchmarks, and shows that the resulting transferability scores strongly correlate with cross-dataset model performance. The results provide practical guidance for dataset selection, pretraining, and large-scale foundation models for motion prediction, paving the way toward more generalizable and robust predictive systems.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Theodor Westny",
+          "David Axelsson",
+          "Björn Olofsson",
+          "Erik Frisk"
+        ],
+        "url": "https://arxiv.org/abs/2606.30777v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.30777",
+        "html_url": "https://arxiv.org/abs/2606.30777",
+        "published_at": "2026-06-29T18:07:34.000Z",
+        "upvotes": 0,
+        "heat": 2244.7883991666667,
+        "featured": false,
+        "categories": [
+          "slam",
+          "radar"
+        ],
+        "image": "",
+        "comment": "Accepted to ECCV 2026",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 6,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于轨迹预测模型的迁移学习，帮助自瞄或哨兵在不同场地间泛化，但需结合具体任务数据。",
+          "task_id": "autoaim",
+          "task": "自瞄 / 装甲板识别",
           "value": "mid"
         }
       },
@@ -713,6 +1709,101 @@
         }
       },
       {
+        "id": "arxiv:2606.31329",
+        "arxiv_id": "2606.31329",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.AI"
+        ],
+        "title_en": "3D HAMSTER: Bridging Planning and Control in Hierarchical Vision Language Action Models through 3D Trajectory Guidance",
+        "title_zh": "3D HAMSTER：通过3D轨迹引导在分层视觉语言动作模型中桥接规划与控制",
+        "abstract_en": "Hierarchical Vision-Language-Action (VLA) models decouple high-level planning from low-level control to improve generalization in robot manipulation. Recent work in this paradigm uses 2D end-effector trajectories predicted by a Vision-Language Model (VLM) as explicit guidance for a downstream policy. However, state-of-the-art low-level policies operate in 3D metric space on point clouds, and feeding them 2D guidance that lacks depth forces each waypoint to be assigned the depth of whatever scene surface lies beneath it, producing geometrically distorted trajectories. We propose 3D HAMSTER, a hierarchical framework that closes this gap by having the planner directly output metrically reliable 3D trajectories. We augment a VLM with a dedicated depth encoder and a dense depth reconstruction objective to predict 3D waypoint sequences, which are directly integrated into a pointcloudbased low-level policy. Across 3D trajectory prediction, simulation, and real-world manipulation, 3D HAMSTER consistently outperforms proprietary VLMs and 2D-guided baselines, with the largest gains under appearance-altering shifts and unseen language, spatial, and visual conditions. The project page is available at https://davian-robotics.github.io/3D_HAMSTER/.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Dongyoon Hwang",
+          "Byungkun Lee",
+          "Dongjin Kim",
+          "Hyojin Jang",
+          "Hoiyeong Jin",
+          "Jueun Mun",
+          "Minho Park",
+          "Hojoon Lee"
+        ],
+        "url": "https://arxiv.org/abs/2606.31329v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.31329",
+        "html_url": "https://arxiv.org/abs/2606.31329",
+        "published_at": "2026-06-30T08:31:35.000Z",
+        "upvotes": 0,
+        "heat": 2239.1886858333332,
+        "featured": false,
+        "categories": [
+          "aim",
+          "sim"
+        ],
+        "image": "",
+        "comment": "Published in IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2026. Code: https://github.com/DAVIAN-Robotics/3D_HAMSTER. Project page: https://davian-robotics.github.io/3D_HAMSTER/",
+        "conf": "IROS",
+        "confYear": 2026,
+        "confTag": "IROS 2026",
+        "confWeight": 5,
+        "confVision": false,
+        "relevance": 11,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于工程机器人装配任务，通过3D轨迹引导实现精准抓取与放置，提升操作成功率。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "high"
+        }
+      },
+      {
+        "id": "arxiv:2606.31158",
+        "arxiv_id": "2606.31158",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.AI"
+        ],
+        "title_en": "LLM-Powered Interactive Robotic Action Synthesis from Multimodal Speech, Gestures, and Music",
+        "title_zh": "基于大语言模型的交互式机器人动作合成：融合多模态语音、手势与音乐",
+        "abstract_en": "The quest for intuitive and natural human-robot interaction (HRI) remains a significant challenge in robotics. Traditional methods often rely on rigid, pre-programmed commands that limit the robot's expressiveness and adaptability. This paper introduces a novel framework that leverages the reasoning capabilities of Large Language Models (LLMs) to synthesize complex robotic actions from a rich tapestry of multimodal human inputs: natural speech, hand gestures, and music/sound beats. Our system architecture integrates a speech transcription model, a gesture recognition module, and a signal processing pipeline for beat detection. These processed inputs are contextualized using prompt templates and fed into a LLM. The LLM, informed by a predefined robot action space, reasons over the combined inputs to generate a coherent sequence of actions. This sequence is dispatched to an action queue for execution on a quadruped robot over ROS. The framework has ability to interpret and fuse semantic commands from speech, deictic information from gestures, and rhythmic cues from music. This work represents a step towards creating robots that can interact with humans in a more fluid, creative, and context-aware manner.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Snehasis Banerjee",
+          "Ranjan Dasgupta"
+        ],
+        "url": "https://arxiv.org/abs/2606.31158v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.31158",
+        "html_url": "https://arxiv.org/abs/2606.31158",
+        "published_at": "2026-06-30T05:35:26.000Z",
+        "upvotes": 0,
+        "heat": 2236.2528525,
+        "featured": false,
+        "categories": [
+          "other"
+        ],
+        "image": "",
+        "comment": "IROS 2025 Workshop on Action and Interaction: Humans and Robots in Collaboration",
+        "conf": "IROS",
+        "confYear": 2025,
+        "confTag": "IROS 2025",
+        "confWeight": 5,
+        "confVision": false,
+        "relevance": 9,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "与RoboMaster比赛关联很弱，主要用于人机交互，不涉及战斗或任务执行。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
         "id": "arxiv:2606.30575",
         "arxiv_id": "2606.30575",
         "source": "arXiv",
@@ -754,6 +1845,55 @@
           "usage": "可用于哨兵导航中的路径规划，考虑风险因素（如障碍物、电量）进行自适应路径调整。",
           "task_id": "sentry",
           "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.30937",
+        "arxiv_id": "2606.30937",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "No Adaptation Without Observation: Observability-Constrained Test-Time Prompt Tuning for LiDAR Semantic Segmentation",
+        "title_zh": "无观测则无自适应：面向LiDAR语义分割的可观测性约束测试时提示调优",
+        "abstract_en": "LiDAR semantic segmentation often degrades under real-world deployment due to evolving sensing conditions, while collecting new annotations for retraining is impractical. Test-time adaptation (TTA) updates model parameters online using pseudo-label supervision, but directly applying standard TTA strategies to LiDAR data is challenging. Because pseudo-label reliability is spatially heteroscedastic under range-dependent sparsity and occlusion, uniform updates on globally shared parameters can inject unstable gradients and destabilize adaptation. We propose a geometry-constrained test-time prompt tuning framework for LiDAR semantic segmentation. Our method estimates per-location sensing reliability from depth-consistent beam terminations and neighborhood support, and uses it to reweight spatial supervision. Adaptation is confined to lightweight prompt adapters inserted into a frozen backbone, with spatial gating to prevent unreliable regions from perturbing globally shared representations. A temporally smoothed prototype alignment strategy further stabilizes online updates by accumulating reliable semantic evidence over time. Experiments on standard LiDAR benchmarks demonstrate improved adaptation stability and segmentation performance under deployment variations without additional annotations.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Linlian Jiang",
+          "Wentao Ju",
+          "Sadman Rakib Pinon",
+          "Jianwei Xian",
+          "Zhixiang Chi",
+          "Xinxin Zuo",
+          "Yang Wang"
+        ],
+        "url": "https://arxiv.org/abs/2606.30937v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.30937",
+        "html_url": "https://arxiv.org/abs/2606.30937",
+        "published_at": "2026-06-29T21:40:10.000Z",
+        "upvotes": 0,
+        "heat": 2228.3317325,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl"
+        ],
+        "image": "",
+        "comment": "IROS 2026",
+        "conf": "IROS",
+        "confYear": 2026,
+        "confTag": "IROS 2026",
+        "confWeight": 5,
+        "confVision": false,
+        "relevance": 5,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于雷达或哨兵中的LiDAR语义分割，通过测试时自适应应对不同场地环境，提升感知鲁棒性。",
+          "task_id": "radar",
+          "task": "雷达全场感知与标记",
           "value": "mid"
         }
       },
@@ -899,6 +2039,55 @@
           "usage": "可用于哨兵导航中的实时建图与定位，提升在复杂地形下的位姿估计精度和闭环校正能力。",
           "task_id": "sentry",
           "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.30698",
+        "arxiv_id": "2606.30698",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Vision-Language Procedural Reasoning for Context-Aware Reward Modeling of Robotic Endovascular Guidewire Navigation",
+        "title_zh": "视觉-语言程序化推理：用于机器人血管内导丝导航的上下文感知奖励建模",
+        "abstract_en": "Robotic-assisted endovascular interventions demand accurate, stable, and context-aware guidewire navigation in complex and patient-specific vascular anatomies. Despite recent advances in robotic precision and learning-based control, existing autonomous navigation methods remain limited by their reliance on static reward functions and the lack of explicit procedural reasoning regarding anatomical context and task progression. To address these challenges, this paper proposes a vision-language procedural reasoning (VL-PR) framework for autonomous guidewire navigation. The framework integrates a multimodal large language model (MLLM) as a procedural reasoning module that interprets real-time visual observations to infer high-level navigation contexts. Instead of generating low-level control commands, the inferred procedural insights enable context-aware reward adaptation by dynamically adjusting the importance of reward components across different navigation phases. This approach allows a single policy to resolve competing objectives and handle complex transitions while preserving a consistent global task goal. Experiments on a physical robotic platform across diverse vascular scenarios demonstrate enhanced task reliability and streamlined navigational efficiency, highlighting the advantages over static-reward methods and offering a scalable solution for complex and multi-task robotic endovascular procedures.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Wentong Tian",
+          "Jiyuan Zhao",
+          "Tianliang Yao",
+          "Yuxiang Fan",
+          "Zhengyu Shi",
+          "Dong Liu",
+          "Peng Qi"
+        ],
+        "url": "https://arxiv.org/abs/2606.30698v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.30698",
+        "html_url": "https://arxiv.org/abs/2606.30698",
+        "published_at": "2026-06-29T07:35:20.000Z",
+        "upvotes": 0,
+        "heat": 2214.251184722222,
+        "featured": false,
+        "categories": [
+          "aim",
+          "nav"
+        ],
+        "image": "",
+        "comment": "This paper has been accepted by IEEE/RSJ IROS 2026. 7 pages, 4 figures, 2 tables",
+        "conf": "IROS",
+        "confYear": 2026,
+        "confTag": "IROS 2026",
+        "confWeight": 5,
+        "confVision": false,
+        "relevance": 13,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于飞镖瞄准中的移动目标预测与奖励建模，但需改造为弹道补偿场景。",
+          "task_id": "dart",
+          "task": "飞镖目标瞄准",
           "value": "mid"
         }
       },
@@ -1225,6 +2414,48 @@
           "usage": "可用于自瞄或能量机关中的目标检测后处理，通过负引导过滤误检，但需改造为连续控制场景，关联较弱。",
           "task_id": "autoaim",
           "task": "自瞄 / 装甲板识别",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2606.31029",
+        "arxiv_id": "2606.31029",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "TerraDiT-$Ω$: Unified Spatial Control for Satellite Image Synthesis with Any Geospatial Primitive",
+        "title_zh": "",
+        "abstract_en": "Generative models have achieved remarkable progress, yet applying them to satellite imagery remains challenging. Unlike natural imagery, satellite scenes are structured by spatially complex and semantically distinct geometries. Prior work addresses this complexity by adapting natural image frameworks using dense rasters or sparse prompts, trading off annotation cost and fidelity while breaking compatibility with vector primitives commonly used to represent geographic information. We introduce TerraDiT-$Ω$, a unified spatial control framework that generates satellite imagery directly from any native geospatial primitive. By jointly leveraging precise annotations (polygons, polylines) and coarser ones (bounding boxes, points), the model supports controllable layouts across varying annotation budgets, broadening applicability to design tasks such as urban planning while remaining naturally compatible with end-to-end GeoAI workflows. To effectively leverage these primitives during generation, we propose Geometry-Aware Local Attention, a conditioning mechanism that injects explicit geometric cues into the attention space. Across all conditioning formats, our approach consistently outperforms both dense-control and sparse-control baselines. Furthermore, this flexibility enables controllable synthetic data augmentation using a single generative model, improving downstream performance on land-cover segmentation, object detection, road graph extraction, and scene classification. Code, data, and weights are available at https://github.com/mvrl/TerraDiT.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Brian Wei",
+          "Srikumar Sastry",
+          "Daniel Cher",
+          "Eric Xing",
+          "Nathan Jacobs"
+        ],
+        "url": "https://arxiv.org/abs/2606.31029v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.31029",
+        "html_url": "https://arxiv.org/abs/2606.31029",
+        "published_at": "2026-06-30T01:56:41.000Z",
+        "upvotes": 1,
+        "heat": 2182.6070102777776,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl"
+        ],
+        "image": "",
+        "comment": "European Conference on Computer Vision 2026",
+        "relevance": 4,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "与RoboMaster比赛无关，卫星图像合成不适用。",
+          "task_id": "",
+          "task": "",
           "value": "low"
         }
       },
@@ -1620,6 +2851,223 @@
         }
       },
       {
+        "id": "arxiv:2606.32034",
+        "arxiv_id": "2606.32034",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.AI",
+          "cs.CL"
+        ],
+        "title_en": "QVal: Cheaply Evaluating Dense Supervision Signals for Long-Horizon LLM Agents",
+        "title_zh": "",
+        "abstract_en": "LLM agents increasingly act over long horizons, where a single trajectory can contain hundreds or thousands of actions. In these settings, outcome-only rewards provide too sparse guidance, failing to inform the model about the goodness of intermediate actions. Dense supervision methods aim to solve this problem by scoring intermediate steps, from intrinsic confidence to self-distillation and embedding similarities. However, it is common practice to evaluate them by measuring the downstream performance of a training pipeline that integrates them. This is expensive, conflates supervision quality with training engineering confounders, and renders different methodological families requiring distinct training setups incomparable. As a result, dense supervision methods are rarely benchmarked on common ground. We introduce QVal, a training-free testbed for directly evaluating dense supervision signals. Given a state-action pair, QVal measures how well a method's score is Q-aligned: whether it orders actions according to the Q-values of a strong reference-policy. This lets us compare signals before any training run and separate signal quality from other engineering choices. We instantiate QVal as QVal-v1.0, benchmarking 21 dense supervision methods across four diverse environments and seven methodological families, with over 1.2K evaluation experiments across six open-weight model backbones. We find that simple prompting baselines consistently outperform recent dense supervision methods from the literature, and that performance clusters strongly by family. These findings hold across model sizes, environments, and observation modalities. QVal is designed to be easily extensible to new environments and methods, enabling researchers to iterate on dense supervision methods before any training run.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Sergio Hernández-Gutiérrez",
+          "Matteo Merler",
+          "Ilze Amanda Auzina",
+          "Joschka Strüber",
+          "Ameya Prabhu",
+          "Matthias Bethge"
+        ],
+        "url": "https://arxiv.org/abs/2606.32034v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.32034",
+        "html_url": "https://arxiv.org/abs/2606.32034",
+        "published_at": "2026-06-30T17:58:23.000Z",
+        "upvotes": 0,
+        "heat": 2148.6353422222223,
+        "featured": false,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "10 pages, 5 figures in main text; 48 pages, 6 figures with appendix",
+        "relevance": 0,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于评估多机协同策略中长序列动作的密集奖励信号，但需适配机器人环境。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.32028",
+        "arxiv_id": "2606.32028",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "DVG-WM: Disentangled Video Generation Enables Efficient Embodied World Model for Robotic Manipulation",
+        "title_zh": "",
+        "abstract_en": "Video-based embodied world models provide an appealing substrate for robotic manipulation by predicting future states, yet current approaches remain limited by a fundamental entanglement: accurately modeling dynamics typically requires low-level temporal reasoning, while producing high-resolution frames demands expansive visual synthesis according to high-level semantics. This entanglement results in slow inference speed for iterative planning or too coarse predictions to retain contact-rich details. To solve this dilemma, we present Disentangled Video Generation World Model (DVG-WM), an efficient framework that explicitly decomposes world modeling into dynamics learning and visual synthesis. Conditioned on an initial observation and a language instruction, our model first generates a plausible sequence of intermediate visual states to preview the physical interaction and refines them to obtain high-fidelity videos. Furthermore, an efficient cascading mechanism is proposed, where DVG-WM uses flow matching to directly map the dynamics to video latents, and introduces a latent degradation mechanism to regenerate contact-rich details. Experiments on LIBERO and real-world platforms demonstrate improved video quality with up to 3.97 times acceleration, validating that disentangled video generation can be an efficient embodied world model for robotic manipulation.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Ziyu Shan",
+          "Zhenyu Wu",
+          "Xiaofeng Wang",
+          "Zheng Zhu",
+          "Ziwei Wang"
+        ],
+        "url": "https://arxiv.org/abs/2606.32028v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.32028",
+        "html_url": "https://arxiv.org/abs/2606.32028",
+        "published_at": "2026-06-30T17:54:32.000Z",
+        "upvotes": 0,
+        "heat": 2148.5711863888887,
+        "featured": false,
+        "categories": [
+          "other"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 3,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于仿真环境中的世界模型构建，预测未来状态以辅助规划，但需简化以适配实时性。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.32027",
+        "arxiv_id": "2606.32027",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.AI",
+          "cs.LG"
+        ],
+        "title_en": "Freeform Preference Learning for Robotic Manipulation",
+        "title_zh": "",
+        "abstract_en": "Reward design remains a central bottleneck for autonomous robot policy improvement, especially in long-horizon manipulation tasks where sparse success labels provide too little signal and binary preferences collapse many competing notions of quality into one ambiguous signal. We introduce Freeform Preference Learning (FPL), a method for learning robot policies from freeform human preferences. Rather than asking annotators which of two trajectories is better overall, FPL lets them define natural-language preference axes, such as speed, safety, quality of placement, or carefulness, and provide pairwise preferences along each axis. These annotations are used to learn a language-conditioned reward model that maps a trajectory and preference label to an axis-specific reward. We use this model to train a reward-conditioned policy that optimizes across the multiple human-specified dimensions. Across four real-world and two simulated long-horizon manipulation tasks, FPL improves over sparse-reward and binary-preference methods by 38 percentage points. Beyond improved performance, FPL learns dense progress signals without explicit subtask segmentation, shows compositionality of behavior not present in the data, and allows users to steer the policy towards different behaviors at test time without retraining. Blog post with videos available at https://freeform-pl.github.io/fpl.website/",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Marcel Torne",
+          "Anubha Mahajan",
+          "Abhijnya Bhat",
+          "Chelsea Finn"
+        ],
+        "url": "https://arxiv.org/abs/2606.32027v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.32027",
+        "html_url": "https://arxiv.org/abs/2606.32027",
+        "published_at": "2026-06-30T17:54:02.000Z",
+        "upvotes": 0,
+        "heat": 2148.5628530555555,
+        "featured": false,
+        "categories": [
+          "slam"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 4,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于工程装配或哨兵决策中的奖励设计，通过自然语言偏好学习复杂任务奖励。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.32017",
+        "arxiv_id": "2606.32017",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.AI"
+        ],
+        "title_en": "TRIAGE: Role-Typed Credit Assignment for Agentic Reinforcement Learning",
+        "title_zh": "",
+        "abstract_en": "Agentic reinforcement learning requires assigning credit to environment-facing actions such as searches, clicks, edits, navigation commands, and object interactions. Standard GRPO uses the final verifier outcome as a uniform advantage over all action tokens. This outcome signal is useful but structurally incomplete: it punishes useful exploration in failed rollouts and reinforces redundant or regressive actions in successful rollouts. We propose TRIAGE, a role-typed credit assignment framework that adds a semantic role axis to outcome credit. A structured judge classifies each segment as decisive progress, useful exploration, no-progress infrastructure, or regression, and a fixed role-conditioned rule maps these labels to bounded segment-level process rewards. This keeps verifier outcomes as the source of optimization direction while correcting the two main blind spots of outcome-only credit. We further show that role-conditioned credit is the optimal segment-level correction expressible from role labels alone -- a projection of the per-segment advantage residual onto the role variable -- so that the fixed role constants reduce advantage estimation error whenever the judge is reliable, and we connect this to lower-variance policy gradients. Across ALFWorld, Search-QA, and WebShop, TRIAGE improves success rates over GRPO for two policy models and outperforms both a scalar judge-derived process reward and an outcome-supervised shared-backbone value baseline. Ablations show that the gain comes from role typing rather than merely adding dense rewards: reliable detection of regression inside successful trajectories is the dominant contributor, while exploration credit provides a consistent secondary gain; on completed ALFWorld and WebShop rollouts, TRIAGE also reduces environment-facing turns by an additional $10.4\\%$ and $14.8\\%$ relative to GRPO.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Yuanda Xu",
+          "Zhengze Zhou",
+          "Hejian Sang",
+          "Xiaomin Li",
+          "Jiaxin Zhang",
+          "Xinchen Du",
+          "Zhipeng Wang",
+          "Alborz Geramifard"
+        ],
+        "url": "https://arxiv.org/abs/2606.32017v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.32017",
+        "html_url": "https://arxiv.org/abs/2606.32017",
+        "published_at": "2026-06-30T17:48:07.000Z",
+        "upvotes": 0,
+        "heat": 2148.464231111111,
+        "featured": false,
+        "categories": [
+          "rl"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 4,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于多机协同中强化学习的信用分配，区分不同角色动作的贡献。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.32009",
+        "arxiv_id": "2606.32009",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Human-as-Humanoid: Enabling Zero-Shot Humanoid Learning from Ego-Exo Human Videos with Human-Aligned Embodiments",
+        "title_zh": "",
+        "abstract_en": "Vision-language-action (VLA) models across robot embodiments require high-quality observation--action supervision to learn deployable action distributions, yet scaling such robot data remains difficult, especially for high-DoF humanoids. Teleoperation provides controller-aligned supervision, while human egocentric videos capture diverse bimanual manipulation but do not directly provide executable robot actions. We introduce Human-as-Humanoid, a human-to-humanoid supervision framework that enables near-real-time human-centric action generation, making human demonstrations usable for high-DoF humanoid VLA training by jointly aligning the robot embodiment, the sensing setup, and the action-label interface. Built on PrimeU, a human-aligned 60-DoF upper-body humanoid, Human-as-Humanoid uses synchronized ego-exo videos to pair deployment-aligned egocentric observations with exocentric motion recovery, retargets the recovered human motion through staged Inverse Kinematics (IK) into controller-aligned 60-DoF action chunks, and trains the VLA model with Forward Kinematics (FK)-aware supervision to preserve wrist and fingertip task-space geometry. This converts large-scale human demonstrations from visual observations into executable observation--action supervision for the target humanoid. Experiments validate the conversion chain at the motion-recovery, robot-action-space, and real-robot deployment levels. Human-as-Humanoid yields a 4.8--7.2x raw demonstration-throughput gain over humanoid teleoperation in our data-collection analysis, and on several downstream tasks, policies post-trained only with the converted human labels generalize to real-robot deployment without target-task robot demonstrations. The official project website is available at https://zgc-embodyai.github.io/Human-as-Humanoid.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Xiaopeng Lin",
+          "Ruoqi Yang",
+          "Shijie Lian",
+          "Zhaolong Shen",
+          "Bin Yu",
+          "Changti Wu",
+          "Haibao Liu",
+          "Yuxiang Zhang"
+        ],
+        "url": "https://arxiv.org/abs/2606.32009v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.32009",
+        "html_url": "https://arxiv.org/abs/2606.32009",
+        "published_at": "2026-06-30T17:44:16.000Z",
+        "upvotes": 0,
+        "heat": 2148.400075277778,
+        "featured": false,
+        "categories": [
+          "aim",
+          "radar"
+        ],
+        "image": "",
+        "comment": "20 pages, 9 figures",
+        "relevance": 4,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于工程装配的模仿学习，从人类演示中学习抓取和装配动作。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
+      },
+      {
         "id": "arxiv:2606.27755",
         "arxiv_id": "2606.27755",
         "source": "arXiv",
@@ -1661,6 +3109,47 @@
           "usage": "可用于工程视觉装配任务中，通过冗余性分析精简VLA模型，提升机械臂抓取与装配的实时性。",
           "task_id": "engineer",
           "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.31958",
+        "arxiv_id": "2606.31958",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Adapting Generalist Robot Policies with Semantic Reinforcement Learning",
+        "title_zh": "",
+        "abstract_en": "Generalist robot policies learn a diverse repertoire of behaviors from large-scale pretraining. In principle, this makes them excellent priors for downstream adaptation via reinforcement learning (RL). In practice, however, standard RL methods leveraging this prior optimize directly over robot actions, requiring the base policy's action distribution to be close to that of a performant policy from the start. This assumption breaks down for complex or long-horizon tasks that fall outside the pretraining distribution. Our key insight is that, for sufficiently expressive generalist policies, language prompts are an effective alternative space for learning to solve such tasks: modulating language inputs elicits skills already within the policy's repertoire, which can be composed to solve tasks beyond its zero-shot capabilities. We propose Semantic Action Reinforcement Learning (SARL), which learns to optimize this prompt space through online interaction, treating the generalist policy as a controllable skill prior. Importantly, leveraging pretrained skills rather than learning new ones from scratch yields structured, semantically meaningful exploration and highly efficient online improvement, and learning to modulate prompts through experience grounds them in induced real-world behaviors for robust task-solving. Across real-world settings and simulated benchmarks, we show SARL unlocks fundamentally new capabilities -- adapting VLA behavior to solve complex, long-horizon tasks -- and significantly outperforms existing approaches for improving robot behavior in deployment.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Jagdeep Singh Bhatia",
+          "Andrew Wagenmaker",
+          "William Chen",
+          "Sergey Levine"
+        ],
+        "url": "https://arxiv.org/abs/2606.31958v1",
+        "pdf_url": "https://arxiv.org/pdf/2606.31958",
+        "html_url": "https://arxiv.org/abs/2606.31958",
+        "published_at": "2026-06-30T17:00:33.000Z",
+        "upvotes": 0,
+        "heat": 2147.6714641666667,
+        "featured": false,
+        "categories": [
+          "slam",
+          "rl"
+        ],
+        "image": "",
+        "comment": "Website: https://semantic-action-rl.github.io/",
+        "relevance": 4,
+        "first_seen": "2026-07-01T05:21:59.364Z",
+        "rm": {
+          "usage": "可用于哨兵导航或自瞄策略的强化学习微调，通过语义奖励适应新任务。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
           "value": "mid"
         }
       },
@@ -3115,511 +4604,6 @@
           "task": "",
           "value": "low"
         }
-      },
-      {
-        "id": "cvf:CVPR2026:Physical Simulator In-the-Loop Video Generation",
-        "arxiv_id": "",
-        "source": "CVPR",
-        "cats": [],
-        "title_en": "Physical Simulator In-the-Loop Video Generation",
-        "title_zh": "",
-        "abstract_en": "Recent advances in diffusion-based video generation have achieved remarkable visual realism but still struggle to obey basic physical laws such as gravity, inertia, and collision. Generated objects often move inconsistently across frames, exhibit implausible dynamics, or violate physical constraints, limiting the realism and reliability of AI-generated videos. We address this gap by introducing Physical Simulator In-the-loop Video Generation (PSIVG), a novel framework that integrates a physical simulator into the video diffusion process. Starting from a template video generated by a pre-trained diffusion model, PSIVG reconstructs the 4D scene and foreground object meshes, initializes them within a physical simulator, and generates physically consistent trajectories. These simulated trajectories are then used to guide the video generator toward spatio-temporally physically coherent motion. To further improve texture consistency during object movement, we propose a Test-Time Texture Consistency Optimization (TTCO) technique that adapts text and feature embeddings based on pixel correspondences from the simulator. Comprehensive experiments demonstrate that PSIVG produces videos that better adhere to real-world physics while preserving visual quality and diversity. Project Page: https://vcai.mpi-inf.mpg.de/projects/PSIVG",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [],
-        "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Foo_Physical_Simulator_In-the-Loop_Video_Generation_CVPR_2026_paper.html",
-        "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Foo_Physical_Simulator_In-the-Loop_Video_Generation_CVPR_2026_paper.pdf",
-        "html_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Foo_Physical_Simulator_In-the-Loop_Video_Generation_CVPR_2026_paper.html",
-        "published_at": "2026-06-01T00:00:00.000Z",
-        "upvotes": 0,
-        "heat": 120,
-        "featured": false,
-        "categories": [
-          "slam",
-          "radar",
-          "sim"
-        ],
-        "image": "",
-        "comment": "Accepted to CVPR 2026",
-        "conf": "CVPR",
-        "confYear": 2026,
-        "confTag": "CVPR 2026",
-        "confWeight": 6,
-        "confVision": true,
-        "relevance": 6,
-        "first_seen": "2026-06-30T18:30:34.071Z",
-        "rm": {
-          "usage": "可用于仿真任务中，通过物理模拟器增强视频生成的物理真实性，用于生成更逼真的训练数据或数字孪生场景。",
-          "task_id": "sim",
-          "task": "仿真与 sim-to-real",
-          "value": "mid"
-        }
-      },
-      {
-        "id": "cvf:CVPR2026:ConceptPose: Training-Free Zero-Shot Object Pose Estimation ",
-        "arxiv_id": "",
-        "source": "CVPR",
-        "cats": [],
-        "title_en": "ConceptPose: Training-Free Zero-Shot Object Pose Estimation using Concept Vectors",
-        "title_zh": "",
-        "abstract_en": "Object pose estimation is a fundamental task in computer vision and robotics, yet most methods require extensive, dataset-specific training. Concurrently, large-scale vision language models show remarkable zero-shot capabilities. In this work, we bridge these two worlds by introducing ConceptPose, a framework for object pose estimation that is both training-free and model-free. ConceptPose leverages a vision-language-model (VLM) to create open-vocabulary 3D concept maps, where each point is tagged with a concept vector derived from saliency maps. By establishing robust 3D-3D correspondences across concept maps, our approach allows precise estimation of 6DoF relative pose. Without any object or dataset-specific training, our approach achieves state-of-the-art results on common zero shot relative pose estimation benchmarks, outperforming the strongest baseline by a relative 62% in average ADD(-S) score, including methods that utilize extensive dataset-specific training.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [],
-        "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Kuang_ConceptPose_Training-Free_Zero-Shot_Object_Pose_Estimation_using_Concept_Vectors_CVPR_2026_paper.html",
-        "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Kuang_ConceptPose_Training-Free_Zero-Shot_Object_Pose_Estimation_using_Concept_Vectors_CVPR_2026_paper.pdf",
-        "html_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Kuang_ConceptPose_Training-Free_Zero-Shot_Object_Pose_Estimation_using_Concept_Vectors_CVPR_2026_paper.html",
-        "published_at": "2026-06-01T00:00:00.000Z",
-        "upvotes": 0,
-        "heat": 120,
-        "featured": false,
-        "categories": [
-          "aim"
-        ],
-        "image": "",
-        "comment": "Accepted to CVPR 2026",
-        "conf": "CVPR",
-        "confYear": 2026,
-        "confTag": "CVPR 2026",
-        "confWeight": 6,
-        "confVision": true,
-        "relevance": 12,
-        "first_seen": "2026-06-30T18:30:34.071Z",
-        "rm": {
-          "usage": "可用于工程视觉装配任务中，利用零样本物体位姿估计方法对能量单元进行定位和抓取，无需大量训练数据。",
-          "task_id": "engineer",
-          "task": "工程视觉装配（能量单元）",
-          "value": "mid"
-        }
-      },
-      {
-        "id": "cvf:CVPR2026:JoPPO: Hierarchical Photography Assessment via Contrastive J",
-        "arxiv_id": "",
-        "source": "CVPR",
-        "cats": [],
-        "title_en": "JoPPO: Hierarchical Photography Assessment via Contrastive Joint Conditional Probabilistic Reinforcement Learning",
-        "title_zh": "",
-        "abstract_en": "With the advancement of Vision-Language Models (VLMs), employing VLM-as-a-Judge for visual evaluation has become a widely adopted metric in vision research. However, existing VLM-as-a-Judge approaches suffer from biased scoring outcomes with low discrimination and lack the capacity for unified multi-attribute compositional assessment. To address these limitations, we propose a novel training paradigm, termed JoPPO (**Jo**int **P**robabilistic **P**olicy **O**ptimization) that enables the VLMs to learn ranking under compositional assessment constraints. We evaluate the JoPPO on image aesthetics as a testbed, a task requiring nuanced understanding of multiple attributes including composition, lighting, color and geometry. Training follows two stages: (1) Supervised Fine-Tuning (SFT) on synthetic composition dataset provided by automated data generation pipeline to instill compositional priors; and (2) Contrastive Joint Conditional Probabilistic Reinforcement Learning: building upon the GRPO algorithm, we introduce JoPPO, which compute reward based on the expected win rate of total scores derived from the conditional distribution of fine-grained attribute scores within batches, effectively enhancing the model&#x27;s discriminative ability in composite evaluation. Across standard aesthetic benchmarks, our method achieves consistent improvements in ranking consistency, demonstrating strong zero-shot generalization.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [],
-        "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Yang_JoPPO_Hierarchical_Photography_Assessment_via_Contrastive_Joint_Conditional_Probabilistic_Reinforcement_CVPR_2026_paper.html",
-        "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Yang_JoPPO_Hierarchical_Photography_Assessment_via_Contrastive_Joint_Conditional_Probabilistic_Reinforcement_CVPR_2026_paper.pdf",
-        "html_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Yang_JoPPO_Hierarchical_Photography_Assessment_via_Contrastive_Joint_Conditional_Probabilistic_Reinforcement_CVPR_2026_paper.html",
-        "published_at": "2026-06-01T00:00:00.000Z",
-        "upvotes": 0,
-        "heat": 120,
-        "featured": false,
-        "categories": [
-          "aim",
-          "rl"
-        ],
-        "image": "",
-        "comment": "Accepted to CVPR 2026",
-        "conf": "CVPR",
-        "confYear": 2026,
-        "confTag": "CVPR 2026",
-        "confWeight": 6,
-        "confVision": true,
-        "relevance": 8,
-        "first_seen": "2026-06-30T18:30:34.071Z",
-        "rm": {
-          "usage": "可用于策略学习任务中，通过对比联合条件概率强化学习优化多属性评估，辅助多机协同决策的奖励设计。",
-          "task_id": "strategy",
-          "task": "多机协同与策略学习",
-          "value": "mid"
-        }
-      },
-      {
-        "id": "cvf:CVPR2026:DROID-SLAM in the Wild",
-        "arxiv_id": "",
-        "source": "CVPR",
-        "cats": [],
-        "title_en": "DROID-SLAM in the Wild",
-        "title_zh": "",
-        "abstract_en": "We present a robust, real-time RGB SLAM system that handles dynamic environments by leveraging differentiable Uncertainty-aware Bundle Adjustment. Traditional SLAM methods typically assume static scenes, leading to tracking failures in the presence of motion. Recent dynamic SLAM approaches attempt to address this challenge using predefined dynamic priors or uncertainty-aware mapping, but they remain limited when confronted with unknown dynamic objects or highly cluttered scenes where geometric mapping becomes unreliable. In contrast, our method estimates per-pixel uncertainty by exploiting multi-view visual feature inconsistency, enabling robust tracking and reconstruction even in real-world environments. The proposed system achieves state-of-the-art camera poses and scene geometry in cluttered dynamic scenarios while running in real time at around 10 FPS. Code and datasets are available at https://github.com/MoyangLi00/DROID-W.git.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [],
-        "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Li_DROID-SLAM_in_the_Wild_CVPR_2026_paper.html",
-        "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Li_DROID-SLAM_in_the_Wild_CVPR_2026_paper.pdf",
-        "html_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Li_DROID-SLAM_in_the_Wild_CVPR_2026_paper.html",
-        "published_at": "2026-06-01T00:00:00.000Z",
-        "upvotes": 0,
-        "heat": 120,
-        "featured": false,
-        "categories": [
-          "slam",
-          "radar"
-        ],
-        "image": "",
-        "comment": "Accepted to CVPR 2026",
-        "conf": "CVPR",
-        "confYear": 2026,
-        "confTag": "CVPR 2026",
-        "confWeight": 6,
-        "confVision": true,
-        "relevance": 10,
-        "first_seen": "2026-06-30T18:30:34.071Z",
-        "rm": {
-          "usage": "可用于哨兵导航任务中，提供鲁棒的实时RGB SLAM系统，处理动态环境下的定位与建图。",
-          "task_id": "sentry",
-          "task": "哨兵自主导航与决策",
-          "value": "high"
-        }
-      },
-      {
-        "id": "cvf:CVPR2026:Towards Robust Multi-Modal Semantic Segmentation with Teache",
-        "arxiv_id": "",
-        "source": "CVPR",
-        "cats": [],
-        "title_en": "Towards Robust Multi-Modal Semantic Segmentation with Teacher-Student Framework and Hybrid Prototype Distillation",
-        "title_zh": "",
-        "abstract_en": "Multimodal semantic segmentation (MMSS) faces significant challenges in real-world applications due to incomplete, degraded, or missing sensor data. To address this, we propose RobustSeg, an efficient teacher-student framework that enhances model robustness under missing-modality conditions while maintaining strong performance in full-modality scenarios. RobustSeg adopts a feedback-based self-distillation paradigm consisting of two complementary stages. Firstly, we introduce Hybrid Prototype Distillation (HPD), which enables more reliable knowledge transfer of both cross-modal and modality-specific aspects. Concretely, combined with dominant-modality selection, HPD performs cross-modal semantic distillation with high-level semantic prototypes to reduce modality bias. Meanwhile, HPD conducts intra-class feature variation distillation for modality-specific structural details. Secondly, to enable the teacher model to gradually produce more balanced and robust modality representations, we make the student model provide feedback from the non-dominant modality to the teacher, benefiting the entire distillation process. Experiments on three datasets demonstrate that our method achieves state-of-the-art robustness (e.g., +2.40% missing-modality performance on DeLiVER) while causing almost no degradation in full-modality performance (only -0.1% mIoU). Moreover, evaluations using different backbones (AnySeg and CMNeXt) further validate the generalization ability of RobustSeg.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [],
-        "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Tan_Towards_Robust_Multi-Modal_Semantic_Segmentation_with_Teacher-Student_Framework_and_Hybrid_CVPR_2026_paper.html",
-        "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Tan_Towards_Robust_Multi-Modal_Semantic_Segmentation_with_Teacher-Student_Framework_and_Hybrid_CVPR_2026_paper.pdf",
-        "html_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Tan_Towards_Robust_Multi-Modal_Semantic_Segmentation_with_Teacher-Student_Framework_and_Hybrid_CVPR_2026_paper.html",
-        "published_at": "2026-06-01T00:00:00.000Z",
-        "upvotes": 0,
-        "heat": 120,
-        "featured": false,
-        "categories": [
-          "other"
-        ],
-        "image": "",
-        "comment": "Accepted to CVPR 2026",
-        "conf": "CVPR",
-        "confYear": 2026,
-        "confTag": "CVPR 2026",
-        "confWeight": 6,
-        "confVision": true,
-        "relevance": 6,
-        "first_seen": "2026-06-30T18:30:34.071Z",
-        "rm": {
-          "usage": "可用于雷达全场感知任务中，通过多模态语义分割和教师-学生框架增强在传感器缺失或退化情况下的鲁棒性。",
-          "task_id": "radar",
-          "task": "雷达全场感知与标记",
-          "value": "mid"
-        }
-      },
-      {
-        "id": "cvf:CVPR2026:ExtrinSplat: Decoupling Geometry and Semantics for Open-Voca",
-        "arxiv_id": "",
-        "source": "CVPR",
-        "cats": [],
-        "title_en": "ExtrinSplat: Decoupling Geometry and Semantics for Open-Vocabulary Understanding in 3D Gaussian Splatting",
-        "title_zh": "",
-        "abstract_en": "Lifting 2D open-vocabulary understanding into 3D Gaussian Splatting (3DGS) scenes is a critical challenge. Mainstream methods, built on an embedding paradigm, suffer from three key flaws: (i) geometry-semantic inconsistency, where points, rather than objects, serve as the semantic basis, limiting semantic fidelity; (ii) semantic bloat from injecting gigabytes of feature data into the geometry; and (iii) semantic rigidity, as one feature per Gaussian struggles to capture rich polysemy. To overcome these limitations, we introduce ExtrinSplat, a framework built on the extrinsic paradigm that decouples geometry from semantics. Instead of embedding features, ExtrinSplat clusters Gaussians into multi-granularity, overlapping 3D object groups. A Vision-Language Model (VLM) then interprets these groups to generate lightweight textual hypotheses, creating an extrinsic index layer that natively supports complex polysemy. By replacing costly feature embedding with lightweight indices, ExtrinSplat reduces scene adaptation time from hours to minutes and lowers storage overhead by several orders of magnitude. On benchmark tasks for open-vocabulary 3D object selection and semantic segmentation, ExtrinSplat outperforms established embedding-based frameworks, validating the efficacy and efficiency of the proposed extrinsic paradigm.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [],
-        "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Ding_ExtrinSplat_Decoupling_Geometry_and_Semantics_for_Open-Vocabulary_Understanding_in_3D_CVPR_2026_paper.html",
-        "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Ding_ExtrinSplat_Decoupling_Geometry_and_Semantics_for_Open-Vocabulary_Understanding_in_3D_CVPR_2026_paper.pdf",
-        "html_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Ding_ExtrinSplat_Decoupling_Geometry_and_Semantics_for_Open-Vocabulary_Understanding_in_3D_CVPR_2026_paper.html",
-        "published_at": "2026-06-01T00:00:00.000Z",
-        "upvotes": 0,
-        "heat": 120,
-        "featured": false,
-        "categories": [
-          "aim",
-          "rl"
-        ],
-        "image": "",
-        "comment": "Accepted to CVPR 2026",
-        "conf": "CVPR",
-        "confYear": 2026,
-        "confTag": "CVPR 2026",
-        "confWeight": 6,
-        "confVision": true,
-        "relevance": 6,
-        "first_seen": "2026-06-30T18:30:34.071Z",
-        "rm": {
-          "usage": "可用于3D场景中开放词汇的物体识别与分割，辅助自瞄系统识别装甲板或能量机关模块，但需改造以适应实时性要求。",
-          "task_id": "autoaim",
-          "task": "自瞄 / 装甲板识别",
-          "value": "mid"
-        }
-      },
-      {
-        "id": "cvf:CVPR2026:Vocabulary Scaling Law: Tuning Open-vocabulary Predictors fo",
-        "arxiv_id": "",
-        "source": "CVPR",
-        "cats": [],
-        "title_en": "Vocabulary Scaling Law: Tuning Open-vocabulary Predictors for Their Openness",
-        "title_zh": "",
-        "abstract_en": "Open-vocabulary learning on CLIP provides remarkable generalization on diverse concepts, however, falters under the realistic streaming open-world evaluations for Stability against distractor classes and Extensibility to novel classes. Current fine-tuning methods often fail these tests since they are mainly designed for closed-set conditions, leading to the performance gaps while the target vocabulary progressively scales. We formalize a \"vocabulary scaling law\" showing that these openness measures can be lower-bounded by performance on the full class-name universe, implying that robust fine-tuning should: (i) account for the entire vocabulary, (ii) tune class-name embeddings rather than context, and (iii) enforce orthogonality between prompt embeddings including training and open-set class names. Guided by our analysis, we propose Submodular-Vocabulary Fine-tuning (SVFT), a bi-level optimization framework that approximates the intractable objective of tuning all class name embedding by greedily selecting a small, informative subset of class names via constrained submodular maximization, thus, allows the employment of efficient greedy algorithm for the near-optimal class-name subset selection to fine-tune CLIP instead of using all open classes. Across extensive experiments, SVFT consistently improves both stability and extensibility, advancing the openness and practical robustness of CLIP-based vision-language models.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [],
-        "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Chen_Vocabulary_Scaling_Law_Tuning_Open-vocabulary_Predictors_for_Their_Openness_CVPR_2026_paper.html",
-        "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Chen_Vocabulary_Scaling_Law_Tuning_Open-vocabulary_Predictors_for_Their_Openness_CVPR_2026_paper.pdf",
-        "html_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Chen_Vocabulary_Scaling_Law_Tuning_Open-vocabulary_Predictors_for_Their_Openness_CVPR_2026_paper.html",
-        "published_at": "2026-06-01T00:00:00.000Z",
-        "upvotes": 0,
-        "heat": 120,
-        "featured": false,
-        "categories": [
-          "aim"
-        ],
-        "image": "",
-        "comment": "Accepted to CVPR 2026",
-        "conf": "CVPR",
-        "confYear": 2026,
-        "confTag": "CVPR 2026",
-        "confWeight": 6,
-        "confVision": true,
-        "relevance": 6,
-        "first_seen": "2026-06-30T18:30:34.071Z",
-        "rm": {
-          "usage": "研究开放词汇预测器的扩展性与稳定性，可借鉴其方法提升自瞄系统对未知装甲板数字或新目标的泛化能力。",
-          "task_id": "autoaim",
-          "task": "自瞄 / 装甲板识别",
-          "value": "mid"
-        }
-      },
-      {
-        "id": "cvf:CVPR2026:Taming Preference Mode Collapse via Directional Decoupling A",
-        "arxiv_id": "",
-        "source": "CVPR",
-        "cats": [],
-        "title_en": "Taming Preference Mode Collapse via Directional Decoupling Alignment in Diffusion Reinforcement Learning",
-        "title_zh": "",
-        "abstract_en": "Recent studies have demonstrated significant progress in aligning text-to-image diffusion models with human preference via Reinforcement Learning from Human Feedback. However, while existing methods achieve high scores on automated reward metrics, they often lead to Preference Mode Collapse (PMC)-a specific form of reward hacking where models converge on narrow, high-scoring outputs (e.g., images with monolithic styles or pervasive overexposure), severely degrading generative diversity. In this work, we introduce and quantify this phenomenon, proposing DivGenBench, a novel benchmark designed to measure the extent of PMC. We posit that this collapse is driven by over-optimization along the reward model&#x27;s inherent biases. Building on this analysis, we propose Directional Decoupling Alignment (D^2-Align), a novel framework that mitigates PMC by directionally correcting the reward signal.Specifically, our method first learns a directional correction within the reward model&#x27;s embedding space while keeping the model frozen.This correction is then applied to the reward signal during the optimization process, preventing the model from collapsing into specific modes and thereby maintaining diversity. Our comprehensive evaluation, combining qualitative analysis with quantitative metrics for both quality and diversity, reveals that D^2-Align achieves superior alignment with human preference.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [],
-        "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Chen_Taming_Preference_Mode_Collapse_via_Directional_Decoupling_Alignment_in_Diffusion_CVPR_2026_paper.html",
-        "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Chen_Taming_Preference_Mode_Collapse_via_Directional_Decoupling_Alignment_in_Diffusion_CVPR_2026_paper.pdf",
-        "html_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Chen_Taming_Preference_Mode_Collapse_via_Directional_Decoupling_Alignment_in_Diffusion_CVPR_2026_paper.html",
-        "published_at": "2026-06-01T00:00:00.000Z",
-        "upvotes": 0,
-        "heat": 120,
-        "featured": false,
-        "categories": [
-          "rl"
-        ],
-        "image": "",
-        "comment": "Accepted to CVPR 2026",
-        "conf": "CVPR",
-        "confYear": 2026,
-        "confTag": "CVPR 2026",
-        "confWeight": 6,
-        "confVision": true,
-        "relevance": 8,
-        "first_seen": "2026-06-30T18:30:34.071Z",
-        "rm": {
-          "usage": "针对扩散模型强化学习中的偏好模式坍塌问题，与RoboMaster任务关联很弱，难以直接应用。",
-          "task_id": "",
-          "task": "",
-          "value": "low"
-        }
-      },
-      {
-        "id": "cvf:CVPR2026:OpenVoxel: Training-Free Grouping and Captioning Voxels for ",
-        "arxiv_id": "",
-        "source": "CVPR",
-        "cats": [],
-        "title_en": "OpenVoxel: Training-Free Grouping and Captioning Voxels for Open-Vocabulary 3D Scene Understanding",
-        "title_zh": "",
-        "abstract_en": "We propose OpenVoxel, a training-free algorithm for grouping and captioning sparse voxels for the open-vocabulary 3D scene understanding tasks. Given the sparse voxel rasterization (SVR) model obtained from multi-view images of a 3D scene, our OpenVoxel is able to produce meaningful groups that describe different objects in the scene. Also, by leveraging powerful Vision Language Models (VLMs) and Multi-modal Large Language Models (MLLMs), our OpenVoxel successfully build an informative scene map by captioning each group, enabling further 3D scene understanding tasks such as open-vocabulary segmentation (OVS) or referring expression segmentation (RES). Unlike previous methods, our method is training-free and does not introduce embeddings from a CLIP/BERT text encoder. Instead, we directly proceed with text-to-text search using MLLMs. Through extensive experiments, our method demonstrates superior performance compared to recent studies, particularly in complex referring expression segmentation (RES) tasks.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [],
-        "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Huang_OpenVoxel_Training-Free_Grouping_and_Captioning_Voxels_for_Open-Vocabulary_3D_Scene_CVPR_2026_paper.html",
-        "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Huang_OpenVoxel_Training-Free_Grouping_and_Captioning_Voxels_for_Open-Vocabulary_3D_Scene_CVPR_2026_paper.pdf",
-        "html_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Huang_OpenVoxel_Training-Free_Grouping_and_Captioning_Voxels_for_Open-Vocabulary_3D_Scene_CVPR_2026_paper.html",
-        "published_at": "2026-06-01T00:00:00.000Z",
-        "upvotes": 0,
-        "heat": 120,
-        "featured": false,
-        "categories": [
-          "aim",
-          "slam"
-        ],
-        "image": "",
-        "comment": "Accepted to CVPR 2026",
-        "conf": "CVPR",
-        "confYear": 2026,
-        "confTag": "CVPR 2026",
-        "confWeight": 6,
-        "confVision": true,
-        "relevance": 6,
-        "first_seen": "2026-06-30T18:30:34.071Z",
-        "rm": {
-          "usage": "无需训练的3D场景分组与描述方法，可用于雷达全场感知中快速标记敌方机器人位置，但需适配多相机输入。",
-          "task_id": "radar",
-          "task": "雷达全场感知与标记",
-          "value": "mid"
-        }
-      },
-      {
-        "id": "cvf:CVPR2026:SPAN: Spatial-Projection Alignment for Monocular 3D Object D",
-        "arxiv_id": "",
-        "source": "CVPR",
-        "cats": [],
-        "title_en": "SPAN: Spatial-Projection Alignment for Monocular 3D Object Detection",
-        "title_zh": "",
-        "abstract_en": "Existing monocular 3D detectors typically tame the pronounced nonlinear regression of 3D bounding box through decoupled prediction paradigm, which employs multiple branches to estimate geometric center, depth, dimensions, and rotation angle separately.Although this decoupling strategy simplifies the learning process, it inherently ignores the geometric collaborative constraints between different attributes, resulting in the lack of geometric consistency prior, thereby leading to suboptimal performance. To address this issue, we propose novel Spatial-Projection Alignment (SPAN) with two pivotal components: (i). Spatial Point Alignment enforces an explicit global spatial constraint between the predicted and ground-truth 3D bounding boxes, thereby rectifying spatial drift caused by decoupled attribute regression. (ii). 3D-2D Projection Alignment ensures that the projected 3D box is aligned tightly within its corresponding 2D detection bounding box on the image plane, mitigating projection misalignment overlooked in previous works. To ensure training stability, we further introduce a Hierarchical Task Learning strategy that progressively incorporates spatial-projection alignment as 3D attribute predictions refine, preventing early stage error propagation across attributes. Extensive experiments demonstrate that the proposed method can be easily integrated into any established monocular 3D detector and delivers significant performance improvements.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [],
-        "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Wang_SPAN_Spatial-Projection_Alignment_for_Monocular_3D_Object_Detection_CVPR_2026_paper.html",
-        "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Wang_SPAN_Spatial-Projection_Alignment_for_Monocular_3D_Object_Detection_CVPR_2026_paper.pdf",
-        "html_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Wang_SPAN_Spatial-Projection_Alignment_for_Monocular_3D_Object_Detection_CVPR_2026_paper.html",
-        "published_at": "2026-06-01T00:00:00.000Z",
-        "upvotes": 0,
-        "heat": 120,
-        "featured": false,
-        "categories": [
-          "aim",
-          "slam"
-        ],
-        "image": "",
-        "comment": "Accepted to CVPR 2026",
-        "conf": "CVPR",
-        "confYear": 2026,
-        "confTag": "CVPR 2026",
-        "confWeight": 6,
-        "confVision": true,
-        "relevance": 9,
-        "first_seen": "2026-06-30T18:30:34.071Z",
-        "rm": {
-          "usage": "单目3D目标检测的空间投影对齐方法，可直接用于自瞄系统的装甲板位姿估计，提升几何一致性。",
-          "task_id": "autoaim",
-          "task": "自瞄 / 装甲板识别",
-          "value": "high"
-        }
-      },
-      {
-        "id": "cvf:CVPR2026:Explore with Long-term Memory: A Benchmark and Multimodal LL",
-        "arxiv_id": "",
-        "source": "CVPR",
-        "cats": [],
-        "title_en": "Explore with Long-term Memory: A Benchmark and Multimodal LLM-based Reinforcement Learning Framework for Embodied Exploration",
-        "title_zh": "",
-        "abstract_en": "An ideal embodied agent should possess lifelong learning capabilities to handle long-horizon and complex tasks, enabling continuous operation in general environments. This not only requires the agent to accurately accomplish given tasks but also to leverage long-term episodic memory to optimize decision-making. However, existing mainstream one-shot embodied tasks primarily focus on task completion results, neglecting the crucial process of exploration and memory utilization. To address this, we propose Long-term Memory Embodied Exploration (LMEE), which aims to unify the agent&#x27;s exploratory cognition and decision-making behaviors to promote lifelong learning. We further construct a corresponding dataset and benchmark, LMEE-Bench, incorporating multi-goal navigation and memory-based question answering to comprehensively evaluate both the process and outcome of embodied exploration. To enhance the agent&#x27;s memory recall and proactive exploration capabilities, we propose MemoryExplorer, a novel method that fine-tunes a multimodal large language model through reinforcement learning to encourage active memory querying. By incorporating a multi-task reward function that includes action prediction, frontier selection, and question answering, our model achieves proactive exploration. Extensive experiments against state-of-the-art embodied exploration models demonstrate that our approach achieves significant advantages in long-horizon embodied tasks. Our dataset and code will be released at https://wangsen99.github.io/papers/lmee/",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [],
-        "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Wang_Explore_with_Long-term_Memory_A_Benchmark_and_Multimodal_LLM-based_Reinforcement_CVPR_2026_paper.html",
-        "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Wang_Explore_with_Long-term_Memory_A_Benchmark_and_Multimodal_LLM-based_Reinforcement_CVPR_2026_paper.pdf",
-        "html_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Wang_Explore_with_Long-term_Memory_A_Benchmark_and_Multimodal_LLM-based_Reinforcement_CVPR_2026_paper.html",
-        "published_at": "2026-06-01T00:00:00.000Z",
-        "upvotes": 0,
-        "heat": 120,
-        "featured": false,
-        "categories": [
-          "slam",
-          "rl",
-          "radar"
-        ],
-        "image": "",
-        "comment": "Accepted to CVPR 2026",
-        "conf": "CVPR",
-        "confYear": 2026,
-        "confTag": "CVPR 2026",
-        "confWeight": 6,
-        "confVision": true,
-        "relevance": 9,
-        "first_seen": "2026-06-30T18:30:34.071Z",
-        "rm": {
-          "usage": "结合多模态大模型与强化学习的长期记忆探索框架，可用于哨兵导航决策中的自主探索与路径规划。",
-          "task_id": "sentry",
-          "task": "哨兵自主导航与决策",
-          "value": "mid"
-        }
-      },
-      {
-        "id": "cvf:CVPR2026:Generalized-CVO: Fast and Correspondence-Free Local Point Cl",
-        "arxiv_id": "",
-        "source": "CVPR",
-        "cats": [],
-        "title_en": "Generalized-CVO: Fast and Correspondence-Free Local Point Cloud Registration with Second Order Riemannian Optimization",
-        "title_zh": "",
-        "abstract_en": "We propose a fast and correspondence-free local point cloud registration method that leverages geometric surface structure and reproducing kernel Hilbert space (RKHS) embeddings. The method represents point clouds as continuous functions with point-wise anisotropic kernels that encode local geometry. This formulation improves alignment along surface normals while relaxing alignment along tangential directions. To solve the resulting registration problem, we propose a second-order on-manifold optimization scheme with approximate Riemannian Hessians, achieving a speedup of up to 10x over the first-order solvers used in prior correspondence-free RKHS-based methods. We demonstrate improved frame-to-frame LiDAR and RGB-D tracking accuracy across diverse indoor and outdoor datasets. On a LiDAR tracking registration task in the driving domain, we achieve a reduction of >55% in both translational and rotational drift in challenging feature-sparse environments. On object registration benchmarks, we show improved robustness over ICP-based methods and further gains when refining global initialization, particularly under moderate misalignment.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [],
-        "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_Generalized-CVO_Fast_and_Correspondence-Free_Local_Point_Cloud_Registration_with_Second_CVPR_2026_paper.html",
-        "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Zhang_Generalized-CVO_Fast_and_Correspondence-Free_Local_Point_Cloud_Registration_with_Second_CVPR_2026_paper.pdf",
-        "html_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_Generalized-CVO_Fast_and_Correspondence-Free_Local_Point_Cloud_Registration_with_Second_CVPR_2026_paper.html",
-        "published_at": "2026-06-01T00:00:00.000Z",
-        "upvotes": 0,
-        "heat": 120,
-        "featured": false,
-        "categories": [
-          "aim",
-          "slam"
-        ],
-        "image": "",
-        "comment": "Accepted to CVPR 2026",
-        "conf": "CVPR",
-        "confYear": 2026,
-        "confTag": "CVPR 2026",
-        "confWeight": 6,
-        "confVision": true,
-        "relevance": 9,
-        "first_seen": "2026-06-30T18:30:34.071Z",
-        "rm": {
-          "usage": "快速无对应点云配准方法，可用于工程视觉装配中能量单元的位姿估计与机械臂抓取定位。",
-          "task_id": "engineer",
-          "task": "工程视觉装配（能量单元）",
-          "value": "high"
-        }
-      },
-      {
-        "id": "cvf:CVPR2026:ReAttnCLIP: Training-Free Open-Vocabulary Remote Sensing Ima",
-        "arxiv_id": "",
-        "source": "CVPR",
-        "cats": [],
-        "title_en": "ReAttnCLIP: Training-Free Open-Vocabulary Remote Sensing Image Segmentation via Re-defined Attention in CLIP",
-        "title_zh": "",
-        "abstract_en": "Remote sensing image segmentation is critical for a range of applications, including natural disaster monitoring and precision agriculture. Open-vocabulary segmentation enhances flexibility by removing fixed category constraints, enabling more fine-grained and adaptive scene understanding. Unlike CLIP&#x27;s original pretraining objective, which emphasizes global image-text alignment, segmentation tasks require accurate and discriminative patch-level representations to support precise pixel-wise predictions. As a result, the quality of attention maps--particularly those generated in the final transformer layers--plays a pivotal role in guiding inter-region interactions. However, current methods generate suboptimal representations when capturing the complex spatial hierarchies in remote sensing. We address this gap by optimizing CLIP&#x27;s 197x197 attention matrix through three key modifications: (1) substituting the 196x196 patch-to-patch submatrix with intermediate-layer feature similarities to preserve spatial structures; (2) prioritizing intermediate-layer attention for global-to-local (class-to-patch) token alignment to reduce classification interference; (3) disabling the \\texttt [CLS] token&#x27;s self-attention to mitigate bias. Extensive experiments on eight remote sensing benchmarks and two building/road extraction datasets demonstrate that our method achieves state-of-the-art performance among existing training-free approaches.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [],
-        "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Niu_ReAttnCLIP_Training-Free_Open-Vocabulary_Remote_Sensing_Image_Segmentation_via_Re-defined_Attention_CVPR_2026_paper.html",
-        "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Niu_ReAttnCLIP_Training-Free_Open-Vocabulary_Remote_Sensing_Image_Segmentation_via_Re-defined_Attention_CVPR_2026_paper.pdf",
-        "html_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Niu_ReAttnCLIP_Training-Free_Open-Vocabulary_Remote_Sensing_Image_Segmentation_via_Re-defined_Attention_CVPR_2026_paper.html",
-        "published_at": "2026-06-01T00:00:00.000Z",
-        "upvotes": 0,
-        "heat": 120,
-        "featured": false,
-        "categories": [
-          "rl",
-          "radar"
-        ],
-        "image": "",
-        "comment": "Accepted to CVPR 2026",
-        "conf": "CVPR",
-        "confYear": 2026,
-        "confTag": "CVPR 2026",
-        "confWeight": 6,
-        "confVision": true,
-        "relevance": 7,
-        "first_seen": "2026-06-30T18:30:34.071Z",
-        "rm": {
-          "usage": "开放词汇遥感图像分割，与RoboMaster室内/场地场景差异大，直接应用困难。",
-          "task_id": "",
-          "task": "",
-          "value": "low"
-        }
       }
     ]
   },
@@ -4186,7 +5170,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.32,
+        "relevance": 7.32,
         "first_seen": "2026-06-30T18:30:34.071Z"
       },
       {
@@ -4478,7 +5462,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.08,
+        "relevance": 7.08,
         "first_seen": "2026-06-30T18:30:34.071Z"
       },
       {
@@ -4784,7 +5768,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 22.9,
+        "relevance": 27.9,
         "first_seen": "2026-06-30T18:30:34.071Z"
       },
       {
@@ -4884,7 +5868,7 @@
         "categories": [
           "other"
         ],
-        "relevance": 6.85,
+        "relevance": 11.85,
         "first_seen": "2026-06-30T18:30:34.071Z"
       },
       {
