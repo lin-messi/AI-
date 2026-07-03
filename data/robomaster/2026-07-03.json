@@ -1,6 +1,6 @@
 {
   "date": "2026-07-03",
-  "generatedAt": "2026-07-02T23:50:38.807Z",
+  "generatedAt": "2026-07-03T11:27:26.626Z",
   "categories": [
     {
       "key": "aim",
@@ -49,7 +49,7 @@
     }
   ],
   "papers": {
-    "count": 81,
+    "count": 99,
     "items": [
       {
         "id": "arxiv:2606.29513",
@@ -137,6 +137,52 @@
         }
       },
       {
+        "id": "arxiv:2607.02517",
+        "arxiv_id": "2607.02517",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "WorldDirector: Building Controllable World Simulators with Persistent Dynamic Memory",
+        "title_zh": "WorldDirector：构建具有持久动态记忆的可控世界模拟器",
+        "abstract_en": "We present WorldDirector, a highly controllable video world model framework designed for persistent dynamic object memory and unrestricted viewpoint exploration. Unlike existing world models that entangle physical dynamics with pixel rendering and rely on continuous visual observation to sustain motion, our framework explicitly decouples semantic motion orchestration from visual generation. By leveraging an LLM to coordinate 3D trajectories with camera movements and subsequently employing these orchestrated trajectories as control signals for video generation, our approach ensures strict physical logic and appearance stability, successfully preserving the exact visual identities of dynamic entities even when they re-enter the scene after prolonged periods out of view. Experimental results demonstrate that our method supports the synthesis of complex and extended events with unprecedented controllability and persistent dynamic object memory. Project Page: https://worlddirector.github.io/",
+        "abstract_zh": "我们提出WorldDirector，一个高度可控的视频世界模型框架，专为持久动态对象记忆和无限制视角探索设计。与现有世界模型将物理动力学与像素渲染纠缠、依赖连续视觉观察维持运动不同，我们的框架明确解耦语义运动编排与视觉生成。通过利用大语言模型协调3D轨迹与相机运动，并将这些编排轨迹作为视频生成的控制信号，我们的方法确保严格的物理逻辑和外观稳定性，成功保留了动态实体的精确视觉身份，即使它们长时间离开视野后重新进入场景。实验结果表明，我们的方法支持合成复杂和扩展的事件，具有前所未有的可控性和持久动态对象记忆。项目页面：https://worlddirector.github.io/",
+        "highlight_zh": "提出解耦语义运动与视觉生成的世界模型，实现持久动态对象记忆和自由视角探索。",
+        "digest_zh": "1. 研究问题：现有视频世界模型难以保持动态对象的长期一致性，当对象离开视野再出现时，其外观和运动容易出错，且视角控制受限。\n2. 方法：WorldDirector将语义运动编排与视觉生成解耦。首先，利用大语言模型规划3D轨迹和相机运动，生成控制信号；然后，将这些信号输入视频生成模型，确保生成的视频遵循物理逻辑并保持对象外观稳定。关键创新是持久动态记忆：即使对象长时间消失，再次出现时仍能保持其视觉身份。\n3. 结果：实验证明，该方法能合成复杂、长时间的事件，对象身份保持和视角控制能力远超现有模型。\n4. 重要性：为可控视频生成和世界模拟提供了新思路，可用于游戏、影视制作和机器人仿真等领域，实现更真实、一致的动态场景。",
+        "authors": [
+          "Hanlin Wang",
+          "Hao Ouyang",
+          "Qiuyu Wang",
+          "Wen Wang",
+          "Qingyan Bai",
+          "Ka Leong Cheng",
+          "Yue Yu",
+          "Yixuan Li"
+        ],
+        "url": "https://arxiv.org/abs/2607.02517v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.02517",
+        "html_url": "https://arxiv.org/abs/2607.02517",
+        "published_at": "2026-07-02T17:59:59.000Z",
+        "upvotes": 13,
+        "heat": 2792.5738702777776,
+        "featured": true,
+        "categories": [
+          "rl",
+          "radar",
+          "sim"
+        ],
+        "image": "",
+        "comment": "Project Page: https://worlddirector.github.io/",
+        "relevance": 1,
+        "first_seen": "2026-07-03T11:27:14.978Z",
+        "rm": {
+          "usage": "可用于哨兵导航决策中的环境探索与记忆，帮助机器人记住离开视野的物体位置，提升长期自主导航能力。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
+      },
+      {
         "id": "arxiv:2607.00446",
         "arxiv_id": "2607.00446",
         "source": "arXiv",
@@ -181,6 +227,55 @@
           "task_id": "sentry",
           "task": "哨兵自主导航与决策",
           "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2607.02291",
+        "arxiv_id": "2607.02291",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.CV"
+        ],
+        "title_en": "Optimizing Visual Generative Models via Distribution-wise Rewards",
+        "title_zh": "通过分布奖励优化视觉生成模型",
+        "abstract_en": "Conventional reinforcement learning strategies for visual generation typically employ sample-wise reward functions, yet this practice frequently results in reward hacking that degrades image diversity and introduces visual anomalies. To address these limitations, we present a novel framework that finetunes generative models using distribution-wise rewards, ensuring better alignment with real-world data distributions. Unlike rewards that evaluate samples individually, distribution-wise reward accounts for the data distribution of the samples, mitigating the mode collapse problem that occurs when all samples optimize towards the same direction independently. To overcome the prohibitive computational cost of estimating these rewards, we introduce a subset-replace strategy that efficiently provides reward signals by updating only a small subset of a generated reference set. Additionally, we apply RL to optimize post-hoc model merging coefficients, potentially mitigating the train-inference inconsistency caused by introducing stochastic differential equation (SDE) in regular RL practices. Extensive experiments show our approach significantly improves FID-50K across various base models, from 8.30 to 5.77 for SiT and from 3.74 to 3.52 for EDM2. Qualitative evaluation also confirms that our method enhances perceptual quality while preserving sample diversity.",
+        "abstract_zh": "传统的视觉生成强化学习策略通常采用样本级奖励函数，但这种方法常导致奖励黑客行为，降低图像多样性并引入视觉异常。为解决这些限制，我们提出一个新框架，使用分布级奖励微调生成模型，确保与真实数据分布更好对齐。与单独评估样本的奖励不同，分布级奖励考虑样本的数据分布，减轻了所有样本独立向同一方向优化时出现的模式崩溃问题。为克服估计这些奖励的过高计算成本，我们引入子集替换策略，通过仅更新生成参考集的一小部分来高效提供奖励信号。此外，我们应用强化学习优化事后模型合并系数，可能缓解因在常规强化学习实践中引入随机微分方程导致的训练-推理不一致。大量实验表明，我们的方法显著改善了各种基础模型的FID-50K，SiT从8.30降至5.77，EDM2从3.74降至3.52。定性评估也证实我们的方法在保持样本多样性的同时提高了感知质量。",
+        "highlight_zh": "提出分布级奖励微调框架，解决模式崩溃，FID-50K显著降低（SiT: 8.30→5.77）。",
+        "digest_zh": "1. 研究问题：传统强化学习微调视觉生成模型时，使用样本级奖励容易导致奖励黑客，即模型过度优化单个样本而牺牲多样性和质量，出现模式崩溃和视觉异常。\n2. 方法：提出分布级奖励，考虑整个生成样本集的分布，而非单个样本，从而避免所有样本向同一方向优化。为降低计算成本，采用子集替换策略，只更新参考集的一小部分来估计奖励。此外，用强化学习优化模型合并系数，解决训练-推理不一致问题。\n3. 结果：在多个模型上显著提升FID-50K指标：SiT从8.30降至5.77，EDM2从3.74降至3.52。定性评估显示图像质量提升且多样性保持。\n4. 重要性：提供了一种更有效的生成模型微调方法，解决了奖励黑客和模式崩溃问题，可广泛应用于图像、视频等生成任务，提升生成质量与多样性。",
+        "authors": [
+          "Ruihang Li",
+          "Mengde Xu",
+          "Shuyang Gu",
+          "Leigang Qu",
+          "Fuli Feng",
+          "Han Hu",
+          "Wenjie Wang"
+        ],
+        "url": "https://arxiv.org/abs/2607.02291v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.02291",
+        "html_url": "https://arxiv.org/abs/2607.02291",
+        "published_at": "2026-07-02T15:08:56.000Z",
+        "upvotes": 10,
+        "heat": 2699.7230369444446,
+        "featured": true,
+        "categories": [
+          "rl"
+        ],
+        "image": "",
+        "comment": "ICML 2026 Main",
+        "conf": "ICML",
+        "confYear": 2026,
+        "confTag": "ICML 2026",
+        "confWeight": 3,
+        "confVision": false,
+        "relevance": 5,
+        "first_seen": "2026-07-03T11:27:14.978Z",
+        "rm": {
+          "usage": "可用于优化自瞄或能量机关中的视觉生成模型，通过分布奖励提升图像质量，但需改造为检测任务，关联较弱。",
+          "task_id": "autoaim",
+          "task": "自瞄 / 装甲板识别",
+          "value": "low"
         }
       },
       {
@@ -267,7 +362,7 @@
         ],
         "image": "",
         "comment": "43 pages, 12 figures, 9 tables. Project page: https://research.nvidia.com/labs/gear/aspire/",
-        "relevance": 8,
+        "relevance": 9,
         "first_seen": "2026-07-02T18:27:06.152Z",
         "rm": {
           "usage": "可用于多机协同与策略学习，通过技能库和进化搜索自动编写和优化机器人控制程序，实现自主故障诊断和技能复用。",
@@ -493,6 +588,389 @@
         }
       },
       {
+        "id": "arxiv:2607.02497",
+        "arxiv_id": "2607.02497",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Seek to Segment: Active Perception for Panoramic Referring Segmentation",
+        "title_zh": "寻找以分割：面向全景指代分割的主动感知",
+        "abstract_en": "Existing referring segmentation models passively process static images captured from fixed perspectives, limiting their applicability in Embodied AI, where agents must perform active perception in the continuous 360$^\\circ$ environments. To bridge this gap, we introduce a novel task: Active Panoramic Referring Segmentation (APRS). In this setting, an agent is required to adjust its viewing direction ($Δθ, Δφ$) to explore the 360$^\\circ$ environment, seeking the object specified by a user instruction for segmentation. To tackle this challenging task, we propose PanoSeeker, a memory-augmented agent for efficient APRS. Rather than relying on heuristic scanning, PanoSeeker integrates a Vision-Language Model (VLM) with EgoSphere, an explicit spatial visual memory. By progressively integrating sequential local observations into a unified 360$^\\circ$ representation, EgoSphere enables the agent to plan efficient and non-redundant search trajectories. Once the target is found, the agent performs active viewpoint alignment and outputs the segmentation mask. Furthermore, we curate an expert-annotated search trajectory dataset with memory timelines for Supervised Fine-Tuning, followed by Reinforcement Learning post-training to explicitly optimize PanoSeeker's exploration efficiency. Extensive experiments on our newly established APRS benchmark demonstrate that PanoSeeker achieves superior search efficiency and segmentation accuracy, significantly outperforming adapted state-of-the-art baselines.",
+        "abstract_zh": "现有的指代分割模型被动处理固定视角的静态图像，限制了它们在具身AI中的应用，其中智能体必须在连续360°环境中进行主动感知。为弥补这一差距，我们引入新任务：主动全景指代分割（APRS）。在该设置中，智能体需调整视角（Δθ, Δφ）探索360°环境，寻找用户指令指定的物体进行分割。为应对这一挑战，我们提出PanoSeeker，一种记忆增强的智能体，用于高效APRS。PanoSeeker不依赖启发式扫描，而是将视觉语言模型（VLM）与EgoSphere（一种显式空间视觉记忆）集成。通过将顺序局部观测逐步整合为统一360°表示，EgoSphere使智能体能规划高效且无冗余的搜索轨迹。一旦找到目标，智能体执行主动视角对齐并输出分割掩码。此外，我们整理了一个专家标注的搜索轨迹数据集（含记忆时间线）用于监督微调，随后进行强化学习后训练以显式优化PanoSeeker的探索效率。在我们新建立的APRS基准上的大量实验表明，PanoSeeker实现了优越的搜索效率和分割精度，显著优于改编的最先进基线。",
+        "highlight_zh": "提出PanoSeeker，结合VLM与空间记忆EgoSphere，实现高效主动全景指代分割。",
+        "digest_zh": "1. **研究问题**：传统指代分割模型只能处理固定视角的静态图像，但在具身AI（如机器人）中，智能体需要在360°全景环境中主动寻找并分割用户指定的物体。现有方法缺乏主动探索能力，无法应对连续视角变化。\n\n2. **方法**：提出PanoSeeker，一个记忆增强的智能体。它包含两个核心组件：视觉语言模型（VLM）用于理解指令和视觉信息；EgoSphere，一种显式空间记忆，将智能体在不同视角下的局部观察逐步融合成一个完整的360°环境表示。智能体利用EgoSphere规划高效、不重复的搜索路径，找到目标后主动调整视角并输出分割掩码。训练分为两步：首先用专家标注的搜索轨迹数据集进行监督微调，然后通过强化学习进一步优化搜索效率。\n\n3. **结果**：在新建的APRS基准上，PanoSeeker在搜索效率和分割精度上均显著优于现有方法（包括改编的SOTA基线）。\n\n4. **重要性**：该工作首次将主动感知引入指代分割，解决了具身智能体在未知环境中定位和分割物体的关键问题。PanoSeeker的高效搜索策略和记忆机制为机器人导航、增强现实等需要实时环境理解的应用提供了新思路。",
+        "authors": [
+          "Song Tang",
+          "Shuming Hu",
+          "Xincheng Shuai",
+          "Henghui Ding",
+          "Yu-Gang Jiang"
+        ],
+        "url": "https://arxiv.org/abs/2607.02497v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.02497",
+        "html_url": "https://arxiv.org/abs/2607.02497",
+        "published_at": "2026-07-02T17:56:49.000Z",
+        "upvotes": 0,
+        "heat": 2262.5210925,
+        "featured": true,
+        "categories": [
+          "aim",
+          "rl"
+        ],
+        "image": "",
+        "comment": "ECCV 2026, Project Page: https://henghuiding.com/APRS/",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 9,
+        "first_seen": "2026-07-03T11:27:14.978Z",
+        "rm": {
+          "usage": "可用于哨兵或雷达的主动感知与搜索，通过记忆增强和强化学习优化搜索轨迹，提升目标发现效率。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2607.02471",
+        "arxiv_id": "2607.02471",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Interpretation-Oriented Cloud Removal via Observation-Anchored Residual Flow with Geo-Contextual Alignment",
+        "title_zh": "面向解释的云去除：基于观测锚定残差流与地理上下文对齐",
+        "abstract_en": "Cloud removal (CR) is essential for optical remote sensing, serving as a prerequisite for reliable downstream interpretation, such as semantic segmentation and change detection. However, existing CR approaches often prioritize visual realism while overlooking their impact on subsequent analytical tasks, leading to semantic drift and degraded downstream performance. To address this issue, we propose Geo-Anchored Cloud Removal (GACR), a unified framework that jointly ensures faithful reconstruction and robust interpretability. At its core, GACR incorporates Observation-Anchored Residual Flow (OAR-Flow), which reformulates CR as a physically grounded residual inversion process. By anchoring the generative trajectory to the cloudy observation rather than pure noise, OAR-Flow enables fast, stable, and faithful reconstruction. To further preserve semantic structures critical for downstream interpretation, GACR integrates Geo-Contextual Prior Alignment (GCPA) to constrain the reconstruction within a semantic manifold induced by a Vision Foundation Model (VFM). Consequently, GACR strictly maintains the spatial-semantic integrity of complex landscapes. Extensive experiments across six CR datasets and twelve downstream tasks demonstrate that GACR produces superior reconstruction quality while consistently improving downstream task accuracy. The code is available at https://github.com/wzy6055/GACR.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Ziyao Wang",
+          "Maonan Wang",
+          "Yucheng He",
+          "Xianping Ma",
+          "Ziyi Wang",
+          "Hongyang Zhang",
+          "Yirong Cheng",
+          "Man-on Pun"
+        ],
+        "url": "https://arxiv.org/abs/2607.02471v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.02471",
+        "html_url": "https://arxiv.org/abs/2607.02471",
+        "published_at": "2026-07-02T17:39:23.000Z",
+        "upvotes": 0,
+        "heat": 2262.2305369444443,
+        "featured": false,
+        "categories": [
+          "aim",
+          "radar"
+        ],
+        "image": "",
+        "comment": "accepted by ECCV 2026",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 7,
+        "first_seen": "2026-07-03T11:27:14.978Z",
+        "rm": {
+          "usage": "用于雷达全场感知中的遥感图像去云，但RoboMaster在室内或固定场地，关联很弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2607.02237",
+        "arxiv_id": "2607.02237",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "When Token Compression Breaks: Structural Pruning vs. Token Reduction for Robust ViT Segmentation under High Compression",
+        "title_zh": "当令牌压缩失效：高压缩下鲁棒ViT分割的结构剪枝与令牌缩减",
+        "abstract_en": "Vision Transformers (ViTs) are strong backbones for semantic segmentation, but their computational cost limits deployment. Recent token compression methods for efficient transformer-based segmentation reduce this cost by decreasing the number of tokens. However, existing evaluations primarily focus on low-to-moderate compression, leaving their behavior under aggressive compression and corrupted inputs unclear. Meanwhile, structural pruning provides an orthogonal route to efficiency by removing redundant components in the ViT architecture, but is rarely compared to token compression under a unified protocol. To bridge this gap, we benchmark representative token compression and structural pruning methods for ViT-based semantic segmentation under matched FLOPs on ADE20K and Cityscapes, together with their common-corruption variants ADE20K-C and Cityscapes-C. Our results reveal a consistent trend on both clean and corrupted inputs: token compression is highly effective at mild reductions but degrades sharply when compression becomes severe, consistent with substantial information loss from overly aggressive token reduction. In contrast, structural pruning exhibits a smoother degradation curve and is more stable at high compression. Motivated by these findings, we study a prune-then-merge pipeline that applies moderate token compression on top of a moderately pruned backbone. At comparable FLOPs, this combined strategy consistently achieves a better accuracy-robustness trade-off at high compression, offering a practical recipe for deployment-oriented ViT segmentation. Code is available at https://github.com/phatnguyencs/vit-seg-compression.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Tien-Phat Nguyen",
+          "Ngai-Man Cheung"
+        ],
+        "url": "https://arxiv.org/abs/2607.02237v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.02237",
+        "html_url": "https://arxiv.org/abs/2607.02237",
+        "published_at": "2026-07-02T14:34:31.000Z",
+        "upvotes": 0,
+        "heat": 2259.149425833333,
+        "featured": false,
+        "categories": [
+          "aim",
+          "slam",
+          "radar"
+        ],
+        "image": "",
+        "comment": "Accepted to ECCV 2026",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 7,
+        "first_seen": "2026-07-03T11:27:14.978Z",
+        "rm": {
+          "usage": "可用于自瞄或能量机关中的ViT模型压缩，在保持分割精度的同时降低计算开销，适合嵌入式平台。",
+          "task_id": "autoaim",
+          "task": "自瞄 / 装甲板识别",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2607.02074",
+        "arxiv_id": "2607.02074",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Comprehensive Robustness Analysis of LiDAR-based 3D Object Detection in Autonomous Driving",
+        "title_zh": "自动驾驶中基于LiDAR的3D目标检测综合鲁棒性分析",
+        "abstract_en": "Recent advancements in LiDAR-only 3D object detection have demonstrated improved detection accuracy over benchmark datasets. However, the adversarial robustness of these models remains untested. Very few adversarial robustness studies exist for LiDAR-only 3D object detection and unfortunately, even they are limited to legacy models. Moreover, there is a systemic gap in the existing evaluation frameworks that rely simply on mAP ignoring other structural and predictive factors. To fill this gap, we propose a holistic framework that evaluates adversarial robustness using two structural factors (point cloud density and point cloud localization) and three predictive factors (misclassification, localization error, distance from ego). Using this framework, we perform an empirical study and critical analysis on recent and legacy state-of-the-art models using adversarial attacks specifically designed for LiDAR-based models. Our key finding is that high-capacity, voxel-based detectors are more susceptible to structured coordinate perturbations than pillar-based detectors. Additionally, non-anchor-based detectors demonstrate poor adversarial robustness, which necessitates rethinking model training techniques. Overall, our results demonstrate that recent models are as vulnerable to adversarial attacks as their predecessors. Therefore, we argue that there is a need to improve the evaluation benchmarks for 3D object detection that not only reward architectural modifications for improving detection accuracy, but also evaluate whether the design choices improve adversarial robustness.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Adwait Chandorkar",
+          "Kai Krink",
+          "Yerdana Maulenbay",
+          "Hasan Tercan",
+          "Tobias Meisen"
+        ],
+        "url": "https://arxiv.org/abs/2607.02074v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.02074",
+        "html_url": "https://arxiv.org/abs/2607.02074",
+        "published_at": "2026-07-02T12:13:49.000Z",
+        "upvotes": 0,
+        "heat": 2256.8044255555556,
+        "featured": false,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "Accepted at ECCV 2026 main",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 12,
+        "first_seen": "2026-07-03T11:27:14.978Z",
+        "rm": {
+          "usage": "可用于哨兵或雷达的3D目标检测鲁棒性分析，但LiDAR在RoboMaster中不常用，关联较弱。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2607.02018",
+        "arxiv_id": "2607.02018",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "UnderOneFacade: Worldwide Facade Semantic Segmentation Benchmark Dataset",
+        "title_zh": "UnderOneFacade：全球立面语义分割基准数据集",
+        "abstract_en": "Globally consistent semantic digital twins require centimeter-accurate and geographically transferable 3D facade segmentation. However, progress in facade parsing is limited by the lack of large-scale, standardized benchmarks for evaluating cross-domain generalization. Existing datasets are geographically narrow, semantically inconsistent, or insufficiently precise. We introduce UnderOneFacade, the largest cross-country and cross-continent 3D facade benchmark to date, comprising centimeter-accurate point clouds with hierarchical, harmonized, and architecturally grounded semantic labels totaling 2.7 billion annotated points. Through a systematic evaluation of representative point-, graph- and transformer-based architectures, we show that current methods struggle to recognize fine-grained architectural elements and degrade significantly across geographic domains, with the best models achieving only up to 33 IoU on the fine-grained LoFG3 benchmark. By combining geometric precision with standardized semantics at unprecedented scale, UnderOneFacade establishes a rigorous benchmark for developing robust and transferable 3D segmentation models. The dataset, evaluation scripts, and pretrained models will be released upon publication.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Yi Wang",
+          "Fan Wang",
+          "Prabin Gyawali",
+          "Ziyang Xu",
+          "Anna Klimkowska",
+          "Yixiong Jing",
+          "Wanru Yang",
+          "Filip Biljecki"
+        ],
+        "url": "https://arxiv.org/abs/2607.02018v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.02018",
+        "html_url": "https://arxiv.org/abs/2607.02018",
+        "published_at": "2026-07-02T10:50:01.000Z",
+        "upvotes": 0,
+        "heat": 2255.407758888889,
+        "featured": false,
+        "categories": [
+          "slam",
+          "sim"
+        ],
+        "image": "",
+        "comment": "accepted by ECCV 2026",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 9,
+        "first_seen": "2026-07-03T11:27:14.978Z",
+        "rm": {
+          "usage": "用于建筑立面分割，与RoboMaster的机器人识别任务无关，关联很弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2607.01983",
+        "arxiv_id": "2607.01983",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Open-Weather Robust 3D Detection via Dual-Critic Diffusion Alignment",
+        "title_zh": "开放天气鲁棒3D检测：基于双判别器扩散对齐",
+        "abstract_en": "Robust 3D object detection under adverse weather remains a critical hurdle for autonomous driving. Despite progress with LiDAR-4D radar fusion, most methods are constrained by a closed-world assumption, implicitly requiring training and test weather to align in both type and severity. This premise fails in practice: the open-ended nature of weather, and even variations within a single type like rain, cause dramatically different LiDAR degradation patterns, leading to significant performance drops in unseen conditions. To address this, we present Dual-Critic Guided Diffusion Alignment (DCDA), a weather-agnostic framework that learns to recover degraded LiDAR features toward a clean manifold. Rather than modeling specific weather types, DCDA employs a 4D radar-conditioned diffusion process to progressively refine features, guided by two complementary critics. (i) A detection-guided critic, anchored by a pre-trained clean-weather model, ensures that the refined features retain object-level discriminability and localization accuracy. (ii) A weather adversarial critic enforces holistic distributional consistency with clean-weather representations. By aligning features through semantic and distributional constraints rather than explicit weather modeling, DCDA generalizes effectively to unseen weather types and severities without requiring paired data or weather labels. We further introduce a structured open-weather benchmark with held-out type-severity combinations and extensive experiments verify DCDA's advantages.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Shuyao Li",
+          "Chuanxing Geng",
+          "Heyang Sun",
+          "Qiang Zhou",
+          "Jingjing Gu"
+        ],
+        "url": "https://arxiv.org/abs/2607.01983v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.01983",
+        "html_url": "https://arxiv.org/abs/2607.01983",
+        "published_at": "2026-07-02T10:13:41.000Z",
+        "upvotes": 0,
+        "heat": 2254.802203333333,
+        "featured": false,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "18 pages, 6 figures, 8 tables. ECCV 2026 camera-ready",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 10,
+        "first_seen": "2026-07-03T11:27:14.978Z",
+        "rm": {
+          "usage": "可用于哨兵或雷达在恶劣天气下的3D检测，但RoboMaster比赛通常在室内或良好天气，关联很弱。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2607.01938",
+        "arxiv_id": "2607.01938",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.AI",
+          "cs.CL",
+          "cs.CV",
+          "cs.LG"
+        ],
+        "title_en": "PhysMani: Physics-principled 3D World Model for Dynamic Object Manipulation",
+        "title_zh": "PhysMani：面向动态物体操作的物理原理3D世界模型",
+        "abstract_en": "Manipulating fast and dynamically moving targets in unstructured 3D environments remains challenging for embodied AI. Existing visual-language-action models and world models struggle with accurate 3D geometry and physically meaningful forecasting. We propose PhysMani, a framework that couples a physics-principled 3D Gaussian world model with a future-aware action policy model. The world model learns a divergence-free Gaussian velocity field via online optimization for fast and physically grounded future dynamics prediction. The policy model integrates the predicted 3D scene future dynamics through a learnable token based cross-attention module. We introduce PhysMani-Bench, a dynamic manipulation benchmark with 16 tasks, and demonstrate a superior success rate over strong baselines in both simulation and real-world robot experiments.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Peng Yun",
+          "Shouwang Huang",
+          "Hao Li",
+          "Jinxi Li",
+          "Jianan Wang",
+          "Bo Yang"
+        ],
+        "url": "https://arxiv.org/abs/2607.01938v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.01938",
+        "html_url": "https://arxiv.org/abs/2607.01938",
+        "published_at": "2026-07-02T09:32:39.000Z",
+        "upvotes": 0,
+        "heat": 2254.118323611111,
+        "featured": false,
+        "categories": [
+          "sim"
+        ],
+        "image": "",
+        "comment": "ECCV 2026. Code and data are available at: https://github.com/vLAR-group/PhysMani",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 8,
+        "first_seen": "2026-07-03T11:27:14.978Z",
+        "rm": {
+          "usage": "可用于飞镖瞄准移动目标，利用物理原理3D世界模型预测目标未来位置，提高命中率。",
+          "task_id": "dart",
+          "task": "飞镖目标瞄准",
+          "value": "high"
+        }
+      },
+      {
+        "id": "arxiv:2607.01885",
+        "arxiv_id": "2607.01885",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Diversity-aware View Partitioning for Scalable VGGT",
+        "title_zh": "面向可扩展VGGT的多样性感知视图划分",
+        "abstract_en": "Geometry transformers such as VGGT achieve strong performance by jointly reasoning over multiple views with global attention. However, scaling them to large view collections remains challenging due to the quadratic cost of attention. Moreover, our empirical analysis reveals that the reconstruction quality in VGGT is sensitive to the distribution of viewpoints. Simply increasing the number of views without sufficient viewpoint diversity can even degrade performance, as redundant views introduce highly similar tokens that dilute informative geometric signals in the attention mechanism. Motivated by this observation, we propose a training-free and plug-and-play VGGT inference framework that organizes views into diversity-aware balanced chunks. The chunks are constructed through combinatorial graph partitioning over visual dissimilarity and spatial dispersion. This view organization allows the transformer to focus attention on geometrically informative views while reducing redundant attention interactions. To estimate spatial dispersion without full pose estimation, we approximate spatial relationships via a soft pose propagation strategy based on visual similarity from a small set of seed frames. Extensive experiments demonstrate improved performance in camera pose estimation, multi-view depth prediction, and 3D reconstruction while reducing memory usage and inference latency. Our framework also complements existing VGGT variants, enabling scalable multi-view reconstruction without sacrificing geometric fidelity.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Jinsoo Park",
+          "Donggyu Choi",
+          "Ahyun Seo",
+          "Minsu cho",
+          "Jeany Son"
+        ],
+        "url": "https://arxiv.org/abs/2607.01885v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.01885",
+        "html_url": "https://arxiv.org/abs/2607.01885",
+        "published_at": "2026-07-02T08:37:56.000Z",
+        "upvotes": 0,
+        "heat": 2253.20637,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl",
+          "radar"
+        ],
+        "image": "",
+        "comment": "34 pages, 11 figures, Accepted to ECCV 2026",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 9,
+        "first_seen": "2026-07-03T11:27:14.978Z",
+        "rm": {
+          "usage": "可用于雷达多视角感知，优化视角选择以提升重建质量，但需改造以适配固定基座多相机场景。",
+          "task_id": "radar",
+          "task": "雷达全场感知与标记",
+          "value": "mid"
+        }
+      },
+      {
         "id": "arxiv:2607.01051",
         "arxiv_id": "2607.01051",
         "source": "arXiv",
@@ -588,6 +1066,51 @@
         }
       },
       {
+        "id": "arxiv:2607.01677",
+        "arxiv_id": "2607.01677",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "ICDepth: Taming Video Diffusion Models for Video Depth Estimation via In-Context Conditioning",
+        "title_zh": "ICDepth：通过上下文条件化驯服视频扩散模型进行视频深度估计",
+        "abstract_en": "Monocular video depth estimation requires temporal consistency, geometric accuracy, and generalization across diverse scenarios, yet existing methods struggle to achieve all three simultaneously. Discriminative models excel at per-frame accuracy but suffer from temporal drift due to limited context windows, while generative methods improve consistency and generalization at the cost of extensive training data (10M+ samples) and lack of geometric precision. In response to these issues, we introduce \\textbf{ICDepth}, a framework that adapts pre-trained text-to-video diffusion transformers for video depth estimation via In-Context Conditioning (ICC), leveraging their rich spatial-temporal priors. To address key challenges in transferring ICC from generation to dense prediction, we propose: (1)~\\textbf{SAND-Attention}, which ensures precise spatial-temporal alignment via shared RoPE and enforces unidirectional attention to prevent noise contamination; (2)~\\textbf{SRFM}, which injects DINOv2 semantic and resolution priors to enhance geometric precision. ICDepth achieves state-of-the-art results on multiple benchmarks with remarkable data efficiency, trained on only 0.8M frames ($6$--$13\\times$ less than competing generative methods), while demonstrating strong zero-shot generalization to diverse domains.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Xuanhua He",
+          "Jiaxin Xie",
+          "Mingzhe Zheng",
+          "Qifeng Chen"
+        ],
+        "url": "https://arxiv.org/abs/2607.01677v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.01677",
+        "html_url": "https://arxiv.org/abs/2607.01677",
+        "published_at": "2026-07-02T04:05:17.000Z",
+        "upvotes": 0,
+        "heat": 2248.6622033333333,
+        "featured": false,
+        "categories": [
+          "other"
+        ],
+        "image": "",
+        "comment": "Accepted to ECCV 2026. Project page: https://xuanhuahe.github.io/ICDepth/",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 7,
+        "first_seen": "2026-07-03T11:27:14.978Z",
+        "rm": {
+          "usage": "可用于自瞄中的深度估计，提升单目视频深度估计的时序一致性和几何精度，辅助装甲板位姿估计。",
+          "task_id": "autoaim",
+          "task": "自瞄 / 装甲板识别",
+          "value": "mid"
+        }
+      },
+      {
         "id": "arxiv:2607.00752",
         "arxiv_id": "2607.00752",
         "source": "arXiv",
@@ -636,6 +1159,96 @@
           "task_id": "autoaim",
           "task": "自瞄 / 装甲板识别",
           "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2607.01658",
+        "arxiv_id": "2607.01658",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Teaching Vision-Language-Action Models What to See and Where to Look",
+        "title_zh": "教视觉-语言-动作模型看什么和看哪里",
+        "abstract_en": "Vision-Language-Action (VLA) models have emerged as a promising paradigm for end-to-end autonomous driving. However, existing VLAs' training relies heavily on text-centric visual question answering and chain-of-thought reasoning data, which emphasizes linguistic reasoning rather than action-grounded planning. As a result, the learned representations capture semantic knowledge but lack spatial dependencies crucial for reliable trajectory prediction. We propose DriveTeach-VLA, a framework that explicitly teaches VLAs what to see and where to look. Driving-aware Vision Distillation (DVD) injects driving-specific perceptual priors into the vision encoder, while 2D Trajectory-Guided Prompts (2D-TGP) provide spatial conditioning aligned with feasible driving trajectories. Together, they form a vision-guided learning pipeline: what to see (DVD pretraining) - where to look (TGP-guided SFT) - how to act (TGP-guided GRPO). DriveTeach-VLA achieves the state-of-the-art performance on NAVSIM and nuScenes. Our code is available at: https://github.com/ShivaTeam/DriveTeach-VLA.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Yuguang Yang",
+          "Canyu Chen",
+          "Zhewen Tan",
+          "Yizhi Wang",
+          "Zichao Feng",
+          "Chunyang Liu",
+          "Kehua Sheng",
+          "Juan Zhang"
+        ],
+        "url": "https://arxiv.org/abs/2607.01658v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.01658",
+        "html_url": "https://arxiv.org/abs/2607.01658",
+        "published_at": "2026-07-02T03:34:32.000Z",
+        "upvotes": 0,
+        "heat": 2248.1497030555556,
+        "featured": false,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "The paper has been accepted by ECCV 2026",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 7,
+        "first_seen": "2026-07-03T11:27:14.978Z",
+        "rm": {
+          "usage": "可用于哨兵导航决策，通过视觉-语言-动作模型学习驾驶策略，但需适配机器人平台。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2607.00152",
+        "arxiv_id": "2607.00152",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.AI",
+          "cs.CL",
+          "stat.ML"
+        ],
+        "title_en": "GRPO, Dr. GRPO, and DAPO Are Three Operations on One Number: The Group-Standard-Deviation Identity",
+        "title_zh": "GRPO、Dr. GRPO和DAPO是同一数字上的三种运算：组标准差恒等式",
+        "abstract_en": "Three of the most popular methods for training language models to reason look like three different tricks. They are not. All three adjust a single number: standard deviation, reflecting how much a prompt's sampled answers disagree. When such a model is trained, it answers each problem many times, and an automatic checker marks every answer right or wrong. The standard deviation of those marks measures the disagreement: largest when the answers split evenly between right and wrong, and zero when they all agree. Group Relative Policy Optimization (GRPO) divides by this number, GRPO Done Right (Dr. GRPO) drops the division, and Decoupled Clip and Dynamic Sampling Policy Optimization (DAPO) discards the groups where it is zero. Each is presented as its own fix, yet this paper proves they are three settings of one dial. That dial is not cosmetic: for right-or-wrong rewards, the disagreement is exactly the size of the training update, the group-standard-deviation identity. A split group teaches the most, while a unanimous group teaches nothing and falls silent. The same result says which problems deserve the most weight and how many tries each one needs. This paper confirms the intuition on a large real difficulty dataset (Big-Math) and in a controlled training run. What looks like a harmless normalization step is the dial that decides where learning happens and how strongly.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Yong Yi Bay",
+          "Kathleen A. Yearick"
+        ],
+        "url": "https://arxiv.org/abs/2607.00152v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.00152",
+        "html_url": "https://arxiv.org/abs/2607.00152",
+        "published_at": "2026-06-30T20:28:08.000Z",
+        "upvotes": 3,
+        "heat": 2247.043033888889,
+        "featured": false,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "18 pages, 10 figures, 4 tables. Code and data: https://github.com/bay-yearick-lab/grpo-standard-deviation-identity",
+        "relevance": 1,
+        "first_seen": "2026-07-03T11:27:14.978Z",
+        "rm": {
+          "usage": "与RoboMaster任务关联很弱，主要针对语言模型训练，不直接适用于机器人控制或视觉任务。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
         }
       },
       {
@@ -777,6 +1390,54 @@
           "task_id": "radar",
           "task": "雷达全场感知与标记",
           "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2607.02322",
+        "arxiv_id": "2607.02322",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.CV"
+        ],
+        "title_en": "The Moving Eye: Enhancing VLA Spatial Generalization via Hybrid Dynamic Data Collection",
+        "title_zh": "移动之眼：通过混合动态数据收集增强VLA空间泛化",
+        "abstract_en": "Vision-Language-Action (VLA) models have shown remarkable promise in generalized robotic manipulation. However, their spatial generalization remains fragile. We argue that simply increasing the number of viewpoints is insufficient. Models often fall into the trap of Shortcut Learning, latching onto spurious correlations (e.g., fixed relative poses between objects or between the camera and robot base) rather than learning true spatial relationships. In this work, we propose a data-centric solution to enhance VLA spatial generalization. We utilize a dual-arm setup where one arm performs manipulation while the other serves as a mobile environmental camera. We systematically evaluate three data distribution patterns: Fixed, Multi-Fixed, and Moving Views. Our findings reveal that a hybrid strategy, combining continuous camera motion with diverse static viewpoints, yields the best performance by substantially reducing spurious correlations while maintaining training stability. Our experiments demonstrate that this strategy mitigates spurious correlations, enabling VLAs to generalize to unseen camera poses and object configurations where simply adding more static viewpoints fails. Crucially, we reveal that the susceptibility to shortcut learning and the struggle with spatial generalization are universal characteristics shared across diverse architectures. Consequently, all evaluated models (ACT, Diffusion, and VLA models including Pi0 and Gr00t) benefit significantly from our mixed data strategy.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Jincheng Tang",
+          "Yilong Zhu",
+          "Zhengyuan Xie",
+          "Jiang-Jiang Liu",
+          "Jiaxing Zhang"
+        ],
+        "url": "https://arxiv.org/abs/2607.02322v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.02322",
+        "html_url": "https://arxiv.org/abs/2607.02322",
+        "published_at": "2026-07-02T15:30:26.000Z",
+        "upvotes": 0,
+        "heat": 2240.0813794444443,
+        "featured": false,
+        "categories": [
+          "aim",
+          "radar"
+        ],
+        "image": "",
+        "comment": "IROS 2026",
+        "conf": "IROS",
+        "confYear": 2026,
+        "confTag": "IROS 2026",
+        "confWeight": 5,
+        "confVision": false,
+        "relevance": 8,
+        "first_seen": "2026-07-03T11:27:14.978Z",
+        "rm": {
+          "usage": "可用于工程视觉装配，通过混合动态数据收集增强VLA模型的空间泛化，提升抓取与装配精度。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "high"
         }
       },
       {
@@ -1194,6 +1855,53 @@
           "task_id": "autoaim",
           "task": "自瞄 / 装甲板识别",
           "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2607.01574",
+        "arxiv_id": "2607.01574",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "math.OC"
+        ],
+        "title_en": "Multi-Rate Nonlinear Model Predictive Control for Wall-Supported Bipedal Locomotion of Quadrupedal Robots",
+        "title_zh": "四足机器人墙壁支撑双足运动的多速率非线性模型预测控制",
+        "abstract_en": "This paper presents a novel layered planning and control framework based on multi-rate nonlinear model predictive control (MR-NMPC) that enables quadrupedal robots to perform hybrid bipedal locomotion with wall-assisted support in constrained environments. Real-time trajectory optimization for this locomotion presents significant challenges, as the controller must simultaneously plan for both the contact points and the continuous trajectories of the robot's center of mass (CoM) and orientation within the robot's nonlinear dynamics while accounting for unilateral contact constraints, underactuation, and the switching nature of the robot's dynamics. At the high level of the control framework, an MR-NMPC is proposed, which dynamically plans both the discrete-time trajectories of the contact points and the continuous-time trajectories of the CoM and orientation, using a single rigid body (SRB) dynamics model. By incorporating contact-point planning within the multi-rate optimal control framework, this approach enhances dynamic stability compared to heuristic foot placement strategies. At the low level of the control framework, a nonlinear whole-body controller (WBC) based on virtual constraints and a quadratic program enforces full-order dynamics and tracks the MR-NMPC references. The proposed approach is validated through extensive numerical simulations demonstrating the robust wall-assisted bipedal locomotion of a Unitree A1 quadrupedal robot on rough terrains and under external disturbances in a constrained environment. Comparative analysis shows that the proposed MR-NMPC achieves a 2.9 times higher success rate compared to conventional MPC with heuristic-based foot placement strategies in negotiating irregular terrain at high speeds.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Taizoon Chunawala",
+          "Jeeseop Kim",
+          "Kaveh Akbari Hamed"
+        ],
+        "url": "https://arxiv.org/abs/2607.01574v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.01574",
+        "html_url": "https://arxiv.org/abs/2607.01574",
+        "published_at": "2026-07-02T01:09:09.000Z",
+        "upvotes": 0,
+        "heat": 2225.7266566666667,
+        "featured": false,
+        "categories": [
+          "planning",
+          "rl",
+          "radar"
+        ],
+        "image": "",
+        "comment": "Accepted to IEEE/RSJ IROS 2026",
+        "conf": "IROS",
+        "confYear": 2026,
+        "confTag": "IROS 2026",
+        "confWeight": 5,
+        "confVision": false,
+        "relevance": 11,
+        "first_seen": "2026-07-03T11:27:14.978Z",
+        "rm": {
+          "usage": "可用于哨兵机器人跨越复杂地形（如飞坡），但四足机器人运动控制与轮式/履带式差异大，需改造。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
         }
       },
       {
@@ -1813,6 +2521,53 @@
           "task_id": "sim",
           "task": "仿真与 sim-to-real",
           "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.31699",
+        "arxiv_id": "2606.31699",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.AI"
+        ],
+        "title_en": "Look But Don't Touch with Sparse Autoencoders for Unlearning in Diffusion Models",
+        "title_zh": "使用稀疏自编码器在扩散模型遗忘中“只看不碰”",
+        "abstract_en": "Sparse autoencoders (SAEs) have recently been proposed as interpretable tools for concept-level manipulation, under the assumption that isolated features can serve as controllable intervention points. In this work, we systematically evaluate this assumption in the context of object erasure and steering in diffusion models. We show that while SAEs reliably detect and localize semantic concepts within diffusion model activations, direct intervention in their latent space frequently induces out-of-distribution activations, resulting in severe visual artifacts. To disentangle detection from intervention, we use SAE activations purely as semantic detectors to identify image regions containing the target object, and replace those patch embeddings with the ones that do not contain it. This detection-based replacement preserves the diffusion model's activation statistics and produces significantly cleaner erasure results than latent steering. Our findings reveal a fundamental gap between concept detection and concept intervention in diffusion models: monosemantic or sparse features are not inherently suitable as control knobs for steering. These results position SAEs as powerful interpretability tools for analyzing generative models, but highlight important limitations when used for direct manipulation, such as unlearning.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Enrico Cassano",
+          "Riccardo Renzulli",
+          "Rayyan Ahmed",
+          "Marco Grangetto",
+          "Stephan Alaniz"
+        ],
+        "url": "https://arxiv.org/abs/2606.31699v2",
+        "pdf_url": "https://arxiv.org/pdf/2606.31699",
+        "html_url": "https://arxiv.org/abs/2606.31699",
+        "published_at": "2026-06-30T14:09:28.000Z",
+        "upvotes": 0,
+        "heat": 2210.7319244444443,
+        "featured": false,
+        "categories": [
+          "other"
+        ],
+        "image": "",
+        "comment": "Accepted at ECCV 2026",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 9,
+        "first_seen": "2026-07-03T11:27:14.978Z",
+        "rm": {
+          "usage": "与RoboMaster任务关联很弱，主要针对扩散模型概念擦除，不直接适用于机器人感知或控制。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
         }
       },
       {
@@ -2722,6 +3477,54 @@
         }
       },
       {
+        "id": "arxiv:2607.01824",
+        "arxiv_id": "2607.01824",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG"
+        ],
+        "title_en": "Gaming Consensus: Coordinated Manipulation in Crowdsourced Fact-Checking",
+        "title_zh": "",
+        "abstract_en": "Crowdsourced fact-checking systems have been adopted by major social media companies such as X, Meta, TikTok and Google with the aim of combating misleading information at scale without relying on centralized editorial control. These systems have been developed around a common underlying concept: a bridging mechanism that identifies notes flagging misleading information when they receive support from people with different perspectives rather than simple majority support. To our knowledge the only publicly disclosed bridging algorithms deployed for fact-checking are based on matrix factorization, as deployed by both X and Meta, augmented with additional components addressing abuse, targeted manipulation, and contributor brigades. This work examines the core matrix factorization portion of these systems, presenting theoretical and empirical evaluations of the degree to which coordinated users could vote strategically by leveraging the latent representations to fabricate the appearance of synthetic consensus within the bridging mechanism. Using historic production data, we find that up to 10.7% of lower quality notes could be manipulated above consensus thresholds using less than 10 ratings. We complement these findings with a theoretical analysis, revealing counterintuitively that rating a note as \"Not Helpful\" can increase its helpfulness score, as well as a cost model quantifying manipulation effort. We have developed and deployed mitigations within X's Community Notes algorithm to address synthetic consensus.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Nikil Roashan Selvam",
+          "Jay Baxter",
+          "Sophie Hilgard",
+          "Brad Miller",
+          "Keith Coleman",
+          "Ellen Vitercik",
+          "Sanmi Koyejo"
+        ],
+        "url": "https://arxiv.org/abs/2607.01824v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.01824",
+        "html_url": "https://arxiv.org/abs/2607.01824",
+        "published_at": "2026-07-02T07:46:44.000Z",
+        "upvotes": 0,
+        "heat": 2192.3530344444443,
+        "featured": false,
+        "categories": [
+          "rl"
+        ],
+        "image": "",
+        "comment": "ICML 2026",
+        "conf": "ICML",
+        "confYear": 2026,
+        "confTag": "ICML 2026",
+        "confWeight": 3,
+        "confVision": false,
+        "relevance": 5,
+        "first_seen": "2026-07-03T11:27:14.978Z",
+        "rm": {
+          "usage": "该论文关于众包事实核查的共识算法，与RoboMaster比赛任务无直接关联，无法用于机器人视觉、控制或决策。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
         "id": "arxiv:2606.30937",
         "arxiv_id": "2606.30937",
         "source": "arXiv",
@@ -2818,6 +3621,52 @@
           "task_id": "",
           "task": "",
           "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2607.01721",
+        "arxiv_id": "2607.01721",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "CoRe: Combined Rewards with Vision-Language Model Feedback for Preference-Aligned Reinforcement Learning",
+        "title_zh": "",
+        "abstract_en": "Reward design remains a central challenge in reinforcement learning (RL). Hand-crafted rewards are often difficult to specify and may lead to suboptimal policies, while learned rewards from preferences can suffer from inefficiency and unstable training. Inspired by the dual nature of human learning explored in cognitive science, we decompose rewards into two complementary components: Formal Rewards (FR), explicitly designed based on task knowledge, and Residual Rewards (RR), learned from observations to capture implicit and nuanced preferences. Based on this decomposition, we propose CoRe, a hybrid framework that integrates FR and RR with vision-language models (VLMs) feedback to achieve preference-aligned policies without human involvement. Our contributions are twofold: (1) We propose a Formal Reward Module (FRM) that leverages VLMs to iteratively design and optimize FR based on task knowledge and preference feedback, enabling the continual improvement of policy during training; (2) We introduce a Residual Reward Module (RRM) that learns RR from video-level preference by employing VLMs to generate preference labels and capturing nuanced rewards that complement FR, ensuring alignment with human intent. Through the synergy of FRM and RRM, CoRe enables the automatic construction of reliable rewards that are efficient and preference-aligned. Extensive experiments demonstrate that CoRe outperforms existing approaches in terms of policy learning effectiveness and efficiency on ten robotic manipulation tasks in simulation and five real-worlds. Videos can be found on our project website: https://core-2026.github.io/",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Hexian Ni",
+          "Tao Lu",
+          "Yinghao Cai"
+        ],
+        "url": "https://arxiv.org/abs/2607.01721v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.01721",
+        "html_url": "https://arxiv.org/abs/2607.01721",
+        "published_at": "2026-07-02T05:20:47.000Z",
+        "upvotes": 0,
+        "heat": 2189.9205455555557,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl",
+          "sim"
+        ],
+        "image": "",
+        "comment": "ICML 2026",
+        "conf": "ICML",
+        "confYear": 2026,
+        "confTag": "ICML 2026",
+        "confWeight": 3,
+        "confVision": false,
+        "relevance": 8,
+        "first_seen": "2026-07-03T11:27:14.978Z",
+        "rm": {
+          "usage": "该论文提出结合视觉语言模型反馈的强化学习奖励设计方法，可用于多机协同策略学习（strategy）或仿真训练（sim），通过自动生成偏好奖励来优化策略。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
         }
       },
       {
@@ -4260,7 +5109,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.32,
+        "relevance": 7.32,
         "first_seen": "2026-07-02T18:27:06.152Z"
       },
       {
@@ -4283,7 +5132,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.32,
+        "relevance": 7.32,
         "first_seen": "2026-07-02T18:27:06.152Z"
       },
       {
@@ -4551,7 +5400,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.08,
+        "relevance": 7.08,
         "first_seen": "2026-07-02T18:27:06.152Z"
       },
       {
@@ -4718,7 +5567,7 @@
           "rune",
           "sim"
         ],
-        "relevance": 11.96,
+        "relevance": 16.96,
         "first_seen": "2026-07-02T18:27:06.152Z"
       },
       {
