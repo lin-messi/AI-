@@ -1,6 +1,6 @@
 {
   "date": "2026-07-06",
-  "generatedAt": "2026-07-05T23:50:56.578Z",
+  "generatedAt": "2026-07-06T05:06:47.608Z",
   "categories": [
     {
       "key": "aim",
@@ -49,7 +49,7 @@
     }
   ],
   "papers": {
-    "count": 80,
+    "count": 82,
     "items": [
       {
         "id": "arxiv:2607.02517",
@@ -1139,6 +1139,51 @@
           "task_id": "sentry",
           "task": "哨兵自主导航与决策",
           "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2607.01804",
+        "arxiv_id": "2607.01804",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "VLA-Corrector: Lightweight Detect-and-Correct Inference for Adaptive Action Horizon",
+        "title_zh": "VLA-Corrector：面向自适应动作视野的轻量级检测-纠正推理",
+        "abstract_en": "Vision-Language-Action (VLA) foundation models have recently achieved strong progress in embodied intelligence. To reduce policy-call frequency while preserving temporal coherence, most generative policies adopt an action chunk mechanism, executing multiple future actions in an open-loop manner under a fixed action horizon. However, this \"predict-then-blindly-execute\" paradigm sacrifices closed-loop reactivity: in contact-rich physical interactions, even small local perturbations can rapidly amplify within the open-loop blind spot, leading to compounding errors and ultimately task failure. To address this limitation, we propose VLA-Corrector, a lightweight corrective inference framework for action-chunked VLA policies. Without modifying the backbone policy weights, VLA-Corrector introduces a lightweight Latent-space Vision Monitor (LVM) that continuously compares predicted and actual visual feature evolution, enabling online detection of visual dynamics deviations. Once persistent deviation is detected, the system triggers a truncation event, discards the remaining stale actions, and invokes corrective replanning via Online Gradient Guidance (OGG). The detect-and-correct mechanism of VLA-Corrector naturally induces an event-triggered adaptive action horizon: it preserves long-horizon execution when the current chunk remains reliable, and invokes short-horizon corrective replanning when execution begins to drift. In doing so, VLA-Corrector mitigates the trade-off imposed by static horizons between execution robustness and policy-call frequency. It can be integrated into different VLA models without further retraining the VLA backbone, interrupting compounding errors while preserving much of the efficiency benefit of action chunking and substantially improving robustness in long-horizon, contact-rich robotic manipulation tasks.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Yi Pan",
+          "Miao Pan",
+          "Qi Lu",
+          "Jiaming Huang",
+          "Man Zhang",
+          "Siteng Huang",
+          "Xin Li",
+          "Jie Zhang"
+        ],
+        "url": "https://arxiv.org/abs/2607.01804v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.01804",
+        "html_url": "https://arxiv.org/abs/2607.01804",
+        "published_at": "2026-07-02T07:18:53.000Z",
+        "upvotes": 2,
+        "heat": 2166.231994722222,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl"
+        ],
+        "image": "",
+        "comment": "22 pages, 14 figures",
+        "relevance": 4,
+        "first_seen": "2026-07-06T05:06:45.486Z",
+        "rm": {
+          "usage": "可用于哨兵或工程机器人中，通过检测-纠正机制减少动作预测误差，提升在接触式任务（如抓取能量单元）中的鲁棒性。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
         }
       },
       {
@@ -2898,6 +2943,54 @@
         }
       },
       {
+        "id": "arxiv:2607.02501",
+        "arxiv_id": "2607.02501",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.CV",
+          "cs.OS"
+        ],
+        "title_en": "Embodied.cpp: A Portable Inference Runtime of Embodied AI Models on Heterogeneous Robots",
+        "title_zh": "",
+        "abstract_en": "Embodied AI models now span vision-language-action (VLA) models and world-action models (WAMs), but practical deployment remains fragmented across model-specific Python stacks, backend assumptions, and robot-side glue code, especially on heterogeneous edge devices. Existing inference runtimes are designed mainly for request-response serving and therefore do not satisfy the runtime contract of embodied deployment: multi-rate execution inside closed-loop control, latency-first batch-1 inference on heterogeneous hardware, and extensible embodied interfaces beyond fixed token I/O. We present Embodied.cpp, a portable C++ inference runtime for embodied models. Based on an architectural analysis of representative VLA models and WAMs, Embodied.cpp captures a shared execution path and organizes it into five layers: input adapters, sequence builders, backbone execution, head plugins, and deployment adapters. The runtime provides modular multi-rate execution, latency-first fused inference, and extensible operator and I/O support, enabling deployment across heterogeneous devices, robots, and simulators through one backend abstraction. We evaluate Embodied.cpp on two VLA models, HY-VLA and pi0.5, and on a preliminary WAM benchmark using a LingBot-VA Transformer block. The VLA deployments achieve successful closed-loop execution with 100.0% and 91.0% task success rates, respectively. The WAM benchmark reduces block memory from 312.2 MiB to 88.1 MiB. These results show that Embodied.cpp improves deployment efficiency while preserving high accuracy across diverse embodied model architectures.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Ling Xu",
+          "Chuyu Han",
+          "Borui Li",
+          "Hao Wu",
+          "Shiqi Jiang",
+          "Ting Cao",
+          "Chuanyou Li",
+          "Sheng Zhong"
+        ],
+        "url": "https://arxiv.org/abs/2607.02501v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.02501",
+        "html_url": "https://arxiv.org/abs/2607.02501",
+        "published_at": "2026-07-02T17:58:28.000Z",
+        "upvotes": 1,
+        "heat": 2126.8917175,
+        "featured": false,
+        "categories": [
+          "aim",
+          "planning",
+          "rl"
+        ],
+        "image": "",
+        "comment": "12 pages, 2 figures, Project website: https://github.com/SEU-PAISys/Embodied.cpp",
+        "relevance": 3,
+        "first_seen": "2026-07-06T05:06:45.486Z",
+        "rm": {
+          "usage": "可用于将VLA模型部署到哨兵或工程机器人等异构边缘设备上，实现低延迟闭环控制推理。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
+      },
+      {
         "id": "cvf:CVPR2026:CME-CAD: Heterogeneous Collaborative Multi-Expert Reinforcem",
         "arxiv_id": "",
         "source": "CVPR",
@@ -3871,7 +3964,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 8.61,
+        "relevance": 13.61,
         "first_seen": "2026-07-05T17:55:34.581Z"
       },
       {
@@ -4239,7 +4332,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.32,
+        "relevance": 12.32,
         "first_seen": "2026-07-05T17:55:34.581Z"
       },
       {
@@ -4293,7 +4386,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 20.32,
+        "relevance": 25.32,
         "first_seen": "2026-07-05T17:55:34.581Z"
       },
       {
