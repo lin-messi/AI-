@@ -1,6 +1,6 @@
 {
   "date": "2026-07-12",
-  "generatedAt": "2026-07-11T17:49:45.316Z",
+  "generatedAt": "2026-07-11T19:57:45.032Z",
   "categories": [
     {
       "key": "aim",
@@ -49,8 +49,279 @@
     }
   ],
   "papers": {
-    "count": 80,
+    "count": 87,
     "items": [
+      {
+        "id": "arxiv:2607.07608",
+        "arxiv_id": "2607.07608",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.CV"
+        ],
+        "title_en": "Dual Latent Memory in Vision-Language-Action Models for Robotic Manipulation",
+        "title_zh": "机器人操作中视觉-语言-动作模型的双重潜在记忆",
+        "abstract_en": "Mainstream Vision-Language-Action (VLA) models predict actions primarily from the current observation under a Markovian assumption, thus struggling with long-horizon, temporally dependent tasks. Existing memory-augmented VLAs either expand the observation window or retrieve history from the memory bank as auxiliary policy-side context. However, they leave memory outside the native latent embedding space of VLA reasoning, preventing historical experience from being fluidly interleaved with multimodal reasoning and action formation. To this end, we introduce LaMem-VLA, a latent-memory-native framework that reconstructs historical experience into latent memory tokens and directly interweaves them with VLA reasoning. At its core, LaMem-VLA introduces four coordinated components: (i) a curator that organizes historical experience into two complementary short-term and long-term memory vaults; (ii) a seeker that queries both vaults using the multimodal cognition to retrieve context-relevant evidence; (iii) a condenser that reconstructs the retrieved evidence into compact short-term and long-term latent memory tokens; and (iv) a weaver that injects these memory tokens with the current observation and instruction into one continuous embedding sequence. By representing, retrieving, and consuming historical experience entirely in the same continuous latent space, LaMem-VLA enables memory to directly participate in VLA reasoning and guide action generation under a bounded context. Extensive experiments on SimplerEnv and LIBERO demonstrate the superiority of our LaMem-VLA.",
+        "abstract_zh": "主流视觉-语言-动作（VLA）模型在马尔可夫假设下主要从当前观测预测动作，因此在处理长时域、时间依赖的任务时表现不佳。现有的记忆增强VLA要么扩展观测窗口，要么从记忆库中检索历史作为辅助策略上下文。然而，它们将记忆置于VLA推理的原生潜在嵌入空间之外，阻碍了历史经验与多模态推理及动作形成的流畅交织。为此，我们提出LaMem-VLA，一种潜在记忆原生框架，将历史经验重构为潜在记忆标记，并直接与VLA推理交织。其核心包括四个协调组件：（i）策展人，将历史经验组织为互补的短期和长期记忆库；（ii）搜索者，利用多模态认知查询两个库以检索上下文相关证据；（iii）压缩器，将检索到的证据重构为紧凑的短期和长期潜在记忆标记；（iv）编织者，将这些记忆标记与当前观测和指令注入到一个连续的嵌入序列中。通过在相同的连续潜在空间中表示、检索和消费历史经验，LaMem-VLA使记忆能直接参与VLA推理并在有限上下文中指导动作生成。在SimplerEnv和LIBERO上的大量实验证明了LaMem-VLA的优越性。",
+        "highlight_zh": "提出潜在记忆原生框架，将历史经验直接融入VLA推理，提升长时域任务性能。",
+        "digest_zh": "1. 研究问题：现有VLA模型假设当前观测足以预测动作，但面对需要长期记忆的任务（如机器人连续操作）时表现不佳。虽然有些模型通过扩展观测窗口或检索历史来增强记忆，但这些记忆并未融入VLA的推理空间，导致历史经验无法与多模态信息有效结合。\n2. 方法：提出LaMem-VLA框架，包含四个模块：策展人将历史经验分为短期和长期记忆库；搜索者根据当前多模态认知从两个库中检索相关证据；压缩器将证据压缩为紧凑的潜在记忆标记；编织者将这些标记与当前观测和指令拼接成连续嵌入序列。所有操作都在同一潜在空间中进行，使记忆直接参与推理。\n3. 结果：在SimplerEnv和LIBERO基准测试中，LaMem-VLA显著优于现有方法，尤其在长时域任务上表现突出。\n4. 重要性：该工作首次将记忆以潜在标记形式无缝集成到VLA推理中，为机器人长期自主操作提供了新思路，有望推动具身智能在复杂场景中的应用。",
+        "authors": [
+          "Hongyu Qu",
+          "Jianzhe Gao",
+          "Xiaobin Hu",
+          "Shaohuan Yang",
+          "Xinlei Yu",
+          "Rui Yan",
+          "Wenguan Wang",
+          "Xiangbo Shu"
+        ],
+        "url": "https://arxiv.org/abs/2607.07608v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.07608",
+        "html_url": "https://arxiv.org/abs/2607.07608",
+        "published_at": "2026-07-08T16:26:06.000Z",
+        "upvotes": 51,
+        "heat": 4634.5019905555555,
+        "featured": true,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "Project page: https://github.com/quhongyu/LaMem-VLA",
+        "relevance": 3,
+        "first_seen": "2026-07-11T19:57:40.798Z",
+        "rm": {
+          "usage": "可用于哨兵或工程机器人的长时域任务记忆与决策，例如记忆历史轨迹或装配步骤，提升多步任务执行能力。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2607.07675",
+        "arxiv_id": "2607.07675",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Scaling Mixture-of-Experts Video Pretraining for Embodied Intelligence",
+        "title_zh": "面向具身智能的混合专家视频预训练规模化",
+        "abstract_en": "Despite the recent promise in robot control, video generative models suffer from a domain mismatch due to their primary focus on content creation. For example, their design inherently prioritizes visual fidelity and creativity over computational efficiency and physical realism. In this work, we present LingBot-Video, a DiT-based video pretraining paradigm specifically tailored for embodied intelligence. From the architecture perspective, we adopt the Mixture-of-Experts (MoE), instead of dense, framework to achieve a better trade-off between modeling capacity and inference efficiency, and manage to scale it up from scratch. From the data perspective, we construct a data profiling engine that augments standard internet videos with extensive robot-oriented footage, encompassing manipulation, navigation, and egocentric perspectives, to equip the base model with an intrinsic understanding of actions and world dynamics. From the training perspective, we develop a multi-dimensional reward system to enforce the alignment regarding physical rationality and task completion, going beyond standard criteria such as aesthetics, prompt-following, and motion consistency. Comprehensive evaluations validate its performance and efficiency as a video foundation model. We contribute LingBot-Video as the inaugural large-scale, open-source MoE video foundation model to the community, in a pioneering effort to bridge digital creativity and physical actuation.",
+        "abstract_zh": "尽管在机器人控制方面近期有所进展，但视频生成模型因主要关注内容创作而存在领域不匹配问题。例如，其设计天然优先考虑视觉保真度和创造力，而非计算效率和物理真实性。本文中，我们提出LingBot-Video，一种专为具身智能设计的基于DiT的视频预训练范式。从架构角度，我们采用混合专家（MoE）而非密集框架，以在建模能力和推理效率间取得更好平衡，并成功从零开始规模化。从数据角度，我们构建数据剖析引擎，用大量面向机器人的素材（包括操作、导航和第一人称视角）增强标准互联网视频，使基础模型具备对动作和世界动态的内在理解。从训练角度，我们开发多维奖励系统，以强制对齐物理合理性和任务完成度，超越美学、指令遵循和运动一致性等标准准则。全面评估验证了其作为视频基础模型的性能和效率。我们贡献LingBot-Video作为首个大规模开源MoE视频基础模型，旨在弥合数字创造力与物理执行之间的鸿沟。",
+        "highlight_zh": "首个大规模开源MoE视频基础模型，专为具身智能设计，弥合数字与物理世界。",
+        "digest_zh": "1. 研究问题：现有视频生成模型主要面向内容创作（如生成电影、动画），强调视觉质量和创意，但用于机器人控制时存在领域差异——它们不关心计算效率和物理真实性，导致在具身智能任务中效果不佳。\n2. 方法：提出LingBot-Video，基于扩散Transformer（DiT）架构，采用混合专家（MoE）替代密集网络，以平衡模型容量和推理速度。数据方面，构建数据剖析引擎，从互联网视频和机器人操作、导航、第一人称视角视频中提取训练数据，让模型学习动作和物理规律。训练时引入多维奖励系统，不仅关注视频美观度，还强调物理合理性和任务完成度。\n3. 结果：在多个基准上验证了其作为视频基础模型的性能，在生成质量和效率上均优于现有模型。\n4. 重要性：这是首个开源的大规模MoE视频基础模型，专门为机器人等具身智能系统设计，有望推动视频生成从娱乐应用走向实际物理交互，为机器人学习提供更真实的模拟环境。",
+        "authors": [
+          "Shuailei Ma",
+          "Jiaqi Liao",
+          "Xinyang Wang",
+          "Jingjing Wang",
+          "Chaoran Feng",
+          "Zijing Hu",
+          "Chong Bao",
+          "Zichen Xi"
+        ],
+        "url": "https://arxiv.org/abs/2607.07675v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.07675",
+        "html_url": "https://arxiv.org/abs/2607.07675",
+        "published_at": "2026-07-08T17:33:40.000Z",
+        "upvotes": 46,
+        "heat": 4385.628092777778,
+        "featured": true,
+        "categories": [
+          "radar"
+        ],
+        "image": "",
+        "comment": "Project page: https://technology.robbyant.com/lingbot-video",
+        "relevance": 4,
+        "first_seen": "2026-07-11T19:57:40.798Z",
+        "rm": {
+          "usage": "可用于仿真环境中的视频预训练，生成物理合理的机器人操作或导航视频，辅助策略学习或 sim-to-real 迁移。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2607.07534",
+        "arxiv_id": "2607.07534",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Infinite Worlds with Versatile Interactions",
+        "title_zh": "无限世界与多样化交互",
+        "abstract_en": "We present LingBot-World 2.0 (also known as LingBot-World-Infinity), an advanced iteration of LingBot-World featuring four distinct upgrades. (1) Our model achieves an unbounded interaction horizon while maintaining consistent output quality, benefiting from a carefully crafted causal pretraining paradigm. (2) Through distilling a real-time variant from the base model, our system guarantees rapid response time, sufficient to drive 720p video streams at 60 fps. (3) Compared to the previous version, this update introduces highly diverse interactive elements, comprising a broader spectrum of actions (e.g., attacking, archery, spell-casting, and shooting) alongside a richer variety of text-driven events. (4) We pioneer the integration of an agentic harness within the domain of world modeling, wherein a pilot agent is tasked with planning and executing character behaviors, while a director agent is responsible for synthesizing novel environmental elements as the scene progresses. Additionally, to facilitate a shared experience, we develop an interface that permits multiple players to simultaneously immerse themselves in this vivid world simulator. We pair our primary 14B model with a lightweight 1.3B counterpart, which supports effortless deployment on a single GPU.",
+        "abstract_zh": "我们提出LingBot-World 2.0（也称LingBot-World-Infinity），是LingBot-World的进阶版本，包含四项升级。（1）我们的模型实现了无界交互时域，同时保持一致的输出质量，这得益于精心设计的因果预训练范式。（2）通过从基础模型蒸馏出实时变体，我们的系统保证了快速响应时间，足以驱动60 fps的720p视频流。（3）与前一版本相比，本次更新引入了高度多样化的交互元素，包括更广泛的动作（如攻击、射箭、施法和射击）以及更丰富的文本驱动事件。（4）我们率先在世界建模领域集成了智能体框架，其中飞行员智能体负责规划和执行角色行为，而导演智能体负责在场景推进时合成新颖的环境元素。此外，为促进共享体验，我们开发了一个界面，允许多个玩家同时沉浸在这个生动的世界模拟器中。我们将主要的14B模型与轻量级1.3B模型配对，后者可轻松部署在单个GPU上。",
+        "highlight_zh": "世界模拟器升级：无限交互、实时渲染、多样化动作，并首创双智能体框架。",
+        "digest_zh": "1. 研究问题：现有的世界模拟器（如游戏引擎或视频生成模型）在交互时长、实时性、动作多样性和智能体集成方面存在局限，难以构建真正开放、可交互的虚拟世界。\n2. 方法：提出LingBot-World 2.0，包含四项关键升级：采用因果预训练实现无限交互且质量稳定；通过蒸馏得到实时模型，支持60fps的720p视频流；扩展动作库，包括攻击、射箭、施法等；首创双智能体框架——飞行员智能体控制角色行为，导演智能体动态生成环境元素。此外，提供多玩家接口，支持多人同时体验。\n3. 结果：模型（14B参数）与轻量版（1.3B参数）配合，可在单GPU上运行，实现实时、多样化的交互世界。\n4. 重要性：该工作将世界模拟从固定脚本推向动态、可交互、可扩展的方向，为游戏、虚拟现实和具身智能训练提供了强大平台，尤其双智能体设计为自主世界演化开辟了新路径。",
+        "authors": [
+          "Zelin Gao",
+          "Qiuyu Wang",
+          "Jiapeng Zhu",
+          "Jingye Chen",
+          "Zichen Liu",
+          "Qingyan Bai",
+          "Jiahao Wang",
+          "Yufeng Yuan"
+        ],
+        "url": "https://arxiv.org/abs/2607.07534v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.07534",
+        "html_url": "https://arxiv.org/abs/2607.07534",
+        "published_at": "2026-07-08T15:33:25.000Z",
+        "upvotes": 29,
+        "heat": 3533.623926111111,
+        "featured": true,
+        "categories": [
+          "slam",
+          "rl",
+          "sim"
+        ],
+        "image": "",
+        "comment": "Project page: https://technology.robbyant.com/lingbot-world-v2 Code: https://github.com/robbyant/lingbot-world-v2",
+        "relevance": 1,
+        "first_seen": "2026-07-11T19:57:40.798Z",
+        "rm": {
+          "usage": "可用于仿真环境中的世界建模，生成多样化的交互场景（如攻击、射击），辅助强化学习训练或策略验证。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2607.07508",
+        "arxiv_id": "2607.07508",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.AI"
+        ],
+        "title_en": "Single-Rollout Asynchronous Optimization for Agentic Reinforcement Learning",
+        "title_zh": "用于智能体强化学习的单次展开异步优化",
+        "abstract_en": "Reinforcement learning (RL) is becoming increasingly important for post-training large language models (LLMs). Previous RL pipelines for LLMs were mostly synchronous and batch-interleaved, which is inefficient for long-horizon agentic tasks. Recently, asynchronous RL has emerged as a more efficient alternative by updating the model as rollouts arrive. However, existing asynchronous RL systems often emphasize throughput, while leaving training stability and task effectiveness largely underexplored. For example, a key challenge is that group-wise sampling in the widely-used GRPO framework does not naturally fit asynchronous agentic training. In this paper, we present Single-rollout Asynchronous Optimization (SAO) to address the stability and off-policy challenges in asynchronous RL. To reduce off-policy effects and improve generalization, we replace group-wise sampling with single-rollout sampling, that is, using one rollout per prompt. We further improve this single-rollout strategy with practical value-model training designs. To improve optimization stability, we introduce a strict double-side token-level clipping strategy. SAO is able to train stably for one thousand steps and consistently outperform GRPO and its variants on agentic coding and reasoning benchmarks, such as SWE-Bench Verified, BeyondAIME, and IMOAnswerBench. We also demonstrate that single-rollout RL is particularly effective in a simulated online learning setting, where the model must adapt to changing evolving environments. To this end, SAO is successfully deployed in the agentic RL pipeline for training the open GLM-5.2 model (750B-A40B).",
+        "abstract_zh": "强化学习（RL）在大语言模型（LLM）的后训练中日益重要。以往的LLM RL流程大多是同步和批交错的，这对于长时域智能体任务效率低下。最近，异步RL通过随着展开到达而更新模型，成为一种更高效的替代方案。然而，现有异步RL系统通常强调吞吐量，而训练稳定性和任务有效性在很大程度上未被充分探索。例如，一个关键挑战是广泛使用的GRPO框架中的分组采样并不自然适合异步智能体训练。本文中，我们提出单次展开异步优化（SAO）来解决异步RL中的稳定性和离策略挑战。为减少离策略效应并提高泛化能力，我们用单次展开采样替代分组采样，即每个提示使用一次展开。我们进一步通过实用的价值模型训练设计改进了这种单次展开策略。为提高优化稳定性，我们引入了严格的双侧令牌级裁剪策略。SAO能够稳定训练一千步，并在智能体编码和推理基准（如SWE-Bench Verified、BeyondAIME和IMOAnswerBench）上持续优于GRPO及其变体。我们还证明了单次展开RL在模拟在线学习环境中特别有效，其中模型必须适应不断变化的环境。为此，SAO已成功部署在用于训练开源GLM-5.2模型（750B-A40B）的智能体RL流程中。",
+        "highlight_zh": "提出单次展开异步优化，解决异步RL的稳定性和离策略问题，在智能体任务上超越GRPO。",
+        "digest_zh": "1. 研究问题：大语言模型的后训练中，强化学习（RL）越来越重要。但传统同步RL在长时域智能体任务（如编程、推理）中效率低，而异步RL虽快却存在训练不稳定和离策略问题，尤其是GRPO框架的分组采样不适用于异步场景。\n2. 方法：提出单次展开异步优化（SAO），核心改进包括：用单次展开采样（每个提示只用一个展开）替代分组采样，减少离策略效应并提升泛化；引入实用的价值模型训练设计；采用严格的双侧令牌级裁剪策略，提高优化稳定性。\n3. 结果：SAO能稳定训练1000步，在SWE-Bench Verified、BeyondAIME、IMOAnswerBench等基准上持续优于GRPO及其变体。在模拟在线学习环境中，单次展开RL尤其有效。SAO已成功用于训练750B参数的GLM-5.2模型。\n4. 重要性：该工作为异步RL在LLM后训练中的应用提供了稳定高效的方案，尤其适合需要长期推理和自适应能力的智能体任务，有望推动LLM在复杂环境中的自主学习和决策能力。",
+        "authors": [
+          "Zhenyu Hou",
+          "Yujiang Li",
+          "Jie Tang",
+          "Yuxiao Dong"
+        ],
+        "url": "https://arxiv.org/abs/2607.07508v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.07508",
+        "html_url": "https://arxiv.org/abs/2607.07508",
+        "published_at": "2026-07-08T15:02:19.000Z",
+        "upvotes": 13,
+        "heat": 2733.1055908333333,
+        "featured": true,
+        "categories": [
+          "slam",
+          "rl"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 2,
+        "first_seen": "2026-07-11T19:57:40.798Z",
+        "rm": {
+          "usage": "可用于多机协同或策略学习中的强化学习训练，特别是长时域智能体任务，提升训练效率和稳定性。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2607.04434",
+        "arxiv_id": "2607.04434",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.AI",
+          "cs.CV",
+          "cs.GR"
+        ],
+        "title_en": "RoboDojo: A Unified Sim-and-Real Benchmark for Comprehensive Evaluation of Generalist Robot Manipulation Policies",
+        "title_zh": "RoboDojo：面向通用机器人操作策略综合评估的统一仿真与真实世界基准",
+        "abstract_en": "Generalist robot manipulation policies have advanced rapidly, yet existing benchmarks remain limited in systematically evaluating their capabilities. Many rely on simple, short-horizon, or skill-narrow tasks with limited capability coverage, and are often conducted only in simulation or only in the real world. Simulation enables scalable feedback but misses physical deployment challenges, while real-world evaluation is costly, time-consuming, and difficult to reproduce. We introduce RoboDojo, a unified sim-and-real benchmark for comprehensive evaluation of generalist robot manipulation policies. RoboDojo includes 42 simulation tasks and 18 real-world tasks covering diverse and complementary manipulation capabilities. The simulation benchmark evaluates five dimensions: generalization, memory, precision, long-horizon execution, and open-vocabulary instruction following, while the real-world benchmark exposes policies to challenging physical-world deployment conditions. RoboDojo supports scalable evaluation through heterogeneous parallel simulation in Isaac Sim and provides RoboDojo-RealEval, a reproducible real-world evaluation system with remote cloud access, standardized hardware, scene reset, evaluation protocol, and deployment interface. Together with XPolicyLab, policies can be integrated once and evaluated across simulation and real-world settings with minimal adaptation. We integrate 30 policies into XPolicyLab and evaluate them on RoboDojo, establishing a public leaderboard and systematic analysis of current policy performance. The website is available at http://robodojo-benchmark.com/.",
+        "abstract_zh": "通用机器人操作策略发展迅速，但现有基准在系统评估其能力方面仍然有限。许多基准依赖于简单、短视或技能狭窄的任务，能力覆盖有限，且通常仅在仿真或真实世界中进行。仿真可提供可扩展的反馈，但缺少物理部署挑战，而真实世界评估成本高、耗时长且难以复现。我们引入RoboDojo，一个统一的仿真与真实世界基准，用于全面评估通用机器人操作策略。RoboDojo包含42个仿真任务和18个真实世界任务，覆盖多样且互补的操作能力。仿真基准评估五个维度：泛化、记忆、精度、长时程执行和开放词汇指令跟随，而真实世界基准则将策略暴露于具有挑战性的物理世界部署条件。RoboDojo通过Isaac Sim中的异构并行仿真支持可扩展评估，并提供RoboDojo-RealEval，一个可复现的真实世界评估系统，具有远程云访问、标准化硬件、场景重置、评估协议和部署接口。结合XPolicyLab，策略可一次集成，并在仿真和真实世界设置中评估，只需最小调整。我们将30个策略集成到XPolicyLab中，并在RoboDojo上评估，建立了公开排行榜和当前策略性能的系统分析。网站：http://robodojo-benchmark.com/",
+        "highlight_zh": "首个统一仿真与真实世界的机器人操作策略综合基准，含42个仿真和18个真实任务。",
+        "digest_zh": "1. 研究问题：通用机器人操作策略发展很快，但现有基准要么只在仿真中测试（忽略真实物理挑战），要么只在真实世界测试（成本高、难复现），且任务单一，无法全面评估策略能力。\n2. 方法：作者提出了RoboDojo，一个同时包含仿真和真实世界的统一基准。仿真部分有42个任务，评估泛化、记忆、精度、长时程执行和开放词汇指令跟随五个维度；真实世界部分有18个任务，测试策略在真实物理环境中的表现。他们利用Isaac Sim实现并行仿真，并搭建了RoboDojo-RealEval系统，支持远程云访问和标准化硬件，确保可复现性。通过XPolicyLab平台，策略只需一次集成即可在仿真和真实环境中评估。\n3. 结果：集成了30种现有策略，在RoboDojo上进行了系统评估，建立了公开排行榜，揭示了当前策略在不同维度上的优势和不足。\n4. 重要性：RoboDojo填补了机器人操作策略评估的空白，提供了一个公平、全面、可复现的测试平台，有助于推动通用机器人策略的研发和比较，对机器人学、人工智能和自动化领域具有重要价值。",
+        "authors": [
+          "Tianxing Chen",
+          "Yue Chen",
+          "Zixuan Li",
+          "Junyuan Tang",
+          "Kailun Su",
+          "Haoran Lu",
+          "Weijie Wan",
+          "Baijun Chen"
+        ],
+        "url": "https://arxiv.org/abs/2607.04434v3",
+        "pdf_url": "https://arxiv.org/pdf/2607.04434",
+        "html_url": "https://arxiv.org/abs/2607.04434",
+        "published_at": "2026-07-05T17:58:02.000Z",
+        "upvotes": 11,
+        "heat": 2564.0342102777777,
+        "featured": true,
+        "categories": [
+          "planning",
+          "rl",
+          "radar"
+        ],
+        "image": "",
+        "comment": "Website: https://robodojo-benchmark.com/, Code: https://github.com/RoboDojo-Benchmark/RoboDojo, Leaderboard: https://robodojo-benchmark.com/leaderboard",
+        "relevance": 2,
+        "first_seen": "2026-07-11T19:57:40.798Z",
+        "rm": {
+          "usage": "可用于工程视觉装配或哨兵导航的仿真与真实世界评估基准，提供标准化测试环境。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2606.30111",
+        "arxiv_id": "2606.30111",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.AI",
+          "cs.LG"
+        ],
+        "title_en": "Automating the Design of Embodied Agent Architectures",
+        "title_zh": "自动化具身智能体架构的设计",
+        "abstract_en": "Embodied agents are typically built as hand-designed compositions of perception, memory, planning, and action modules. This modularity exposes a large architectural design space, but current systems still rely on researcher intuition to choose where information is stored, how observations are processed, and how model calls are connected. Agent Architecture Search (AAS) automates such design for text-domain agents, but has not been systematically evaluated on perceptual embodied agents through simulator rollouts. We study this transfer. We introduce AgentCanvas, a typed-graph runtime that hosts embodied executors as editable node-and-wire programs with simulator-aware execution and episode-level logs, and KDLoop, a coding-agent search procedure that cycles through proposal, critique, experiment, and distillation, with triggered reflection after stalls. We evaluate three AAS variants across four embodied executors spanning vision-language navigation, embodied question answering, and language-conditioned manipulation. The resulting 3x4 matrix shows that architecture-level search can produce deployable and directional success-rate gains on embodied tasks, while one apparent high-scoring candidate is rejected as leak-bearing. At the same time, the experiments expose constraints that are muted in text-domain AAS: optimization signals can be masked by rollout noise, search can become trapped in local edit basins, and episode-level credit assignment only partially emerges even when detailed logs are available. These results characterize both the promise and the current limits of automated architecture search for embodied agents.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Jian Zhou",
+          "Sihao Lin",
+          "Jin Li",
+          "Shuai Fu",
+          "Gengze Zhou",
+          "Qi Wu"
+        ],
+        "url": "https://arxiv.org/abs/2606.30111v2",
+        "pdf_url": "https://arxiv.org/pdf/2606.30111",
+        "html_url": "https://arxiv.org/abs/2606.30111",
+        "published_at": "2026-06-29T10:45:37.000Z",
+        "upvotes": 9,
+        "heat": 2312.827261111111,
+        "featured": false,
+        "categories": [
+          "aim",
+          "sim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 3,
+        "first_seen": "2026-07-11T19:57:40.798Z",
+        "rm": {
+          "usage": "可用于哨兵或工程机器人的架构设计自动化，优化感知、记忆、规划等模块组合。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
+      },
       {
         "id": "arxiv:2607.08772",
         "arxiv_id": "2607.08772",
@@ -191,6 +462,48 @@
           "task_id": "",
           "task": "",
           "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2607.03723",
+        "arxiv_id": "2607.03723",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.AI"
+        ],
+        "title_en": "OmniTacTune: Policy-Agnostic Real-World RL for Tactile Residual Adaptation of Visual Policies",
+        "title_zh": "OmniTacTune：策略无关的真实世界强化学习用于视觉策略的触觉残差适应",
+        "abstract_en": "Visual policies learned from human videos, teleoperation, and robot demonstrations offer scalable motion priors, but often fail in contact-rich manipulation, where success significantly depends on local force and contact geometry. Tactile sensing provides these complementary signals, yet tactile data remain costly to collect and hard to generalize across sensors, robots, and tasks. We introduce OmniTacTune, a policy-agnostic real-world RL pipeline that adapts tactile feedback to pretrained visual policies through residual correction. OmniTacTune uses a two-stage design: it first bootstraps tactile-aware learning from autonomous base-policy rollouts, then learns a lightweight tactile residual policy through online interaction. Extensive experiments show that OmniTacTune generalizes across diverse contact-rich tasks, visual base policies, and tactile representations. Across four real-world contact-rich tasks, it improves visual base policies from 5-40% success to 85-100% within 40-80 minutes, demonstrating an efficient path for adapting tactile feedback to scalable visual robot policies. Project page: https://colinyu1.github.io/omnitactune-site/",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Kelin Yu",
+          "Haode Zhang",
+          "Harish Ravichandar",
+          "Yunhai Han",
+          "Ruohan Gao"
+        ],
+        "url": "https://arxiv.org/abs/2607.03723v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.03723",
+        "html_url": "https://arxiv.org/abs/2607.03723",
+        "published_at": "2026-07-04T06:11:03.000Z",
+        "upvotes": 5,
+        "heat": 2228.2511541666668,
+        "featured": false,
+        "categories": [
+          "radar"
+        ],
+        "image": "",
+        "comment": "Project page: https://colinyu1.github.io/omnitactune-site/",
+        "relevance": 3,
+        "first_seen": "2026-07-11T19:57:40.798Z",
+        "rm": {
+          "usage": "可用于工程视觉装配中的触觉残差适应，提升接触式操作的鲁棒性。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
         }
       },
       {
@@ -3680,7 +3993,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.68,
+        "relevance": 17.68,
         "first_seen": "2026-07-11T17:48:47.262Z"
       },
       {
@@ -3749,7 +4062,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 8.61,
+        "relevance": 13.61,
         "first_seen": "2026-07-11T17:48:47.262Z"
       },
       {
@@ -4116,7 +4429,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.33,
+        "relevance": 12.33,
         "first_seen": "2026-07-11T17:48:47.262Z"
       },
       {
@@ -4170,7 +4483,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 20.32,
+        "relevance": 25.32,
         "first_seen": "2026-07-11T17:48:47.262Z"
       },
       {
@@ -4572,7 +4885,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 11.96,
+        "relevance": 21.96,
         "first_seen": "2026-07-11T17:48:47.262Z"
       },
       {
