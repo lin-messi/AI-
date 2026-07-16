@@ -1,6 +1,6 @@
 {
   "date": "2026-07-16",
-  "generatedAt": "2026-07-16T07:19:24.131Z",
+  "generatedAt": "2026-07-16T10:44:08.697Z",
   "categories": [
     {
       "key": "aim",
@@ -3989,6 +3989,94 @@
         }
       },
       {
+        "id": "arxiv:2607.13584",
+        "arxiv_id": "2607.13584",
+        "source": "arXiv",
+        "cats": [
+          "cs.NE",
+          "cs.CV",
+          "cs.RO"
+        ],
+        "title_en": "Visual Place Recognition Using Rate-Encoded Spiking Neural Networks with Discrete STDP Learning",
+        "title_zh": "",
+        "abstract_en": "Spiking Neural Networks (SNNs) trained through unsupervised Spike-Timing-Dependent Plasticity (STDP) have been explored as solutions to visual loop closure problems, driven by the prospect of efficient on-device inference on neuromorphic devices. State-of-the-art STDP-based models deliver high classification accuracy but fail to reach the high Recall at 100% Precision (R@100P) needed for reliable autonomous navigation. We present a discrete, tensor-native implementation of the STDP-based SNN-VPR pipeline using PyTorch with snnTorch and evaluate it on a 100-place Nordland dataset using 15 independently-trained networks. The contribution of three decisions in the implementation is investigated. First, we show how to perform neuron assignment with a closed-form, deterministic tensor pipeline and show that it provides significantly higher R@100P than a standard argmax procedure. However, some of this gain comes from implementation differences compared to prior continuous-time models, which we measure independently. Second, ablation in isolation shows that state reset after each query helps improve R@100P regardless of the way neurons are assigned. Third, velocity-compensated sliding window aggregation over k consecutive frames reaches R@100P = 100.00% at k = 5 for constant-velocity traversal and an additional 0.20 ms latency. Taken together, these findings show the impact of inference stage design decisions in STDP-based SNN-VPR on recall precision, although the separate contribution of each mechanism and implementation differences is only partially disentangled and needs further examination.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Altzi Tsanko",
+          "Oikonomou Katerina Maria",
+          "Antonios Gasteratos"
+        ],
+        "url": "https://arxiv.org/abs/2607.13584v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.13584",
+        "html_url": "https://arxiv.org/abs/2607.13584",
+        "published_at": "2026-07-15T08:25:42.000Z",
+        "upvotes": 0,
+        "heat": 2133.763859166667,
+        "featured": false,
+        "categories": [
+          "slam",
+          "nav"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 6,
+        "first_seen": "2026-07-16T10:44:06.239Z",
+        "rm": {
+          "usage": "可用于哨兵导航中的视觉回环检测，提升自主建图定位的鲁棒性，但需改造为适合RoboMaster场景的SNN模型。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2607.13579",
+        "arxiv_id": "2607.13579",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.AI",
+          "cs.LG"
+        ],
+        "title_en": "Agile perceptive multi-skill locomotion for quadrupedal robots in the wild",
+        "title_zh": "",
+        "abstract_en": "Enabling quadrupedal robots to traverse complex terrains-from rugged outdoor environments to urban landscapes-requires seamless integration of multiple motor skills, smooth transitions between gaits, and high-speed perceptive locomotion using only onboard sensors. We present APT-RL (Action Pretrained Transformer-based Reinforcement Learning), a unified framework that enables multi-skill locomotion to achieve high-speed traversal in complex environments through autonomous skill transitions utilizing only onboard perception and computation. Our approach generates large-scale, feature-rich 2D motion datasets through trajectory optimization with simplified dynamics. These datasets enable training of diverse, reusable locomotion skills that transfer effectively to a real quadruped robot operating on complex uneven terrains. The resulting high-quality skills serve as strong priors for efficient learning of complex downstream tasks and extend naturally to 3D environments, enabling smooth, high-speed multi-skill locomotion in deployed policy. Real-world experiments demonstrate the framework's capabilities: the robot performs agile maneuvers through complex indoor obstacles and outdoor wild environments, including dynamic drop-down maneuvers that reach instantaneous peak speeds of up to 6 meters per second. A single onboard policy enables robust traversal of diverse obstacles, including stairs, hurdles, stepping stones, gaps, and fallen branches, demonstrating the versatility and effectiveness of our approach.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Jun-Gill Kang",
+          "Jaehyun Park",
+          "Tae-Gyu Song",
+          "Joon-Ha Kim",
+          "Seungwoo Hong",
+          "Hae-Won Park"
+        ],
+        "url": "https://arxiv.org/abs/2607.13579v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.13579",
+        "html_url": "https://arxiv.org/abs/2607.13579",
+        "published_at": "2026-07-15T08:22:52.000Z",
+        "upvotes": 0,
+        "heat": 2133.7166369444444,
+        "featured": false,
+        "categories": [
+          "planning",
+          "rl",
+          "radar"
+        ],
+        "image": "",
+        "comment": "Project page: https://skillquadsr.github.io/ ,This is the author's version of the work. It is posted here by permission of the AAAS for personal use, not for redistribution. The definitive version was published in Science Robotics on 7.15.2026; doi: 10.1126/scirobotics.adz7397. Jun-Gill Kang and Jaehyun Park are co-first authors. Seungwoo Hong and Hae-Won Park are co-corresponding authors",
+        "relevance": 9,
+        "first_seen": "2026-07-16T10:44:06.239Z",
+        "rm": {
+          "usage": "可用于哨兵机器人的四足运动控制，实现复杂地形（如飞坡、高地）的高速自主穿越，但需适配RoboMaster的轮式或四足平台。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
+      },
+      {
         "id": "arxiv:2607.12732",
         "arxiv_id": "2607.12732",
         "source": "arXiv",
@@ -4426,90 +4514,6 @@
           "task": "多机协同与策略学习",
           "value": "mid"
         }
-      },
-      {
-        "id": "arxiv:2607.12571",
-        "arxiv_id": "2607.12571",
-        "source": "arXiv",
-        "cats": [
-          "cs.RO"
-        ],
-        "title_en": "TrustVLA: Mechanism-Guided Inference-Time Defense Against Vision-Language-Action Backdoors",
-        "title_zh": "",
-        "abstract_en": "Vision-Language-Action (VLA) models are deployed through pipelines that end users cannot audit, and a poisoned VLA can behave normally on clean observations while a small visual trigger redirects a long-horizon robot policy before any failure becomes observable. Existing vision or language defenses rarely explain what a triggered VLA representation looks like or how to recover behavior without retraining. We study this gap through two independently proposed VLA attacks from groups with distinct injection strategies, BadVLA and INFUSE; the latter persists after downstream clean adaptation. Across the evaluated poisoned models, we identify a recurring internal mechanism: a \\emph{compact causal footprint}, namely a small visual support that is attention-seeded, spatially compact, and \\emph{causal} in a precise sense -- masking it returns a clean-calibrated evidence-evolution score to the normal operating region. This footprint motivates TrustVLA, a mechanism-guided inference-time defense that adapts the Dirichlet evidence framework from trusted classification to monitor per-token, per-layer epistemic uncertainty in VLA policies. With only a small clean calibration set, TrustVLA (i)~detects abnormal evidence evolution, (ii)~localizes the compact support by counterfactual mechanism-score drop, and (iii)~recovers the observation by localized inpainting. Across OpenVLA/LIBERO and $π_{0.5}$ transfer evaluations, TrustVLA reduces attack success while preserving clean-task performance, providing a retraining-free, mechanism-guided defense for visual-triggered VLA backdoors.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Pinhan Fu",
-          "Xianda Guo",
-          "Xuetao Li",
-          "Wenke Huang",
-          "Ruilin Wang",
-          "Weiheng Zhao",
-          "Wei Sui",
-          "Mang Ye"
-        ],
-        "url": "https://arxiv.org/abs/2607.12571v1",
-        "pdf_url": "https://arxiv.org/pdf/2607.12571",
-        "html_url": "https://arxiv.org/abs/2607.12571",
-        "published_at": "2026-07-14T09:43:52.000Z",
-        "upvotes": 0,
-        "heat": 2129.514905277778,
-        "featured": false,
-        "categories": [
-          "aim",
-          "slam",
-          "rl"
-        ],
-        "image": "",
-        "comment": "",
-        "relevance": 1,
-        "first_seen": "2026-07-15T16:14:40.054Z",
-        "rm": {
-          "usage": "关联很弱，主要针对VLA模型的后门防御，与RoboMaster视觉任务无直接关系。",
-          "task_id": "",
-          "task": "",
-          "value": "low"
-        }
-      },
-      {
-        "id": "cvf:CVPR2026:CME-CAD: Heterogeneous Collaborative Multi-Expert Reinforcem",
-        "arxiv_id": "",
-        "source": "CVPR",
-        "cats": [],
-        "title_en": "CME-CAD: Heterogeneous Collaborative Multi-Expert Reinforcement Learning for CAD Code Generation",
-        "title_zh": "",
-        "abstract_en": "Computer-Aided Design (CAD) is essential in industrial design, but the complexity of traditional CAD modeling and workflows presents significant challenges for automating the generation of high-precision, editable CAD models. Existing methods, such as 3D reconstruction from sketches, often produce non-editable, approximate models that fall short of meeting the stringent requirements for precision and editability in industrial design. Moreover, the reliance on text or image-based inputs often requires significant manual annotation, limiting their scalability and applicability in industrial settings. To overcome these challenges, we propose the Heterogeneous Collaborative Multi-Expert Reinforcement Learning (CME-CAD) paradigm, a novel training paradigm for CAD code generation. Our approach integrates the complementary strengths of these models, facilitating collaborative learning and improving the model&#x27;s ability to generate accurate, constraint-compatible, and fully editable CAD models. We introduce a two-stage training process: Multi-Expert Fine-Tuning (MEFT), and Multi-Expert Reinforcement Learning (MERL). Additionally, we present CADExpert, an open-source benchmark consisting of 17,299 instances, including orthographic projections with precise dimension annotations, expert-generated Chain-of-Thought (CoT) processes, executable CADQuery code, and rendered 3D models. The CADExpert dataset is publicly available at https://modelscope.cn/datasets/zhuofanChen/CADExpert.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [],
-        "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Niu_CME-CAD_Heterogeneous_Collaborative_Multi-Expert_Reinforcement_Learning_for_CAD_Code_Generation_CVPR_2026_paper.html",
-        "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Niu_CME-CAD_Heterogeneous_Collaborative_Multi-Expert_Reinforcement_Learning_for_CAD_Code_Generation_CVPR_2026_paper.pdf",
-        "html_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Niu_CME-CAD_Heterogeneous_Collaborative_Multi-Expert_Reinforcement_Learning_for_CAD_Code_Generation_CVPR_2026_paper.html",
-        "published_at": "2026-06-01T00:00:00.000Z",
-        "upvotes": 0,
-        "heat": 120,
-        "featured": false,
-        "categories": [
-          "rl"
-        ],
-        "image": "",
-        "comment": "Accepted to CVPR 2026",
-        "conf": "CVPR",
-        "confYear": 2026,
-        "confTag": "CVPR 2026",
-        "confWeight": 6,
-        "confVision": true,
-        "relevance": 8,
-        "first_seen": "2026-07-15T16:14:40.054Z",
-        "rm": {
-          "usage": "关联很弱，针对CAD代码生成，与机器人视觉或控制任务无关。",
-          "task_id": "",
-          "task": "",
-          "value": "low"
-        }
       }
     ]
   },
@@ -4639,7 +4643,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.68,
+        "relevance": 17.68,
         "first_seen": "2026-07-15T16:14:40.054Z"
       },
       {
@@ -4766,7 +4770,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.56,
+        "relevance": 17.56,
         "first_seen": "2026-07-15T16:14:40.054Z"
       },
       {
@@ -5075,7 +5079,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.33,
+        "relevance": 17.33,
         "first_seen": "2026-07-15T16:14:40.054Z"
       },
       {
@@ -5693,7 +5697,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 27.9,
+        "relevance": 22.9,
         "first_seen": "2026-07-15T16:14:40.054Z"
       },
       {
@@ -5770,7 +5774,7 @@
         "categories": [
           "other"
         ],
-        "relevance": 11.85,
+        "relevance": 6.85,
         "first_seen": "2026-07-15T16:14:40.054Z"
       },
       {
