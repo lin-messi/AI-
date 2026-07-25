@@ -7,7 +7,7 @@
 | **PDF 提炼（权威）** | `npm run rules:build` | `data/rm-rules.json` | 含确切数值的结构化规则（任务/得分/关键词），驱动检索与用途评估 |
 | **网页发现（辅助）** | `npm run rules:fetch` | `data/rm-rules-web.json` | 自动发现规则文件入口地址 + 整站目录快照 + 关键词建议 |
 
-> 提炼用的模型是 **deepseek-v4-pro**（走 DeepSeek 的 Anthropic 兼容端点）。日常翻译仍用便宜的 `deepseek-chat`，互不影响。
+> 提炼用的模型是 **deepseek-v4-pro**（走 DeepSeek 的 Anthropic 兼容端点）。日常翻译仍用便宜的 `deepseek-v4-flash`，互不影响。
 > 配置自检：`npm run ai:ping`（确认 key/端点可用）。
 
 ## 一、PDF 提炼（权威，含确切数值）

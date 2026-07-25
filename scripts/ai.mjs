@@ -4,7 +4,7 @@
 // 环境变量（写在项目根目录 .env 文件，或在 GitHub Actions 用 Secret 注入）：
 //   AI_API_KEY   你的 API Key（必填，留空则跳过翻译/摘要）
 //   AI_BASE_URL  接口地址，默认 https://api.deepseek.com
-//   AI_MODEL     模型名，默认 deepseek-chat
+//   AI_MODEL     模型名，默认 deepseek-v4-flash
 
 // 尝试加载 .env（Node 20.6+ 支持），失败则忽略
 try {
@@ -19,7 +19,7 @@ export function getAIConfig() {
     /\/$/,
     ""
   );
-  const model = process.env.AI_MODEL || "deepseek-chat";
+  const model = process.env.AI_MODEL || "deepseek-v4-flash";
   return { apiKey, baseURL, model, enabled: Boolean(apiKey) };
 }
 

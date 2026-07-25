@@ -1,7 +1,7 @@
 // 交叉前沿判定与打分。
 //   - detectFrontier：按「信号分组 + 强组合 + 强关键词」判断一篇论文是否属于跨学科前沿，并给出中文交叉标签。
 //   - fallbackFrontierField：把只命中前沿专属分类、没有基础领域的交叉论文回退到就近基础领域。
-//   - scoreFrontier：用便宜的 deepseek-chat 给候选论文打 high/mid/low，过滤掉误判（单学科）的 low。
+//   - scoreFrontier：用便宜的 deepseek-v4-flash 给候选论文打 high/mid/low，过滤掉误判（单学科）的 low。
 import {
   FRONTIER,
   FRONTIER_GROUPS,
