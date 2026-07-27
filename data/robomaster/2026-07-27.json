@@ -1,6 +1,6 @@
 {
   "date": "2026-07-27",
-  "generatedAt": "2026-07-26T23:48:17.919Z",
+  "generatedAt": "2026-07-27T12:06:05.277Z",
   "categories": [
     {
       "key": "aim",
@@ -49,7 +49,7 @@
     }
   ],
   "papers": {
-    "count": 80,
+    "count": 100,
     "items": [
       {
         "id": "arxiv:2607.20061",
@@ -139,6 +139,52 @@
           "task_id": "",
           "task": "",
           "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2607.21653",
+        "arxiv_id": "2607.21653",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.CL",
+          "cs.DC"
+        ],
+        "title_en": "Molt: A Scalable PyTorch-Native Training Framework for Agentic Reinforcement Learning",
+        "title_zh": "Molt：面向智能体强化学习的可扩展PyTorch原生训练框架",
+        "abstract_en": "Agentic reinforcement learning research is constant algorithm modification, new estimators, new pipeline stages, new rollout schemes, and in mainstream frameworks each change threads through layers of trainer, distributed backend, and rollout glue: the cost lands on the researcher at every iteration. Molt is a PyTorch-native training framework built to keep that cost small: a codebase compact and clean enough for a researcher to hold in their head, and for an AI coding assistant to read and reason about in its entirety, so the algorithm flow can be traced and changed end to end. The agent is an ordinary program, and one asynchronous loop trains multimodal and mixture-of-experts policies while never training on a token it did not generate, consistent in tokens, policy versions, and model semantics. Leanness does not cost performance: under a matched, fully asynchronous protocol, Molt is statistically comparable to a state-of-the-art Megatron-based stack. Molt is open source and provides recipes and containers at https://github.com/NVIDIA-NeMo/labs-molt.",
+        "abstract_zh": "智能体强化学习研究涉及不断的算法修改、新估计器、新管线阶段、新交互方案，而在主流框架中，每次改动都需要贯穿训练器、分布式后端和交互代码的多层修改，研究者每次迭代都要付出高昂代价。Molt是一个PyTorch原生训练框架，旨在保持这种代价最小：代码库紧凑清晰，研究者可以轻松掌握，AI编码助手也能完整阅读和推理，从而可以端到端追踪和改变算法流程。智能体是一个普通程序，一个异步循环训练多模态和混合专家策略，同时保证绝不训练未由自己生成的token，在token、策略版本和模型语义上保持一致。简洁不牺牲性能：在匹配的完全异步协议下，Molt与基于Megatron的最先进堆栈在统计上表现相当。Molt是开源的，在https://github.com/NVIDIA-NeMo/labs-molt提供了配方和容器。",
+        "highlight_zh": "轻量级PyTorch原生强化学习框架，性能媲美Megatron但代码更简洁。",
+        "digest_zh": "1. 研究问题：强化学习研究经常修改算法，但现有框架（如Megatron）庞大复杂，改一次就要动很多层代码，成本高。研究者需要一个轻量、易修改的框架。\n2. 采用方法：Molt是纯PyTorch编写的强化学习框架。它用一个异步循环同时训练多模态和混合专家模型，并确保只训练智能体自己生成的token，保证数据一致性。代码库非常紧凑，研究者或AI助手能轻松理解并端到端修改算法。\n3. 实验结果：在相同异步协议下，Molt的训练效果与基于Megatron的最先进框架统计上无显著差异，但代码量大幅减少。\n4. 重要性：Molt降低了强化学习研究的门槛，让快速实验新想法成为可能。开源和容器化也便于复用和部署，对学术界和工业界加速智能体研发有价值。",
+        "authors": [
+          "Jian Hu",
+          "Huiying Li",
+          "Hao Zhang",
+          "Binfeng Xu",
+          "Yifan Zhang",
+          "Shaokun Zhang",
+          "Hemil Desai",
+          "Michael Demoret"
+        ],
+        "url": "https://arxiv.org/abs/2607.21653v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.21653",
+        "html_url": "https://arxiv.org/abs/2607.21653",
+        "published_at": "2026-07-22T18:06:15.000Z",
+        "upvotes": 12,
+        "heat": 2646.0530366666667,
+        "featured": true,
+        "categories": [
+          "rl"
+        ],
+        "image": "",
+        "comment": "tech report for Molt",
+        "relevance": 2,
+        "first_seen": "2026-07-27T12:05:37.352Z",
+        "rm": {
+          "usage": "可用于训练哨兵自主决策或团队协同策略的强化学习算法，简化分布式训练实现。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
         }
       },
       {
@@ -448,6 +494,54 @@
         }
       },
       {
+        "id": "arxiv:2607.22355",
+        "arxiv_id": "2607.22355",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.AI"
+        ],
+        "title_en": "SiPhy: Single-Image Physical Property Reasoning",
+        "title_zh": "SiPhy：单张图像的物理属性推理",
+        "abstract_en": "Inferring physical properties such as mass, stiffness, and elasticity from a single image is essential for simulation and embodied AI, yet most existing approaches rely on multi-view reconstruction or physics-based supervision. We introduce SiPhy, a unified framework for single-image physical property reasoning that aligns 3D-aware visual cues, depth with language-based material knowledge. From one RGB image, SiPhy samples pseudo-voxel points, extracts CLIP features, and grounds them to material candidates proposed by a VLM. A part-based contrastive aggregator enforces region consistency, while a heaviness-aware refinement improves thickness and volume estimation for dense objects. Across ABO-500, MVImgNet-100, and PhysXNet-100, SiPhy achieves state-of-the-art single-image performance, surpassing multi-view reconstruction methods by improving mass MnRE by up to 93% (vs. PUGS), reducing density MAE by 35.5% (vs. NeRF2Physics), and lowering Young's modulus error by 23.5%. We further validate SiPhy on real hand-object interaction datasets, demonstrating its potential as a data annotation engine for physical understanding from single-view imagery.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Hoang Le",
+          "Joonwoo Kwon",
+          "Elkhan Ismayilzada",
+          "Yufei Zhang",
+          "Zijun Cui"
+        ],
+        "url": "https://arxiv.org/abs/2607.22355v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.22355",
+        "html_url": "https://arxiv.org/abs/2607.22355",
+        "published_at": "2026-07-24T14:36:37.000Z",
+        "upvotes": 0,
+        "heat": 2210.5591494444443,
+        "featured": false,
+        "categories": [
+          "aim",
+          "sim"
+        ],
+        "image": "",
+        "comment": "Accepted to ECCV 2026 (main track)",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 6,
+        "first_seen": "2026-07-27T12:05:37.352Z",
+        "rm": {
+          "usage": "单张图像推断质量等物理属性，与RoboMaster主要视觉任务（位姿估计、识别）关联很弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
         "id": "arxiv:2607.21592",
         "arxiv_id": "2607.21592",
         "source": "arXiv",
@@ -682,6 +776,51 @@
           "usage": "双手物体重定向与工程装配任务有一定关联，但RoboMaster工程多为单臂，且需简化复杂约束。",
           "task_id": "engineer",
           "task": "工程视觉装配（能量单元）",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2607.21986",
+        "arxiv_id": "2607.21986",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Mag4D-SLAM Dataset: A Repeated-Traversal Multi-Modal 4D Geomagnetic Dataset for Localization and Mapping",
+        "title_zh": "Mag4D-SLAM数据集：一个用于定位与建图的重复遍历多模态4D地磁数据集",
+        "abstract_en": "Geomagnetic sensing offers an infrastructure-free, absolute orientation reference that is robust to GNSS denial and visual degradation, yet no large-scale outdoor robotics dataset supports its systematic study in SLAM. Existing magnetic datasets are confined to small-scale indoor environments and lack the synchronized multi-modal sensing, repeated-traversal structure, and high-precision 6-DoF ground truth required for geomagnetic SLAM research. We present Mag4D-SLAM, the first large-scale outdoor geomagnetic SLAM dataset. It comprises 14 sequences totaling over 18 km of synchronized LiDAR, camera, IMU, tri-axis magnetometer, and GNSS measurements with SE(3) ground-truth poses, collected along structured campus trajectories under paired day/night conditions in both forward and reverse directions. Through repeated-traversal experiments, we analyze three core properties: magnetic field repeatability across different recording sessions (daytime and nighttime), drift-free global heading estimation, and location-discriminative magnetic signatures for cross-session place recognition. Mag4D-SLAM is designed to support research on yaw drift mitigation, magnetic loop closure, and long-term localization and to open new research questions on how geomagnetic sensing can complement visual and LiDAR modalities or provide a fallback cue under illumination changes, structural repetition, and GNSS-denied long-term operation.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Bibhutibhusan Nayak",
+          "Hyoseok Ju",
+          "Giseop Kim"
+        ],
+        "url": "https://arxiv.org/abs/2607.21986v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.21986",
+        "html_url": "https://arxiv.org/abs/2607.21986",
+        "published_at": "2026-07-24T05:21:24.000Z",
+        "upvotes": 0,
+        "heat": 2181.3055441666666,
+        "featured": false,
+        "categories": [
+          "slam",
+          "rl"
+        ],
+        "image": "",
+        "comment": "Accepted to IROS 2026. 8 pages, 8 figures. *Bibhutibhusan Nayak and Hyoseok Ju contributed equally to this work",
+        "conf": "IROS",
+        "confYear": 2026,
+        "confTag": "IROS 2026",
+        "confWeight": 5,
+        "confVision": false,
+        "relevance": 13,
+        "first_seen": "2026-07-27T12:05:37.352Z",
+        "rm": {
+          "usage": "地磁SLAM数据集偏向户外场景，与RoboMaster室内场地定位需求不匹配。",
+          "task_id": "",
+          "task": "",
           "value": "low"
         }
       },
@@ -1861,6 +2000,769 @@
         }
       },
       {
+        "id": "arxiv:2607.22535",
+        "arxiv_id": "2607.22535",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.CV"
+        ],
+        "title_en": "Robot-Factored World Models via Robot Rendering",
+        "title_zh": "通过机器人渲染的机器人分解世界模型",
+        "abstract_en": "Action-conditioned video world models predict future observations from an initial observation and an action signal. In robotics, actions influence future observations through two distinct processes: they are first realized into robot motion by the robot body and controller, and the scene then responds through contact and object motion. Conditioning directly on action commands asks the world model to learn the realization process itself, while conditioning on logged future states leaks the interaction outcomes it is meant to predict. We propose robot-factored world models, which move two robot-specific factors outside the world model. First, action realization: each command is rolled through the robot's own controller and kinematics into a deployment-available nominal trajectory, a middle signal that avoids both action-realization learning and future-state leakage. Second, robot rendering: this nominal trajectory is rendered through the robot URDF, factoring the robot's geometry, kinematics, and appearance out of the model and into explicit rendered robot geometry. To resolve depth ambiguity, we pair end-effector depth with scene depth, giving geometric cues for contact and occlusion beyond image-plane overlap. Together, camera-aware static RGB/depth context and rendered robot geometry form a shared visual world-model interface that stays consistent across viewpoints and robot embodiments, so the model sees the action only as visible robot geometry and learns how objects respond to it. Our experiments show that the rendered interface outperforms vector-conditioned baselines and generalizes to unseen robot embodiments at inference. We further demonstrate that our model generates robot manipulation videos from human demonstrations by retargeting and rendering the hand motion as robot geometry.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Byungjun Kim",
+          "Taeksoo Kim",
+          "Hyunsoo Cha",
+          "Hanbyul Joo"
+        ],
+        "url": "https://arxiv.org/abs/2607.22535v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.22535",
+        "html_url": "https://arxiv.org/abs/2607.22535",
+        "published_at": "2026-07-24T17:59:57.000Z",
+        "upvotes": 0,
+        "heat": 2093.9480444444443,
+        "featured": false,
+        "categories": [
+          "radar"
+        ],
+        "image": "",
+        "comment": "Project Page: https://bjkim95.github.io/rofacto/",
+        "relevance": 4,
+        "first_seen": "2026-07-27T12:05:37.352Z",
+        "rm": {
+          "usage": "机器人分解世界模型可提升仿真环境对真实物理交互的建模精度，用于sim-to-real迁移。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2607.22534",
+        "arxiv_id": "2607.22534",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.AI",
+          "cs.RO"
+        ],
+        "title_en": "SM4RT: Learning Structured Motion Geometry for 4D Reconstruction",
+        "title_zh": "SM4RT：学习结构化运动几何用于4D重建",
+        "abstract_en": "Geometry Foundation Models (GFMs) have substantially advanced monocular 3D reconstruction, yet extending this capability to 4D dynamic understanding remains a fundamental challenge. Most existing motion perception methods (e.g., sparse tracking, dense point-wise flow) treat motion as independent point-wise displacements, ignoring the structured nature of physical motion. However, real-world objects usually obey rigid-body kinematics, and points thus usually move collectively, not in isolation. Motion itself possesses geometric structure: physical objects undergo a set of rigid-body transformations governed by SE(3), rather than unstructured point-wise displacements. Building on this insight, we propose SM4RT, a Structured Motion 4D Reconstruction Transformer for end-to-end 3D reconstruction and structured motion perception. SM4RT introduces Structure-of-Motion to represent scene dynamics, where scene motion is decomposed into a compact set of motion bases, each represented as a temporal sequence of 6D twists in SE(3). Dense scene motion is then recovered by sparse, time-shared per-pixel assignment weights over these bases, ensuring points on the same object share a common rigid-body motion trajectory. SM4RT introduces a parallel motion geometry encoder and decoder that jointly infer 3D geometry, world-coordinate motion, and scene kinematic structure in a single forward pass from monocular RGB video. SM4RT achieves strong motion reconstruction performance while preserving the geometric structure of scene motion.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Shing Ho J. Lin",
+          "Wenzhao Zheng",
+          "Dong Zhuo",
+          "Yuqi Wu",
+          "Jie Zhou",
+          "Jiwen Lu"
+        ],
+        "url": "https://arxiv.org/abs/2607.22534v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.22534",
+        "html_url": "https://arxiv.org/abs/2607.22534",
+        "published_at": "2026-07-24T17:59:51.000Z",
+        "upvotes": 0,
+        "heat": 2093.946377777778,
+        "featured": false,
+        "categories": [
+          "radar"
+        ],
+        "image": "",
+        "comment": "Code is available at: https://github.com/wzzheng/SM4RT",
+        "relevance": 3,
+        "first_seen": "2026-07-27T12:05:37.352Z",
+        "rm": {
+          "usage": "结构化运动几何用于4D重建，与RoboMaster中运动预测需求（如能量机关旋转）不直接对应且过于复杂。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2607.22530",
+        "arxiv_id": "2607.22530",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "ViTacWorld: Scaling Visuo-Tactile World Models for Contact-Rich Robot Manipulation",
+        "title_zh": "ViTacWorld：缩放视觉-触觉世界模型用于密集接触机器人操作",
+        "abstract_en": "Contact-rich robot manipulation requires physical interaction cues that are often invisible to cameras, making tactile sensing essential for robust control. However, scaling visuo-tactile robot learning remains difficult because real tactile interaction data are expensive to collect, hardware-dependent, and limited in task and scene diversity. We present ViTacWorld, an action-conditioned visuo-tactile world model for scalable contact-rich robot manipulation. ViTacWorld leverages public real tactile datasets and a constructed simulation environment to scale visuo-tactile-action data, exploiting the fact that tactile signals are directly grounded in physical contact and can exhibit a smaller simulation-to-real gap than purely visual observations. The model is first pretrained with large-scale real and simulated visuo-tactile trajectories, and then finetuned with real-world policy rollouts to better match downstream manipulation behaviors. Given robot actions, ViTacWorld predicts temporally aligned visual observations and tactile feedback, enabling visuo-tactile-action rollout generation. To the best of our knowledge, ViTacWorld is the first framework that uses a world model for robot visuo-tactile-action trajectory generation and policy evaluation. It serves two roles: synthesizing rollouts to improve downstream tactile policies, and evaluating policies by predicting action-conditioned visuo-tactile outcomes under controlled action sequences. Experiments on contact-rich manipulation tasks show that ViTacWorld generates physically meaningful rollouts, improves policy performance through scalable data augmentation, and enables action-conditioned policy evaluation. Project page: https://vitacworld.github.io/",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Yunao Huang",
+          "Shiyu Sang",
+          "Haotao Lu",
+          "Suting Ni",
+          "Shijie Wu",
+          "Ziyang Guo",
+          "Ye Shi",
+          "Jingya Wang"
+        ],
+        "url": "https://arxiv.org/abs/2607.22530v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.22530",
+        "html_url": "https://arxiv.org/abs/2607.22530",
+        "published_at": "2026-07-24T17:59:33.000Z",
+        "upvotes": 0,
+        "heat": 2093.9413777777777,
+        "featured": false,
+        "categories": [
+          "slam",
+          "planning",
+          "sim"
+        ],
+        "image": "",
+        "comment": "18 pages, 6 figures, 5 tables. Project page: https://vitacworld.github.io/",
+        "relevance": 3,
+        "first_seen": "2026-07-27T12:05:37.352Z",
+        "rm": {
+          "usage": "视觉-触觉世界模型依赖触觉传感器，RoboMaster工程装配仅用视觉，关联弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2607.22486",
+        "arxiv_id": "2607.22486",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Optimal Transport Image Representation and Deep Covariance Alignment (CORAL) for Control Valve Stiction Detection",
+        "title_zh": "最优传输图像表示与深度协方差对齐（CORAL）用于控制阀粘滞检测",
+        "abstract_en": "Control valve stiction is a common cause of unwanted oscillations and poor control-loop performance in industrial processes. Data-driven methods can automatically detect stiction, but models trained purely on simulated data often struggle to generalize to real industrial control loops due to domain shift. To bridge this gap, this work propose a novel stiction detection methodology that combines optimal transport (OT) imaging technique with deep correlation alignment (Deep CORAL) algorithm. Closed loop signals: controller output and process variable are converted into two-dimensional OT images. These images capture the dynamic behaviour of control loops. The proposed methodology includes a convolutional neural network (CNN) encoder (or feature extractor) trained to learn domain-invariant representations by optimizing a combined objective: a cross-entropy loss on labeled simulation data and a Deep CORAL (covariance-alignment) loss between simulation data and unlabeled target-domain industrial data. Downstream classifiers trained on the domain-invariant target features were evaluated on an independent test set of 20 benchmark loops from industrial stiction data benchmark. The proposed methodology successfully diagnosed 18 out of the 20 loops and achieved100% recall across all 13 stiction cases, an accuracy of 90.00% and an F1-score of 92.86%. Compared to standard baseline approach (hand-crafted features-based method), the proposed methodology significantly mitigates domain shift, providing robust, highly reliable stiction detection for real-world industrial control loops.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Seshu K. Damarla"
+        ],
+        "url": "https://arxiv.org/abs/2607.22486v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.22486",
+        "html_url": "https://arxiv.org/abs/2607.22486",
+        "published_at": "2026-07-24T16:56:33.000Z",
+        "upvotes": 0,
+        "heat": 2092.8913719444445,
+        "featured": false,
+        "categories": [
+          "slam",
+          "sim"
+        ],
+        "image": "",
+        "comment": "7 pages, 6 figures, 6 tables",
+        "relevance": 2,
+        "first_seen": "2026-07-27T12:05:37.352Z",
+        "rm": {
+          "usage": "控制阀粘滞检测属于工业过程控制，与机器人竞赛无关。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2607.22483",
+        "arxiv_id": "2607.22483",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Plug, Play, and Comply: A Modular Framework for Online Variable Impedance with Arbitrarily Oriented Compliance Axes",
+        "title_zh": "即插即用：用于任意方向顺应轴的在线可变阻抗模块化框架",
+        "abstract_en": "The paper proposes a robot-agnostic compliant-control framework that extends the ROS control ecosystem with standardized joint and Cartesian command interfaces. It addresses a key limitation of existing control software: no reusable infrastructure for implementing compliant-control algorithms across different manipulators while preserving a common interface to higher-level applications. A plugin-based architecture separates controller infrastructure from control-law implementation. Generic wrappers use existing hardware abstractions to interface with different manipulators, while runtime-loaded plugins implement only the control law. Command interfaces support joint- and Cartesian-space references, stiffness and damping gains, nullspace targets, and feedforward terms, enabling variable impedance and diverse compliant-control formulations. Robot kinematics and dynamics are computed from URDF models using Pinocchio. The architecture facilitates the development of compliant-control strategies and enables the same implementation to be deployed across platforms unchanged. The complete framework, including reference controllers, high-level task interfaces, and example configurations for various manipulators, is open-sourced. The reference Cartesian impedance controller supports task-dependent compliance by rotating translational and rotational stiffness and damping, allowing the principal compliance directions to be updated online according to local task geometry rather than remaining fixed in the robot base or TCP frame. This is particularly important in contact-rich manipulation, where the desired directions of motion, constraints, and compliance directions may vary throughout task execution. Real-robot experiments demonstrate task-dependent compliance in contact-rich manipulation, while simulations show portability across manipulators with distinct kinematic and dynamic characteristics.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Mihael Simonič",
+          "Xiaocong Li"
+        ],
+        "url": "https://arxiv.org/abs/2607.22483v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.22483",
+        "html_url": "https://arxiv.org/abs/2607.22483",
+        "published_at": "2026-07-24T16:53:51.000Z",
+        "upvotes": 0,
+        "heat": 2092.846377777778,
+        "featured": false,
+        "categories": [
+          "planning",
+          "rl",
+          "radar"
+        ],
+        "image": "",
+        "comment": "8 pages, 7 figures, 2 tables. Paper page: https://smihael.github.io/plug-play-comply/",
+        "relevance": 3,
+        "first_seen": "2026-07-27T12:05:37.352Z",
+        "rm": {
+          "usage": "模块化可变阻抗控制框架可用于工程机器人机械臂的柔顺装配控制，但需适配具体硬件。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2607.22465",
+        "arxiv_id": "2607.22465",
+        "source": "arXiv",
+        "cats": [
+          "cs.AI",
+          "cs.LG",
+          "cs.MA"
+        ],
+        "title_en": "TRACE-ROUTER: Task-Consistent and Adaptive Online Routing for Agentic AI",
+        "title_zh": "TRACE-ROUTER：用于智能体AI的任务一致且自适应在线路由",
+        "abstract_en": "Routing to select large language models (LLMs) with different cost-quality trade-offs has become a fundamental deployment feature of enterprise AI. Existing routers, primarily make independent routing decisions for each LLM call. However, agentic applications execute as long-horizon workflows whose quality is determined only by a delayed, task-level outcome. This mismatch prevents per-call routers from correctly attributing feedback to individual routing decisions. Towards mitigating this, we present TRACE-Router, a task-level routing framework that aligns routing with the unit of supervision. TRACE-Router assigns each task to a model once at admission using a contextual bandit, pins all subsequent LLM calls to the selected backend, and updates its policy using the task's terminal reward, jointly accounting for accuracy and latency. By leveraging delayed task feedback, TRACE-Router learns routing policies that adapt to the workload while avoiding explicit task-complexity estimation. Across three agentic benchmarks, TRACE-Router consistently improves the accuracy-latency trade-off, achieving non-dominated Pareto frontier points. On tau2-Bench, it outperforms latency-matched interpolation between individual models by 7-8 accuracy points, while on Terminal-Bench it achieves 7.1 higher accuracy points than the strongest single model baseline with 36% lower latency.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Ritik Raj",
+          "Souvik Kundu",
+          "Sarbartha Banerjee",
+          "Dheemanth Joshi",
+          "Ishita Vohra",
+          "Tushar Krishna"
+        ],
+        "url": "https://arxiv.org/abs/2607.22465v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.22465",
+        "html_url": "https://arxiv.org/abs/2607.22465",
+        "published_at": "2026-07-24T16:29:06.000Z",
+        "upvotes": 0,
+        "heat": 2092.4338705555556,
+        "featured": false,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 0,
+        "first_seen": "2026-07-27T12:05:37.352Z",
+        "rm": {
+          "usage": "论文关于大语言模型路由，与RoboMaster各项任务无关。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2607.22436",
+        "arxiv_id": "2607.22436",
+        "source": "arXiv",
+        "cats": [
+          "stat.ML",
+          "cs.LG"
+        ],
+        "title_en": "Graph-Based Correlation Matrix Generation: A Convex Optimization Approach",
+        "title_zh": "基于图的相关矩阵生成：一种凸优化方法",
+        "abstract_en": "This work addresses the generation of theoretical correlation matrices with prescribed sparsity patterns associated to graph structures. We propose a novel convex optimization framework in which an initial matrix is projected onto an elliptope under a positive semidefiniteness constraint. Several numerical schemes are implemented and compared. The problem falls within the broader class of matrix completion, where off-diagonal entries corresponding to absent edges are fixed to zero and diagonal entries are fixed to one. Beyond this structural constraint, the approach offers greater flexibility than existing methods by allowing control over the mean of the off-diagonal entry distribution, enabling the generation of correlation matrices that better reflect realistic data. This procedure is not designed to yield a uniform distribution over the feasible set; rather, it provides a principled and tunable way to construct correlation matrices suitable for benchmarking statistical methods for graphical model inference. Theoretical guarantees on the existence of solutions are established, both in the general setting and under the additional mean constraint. Simulation studies illustrate the properties of the generated matrices with respect to graph structure. The methodology is applied to two real-world datasets from neuroscience and finance, and a comparison with GAN-based correlation matrix generation is provided.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Ali Fakhar",
+          "K{é}vin Polisano",
+          "Ir{è}ne Gannaz",
+          "Sophie Achard"
+        ],
+        "url": "https://arxiv.org/abs/2607.22436v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.22436",
+        "html_url": "https://arxiv.org/abs/2607.22436",
+        "published_at": "2026-07-24T15:54:23.000Z",
+        "upvotes": 0,
+        "heat": 2091.8552594444445,
+        "featured": false,
+        "categories": [
+          "sim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 1,
+        "first_seen": "2026-07-27T12:05:37.352Z",
+        "rm": {
+          "usage": "论文关于相关矩阵生成，与RoboMaster算法任务无直接关联。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2607.22434",
+        "arxiv_id": "2607.22434",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.AI"
+        ],
+        "title_en": "Robot Learning to Communicate through Projected Visual Abstractions",
+        "title_zh": "机器人学习通过投影视觉抽象进行通信",
+        "abstract_en": "Humans routinely communicate through abstractions of their bodies, including shadows, silhouettes, and reflections. Yet robots remain largely confined to expressing themselves through their physical morphology. Enabling robots to communicate through such projected visual abstractions requires reasoning not only about bodily motion but also about how that motion is transformed into an external representation perceived by an observer. Among these abstractions, shadows provide a particularly compelling example because they emerge directly from the robot's embodiment while remaining visually distinct from the body itself. Here, we present a robotic system capable of dynamic shadow expression using a 21-degree-of-freedom dexterous hand with compliant soft skin and a learned shadow self-model. The soft-skinned embodiment reduces light leakage to produce visually continuous silhouettes, while the differentiable self-model learns the mapping between hand configurations and projected shadow appearance through task-agnostic self-exploration. Given a target shadow image or video, the robot optimizes its hand configurations through gradient-based search over 1 the learned self-model and refines the solution through collision-aware simulation to obtain physically feasible motions. For dynamic shadow performance, we further introduce expressive-region objectives, temporal smoothness regularization, and keyframe-based optimization to preserve visually important motion cues while reducing optimization complexity. We demonstrate robotic shadow expression across sign-language gestures, hand-shadow puppetry, and animal motion imitation in both simulation and physical experiments. These results establish a framework for enabling robots to manipulate projected visual abstractions of themselves for communication and visual storytelling.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Danyang Yan",
+          "Boyuan Wang",
+          "Jiaxun Liu",
+          "Boyuan Chen"
+        ],
+        "url": "https://arxiv.org/abs/2607.22434v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.22434",
+        "html_url": "https://arxiv.org/abs/2607.22434",
+        "published_at": "2026-07-24T15:52:36.000Z",
+        "upvotes": 0,
+        "heat": 2091.8255444444444,
+        "featured": false,
+        "categories": [
+          "slam",
+          "radar",
+          "sim"
+        ],
+        "image": "",
+        "comment": "Our project website is at:https://generalroboticslab.com/shadow",
+        "relevance": 2,
+        "first_seen": "2026-07-27T12:05:37.352Z",
+        "rm": {
+          "usage": "论文关于机器人通过视觉抽象通信，可尝试用于多机协同中的非语言交互，但非核心。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2607.22430",
+        "arxiv_id": "2607.22430",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG"
+        ],
+        "title_en": "On the Identifiability of Controlled World Models",
+        "title_zh": "受控世界模型的可识别性研究",
+        "abstract_en": "Learning world models that infer environment dynamics from high-dimensional observations and predict outcomes under candidate actions is central to planning and control. Joint-Embedding Predictive Architectures (JEPAs) provide a compelling framework for learning such models in representation space. Recent action-conditioned extensions perform promisingly in visual control and latent-space planning, but leave a fundamental question unresolved: when does controlled latent prediction identify both the underlying state and the controlled dynamics? This is challenging under nonlinear observations and behavior policies with limited conditional action variation, where state-dependent evolution and action effects can be statistically confounded. We establish a joint identifiability theory for controlled world models with Gaussian latent states under state-dependent Gaussian behavior policies. We identify two policy-dependent conditions: spectral separation of the predictable signal governs representation identifiability, while non-degenerate conditional action variation governs transition identifiability. We prove that when both conditions hold, every global minimizer of the JEPA objective identifies the latent state and controlled transition up to an orthogonal transformation. We further derive quantitative bounds on representation and transition identifiability under approximate optimization. Finally, we construct predictor perturbations along weakly excited action directions whose counterfactual-to-on-policy error ratio is the inverse transition-identifiability margin, revealing the cost of limited action coverage. Experiments across nonlinear observation maps and behavior policies corroborate the theory and demonstrate implications for transition identifiability, counterfactual prediction, and goal-conditioned latent planning.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Xiangteng Zhang",
+          "Yang Guan",
+          "Bo Zhang",
+          "Ya-Qin Zhang",
+          "Shengbo Eben Li"
+        ],
+        "url": "https://arxiv.org/abs/2607.22430v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.22430",
+        "html_url": "https://arxiv.org/abs/2607.22430",
+        "published_at": "2026-07-24T15:49:12.000Z",
+        "upvotes": 0,
+        "heat": 2091.7688705555556,
+        "featured": false,
+        "categories": [
+          "slam"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 1,
+        "first_seen": "2026-07-27T12:05:37.352Z",
+        "rm": {
+          "usage": "论文关于受控世界模型的可识别性，可用于哨兵或策略中的模型预测与仿真迁移。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2607.22409",
+        "arxiv_id": "2607.22409",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "eess.SY"
+        ],
+        "title_en": "Conformal Constraint Tightening for Chance-Constrained Motion Planning with Unknown Dynamics",
+        "title_zh": "未知动力学下机会约束运动规划的共形约束收紧",
+        "abstract_en": "Motion planning algorithms compute control sequences that drive autonomous robots to goal regions while avoiding unsafe states. Existing methods, from sampling-based planning to deep reinforcement learning, typically provide task-completion guarantees only with respect to a nominal model or simulator, which may be invalidated when the true dynamics are unknown or difficult to model accurately. This letter addresses this limitation for systems with unknown dynamics and an available approximate nominal model, contributing a planner-agnostic constraint-tightening procedure that equips existing planners with a probabilistic task-completion guarantee on the true system. We leverage conformal prediction to provide a probabilistic bound on the nominal-to-true trajectory deviation over a distribution of planning problems. We tighten the planning constraints using that bound, and show that solving the tightened problem under the nominal model is a sufficient condition for solving the original problem on the true system with a prescribed probability. We validate the theoretical guarantees empirically and demonstrate substantially improved task completion relative to nominal-model planning.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Shubham Natraj",
+          "Bruno Sinopoli",
+          "Yiannis Kantaros"
+        ],
+        "url": "https://arxiv.org/abs/2607.22409v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.22409",
+        "html_url": "https://arxiv.org/abs/2607.22409",
+        "published_at": "2026-07-24T15:27:07.000Z",
+        "upvotes": 0,
+        "heat": 2091.4008222222224,
+        "featured": false,
+        "categories": [
+          "planning",
+          "rl",
+          "radar"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 7,
+        "first_seen": "2026-07-27T12:05:37.352Z",
+        "rm": {
+          "usage": "论文针对未知动力学下的运动规划约束收紧，可直接用于哨兵导航中处理地形变化等不确定性。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "high"
+        }
+      },
+      {
+        "id": "arxiv:2607.22385",
+        "arxiv_id": "2607.22385",
+        "source": "arXiv",
+        "cats": [
+          "cs.AI",
+          "cs.LG"
+        ],
+        "title_en": "Agentic Root Cause Analysis through Evidence-Grounded Reasoning",
+        "title_zh": "基于证据推理的自主根因分析",
+        "abstract_en": "Diagnosing the root cause of anomalies is essential for safe industrial operation. Despite extensive sensor instrumentation, formulating hypotheses and gathering evidence remains a manual process, creating a major operational bottleneck. While existing data-driven approaches aim to automate this, two critical limitations restrict their deployment: their operate as black boxes unable to justify their diagnosis, and they require scarce labeled examples of faulty operation. To address this gap, we introduce AgentRCA, a zero-shot agentic framework for evidence-grounded root cause analysis. Rather than learning fault-specific mappings, AgentRCA performs inference-time reasoning by combining a data-driven digital twin (modeling normal system dynamics) with a tool-augmented large language model. The agent iteratively gathers statistical evidence, evaluates competing hypotheses, and identifies the physical fault that best explains the observed behavior. Evaluated on a real-world multiphase-flow facility and a large-scale chemical plant, AgentRCA achieves diagnostic performance competitive with fully supervised baselines without relying on fault-specific training. Crucially, it produces transparent reasoning traces that explicitly link observed symptoms to their underlying physical causes. These results establish autonomous hypothesis-driven reasoning as a practical foundation for scalable industrial root cause analysis.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Amaury Wei",
+          "Olga Fink"
+        ],
+        "url": "https://arxiv.org/abs/2607.22385v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.22385",
+        "html_url": "https://arxiv.org/abs/2607.22385",
+        "published_at": "2026-07-24T15:10:41.000Z",
+        "upvotes": 0,
+        "heat": 2091.126926111111,
+        "featured": false,
+        "categories": [
+          "slam",
+          "sim"
+        ],
+        "image": "",
+        "comment": "21 pages, 9 figures",
+        "relevance": 1,
+        "first_seen": "2026-07-27T12:05:37.352Z",
+        "rm": {
+          "usage": "论文关于工业异常根因分析，与RoboMaster比赛关联很弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2607.22371",
+        "arxiv_id": "2607.22371",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Active few-shot segmentation by reinforcing data selection",
+        "title_zh": "",
+        "abstract_en": "Few-shot learning enables medical image segmentation models to adapt to new tasks using only a small number of labelled examples. However, adaptation performance depends strongly on which examples are selected for the support set. Effective support sets should capture relevant variation within the target domain and be informative for adaptation, with constituent samples providing complementary information. Despite this, existing active data selection approaches largely prioritise samples individually and do not explicitly account for interactions between examples. In this work, we propose a reinforcement learning framework for support-set selection in few-shot medical image segmentation, enabling support sets to be optimised jointly rather than through independent sample scoring. Given a pool of unlabelled candidate images, an agent directly predicts a support set that maximises downstream segmentation performance. Experiments on a cross-institutional pelvic MRI dataset demonstrate improvements over random selection and current state-of-the-art methods. Our findings highlight the importance of support-set complementarity for effective adaptation and demonstrate the potential of reinforcement learning for optimising adaptation sets.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Chenlan Zhao",
+          "Benny Wong",
+          "Timothy F. Lundberg",
+          "Ahmed M. Elsayed",
+          "Abdallah Aljarkas",
+          "Hamad A. Aljamaan",
+          "Lynn Karam",
+          "Qianye Yang"
+        ],
+        "url": "https://arxiv.org/abs/2607.22371v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.22371",
+        "html_url": "https://arxiv.org/abs/2607.22371",
+        "published_at": "2026-07-24T14:58:35.000Z",
+        "upvotes": 0,
+        "heat": 2090.9252605555557,
+        "featured": false,
+        "categories": [
+          "rl"
+        ],
+        "image": "",
+        "comment": "Accepted at EMA4MICCAI 2026 - The 2nd MICCAI Workshop on Efficient Medical AI",
+        "relevance": 2,
+        "first_seen": "2026-07-27T12:05:37.352Z",
+        "rm": {
+          "usage": "论文关于医学图像少样本分割，可尝试用于自瞄中识别新装甲板，但领域差异大。",
+          "task_id": "autoaim",
+          "task": "自瞄 / 装甲板识别",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2607.22356",
+        "arxiv_id": "2607.22356",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG"
+        ],
+        "title_en": "Integrated Order Dispatching and Routing for Last-Mile Pickup via Deep Reinforcement Learning",
+        "title_zh": "",
+        "abstract_en": "In recent years, the growing complexity of last-mile pickup operations has increased the need for fast and accurate decision-making on logistics platforms. This challenge is fundamentally driven by two key and tightly coupled decision-making processes: order dispatching and routing. Solving them separately overlooks their interdependence, while fully end-to-end learning can be unstable and costly on large, variable-scale instances due to sparse rewards. To solve this problem, we propose an integrated optimization framework which couples a learned routing oracle with real-time dispatching heuristics. For the routing subproblem, we develop a Dynamic-Residual Graph Attention Network encoder with a Look-Ahead Courier-Personalized decoder. For the dispatching subproblem, we develop a routing-oracle-guided dispatching heuristic with local search, where the oracle provides near-optimal solutions to select candidate couriers while retaining real-time scalability. Extensive experiments on real-world datasets from Cainiao Logistics are used to test the performance of our approach, including an offline evaluation and an online rolling-horizon simulation. The experimental results show that our approach outperforms other benchmarks regarding solution quality and solving time, indicating it can effectively support logistics companies in solving real-time and large-scale last-mile pickup problems.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Yida Xu",
+          "Zhaofang Mao",
+          "Yuheng Miao",
+          "Jiaxin Zhang",
+          "Yiting Sun"
+        ],
+        "url": "https://arxiv.org/abs/2607.22356v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.22356",
+        "html_url": "https://arxiv.org/abs/2607.22356",
+        "published_at": "2026-07-24T14:37:02.000Z",
+        "upvotes": 0,
+        "heat": 2090.5660927777776,
+        "featured": false,
+        "categories": [
+          "rl",
+          "sim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 3,
+        "first_seen": "2026-07-27T12:05:37.352Z",
+        "rm": {
+          "usage": "论文关于结合深度强化学习的订单调度与路径规划，可用于哨兵多机协同的路径决策。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2607.22345",
+        "arxiv_id": "2607.22345",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.AI"
+        ],
+        "title_en": "Teachy Mini: Development and Preliminary Evaluation of a Knowledge-Based Generative Social Robot for Higher Education",
+        "title_zh": "",
+        "abstract_en": "Generative social robots (GSRs) powered by large language models offer new possibilities for personalized tutoring in higher education, but also introduce risks related to misinformation, missing transparency, or reinforcing incorrect student responses. Prior work identified knowledge-based design (KBD) requirements that define the informational prerequisites for GSRs to manifest responsible and effective tutoring behavior in higher education. In this paper, we operationalized selected KBD requirements in the Reachy Mini robot platform through system prompting, retrieval-augmented generation, and stateful prompt orchestration. As a result, we present Teachy Mini, a GSR tutoring system that was developed using KBD. To test the system, we conducted a preliminary evaluation study. Participants (N = 24) completed a robot-guided learning session about research methodologies. They learned either with Teachy Mini or with a control version that did not follow KBD principles. Teachy Mini was perceived as significantly more aligned with responsible tutoring behavior than the control robot. Moreover, a manipulation check illustrated that Teachy Mini used personalization, slide-grounded explanations, Socratic questioning, affective support, and learner-anchored feedback more consistently than the control robot. No significant between-condition differences were found in system acceptance, intrinsic motivation, or learning effectiveness, although exploratory analyses suggested a positive effect of KBD on objective learning gains when accounting for learner preferences. Overall, the study offered an initial implementation and preliminary evaluation of KBD for GSR tutoring, indicating that KBD can shape responsible robot behavior and potentially increase learning effectiveness in robot-supported learning.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Stephan Vonschallen",
+          "Karim Kaufmann",
+          "Dominique Oberle",
+          "Friederike Eyssel",
+          "Theresa Schmiedel"
+        ],
+        "url": "https://arxiv.org/abs/2607.22345v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.22345",
+        "html_url": "https://arxiv.org/abs/2607.22345",
+        "published_at": "2026-07-24T14:24:08.000Z",
+        "upvotes": 0,
+        "heat": 2090.3511,
+        "featured": false,
+        "categories": [
+          "slam",
+          "rl",
+          "radar"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 3,
+        "first_seen": "2026-07-27T12:05:37.352Z",
+        "rm": {
+          "usage": "与RoboMaster任务无关，不能直接应用。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2607.22320",
+        "arxiv_id": "2607.22320",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "A Monolithic Hand with Asymmetric Origami Bending and Dual-chamber Actuators",
+        "title_zh": "",
+        "abstract_en": "The passive adaptability inherent in soft robotic hands affords them advantages in applications that require safe and compliant interaction. However, existing soft robotic hands often struggle to simultaneously achieve adequate output performance and easy manufacturing due to their complicated structures. In this paper, we introduce the asymmetric origami bending (AOB) pattern for generating bending motion and the asymmetric dual-chamber (ADC) design for obtaining multifunction capability. The AOB single (AOB-S) chamber and AOB dual-chamber (AOB-D) units are designed and constitute the finger and palm actuators of the proposed Origami-inspired SOft Robotic (OSOR) hand. The OSOR hand achieves bio-inspired fingers-palm motions and adequate output performance within a monolithic structure that significantly simplifies the manufacturing process. By defining the asymmetric ratio to characterize the geometric asymmetry of the unit, the analytical models of the AOB and ADC structures are proposed. The Finite Element Analysis tool for the design of AOB actuators is obtained by geometric analysis. The asymmetric origami design grants the integrated manufacturing of the OSOR hand through a Selective Laser Sintering printing process with a single thermoplastic polyurethane material. The model and simulations are validated by experimental results. Experiments show the finger and palm maximum bending motion range of 203° and 40°, respectively, with output forces of 6.3 N and 16 N. The OSOR hand is capable of pinching a piece of tissue, stably grasping water bottles with two fingers, palm-only grasping, and completing the power grasps in the taxonomy of manufacturing grasps. The compactness, performance, and easy manufacturing of the proposed hand benefit the development of the soft robotic hand with new possibilities.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Nan Huang",
+          "Yuming Zhu",
+          "Zicong Zhang",
+          "Jianhui Liu",
+          "Xiaohuang Liu",
+          "Dihan Liu",
+          "Jiansheng Dai",
+          "Sicong Liu"
+        ],
+        "url": "https://arxiv.org/abs/2607.22320v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.22320",
+        "html_url": "https://arxiv.org/abs/2607.22320",
+        "published_at": "2026-07-24T13:58:51.000Z",
+        "upvotes": 0,
+        "heat": 2089.929711111111,
+        "featured": false,
+        "categories": [
+          "radar",
+          "sim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 2,
+        "first_seen": "2026-07-27T12:05:37.352Z",
+        "rm": {
+          "usage": "可用于工程机器人机械臂的柔性抓取设计，但缺乏视觉定位与装配控制，需进一步整合。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2607.22268",
+        "arxiv_id": "2607.22268",
+        "source": "arXiv",
+        "cats": [
+          "stat.ML",
+          "cs.LG",
+          "stat.AP"
+        ],
+        "title_en": "General Value Functions for Remaining Useful Life and Failure-Mode Prediction",
+        "title_zh": "",
+        "abstract_en": "Remaining useful life (RUL) prediction and failure-mode classification are central tasks in predictive maintenance. Many data-driven pipelines use fixed-window supervised learning with complete terminal labels; such routes do not naturally encode the temporal recursion linking successive degradation-state predictions when observations are partial or unit identities are unavailable. We formulate prognostics as vector General Value Function (GVF) prediction on an absorbing degradation process, treating RUL and failure-mode probabilities as temporally consistent targets rather than independent window-level labels, and estimate them with a multi-step temporal-difference estimator, TD($n,λ$). Supporting theory identifies the Bellman fixed point of the vector GVFs, characterizes the linear projected-TD limit and its relation to complete-return Monte Carlo regression under realizability, and explains when bootstrapped TD targets are less variable than Monte Carlo returns. On an event-triggered multimode simulation and NASA C-MAPSS label-scarce stitch data, TD improves RUL and failure-mode prediction relative to a supervised same-backbone Monte Carlo control, especially under scarce complete labels. Practically, fragmented, identity-free degradation records can contribute local Bellman transitions instead of being discarded until complete run-to-failure labels are available.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Hao Yan",
+          "Ali Sarabi",
+          "Qing Zou",
+          "Boyang Xu"
+        ],
+        "url": "https://arxiv.org/abs/2607.22268v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.22268",
+        "html_url": "https://arxiv.org/abs/2607.22268",
+        "published_at": "2026-07-24T13:04:32.000Z",
+        "upvotes": 0,
+        "heat": 2089.024426111111,
+        "featured": false,
+        "categories": [
+          "rl",
+          "sim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 1,
+        "first_seen": "2026-07-27T12:05:37.352Z",
+        "rm": {
+          "usage": "预测任务与RoboMaster核心对抗和任务无关，关联很弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2607.22249",
+        "arxiv_id": "2607.22249",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Design and Human Evaluation of Tactile Withdrawal Reflexes for a Skin-Covered Robot Arm",
+        "title_zh": "",
+        "abstract_en": "Nociception is a protective biological mechanism that links harmful stimulation to a reaction. This paper investigates artificial nociception for a robotic arm with whole-body tactile sensing. We present a complete pipeline that maps pressure changes from sensitive skin on a robot manipulator to bio-inspired withdrawal motions. The system first converts skin pressure into a scalar pain gain using a nonlinear continuous model. We compare three reflexes: (i) uniform reflex moves four robot joints by a fixed amount, whereby the withdrawal is approximated by a movement of the arm \"toward the base\", independent of where the robot was touched; (ii) biologically motivated location-dependent joint-space withdrawal derived from human withdrawal reflex characteristics; (iii) Cartesian space withdrawal along the surface normal of the contacted skin pad. All behaviors are integrated in a reflex controller that interrupts the task, executes the withdrawal, and returns to a pre-contact pose. A user study with 15 participants compared the strategies using Godspeed questionnaire subscales, custom perceived-naturalness and safety items, forced-choice comparisons, and qualitative feedback. Interestingly, participants rated more highly the uniform reflex behavior over one or both competitors on the anthropomorphism, animacy, and likeability Godspeed subscales and on the Naturalness and Realism custom scale. When asked to compare the conditions, the uniform reflex was scored best in \"felt safest\", \"most human-like\", and \"most natural\". This suggests that predictability of the robot behavior is key for user acceptance. The Cartesian reflex was judged the most appropriate reaction to touch. The bio-inspired reflex did not lead any evaluated measure. This may be partly attributed to the embodiment gap between the robot arm and human arm and participants having different expectations from a robot manipulator.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Laura Babayeva",
+          "Lukas Rustler",
+          "Matej Hoffmann"
+        ],
+        "url": "https://arxiv.org/abs/2607.22249v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.22249",
+        "html_url": "https://arxiv.org/abs/2607.22249",
+        "published_at": "2026-07-24T12:31:44.000Z",
+        "upvotes": 0,
+        "heat": 2088.477766666667,
+        "featured": false,
+        "categories": [
+          "slam",
+          "radar"
+        ],
+        "image": "",
+        "comment": "Submitted to IEEE Humanoids 2026",
+        "relevance": 3,
+        "first_seen": "2026-07-27T12:05:37.352Z",
+        "rm": {
+          "usage": "触觉反射可用于机械臂安全避让，但非RoboMaster核心任务，关联弱。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2607.22241",
+        "arxiv_id": "2607.22241",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "AgentHOI: Multi-Agent Reasoning for Human-Object-Interaction Video Generation via Implicit Representation Alignment",
+        "title_zh": "",
+        "abstract_en": "Recent advances in video diffusion models have spurred interest in human-object interaction (HOI) video generation, which demands fine-grained control over interaction logic beyond single-subject animation. However, existing HOI methods rely heavily on explicit motion control, limiting scalability and generalization across diverse objects and interactions. In this study, we propose AgentHOI, a text-driven HOI video generation following a thinking-before-generation framework that bridges the gap between high-level textual intent and physical execution through multi-agent reasoning over perception, interaction, and motion planning. Building upon the generated interaction plans, we further strengthen text-driven motion understanding. We introduce an implicit text-motion alignment strategy that distills text-to-motion priors into the video diffusion model, enabling robust HOI synthesis without explicit motion inputs at inference. Experiments show that AgentHOI significantly improves interaction naturalness, object appearance preservation, and adherence to complex textual instructions across challenging object-centric scenarios such as wearing and riding. The code is available at https://github.com/bone-11/agenthoi.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Ziyao Huang",
+          "Shunkai Li",
+          "Juan Cao",
+          "Chenyu Li",
+          "Youliang Zhang",
+          "Zixiang Zhou",
+          "Cong Wang",
+          "Yuan Zhou"
+        ],
+        "url": "https://arxiv.org/abs/2607.22241v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.22241",
+        "html_url": "https://arxiv.org/abs/2607.22241",
+        "published_at": "2026-07-24T12:17:57.000Z",
+        "upvotes": 0,
+        "heat": 2088.248038333333,
+        "featured": false,
+        "categories": [
+          "planning",
+          "radar"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 4,
+        "first_seen": "2026-07-27T12:05:37.352Z",
+        "rm": {
+          "usage": "视频生成与RoboMaster任务无关。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
         "id": "arxiv:2607.21588",
         "arxiv_id": "2607.21588",
         "source": "arXiv",
@@ -1993,6 +2895,87 @@
           "task_id": "",
           "task": "",
           "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2607.22226",
+        "arxiv_id": "2607.22226",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Offline Vision-Language Navigation with Geometric Goal Localization for Outdoor Environments",
+        "title_zh": "",
+        "abstract_en": "Foundation-model-based vision-language navigation (VLN) has advanced autonomous robot navigation by enabling robots to interpret natural-language instructions, identify semantic goals, and follow user-specified behavioral rules. However, existing VLN systems rely heavily on cloud-hosted foundation models for language understanding and semantic grounding, limiting their applicability where network connectivity is unavailable and reliable metric goal localization is required. Although recent small language models (SLMs) enable fully onboard inference, their suitability for navigation instruction decomposition has not been systematically evaluated. This paper makes three contributions toward fully onboard VLN for outdoor environments. First, we present the first systematic benchmark of 17 edge-deployable SLMs against 4 online APIs for robotic navigation instruction decomposition, evaluating accuracy and latency on human-annotated instructions across three computing platforms and providing practical guidance for selecting onboard language models. Second, we propose a lightweight hybrid semantic-geometric goal localization framework that combines open-vocabulary object detection, prompted segmentation, and LiDAR geometry to estimate metric goals, while maintaining visual bearing guidance when reliable geometric observations are unavailable. Third, we integrate these advances into Edge-BehAV, a fully onboard extension of the BehAV architecture that enables cloud-independent behavior-guided navigation. Experimental results show that the best offline SLM matches the instruction decomposition performance of the strongest cloud API while running approximately 9x faster and without network connectivity. The proposed goal localization framework reduces mean goal-distance error from 2.05 m to 0.20 m at lower computational cost, and the complete system succeeds in 31 of 32 closed-loop outdoor trials.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Ali Salmasi",
+          "Xianjia Yu",
+          "Tomi Westerlund"
+        ],
+        "url": "https://arxiv.org/abs/2607.22226v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.22226",
+        "html_url": "https://arxiv.org/abs/2607.22226",
+        "published_at": "2026-07-24T11:49:25.000Z",
+        "upvotes": 0,
+        "heat": 2087.772488611111,
+        "featured": false,
+        "categories": [
+          "aim",
+          "slam",
+          "nav"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 7,
+        "first_seen": "2026-07-27T12:05:37.352Z",
+        "rm": {
+          "usage": "可用于哨兵导航的离线视觉语言指令理解，但需改造适应动态场地和实时性。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2607.22225",
+        "arxiv_id": "2607.22225",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Safe Learning Predictive Control for Ego-World Robotic Systems",
+        "title_zh": "",
+        "abstract_en": "Safe autonomous navigation in shared environments requires the ability to anticipate and react to the latent behaviors of surrounding robots. In this paper, we propose SOWL-MPC, a safe learning-based predictive control strategy for a novel scenario, which we name ego-world robotic framework. In this setting, the control policy of the world robot is unknown and the ego exploits data to learn it and perform safe maneuvers. The proposed architecture combines an online learning mechanism based on Sparse Variational Gaussian Processes (SVGPs) with a receding-horizon control scheme. Relying solely on noisy state measurements, our approach infers a posterior distribution over the latent world policy, which is updated on streaming data via Online Variational Conditioning (OVC). The learned policy is propagated through the nonlinear world dynamics using an approximate moment propagation scheme, and fed to an uncertainty-aware Model Predictive Control (MPC), thus enabling safe maneuvering of the ego robot. The real-time feasibility and safety guarantees of SOWL-MPC are demonstrated through extensive Monte Carlo virtual experiments in ROS 2, and validated on real-world robotic hardware in an indoor arena.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Davide Valenti",
+          "Giuseppe Notarstefano"
+        ],
+        "url": "https://arxiv.org/abs/2607.22225v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.22225",
+        "html_url": "https://arxiv.org/abs/2607.22225",
+        "published_at": "2026-07-24T11:43:57.000Z",
+        "upvotes": 0,
+        "heat": 2087.6813775,
+        "featured": false,
+        "categories": [
+          "slam",
+          "nav",
+          "planning"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 9,
+        "first_seen": "2026-07-27T12:05:37.352Z",
+        "rm": {
+          "usage": "可用于哨兵或自主机器人的安全预测控制与避碰，辅助决策。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
         }
       },
       {
@@ -3423,124 +4406,6 @@
           "task": "自瞄 / 装甲板识别",
           "value": "high"
         }
-      },
-      {
-        "id": "cvf:CVPR2026:Explore with Long-term Memory: A Benchmark and Multimodal LL",
-        "arxiv_id": "",
-        "source": "CVPR",
-        "cats": [],
-        "title_en": "Explore with Long-term Memory: A Benchmark and Multimodal LLM-based Reinforcement Learning Framework for Embodied Exploration",
-        "title_zh": "",
-        "abstract_en": "An ideal embodied agent should possess lifelong learning capabilities to handle long-horizon and complex tasks, enabling continuous operation in general environments. This not only requires the agent to accurately accomplish given tasks but also to leverage long-term episodic memory to optimize decision-making. However, existing mainstream one-shot embodied tasks primarily focus on task completion results, neglecting the crucial process of exploration and memory utilization. To address this, we propose Long-term Memory Embodied Exploration (LMEE), which aims to unify the agent&#x27;s exploratory cognition and decision-making behaviors to promote lifelong learning. We further construct a corresponding dataset and benchmark, LMEE-Bench, incorporating multi-goal navigation and memory-based question answering to comprehensively evaluate both the process and outcome of embodied exploration. To enhance the agent&#x27;s memory recall and proactive exploration capabilities, we propose MemoryExplorer, a novel method that fine-tunes a multimodal large language model through reinforcement learning to encourage active memory querying. By incorporating a multi-task reward function that includes action prediction, frontier selection, and question answering, our model achieves proactive exploration. Extensive experiments against state-of-the-art embodied exploration models demonstrate that our approach achieves significant advantages in long-horizon embodied tasks. Our dataset and code will be released at https://wangsen99.github.io/papers/lmee/",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [],
-        "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Wang_Explore_with_Long-term_Memory_A_Benchmark_and_Multimodal_LLM-based_Reinforcement_CVPR_2026_paper.html",
-        "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Wang_Explore_with_Long-term_Memory_A_Benchmark_and_Multimodal_LLM-based_Reinforcement_CVPR_2026_paper.pdf",
-        "html_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Wang_Explore_with_Long-term_Memory_A_Benchmark_and_Multimodal_LLM-based_Reinforcement_CVPR_2026_paper.html",
-        "published_at": "2026-06-01T00:00:00.000Z",
-        "upvotes": 0,
-        "heat": 120,
-        "featured": false,
-        "categories": [
-          "slam",
-          "rl",
-          "radar"
-        ],
-        "image": "",
-        "comment": "Accepted to CVPR 2026",
-        "conf": "CVPR",
-        "confYear": 2026,
-        "confTag": "CVPR 2026",
-        "confWeight": 6,
-        "confVision": true,
-        "relevance": 9,
-        "first_seen": "2026-07-26T17:51:01.336Z",
-        "rm": {
-          "usage": "可用于强化学习策略训练中的长时记忆与探索框架，但需大量简化以适应实车实时性。",
-          "task_id": "strategy",
-          "task": "多机协同与策略学习",
-          "value": "mid"
-        }
-      },
-      {
-        "id": "cvf:CVPR2026:Generalized-CVO: Fast and Correspondence-Free Local Point Cl",
-        "arxiv_id": "",
-        "source": "CVPR",
-        "cats": [],
-        "title_en": "Generalized-CVO: Fast and Correspondence-Free Local Point Cloud Registration with Second Order Riemannian Optimization",
-        "title_zh": "",
-        "abstract_en": "We propose a fast and correspondence-free local point cloud registration method that leverages geometric surface structure and reproducing kernel Hilbert space (RKHS) embeddings. The method represents point clouds as continuous functions with point-wise anisotropic kernels that encode local geometry. This formulation improves alignment along surface normals while relaxing alignment along tangential directions. To solve the resulting registration problem, we propose a second-order on-manifold optimization scheme with approximate Riemannian Hessians, achieving a speedup of up to 10x over the first-order solvers used in prior correspondence-free RKHS-based methods. We demonstrate improved frame-to-frame LiDAR and RGB-D tracking accuracy across diverse indoor and outdoor datasets. On a LiDAR tracking registration task in the driving domain, we achieve a reduction of >55% in both translational and rotational drift in challenging feature-sparse environments. On object registration benchmarks, we show improved robustness over ICP-based methods and further gains when refining global initialization, particularly under moderate misalignment.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [],
-        "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_Generalized-CVO_Fast_and_Correspondence-Free_Local_Point_Cloud_Registration_with_Second_CVPR_2026_paper.html",
-        "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Zhang_Generalized-CVO_Fast_and_Correspondence-Free_Local_Point_Cloud_Registration_with_Second_CVPR_2026_paper.pdf",
-        "html_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_Generalized-CVO_Fast_and_Correspondence-Free_Local_Point_Cloud_Registration_with_Second_CVPR_2026_paper.html",
-        "published_at": "2026-06-01T00:00:00.000Z",
-        "upvotes": 0,
-        "heat": 120,
-        "featured": false,
-        "categories": [
-          "aim",
-          "slam"
-        ],
-        "image": "",
-        "comment": "Accepted to CVPR 2026",
-        "conf": "CVPR",
-        "confYear": 2026,
-        "confTag": "CVPR 2026",
-        "confWeight": 6,
-        "confVision": true,
-        "relevance": 9,
-        "first_seen": "2026-07-26T17:51:01.336Z",
-        "rm": {
-          "usage": "可用于哨兵或雷达中基于点云的快速配准，提升定位建图效率。",
-          "task_id": "sentry",
-          "task": "哨兵自主导航与决策",
-          "value": "mid"
-        }
-      },
-      {
-        "id": "cvf:CVPR2026:ReAttnCLIP: Training-Free Open-Vocabulary Remote Sensing Ima",
-        "arxiv_id": "",
-        "source": "CVPR",
-        "cats": [],
-        "title_en": "ReAttnCLIP: Training-Free Open-Vocabulary Remote Sensing Image Segmentation via Re-defined Attention in CLIP",
-        "title_zh": "",
-        "abstract_en": "Remote sensing image segmentation is critical for a range of applications, including natural disaster monitoring and precision agriculture. Open-vocabulary segmentation enhances flexibility by removing fixed category constraints, enabling more fine-grained and adaptive scene understanding. Unlike CLIP&#x27;s original pretraining objective, which emphasizes global image-text alignment, segmentation tasks require accurate and discriminative patch-level representations to support precise pixel-wise predictions. As a result, the quality of attention maps--particularly those generated in the final transformer layers--plays a pivotal role in guiding inter-region interactions. However, current methods generate suboptimal representations when capturing the complex spatial hierarchies in remote sensing. We address this gap by optimizing CLIP&#x27;s 197x197 attention matrix through three key modifications: (1) substituting the 196x196 patch-to-patch submatrix with intermediate-layer feature similarities to preserve spatial structures; (2) prioritizing intermediate-layer attention for global-to-local (class-to-patch) token alignment to reduce classification interference; (3) disabling the \\texttt [CLS] token&#x27;s self-attention to mitigate bias. Extensive experiments on eight remote sensing benchmarks and two building/road extraction datasets demonstrate that our method achieves state-of-the-art performance among existing training-free approaches.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [],
-        "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Niu_ReAttnCLIP_Training-Free_Open-Vocabulary_Remote_Sensing_Image_Segmentation_via_Re-defined_Attention_CVPR_2026_paper.html",
-        "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Niu_ReAttnCLIP_Training-Free_Open-Vocabulary_Remote_Sensing_Image_Segmentation_via_Re-defined_Attention_CVPR_2026_paper.pdf",
-        "html_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Niu_ReAttnCLIP_Training-Free_Open-Vocabulary_Remote_Sensing_Image_Segmentation_via_Re-defined_Attention_CVPR_2026_paper.html",
-        "published_at": "2026-06-01T00:00:00.000Z",
-        "upvotes": 0,
-        "heat": 120,
-        "featured": false,
-        "categories": [
-          "rl",
-          "radar"
-        ],
-        "image": "",
-        "comment": "Accepted to CVPR 2026",
-        "conf": "CVPR",
-        "confYear": 2026,
-        "confTag": "CVPR 2026",
-        "confWeight": 6,
-        "confVision": true,
-        "relevance": 7,
-        "first_seen": "2026-07-26T17:51:01.336Z",
-        "rm": {
-          "usage": "开放词汇分割，但与RoboMaster赛题场景差异大，仅作通用视觉分割参考。",
-          "task_id": "",
-          "task": "",
-          "value": "low"
-        }
       }
     ]
   },
@@ -3879,7 +4744,7 @@
         "categories": [
           "other"
         ],
-        "relevance": 8.51,
+        "relevance": 8.52,
         "first_seen": "2026-07-26T17:51:01.336Z"
       },
       {
@@ -4106,7 +4971,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 17.33,
+        "relevance": 7.33,
         "first_seen": "2026-07-26T17:51:01.336Z"
       },
       {
@@ -4137,7 +5002,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 20.33,
+        "relevance": 25.33,
         "first_seen": "2026-07-26T17:51:01.336Z"
       },
       {
@@ -4160,7 +5025,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 17.32,
+        "relevance": 7.32,
         "first_seen": "2026-07-26T17:51:01.336Z"
       },
       {
@@ -4183,7 +5048,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 14.28,
+        "relevance": 9.28,
         "first_seen": "2026-07-26T17:51:01.336Z"
       },
       {
@@ -4229,7 +5094,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.24,
+        "relevance": 7.24,
         "first_seen": "2026-07-26T17:51:01.336Z"
       },
       {
@@ -4617,7 +5482,7 @@
           "aim",
           "radar"
         ],
-        "relevance": 12.94,
+        "relevance": 7.94,
         "first_seen": "2026-07-26T17:51:01.336Z"
       },
       {
@@ -4749,7 +5614,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 22.89,
+        "relevance": 22.9,
         "first_seen": "2026-07-26T17:51:01.336Z"
       },
       {
@@ -4803,7 +5668,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 11.86,
+        "relevance": 6.86,
         "first_seen": "2026-07-26T17:51:01.336Z"
       },
       {
