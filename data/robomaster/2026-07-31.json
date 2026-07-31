@@ -1,6 +1,6 @@
 {
   "date": "2026-07-31",
-  "generatedAt": "2026-07-31T11:20:08.907Z",
+  "generatedAt": "2026-07-31T15:22:48.951Z",
   "categories": [
     {
       "key": "aim",
@@ -3943,7 +3943,13 @@
         "image": "",
         "comment": "",
         "relevance": 1,
-        "first_seen": "2026-07-31T11:19:58.103Z"
+        "first_seen": "2026-07-31T11:19:58.103Z",
+        "rm": {
+          "usage": "该论文讨论自适应实验授权与统计边界，与机器人控制、感知等RoboMaster任务无直接关联，几乎无法应用。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2607.26717",
@@ -4205,6 +4211,50 @@
         }
       },
       {
+        "id": "arxiv:2607.27636",
+        "arxiv_id": "2607.27636",
+        "source": "arXiv",
+        "cats": [
+          "cs.AI",
+          "cs.RO",
+          "cs.SE"
+        ],
+        "title_en": "HALO: Heterogeneous Admission through Localized Obligations for Safe Agentic Execution",
+        "title_zh": "",
+        "abstract_en": "Recent agentic AI systems may return a heterogeneous response containing notices, requests, handoffs, and actions. Conditions can change before external use, so components from the same response need not remain supported together. Rejecting the whole response discards useful components, whereas checking components independently can leave a dependent without its prerequisite. We present Heterogeneous Admission with Localized Obligations (HALO), a runtime protocol that preserves supported components whose declared prerequisites also remain supported, rechecks each exact action before dispatch, and allows blocked actions to be replaced only by fresh candidates. HALO matched all 96 admission expectations and passed all 20 protocol tests. In structured-response replay, it retained 248/248 supported components, including 128/128 unaffected by unrelated changes, while a whole-response policy retained 0/248. Across ten cold-start PX4/Gazebo sessions, HALO blocked every tested stale route, observed no matching stale setpoint, and completed all fresh recoveries.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Taewoo Park",
+          "Kyeonghyun Yoo",
+          "Kiseok Kim",
+          "Seunghyun Yoo",
+          "Hwangnam Kim"
+        ],
+        "url": "https://arxiv.org/abs/2607.27636v1",
+        "pdf_url": "https://arxiv.org/pdf/2607.27636",
+        "html_url": "https://arxiv.org/abs/2607.27636",
+        "published_at": "2026-07-30T03:46:31.000Z",
+        "upvotes": 0,
+        "heat": 2124.481009722222,
+        "featured": false,
+        "categories": [
+          "rl",
+          "sim"
+        ],
+        "image": "",
+        "comment": "16 pages, 2 figures; supplementary material included",
+        "relevance": 0,
+        "first_seen": "2026-07-31T15:22:38.454Z",
+        "rm": {
+          "usage": "该论文提出异构智能体安全执行协议，重点关注软件组件的依赖与运行时检查，与RoboMaster的机械臂、运动控制等实时任务关联较弱，仅在设计多机协同安全交互时可能有抽象参考，实际价值有限。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
         "id": "arxiv:2607.26513",
         "arxiv_id": "2607.26513",
         "source": "arXiv",
@@ -4376,48 +4426,6 @@
           "task_id": "sim",
           "task": "仿真与 sim-to-real",
           "value": "mid"
-        }
-      },
-      {
-        "id": "arxiv:2607.26434",
-        "arxiv_id": "2607.26434",
-        "source": "arXiv",
-        "cats": [
-          "cs.RO",
-          "cs.AI"
-        ],
-        "title_en": "Reinforcement Learning on Cost-Constrained Quadrupedal Hardware",
-        "title_zh": "",
-        "abstract_en": "Deploying learned control policies on low-cost robotic platforms introduces transport latencies and noisy motor feedback that systematically widens the sim-to-real gap. The chasm of simulation to deployment in hardware lies in the delay of the actuator reaching the commanded position. On platforms such as the Mini Pupper 2, a measured > $50 ms transport delay transforms the locomotion task from a standard Markov decision process into a partially observable one. In this paper, we take a biologically inspired approach of handling noisy and delayed feedback to close the sim-to-real gap, thereby expanding the capability of reinforcement learning on cost-constrained hardware. Using a low-cost quadrupedal hardware platform, we find that using a forward model of the average actuator delay, paired with a time-aware neural network results in robust locomotion. Additionally, our time-aware neural network learned a central pattern generator (CPG): a self-sustaining rhythmic gait that is robust to +320 ms latency perturbations, mirroring the CPGs found in the spinal cords of vertebrates. We posit that temporal self-organization may be a general strategy for cost-constrained locomotion.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Javier C. Weddington",
-          "Bence P. Ölveczky",
-          "Stephen A. Baccus"
-        ],
-        "url": "https://arxiv.org/abs/2607.26434v1",
-        "pdf_url": "https://arxiv.org/pdf/2607.26434",
-        "html_url": "https://arxiv.org/abs/2607.26434",
-        "published_at": "2026-07-29T03:22:12.000Z",
-        "upvotes": 0,
-        "heat": 2121.1811741666666,
-        "featured": false,
-        "categories": [
-          "planning",
-          "rl",
-          "radar"
-        ],
-        "image": "",
-        "comment": "Sim-to-real transfer, locomotion, reinforcement learning, central pattern generator",
-        "relevance": 8,
-        "first_seen": "2026-07-30T18:13:48.678Z",
-        "rm": {
-          "usage": "虽针对四足机器人，但其中的sim-to-real延迟补偿思路可借鉴用于RoboMaster实车部署",
-          "task_id": "sim",
-          "task": "仿真与 sim-to-real",
-          "value": "low"
         }
       }
     ]
@@ -5015,7 +5023,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 20.33,
+        "relevance": 25.33,
         "first_seen": "2026-07-30T18:13:48.678Z"
       },
       {
@@ -5223,7 +5231,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.13,
+        "relevance": 17.13,
         "first_seen": "2026-07-30T18:13:48.678Z"
       },
       {
@@ -5275,7 +5283,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.08,
+        "relevance": 12.08,
         "first_seen": "2026-07-30T18:13:48.678Z"
       },
       {
@@ -5440,7 +5448,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 11.95,
+        "relevance": 21.95,
         "first_seen": "2026-07-30T18:13:48.678Z"
       },
       {
@@ -5679,7 +5687,7 @@
         "categories": [
           "other"
         ],
-        "relevance": 1.86,
+        "relevance": 11.86,
         "first_seen": "2026-07-30T18:13:48.678Z"
       },
       {
