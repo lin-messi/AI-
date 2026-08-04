@@ -1,6 +1,6 @@
 {
   "date": "2026-08-04",
-  "generatedAt": "2026-08-04T04:02:57.576Z",
+  "generatedAt": "2026-08-04T15:24:23.682Z",
   "categories": [
     {
       "key": "aim",
@@ -133,6 +133,49 @@
           "usage": "触觉-语言-动作模型，依赖触觉传感器训练，RoboMaster 工程装配通常无触觉反馈；概念上可参考机械臂力控，但实际迁移成本极高。",
           "task_id": "engineer",
           "task": "工程视觉装配（能量单元）",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2608.01678",
+        "arxiv_id": "2608.01678",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.CL"
+        ],
+        "title_en": "Progressive Agent Skill Generation via Reinforcement Learning",
+        "title_zh": "基于强化学习的渐进式代理技能生成",
+        "abstract_en": "Existing skill generation methods largely rely on heuristics or pipeline-style consolidation, which must be specially designed for different evidence sources. In contrast, learning-based approaches offer a more unified way to model skill generation across heterogeneous sources. However, learning-based skill generation remains challenging because skills lack a natural supervision signal based on relevance or correctness; their value can largely be determined only by whether they improve the behavior of the agent on downstream tasks. To address this challenge, we propose Skill-$α$, a reinforcement learning method for progressively generating high-quality agent skills. Specifically, we formulate skill generation as a sequential editing process that decomposes skill construction into individually evaluable edits, and introduce a novel rollback reward that evaluates each edit by comparing downstream execution under the original and edited skills on an anchored query. Extensive experiments show that Skill-$α$ generates more effective skills than methods based on heuristics or pipelines in both document-to-skill and experience-to-skill settings. Under the main GPT-4o worker, Skill-$α$ improves average downstream success rates over the strongest skill-generation baseline by 3.3 points on CL-Bench and 6.7 points on tau2-bench. Further ablations validate the importance of rollback reward and progressive generation.",
+        "abstract_zh": "现有技能生成方法多依赖针对不同来源专门设计的启发式或流水线，而基于学习的方法能统一建模异构来源。但技能缺乏自然监督信号，其价值只能由下游任务表现决定。我们提出Skill-α，用强化学习将技能生成视为顺序编辑过程，把构建分解为可独立评估的编辑，并引入回滚奖励，通过比较原始与编辑技能的下游执行来评估编辑。实验显示，Skill-α在文档到技能和经验到技能设置中均优于启发式/流水线方法。在GPT-4o下，CL-Bench平均成功率提升3.3点，tau2-bench提升6.7点。消融验证了回滚奖励和渐进式生成的价值。",
+        "highlight_zh": "提出Skill-α，以回滚奖励强化学习渐进生成技能，提升下游成功率",
+        "digest_zh": "1. 研究问题：AI代理在解决复杂任务时，需要先写出“技能”（一段可复用的指令或程序）。但现有方法要么靠人工规则，要么按固定流程拼接，很难适应不同来源的知识。更关键的是，技能没有标准答案，只能凭借它能多大程度提升下游任务成功率来判断好坏。\n2. 方法：作者提出Skill-α。他们把技能生成看作“边写边改”的过程：从一个初始版本开始，每次修改一个局部，然后用同一个测试问题分别运行修改前后的技能，对比结果差异，得到一个“回滚奖励”，用于强化学习训练。这样模型能学会合理的修改方向，逐步把技能改到好用。\n3. 结果：在多个任务上，Skill-α生成的技能比传统方法更有效。使用GPT-4o时，CL-Bench上平均成功率提升3.3个百分点，tau2-bench提升6.7个百分点。去除回滚奖励或一次性生成都会明显变差。\n4. 重要性：该方法无需人工设计规则，能自动从文档或经验中提炼高质量技能，为提升AI自主完成任务能力提供了新途径。",
+        "authors": [
+          "Junhao Shen",
+          "Zhanqiu Zhang",
+          "Yiwen Guo",
+          "Hong Cheng"
+        ],
+        "url": "https://arxiv.org/abs/2608.01678v1",
+        "pdf_url": "https://arxiv.org/pdf/2608.01678",
+        "html_url": "https://arxiv.org/abs/2608.01678",
+        "published_at": "2026-08-03T04:14:59.000Z",
+        "upvotes": 43,
+        "heat": 4274.942780277777,
+        "featured": true,
+        "categories": [
+          "aim",
+          "slam",
+          "rl"
+        ],
+        "image": "",
+        "comment": "Code is available at https://github.com/ejhshen/skill-alpha",
+        "relevance": 2,
+        "first_seen": "2026-08-04T15:22:30.512Z",
+        "rm": {
+          "usage": "通用智能体技能生成方法，与RoboMaster机器人任务关联弱，难以直接应用。",
+          "task_id": "",
+          "task": "",
           "value": "low"
         }
       },
@@ -339,7 +382,103 @@
         "image": "",
         "comment": "The project is accessible at https://github.com/DeepExperience/VAD_Multimodal_OPD",
         "relevance": 1,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "可用于将仿真中的特权信息蒸馏到实车感知策略，支持sim-to-real迁移，但需针对RM任务改造。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2608.01827",
+        "arxiv_id": "2608.01827",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.AI"
+        ],
+        "title_en": "DeepVoyager-VL: Incentivizing Vision-in-the-Loop Search for Long-Horizon Multimodal Agents",
+        "title_zh": "DeepVoyager-VL：激励长时程多模态智能体的视觉在环搜索",
+        "abstract_en": "Multimodal large language models (MLLMs) have advanced visual understanding and reasoning, yet their static parametric knowledge limits their ability to address knowledge-intensive and dynamically evolving open-world problems. To move beyond this limitation, multimodal deep search has emerged as a key direction for open-world information access, evolving from single-turn factual retrieval toward long-horizon, multi-turn search guided by visual evidence. However, existing methods typically confine vision to the input or answer stage, overlooking its role in intermediate reasoning, and lack designs tailored to long-horizon interaction. Consequently, visual evidence rarely drives continued retrieval, constraining both interaction depth and reasoning span. To address these limitations, we propose DeepVoyager-VL, a long-horizon multimodal deep-search framework for vision-in-the-loop search. Specifically, we construct a multimodal event graph to drive data synthesis, yielding problems with intermediate visual dependencies and long reasoning chains. We then design an agent framework for active visual acquisition and on-demand image loading. Finally, we fine-tune models on the synthesized data without reinforcement learning. Extensive experiments across ten multimodal search benchmarks demonstrate the effectiveness of our method.",
+        "abstract_zh": "多模态大语言模型（MLLMs）已推进视觉理解与推理，但其静态参数知识限制了处理知识密集和动态演变开放世界问题的能力。为突破这一限制，多模态深度搜索成为开放世界信息访问的关键方向，从单轮事实检索演变为由视觉证据引导的长时程、多轮搜索。然而，现有方法通常将视觉局限于输入或答案阶段，忽视其在中间推理中的作用，且缺乏针对长时程交互的设计，导致视觉证据很少驱动持续检索。为解决这些问题，我们提出DeepVoyager-VL，一种用于视觉在环搜索的长时程多模态深度搜索框架。具体地，我们构建多模态事件图驱动数据合成，生成具有中间视觉依赖和长推理链的问题；然后设计主动视觉获取和按需图像加载的智能体框架；最后在合成数据上微调模型，无需强化学习。在十个多模态搜索基准上的大量实验证明了我们方法的有效性。",
+        "highlight_zh": "提出视觉在环搜索框架，用事件图数据合成激励长时程交互。",
+        "digest_zh": "这篇论文要解决的是'视觉搜索'的问题。通常我们让AI模型回答问题时，模型只凭自己记忆里的知识，但现实世界信息变化快，需要模型主动去搜索。现有的多模态搜索方法往往把视觉只是当作输入或最终答案，没有让视觉在思考过程中发挥作用。作者提出了DeepVoyager-VL框架，关键有几点：第一，他们创建了一个'多模态事件图'，用来生成需要中间视觉依赖和长推理链的训练数据；第二，设计了一个智能体框架，能主动获取视觉信息、按需加载图片，而不是被动等待；第三，在合成数据上直接微调模型，不需要复杂的强化学习。结果在十个搜索基准上表现很好。简单说，这个方法让AI在解决复杂问题时，能像人一样'边看边想'，遇到不懂的地方主动查找视觉证据，从而回答得更准确，也支持更长步骤的任务。这对于未来AI在真实世界应用很有价值。",
+        "authors": [
+          "Huanyao Zhang",
+          "Jiepeng Zhou",
+          "Runhao Zhao",
+          "Yanzhe Shan",
+          "Jiaoyang Chen",
+          "Bowen Zhou",
+          "Bo Li",
+          "Fang Wang"
+        ],
+        "url": "https://arxiv.org/abs/2608.01827v1",
+        "pdf_url": "https://arxiv.org/pdf/2608.01827",
+        "html_url": "https://arxiv.org/abs/2608.01827",
+        "published_at": "2026-08-03T07:36:48.000Z",
+        "upvotes": 14,
+        "heat": 2828.3063930555554,
+        "featured": true,
+        "categories": [
+          "aim",
+          "rl"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 2,
+        "first_seen": "2026-08-04T15:22:30.512Z",
+        "rm": {
+          "usage": "长时程多模态搜索与视觉推理，与RM比赛场景差异大，关联弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2608.00486",
+        "arxiv_id": "2608.00486",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "DreamTraj: Generating 6-DoF Object Trajectories by Reading Unrendered Video Diffusion Latents",
+        "title_zh": "DreamTraj：通过读取未渲染的视频扩散潜变量生成6自由度物体轨迹",
+        "abstract_en": "Accurate prediction of object trajectories during manipulation is essential for closing the perception-action loop. Progress is limited on two fronts: available datasets lack fine-grained language-to-motion annotations, and existing predictors either rely on privileged inputs such as video, depth, or CAD models, or recover motion from fully generated videos through costly, error-prone perception pipelines. We close the supervision gap with the MOVE dataset, 5,038 object-centric egocentric trajectories, each paired with a fine-grained natural-language instruction rather than a coarse verb-noun label. We further propose DreamTraj, which predicts a 6-DoF object trajectory from a single RGB image and a task instruction, requiring no video, depth, or CAD model at inference: rather than generating a video, it reads motion from the internal representations of a frozen image-to-video diffusion model at an early denoising step. A lightweight flow-matching Reader decodes query-key attention tracks and pooled hidden states into relative 6-DoF poses. To our knowledge, this is the first approach to directly decode object 6-DoF trajectories from intermediate video diffusion representations rather than generated pixels. DreamTraj sets a new state of the art on both translation and rotation against forecasters that consume multi-frame or privileged inputs, and runs 4.6x faster than generate-then-extract pipelines.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Tongsheng Ding",
+          "Zhen Luo",
+          "Yixuan Yang",
+          "Boyu Wang",
+          "Luyang Xie",
+          "Jinyu Yang",
+          "Feng Zheng"
+        ],
+        "url": "https://arxiv.org/abs/2608.00486v1",
+        "pdf_url": "https://arxiv.org/pdf/2608.00486",
+        "html_url": "https://arxiv.org/abs/2608.00486",
+        "published_at": "2026-08-01T07:24:41.000Z",
+        "upvotes": 12,
+        "heat": 2680.1044480555556,
+        "featured": false,
+        "categories": [
+          "aim",
+          "radar"
+        ],
+        "image": "",
+        "comment": "17 pages, 8 figures, 11 tables. Project page: https://whathappen0.github.io/DreamTraj/",
+        "relevance": 4,
+        "first_seen": "2026-08-04T15:22:30.512Z",
+        "rm": {
+          "usage": "可用于工程机器人预测能量单元运动轨迹，辅助机械臂抓取，但需要大量仿真与数据适配。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2607.26056",
@@ -518,7 +657,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 8,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "可用于雷达或自瞄中区分不同敌方机器人目标，支撑多目标跟踪与身份保持，需结合视觉检测改造。",
+          "task_id": "radar",
+          "task": "雷达全场感知与标记",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2608.01761",
@@ -558,7 +703,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 8,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "用3D高斯泼溅构建高保真交互式仿真场景，用于RM感知/决策算法闭环测试与sim-to-real迁移。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "high"
+        }
       },
       {
         "id": "arxiv:2608.01706",
@@ -598,7 +749,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 9,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "可直接用于哨兵机器人的自主建图与定位，提高长程导航的精度与鲁棒性。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "high"
+        }
       },
       {
         "id": "arxiv:2608.02320",
@@ -638,7 +795,13 @@
         "confWeight": 5,
         "confVision": false,
         "relevance": 9,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "可用于哨兵导航中评估地形可通行性，辅助跨越复杂地形时的路径规划。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "high"
+        }
       },
       {
         "id": "arxiv:2608.01129",
@@ -680,7 +843,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 9,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "联邦学习用于多机器人深度估计的分布式训练，但RoboMaster各机器人独立开发且深度估计非核心需求，关联性很弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2607.26991",
@@ -768,7 +937,13 @@
         "confWeight": 5,
         "confVision": false,
         "relevance": 13,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "可借鉴其对应关系引导的视觉操作思路，用于工程机器人抓取能量单元时的位姿估计与精准装配，但需针对刚体目标简化。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2608.02391",
@@ -812,7 +987,13 @@
         "confWeight": 3,
         "confVision": false,
         "relevance": 5,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "面向LLM代理的进化策略训练方法与机器人控制无关，难以应用到RoboMaster赛事。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2608.00730",
@@ -855,7 +1036,13 @@
         "confWeight": 5,
         "confVision": false,
         "relevance": 8,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "面向家用清洁机器人的粘稠污渍清理算法，与RoboMaster各任务均无关联。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2608.00715",
@@ -896,7 +1083,13 @@
         "confWeight": 5,
         "confVision": false,
         "relevance": 6,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "仿真训练外骨骼控制器的多阶段课程方法，其sim-to-real思想可用于RoboMaster策略或控制器迁移，但对象差异大，仅作参考。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2607.29482",
@@ -980,7 +1173,13 @@
         "confWeight": 5,
         "confVision": false,
         "relevance": 6,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "利用环境PDE场进行定位的方法，适用于水域等场景，与RoboMaster室内场地定位方式不匹配，难以直接应用。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2607.27843",
@@ -1239,7 +1438,13 @@
         "image": "",
         "comment": "12 pages, 10 figures",
         "relevance": 2,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "航空-地面视角的人员重识别与机器人检测无关，但其中视角鲁棒3D表示学习对哨兵/雷达目标特征提取有启发，需大幅改造。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2608.02580",
@@ -1278,7 +1483,13 @@
         "image": "",
         "comment": "",
         "relevance": 2,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "从人类视频合成机器人操作数据，可为工程机器人抓取装配能量单元提供训练数据，用于模仿学习或仿真训练，需场景定制。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2608.02578",
@@ -1318,7 +1529,13 @@
         "image": "",
         "comment": "",
         "relevance": 1,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "该论文针对双臂机器人协调合约，与RoboMaster的战斗、导航等任务无直接关联。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2608.02571",
@@ -1356,7 +1573,13 @@
         "image": "",
         "comment": "",
         "relevance": 3,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "哨兵在未知环境中可借鉴其场景感知的前沿优先探索方法，将探索收益与目标发现概率结合，优化自主建图与搜索。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2608.02547",
@@ -1392,7 +1615,13 @@
         "image": "",
         "comment": "",
         "relevance": 3,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "行为克隆中动作分块的分析可为哨兵决策或云台控制的策略学习提供改进方向，但需自行设计实验验证实际效果。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2608.02545",
@@ -1431,7 +1660,13 @@
         "image": "",
         "comment": "",
         "relevance": 2,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "视觉运动策略的可达集验证可用于自瞄视觉控制策略的鲁棒性分析，但实施成本高，需针对RoboMaster场景进行适配。",
+          "task_id": "autoaim",
+          "task": "自瞄 / 装甲板识别",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2608.02519",
@@ -1464,7 +1699,13 @@
         "image": "",
         "comment": "To appear in Proceedings of the 42nd Conference on Uncertainty in Artificial Intelligence (UAI 2026), PMLR",
         "relevance": 3,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "不确定性下的矩闭合解析规划可应用于自瞄中的运动预测或哨兵的路径规划，以提高对噪声和不确定性的适应能力。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2608.02509",
@@ -1500,7 +1741,13 @@
         "image": "",
         "comment": "14 pages, 5 figures, 2 tables",
         "relevance": 0,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "不确定MDP的小策略集minimax regret优化可用于多机协同高层决策，在对手策略不确定时选择稳健的团队策略，但理论性强，落地需简化。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2608.02508",
@@ -1539,7 +1786,13 @@
         "image": "",
         "comment": "",
         "relevance": 2,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "该论文研究LLM记忆机制，与RoboMaster的感知、控制、决策等任务无关。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2608.02497",
@@ -1571,7 +1824,13 @@
         "image": "",
         "comment": "23 pages, 8 figures",
         "relevance": 4,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "视觉-语言-动作模型的指令泛化与RoboMaster任务无直接关联，除非未来引入自然语言指令，否则基本用不上。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2608.02464",
@@ -1604,7 +1863,13 @@
         "image": "",
         "comment": "16 pages, 5 figures. Code, data and demo: github.com/sunnydubey1111/agent-trajectory-sentinel Walkthrough: youtu.be/a05n_000klE",
         "relevance": 3,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "该论文研究LLM代理的实时失败检测与修复，与RoboMaster的视觉、控制及决策任务无直接关联，基本无法应用。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2608.02453",
@@ -1642,7 +1907,13 @@
         "image": "",
         "comment": "",
         "relevance": 3,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "在仿真到实车迁移中，可参考其模型失配下计划认证的理论框架，用于评估控制序列在真实环境中的安全性，但需额外实现具体算法。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2608.02449",
@@ -1676,7 +1947,13 @@
         "image": "",
         "comment": "7 pages, 5 figures, 6 tables. Accepted to the 14th IEEE International Conference on Intelligent Mobile Computing (IEEE IMC 2026), Fukuoka, Japan, July 27-30, 2026",
         "relevance": 6,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "借鉴其将雷达多普勒速度编码到BEV表示的思路，可用于雷达任务中的多传感器融合与全局鸟瞰图生成，辅助敌方定位与标记。",
+          "task_id": "radar",
+          "task": "雷达全场感知与标记",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2608.02448",
@@ -1710,7 +1987,13 @@
         "image": "",
         "comment": "24 pages, 10 figures",
         "relevance": 5,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "用于无人机监测海岸纹理特征，与RoboMaster的机器人感知与任务无关，无法应用。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2608.02433",
@@ -1749,7 +2032,13 @@
         "image": "",
         "comment": "INFORMS tutorial",
         "relevance": 3,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "提供强化学习与控制理论结合的教程性思路，可为哨兵决策或策略学习提供基础启发，但需自行实现具体算法，实用性有限。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2608.02428",
@@ -1787,7 +2076,13 @@
         "image": "",
         "comment": "",
         "relevance": 8,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "世界模型可预测未来特征，在哨兵导航中可用于预测障碍物或敌方动态，辅助路径规划与决策，但需结合自身传感器数据改造。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2608.02385",
@@ -1825,7 +2120,13 @@
         "image": "",
         "comment": "8 pages, 7 figures. Preprint, not formally peer-reviewed",
         "relevance": 3,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "关注人形机器人的跌倒恢复，RoboMaster无此类形态需求，关联很弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2608.02375",
@@ -1858,7 +2159,13 @@
         "image": "",
         "comment": "",
         "relevance": 1,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "分布式在线控制理论可用于多机协同中哨兵与雷达的分布式决策架构参考，但理论性强，需大幅简化与实际改造。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2608.02326",
@@ -1896,7 +2203,13 @@
         "image": "",
         "comment": "13 pages (9 main + 4 appendix), 4 figures. Project page: https://muqy1818.github.io/chainvla-web/",
         "relevance": 1,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "可用于工程机器人能量单元装配这类长时程操作，通过维护可回滚的执行状态减少重复规划，提高连续装配动作的稳定性。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2608.02316",
@@ -1930,7 +2243,13 @@
         "image": "",
         "comment": "",
         "relevance": 4,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "用在哨兵自主导航中的状态估计，在线自适应调节卡尔曼滤波噪声参数，有效适应飞坡、颠簸等不同地形，提升定位可靠性。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2608.02267",
@@ -1962,7 +2281,13 @@
         "image": "",
         "comment": "108 pages, 3 figures. Full proofs and appendices included. Independent researcher",
         "relevance": 0,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "该理论过于抽象，未落地到机器人具体环节，和 RoboMaster 核心任务关联很弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2608.02258",
@@ -1998,7 +2323,13 @@
         "image": "",
         "comment": "Accepted to ACM MM 2026",
         "relevance": 1,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "面向生成式图像取证，与装甲板识别或能量机关等视觉任务无直接关系，不能直接使用。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2608.02257",
@@ -2038,7 +2369,13 @@
         "image": "",
         "comment": "8 pages, 4 figures",
         "relevance": 5,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "可参考其全景感知与全身移动操作设计，用于工程机器人移动抓取能量单元的全局空间感知与底座-机械臂协调。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2608.02217",
@@ -2072,7 +2409,13 @@
         "image": "",
         "comment": "",
         "relevance": 2,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "关于 VLM 工具调用的组合与自适应，不适合 RoboMaster 中的固定视觉检测流程，关联很弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2608.02197",
@@ -2109,7 +2452,13 @@
         "image": "",
         "comment": "13 pages, 7 figures",
         "relevance": 5,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "该视觉细化方法可迁移到装甲板识别网络，抑制注意力伪影，提升数字与灯条的位置感知精度，辅助云台瞄准。",
+          "task_id": "autoaim",
+          "task": "自瞄 / 装甲板识别",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2608.02181",
@@ -2147,7 +2496,13 @@
         "image": "",
         "comment": "Accepted at COLM 2026. 26 pages, 9 figures. Code: https://github.com/ZhijianZhou/HL-guass-ppo",
         "relevance": 3,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "针对 LLM 强化学习的 critic 优化，与 RoboMaster 实机策略学习差距大，难以直接应用。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2608.02177",
@@ -2180,7 +2535,13 @@
         "image": "",
         "comment": "",
         "relevance": 3,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "可用于仿真环境中添加降雨效果以增强视觉多样性，但RoboMaster比赛通常不受天气影响，关联很弱。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2608.02100",
@@ -2220,7 +2581,13 @@
         "image": "",
         "comment": "",
         "relevance": 0,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "研究人类与AI决策分配，与RoboMaster机器人任务无关。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2608.02093",
@@ -2252,7 +2619,13 @@
         "image": "",
         "comment": "",
         "relevance": 2,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "借鉴其EKF与概率扩散模型预测海上漂移目标位置，可用于飞镖瞄准移动目标时的运动预测。",
+          "task_id": "dart",
+          "task": "飞镖目标瞄准",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2608.02079",
@@ -2289,7 +2662,13 @@
         "image": "",
         "comment": "",
         "relevance": 2,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "可提升哨兵自主导航中的视觉惯导定位精度，通过主动规划确保特征可观测性。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2608.02073",
@@ -2322,7 +2701,13 @@
         "image": "",
         "comment": "29 pages",
         "relevance": 3,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "用于强化学习训练中处理传感器噪声等输入不确定性，提升策略学习的鲁棒性。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2608.02069",
@@ -2357,7 +2742,13 @@
         "image": "",
         "comment": "8 pages, 5 figures, Project page, videos, and code available at: https://diffloco.martin-opat.com/",
         "relevance": 4,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "开源可微仿真框架可借鉴其训练与sim-to-real迁移方法，用于RoboMaster车辆策略仿真。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2608.02068",
@@ -2395,7 +2786,13 @@
         "image": "",
         "comment": "",
         "relevance": 1,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "单目深度估计在非朗伯表面的修正，与RoboMaster环境关联很弱，用不上。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2608.02039",
@@ -2435,7 +2832,13 @@
         "image": "",
         "comment": "",
         "relevance": 4,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "遥感视频与视觉语言模型评估，与RoboMaster任务无关。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2608.02034",
@@ -2467,7 +2870,13 @@
         "image": "",
         "comment": "",
         "relevance": 5,
-        "first_seen": "2026-08-04T04:01:51.804Z"
+        "first_seen": "2026-08-04T04:01:51.804Z",
+        "rm": {
+          "usage": "可用于多机协同策略学习，改进 off-policy 强化学习算法，但需针对具体场景调整。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2607.25984",
@@ -2513,6 +2922,47 @@
           "task_id": "autoaim",
           "task": "自瞄 / 装甲板识别",
           "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2608.02031",
+        "arxiv_id": "2608.02031",
+        "source": "arXiv",
+        "cats": [
+          "cs.DC",
+          "cs.LG",
+          "cs.NI"
+        ],
+        "title_en": "Learning-Based Collaborative MEC for LLM Inference with Soft-Deadline Awareness via Transformer-Enhanced PPO",
+        "title_zh": "",
+        "abstract_en": "This paper investigates collaborative mobile edge computing (MEC) servers for large language model (LLM) inference under soft deadline constraints. In this system, to improve the quality of service, computations are expected to be completed within their deadlines. However, due to dependencies among tasks or subtasks, any missed deadline can lead to catastrophic consequences for the entire request. In this context, this work proposes an extended deadline mechanism with constrained flexibility. The main challenges lie in handling large-scale computations under strict latency constraints while limiting the number of allowable deadline extensions, especially in the presence of task dependencies within each request. To tackle these challenges, we develop a transformer-enhanced proximal policy optimization (PPO) framework that enables efficient collaboration among MEC servers. The proposed approach aims to maximize the number of tasks completed within their deadlines while minimizing the use of deadline extensions. By capturing temporal dependencies and cross-server interactions, the transformer improves decision-making for task migration. Simulation results demonstrate that the proposed method significantly outperforms conventional PPO and heuristic-based approaches in terms of task completion rate and overall system efficiency.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Ngoc Hung Nguyen",
+          "Bjorn Landfeldt"
+        ],
+        "url": "https://arxiv.org/abs/2608.02031v1",
+        "pdf_url": "https://arxiv.org/pdf/2608.02031",
+        "html_url": "https://arxiv.org/abs/2608.02031",
+        "published_at": "2026-08-03T10:27:25.000Z",
+        "upvotes": 0,
+        "heat": 2131.1500025,
+        "featured": false,
+        "categories": [
+          "rl",
+          "sim"
+        ],
+        "image": "",
+        "comment": "7 pages, 5 pages",
+        "relevance": 1,
+        "first_seen": "2026-08-04T15:22:30.512Z",
+        "rm": {
+          "usage": "与 RoboMaster 无直接关联，是关于 LLM 推理的边缘计算，不适合赛事任务。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
         }
       },
       {
@@ -3940,176 +4390,6 @@
           "task": "",
           "value": "low"
         }
-      },
-      {
-        "id": "arxiv:2607.29172",
-        "arxiv_id": "2607.29172",
-        "source": "arXiv",
-        "cats": [
-          "cs.RO",
-          "cs.AI"
-        ],
-        "title_en": "CLIFT: Turning Gemini Robotics On-Device into Humanoid Specialists via Non-Invasive Closed-Loop Iterative Fine-Tuning",
-        "title_zh": "",
-        "abstract_en": "While robot foundation models are growing increasingly capable, the strongest models are typically trained on proprietary data and remain closed-source, limiting downstream users' ability to adapt them to new tasks, embodiments, and deployment settings. Following the LLM community, an emerging access paradigm for closed-weight robot foundation models is the managed supervised fine-tuning (SFT) API, where users submit training data and receive a tuned policy without access to model weights, gradients, or training internals. While such APIs let downstream users leverage powerful proprietary foundation models, they restrict policy improvement to pure imitation, ruling out reinforcement learning and other closed-loop methods that rely on internal training signals. This limitation is particularly acute for agile, contact-rich humanoid manipulation, where the gap between policy outputs and deployed behavior is large due to novel states, action tracking dynamics, latency, and controller-specific failure modes. We study how effective this managed-API regime is for humanoid adaptation, and how closed-loop improvement can be realized within it to push policies toward task mastery. We conduct one of the first empirical studies of managed-API adaptation on a real humanoid, instantiated on Gemini Robotics On-Device (GROD). We find that direct SFT through the API substantially outperforms a leading open-weight VLA trained on the same demonstrations, yet still falls short of deployment-level mastery on agile, contact-rich tasks. To close this gap, we introduce CLIFT: Closed-Loop Iterative Fine-Tuning, which turns deployment-time reward feedback into API-compatible supervised data and enables closed-loop policy improvement without accessing weights, gradients, likelihoods, or losses-pushing GROD to near-perfect success after two flywheel cycles, all without \"opening the model box.\"",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Yuxin Chen",
-          "Hari Srikanth",
-          "Nathan Jew",
-          "Menglin Wu",
-          "Pengcheng Wang",
-          "Junli Ren",
-          "Masayoshi Tomizuka",
-          "Peng Xu"
-        ],
-        "url": "https://arxiv.org/abs/2607.29172v1",
-        "pdf_url": "https://arxiv.org/pdf/2607.29172",
-        "html_url": "https://arxiv.org/abs/2607.29172",
-        "published_at": "2026-07-31T08:50:25.000Z",
-        "upvotes": 0,
-        "heat": 2078.3251944444446,
-        "featured": false,
-        "categories": [
-          "slam",
-          "rl"
-        ],
-        "image": "",
-        "comment": "",
-        "relevance": 7,
-        "first_seen": "2026-08-03T18:37:51.885Z",
-        "rm": {
-          "usage": "通过微调闭源机器人基础模型适应新任务，可借鉴其非侵入式迭代微调方法，但实际部署受限，对策略学习有间接参考。",
-          "task_id": "strategy",
-          "task": "多机协同与策略学习",
-          "value": "mid"
-        }
-      },
-      {
-        "id": "arxiv:2607.29169",
-        "arxiv_id": "2607.29169",
-        "source": "arXiv",
-        "cats": [
-          "cs.RO",
-          "cs.AI"
-        ],
-        "title_en": "ActFovea: Runtime Safeguarding for VLA Policies via Spatiotemporal Visual-Action Consistency",
-        "title_zh": "",
-        "abstract_en": "Vision-language-action (VLA) policies achieve strong performance in robotic manipulation but remain vulnerable to runtime disturbances that break the temporal alignment among visual observations, robot states, and executed actions. We introduce ActFovea, a plug-and-play safeguarding framework that detects and mitigates such failures without retraining or modifying the underlying VLA policy. ActFovea uses robot kinematics, proprioceptive states, and recent actions to construct action-conditioned foveated regions that retain contact-relevant areas and predicted motion corridors while suppressing task-irrelevant visual content. It detects runtime risks by evaluating whether visual motion and observation freshness remain consistent with geometric, proprioceptive, and action transitions. For recoverable disturbances, ActFovea constructs disturbance-specific candidate observations and accepts a recovery only after verifying the resulting action chunk. When stale or replayed observations make reliable recovery impossible, it invokes a bounded safe-failure procedure. In closed-loop evaluations of $π_0$ across multiple LIBERO suites, ActFovea increases success under localized visual overlays from 49.3\\% to 90.3\\%, closing 93.7\\% of the gap to clean performance. It further improves success under action drift and visual delay by 7.0 and 9.8 percentage points, respectively, while preserving clean-task performance. Under frozen-observation replay, ActFovea triggers timely safe failure in all trials, with no unprotected failures. These results demonstrate that spatiotemporal visual-action consistency provides an effective basis for runtime safeguarding of VLA policies.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Wenda Yu",
-          "Tianshi Wang",
-          "Fengling Li",
-          "Xin Li",
-          "Jingjing Li",
-          "Lei Zhu"
-        ],
-        "url": "https://arxiv.org/abs/2607.29169v1",
-        "pdf_url": "https://arxiv.org/pdf/2607.29169",
-        "html_url": "https://arxiv.org/abs/2607.29169",
-        "published_at": "2026-07-31T08:47:57.000Z",
-        "upvotes": 0,
-        "heat": 2078.2840833333335,
-        "featured": false,
-        "categories": [
-          "aim",
-          "radar"
-        ],
-        "image": "",
-        "comment": "8 pages, 4 figures, 4 tables. Code: https://github.com/SunnyYWD/ActFovea.git",
-        "relevance": 3,
-        "first_seen": "2026-08-03T18:37:51.885Z",
-        "rm": {
-          "usage": "面向视觉语言动作策略的运行时保障框架，可类似地用于工程机器人机械臂装配动作的异常检测与安全控制，但需专门适配。",
-          "task_id": "engineer",
-          "task": "工程视觉装配（能量单元）",
-          "value": "mid"
-        }
-      },
-      {
-        "id": "arxiv:2607.29156",
-        "arxiv_id": "2607.29156",
-        "source": "arXiv",
-        "cats": [
-          "cs.CV"
-        ],
-        "title_en": "Progressive Decision-Making for Localizing Open-Ended AI-Generated Image Forgeries",
-        "title_zh": "",
-        "abstract_en": "AI-generated image forgeries are becoming increasingly realistic and difficult to characterize with fixed manipulation patterns. As generative models continue to evolve, it is impractical to expect a localization model to exhaustively learn all possible forgery appearances from large-scale training data alone. Nevertheless, many AI-generated forgeries still leave subtle forensic traces, although these cues are often weak and unevenly reliable across regions. Therefore, robust localization requires not only extracting informative forensic traces, but also making reliable decisions from incomplete and ambiguous evidence. In this paper, we move beyond static one-shot prediction and reformulate final forgery localization as an adaptive sequential decision-updating process, where the localization map is treated as an intermediate state rather than a fixed output. Rather than producing the final mask via one-shot pixel-wise prediction, our method progressively updates the localization state guided by available evidence, uncertainty, and boundary conditions. Specifically, we first transform mesoscopic traces into compact decision evidence via a lightweight decision evidence projector, and then introduce Evidence-Guided Mamba (EG-Mamba) to perform uncertainty- and boundary-aware state updating. This design allows reliable manipulated and background regions to be preserved, while ambiguous regions are cautiously revised according to the available evidence. Extensive experiments on both conventional and AI-generated manipulation benchmarks validate the effectiveness of the proposed method. Notably, even when trained only on conventional manipulation data, our method brings larger gains on unseen AI-generated forgeries, indicating that progressive decision-updating is especially useful for heterogeneous and hard-to-exhaustively-learn manipulation traces.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Jingyi Hou",
-          "Xiaoxia Chen",
-          "Leyu Zhou",
-          "Zhichuang Wang",
-          "Zhijie Liu"
-        ],
-        "url": "https://arxiv.org/abs/2607.29156v1",
-        "pdf_url": "https://arxiv.org/pdf/2607.29156",
-        "html_url": "https://arxiv.org/abs/2607.29156",
-        "published_at": "2026-07-31T08:37:04.000Z",
-        "upvotes": 0,
-        "heat": 2078.1026866666666,
-        "featured": false,
-        "categories": [
-          "other"
-        ],
-        "image": "",
-        "comment": "",
-        "relevance": 1,
-        "first_seen": "2026-08-03T18:37:51.885Z",
-        "rm": {
-          "usage": "AI生成图像伪造定位，与比赛场景无直接关联，基本用不上。",
-          "task_id": "",
-          "task": "",
-          "value": "low"
-        }
-      },
-      {
-        "id": "arxiv:2607.29106",
-        "arxiv_id": "2607.29106",
-        "source": "arXiv",
-        "cats": [
-          "cs.CV"
-        ],
-        "title_en": "Forwardrobe: Garment-Aware Gaussian Avatars from a Single Image",
-        "title_zh": "",
-        "abstract_en": "Reconstructing animatable 3D human avatars from a single image remains particularly challenging for loose garments, whose geometry and motion cannot be adequately represented by body-aligned topology and skinning. We present Forwardrobe, a feed-forward framework for reconstructing garment-aware Gaussian avatars from a single image. Forwardrobe explicitly separates clothing from the body in canonical Gaussian space and equips the garment layer with continuity-aware geometry and skinning initialization, pose-conditioned non-rigid deformation, and appearance adaptation. These designs improve garment reconstruction and visual quality during animation, particularly for skirts and dresses. The separated garment layer additionally forms an independently controllable 3D asset, enabling garment editing, transfer, and 3D virtual try-on. Experiments demonstrate improved garment reconstruction quality and greater flexibility in garment manipulation compared with existing single-image avatar reconstruction methods.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Daisheng Jin",
-          "Shuyun Wang",
-          "Ying He"
-        ],
-        "url": "https://arxiv.org/abs/2607.29106v1",
-        "pdf_url": "https://arxiv.org/pdf/2607.29106",
-        "html_url": "https://arxiv.org/abs/2607.29106",
-        "published_at": "2026-07-31T07:35:52.000Z",
-        "upvotes": 0,
-        "heat": 2077.0826866666666,
-        "featured": false,
-        "categories": [
-          "radar"
-        ],
-        "image": "",
-        "comment": "",
-        "relevance": 2,
-        "first_seen": "2026-08-03T18:37:51.885Z",
-        "rm": {
-          "usage": "单张图像重建服装人体，属于图形学/仿真方向，与比赛任务无直接应用。",
-          "task_id": "",
-          "task": "",
-          "value": "low"
-        }
       }
     ]
   },
@@ -4683,7 +4963,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 20.33,
+        "relevance": 25.33,
         "first_seen": "2026-08-03T18:37:51.885Z"
       },
       {
@@ -4914,7 +5194,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.13,
+        "relevance": 17.13,
         "first_seen": "2026-08-03T18:37:51.885Z"
       },
       {
@@ -5370,7 +5650,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 1.86,
+        "relevance": 11.86,
         "first_seen": "2026-08-03T18:37:51.885Z"
       },
       {
