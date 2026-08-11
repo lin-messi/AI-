@@ -1,6 +1,6 @@
 {
   "date": "2026-08-11",
-  "generatedAt": "2026-08-11T03:01:29.737Z",
+  "generatedAt": "2026-08-11T05:52:19.350Z",
   "categories": [
     {
       "key": "aim",
@@ -243,6 +243,46 @@
         "comment": "40 pages, 11 figures, 11 tables",
         "relevance": 1,
         "first_seen": "2026-08-10T19:48:22.290Z"
+      },
+      {
+        "id": "arxiv:2608.09853",
+        "arxiv_id": "2608.09853",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.CV",
+          "cs.LG"
+        ],
+        "title_en": "RynnValue: Scaling Robotic Value Foundation Models with Temporal Distance",
+        "title_zh": "",
+        "abstract_en": "General-purpose reward models are increasingly the bottleneck for scaling robot learning, yet the recipe for learning value-related capabilities from large-scale heterogeneous corpora remains underexplored. Existing approaches tie supervision to task-internal anchors such as preferences or normalized progress, none of which transfer cleanly across embodiments and data sources. We introduce RynnValue, an open-source value foundation model for robotic manipulation that replaces these anchors with temporal distance, the directed cost-to-go from an observation to the language-specified goal. Because temporal-distance labels can be derived directly from timestamps, RynnValue scales to over 7,000 hours and roughly 3M instruction-conditioned clips without preference or progress annotations. To make temporal-value learning reliable at scale, we combine random temporal sampling, temporal-order shuffling, and value-isolation attention, suppressing shortcuts that would leave predictions insensitive to failures and regressions. Trained without preference labels, RynnValue attains an average Kendall's tau_a of 0.675 on RBM-EVAL-OOD, surpassing the fully preference-supervised state of the art (0.655) and more than doubling a progress-only counterpart (0.292), while generalizing zero-shot to unseen tasks, embodiments, and viewpoints. Converted into dense rewards via potential-based shaping, it raises real-world policy success from 52.5% to 72.5% online and from 63.8% to 82.5% offline. These results establish temporal distance as a scalable supervision target and practical reward interface for generalist robot policies.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Dongchi Huang",
+          "Hongyin Zhang",
+          "Bohan Hou",
+          "Siteng Huang",
+          "Zhian Su",
+          "Hang Guo",
+          "Tong Lu",
+          "Zhaofeng Xu"
+        ],
+        "url": "https://arxiv.org/abs/2608.09853v1",
+        "pdf_url": "https://arxiv.org/pdf/2608.09853",
+        "html_url": "https://arxiv.org/abs/2608.09853",
+        "published_at": "2026-08-10T17:09:37.000Z",
+        "upvotes": 3,
+        "heat": 2297.371310833333,
+        "featured": true,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "23 pages, 5 figures",
+        "relevance": 3,
+        "first_seen": "2026-08-11T05:49:58.697Z"
       },
       {
         "id": "arxiv:2608.08867",
@@ -1133,6 +1173,225 @@
         "first_seen": "2026-08-11T02:59:09.058Z"
       },
       {
+        "id": "arxiv:2608.09931",
+        "arxiv_id": "2608.09931",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Perception Before Supervision: Self-Contained Visual Distillation from Counterfactual Blind Spots",
+        "title_zh": "",
+        "abstract_en": "Self-improvement for multimodal large language models (MLLMs) is typically driven by reward-based methods that provide only coarse scalar feedback. Distillation offers a richer alternative through dense token-level supervision, but in the visual domain it usually depends on privileged context constructed using external annotations and tools, or stronger models. We introduce \\textbf{CVPD} (Contrastive Counterfactual Visual Process Distillation), which, to the best of our knowledge, is the first fully self-contained framework for dense, on-policy, token-level visual self-distillation for MLLMs. CVPD identifies visual blind spots where zooming into a region changes and sharpens the model's answer distribution, while removing the same region leaves the full-image behavior largely unchanged. Such regions reveal perceptual information that the model can encode but fails to consistently utilize under full-image conditioning. We propose a three-gate Counterfactual Criterion that identifies these regions directly from the model's own responses and converts them into dense contrastive supervision for self-distillation. On Qwen3-VL-8B-Instruct, CVPD outperforms six self-evolving baselines across twelve benchmarks, including methods that rely on external GPT-4o supervision, without a single regression. It achieves gains of $+3.60$ on OCRBench, $+3.38$ on MMStar Fine-Grained Perception, and $+3.08$ on MMStar Logical Reasoning, while maintaining or improving performance on broader multimodal benchmarks.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Shravan Venkatraman",
+          "Omkar Thawakar",
+          "Ritesh Thawkar",
+          "Abdelrahman Shaker",
+          "Rao Muhammad Anwer"
+        ],
+        "url": "https://arxiv.org/abs/2608.09931v1",
+        "pdf_url": "https://arxiv.org/pdf/2608.09931",
+        "html_url": "https://arxiv.org/abs/2608.09931",
+        "published_at": "2026-08-10T17:59:56.000Z",
+        "upvotes": 0,
+        "heat": 2148.209913888889,
+        "featured": false,
+        "categories": [
+          "aim",
+          "slam"
+        ],
+        "image": "",
+        "comment": "BMVC 2026",
+        "relevance": 1,
+        "first_seen": "2026-08-11T05:49:58.697Z"
+      },
+      {
+        "id": "arxiv:2608.09892",
+        "arxiv_id": "2608.09892",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "XPolicyLab: A Unified Standard and Open Ecosystem for Robot Policy Evaluation and Deployment",
+        "title_zh": "",
+        "abstract_en": "Robot policy evaluation and deployment remain fragmented by model-specific software dependencies, data representations, and runtime interfaces, so that connecting N policies to M evaluation environments requires O(NM) separate integrations. We present XPolicyLab, a unified standard and open ecosystem that reduces this cost to O(N+M). XPolicyLab specifies common observation, action, and trajectory schemas together with a minimal adapter interface for observation updates, action prediction, batched execution, and episode reset, while a dependency-isolated client/server architecture separates policy inference from environment execution, so that each side retains its native software stack and may run locally or remotely. The ecosystem integrates 42 robot policies and standardizes their installation, debugging, serving, and evaluation workflows. Across these adapters, model-specific code varies by an order of magnitude while the environment-facing loop stays within a few lines of a fixed reference, confirming that the contract confines heterogeneity to the policy side. In a controlled study, conforming to the standard reduces the integration effort of a representative policy from over five hours to two hours, and packaged agent skills reduce it further to thirty minutes. The same adapters serve RoboTwin, RoboDojo simulation, and standardized real-robot evaluation through one interface. XPolicyLab is released as shared infrastructure for reproducible policy comparison and standardized deployment across simulation and physical platforms. Project website: https://xpolicylab.github.io/.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "XPolicyLab Community",
+          "Tianxing Chen",
+          "Yue Chen",
+          "Tian Nian",
+          "Zijian Cai",
+          "Guangyu Chen",
+          "Wenwei Lin",
+          "Qiwei Liang"
+        ],
+        "url": "https://arxiv.org/abs/2608.09892v1",
+        "pdf_url": "https://arxiv.org/pdf/2608.09892",
+        "html_url": "https://arxiv.org/abs/2608.09892",
+        "published_at": "2026-08-10T17:41:04.000Z",
+        "upvotes": 0,
+        "heat": 2147.8954775,
+        "featured": false,
+        "categories": [
+          "radar",
+          "sim"
+        ],
+        "image": "",
+        "comment": "Website: xpolicylab.github.io, Code: https://github.com/XPolicyLab/XPolicyLab",
+        "relevance": 2,
+        "first_seen": "2026-08-11T05:49:58.697Z"
+      },
+      {
+        "id": "arxiv:2608.09885",
+        "arxiv_id": "2608.09885",
+        "source": "arXiv",
+        "cats": [
+          "cs.AI",
+          "cs.CV"
+        ],
+        "title_en": "SHE: Trajectory-driven Safety Harness Evolution for LLM Agents",
+        "title_zh": "",
+        "abstract_en": "The safety of large language model (LLM) agents depends not only on model weights but also on the agent harness that manages context, memory, tools, permissions, and runtime control. Existing safety mechanisms often treat the harness as a fixed deployment artifact, limiting their ability to evolve with emerging risks. Moreover, coupled functions across harness components obscure safety responsibility attribution, making localized evolution difficult. We propose Safety Harness Evolution (SHE), a framework that learns evolving safe boundaries from rollout trajectories. SHE decomposes the harness into four artifacts with explicit safety responsibilities, including the System Prompt, Rule Bank, Safety Memory, and Tool Policy, defining clear functional boundaries for localized evolution. Based on this decomposition, SHE introduces an attribution-guided evolution loop that converts trajectory failures into structured diagnoses, learns artifact-specific boundary refinements, and selects evolved harnesses through safety-utility validation. Experiments on Agent-SafetyBench demonstrate that SHE effectively enhances safety through harness evolution, achieving a 3.1x ASR reduction compared with static SafeHarness, while also improving benign utility. The evolved harness further generalizes to unseen risks on the held-out AgentHarm benchmark and transfers across agent models without additional evolution.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Wanying Qu",
+          "Qinghua Mao",
+          "Yu Li",
+          "Jiyao Liu",
+          "Xin Zhang",
+          "Dadi Guo",
+          "Yanxu Zhu",
+          "Qingyu Liu"
+        ],
+        "url": "https://arxiv.org/abs/2608.09885v1",
+        "pdf_url": "https://arxiv.org/pdf/2608.09885",
+        "html_url": "https://arxiv.org/abs/2608.09885",
+        "published_at": "2026-08-10T17:35:08.000Z",
+        "upvotes": 0,
+        "heat": 2147.7965805555555,
+        "featured": false,
+        "categories": [
+          "other"
+        ],
+        "image": "",
+        "comment": "Project: https://github.com/RainbowQTT/SHE",
+        "relevance": 1,
+        "first_seen": "2026-08-11T05:49:58.697Z"
+      },
+      {
+        "id": "arxiv:2608.09876",
+        "arxiv_id": "2608.09876",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.AI"
+        ],
+        "title_en": "Energy-Structured Latent World Models with Neural Time Fields for Physically Constistent Open-World Motion Planning",
+        "title_zh": "",
+        "abstract_en": "Physically consistent motion planning remains a fundamental challenge in embodied AI, as generated trajectories must strictly conform to real-world execution dynamics. While latent world models offer a promising approach by predicting these dynamics, existing methods learn unconstrained future representations where absorbed physics remains implicit. Therefore, they fail to form reusable physical knowledge, which compromises reliability in unpredictable open-world navigation. To address this, we propose a novel Energy-Structured Latent World Model (ELWM). Our key idea is to structure the ELWM latent state to explicitly carry energy and momentum, ensuring strictly causal transitions via dissipation and control ports. Trained on multimodal RGB-D and inertial interaction histories, our model guarantees physically consistent predictions. We further implement this for motion planning by constructing Physics-Conditioned Neural Time Fields (PC-NTF), a key technical cornerstone that integrates ELWM into an arrival time field via the Eikonal equation to yield a physically-informed navigation policy. Across held-out scenes, our evaluation reveals significant improvements. Compared to generic latent models, PC-NTF reduces 0.8-s motion-prediction NRMSE from 0.36 to 0.29. Against Active Neural Time Fields, it improves navigation success from 81.3% to 89.7% and SPL from 0.64 to 0.73, while cutting the physical collision rate from 12.1% to 5.8% and the Eikonal residual from 0.083 to 0.031. Beyond these targeted gains, our results demonstrate that embedding explicit physical structures into latent spaces intrinsically bridges the gap between predictive world models and safe, dynamically feasible motion planning.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Yapeng Liu",
+          "Yuanzhao Zhai",
+          "Bo Ding",
+          "Huaimin Wang",
+          "Lin Wang"
+        ],
+        "url": "https://arxiv.org/abs/2608.09876v1",
+        "pdf_url": "https://arxiv.org/pdf/2608.09876",
+        "html_url": "https://arxiv.org/abs/2608.09876",
+        "published_at": "2026-08-10T17:31:18.000Z",
+        "upvotes": 0,
+        "heat": 2147.732699722222,
+        "featured": false,
+        "categories": [
+          "planning",
+          "radar"
+        ],
+        "image": "",
+        "comment": "9 pages, 5 figures",
+        "relevance": 4,
+        "first_seen": "2026-08-11T05:49:58.697Z"
+      },
+      {
+        "id": "arxiv:2608.09860",
+        "arxiv_id": "2608.09860",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Entanglement-Free Trajectory Planning for Tethered Mobile Robots with a Slack Tether",
+        "title_zh": "",
+        "abstract_en": "In motion planning algorithms for tethered mobile robots, the entanglement state of the tether is a critical aspect to consider during the planning phase. This is particularly important in case of a slack tether, where the shape of the tether is not determined solely by the geometry of the environment and the location of the obstacles, but also by the dynamics of the tether, by the trajectory followed by the robot, and possibly by exogenous forces. In this scenario, preventing entanglement requires planning a robot trajectory that accounts for the entanglement definition and for the dynamics of the robot and of the tether. In this work, we propose a motion planning algorithm for tethered mobile robots with a slack tether that computes dynamically feasible entanglement-free trajectories to navigate through an environment with static obstacles. By considering the entanglement state during all the stages of the planning pipeline, we are able to compute safer trajectories that avoid entanglement during the motion of the robot. We achieve this through a three-step pipeline, which includes (i) the construction of a topological model of the entanglement-free configuration space of the tethered robot, (ii) the generation of a set of candidate paths using this model, and (iii) the computation of a dynamically feasible entanglement-free trajectory by solving a homotopy-constrained trajectory generation problem. The resulting trajectory can then be executed to lead the robot to its target location, while maintaining the tether in an entanglement-free configuration. We demonstrate the benefits of this algorithm in simulations, where we show how the planning algorithm avoids violations of the entanglement constraints, resulting in safer and more reliable trajectories.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Gianpietro Battocletti",
+          "Dimitris Boskos",
+          "Bart De Schutter"
+        ],
+        "url": "https://arxiv.org/abs/2608.09860v1",
+        "pdf_url": "https://arxiv.org/pdf/2608.09860",
+        "html_url": "https://arxiv.org/abs/2608.09860",
+        "published_at": "2026-08-10T17:17:53.000Z",
+        "upvotes": 0,
+        "heat": 2147.509088611111,
+        "featured": false,
+        "categories": [
+          "slam",
+          "nav",
+          "planning"
+        ],
+        "image": "",
+        "comment": "19 pages, 13 figures",
+        "relevance": 3,
+        "first_seen": "2026-08-11T05:49:58.697Z"
+      },
+      {
+        "id": "arxiv:2608.09846",
+        "arxiv_id": "2608.09846",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG"
+        ],
+        "title_en": "Real-Time Climate Risk Assessment for Supply Chain Resilience: A Data-Driven Nowcasting Framework for Colombian Agriculture",
+        "title_zh": "",
+        "abstract_en": "This paper presents a methodological framework for real-time climate risk assessment using data-driven nowcasting techniques to enhance supply chain resilience in Colombian agricultural contexts. Climate variability in Colombia, characterized by irregular rainfall, temperature fluctuations, and recurrent extreme events, has a direct impact on agricultural production and logistics, particularly for time sensitive crops. The proposed approach integrates short term climate forecasting based on historical meteorological observations with supply chain risk modeling to establish a conceptual early warning system architecture. A prototype implementation developed in a controlled computational environment demonstrates the feasibility of the framework using historical meteorological and agricultural time series derived from official statistics and reanalysis products, without reliance on satellite imagery or computer vision components. The methodology addresses the integration of climate nowcasting with supply chain decision making through explicit risk mapping, threshold-based categorization, and stakeholder-oriented risk signals. Results from synthetic and historical data experiments indicate that short term precipitation nowcasts can be translated into actionable risk indicators for agricultural supply chains, supporting anticipatory decisions related to inventory, sourcing, and transport.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Hernan J. Silva-Sosa"
+        ],
+        "url": "https://arxiv.org/abs/2608.09846v1",
+        "pdf_url": "https://arxiv.org/pdf/2608.09846",
+        "html_url": "https://arxiv.org/abs/2608.09846",
+        "published_at": "2026-08-10T17:05:47.000Z",
+        "upvotes": 0,
+        "heat": 2147.3074125,
+        "featured": false,
+        "categories": [
+          "aim",
+          "slam",
+          "nav"
+        ],
+        "image": "",
+        "comment": "6 pages, 3 tables",
+        "relevance": 2,
+        "first_seen": "2026-08-11T05:49:58.697Z"
+      },
+      {
         "id": "arxiv:2608.09628",
         "arxiv_id": "2608.09628",
         "source": "arXiv",
@@ -1207,6 +1466,39 @@
         "first_seen": "2026-08-11T02:59:09.058Z"
       },
       {
+        "id": "arxiv:2608.09828",
+        "arxiv_id": "2608.09828",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.AI",
+          "cs.MA"
+        ],
+        "title_en": "Multi-Agent AI Safety as an Institutional Design Problem",
+        "title_zh": "",
+        "abstract_en": "AI agents increasingly work inside systems that govern how they delegate tasks, move information, execute actions, and use shared resources. Recent work already shows that deployment rules can change collective behavior. Here we ask which parts of an AI institution produce safety and how they do it. This is the first paper from POLIS, an ongoing research programme studying algorithmic institutions for multi-agent systems. We report a frozen 5,280-episode study suite. The main pre-specified delegation experiment spans four model families; a targeted high-conflict diagnostic adds three additional model endpoints. In matched structured workflows, the model sees different rule formulations and guards consult different authority states. We also vary the attractiveness of the immediate compliant internal/self fallback and allow blocked workflows to continue. A detailed constitutional prompt produces 0/384 realized violations. A provenance-aware executable guard also produces 0/384, although it blocks prohibited attempts in 51/384 episodes; 44/51 of those episodes later complete safely. The local-state guard's failures concentrate in scenarios where an ordinary transformation changes visible policy while originating authority stays fixed. In matched laundering scenarios, that guard admits violations in 22/96 episodes and provenance enforcement in 0/96 (p = 4.77 x 10^-7). A separate resource-allocation experiment shows that revealing the numerical value of an otherwise identical cap changes agent requests. In these structured workflows, the same final violation rate can hide very different mechanisms. The rule itself is only part of the institution. The authority state the system trusts matters, and so does the path available after a block.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Abdullah X"
+        ],
+        "url": "https://arxiv.org/abs/2608.09828v1",
+        "pdf_url": "https://arxiv.org/pdf/2608.09828",
+        "html_url": "https://arxiv.org/abs/2608.09828",
+        "published_at": "2026-08-10T16:47:01.000Z",
+        "upvotes": 0,
+        "heat": 2146.994634722222,
+        "featured": false,
+        "categories": [
+          "slam"
+        ],
+        "image": "",
+        "comment": "17 pages, 5 figures. Code and reproducibility artifacts available in the public POLIS repository",
+        "relevance": 0,
+        "first_seen": "2026-08-11T05:49:58.697Z"
+      },
+      {
         "id": "arxiv:2608.09604",
         "arxiv_id": "2608.09604",
         "source": "arXiv",
@@ -1243,6 +1535,41 @@
         "comment": "13 pages, 12 figures, conference, project page see https://ubisoft-laforge.github.io/world/hybridrdf",
         "relevance": 1,
         "first_seen": "2026-08-11T02:59:09.058Z"
+      },
+      {
+        "id": "arxiv:2608.09805",
+        "arxiv_id": "2608.09805",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.AI",
+          "cs.CL"
+        ],
+        "title_en": "Parameter Exploration for RLVR via Variational Learning",
+        "title_zh": "",
+        "abstract_en": "Exploration has been a focus of reinforcement learning research for a long time. Recently, there has been growing evidence that it is also an important ingredient in LLM reinforcement learning recipes that can significantly impact downstream performance. Many existing methods control exploration in the action-space, for example, using temperature scaling. However, these methods cannot reorder tokens but only influence the variance in the output distribution. This limits exploration and can lead to divergence or stalled training. Here, we investigate parameter-space exploration, where rollouts are generated by sampling different policies from a posterior that may each explore different rollouts. Sampling less or more diverse policies is then a complementary control lever over exploration. We introduce a family of methods called Perturbed Parameter Policy Optimization (3PO) which use different sampling strategies and different rollout grouping for reward estimation. Experiments on OLMo-3-1025-7B and Qwen2.5-Math-7B across mathematical reasoning and code generation tasks show that these approaches consistently improve average downstream performance over standard GRPO at a near-identical FLOPs cost. Moreover, using multiple parameter samples consistently produces fewer zero-advantage groups and malformed or incorrect rollouts during training than GRPO and action-space baselines. Overall, our work presents evidence that parameter-space exploration can improve reinforcement learning for LLMs.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Vatsal Venkatkrishna",
+          "Nico Daheim",
+          "Iryna Gurevych"
+        ],
+        "url": "https://arxiv.org/abs/2608.09805v1",
+        "pdf_url": "https://arxiv.org/pdf/2608.09805",
+        "html_url": "https://arxiv.org/abs/2608.09805",
+        "published_at": "2026-08-10T16:28:07.000Z",
+        "upvotes": 0,
+        "heat": 2146.679634444444,
+        "featured": false,
+        "categories": [
+          "rl"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 3,
+        "first_seen": "2026-08-11T05:49:58.697Z"
       },
       {
         "id": "arxiv:2608.09591",
@@ -3529,340 +3856,6 @@
         "confVision": true,
         "relevance": 9,
         "first_seen": "2026-08-10T19:48:22.290Z"
-      },
-      {
-        "id": "arxiv:2608.07045",
-        "arxiv_id": "2608.07045",
-        "source": "arXiv",
-        "cats": [
-          "cs.RO",
-          "cs.CV"
-        ],
-        "title_en": "C2Dex: Contact-Consistent Reconstruction and Retargeting for Dexterous Manipulation from Monocular Video",
-        "title_zh": "",
-        "abstract_en": "High-quality demonstrations for dexterous robot manipulation are costly and difficult to collect, whereas monocular human videos provide a scalable source of diverse manipulation behaviors. However, transferring such demonstrations to dexterous robots remains challenging: monocular hand-object interaction (HOI) reconstruction often produces temporally unstable contacts and physically implausible interactions, while conventional retargeting methods struggle to preserve task-relevant contacts and local interaction geometry across different hand embodiments. We present C2Dex, a video-to-dexterous-manipulation framework built around a shared interaction representation: stable object-side contacts recovered by aggregating noisy frame-wise observations in the canonical object space. These stable contacts serve a dual role: as trajectory-level constraints that guide reconstruction toward temporally coherent and physically plausible human HOI trajectories, and as explicit transfer targets for the dexterous hand, where Laplacian interaction optimization preserves the local hand-object geometry across embodiments and residual reinforcement learning refines the trajectory in simulation. Experiments on DexYCB and TACO show that C2Dex achieves end-to-end trajectory success rates of 57.78% and 26.67%, respectively, substantially outperforming the strongest baselines (17.78% and 10.00%) under identical evaluation criteria. Real-robot replay experiments further demonstrate physical feasibility across diverse contact-rich manipulation tasks. Project page: https://k-jie.github.io/C2Dex/",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Jie Ren",
-          "Zhehao Jiang",
-          "Yinhong Yang",
-          "Haorui Jia",
-          "Han Jiang",
-          "Ben Li",
-          "Yao Yao",
-          "Cheng Lin"
-        ],
-        "url": "https://arxiv.org/abs/2608.07045v1",
-        "pdf_url": "https://arxiv.org/pdf/2608.07045",
-        "html_url": "https://arxiv.org/abs/2608.07045",
-        "published_at": "2026-08-07T09:54:00.000Z",
-        "upvotes": 0,
-        "heat": 2078.1362755555556,
-        "featured": false,
-        "categories": [
-          "slam",
-          "rl",
-          "sim"
-        ],
-        "image": "",
-        "comment": "9 pages, 5 figures. Submitted to IEEE Robotics and Automation Letters (RA-L). Project page: https://k-jie.github.io/C2Dex/",
-        "relevance": 4,
-        "first_seen": "2026-08-10T19:48:22.290Z"
-      },
-      {
-        "id": "arxiv:2608.07014",
-        "arxiv_id": "2608.07014",
-        "source": "arXiv",
-        "cats": [
-          "cs.CV"
-        ],
-        "title_en": "Stable Curves, Unstable Items: Item-Level Scaling Heterogeneity in Video LLMs",
-        "title_zh": "",
-        "abstract_en": "Aggregate scaling curves suggest that Video LLMs improve smoothly or saturate as visual budgets grow. We show that this view can conceal large, opposing changes at the item level. We represent each frozen model--item pair by its response trajectory under controlled visual budgets and derive matched-grid measures of configuration complementarity, harmful transitions, and text overwrite. Across five open Video LLMs from three architecture families, four multiple-choice benchmark splits, open-ended QA and summarization, and fixed-history dialogue generation, no single budget serves all items. On the four-model matched MCQA grid, item-level oracle headroom spans $8.8$--$18.9$ accuracy points and $12.5$--$25.5\\%$ of items are correct at a lower budget but wrong at a higher one. Task-appropriate continuous metrics show the same complementarity beyond multiple choice: Token-F1 oracle gaps are $2.7$--$3.7$ score points on MLVU generation and $3.8$--$4.8$ points on AVSD current-turn generation, even when mean quality improves with budget. The effect persists across frame count, spatial resolution, sampling policy, temporal--spatial allocation, and independently executed raw-video and cached pipelines, with per-item rates and membership tracking protocol choices. A controlled sampling intervention recovers $29.0\\%$ of terminal regressions, and a structured frame audit identifies several recurring evidence pathways. We release per-item trajectories, protocol provenance, derived annotations, and reproducible analysis code as an auditing artifact. A confidence cascade matches fixed-$128f$ accuracy while reducing average shared frame cost by $31.7\\%$, illustrating one operational use of the response matrix.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Wenzhang Sun",
-          "Chunfeng Wang",
-          "Xiangchen Yin",
-          "Yujia Chen",
-          "Hao Li",
-          "Kun Zhan"
-        ],
-        "url": "https://arxiv.org/abs/2608.07014v1",
-        "pdf_url": "https://arxiv.org/pdf/2608.07014",
-        "html_url": "https://arxiv.org/abs/2608.07014",
-        "published_at": "2026-08-07T09:25:20.000Z",
-        "upvotes": 0,
-        "heat": 2077.6584888888888,
-        "featured": false,
-        "categories": [
-          "rl"
-        ],
-        "image": "",
-        "comment": "",
-        "relevance": 2,
-        "first_seen": "2026-08-10T19:48:22.290Z"
-      },
-      {
-        "id": "arxiv:2608.07005",
-        "arxiv_id": "2608.07005",
-        "source": "arXiv",
-        "cats": [
-          "cs.RO"
-        ],
-        "title_en": "Real-time Whole-Body Motion Planning for Mobile Manipulators Carrying Arbitrarily Shaped Payloads via Kinematically-Coupled SVSDF",
-        "title_zh": "",
-        "abstract_en": "Mobile manipulators are increasingly tasked with transporting large, non-convex payloads through cluttered environments, yet existing planners either oversimplify the payload geometry or fail to handle the kinematic coupling between manipulator links, leading to lost feasible space or stalled optimization. This letter presents a real-time whole-body motion planning framework for mobile manipulators carrying arbitrarily shaped payloads. The front-end employs a chain-decomposed kernel-based collision check that preserves the true geometry of the robot and payload, with compact storage and fast bit-level queries. A mid-end preprocessing stage converts the front-end path into a continuous trajectory enforcing smoothness and feasibility, and executes it directly when collision-free to bypass the costly back-end. When refinement is required, the back-end performs trajectory optimization built on a Kinematically-Coupled SVSDF (KC-SVSDF), which propagates collision-avoidance gradients along the kinematic chain to produce coherent whole-body escape directions. Ablation studies, comparative benchmarks against state-of-the-art baselines, and real-world experiments on a differential-drive mobile manipulator demonstrate that the proposed framework reliably transports large, non-convex payloads through tight passages and cluttered environments.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Yisheng Li",
-          "Longji Yin",
-          "Tingrui Zhang",
-          "Ruize Xue",
-          "Haoda Zhu",
-          "Nan Chen",
-          "Siqi Liang",
-          "Yuxi Liu"
-        ],
-        "url": "https://arxiv.org/abs/2608.07005v1",
-        "pdf_url": "https://arxiv.org/pdf/2608.07005",
-        "html_url": "https://arxiv.org/abs/2608.07005",
-        "published_at": "2026-08-07T09:20:31.000Z",
-        "upvotes": 0,
-        "heat": 2077.57822,
-        "featured": false,
-        "categories": [
-          "planning",
-          "radar"
-        ],
-        "image": "",
-        "comment": "",
-        "relevance": 6,
-        "first_seen": "2026-08-10T19:48:22.290Z"
-      },
-      {
-        "id": "arxiv:2608.07004",
-        "arxiv_id": "2608.07004",
-        "source": "arXiv",
-        "cats": [
-          "cs.RO",
-          "eess.SY"
-        ],
-        "title_en": "Benchmarking and Reasoning Distillation of Large Language Models for Feedback Controller Design in Complex Dynamical Systems",
-        "title_zh": "",
-        "abstract_en": "Although remarkable capabilities have been demonstrated by Large Language Models (LLMs) across scientific domains, feedback controller design remains underexplored. Existing benchmarks focus mainly on linear single-Degree-of-Freedom (DoF) systems and large API-hosted models, leaving performance on complex controller-design tasks and feasibility for edge deployment unclear. To address these limitations, we introduce the Complex Dynamics-to-Control Benchmark for Large Language Models (CoDyControlBench), comprising 132 system configurations across five evaluation dimensions: number of DoF, system type, coupling level, damping regime, and controller type. Six state-of-the-art LLMs were evaluated over three independent runs, including three commercial models (GPT, Gemini, and Claude) and three open-source models (GLM, DeepSeek, and Qwen). GPT achieved the highest design success rate at 94.8\\%, whereas Qwen showed the lowest rate at 50.0\\%. Across the benchmark dimensions, DoF and controller type exhibited the largest model-averaged variations in design success, with success-rate ranges of 36.3\\% and 17.6\\%, respectively, exceeding those associated with system type, coupling level, and damping regime. Comparison of GPT and Qwen showed that their performance gap arose mainly from the control-design knowledge, particularly gain selection and the use of transient-limiting mechanisms. For edge deployment, a specialized 1.5B-parameter model was developed through reasoning distillation. The reasoning-distilled model outperformed the answer-distilled and base model on CoDyControlBench, maintained stable performance across 1-6 DoFs, and achieved successful traget tracking in all three physical trials on a pneumatic-artificial-muscle-driven robotic arm. These results establish a benchmark baseline and highlight the potential of lightweight, edge-deployable controller-design models.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Zhongchao Zhou",
-          "Yixuan Xie",
-          "Wenwei Yu",
-          "Yuxi Lu",
-          "Yaonan Zhu",
-          "Qian Niu",
-          "Yutaka Matsuo",
-          "Yusuke Iwasawa"
-        ],
-        "url": "https://arxiv.org/abs/2608.07004v1",
-        "pdf_url": "https://arxiv.org/pdf/2608.07004",
-        "html_url": "https://arxiv.org/abs/2608.07004",
-        "published_at": "2026-08-07T09:19:31.000Z",
-        "upvotes": 0,
-        "heat": 2077.5615533333334,
-        "featured": false,
-        "categories": [
-          "other"
-        ],
-        "image": "",
-        "comment": "",
-        "relevance": 4,
-        "first_seen": "2026-08-10T19:48:22.290Z"
-      },
-      {
-        "id": "arxiv:2608.06994",
-        "arxiv_id": "2608.06994",
-        "source": "arXiv",
-        "cats": [
-          "cs.RO",
-          "cs.AI"
-        ],
-        "title_en": "Decoupling Intention from Trajectory: A Representational Deduction Framework for World Action Models",
-        "title_zh": "",
-        "abstract_en": "World Action Models (WAMs) aim to construct a unified architecture capable of understanding world state evolution and guiding to generative motion planning. However, existing visual branches focus on predicting static visual observation, rather than reflecting potential transition information that captures the evolution of world states under motion interactions. This leads to representational entanglement between high-level physical condition evolution and low-level action trajectory generation within the Action Model, creating a structural bottleneck while weakening the predictive capability of world evolution modeling for action generation. We propose PILOT (Physical Inference for Latent Optimized Trajectories), whose core Representational Deduction (RD) bridges this gap by integrating motion thought-of-chain (CoT) guidance as a native model capability. Specifically, RD aims to encourage the action branch to explicitly model potential state transition tokens, which are retained as CoT in the reasoning space to guide fine-grained motion trajectory. Experiments demonstrate that RD not only significantly improves the success rate and generalization ability of WAMs in complex robotic manipulation tasks but also enhances the model's physical interpretability by decoupling high-level motion semantics from low-level trajectory details. Furthermore, the abundant state transition supervision signals introduced by RD effectively alleviate the sparse supervision in action generation, enabling it to serve as an efficient few-shot real-robot fine-tuning strategy and demonstrating superior scalability for migration to mainstream WAM architectures.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Xiangkai Ma",
-          "Yue Ma",
-          "Junjie Wang",
-          "Sheng Xu",
-          "Mingyang Li",
-          "Han Zhang",
-          "Yuzheng Zhuang",
-          "Wenzhong Li"
-        ],
-        "url": "https://arxiv.org/abs/2608.06994v1",
-        "pdf_url": "https://arxiv.org/pdf/2608.06994",
-        "html_url": "https://arxiv.org/abs/2608.06994",
-        "published_at": "2026-08-07T09:12:15.000Z",
-        "upvotes": 0,
-        "heat": 2077.4404422222224,
-        "featured": false,
-        "categories": [
-          "aim",
-          "planning",
-          "radar"
-        ],
-        "image": "",
-        "comment": "",
-        "relevance": 5,
-        "first_seen": "2026-08-10T19:48:22.290Z"
-      },
-      {
-        "id": "arxiv:2608.06991",
-        "arxiv_id": "2608.06991",
-        "source": "arXiv",
-        "cats": [
-          "cs.RO",
-          "eess.SY"
-        ],
-        "title_en": "Exact Thrust-Reversal Limits of Bidirectional Propellers under Bounded Motor Inputs",
-        "title_zh": "",
-        "abstract_en": "Bidirectional propellers are often treated as signed thrust sources, but their thrust is a signed-quadratic function of rotor speed.Thus, thrust reversal necessarily occurs through zero rotor speed, where the ability of a bounded motor torque to change thrust collapses.This work formalizes this obstruction by studying exact thrust-trajectory reproducibility under bounded motor inputs with prescribed smoothness.We derive a normalized thrust-coordinate model with vanishing input gain at zero thrust, and prove necessary and sufficient reproducibility conditions in terms of the zero-crossing order of the desired thrust.Generic reversals, in which thrust crosses zero with nonzero slope, require unbounded motor input; the resulting conditions provide direct design rules for shaping thrust reversals that avoid singular motor commands.We also derive the corresponding current and voltage regularity requirements for a DC motor driving a bidirectional propeller.Experiments on a motor-propeller setup validate the predicted reversal-order effects, showing localized current/voltage peaks and thrust-tracking degradation for linear reversals, but not for higher-order reversals.These results expose an intrinsic actuator-level limitation that must be considered in force, acceleration, and interaction-control references for aerial robots.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Ahmed Ali",
-          "Chiara Gabellieri",
-          "Antonio Franchi"
-        ],
-        "url": "https://arxiv.org/abs/2608.06991v1",
-        "pdf_url": "https://arxiv.org/pdf/2608.06991",
-        "html_url": "https://arxiv.org/abs/2608.06991",
-        "published_at": "2026-08-07T09:09:14.000Z",
-        "upvotes": 0,
-        "heat": 2077.3901644444445,
-        "featured": false,
-        "categories": [
-          "radar"
-        ],
-        "image": "",
-        "comment": "",
-        "relevance": 3,
-        "first_seen": "2026-08-10T19:48:22.290Z"
-      },
-      {
-        "id": "arxiv:2608.06965",
-        "arxiv_id": "2608.06965",
-        "source": "arXiv",
-        "cats": [
-          "cs.RO"
-        ],
-        "title_en": "Cross-View Action Consistency for Camera-Robust Vision-Language-Action Policies",
-        "title_zh": "",
-        "abstract_en": "Vision-language-action (VLA) policies fine-tuned from a fixed scene camera can fail when the camera is moved, even when the task, objects, language, and robot state are unchanged. We study scene-camera viewpoint robustness using only a scene RGB image, language, and proprioception, without camera labels, extrinsics, depth, or point-cloud inputs. The wrist stream is masked throughout to prevent an unperturbed visual shortcut from confounding attribution to scene-camera variation. For flow-based VLAs, we propose to regularize the action-flow velocity field, the quantity directly integrated to generate continuous action chunks. We construct action-equivalent view pairs by resetting original LIBERO demonstrations to the same MuJoCo state and rendering nominal and perturbed scene-camera views. Both views are supervised by flow matching, while a cross-view loss encourages their predicted action-flow velocities to agree at the same sampled flow coordinates. On the LIBERO-Plus camera-perturbation track, our method reaches 87.2$\\pm$0.4% (4,797 rollouts per seed across 3 training seeds), +7.4pp over flow-matching-only training on the same paired data (79.8$\\pm$0.8%, also 3 seeds) and +12.5pp over naive mixed-camera SFT, while maintaining nominal-camera ID performance (95.0$\\pm$0.8%; same-data FM-only: 95.0$\\pm$4.3%). A shuffled-pair control collapses to 25.8%, showing that the gain depends on action-equivalent pairing. On a real robot, we evaluate three tabletop tasks with 10 rollouts per task and camera placement; held-out-camera success improves from 53.3% to 74.4% under the same single-scene-RGB inference interface.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Bingqi Huang",
-          "Bingchuan Wei",
-          "Xuan Wang",
-          "Yingkai Cai",
-          "Zhaokui Wang"
-        ],
-        "url": "https://arxiv.org/abs/2608.06965v1",
-        "pdf_url": "https://arxiv.org/pdf/2608.06965",
-        "html_url": "https://arxiv.org/abs/2608.06965",
-        "published_at": "2026-08-07T08:41:31.000Z",
-        "upvotes": 0,
-        "heat": 2076.92822,
-        "featured": false,
-        "categories": [
-          "aim",
-          "sim"
-        ],
-        "image": "",
-        "comment": "",
-        "relevance": 2,
-        "first_seen": "2026-08-10T19:48:22.290Z"
-      },
-      {
-        "id": "arxiv:2608.06914",
-        "arxiv_id": "2608.06914",
-        "source": "arXiv",
-        "cats": [
-          "cs.CV"
-        ],
-        "title_en": "RibAssist 3D: Biplanar Rib-Fracture Detection, Addressing, and Selective 3D Localization from CT-Derived Projections",
-        "title_zh": "",
-        "abstract_en": "Rib fractures are common, clinically significant, and time-consuming to localize on computed tomography (CT). We ask whether fractures detected in two orthogonal projections (anteroposterior, AP, and lateral) can be paired across views and triangulated into reliable 3D fracture points at a controlled rate of false 3D outputs. We answer this with a staged diagnostic study. Biplanar geometry is exact: detector-predicted centers reconstruct to median 4.0 mm 3D error when correspondence is correct. On the sealed cohort, dual-view availability reaches 61.1% and the candidate graph contains a correct pair for 58.4% of fractures. The binding limitation is not geometry or localization but confidence-limited cross-view correspondence. Lateral-detector retraining lifts dual-view availability (0.52 to 0.76 in development) and moves the frontier from 0% to 2.44% recall at 10 mm. When the policy commits a correct pair, the emitted point is geometrically accurate (sealed median 1.49 mm, rib-exact 93%). A pre-specified pass on the untouched 55-case cohort promotes 15 of 601 fractures to correct 3D localizations at 0.436 false 3D points per case, yielding 2.50% end-to-end commitment yield. The contribution is validated biplanar reconstruction geometry with high conditional localization fidelity, a staged identification of cross-view correspondence confidence as the effective bottleneck, and a selective assistive workflow that preserves uncertain findings rather than a standalone automatic reconstructor.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Kabila Haile Soboka"
-        ],
-        "url": "https://arxiv.org/abs/2608.06914v1",
-        "pdf_url": "https://arxiv.org/pdf/2608.06914",
-        "html_url": "https://arxiv.org/abs/2608.06914",
-        "published_at": "2026-08-07T07:47:20.000Z",
-        "upvotes": 0,
-        "heat": 2076.0251555555556,
-        "featured": false,
-        "categories": [
-          "radar"
-        ],
-        "image": "",
-        "comment": "9 pages, 6 figures. Code available at: https://github.com/kabJhai/RibAssist-3D",
-        "relevance": 2,
-        "first_seen": "2026-08-10T19:48:22.290Z"
-      },
-      {
-        "id": "arxiv:2608.06907",
-        "arxiv_id": "2608.06907",
-        "source": "arXiv",
-        "cats": [
-          "cs.RO"
-        ],
-        "title_en": "Spatiotemporal Agility: Time-Constrained Reinforcement Learning for Vision-Guided Dynamic Quadrupedal Interception",
-        "title_zh": "",
-        "abstract_en": "Legged robots require robust agility to perceive and interact with complex and dynamic environments within a constrained time. However, most existing quadruped locomotion works rely on velocity-tracking policy, which struggle to reach precise targets within strict temporal constraints. Moreover, integrating real-time perception with agile locomotion for highly dynamic targets remains challenging due to sensor latency and processing delays. To concretely study and benchmark such agility in dynamic settings, we introduce a challenging ball-catching task for legged robots. This paper proposes an integrated framework that combines a vision module for landing point and time prediction with a direct position and time conditioned RL locomotion policy, instead of intermediate velocity commands. Beyond the method design, this work presents a system-level contribution that completes real-time robotic interception system that integrates multi-camera perception, online trajectory prediction, low-latency target communication, and sim-to-real locomotion control into a closed-loop deployment pipeline. By explicitly predicting the future spatial-temporal target, our approach mitigates perception latency during dynamic interception. We conducted extensive ball-catching experiments for the legged robot. Through comparative experiments against a velocity-tracking baseline, our direct target-conditioned approach achieves a higher success rate in catching balls with predicted landing spots within 2 meters and flight times between 0.8 and 1.2 seconds. This shows that the robot has successfully completed the dynamic ball-catching task under our tested setup. Furthermore, our policy exhibits a smaller performance gap after deployment, suggesting improved sim-to-real behavior in these trials.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Yidong Zhu",
-          "Zibo Dai",
-          "Tongning Zhang",
-          "Leixin Chang",
-          "Hua Chen"
-        ],
-        "url": "https://arxiv.org/abs/2608.06907v1",
-        "pdf_url": "https://arxiv.org/pdf/2608.06907",
-        "html_url": "https://arxiv.org/abs/2608.06907",
-        "published_at": "2026-08-07T07:42:19.000Z",
-        "upvotes": 0,
-        "heat": 2075.9415530555557,
-        "featured": false,
-        "categories": [
-          "aim",
-          "slam",
-          "rl"
-        ],
-        "image": "",
-        "comment": "",
-        "relevance": 12,
-        "first_seen": "2026-08-10T19:48:22.290Z"
       }
     ]
   },
@@ -4821,7 +4814,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 8.03,
+        "relevance": 8.04,
         "first_seen": "2026-08-10T19:48:22.290Z"
       },
       {
