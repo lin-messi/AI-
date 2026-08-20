@@ -1,6 +1,6 @@
 {
   "date": "2026-08-20",
-  "generatedAt": "2026-08-20T05:25:47.950Z",
+  "generatedAt": "2026-08-20T07:36:32.737Z",
   "categories": [
     {
       "key": "aim",
@@ -90,6 +90,54 @@
           "usage": "进化策略优化长时程智能体的思路可用于哨兵或策略机器人在多机协同中的决策策略微调，但成果聚焦LLM，需大幅改造。",
           "task_id": "strategy",
           "task": "多机协同与策略学习",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2608.17253",
+        "arxiv_id": "2608.17253",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.AI",
+          "cs.CV"
+        ],
+        "title_en": "Co-RL: Unsupervised Reasoning Emerges from Diverse Cohort in Multi-agent RL",
+        "title_zh": "Co-RL：多智能体强化学习中多样群体涌现无监督推理",
+        "abstract_en": "Reinforcement learning (RL) has emerged as a powerful approach for improving reasoning in language and vision-language models, yet its strongest successes still depend heavily on ground-truth supervision (e.g., verifiable reward). Such annotations are costly to obtain and become increasingly scarce as reasoning capabilities advance beyond what humans can reliably evaluate. Self-rewarding RL reduces this dependence by enabling models to derive reward signals from their own completions. However, training solely on self-generated feedback can reinforce existing biases and suboptimal behaviors, reduce response diversity, and ultimately lead to homogenized responses and training collapse. In this work, we show that unsupervised reasoning can emerge through cooperative multi-agent training. We introduce Co-RL, a framework in which multiple decoupled models, sharing no parameters, are simultaneously optimized through RL using rewards derived from their peers. We further show that increasing cohort diversity, through heterogeneous model families, sizes, and rephrased training samples, reduces the correlated errors that drive self-reinforcing feedback loops. This diversity consistently improves reasoning performance, maintains behavioral diversity, and mitigates training collapse. Across text-only and multimodal domains, Co-RL consistently outperforms the base models and prior label-free approaches, while matching or surpassing supervised methods, without access to any ground-truth labels. Concretely, Co-RL yields average gains of 3.0-8.6% across seven text-only benchmarks for LLMs and 2.3-7.2% across four multimodal benchmarks for VLMs. Code is available at https://github.com/DrStranded/Co-RL.",
+        "abstract_zh": "强化学习（RL）能提升语言和视觉语言模型的推理能力，但最强结果依赖昂贵的真实监督（如可验证奖励）。自我奖励RL虽能减少依赖，但仅用自生成反馈会强化偏见、降低多样性，最终导致训练崩溃。本文证明无监督推理可通过合作式多智能体训练涌现。我们提出Co-RL，让多个不共享参数的模型同时通过RL优化，并使用来自同伴的奖励。通过异构模型、大小和改写样本增加群体多样性，可减少相关错误，持续提升推理性能、维持行为多样性并缓解训练崩溃。在文本与多模态领域，Co-RL始终优于基础模型和先前无标签方法，匹配或超过有监督方法。具体地，在LLM七个文本基准上平均提升3.0-8.6%，在VLM四个多模态基准上平均提升2.3-7.2%。",
+        "highlight_zh": "多模型互评奖励的无监督RL，提升推理并避免训练崩溃。",
+        "digest_zh": "- 研究问题：强化学习（RL）能有效提升大模型的推理能力，但通常需要“标准答案”作为奖励信号。现实问题往往没有标准答案，而让模型自己给自己打分又容易“自嗨”，陷入偏见、答案雷同，甚至训练崩溃。如何在没有人工标签的情况下，还能让模型学会推理？\n- 核心方法：Co-RL提出让多个不同的模型组成一个“班级”，彼此不看自己的答案，而是互相给对方打分作为奖励。这些模型不共享参数，相当于一群独立的学生互相批改作业，从而避免个体自我强化的问题。\n- 多样性是关键：作者发现，如果这群模型来自不同的家族、不同的规模，并配合多种改写的训练数据，群体的多样性越高，互相纠错的效果就越好，性能提升越明显，也能有效防止大家都写出同样答案的“同质化”。\n- 结果与意义：在纯文本任务上（7个基准），Co-RL比无标签基线平均提升3.0-8.6%；在多模态任务上（4个基准）提升2.3-7.2%，甚至能超过需要人工标注的有监督方法。这表明“群体智慧”可以成为无监督强化学习的一个新方向，让大模型在没有外部教师的条件下继续自我进化。",
+        "authors": [
+          "Yunhao Yang",
+          "Yuexin Bian",
+          "Yunjie Tian",
+          "Di Fu",
+          "Tianjin Huang",
+          "Yuanyuan Shi",
+          "Ziang Xiao",
+          "Nuno Vasconcelos"
+        ],
+        "url": "https://arxiv.org/abs/2608.17253v2",
+        "pdf_url": "https://arxiv.org/pdf/2608.17253",
+        "html_url": "https://arxiv.org/abs/2608.17253",
+        "published_at": "2026-08-18T01:16:02.000Z",
+        "upvotes": 64,
+        "heat": 5305.716310833333,
+        "featured": true,
+        "categories": [
+          "aim",
+          "slam",
+          "rl"
+        ],
+        "image": "",
+        "comment": "30 pages, 5 figures, 11 tables",
+        "relevance": 2,
+        "first_seen": "2026-08-20T07:36:28.887Z",
+        "rm": {
+          "usage": "几乎不适用于 RoboMaster，其面向大模型推理的多智能体训练方法无法直接迁移到机器人感知、决策或控制；仅可作为多智能体奖励设计方面的泛泛思路参考。",
+          "task_id": "",
+          "task": "",
           "value": "low"
         }
       },
@@ -4380,53 +4428,11 @@
           "task": "多机协同与策略学习",
           "value": "mid"
         }
-      },
-      {
-        "id": "arxiv:2608.17323",
-        "arxiv_id": "2608.17323",
-        "source": "arXiv",
-        "cats": [
-          "cs.RO",
-          "cs.AI"
-        ],
-        "title_en": "ORPA: Online Residual Policy Adaptation for Robot Manipulation Control with Human Feedback",
-        "title_zh": "",
-        "abstract_en": "Robotic manipulation policies trained via imitation learning, such as Action Chunking with Transformers (ACT), can achieve strong performance under ideal conditions but often remain sensitive to small execution errors and distribution shifts. Correcting these failures typically requires dataset aggregation and full-policy retraining, which is computationally expensive and unsuitable for real-time deployment. In this work, we propose Online Residual Policy Adaptation (ORPA), a framework that enables immediate, feedback-driven correction of robot actions without modifying the underlying policy parameters. ORPA augments a pretrained control policy with a lightweight, feedback-conditioned module that predicts residual adjustments directly in joint space, allowing the system to adapt its behavior at runtime. We evaluate ORPA on a set of precision-sensitive manipulation tasks using the ALOHA platform, demonstrating improvements in success rate and recovery from small perturbations compared to baseline control policies and rule-based inverse kinematics corrections.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Muhammad A. Muttaqien",
-          "Tomohiro Motoda",
-          "Ryo Hanai",
-          "Yukiyasu Domae"
-        ],
-        "url": "https://arxiv.org/abs/2608.17323v1",
-        "pdf_url": "https://arxiv.org/pdf/2608.17323",
-        "html_url": "https://arxiv.org/abs/2608.17323",
-        "published_at": "2026-08-18T03:30:12.000Z",
-        "upvotes": 0,
-        "heat": 2116.4109583333334,
-        "featured": false,
-        "categories": [
-          "slam",
-          "rl"
-        ],
-        "image": "",
-        "comment": "",
-        "relevance": 8,
-        "first_seen": "2026-08-19T23:10:03.955Z",
-        "rm": {
-          "usage": "可直接用于工程机器人的机械臂在线控制修正，增强抓取与装配的稳定性，贴合工程视觉装配任务。",
-          "task_id": "engineer",
-          "task": "工程视觉装配（能量单元）",
-          "value": "high"
-        }
       }
     ]
   },
   "repos": {
-    "count": 50,
+    "count": 51,
     "items": [
       {
         "id": "RoboMaster/RoboRTS",
@@ -5017,7 +5023,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.33,
+        "relevance": 12.33,
         "first_seen": "2026-08-19T23:10:03.955Z"
       },
       {
@@ -5521,7 +5527,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 11.95,
+        "relevance": 21.95,
         "first_seen": "2026-08-19T23:10:03.955Z"
       },
       {
@@ -5627,6 +5633,33 @@
         ],
         "relevance": 11.9,
         "first_seen": "2026-08-19T23:10:03.955Z"
+      },
+      {
+        "id": "WUST-RM/awakening",
+        "full_name": "WUST-RM/awakening",
+        "name": "awakening",
+        "owner": "WUST-RM",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/200591588?v=4",
+        "description_en": "Awake to glory, crowned as champion at first sight",
+        "description_zh": "武汉科技大学RM战队视觉代码，主打自瞄（auto-aim）功能，寓意觉醒即巅峰。",
+        "highlight_zh": "开源RoboMaster自瞄视觉算法",
+        "stars": 79,
+        "forks": 10,
+        "language": "C++",
+        "topics": [
+          "auto-aim",
+          "robomaster",
+          "vision"
+        ],
+        "url": "https://github.com/WUST-RM/awakening",
+        "homepage": "",
+        "created_at": "2026-03-28T09:18:21Z",
+        "pushed_at": "2026-07-21T09:26:22Z",
+        "categories": [
+          "aim"
+        ],
+        "relevance": 21.9,
+        "first_seen": "2026-08-20T07:36:28.887Z"
       },
       {
         "id": "chenjunnn/rm_auto_aim",
