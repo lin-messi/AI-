@@ -1,6 +1,6 @@
 {
   "date": "2026-08-20",
-  "generatedAt": "2026-08-20T03:40:38.234Z",
+  "generatedAt": "2026-08-20T05:25:47.950Z",
   "categories": [
     {
       "key": "aim",
@@ -91,6 +91,50 @@
           "task_id": "strategy",
           "task": "多机协同与策略学习",
           "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2608.16590",
+        "arxiv_id": "2608.16590",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Zetta $ζ$: An Efficient Closed-Loop Embodied Harness for Self-Evolving Physical Intelligence",
+        "title_zh": "Zetta ζ：用于自进化物理智能的高效闭环具身控制装置",
+        "abstract_en": "Embodied agents are increasingly used to close the gap left by end-to-end policy models. Yet the agentic path has not realized closed-loop learning in physical execution: existing harnesses remain largely open-loop, following fixed skills during rollout and reflecting only after an episode completes. Such post-hoc reflection cannot govern execution as it unfolds, because physical interaction requires decisions to track rapidly changing robot-environment states at a frequency beyond today's large agentic models. We present Zetta, a closed-loop embodied harness that evolves code-based runtime critics and recovery skills online while keeping the base policy frozen. Through three timescale-separated loops, Zetta provides action-frequency governance, rollout-level critic-recovery proposal, and validation-gated skill updates. Together with Z-Infra, a rollout infrastructure decoupling agent logic from heterogeneous execution resources, Zetta achieves state-of-the-art success on LIBERO-Pro and RoboCasa under our current rollout budget, reaching 90.8% and 93.6%, with an 11.1x inference speedup; success continues to scale with self-exploration experience; learned skills transfer zero-shot, and clear robotic \"Aha Moments\" emerge. These results show that closed-loop harness self-evolution opens a scaling path for reliable physical intelligence.",
+        "abstract_zh": "具身智能体常用来弥补端到端策略模型的不足，但现有装置多为开环，只在回合结束后反思，无法在线控制物理执行。我们提出 Zetta，一个闭环具身控制装置，在保持基础策略冻结的同时，在线演化代码型运行时批评者和恢复技能。通过三个时间尺度分离的循环，实现动作频率治理、批评者-恢复提议和验证门控更新。与基础设施 Z-Infra 配合，Zetta 在 LIBERO-Pro 和 RoboCasa 上达到 90.8% 和 93.6% 的成功率，推理加速 11.1 倍；技能可零样本迁移，出现机器人“顿悟时刻”。表明闭环装置自进化可规模化可靠物理智能。",
+        "highlight_zh": "闭环自进化装置让机器人成功率超90%，并提升11倍速度。",
+        "digest_zh": "- 研究问题：现实中的机器人需要根据实时传感器信息迅速做出反应，但目前的端到端策略模型和“开环”控制装置只能在任务结束后总结经验，无法在运行中调整，导致应对突发事件的能力差。\n- 方法：作者提出 Zetta 闭环训练框架。它像一位“教练”，在机器人执行任务时，通过三个不同速度的循环，一方面给机器人快速的动作指令，另一方面在慢速循环中在线生成“批评者”和“恢复技能”——当检测到异常时，能即时修正代码逻辑。用三个阶段分离的循环来协调，同时保持基础策略模型不变，只更新外围的批评者和技能。\n- 结果：在 LIBERO-Pro 和 RoboCasa 两个机器人操作基准上，成功率分别达到 90.8% 和 93.6%，而且推理速度提升了 11.1 倍。更厉害的是，学到的技能可以直接迁移到没见过的场景，机器人还出现了“顿悟时刻”——即自主发现更优策略的迹象。\n- 为何重要：Zetta 展示了“闭环自进化”是提高物理智能可靠性的有效途径，并且通过把底层策略与高层执行解耦，让机器人能够在真实环境中不断自我改进。",
+        "authors": [
+          "Xin Ding",
+          "Liang Mi",
+          "Mingzhe Huang",
+          "Zixuan Wang",
+          "Chao Zhang",
+          "Zixu Hao",
+          "Fu Chen",
+          "Xiangyu Li"
+        ],
+        "url": "https://arxiv.org/abs/2608.16590v1",
+        "pdf_url": "https://arxiv.org/pdf/2608.16590",
+        "html_url": "https://arxiv.org/abs/2608.16590",
+        "published_at": "2026-08-17T13:49:43.000Z",
+        "upvotes": 51,
+        "heat": 4646.496117222223,
+        "featured": true,
+        "categories": [
+          "other"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 2,
+        "first_seen": "2026-08-20T05:25:44.785Z",
+        "rm": {
+          "usage": "可借鉴其闭环在线演化的思路，用于哨兵决策或工程机械臂控制中，在运行中实时调整控制策略，但需大量改造适配具体任务。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
         }
       },
       {
@@ -4378,54 +4422,6 @@
           "task": "工程视觉装配（能量单元）",
           "value": "high"
         }
-      },
-      {
-        "id": "arxiv:2608.17253",
-        "arxiv_id": "2608.17253",
-        "source": "arXiv",
-        "cats": [
-          "cs.LG",
-          "cs.AI",
-          "cs.CV"
-        ],
-        "title_en": "Co-RL: Unsupervised Reasoning Emerges from Diverse Cohort in Multi-agent RL",
-        "title_zh": "",
-        "abstract_en": "Reinforcement learning (RL) has emerged as a powerful approach for improving reasoning in language and vision-language models, yet its strongest successes still depend heavily on ground-truth supervision (e.g., verifiable reward). Such annotations are costly to obtain and become increasingly scarce as reasoning capabilities advance beyond what humans can reliably evaluate. Self-rewarding RL reduces this dependence by enabling models to derive reward signals from their own completions. However, training solely on self-generated feedback can reinforce existing biases and suboptimal behaviors, reduce response diversity, and ultimately lead to homogenized responses and training collapse. In this work, we show that unsupervised reasoning can emerge through cooperative multi-agent training. We introduce Co-RL, a framework in which multiple decoupled models, sharing no parameters, are simultaneously optimized through RL using rewards derived from their peers. We further show that increasing cohort diversity, through heterogeneous model families, sizes, and rephrased training samples, reduces the correlated errors that drive self-reinforcing feedback loops. This diversity consistently improves reasoning performance, maintains behavioral diversity, and mitigates training collapse. Across text-only and multimodal domains, Co-RL consistently outperforms the base models and prior label-free approaches, while matching or surpassing supervised methods, without access to any ground-truth labels. Concretely, Co-RL yields average gains of 3.0-8.6% across seven text-only benchmarks for LLMs and 2.3-7.2% across four multimodal benchmarks for VLMs. Code is available at https://github.com/DrStranded/Co-RL.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Yunhao Yang",
-          "Yuexin Bian",
-          "Yunjie Tian",
-          "Di Fu",
-          "Tianjin Huang",
-          "Yuanyuan Shi",
-          "Ziang Xiao",
-          "Nuno Vasconcelos"
-        ],
-        "url": "https://arxiv.org/abs/2608.17253v1",
-        "pdf_url": "https://arxiv.org/pdf/2608.17253",
-        "html_url": "https://arxiv.org/abs/2608.17253",
-        "published_at": "2026-08-18T01:16:02.000Z",
-        "upvotes": 0,
-        "heat": 2114.1748397222223,
-        "featured": false,
-        "categories": [
-          "aim",
-          "slam",
-          "rl"
-        ],
-        "image": "",
-        "comment": "30 pages, 5 figures, 11 tables",
-        "relevance": 2,
-        "first_seen": "2026-08-19T23:10:03.955Z",
-        "rm": {
-          "usage": "多智能体强化学习方法可参考用于多机协同策略，但需适配RoboMaster的通信与任务设计。",
-          "task_id": "strategy",
-          "task": "多机协同与策略学习",
-          "value": "mid"
-        }
       }
     ]
   },
@@ -4975,7 +4971,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 25.34,
+        "relevance": 20.34,
         "first_seen": "2026-08-19T23:10:03.955Z"
       },
       {
@@ -5021,7 +5017,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.33,
+        "relevance": 7.33,
         "first_seen": "2026-08-19T23:10:03.955Z"
       },
       {
@@ -5281,7 +5277,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.09,
+        "relevance": 12.09,
         "first_seen": "2026-08-19T23:10:03.955Z"
       },
       {
@@ -5525,7 +5521,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 21.95,
+        "relevance": 11.95,
         "first_seen": "2026-08-19T23:10:03.955Z"
       },
       {
