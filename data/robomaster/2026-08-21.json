@@ -1,6 +1,6 @@
 {
   "date": "2026-08-21",
-  "generatedAt": "2026-08-21T11:12:30.560Z",
+  "generatedAt": "2026-08-21T15:27:45.610Z",
   "categories": [
     {
       "key": "aim",
@@ -319,6 +319,48 @@
           "usage": "针对可变形物体操作的视觉-触觉数据集，与工程抓取刚性能量单元差异大，仅能参考多模态融合评估方法，实用性有限。",
           "task_id": "engineer",
           "task": "工程视觉装配（能量单元）",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2608.17744",
+        "arxiv_id": "2608.17744",
+        "source": "arXiv",
+        "cats": [
+          "cs.CL",
+          "cs.LG",
+          "cs.RO",
+          "stat.ML"
+        ],
+        "title_en": "Thinking in a Low-Resource Language: What SFT Builds, What RL Fixes, What Accuracy Cannot See",
+        "title_zh": "用低资源语言思考：SFT构建了什么，RL修复了什么，准确性看不到什么",
+        "abstract_en": "Take three frontier mixture-of-experts models (Alibaba, OpenAI, NVIDIA; 3.6-4.0B active parameters each) and fine-tune them to reason in a low-resource language. On accuracy benchmarks almost nothing happens, and the benchmark itself is noise at this scale: changing only the random seed moves the score by 7.7 points, more than every data and recipe effect we measured. That null is our first result. The real changes live where accuracy cannot see. Base models never think in Greek: 0 of 1,000 reasoning traces, even when the question is Greek, so the model answers correctly while reasoning in a form its user cannot read, audit, or correct. After supervised fine-tuning (SFT), every released checkpoint reasons in the language of the question on ~98% of items, one family at 3x fewer tokens, with judged grammaticality improving on all four models and general ability within a few points of each base: nothing was forgotten, and fluency was gained. We propose six behavioural dimensions that make such changes measurable, each gated to reject any metric that correlates with output length, and we report how our own instruments lied: six failures, each caught by a control. What SFT cannot do is fix its own defects: a quarter of answers skip the requested format, answers leak into the reasoning channel, and an explicit \"think in English\" is obeyed under half the time. Reinforcement learning with verifiable rewards, pre-registered before training, fixes the first two outright (fallback 24% to 2.5%, leak 3.5% to 0.0%, both against a flat random-reward control) and moves the third (+9.1pp), while the Greek reasoning habit survives an accuracy-only gradient untouched. We release five checkpoints. The instruments, the controls and the pre-registration travel to any low-resource language; Greek is the case that let us measure them.",
+        "abstract_zh": "我们微调三个混合专家模型（Alibaba、OpenAI、NVIDIA；约3.6-4.0B激活参数）使之用低资源语言推理。准确率基准几乎不变，且该基准本身是噪声：仅改随机种子就移动7.7分。真正变化在准确率不可见处：基础模型从不用希腊语思考（0/1000），SFT后约98%用问题语言推理，一个系列用3倍更少token，语法改善且能力无损。我们提出六个行为维度来测量，并报告六个被对照发现的失败。SFT无法修复自身缺陷：25%答案格式错误、答案泄漏至推理通道、服从\"用英语思考\"不足一半。预注册的可验证奖励RL直接修复前两者（24%→2.5%，3.5%→0.0%）并提升第三个（+9.1pp），希腊语推理习惯在仅准确率梯度下保持不变。我们发布五个检查点，工具可迁移至任何低资源语言。",
+        "highlight_zh": "SFT构建低资源语言推理能力，RL修复其格式与泄漏缺陷",
+        "digest_zh": "1. 研究问题：大型语言模型通常只在英语等高资源语言上表现好，用低资源语言（如希腊语）时，我们往往只关注答案准确不正确。但作者发现，准确率并不能反映模型\"内心\"到底用什么语言思考，这会影响我们能否审查和纠正模型。\n2. 方法：作者拿三个主流专家混合模型（阿里、OpenAI、NVIDIA），用少量希腊语数据做监督微调（SFT）。他们设计了一套新测量方法，包括六个行为维度，比如是否用问题语言推理、语法正确性等，并设置严格对照以排除输出长度等干扰。\n3. 结果：微调后，模型几乎总用希腊语思考（98%），语法变好，通用能力不下降。但SFT也有毛病：约四分之一的回答格式不对，答案内容会漏到\"思考过程\"里，而且让它\"用英语思考\"时，一半以上时候不听话。于是作者提前预注册了带可验证奖励的强化学习（RL），结果格式错误从24%降到2.5%，泄漏从3.5%归零，服从指令提高了9个百分点，而且用希腊语思考的习惯没被破坏。\n4. 重要性：这项研究说明，只看准确率会完全错过这些关键行为变化。作者的工具和预注册方法可以推广到任何低资源语言，帮助我们训练更可控、更透明的多语言模型。",
+        "authors": [
+          "Ayoub Kirouane",
+          "Christos Petrocheilos"
+        ],
+        "url": "https://arxiv.org/abs/2608.17744v1",
+        "pdf_url": "https://arxiv.org/pdf/2608.17744",
+        "html_url": "https://arxiv.org/abs/2608.17744",
+        "published_at": "2026-08-18T13:09:03.000Z",
+        "upvotes": 4,
+        "heat": 2285.7656069444442,
+        "featured": true,
+        "categories": [
+          "slam",
+          "rl"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 3,
+        "first_seen": "2026-08-21T15:27:43.653Z",
+        "rm": {
+          "usage": "该论文研究大语言模型的低资源语言微调与推理行为，与RoboMaster比赛中的感知、决策、控制等任务无直接关联，几乎用不上。",
+          "task_id": "",
+          "task": "",
           "value": "low"
         }
       },
@@ -4409,49 +4451,6 @@
           "task": "哨兵自主导航与决策",
           "value": "mid"
         }
-      },
-      {
-        "id": "arxiv:2608.18454",
-        "arxiv_id": "2608.18454",
-        "source": "arXiv",
-        "cats": [
-          "cs.RO"
-        ],
-        "title_en": "Backward Layout Search for Sequence-Constrained Robotic Assembly",
-        "title_zh": "",
-        "abstract_en": "Robotic assembly layout planning must determine the assembly site and the initial pose of each part while ensuring collision-free execution of a prescribed assembly sequence. This problem is challenging because the obstacle environment changes after each assembly step, and unassembled parts re maining in the workspace may block robot motions. We observe that the feasibility of each assembly step depends only on the initial poses of the current and later-assembled parts. Based on this dependency, we propose Backward Layout Search (BLS), which assigns initial part poses in reverse assembly order. Each expansion performs geometric, kinematic, grasp, and prescribed-motion checks, while collision masks and candidate set filtering remove infeasible initial part pose candidates. Promising partial layouts are retained through beam selection, and complete layouts are validated by full motion planning in forward assembly order. Experiments on five assembly models show that BLS produces collision-free executable layouts and reduces step evaluations and search time compared with a matched forward search.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Xi Zhang",
-          "Jiancong Dai",
-          "Hao Chen",
-          "Zhengtao Hu",
-          "Changcai Yang",
-          "Weiwei Wan"
-        ],
-        "url": "https://arxiv.org/abs/2608.18454v1",
-        "pdf_url": "https://arxiv.org/pdf/2608.18454",
-        "html_url": "https://arxiv.org/abs/2608.18454",
-        "published_at": "2026-08-19T02:29:06.000Z",
-        "upvotes": 0,
-        "heat": 2121.1823583333335,
-        "featured": false,
-        "categories": [
-          "planning",
-          "radar"
-        ],
-        "image": "",
-        "comment": "Submit to ROBIO2026",
-        "relevance": 4,
-        "first_seen": "2026-08-20T17:24:07.419Z",
-        "rm": {
-          "usage": "可用于工程机器人装配布局与顺序规划，逆序搜索可避免装配碰撞，需结合视觉定位做位姿调整。",
-          "task_id": "engineer",
-          "task": "工程视觉装配（能量单元）",
-          "value": "mid"
-        }
       }
     ]
   },
@@ -5003,7 +5002,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 20.34,
+        "relevance": 25.34,
         "first_seen": "2026-08-20T17:24:07.419Z"
       },
       {
@@ -5026,7 +5025,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.33,
+        "relevance": 12.33,
         "first_seen": "2026-08-20T17:24:07.419Z"
       },
       {
@@ -5072,7 +5071,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.32,
+        "relevance": 17.32,
         "first_seen": "2026-08-20T17:24:07.419Z"
       },
       {
@@ -5141,7 +5140,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.24,
+        "relevance": 12.24,
         "first_seen": "2026-08-20T17:24:07.419Z"
       },
       {
@@ -5553,7 +5552,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 11.95,
+        "relevance": 21.95,
         "first_seen": "2026-08-20T17:24:07.419Z"
       },
       {
@@ -5661,7 +5660,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 21.9,
+        "relevance": 16.9,
         "first_seen": "2026-08-20T17:24:07.419Z"
       },
       {
