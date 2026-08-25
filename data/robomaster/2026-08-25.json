@@ -1,6 +1,6 @@
 {
   "date": "2026-08-25",
-  "generatedAt": "2026-08-25T07:39:39.155Z",
+  "generatedAt": "2026-08-25T09:28:28.576Z",
   "categories": [
     {
       "key": "aim",
@@ -2941,6 +2941,57 @@
         }
       },
       {
+        "id": "arxiv:2608.18292",
+        "arxiv_id": "2608.18292",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.CV"
+        ],
+        "title_en": "GuideFetch: A Task Coordination Framework for Concurrent Navigation and Object Retrieval in Assistive Robot Dogs",
+        "title_zh": "",
+        "abstract_en": "Consider one robot guide dog escorting a blind user to a seat while a second retrieves and delivers an object. We introduce \\textsc{GuideFetch}, a framework for coordinating this concurrent guide-and-fetch mission with heterogeneous robots. A large language model (LLM) instantiates a schedule-conditioned four-action schema; deterministic normalization and validation enforce registered targets, robot capabilities, and the selected schedule, while robot and object states govern execution and completion. We record 360 simulator runs over 90 scene--seed combinations under scripted and online plan-provenance conditions. All 180 online responses validate on the first request and match their scripted references, so the plan-provenance comparison tests normalized-plan agreement rather than a distinct execution factor. A simulator-free mutation test accepts two valid controls and rejects all 32 rule-violating variants. Across 90 scene--seed cases per schedule, sequential and parallel execution achieve $72/90$ and $71/90$ operational successes. Among 56 common successes, the implemented role-reassigned parallel protocol reduces mean makespan by 41.3\\%. This system-level gain combines role assignment, action overlap, and scene geometry; state checks distinguish plan validity from verified mission completion.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Qian Yin",
+          "Ruiping Liu",
+          "Kunyu Peng",
+          "Jianxiang Man",
+          "Isik Baran Sandan",
+          "Junwei Zheng",
+          "Yufan Chen",
+          "Di Wen"
+        ],
+        "url": "https://arxiv.org/abs/2608.18292v2",
+        "pdf_url": "https://arxiv.org/pdf/2608.18292",
+        "html_url": "https://arxiv.org/abs/2608.18292",
+        "published_at": "2026-08-18T20:16:57.000Z",
+        "upvotes": 0,
+        "heat": 2122.863784722222,
+        "featured": false,
+        "categories": [
+          "slam",
+          "sim"
+        ],
+        "image": "",
+        "comment": "Accepted to the 1st Workshop on Multimodal Digital Agents (MDA) at ECCV 2026",
+        "conf": "ECCV",
+        "confYear": 2026,
+        "confTag": "ECCV 2026",
+        "confWeight": 6,
+        "confVision": true,
+        "relevance": 9,
+        "first_seen": "2026-08-25T09:28:25.854Z",
+        "rm": {
+          "usage": "可用于哨兵与雷达等多机协同任务调度，借鉴其LLM驱动的任务分解与状态机验证框架，规划多机器人协同行为；但需针对战场动态环境改造，且仅作思路参考。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
+        }
+      },
+      {
         "id": "arxiv:2608.18077",
         "arxiv_id": "2608.18077",
         "source": "arXiv",
@@ -4378,48 +4429,6 @@
           "task": "雷达全场感知与标记",
           "value": "mid"
         }
-      },
-      {
-        "id": "arxiv:2608.20936",
-        "arxiv_id": "2608.20936",
-        "source": "arXiv",
-        "cats": [
-          "cs.AI",
-          "cs.RO"
-        ],
-        "title_en": "Graph-Operator World Models for Morphology-Parameter Generalization in Continuous Control",
-        "title_zh": "",
-        "abstract_en": "World models for continuous control are commonly trained for a fixed physical system and can degrade when known morphology parameters such as link lengths, masses, damping, and actuation change. Existing approaches often provide these parameters as conditioning information, but leave unspecified which part of the learned transition should remain reusable and which part should change with morphology. We propose Graph-Operator World Models (GraphOp-WM), a structured world model for generalization across unseen morphology parameters within related articulated robot families. GraphOp-WM represents bodies and their kinematic relations as an attributed graph and factorizes each transition into a morphology-independent local dynamics basis and a morphology-conditioned structured operator. The operator combines node-local modulation, kinematic-tree coupling, and a low-rank global correction, while architectural information separation, basis normalization, and paired-morphology supervision encourage static morphology dependence to be carried by the operator pathway. Graph-level readout and edge-wise action representations provide a compatible interface for reward, value, and TD-MPC-style planning. We further define controlled MuJoCo parameter splits covering interpolation, extrapolation, and held-out compositions of link geometry, mass, damping, and actuation parameters in Hopper, Walker2d, and HalfCheetah.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Xu Yang",
-          "Yiqin Yang",
-          "Qianchuan Zhao"
-        ],
-        "url": "https://arxiv.org/abs/2608.20936v1",
-        "pdf_url": "https://arxiv.org/pdf/2608.20936",
-        "html_url": "https://arxiv.org/abs/2608.20936",
-        "published_at": "2026-08-21T10:01:46.000Z",
-        "upvotes": 0,
-        "heat": 2078.596147222222,
-        "featured": false,
-        "categories": [
-          "aim",
-          "slam",
-          "sim"
-        ],
-        "image": "",
-        "comment": "",
-        "relevance": 2,
-        "first_seen": "2026-08-24T19:30:48.765Z",
-        "rm": {
-          "usage": "该世界模型方法可应用于仿真到实车的策略迁移，增强模型对不同机器人形态参数的泛化能力，减少实车调试成本。",
-          "task_id": "sim",
-          "task": "仿真与 sim-to-real",
-          "value": "mid"
-        }
       }
     ]
   },
@@ -4572,7 +4581,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 7.64,
+        "relevance": 12.64,
         "first_seen": "2026-08-24T19:30:48.765Z"
       },
       {
@@ -4806,7 +4815,7 @@
           "planning",
           "sim"
         ],
-        "relevance": 9.48,
+        "relevance": 19.48,
         "first_seen": "2026-08-24T19:30:48.765Z"
       },
       {
@@ -4864,7 +4873,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.44,
+        "relevance": 13.44,
         "first_seen": "2026-08-24T19:30:48.765Z"
       },
       {
@@ -4887,7 +4896,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 8.42,
+        "relevance": 9.42,
         "first_seen": "2026-08-24T19:30:48.765Z"
       },
       {
@@ -5040,7 +5049,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 17.32,
+        "relevance": 12.32,
         "first_seen": "2026-08-24T19:30:48.765Z"
       },
       {
@@ -5522,7 +5531,7 @@
           "rune",
           "sim"
         ],
-        "relevance": 11.95,
+        "relevance": 21.95,
         "first_seen": "2026-08-24T19:30:48.765Z"
       },
       {
