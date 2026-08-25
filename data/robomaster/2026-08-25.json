@@ -1,6 +1,6 @@
 {
   "date": "2026-08-25",
-  "generatedAt": "2026-08-25T02:23:40.749Z",
+  "generatedAt": "2026-08-25T03:42:19.138Z",
   "categories": [
     {
       "key": "aim",
@@ -2812,6 +2812,90 @@
         }
       },
       {
+        "id": "arxiv:2608.22629",
+        "arxiv_id": "2608.22629",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "eess.SY"
+        ],
+        "title_en": "Enhancing Sim2Real Transfer for Torque-Controlled Robots through Real2Sim Dynamics Estimation and Reinforcement Learning",
+        "title_zh": "",
+        "abstract_en": "Transferring reinforcement learning policies from simulation to Real-World robots remains a major challenge, particularly when dealing with low-level torque control, where even small modelling inaccuracies can lead to unstable or unsafe behaviours. In this work, we propose a Real2Sim2Real pipeline that improves Sim2Real transfer for torque-controlled robotic arms by combining trajectory matching, parameter optimization via genetic algorithms, and domain randomization. Using the 7-DOF Franka Emika Panda robot, we first identify friction, inertia, and gravity compensation parameters by minimizing the error between real and simulated joint trajectories. These calibrated dynamics are then used to train a TQC-based reinforcement learning agent in simulation. The trained policy is evaluated in both Gazebo and MuJoCo environments, and finally deployed on the real robot. Our results demonstrate a significant improvement in tracking accuracy and policy robustness after parameter tuning, with smooth policy transfer from simulation to the Real-World across multiple target-reaching tasks. This work highlights the effectiveness of accurate physical modelling in enabling stable and generalizable torque-based reinforcement learning policies.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Davide Bargellini",
+          "Alex Pasquali",
+          "Andrea Govoni",
+          "Riccardo Zanella",
+          "Gianluca Palli"
+        ],
+        "url": "https://arxiv.org/abs/2608.22629v1",
+        "pdf_url": "https://arxiv.org/pdf/2608.22629",
+        "html_url": "https://arxiv.org/abs/2608.22629",
+        "published_at": "2026-08-23T22:25:33.000Z",
+        "upvotes": 0,
+        "heat": 2130.771578888889,
+        "featured": false,
+        "categories": [
+          "slam",
+          "rl",
+          "sim"
+        ],
+        "image": "",
+        "comment": "6 pages, 8 figures. Presented at the 2026 IEEE/ASME International Conference on Advanced Intelligent Mechatronics (AIM 2026)",
+        "relevance": 6,
+        "first_seen": "2026-08-25T03:42:13.012Z",
+        "rm": {
+          "usage": "该论文提出基于Real2Sim的动力学估计与强化学习迁移方法，可用于RoboMaster仿真环境中的机械臂（如工程机器人装配）或云台控制策略的sim-to-real迁移，通过参数辨识和域随机化提升实车部署稳定性，需针对机器人任务改造后使用。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2608.22591",
+        "arxiv_id": "2608.22591",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "WorldToken: Time-First Sequence Modeling for Robotic Imitation Learning",
+        "title_zh": "",
+        "abstract_en": "Robot policies receive heterogeneous observations at each decision step, yet sequence models differ in how they organize these inputs over time. We introduce WorldToken, a time-first policy instantiation that fuses multiview images, proprioception, and task conditioning within each policy timestep into one world token. A causal temporal Transformer models the resulting world-token sequence, and a diffusion action head generates action chunks. On 23 RoboCasa tasks, an 85.3M-parameter policy trained from scratch apart from a frozen pretrained CLIP text encoder achieves 59.45% mean closed-loop success using 2,900 generated demonstrations per task. A complete factorial sweep over five dataset sizes, five model sizes, and two training seeds shows consistent gains from additional target-domain data and diminishing returns beyond moderate model size. Under same-checkpoint history truncation, reducing visible history to one or two policy timesteps lowers closed-loop success for all 50 RoboCasa policies. On RMBench Blocks Ranking, reducing visible history from 146 to 8 seconds lowers evaluator success from 95% to 28%, while an exploratory extended rollout sustains the reference swap sequence for over 850 seconds. These results establish the empirical feasibility of the complete WorldToken instantiation and characterize its data-scaling and temporal-context behavior under the tested recipes. They do not establish superiority over alternative sequence organizations or isolate which components of the complete implementation drive the observed performance.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Chunkai Yang",
+          "Andong Yang",
+          "Chao Gao"
+        ],
+        "url": "https://arxiv.org/abs/2608.22591v1",
+        "pdf_url": "https://arxiv.org/pdf/2608.22591",
+        "html_url": "https://arxiv.org/abs/2608.22591",
+        "published_at": "2026-08-23T20:56:29.000Z",
+        "upvotes": 0,
+        "heat": 2129.2871344444443,
+        "featured": false,
+        "categories": [
+          "slam",
+          "rl"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 5,
+        "first_seen": "2026-08-25T03:42:13.012Z",
+        "rm": {
+          "usage": "该论文的时间优先序列建模与模仿学习框架可迁移到RoboMaster的机械臂装配或自主决策任务中，用于融合多视角图像和本体感受实现动作生成，但需要适配机器人平台和任务场景，改造工作量较大。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
+        }
+      },
+      {
         "id": "arxiv:2608.17484",
         "arxiv_id": "2608.17484",
         "source": "arXiv",
@@ -4336,92 +4420,6 @@
           "task": "仿真与 sim-to-real",
           "value": "mid"
         }
-      },
-      {
-        "id": "arxiv:2608.20929",
-        "arxiv_id": "2608.20929",
-        "source": "arXiv",
-        "cats": [
-          "cs.CV"
-        ],
-        "title_en": "GAP-SAM: A Global Artifact Prior for Generalizable AI-Generated Image Manipulation Localization",
-        "title_zh": "",
-        "abstract_en": "AI-generated image manipulation localization identifies edited pixels, but its OOD performance lags behind image-level detection partly because pixel supervision entangles forensic evidence with dataset-specific mask geometry and semantic boundaries. Extending image-level distribution alignment to localization, we construct COCO-ControlNet with source-image Canny edges and depth maps to align semantics and geometry, improving OOD performance across multiple localizers. Yet tighter Mask-VAE Reconstruction Alignment (Mask-VAE) underperforms COCO-ControlNet, showing that VAE reconstruction artifacts transfer poorly to local diffusion-inpainting artifacts. We also identify \\emph{boundary adhesion}, where fine-tuned segmentation models snap predictions to semantic object contours rather than true manipulation boundaries. These findings motivate GAP-SAM, which encodes an image and its frozen VAE reconstruction into a global artifact token and injects it into SAM3's feature pyramid via zero-gated FiLM before pixel decoding. Without prescribing a spatial region, this token modulates dense decoding to preserve localization while suppressing semantic-boundary shortcuts. Across six datasets, GAP-SAM averages 79.8 Pixel-F1, outperforming the strongest prior method by 12.6 points. It also performs best at every tested severity of JPEG compression, Gaussian blur, and resizing.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Haozhen Yan",
-          "Siyuan Shan",
-          "Zijian Yu",
-          "Youqi Wang",
-          "Yan Hong",
-          "Jun Lan",
-          "Jianfu Zhang"
-        ],
-        "url": "https://arxiv.org/abs/2608.20929v1",
-        "pdf_url": "https://arxiv.org/pdf/2608.20929",
-        "html_url": "https://arxiv.org/abs/2608.20929",
-        "published_at": "2026-08-21T09:49:58.000Z",
-        "upvotes": 0,
-        "heat": 2078.3994722222224,
-        "featured": false,
-        "categories": [
-          "aim",
-          "radar"
-        ],
-        "image": "",
-        "comment": "",
-        "relevance": 3,
-        "first_seen": "2026-08-24T19:30:48.765Z",
-        "rm": {
-          "usage": "AI生成图像篡改定位与RoboMaster视觉任务无关，无法直接用于比赛。",
-          "task_id": "",
-          "task": "",
-          "value": "low"
-        }
-      },
-      {
-        "id": "arxiv:2608.20913",
-        "arxiv_id": "2608.20913",
-        "source": "arXiv",
-        "cats": [
-          "cs.CV",
-          "cs.AI"
-        ],
-        "title_en": "Explainable Deepfake Detection with Feature-robust Augmentation and Evidence-grounded Explanation Optimization",
-        "title_zh": "",
-        "abstract_en": "Explainable deepfake detection extends binary classification by requiring models to not only predict authenticity but also provide interpretable justifications. This expanded scope is critical in practice, where users like forensic analysts need insight into the rationale behind the detection. Despite advancements, current approaches suffer from two critical deficiencies: (1)vulnerability to image quality degradation: detection accuracy plummets on low-quality samples, while naive augmentation strategies may induce feature drift and impair performance as diversity expands. (2) factually flawed explanations: explanation models may omit manipulation evidence or hallucinate irrelevant details, undermining interpretability. To address it, we propose a framework with two innovations. For robust deepfake detection, we introduce Feature-robust Augmentation, which comprises diversified degradation-aware augmentation strategies, and a supervised contrastive learning pattern paired with a mean-teacher architecture that stabilizes features against augmentations through consistency constraints. For explanation, we devise an evidence-grounded preference optimization process that guides model to prioritize genuine manipulation traces by learning from chosen-rejected explanation pairs, where rejected samples are constructed via evidence omission or irrelevant information injection. The proposed approach wins the first place in ACM Multimedia 2026 Explainable Deepfake Detection Challenge.The code is available at https://github.com/oceanflowlab/EDD.git.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Zhu Xu",
-          "Jiaqi Tang",
-          "Pokai Chen",
-          "Yuxin Peng",
-          "Yang Liu"
-        ],
-        "url": "https://arxiv.org/abs/2608.20913v1",
-        "pdf_url": "https://arxiv.org/pdf/2608.20913",
-        "html_url": "https://arxiv.org/abs/2608.20913",
-        "published_at": "2026-08-21T09:30:34.000Z",
-        "upvotes": 0,
-        "heat": 2078.076138611111,
-        "featured": false,
-        "categories": [
-          "other"
-        ],
-        "image": "",
-        "comment": "",
-        "relevance": 2,
-        "first_seen": "2026-08-24T19:30:48.765Z",
-        "rm": {
-          "usage": "深度伪造检测与比赛场景无关联，不适用于自瞄、雷达等视觉任务。",
-          "task_id": "",
-          "task": "",
-          "value": "low"
-        }
       }
     ]
   },
@@ -4525,7 +4523,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.76,
+        "relevance": 12.77,
         "first_seen": "2026-08-24T19:30:48.765Z"
       },
       {
@@ -4707,7 +4705,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.56,
+        "relevance": 17.56,
         "first_seen": "2026-08-24T19:30:48.765Z"
       },
       {
@@ -4973,7 +4971,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 20.34,
+        "relevance": 25.34,
         "first_seen": "2026-08-24T19:30:48.765Z"
       },
       {
@@ -4996,7 +4994,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.33,
+        "relevance": 12.33,
         "first_seen": "2026-08-24T19:30:48.765Z"
       },
       {
@@ -5042,7 +5040,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.32,
+        "relevance": 17.32,
         "first_seen": "2026-08-24T19:30:48.765Z"
       },
       {
@@ -5227,7 +5225,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 17.14,
+        "relevance": 12.14,
         "first_seen": "2026-08-24T19:30:48.765Z"
       },
       {
@@ -5738,7 +5736,7 @@
         "categories": [
           "other"
         ],
-        "relevance": 11.86,
+        "relevance": 6.86,
         "first_seen": "2026-08-24T19:30:48.765Z"
       }
     ]
