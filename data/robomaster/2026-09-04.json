@@ -1,6 +1,6 @@
 {
   "date": "2026-09-04",
-  "generatedAt": "2026-09-03T19:37:16.239Z",
+  "generatedAt": "2026-09-03T23:04:56.092Z",
   "categories": [
     {
       "key": "aim",
@@ -49,7 +49,7 @@
     }
   ],
   "papers": {
-    "count": 80,
+    "count": 82,
     "items": [
       {
         "id": "arxiv:2609.00111",
@@ -2710,6 +2710,91 @@
         }
       },
       {
+        "id": "arxiv:2609.02079",
+        "arxiv_id": "2609.02079",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "eess.SY"
+        ],
+        "title_en": "Koopman-Based Robust Model Predictive Control for Nonlinear Systems with Stochastic Intermittent Measurements",
+        "title_zh": "",
+        "abstract_en": "Intermittent state measurements pose fundamental challenges to model predictive control of constrained nonlinear systems because prediction uncertainty grows during feedback outages and measurement-triggered resets disrupt nominal state propagation, potentially compromising closed-loop stability and recursive feasibility. This paper develops a Koopman-based stochastic MPC framework with probabilistically truncated soft constraints. Specifically, a Lipschitz-constrained deep Koopman model provides a linear latent predictor, enabling computationally efficient online optimization. The intermittent measurement process is modeled as a two-mode discrete-time Markov chain, yielding a unified Markov jump error model for open-loop propagation and measurement-triggered resets. Under numerically verifiable sufficient conditions, the prediction error is shown to be mean-square ultimately bounded, and an explicit uniform second-moment bound is obtained. A distribution-free probabilistic error radius is then constructed for a prescribed confidence level and used to truncate dropout-dependent constraint tightening. An exact-penalty soft-constraint mechanism accommodates reset-induced jumps and prolonged dropouts. Under the stated terminal compatibility and bounded-disturbance conditions, recursive feasibility and mean-square ultimate boundedness of the closed-loop regulation error are established. Numerical simulations on a visual-servoing tracking task corroborate these theoretical results and demonstrate effective tracking under stochastic measurement unavailability.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Guanhua Liu",
+          "Tong Wu",
+          "Lixian Zhang",
+          "Weifeng Du",
+          "Minghao Han"
+        ],
+        "url": "https://arxiv.org/abs/2609.02079v1",
+        "pdf_url": "https://arxiv.org/pdf/2609.02079",
+        "html_url": "https://arxiv.org/abs/2609.02079",
+        "published_at": "2026-09-02T04:08:49.000Z",
+        "upvotes": 0,
+        "heat": 2117.1921544444444,
+        "featured": false,
+        "categories": [
+          "sim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 2,
+        "first_seen": "2026-09-03T23:04:40.020Z",
+        "rm": {
+          "usage": "可用于哨兵在通信或传感器测量间歇性丢失时的鲁棒模型预测控制，但需将Koopman模型替换为赛场车辆动力学并处理非凸约束，落地成本高。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2609.02077",
+        "arxiv_id": "2609.02077",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "KSG-Net: Key-Sparse and Global-Context Learning for Maritime 3D Ship Detection",
+        "title_zh": "",
+        "abstract_en": "Accurate 3D ship detection in maritime environments is critical for autonomous navigation, yet remains challenging due to large-scale vessel variations, sparse point clouds of small vessels, and severe sea-clutter interference. Existing methods, primarily based on 2D features or dense representations, struggle to balance detection accuracy and computational efficiency, while sparse 3D detectors designed for road scenes generalize poorly to maritime scenarios. This paper focuses on two key challenges in maritime LiDAR perception: weak feature representation for small and sparse vessels, and insufficient global structural modeling for large vessels due to the limited receptive field of local sparse convolutions. To address these issues, we propose KSG-Net, a Key-Sparse and Global-Context learning network for maritime 3D ship detection. The core idea is to jointly enhance local discriminative features and global structural awareness within a unified fully sparse detection framework. Specifically, a Key Sparse Multi-scale Aggregation (KSMA) module is designed to enhance the representation of small and sparse vessels by selecting informative key voxels and aggregating cross-scale neighborhood features. Furthermore, a Global Context Aggregation (GCA) module is introduced to capture long-range geometric dependencies through scene-level context modeling with gated residual interactions, thereby improving the representation of large vessels. Extensive experiments on the Thames River vessel dataset and simulated datasets demonstrate that KSG-Net consistently outperforms existing methods in multi-scale vessel detection and exhibits strong robustness in complex maritime environments.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Zhouyuan Huai",
+          "Meiqi Wan",
+          "Yan Yang",
+          "Minshi Chen",
+          "Xin Yuan",
+          "Wei Wang",
+          "Xiao Wang"
+        ],
+        "url": "https://arxiv.org/abs/2609.02077v1",
+        "pdf_url": "https://arxiv.org/pdf/2609.02077",
+        "html_url": "https://arxiv.org/abs/2609.02077",
+        "published_at": "2026-09-02T04:06:40.000Z",
+        "upvotes": 0,
+        "heat": 2117.1563125,
+        "featured": false,
+        "categories": [
+          "nav"
+        ],
+        "image": "",
+        "comment": "Accepted by PRICAI 2026",
+        "relevance": 8,
+        "first_seen": "2026-09-03T23:04:40.020Z",
+        "rm": {
+          "usage": "借鉴其针对稀疏点云的全局上下文特征提取与检测思路，用于雷达对远距离小目标（如对方机器人）的检测，但比赛以视觉为主，需从LiDAR迁移到图像，且场景差异大。",
+          "task_id": "radar",
+          "task": "雷达全场感知与标记",
+          "value": "low"
+        }
+      },
+      {
         "id": "cvf:CVPR2026:CME-CAD: Heterogeneous Collaborative Multi-Expert Reinforcem",
         "arxiv_id": "",
         "source": "CVPR",
@@ -3691,7 +3776,7 @@
           "nav",
           "sim"
         ],
-        "relevance": 18.63,
+        "relevance": 19.63,
         "first_seen": "2026-09-03T17:05:19.962Z"
       },
       {
@@ -4034,7 +4119,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 25.35,
+        "relevance": 20.35,
         "first_seen": "2026-09-03T17:05:19.962Z"
       },
       {
@@ -4103,7 +4188,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.32,
+        "relevance": 12.32,
         "first_seen": "2026-09-03T17:05:19.962Z"
       },
       {
@@ -4691,7 +4776,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 21.91,
+        "relevance": 26.91,
         "first_seen": "2026-09-03T17:05:19.962Z"
       },
       {
