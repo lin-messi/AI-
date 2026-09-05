@@ -1,6 +1,6 @@
 {
   "date": "2026-09-05",
-  "generatedAt": "2026-09-04T22:44:55.304Z",
+  "generatedAt": "2026-09-05T11:04:44.425Z",
   "categories": [
     {
       "key": "aim",
@@ -49,7 +49,7 @@
     }
   ],
   "papers": {
-    "count": 80,
+    "count": 81,
     "items": [
       {
         "id": "arxiv:2609.04201",
@@ -99,6 +99,53 @@
           "task_id": "sentry",
           "task": "哨兵自主导航与决策",
           "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2609.03199",
+        "arxiv_id": "2609.03199",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.RO"
+        ],
+        "title_en": "RoboTok: An Internet-Scale Data Engine for Human Demonstration Retrieval and Dexterous Manipulation Learning",
+        "title_zh": "RoboTok：用于人类示范检索和灵巧操作学习的互联网规模数据引擎",
+        "abstract_en": "Robot learning increasingly depends on broad and diverse demonstrations, yet collecting robot data remains expensive and poorly suited to covering the long tail of real-world tasks. To address this bottleneck, we introduce RoboTok, an internet-scale data engine that, given a query human manipulation video, retrieves manipulation-relevant human demonstrations from web videos for training dexterous robot policies. Specifically, we learn a latent motion space from 3D hand trajectories expressed in estimated actor-centered reference frames. This representation enables manipulation behaviors to be compared across variations in camera viewpoint, scene appearance, and actor occlusions, while remaining compact enough for efficient search and continual indexing over internet-scale video collections. We evaluate RoboTok against existing robot-data retrieval approaches on retrieval benchmarks and downstream robot policy performance. Our results show that RoboTok retrieves more relevant manipulation demonstrations and improves downstream task success, establishing hand-pose trajectory-aware retrieval as a way to make web video a scalable and continuously growing source of supervision for robot learning.",
+        "abstract_zh": "机器人学习日益依赖广泛多样的示教数据，但采集机器人数据仍十分昂贵，且难以覆盖真实任务的长尾分布。为突破这一瓶颈，我们提出RoboTok，一个互联网规模的数据引擎：给定一个查询用的人类操作视频，它从网络视频中检索与操作相关的人类示范以训练灵巧机器人策略。具体地，我们从以估计的actor为中心参考系表示的3D手部轨迹中学习一个隐式运动空间。该表示允许在摄像机视角、场景外观和actor遮挡变化下比较操作行为，同时足够紧凑以支持互联网规模视频集的快速搜索与持续索引。我们在检索基准和下游机器人策略性能上将RoboTok与现有机器人数据检索方法进行比较。结果显示，RoboTok能检索到更相关的操作示范并提升下游任务成功率，建立了手部姿态轨迹感知的检索作为使网络视频成为机器人学习可扩展且不断增长的监督来源的途径。",
+        "highlight_zh": "利用3D手部动作轨迹检索互联网视频，将人类示范变成机器人灵巧操作的规模化数据源。",
+        "digest_zh": "1. 研究问题：机器人学任务（比如抓取、操作）需要大量示范数据，但目前机器人数据主要靠真机采集，费时费钱，而且很难覆盖现实世界中千奇百怪的情况。互联网上有海量人类操作视频，但直接拿来做监督太难：人长什么样、摄像机角度、场景都差很多。2. 方法：RoboTok 提出一个数据引擎，给一个人类操作视频，能自动从海量网络视频里找到动作上最相似的人类示范。核心是把“动作”编码成一种不随视角和外观变化的形式：它先从视频中提取3D手部轨迹，再用人物本体坐标系来归一化，学出一个“潜运动空间”。在这个空间里，一手抓杯子能在不同场景、不同人、不同机位下被匹配为同一类动作，而且表示紧凑，方便在大规模视频库中搜索和扩充。3. 结果：在检索评测和下游机器人操作任务上，RoboTok 检索出的示范比已有检索方法更准确，用于训练灵巧手策略后，任务成功率更高。4. 为何重要：它验证了用“手部轨迹”作为核心线索，能把网络用户随手拍的生活视频变成机器人学习可用的、持续增长的数据源，为机器人摆脱昂贵的数据采集提供了低成本方案。",
+        "authors": [
+          "Howard Qian",
+          "Yiting Chen",
+          "Yunfei Xie",
+          "Kejia Ren",
+          "Podshara Chanrungmaneekul",
+          "Gaotian Wang",
+          "Bowen Wen",
+          "Chen Wei"
+        ],
+        "url": "https://arxiv.org/abs/2609.03199v1",
+        "pdf_url": "https://arxiv.org/pdf/2609.03199",
+        "html_url": "https://arxiv.org/abs/2609.03199",
+        "published_at": "2026-09-02T22:31:43.000Z",
+        "upvotes": 35,
+        "heat": 3849.5202891666668,
+        "featured": true,
+        "categories": [
+          "aim",
+          "slam",
+          "radar"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 2,
+        "first_seen": "2026-09-05T11:04:40.431Z",
+        "rm": {
+          "usage": "该研究面向通用灵巧操作的人类示范检索与学习，与RoboMaster工程机器人的能量单元抓取装配任务关联较弱，可作为机械臂抓取学习思路的远期参考，但需大量改造且缺乏针对战场环境的视觉定位与快速部署能力，实用性有限。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "low"
         }
       },
       {
@@ -4076,7 +4123,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.34,
+        "relevance": 7.34,
         "first_seen": "2026-09-04T19:22:23.944Z"
       },
       {
@@ -4122,7 +4169,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 17.32,
+        "relevance": 12.32,
         "first_seen": "2026-09-04T19:22:23.944Z"
       },
       {
@@ -4307,7 +4354,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.14,
+        "relevance": 17.14,
         "first_seen": "2026-09-04T19:22:23.944Z"
       },
       {
@@ -4359,7 +4406,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.09,
+        "relevance": 7.09,
         "first_seen": "2026-09-04T19:22:23.944Z"
       },
       {
@@ -4710,7 +4757,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 21.91,
+        "relevance": 16.91,
         "first_seen": "2026-09-04T19:22:23.944Z"
       },
       {
