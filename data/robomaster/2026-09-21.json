@@ -1,6 +1,6 @@
 {
   "date": "2026-09-21",
-  "generatedAt": "2026-09-21T05:37:58.392Z",
+  "generatedAt": "2026-09-21T13:32:59.373Z",
   "categories": [
     {
       "key": "aim",
@@ -3177,6 +3177,48 @@
         }
       },
       {
+        "id": "arxiv:2609.21838",
+        "arxiv_id": "2609.21838",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "PopNavShift: Stress-Testing Social Navigation under Behavioral Population Shift",
+        "title_zh": "",
+        "abstract_en": "Social-navigation algorithms are often evaluated under a fixed pedestrian-behavior distribution, despite substantial variation in pedestrian responses to robots across individuals and social contexts. We introduce PopNavShift, a matched simulation framework for stress-testing social-navigation strategies under pedestrian population shifts. PopNavShift constructs population-conditioned pedestrian motion profiles by prompting Gemini 3.7 Flash with 600 synthetic persona records from MatrAIx Persona 1M and deterministically mapping the responses into bounded motion parameters. It then compares three representative navigation strategies, reactive avoidance, early yielding, and reciprocal collision avoidance, across eight population conditions and 7,488 matched robot runs. In a matched intervention on the same 202 personas, changing only time pressure reverses 8.6% of controller rankings based on robot travel time, but 22.4% based on mean pedestrian delay and 23.9% based on worst-decile delay. Across population conditions, this sensitivity is greater for pedestrian burden than for robot travel time and increases in spatially constrained settings; the same qualitative pattern persists under a second pedestrian dynamics model. These findings support evaluating navigation strategies across behavioral populations using both robot performance and pedestrian burden.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Kaizhen Tan",
+          "Diyu Zheng",
+          "Tim Guangyu Wu",
+          "ChengHe Guan"
+        ],
+        "url": "https://arxiv.org/abs/2609.21838v1",
+        "pdf_url": "https://arxiv.org/pdf/2609.21838",
+        "html_url": "https://arxiv.org/abs/2609.21838",
+        "published_at": "2026-09-18T14:36:42.000Z",
+        "upvotes": 0,
+        "heat": 2089.1002547222224,
+        "featured": false,
+        "categories": [
+          "slam",
+          "rl",
+          "radar"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 3,
+        "first_seen": "2026-09-21T13:32:56.785Z",
+        "rm": {
+          "usage": "该工作面向行人社会规范下的导航鲁棒性评测，与RM哨兵在场地内避让高速移动的敌方机器人（无社会规范约束、目标是抢占增益点）差异较大；只能借鉴其『按行为分布做参数化压力测试』的思路，用仿真批量生成不同风格的敌方运动模型来检验哨兵避障/决策的鲁棒性。",
+          "task_id": "sentry",
+          "task": "哨兵自主导航与决策",
+          "value": "low"
+        }
+      },
+      {
         "id": "arxiv:2609.20747",
         "arxiv_id": "2609.20747",
         "source": "arXiv",
@@ -4458,44 +4500,6 @@
           "task": "仿真与 sim-to-real",
           "value": "low"
         }
-      },
-      {
-        "id": "cvf:CVPR2026:Vocabulary Scaling Law: Tuning Open-vocabulary Predictors fo",
-        "arxiv_id": "",
-        "source": "CVPR",
-        "cats": [],
-        "title_en": "Vocabulary Scaling Law: Tuning Open-vocabulary Predictors for Their Openness",
-        "title_zh": "",
-        "abstract_en": "Open-vocabulary learning on CLIP provides remarkable generalization on diverse concepts, however, falters under the realistic streaming open-world evaluations for Stability against distractor classes and Extensibility to novel classes. Current fine-tuning methods often fail these tests since they are mainly designed for closed-set conditions, leading to the performance gaps while the target vocabulary progressively scales. We formalize a \"vocabulary scaling law\" showing that these openness measures can be lower-bounded by performance on the full class-name universe, implying that robust fine-tuning should: (i) account for the entire vocabulary, (ii) tune class-name embeddings rather than context, and (iii) enforce orthogonality between prompt embeddings including training and open-set class names. Guided by our analysis, we propose Submodular-Vocabulary Fine-tuning (SVFT), a bi-level optimization framework that approximates the intractable objective of tuning all class name embedding by greedily selecting a small, informative subset of class names via constrained submodular maximization, thus, allows the employment of efficient greedy algorithm for the near-optimal class-name subset selection to fine-tune CLIP instead of using all open classes. Across extensive experiments, SVFT consistently improves both stability and extensibility, advancing the openness and practical robustness of CLIP-based vision-language models.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [],
-        "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Chen_Vocabulary_Scaling_Law_Tuning_Open-vocabulary_Predictors_for_Their_Openness_CVPR_2026_paper.html",
-        "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Chen_Vocabulary_Scaling_Law_Tuning_Open-vocabulary_Predictors_for_Their_Openness_CVPR_2026_paper.pdf",
-        "html_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Chen_Vocabulary_Scaling_Law_Tuning_Open-vocabulary_Predictors_for_Their_Openness_CVPR_2026_paper.html",
-        "published_at": "2026-06-01T00:00:00.000Z",
-        "upvotes": 0,
-        "heat": 120,
-        "featured": false,
-        "categories": [
-          "aim"
-        ],
-        "image": "",
-        "comment": "Accepted to CVPR 2026",
-        "conf": "CVPR",
-        "confYear": 2026,
-        "confTag": "CVPR 2026",
-        "confWeight": 6,
-        "confVision": true,
-        "relevance": 6,
-        "first_seen": "2026-09-20T16:36:29.713Z",
-        "rm": {
-          "usage": "开放词汇识别器的稳定性和扩展性调优思路可参考用于雷达/自瞄中对抗干扰类别，但比赛目标类别固定，直接帮助不大。",
-          "task_id": "radar",
-          "task": "雷达全场感知与标记",
-          "value": "low"
-        }
       }
     ]
   },
@@ -4781,7 +4785,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.57,
+        "relevance": 17.57,
         "first_seen": "2026-09-20T16:36:29.713Z"
       },
       {
@@ -4882,7 +4886,7 @@
           "planning",
           "sim"
         ],
-        "relevance": 9.48,
+        "relevance": 9.49,
         "first_seen": "2026-09-20T16:36:29.713Z"
       },
       {
@@ -5093,7 +5097,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.33,
+        "relevance": 7.33,
         "first_seen": "2026-09-20T16:36:29.713Z"
       },
       {
@@ -5139,7 +5143,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.32,
+        "relevance": 12.32,
         "first_seen": "2026-09-20T16:36:29.713Z"
       },
       {
@@ -5185,7 +5189,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.24,
+        "relevance": 12.25,
         "first_seen": "2026-09-20T16:36:29.713Z"
       },
       {
@@ -5514,7 +5518,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 16,
+        "relevance": 15,
         "first_seen": "2026-09-20T16:36:29.713Z"
       },
       {
@@ -5650,7 +5654,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 21.94,
+        "relevance": 21.95,
         "first_seen": "2026-09-20T16:36:29.713Z"
       },
       {
@@ -5736,7 +5740,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 22.92,
+        "relevance": 27.92,
         "first_seen": "2026-09-20T16:36:29.713Z"
       },
       {
