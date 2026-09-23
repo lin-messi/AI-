@@ -1,6 +1,6 @@
 {
   "date": "2026-09-23",
-  "generatedAt": "2026-09-23T08:12:07.338Z",
+  "generatedAt": "2026-09-23T13:58:35.511Z",
   "categories": [
     {
       "key": "aim",
@@ -1164,6 +1164,52 @@
           "usage": "数字孪生+VR 遥操作面向手术，与 RM 自主任务关联弱；其多视角空间感知/数字孪生重建思路可对仿真或工程装配有微弱启发，但不直接。",
           "task_id": "sim",
           "task": "仿真与 sim-to-real",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2609.25636",
+        "arxiv_id": "2609.25636",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "RoboFollow: Unveiling the Instruction Following Mirage in Embodied Agents",
+        "title_zh": "RoboFollow：揭示具身智能体中指令跟随的幻象",
+        "abstract_en": "Modern embodied agents achieve impressive success rates, yet their actual instruction-following ability is far weaker than these numbers suggest. We trace this illusion to a structural property we term low scene entropy: when a visual scene admits only one valid task, language becomes redundant and a policy can score highly while barely using it. We introduce RoboFollow, a diagnostic benchmark with three principles: (1) High Scene Entropy: each training scene supports multiple kinematically distinct task branches, making vision alone insufficient and forcing reliance on language. (2) Hierarchical Diagnostic Protocol: a four-level protocol (L0--L3) progressively perturbs visual layout and semantics, probing whether equivalent instructions yield consistent behavior and distinct ones yield discriminable behavior across spatial relations, attributes, trajectory constraints, and logic. (3) Confound-Controlled Diagnosis: we simplify interaction objects, restrict actions to the trained repertoire and report stage-wise Intent and Execution scores, isolating comprehension from motor execution. Evaluation of nine VLA and WAM policies shows that strong L0 performance, where attained, does not reliably transfer to L1--L3 under our fine-tuning setup. Representative mitigations, including stronger VLM backbones, QA co-training, LangForce, and Classifier-Free Guidance, all fail to close this gap. RoboFollow exposes genuine instruction following as a critical, overlooked bottleneck. Code and dataset are available at https://github.com/AutoLab-SAI-SJTU/RoboFollow and https://huggingface.co/datasets/AutoLab-SJTU/robofollow-data.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Chang Guo",
+          "Yukun Xie",
+          "Bohan Tan",
+          "Zheng Chang",
+          "Zhaokai Yin",
+          "Qianli Ma",
+          "Yingqiao Wang",
+          "Chao Liang"
+        ],
+        "url": "https://arxiv.org/abs/2609.25636v1",
+        "pdf_url": "https://arxiv.org/pdf/2609.25636",
+        "html_url": "https://arxiv.org/abs/2609.25636",
+        "published_at": "2026-09-22T03:48:02.000Z",
+        "upvotes": 2,
+        "heat": 2225.8674744444443,
+        "featured": false,
+        "categories": [
+          "aim",
+          "slam",
+          "rl"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 1,
+        "first_seen": "2026-09-23T13:58:32.740Z",
+        "rm": {
+          "usage": "该工作关注具身智能体对语言指令的真实遵循能力与低场景熵导致的幻觉，与RM自瞄/打符等核心感知任务几乎无关；若做多机策略语言指令调度，仅能提供'需高场景熵评测'的思路参考，关联很弱。",
+          "task_id": "",
+          "task": "",
           "value": "low"
         }
       },
@@ -3960,6 +4006,91 @@
         }
       },
       {
+        "id": "arxiv:2609.26499",
+        "arxiv_id": "2609.26499",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Generalizing Manipulation Skills with a Local Coding Agent",
+        "title_zh": "",
+        "abstract_en": "Today, progress in open-weight language models enables systems capable of writing, executing and debugging code while still running on a single workstation. Most language-driven robots give the model a fixed action interface or a trained policy. Generalizing to a new task therefore means more engineering effort or more data collection, both time-consuming. We investigate whether a local open-weight vision-language model can control a robot and one-shot generalize to new variations of a task without new human programming or training. We let a local open-weight VLM, Qwen3.8-27B, drive a UR3e robotic arm from a coding-agent harness. It writes and runs its own code above a service that implements kinematics, safety limits and classic computer vision techniques. We investigate if this system is capable of generalizing to unseen tasks. Specifically, we test it on nine tasks built from children's toys designed to probe generalization capability across various object characteristics: color, size, shape, and task variation of those. With five trials for each task, we observe generalization in 30 out of 45 trials with durations ranging from 3.4 to 67.5 minutes depending on task complexity. We further test if there is a speedup when an agent is asked to redo the task after successful completion. This resulted in a 50% reduction in duration, indicating that there is self-improvement over time. Finally, we expose the limitations of a local coding agent. We believe that solving those limitations combined with further investigation of self-improvement over time points at a direct path toward real-world deployment of a local coding agent.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Raman Talwar",
+          "Elias Nijs",
+          "Andreas Verleysen",
+          "Francis wyffels"
+        ],
+        "url": "https://arxiv.org/abs/2609.26499v1",
+        "pdf_url": "https://arxiv.org/pdf/2609.26499",
+        "html_url": "https://arxiv.org/abs/2609.26499",
+        "published_at": "2026-09-22T14:32:17.000Z",
+        "upvotes": 0,
+        "heat": 2136.6049752777776,
+        "featured": false,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "8 pages, 4 figures, 5 tables. Raman Talwar and Elias Nijs contributed equally",
+        "relevance": 4,
+        "first_seen": "2026-09-23T13:58:32.740Z",
+        "rm": {
+          "usage": "用本地开源VLM驱动机械臂并一次性泛化到任务新变体，可借鉴到工程机器人能量单元/科技核心的抓取与装配流程：让VLM根据视觉与语言指令生成/调试抓取代码，减少新工况下的重编程与数据采集成本。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2609.26490",
+        "arxiv_id": "2609.26490",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.HC"
+        ],
+        "title_en": "Benchmarking Robots for Everyday Environments: From Lab Experiments to Real-World Operations",
+        "title_zh": "",
+        "abstract_en": "This study introduces an interdisciplinary framework for benchmarking robots deployed in public environments, addressing the gap between traditional laboratory metrics and real-world benchmarking requirements. We evaluate three distinct robots across diverse use cases - outdoor park cleaning, pedestrian underpass cleaning, and interactive library assistance - each representing unique challenges in public daily life. Over a three-year benchmarking process (2023-2025) comprising seven benchmarking events, a consensus workshop and six on-site evaluations (two per use case), we utilized realistic indoor and outdoor test environments to assess not only technical performance but also the broader implications of deploying robots in unstructured, human-centric settings. An expert panel, spanning robotics, human-robot interaction, safety, and economics, systematically developed and refined an evaluation concept to analyze the transition from laboratory prototypes to operational systems. Our findings highlight critical factors for successful deployment, including task fulfillment, interaction quality, safety, and economic feasibility. This work provides actionable insights for researchers and practitioners aiming to bridge the gap between robotic innovation and real-world applicability.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Raphael Memmesheimer",
+          "Martina Overbeck",
+          "Dominik Beyer",
+          "Björn Kral",
+          "Sabine Bellmann",
+          "Sven Schneider",
+          "Jan Zimmermann",
+          "Anna-Maria Meer"
+        ],
+        "url": "https://arxiv.org/abs/2609.26490v1",
+        "pdf_url": "https://arxiv.org/pdf/2609.26490",
+        "html_url": "https://arxiv.org/abs/2609.26490",
+        "published_at": "2026-09-22T14:28:44.000Z",
+        "upvotes": 0,
+        "heat": 2136.545808611111,
+        "featured": false,
+        "categories": [
+          "other"
+        ],
+        "image": "",
+        "comment": "46 pages, 14 figures, 5 tables. Accepted for publication in Frontiers in Robotics and AI (Field Robotics)",
+        "relevance": 2,
+        "first_seen": "2026-09-23T13:58:32.740Z",
+        "rm": {
+          "usage": "面向公共真实环境的机器人基准评测框架，与RM赛场（结构固定、指标明确的对抗赛）差异很大，仅在搭建长期实车测试/评测流程时有微弱参考，基本用不上。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
         "id": "arxiv:2609.24996",
         "arxiv_id": "2609.24996",
         "source": "arXiv",
@@ -4465,134 +4596,6 @@
           "task": "哨兵自主导航与决策",
           "value": "low"
         }
-      },
-      {
-        "id": "arxiv:2609.24815",
-        "arxiv_id": "2609.24815",
-        "source": "arXiv",
-        "cats": [
-          "cs.RO",
-          "cs.AI"
-        ],
-        "title_en": "Uranus: Building the Next-Generation Simulation Infrastructure for Embodied AI",
-        "title_zh": "",
-        "abstract_en": "Scalable simulation is essential for robot data generation, policy training, evaluation, and safe iteration, yet real-world interaction is costly and conventional simulators require labor-intensive construction. We present Uranus, a data-driven robot simulator built around a joint-trajectory-conditioned autoregressive diffusion model. Uranus offers three key capabilities: (1) streaming, open-ended rollout, which receives future joint-position trajectories online and autoregressively generates one latent frame per step, corresponding to four RGB frames, without a fixed horizon; (2) low-latency generation, achieving 24 FPS after inference optimization; and (3) scalable, extensible robot control, providing a unified interface for synchronized multi-view generation across diverse robot embodiments and camera configurations. We conduct comprehensive quantitative and qualitative evaluations on both in-distribution and out-of-distribution data, providing an objective assessment of Uranus and clearly identifying its current limitations. We release the code and model weights to empower the community with practical tools and insights.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Wenkang Qin",
-          "Yukun Zhou",
-          "Noah Shen",
-          "Jisong Cai",
-          "Dongxiao Mao",
-          "Baicheng Li",
-          "Yue Zhang",
-          "Wei Sui"
-        ],
-        "url": "https://arxiv.org/abs/2609.24815v1",
-        "pdf_url": "https://arxiv.org/pdf/2609.24815",
-        "html_url": "https://arxiv.org/abs/2609.24815",
-        "published_at": "2026-09-21T16:06:16.000Z",
-        "upvotes": 0,
-        "heat": 2134.649658611111,
-        "featured": false,
-        "categories": [
-          "sim"
-        ],
-        "image": "",
-        "comment": "Project Page: https://d-robotics-ai-lab.github.io/large-model-team/blog/uranus/ Inference Code: https://github.com/D-Robotics-AI-Lab/Uranus-OSS Inference Data: https://huggingface.co/datasets/D-Robotics/Uranus-Demo-Data SDK Code: https://github.com/D-Robotics-AI-Lab/Uranus-SDK Model Weights: https://huggingface.co/collections/D-Robotics/uranus",
-        "relevance": 2,
-        "first_seen": "2026-09-22T17:29:54.040Z",
-        "rm": {
-          "usage": "面向具身智能的下一代仿真基础设施（数据驱动的自回归扩散模拟器、低延迟在线 rollout），可为哨兵导航/交火策略的强化学习训练提供大吞吐仿真环境与 sim-to-real 迭代思路，但需自建 RoboMaster 场景与奖励，属支撑性工具。",
-          "task_id": "sim",
-          "task": "仿真与 sim-to-real",
-          "value": "mid"
-        }
-      },
-      {
-        "id": "arxiv:2609.24787",
-        "arxiv_id": "2609.24787",
-        "source": "arXiv",
-        "cats": [
-          "cs.CV",
-          "cs.RO"
-        ],
-        "title_en": "Toward a foundation model for forest point clouds",
-        "title_zh": "",
-        "abstract_en": "Forest inventories increasingly rely on artificial intelligence (AI) models to derive forest attributes from large-scale 3D point clouds. Current models are typically specialized to a single task, sensor, and forest type, making adaptation expensive in terms of annotations, computation, and expertise. We ask whether a single pretrained model can instead learn transferable representations across diverse forest inventory settings. Inspired by recent developments in language modelling and computer vision, we take a step toward a foundation model (FM) for 3D forestry. Using LitePT as backbone, we first establish a strong supervised baseline that sets a new state of the art on forest semantic and instance segmentation, tree species classification, and age regression benchmarks. We then curate a large-scale unlabelled corpus spanning airborne, UAV, and mobile laser scanning across diverse forest ecosystems, and pretrain the same backbone using self-supervised learning. We systematically evaluate representation learning strategies by comparing training from scratch, supervised pretraining, and self-supervised pretraining across four representative forestry tasks, under varying annotation budgets. Compared with training from scratch, self-supervised pretraining accelerates model convergence and consistently improves performance when annotations are scarce. Compared with task-specific supervised pretraining, self-supervised pretraining yields more transferable representations across downstream forestry tasks. These findings identify the practical regime in which pretrained representations are most valuable and suggest that instance discrimination, rather than forest semantics, is the main remaining obstacle to a general-purpose 3D forest foundation model. Code and models are available at: https://github.com/prs-eth/ForPT.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Yuanwen Yue",
-          "Stefano Puliti",
-          "Damien Robert",
-          "Atakan Topaloğlu",
-          "Binbin Xiang",
-          "Maciej Wielgosz",
-          "Jan Dirk Wegner",
-          "Rasmus Astrup"
-        ],
-        "url": "https://arxiv.org/abs/2609.24787v1",
-        "pdf_url": "https://arxiv.org/pdf/2609.24787",
-        "html_url": "https://arxiv.org/abs/2609.24787",
-        "published_at": "2026-09-21T15:50:01.000Z",
-        "upvotes": 0,
-        "heat": 2134.378825,
-        "featured": false,
-        "categories": [
-          "aim"
-        ],
-        "image": "",
-        "comment": "Project page: https://prs-eth.github.io/ForPT",
-        "relevance": 5,
-        "first_seen": "2026-09-22T17:29:54.040Z",
-        "rm": {
-          "usage": "面向林业点云的基础模型，处理的是大尺度自然场景 3D 点云分割/属性回归，与 RoboMaster 中结构化的装甲板、能量单元、机器人目标检测/位姿估计场景差异很大，基本用不上。",
-          "task_id": "",
-          "task": "",
-          "value": "low"
-        }
-      },
-      {
-        "id": "cvf:CVPR2026:CME-CAD: Heterogeneous Collaborative Multi-Expert Reinforcem",
-        "arxiv_id": "",
-        "source": "CVPR",
-        "cats": [],
-        "title_en": "CME-CAD: Heterogeneous Collaborative Multi-Expert Reinforcement Learning for CAD Code Generation",
-        "title_zh": "",
-        "abstract_en": "Computer-Aided Design (CAD) is essential in industrial design, but the complexity of traditional CAD modeling and workflows presents significant challenges for automating the generation of high-precision, editable CAD models. Existing methods, such as 3D reconstruction from sketches, often produce non-editable, approximate models that fall short of meeting the stringent requirements for precision and editability in industrial design. Moreover, the reliance on text or image-based inputs often requires significant manual annotation, limiting their scalability and applicability in industrial settings. To overcome these challenges, we propose the Heterogeneous Collaborative Multi-Expert Reinforcement Learning (CME-CAD) paradigm, a novel training paradigm for CAD code generation. Our approach integrates the complementary strengths of these models, facilitating collaborative learning and improving the model&#x27;s ability to generate accurate, constraint-compatible, and fully editable CAD models. We introduce a two-stage training process: Multi-Expert Fine-Tuning (MEFT), and Multi-Expert Reinforcement Learning (MERL). Additionally, we present CADExpert, an open-source benchmark consisting of 17,299 instances, including orthographic projections with precise dimension annotations, expert-generated Chain-of-Thought (CoT) processes, executable CADQuery code, and rendered 3D models. The CADExpert dataset is publicly available at https://modelscope.cn/datasets/zhuofanChen/CADExpert.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [],
-        "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Niu_CME-CAD_Heterogeneous_Collaborative_Multi-Expert_Reinforcement_Learning_for_CAD_Code_Generation_CVPR_2026_paper.html",
-        "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Niu_CME-CAD_Heterogeneous_Collaborative_Multi-Expert_Reinforcement_Learning_for_CAD_Code_Generation_CVPR_2026_paper.pdf",
-        "html_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Niu_CME-CAD_Heterogeneous_Collaborative_Multi-Expert_Reinforcement_Learning_for_CAD_Code_Generation_CVPR_2026_paper.html",
-        "published_at": "2026-06-01T00:00:00.000Z",
-        "upvotes": 0,
-        "heat": 120,
-        "featured": false,
-        "categories": [
-          "rl"
-        ],
-        "image": "",
-        "comment": "Accepted to CVPR 2026",
-        "conf": "CVPR",
-        "confYear": 2026,
-        "confTag": "CVPR 2026",
-        "confWeight": 6,
-        "confVision": true,
-        "relevance": 8,
-        "first_seen": "2026-09-22T17:29:54.040Z",
-        "rm": {
-          "usage": "用多专家强化学习生成可编辑 CAD 代码，面向工业设计建模自动化，与能量单元的视觉定位、机械臂抓取装配无直接关系，关联很弱。",
-          "task_id": "",
-          "task": "",
-          "value": "low"
-        }
       }
     ]
   },
@@ -4673,7 +4676,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 17.8,
+        "relevance": 12.8,
         "first_seen": "2026-09-22T17:29:54.040Z"
       },
       {
@@ -4722,7 +4725,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 22.69,
+        "relevance": 12.69,
         "first_seen": "2026-09-22T17:29:54.040Z"
       },
       {
@@ -4822,7 +4825,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 13.61,
+        "relevance": 8.61,
         "first_seen": "2026-09-22T17:29:54.040Z"
       },
       {
@@ -5141,7 +5144,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 20.36,
+        "relevance": 25.36,
         "first_seen": "2026-09-22T17:29:54.040Z"
       },
       {
@@ -5233,7 +5236,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.32,
+        "relevance": 7.32,
         "first_seen": "2026-09-22T17:29:54.040Z"
       },
       {
@@ -5279,7 +5282,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.25,
+        "relevance": 12.25,
         "first_seen": "2026-09-22T17:29:54.040Z"
       },
       {
@@ -5606,7 +5609,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 15.01,
+        "relevance": 16.01,
         "first_seen": "2026-09-22T17:29:54.040Z"
       },
       {
@@ -5716,7 +5719,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 21.95,
+        "relevance": 26.95,
         "first_seen": "2026-09-22T17:29:54.040Z"
       },
       {
