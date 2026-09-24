@@ -1,6 +1,6 @@
 {
   "date": "2026-09-24",
-  "generatedAt": "2026-09-24T07:57:09.370Z",
+  "generatedAt": "2026-09-24T13:55:23.900Z",
   "categories": [
     {
       "key": "aim",
@@ -3383,6 +3383,51 @@
         }
       },
       {
+        "id": "arxiv:2609.24815",
+        "arxiv_id": "2609.24815",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.AI"
+        ],
+        "title_en": "Uranus: Building the Next-Generation Simulation Infrastructure for Embodied AI",
+        "title_zh": "Uranus：构建下一代具身智能仿真基础设施",
+        "abstract_en": "Scalable simulation is essential for robot data generation, policy training, evaluation, and safe iteration, yet real-world interaction is costly and conventional simulators require labor-intensive construction. We present Uranus, a data-driven robot simulator built around a joint-trajectory-conditioned autoregressive diffusion model. Uranus offers three key capabilities: (1) streaming, open-ended rollout, which receives future joint-position trajectories online and autoregressively generates one latent frame per step, corresponding to four RGB frames, without a fixed horizon; (2) low-latency generation, achieving 24 FPS after inference optimization; and (3) scalable, extensible robot control, providing a unified interface for synchronized multi-view generation across diverse robot embodiments and camera configurations. We conduct comprehensive quantitative and qualitative evaluations on both in-distribution and out-of-distribution data, providing an objective assessment of Uranus and clearly identifying its current limitations. We release the code and model weights to empower the community with practical tools and insights.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Wenkang Qin",
+          "Yukun Zhou",
+          "Noah Shen",
+          "Jisong Cai",
+          "Dongxiao Mao",
+          "Baicheng Li",
+          "Yue Zhang",
+          "Wei Sui"
+        ],
+        "url": "https://arxiv.org/abs/2609.24815v3",
+        "pdf_url": "https://arxiv.org/pdf/2609.24815",
+        "html_url": "https://arxiv.org/abs/2609.24815",
+        "published_at": "2026-09-21T16:06:16.000Z",
+        "upvotes": 1,
+        "heat": 2140.2177794444447,
+        "featured": false,
+        "categories": [
+          "sim"
+        ],
+        "image": "",
+        "comment": "Project Page: https://d-robotics-ai-lab.github.io/large-model-team/blog/uranus/ Inference Code: https://github.com/D-Robotics-AI-Lab/Uranus-OSS Inference Data: https://huggingface.co/datasets/D-Robotics/Uranus-Demo-Data SDK Code: https://github.com/D-Robotics-AI-Lab/Uranus-SDK Model Weights: https://huggingface.co/collections/D-Robotics/uranus",
+        "relevance": 2,
+        "first_seen": "2026-09-24T13:55:21.364Z",
+        "rm": {
+          "usage": "可作为RoboMaster仿真/数字孪生底座思路：用其自回归扩散驱动的流式仿真生成哨兵导航、交火策略训练数据，并配合低延迟回放验证 sim-to-real 迁移效果。但它是通用具身智能仿真器，需自行搭建赛道、机器人模型与规则才能用于赛事。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "mid"
+        }
+      },
+      {
         "id": "arxiv:2609.21942",
         "arxiv_id": "2609.21942",
         "source": "arXiv",
@@ -4505,44 +4550,6 @@
           "task": "雷达全场感知与标记",
           "value": "low"
         }
-      },
-      {
-        "id": "cvf:CVPR2026:APPO: Attention-guided Perception Policy Optimization for Vi",
-        "arxiv_id": "",
-        "source": "CVPR",
-        "cats": [],
-        "title_en": "APPO: Attention-guided Perception Policy Optimization for Video Reasoning",
-        "title_zh": "",
-        "abstract_en": "Complex video reasoning, actually, relies excessively on fine-grained perception rather than on expert (e.g., Ph.D, Science)-level reasoning.Through extensive empirical observation, we have recognized the critical impact of perception.In particular, when perception ability is almost fixed, enhancing reasoning from Qwen3-8B to OpenAI-o3 yields only 0.7% performance improvement. Conversely, even minimal change in perception model scale (from 7B to 32B) boosts performance by 1.4%, indicating enhancing perception, rather than reasoning, is more critical to improve performance.Therefore, exploring how to enhance perception ability through reasoning without the need for expensive fine-grained annotation information is worthwhile.To achieve this goal, we specially propose APPO, the Attention-guided Perception Policy Optimization algorithm that leverages token-level dense rewards to improve model&#x27;s fine-grained perception.The core idea behind APPO is to optimize those tokens from different responses that primarily focus on the same crucial video frame (called intra-group perception tokens).Experimental results on diverse video benchmarks and models with different scales (3/7B) demonstrate APPO consistently outperforms GRPO and DAPO (0.5% 4%). We hope our work provides a promising approach to effectively enhance model&#x27;s perception abilities through reasoning in a low-cost manner, serving diverse scenarios and demands.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [],
-        "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Du_APPO_Attention-guided_Perception_Policy_Optimization_for_Video_Reasoning_CVPR_2026_paper.html",
-        "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Du_APPO_Attention-guided_Perception_Policy_Optimization_for_Video_Reasoning_CVPR_2026_paper.pdf",
-        "html_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Du_APPO_Attention-guided_Perception_Policy_Optimization_for_Video_Reasoning_CVPR_2026_paper.html",
-        "published_at": "2026-06-01T00:00:00.000Z",
-        "upvotes": 0,
-        "heat": 120,
-        "featured": false,
-        "categories": [
-          "rl"
-        ],
-        "image": "",
-        "comment": "Accepted to CVPR 2026",
-        "conf": "CVPR",
-        "confYear": 2026,
-        "confTag": "CVPR 2026",
-        "confWeight": 6,
-        "confVision": true,
-        "relevance": 7,
-        "first_seen": "2026-09-23T18:45:55.306Z",
-        "rm": {
-          "usage": "针对视频推理的注意力引导策略优化，与自瞄/导航的感知决策关联很弱，最多作为强化学习训练中奖励/注意力设计的泛化参考。",
-          "task_id": "",
-          "task": "",
-          "value": "low"
-        }
       }
     ]
   },
@@ -4623,7 +4630,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 17.8,
+        "relevance": 12.8,
         "first_seen": "2026-09-23T18:45:55.306Z"
       },
       {
@@ -4672,7 +4679,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 17.69,
+        "relevance": 12.69,
         "first_seen": "2026-09-23T18:45:55.306Z"
       },
       {
@@ -4828,7 +4835,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 17.57,
+        "relevance": 12.57,
         "first_seen": "2026-09-23T18:45:55.306Z"
       },
       {
@@ -5094,7 +5101,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 25.36,
+        "relevance": 20.36,
         "first_seen": "2026-09-23T18:45:55.306Z"
       },
       {
@@ -5451,7 +5458,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 19.06,
+        "relevance": 14.06,
         "first_seen": "2026-09-23T18:45:55.306Z"
       },
       {
@@ -5560,7 +5567,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 16.01,
+        "relevance": 15.01,
         "first_seen": "2026-09-23T18:45:55.306Z"
       },
       {
@@ -5670,7 +5677,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 26.95,
+        "relevance": 21.95,
         "first_seen": "2026-09-23T18:45:55.306Z"
       },
       {
@@ -5803,7 +5810,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 16.9,
+        "relevance": 11.9,
         "first_seen": "2026-09-23T18:45:55.306Z"
       },
       {
