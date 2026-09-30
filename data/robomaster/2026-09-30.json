@@ -1,6 +1,6 @@
 {
   "date": "2026-09-30",
-  "generatedAt": "2026-09-30T06:11:25.423Z",
+  "generatedAt": "2026-09-30T13:08:03.019Z",
   "categories": [
     {
       "key": "aim",
@@ -49,7 +49,7 @@
     }
   ],
   "papers": {
-    "count": 80,
+    "count": 87,
     "items": [
       {
         "id": "arxiv:2609.34981",
@@ -1401,6 +1401,50 @@
         }
       },
       {
+        "id": "arxiv:2609.33748",
+        "arxiv_id": "2609.33748",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "AnyStep-WAM: Budget-Aligned Distillation and Adaptive Inference for World Action Models",
+        "title_zh": "AnyStep-WAM：面向世界动作模型的预算对齐蒸馏与自适应推理",
+        "abstract_en": "World-action models (WAMs) couple predictive visual modeling with action generation, typically relying on iterative denoising with a fixed denoising steps. However, manipulation tasks contain actions chunks with varying sensitivity to generation errors: critical actions require precision, while less sensitive actions allow faster generation with fewer denoising steps. Here we introduce AnyStep World Action Model, a general framework for tunable-budget prediction and scene-dependent computation allocation. Our budget-aligned teacher-trajectory distillation trains interval-conditioned flow maps using explicit frozen-teacher transitions and shared low-rank adapters, supporting action generation from one-step prediction to multi-step refinement. Building on this capability, a lightweight risk-benefit scheduler predicts teacher-curvature-based difficulty and budget-specific student-teacher fidelity from a single one-step preview, selecting the smallest budget predicted to satisfy risk-adaptive fidelity requirements. We evaluate our framework on three widely used WAMs Motus, FastWAM, and LingBotVA using RoboTwin 2.0. Our method reduces average denoising steps by 60.2%, 49.8%, and 85.28%, respectively, while maintaining baseline task success rates. In particular, our AnyStep training substantially improves model performance under a one-step denoising budget, increasing task success rates by 7.07%, 12.08%, and 8.94% on Motus, FastWAM, and LingBotVA, respectively. Experiments on six real-world manipulation tasks further validate its effectiveness.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Rui Wang",
+          "Xiangyu Wang",
+          "Donglin Yang",
+          "Yibo Li",
+          "Canyang Chen",
+          "Zhongrui Wang",
+          "Xiaojuan Qi"
+        ],
+        "url": "https://arxiv.org/abs/2609.33748v1",
+        "pdf_url": "https://arxiv.org/pdf/2609.33748",
+        "html_url": "https://arxiv.org/abs/2609.33748",
+        "published_at": "2026-09-27T16:49:05.000Z",
+        "upvotes": 2,
+        "heat": 2191.7265058333332,
+        "featured": false,
+        "categories": [
+          "rl",
+          "radar"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 2,
+        "first_seen": "2026-09-30T13:07:54.367Z",
+        "rm": {
+          "usage": "该工作让世界-动作模型按动作敏感度自适应分配去噪步数，可参考其思路加速工程机器人抓取/装配策略的推理；但赛事中工程视觉装配多用轻量位姿估计与规划，与本工作的关联较弱。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "low"
+        }
+      },
+      {
         "id": "arxiv:2609.37455",
         "arxiv_id": "2609.37455",
         "source": "arXiv",
@@ -1632,6 +1676,52 @@
         "first_seen": "2026-09-30T06:10:15.415Z",
         "rm": {
           "usage": "可借鉴到哨兵自主决策/团队策略的强化学习训练：用质量-多样性方法在行为潜在空间中搜索既多样又高性能的策略，得到多种走位与交火风格并迁移到实车。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2609.36352",
+        "arxiv_id": "2609.36352",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.LG",
+          "cs.RO"
+        ],
+        "title_en": "StructRL: Online Structured Reinforcement Learning for Long-Horizon Vision-Language-Action Tasks",
+        "title_zh": "StructRL：面向长时程视觉-语言-动作任务的在线结构化强化学习",
+        "abstract_en": "Vision-language-action (VLA) models perform well on shorter-horizon manipulation tasks but still struggle with long-horizon tasks that require multiple dependent manipulations from a single command. Online reinforcement learning (RL) can improve these policies through environment interaction, yet many existing methods provide reward only after the complete task succeeds. However, such terminal supervision is sparse and does not distinguish early failures from rollouts that make substantial partial progress. We propose StructRL, an online RL framework that constructs structured intermediate supervision from verifiable subtask completions. StructRL decomposes each task into verifiable subtasks, grants intermediate rewards only after the prerequisite subtasks have been completed, and scales each reward according to completion pace. Across RoboCasa365 and LIBERO-Long with GR00T-N1.5 and pi 0.5, StructRL consistently outperforms evaluated online RL baselines. These results show that verifiable, structured intermediate rewards improve long-horizon VLA post-training. Code is available at https://github.com/amazon-science/StructRL.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Ziyi Yin",
+          "Sangmin Woo",
+          "Kang Zhou",
+          "Sungyeon Kim",
+          "Aosong Feng",
+          "Haibo Ding",
+          "Jun Huan"
+        ],
+        "url": "https://arxiv.org/abs/2609.36352v1",
+        "pdf_url": "https://arxiv.org/pdf/2609.36352",
+        "html_url": "https://arxiv.org/abs/2609.36352",
+        "published_at": "2026-09-28T22:34:43.000Z",
+        "upvotes": 1,
+        "heat": 2171.4870633333335,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 3,
+        "first_seen": "2026-09-30T13:07:54.367Z",
+        "rm": {
+          "usage": "用在线强化学习为长时程任务构造结构化中间奖励，可迁移到哨兵/多机的自主交火与走位策略训练，缓解仅终点奖励的稀疏问题；不过需把奖励设计与赛事仿真接口重新搭建。",
           "task_id": "strategy",
           "task": "多机协同与策略学习",
           "value": "mid"
@@ -2776,6 +2866,225 @@
         }
       },
       {
+        "id": "arxiv:2609.37800",
+        "arxiv_id": "2609.37800",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG",
+          "cs.AI"
+        ],
+        "title_en": "Challenges and Solutions for Bandits in the Wild: Warm-Started Mixture Bandits for Cross-Cohort Slate Recommendation",
+        "title_zh": "",
+        "abstract_en": "Many recommender services repeatedly encounter cold-start cohorts, where new users arrive with little or no interaction history. This creates two challenges: learning user preferences quickly from limited feedback and sustaining useful recommendations when each user has a finite catalog that can become repetitive or depleted over time. We propose CohortMix-TS, a warm-started mixture bandit that learns latent user groups from earlier cohorts and uses available metadata to construct group-informed priors for new users. Starting from these fixed priors, the model personalizes independently as feedback from each user becomes available. Session slates combine Thompson sampling with diversity and inventory-depletion controls. We evaluate CohortMix-TS through simulation, semi-synthetic experiments, and a 25-day randomized in-the-wild deployment with 713 registered participants in a Campus Games quiz application. Our evaluations show that cross-cohort transfer improves early recommendation quality and user-level regret, while inventory-aware slate construction helps prevent premature exhaustion of preferred items. In the field deployment, treatment users also showed a larger early-to-late change in correctness than users receiving random recommendations. Together, these results show how warm-start transfer and inventory-aware recommendations can support personalization for short-lived, repeatedly cold-starting cohorts.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Serafima Lebedeva",
+          "Sumantrak Mukherjee",
+          "Ali Arshad Sadal",
+          "Ilias Ekşi",
+          "Rahul Sharma",
+          "Julia Mueller",
+          "Theresa Dombrowski",
+          "Jakob Karolus"
+        ],
+        "url": "https://arxiv.org/abs/2609.37800v1",
+        "pdf_url": "https://arxiv.org/pdf/2609.37800",
+        "html_url": "https://arxiv.org/abs/2609.37800",
+        "published_at": "2026-09-29T15:23:06.000Z",
+        "upvotes": 0,
+        "heat": 2138.2934458333334,
+        "featured": false,
+        "categories": [
+          "rl",
+          "sim"
+        ],
+        "image": "",
+        "comment": "11 pages, 3 figures, preprint",
+        "relevance": 1,
+        "first_seen": "2026-09-30T13:07:54.367Z",
+        "rm": {
+          "usage": "这是跨用户冷启动的推荐 bandit 工作，与 RoboMaster 感知/导航/决策环节基本无关。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2609.37793",
+        "arxiv_id": "2609.37793",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "MVG-WAM: Multiple View Geometry-Aware World-Action Modeling for Robotic Manipulation",
+        "title_zh": "",
+        "abstract_en": "World-Action Models (WAMs) couple visual dynamics with action prediction, bringing the rich priors of pretrained video models to robotic manipulation. However, their multi-view interfaces typically tile images or concatenate tokens, leaving the geometric relationships among synchronized cameras implicit. This makes it harder to connect global scene context with the local geometry required for interaction. We introduce the Multi-View Geometry-Aware World-Action Model (MVG-WAM), which organizes these observations as related projections of one physical world rather than separate images on a canvas. Our model combines an epipolar-constrained global state with view-indexed geometric states jointly inferred from synchronized observations. Camera-aware routing supplies each video region with its corresponding geometric context and the shared global state, explicitly structuring the representation used for action prediction. We further ground the geometry-aware representation in metric scale through multi-horizon future-depth supervision, without requiring depth decoding during action rollout. MVG-WAM achieves average success rates of 99.1% on LIBERO and 92.07% on RoboTwin 2.0, demonstrating competitive performance across both benchmarks. Real-world experiments on Cobot Magic further demonstrate a 91.3% success rate across 150 trials spanning three manipulation tasks.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Wenbo Chen",
+          "Tianfu Li",
+          "Haoxuan Xu",
+          "Zhihao Cao",
+          "Zhenghan Chen",
+          "Zhengming Zhu",
+          "Zizhou Luo",
+          "Guosheng Yang"
+        ],
+        "url": "https://arxiv.org/abs/2609.37793v1",
+        "pdf_url": "https://arxiv.org/pdf/2609.37793",
+        "html_url": "https://arxiv.org/abs/2609.37793",
+        "published_at": "2026-09-29T15:20:59.000Z",
+        "upvotes": 0,
+        "heat": 2138.2581755555557,
+        "featured": false,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "Project page: https://bobc-123.github.io/MVG-WAM/",
+        "relevance": 3,
+        "first_seen": "2026-09-30T13:07:54.367Z",
+        "rm": {
+          "usage": "把多相机观测当作同一物理世界的几何相关投影来做世界-动作建模，其多视图几何融合思路可借鉴到雷达的多相机多目标定位与标记，但原方法面向机械臂操作，需较大改造。",
+          "task_id": "radar",
+          "task": "雷达全场感知与标记",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2609.37783",
+        "arxiv_id": "2609.37783",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.AI"
+        ],
+        "title_en": "A Benchmark & Dataset for Detecting AI-Manipulated Visual Evidence in the Court System",
+        "title_zh": "",
+        "abstract_en": "Photographic evidence is becoming increasingly vulnerable to forms of alteration and fabrication that existing legal and technical workflows are not well equipped to evaluate. Surveillance frames, dashcam stills, and phone photographs may be used to establish presence, sequence, causation, damage, or identity, yet contemporary generative systems allow non-experts to alter or fabricate such images through ordinary prompt-based interfaces. Existing image-forensics benchmarks provide important resources for face manipulation, classical tampering, and general synthetic-image detection, but they are not organized around the forms of visual evidence submitted in courts, the localized edits that can change what an exhibit appears to prove, or the consumer-tool threat model now facing the justice system. We introduce the CIFAR Synthetic Evidence Corpus for Detecting AI-Manipulated Images, a benchmark for evidentiary image authentication in court and justice-system contexts. The corpus contains 1,505 photographic items, including 720 authentic controls and 785 manipulated or fabricated images, spanning surveillance, dashcam, and consumer-photo imagery. Manipulations are organized into scene-condition edits, localized element edits, and full fabrications produced with contemporary generative systems. Each item is released with structured metadata covering source provenance, manipulation tier, subtype, generator, prompt template, and scene attributes, enabling controlled evaluation beyond aggregate binary detection. We also establish baselines with publicly available image-manipulation detectors, showing that current systems exhibit error profiles that remain problematic for evidentiary use. The dataset, prompts, metadata, code, and baseline evaluation scripts are released to support research on visual evidence authentication, information integrity, and trustworthy AI for the justice system.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Kelly McConvey",
+          "Sajad Ebrahimi",
+          "Nima Jamali",
+          "Jalehsadat Mahdavimoghaddam",
+          "Matina Mahdizadeh Sani",
+          "Maksym Taranukhin",
+          "Wentao Zhang",
+          "Jacquelyn Burkell"
+        ],
+        "url": "https://arxiv.org/abs/2609.37783v1",
+        "pdf_url": "https://arxiv.org/pdf/2609.37783",
+        "html_url": "https://arxiv.org/abs/2609.37783",
+        "published_at": "2026-09-29T15:17:16.000Z",
+        "upvotes": 0,
+        "heat": 2138.1962247222223,
+        "featured": false,
+        "categories": [
+          "rl"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 3,
+        "first_seen": "2026-09-30T13:07:54.367Z",
+        "rm": {
+          "usage": "面向法庭图像篡改取证检测，与 RoboMaster 的自瞄、导航、决策等任务无直接关系。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2609.37776",
+        "arxiv_id": "2609.37776",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Geometry-Preserving Human-to-Robot Upper-Body Motion Retargeting from Monocular Video",
+        "title_zh": "",
+        "abstract_en": "Monocular RGB video provides an accessible source of human demonstrations for upper-body robot motion, yet video-driven human-to-robot transfer remains challenging because body and hand motion are recovered at different spatial scales, human and robot kinematics differ substantially, and fine distal motion is difficult to preserve across embodiments. We present a geometry-preserving motion-retargeting framework that integrates unified body--hand reconstruction with morphology-independent geometric transfer. Frame-wise body estimates, video-level observations, and detailed hand evidence jointly constrain a single differentiable Momentum Human Rig (MHR) state, while transient hand artifacts are repaired in parameter space. The reconstructed motion is represented by arm-segment directions, elbow configuration, relative palm orientation, and bilateral wrist relations, and is realized on the target robot through multi-stage inverse kinematics and robot-specific hand adaptation. Within the broader system, Across-VAM provides video generation, whereas Across-WAM performs human-to-robot motion mapping. The method is evaluated on 16 monocular videos comprising 1,769 source frames, including 10 signing and six reach-to-grasp sequences. Unified reconstruction reduces mean hand reprojection error from 22.36 to 7.21 pixels relative to SAM 3D Body. All 16 retargeted trajectories completed kinematic simulation playback, and representative signing and reach-to-grasp motions were further demonstrated on a physical robot. The results demonstrate a unified pipeline from monocular human video to coordinated upper-body motion on a dual-arm dexterous robot.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Xiaoyu Yang",
+          "Sen Han",
+          "Da Li",
+          "Nan Wu"
+        ],
+        "url": "https://arxiv.org/abs/2609.37776v1",
+        "pdf_url": "https://arxiv.org/pdf/2609.37776",
+        "html_url": "https://arxiv.org/abs/2609.37776",
+        "published_at": "2026-09-29T15:14:20.000Z",
+        "upvotes": 0,
+        "heat": 2138.147342222222,
+        "featured": false,
+        "categories": [
+          "slam",
+          "radar",
+          "sim"
+        ],
+        "image": "",
+        "comment": "9 pages, 4 figures, 3 tables",
+        "relevance": 1,
+        "first_seen": "2026-09-30T13:07:54.367Z",
+        "rm": {
+          "usage": "从单目视频做人体到机器人上身动作重定向，可用于采集人类操作示范并映射到工程机械臂做抓取/装配演示；但赛事更常用直接示教或仿真采数据，收益有限。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2609.37772",
+        "arxiv_id": "2609.37772",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Urgent Actions Go First: Urgency-Aware Denoising for Real-Time VLA Control",
+        "title_zh": "",
+        "abstract_en": "Diffusion and flow-matching Vision-Language-Action (VLA) policies generate action chunks through iterative denoising, incurring substantial inference latency that severely limits real-time robotic control. Existing acceleration methods treat an action chunk as a monolithic computational unit, ignoring a crucial physical reality of receding-horizon control: actions are generated jointly but consumed sequentially, resulting in inherently heterogeneous execution urgencies. We exploit this asymmetry to introduce Urgency-Aware Denoising (UAD), a novel inference-time framework that allocates denoising computation according to when each action is physically needed. UAD releases time-critical urgent actions after fewer denoising steps while overlapping the continued background refinement of tail actions with physical execution. However, heterogeneous denoising introduces two key challenges: early-release errors in urgent actions and trajectory inconsistency in tail actions. UAD elegantly resolves both through two core mechanisms: Trajectory Reconciliation, which reconstructs unified internal state evolution to restore joint denoising coherence without additional model evaluations, and Ghost Action Correction, which leverages non-executed ghost continuations to dynamically compensate for early-release errors across remaining executable actions. Extensive evaluations across multiple VLA architectures, simulation benchmarks, and real-world manipulation tasks demonstrate that UAD achieves up to a 1.89x speedup in average action availability latency while maintaining comparable success rates to vanilla inference with optimal denoising budget, offering a more favorable success-latency trade-off than state-of-the-art VLA acceleration baselines.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Zibo Wang",
+          "Haochen Han",
+          "Pengzhen Ren",
+          "Mingtong Dai",
+          "Fangming Liu"
+        ],
+        "url": "https://arxiv.org/abs/2609.37772v1",
+        "pdf_url": "https://arxiv.org/pdf/2609.37772",
+        "html_url": "https://arxiv.org/abs/2609.37772",
+        "published_at": "2026-09-29T15:13:14.000Z",
+        "upvotes": 0,
+        "heat": 2138.129008888889,
+        "featured": false,
+        "categories": [
+          "aim",
+          "sim"
+        ],
+        "image": "",
+        "comment": "19 pages",
+        "relevance": 5,
+        "first_seen": "2026-09-30T13:07:54.367Z",
+        "rm": {
+          "usage": "按动作执行紧迫度在去噪过程中分配计算，降低 VLA 推理延迟，对哨兵自主交火、策略网络的实时推理有参考价值；但要落到赛事小模型与实车部署仍需适配。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
+          "value": "mid"
+        }
+      },
+      {
         "id": "cvf:CVPR2026:CME-CAD: Heterogeneous Collaborative Multi-Expert Reinforcem",
         "arxiv_id": "",
         "source": "CVPR",
@@ -3631,7 +3940,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 17.81,
+        "relevance": 12.81,
         "first_seen": "2026-09-30T00:10:55.084Z"
       },
       {
@@ -3680,7 +3989,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 27.68,
+        "relevance": 12.68,
         "first_seen": "2026-09-30T00:10:55.084Z"
       },
       {
@@ -3781,7 +4090,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 13.61,
+        "relevance": 8.61,
         "first_seen": "2026-09-30T00:10:55.084Z"
       },
       {
@@ -3836,7 +4145,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 17.57,
+        "relevance": 12.57,
         "first_seen": "2026-09-30T00:10:55.084Z"
       },
       {
@@ -4102,7 +4411,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 25.37,
+        "relevance": 20.37,
         "first_seen": "2026-09-30T00:10:55.084Z"
       },
       {
@@ -4148,7 +4457,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.33,
+        "relevance": 7.33,
         "first_seen": "2026-09-30T00:10:55.084Z"
       },
       {
@@ -4240,7 +4549,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.25,
+        "relevance": 7.25,
         "first_seen": "2026-09-30T00:10:55.084Z"
       },
       {
@@ -4653,7 +4962,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 11.97,
+        "relevance": 21.97,
         "first_seen": "2026-09-30T00:10:55.084Z"
       },
       {
@@ -4704,7 +5013,7 @@
           "aim",
           "radar"
         ],
-        "relevance": 12.95,
+        "relevance": 7.95,
         "first_seen": "2026-09-30T00:10:55.084Z"
       },
       {
@@ -4867,7 +5176,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 11.88,
+        "relevance": 16.88,
         "first_seen": "2026-09-30T00:10:55.084Z"
       }
     ]
