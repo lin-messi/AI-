@@ -1,6 +1,6 @@
 {
   "date": "2026-10-02",
-  "generatedAt": "2026-10-02T06:20:40.606Z",
+  "generatedAt": "2026-10-02T13:18:41.060Z",
   "categories": [
     {
       "key": "aim",
@@ -1730,6 +1730,51 @@
           "task_id": "sim",
           "task": "仿真与 sim-to-real",
           "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2609.36602",
+        "arxiv_id": "2609.36602",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "OTRetarget: Joint Robot and Object Motion Retargeting via Optimal Transport",
+        "title_zh": "OTRetarget：通过最优传输的机器人-物体联合运动重定向",
+        "abstract_en": "Transferring human motion to humanoid robots requires adapting the demonstrated motion to the robot morphology while preserving interactions with the environment. This is particularly challenging for loco-manipulation tasks, where contacts with the ground and manipulated objects must remain consistent despite differences in body proportions. Yet, skeletal motion alone does not fully describe these interactions, and fixing object trajectories limits the adaptation to a new embodiment. In this paper, we introduce OTR ETARGET, a unified approach to jointly retarget robot and multi-object motion from human demonstrations. Our approach represents surface interactions through signed distances, closest surface points, and relative directions, and uses entropic optimal transport to transfer these quantities across human, robot, and object geometries. We incorporate the resulting interaction targets into a constrained inverse kinematics formulation that balances contact preservation with motion style and jointly optimizes robot and object poses at each frame. This formulation accommodates robot-object and object-object interactions without rescaling the scene or the demonstration. We validate the proposed approach on OMOMO, where it achieves a robot- object interaction Jaccard score of 87% and a depth error of 8.7 mm, compared with 28% and 29.3 mm for OmniRetarget. Finally, we demonstrate transfer to a physical G1 humanoid using whole-body policies trained with reinforcement learning on the retargeted references, across motions including two-handed box pick-and-place onto a table.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Guillaume Besset",
+          "Erwann Carn",
+          "Timothée Carecchio",
+          "Valentin Tordjman-Levavasseur",
+          "Fabian Schramm",
+          "Yann de Mont-Marin",
+          "Justin Carpentier",
+          "Ajay Suresha Sathya"
+        ],
+        "url": "https://arxiv.org/abs/2609.36602v1",
+        "pdf_url": "https://arxiv.org/pdf/2609.36602",
+        "html_url": "https://arxiv.org/abs/2609.36602",
+        "published_at": "2026-09-29T03:18:14.000Z",
+        "upvotes": 2,
+        "heat": 2178.031357222222,
+        "featured": false,
+        "categories": [
+          "rl",
+          "radar"
+        ],
+        "image": "",
+        "comment": "9 pages",
+        "relevance": 4,
+        "first_seen": "2026-10-02T13:18:38.873Z",
+        "rm": {
+          "usage": "该工作面向人形机器人的人-机-物联合运动重定向，与 RoboMaster 的轮式底盘、云台、机械臂装配等形态差异很大；若仅作强化学习/仿真中动作重定向的参考思路，也需大量改造，基本用不上。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
         }
       },
       {
@@ -4521,45 +4566,6 @@
           "task": "",
           "value": "low"
         }
-      },
-      {
-        "id": "cvf:CVPR2026:Prompt-Anchored Vision-Text Distillation for Lifelong Person",
-        "arxiv_id": "",
-        "source": "CVPR",
-        "cats": [],
-        "title_en": "Prompt-Anchored Vision-Text Distillation for Lifelong Person Re-identification",
-        "title_zh": "",
-        "abstract_en": "Lifelong person re-identification (LReID) aims to train a generalizable model with sequentially collected data. However, such models often suffer from semantic drift, limited adaptability, and catastrophic forgetting as new domains emerge. Existing exemplar-free approaches largely rely on visual-only distillation or parameter regularization, while overlooking the potential of auxiliary modalities, such as text, to preserve semantic stability and enable incremental plasticity. We observe that the frozen text encoder in pretrained vision-language models can serve as a stable semantic anchor across domains. To decouple the roles of vision and text, we propose Prompt-Anchored vision-text Distillation (PAD), an asymmetric vision-text framework for semantic alignment and cross-domain generalization. On the textual side, we distill prompts to preserve vision-text alignment under a fixed semantic space, acting as a global semantic reference rather than a dominant learning signal. On the visual side, an EMA-based teacher with an adaptive prompt pool enables domain-wise adaptation by allocating new slots while freezing past ones. Extensive experiments show that PAD substantially outperforms state-of-the-art methods across seen and unseen domains, achieving a strong balance between stability and plasticity. Project page: https://github.com/zu-zi/PAD.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [],
-        "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Wen_Prompt-Anchored_Vision-Text_Distillation_for_Lifelong_Person_Re-identification_CVPR_2026_paper.html",
-        "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Wen_Prompt-Anchored_Vision-Text_Distillation_for_Lifelong_Person_Re-identification_CVPR_2026_paper.pdf",
-        "html_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Wen_Prompt-Anchored_Vision-Text_Distillation_for_Lifelong_Person_Re-identification_CVPR_2026_paper.html",
-        "published_at": "2026-06-01T00:00:00.000Z",
-        "upvotes": 0,
-        "heat": 120,
-        "featured": false,
-        "categories": [
-          "aim",
-          "radar"
-        ],
-        "image": "",
-        "comment": "Accepted to CVPR 2026",
-        "conf": "CVPR",
-        "confYear": 2026,
-        "confTag": "CVPR 2026",
-        "confWeight": 6,
-        "confVision": true,
-        "relevance": 8,
-        "first_seen": "2026-10-01T21:32:13.202Z",
-        "rm": {
-          "usage": "雷达全场感知需跨多相机长时间跟踪并保持敌方机器人ID一致性，可借鉴其终身重识别与语义锚定思路，缓解新地图/新外观导致的目标身份漂移与遗忘。",
-          "task_id": "radar",
-          "task": "雷达全场感知与标记",
-          "value": "mid"
-        }
       }
     ]
   },
@@ -4615,7 +4621,7 @@
         "categories": [
           "other"
         ],
-        "relevance": 7.91,
+        "relevance": 7.92,
         "first_seen": "2026-10-01T21:32:13.202Z"
       },
       {
@@ -4689,7 +4695,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 17.68,
+        "relevance": 22.68,
         "first_seen": "2026-10-01T21:32:13.202Z"
       },
       {
@@ -4744,7 +4750,7 @@
           "radar",
           "sim"
         ],
-        "relevance": 19.64,
+        "relevance": 18.64,
         "first_seen": "2026-10-01T21:32:13.202Z"
       },
       {
@@ -4790,7 +4796,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 8.61,
+        "relevance": 13.61,
         "first_seen": "2026-10-01T21:32:13.202Z"
       },
       {
@@ -5111,7 +5117,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 20.37,
+        "relevance": 25.37,
         "first_seen": "2026-10-01T21:32:13.202Z"
       },
       {
@@ -5203,7 +5209,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.32,
+        "relevance": 22.32,
         "first_seen": "2026-10-01T21:32:13.202Z"
       },
       {
@@ -5226,7 +5232,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 9.26,
+        "relevance": 9.27,
         "first_seen": "2026-10-01T21:32:13.202Z"
       },
       {
@@ -5249,7 +5255,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.25,
+        "relevance": 12.25,
         "first_seen": "2026-10-01T21:32:13.202Z"
       },
       {
@@ -5711,7 +5717,7 @@
           "aim",
           "radar"
         ],
-        "relevance": 12.95,
+        "relevance": 7.95,
         "first_seen": "2026-10-01T21:32:13.202Z"
       },
       {
@@ -5766,7 +5772,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 27.92,
+        "relevance": 32.92,
         "first_seen": "2026-10-01T21:32:13.202Z"
       },
       {
@@ -5874,7 +5880,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 16.88,
+        "relevance": 21.88,
         "first_seen": "2026-10-01T21:32:13.202Z"
       }
     ]
