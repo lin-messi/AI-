@@ -1,6 +1,6 @@
 {
   "date": "2026-10-03",
-  "generatedAt": "2026-10-03T00:12:21.710Z",
+  "generatedAt": "2026-10-03T05:52:15.935Z",
   "categories": [
     {
       "key": "aim",
@@ -181,6 +181,51 @@
           "task_id": "engineer",
           "task": "工程视觉装配（能量单元）",
           "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2610.01092",
+        "arxiv_id": "2610.01092",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Ego2Act: Evaluating Goal-Directed Manipulation in Egocentric Video Generation",
+        "title_zh": "Ego2Act：评估第一人称视频生成中的目标导向操作",
+        "abstract_en": "Video generation models are increasingly being explored as world simulators for embodied planning and learning. To do so effectively, these models must not only generate visually appealing frames, but also predict how environments dynamically evolve when executing goal-directed actions. While evaluating these capabilities is crucial, existing benchmarks focus mainly on single short actions or step-by-step instructions. This leaves multi-step physical reasoning underexplored, especially in egocentric video generation that requires planning to simulate proper execution to accomplish high-level goals by carrying out multiple real-world manipulations. We introduce Ego2Act, a goal-directed benchmark featuring 2,640 videos from 110 real-world tasks across day-to-day settings, varying object clutter and multi-step complexity. Given an initial scene image and a high-level goal, Ego2Act evaluates whether video generation models can produce realistic egocentric videos of a hand manipulating objects to carry out the task. To support scalable evaluation, we also introduce Ego2ActJudge, a reference-free evaluation pipeline that achieves better task completion and physics plausibility evaluation alignment with human consensus compared to relevant baselines. Our findings reveal that models' generated simulations often skip or partially execute steps, leaving later steps missing dependent states, which leads to unfulfilled goal. Furthermore, models consistently fail at fine-grained physical dynamics, particularly during complex object manipulation and persistent world modeling. We hope Ego2Act provides a rigorous testbed for advancing video models toward physically plausible, goal-directed simulation.",
+        "abstract_zh": "视频生成模型正日益被探索用作具身规划与学习的世界模拟器。要胜任这一角色，模型不仅要生成视觉上好看的画面，还要预测执行目标导向动作时环境如何动态演变。评估这些能力至关重要，但现有基准多聚焦单个短动作或逐步指令，使多步物理推理——尤其是需要在第一人称视频生成中规划并模拟多步真实操作以完成高阶目标的能力——仍未得到充分探索。我们提出 Ego2Act，一个目标导向基准，包含来自 110 个真实世界任务的 2,640 段视频，覆盖日常场景，并变化物体杂乱程度与多步复杂度。给定初始场景图像与高层目标，Ego2Act 评估视频生成模型能否生成“手操作物体完成任务”的逼真第一人称视频。为支持可扩展评估，我们还提出 Ego2ActJudge，一种无参考评估流程，在任务完成度与物理合理性两方面与人类共识的对齐优于相关基线。结果显示，模型生成的模拟常跳过或只部分执行步骤，使后续步骤缺失依赖状态，最终无法达成目标；模型在细粒度物理动态上持续失败，尤其是在复杂物体操作与持续世界建模方面。",
+        "highlight_zh": "Ego2Act 基准揭示视频模型多步操作与物理动态缺陷",
+        "digest_zh": "1) 研究了什么问题：人们希望视频生成模型能当“世界模拟器”，帮机器人预演怎么做一件事。但现有多数评测只看单个短动作或按部就班的指令，没检验真正的难点：给一张初始场景图和一句高层目标（比如“收拾好桌上的餐具”），模型能否自己规划出多步操作，并生成物理上说得通的第一人称视频？\n2) 用了什么方法：作者构建 Ego2Act 基准，收录 110 个真实世界任务、共 2,640 段视频，覆盖日常场景，并通过改变物体杂乱程度和步骤数来调节难度。评测时输入初始图像与高层目标，看模型生成的第一人称手部操作视频是否真的完成任务。为便于大规模打分，还设计了 Ego2ActJudge：一种不需要参考视频的自动评估流程，在判断任务完成度和物理合理性上比同类基线更贴近人类共识。\n3) 有什么结果：模型普遍表现不佳。典型失败是“跳步”或“半途而废”——漏掉某些步骤后，后续动作缺少应有的前置状态，导致最终目标根本完不成；此外模型在细粒度物理动态上屡屡出错，尤其是复杂物体操作（如抓握、形变）和长时间维持场景一致性时。\n4) 为何重要：它把视频生成评测从“画面好不好看”推进到“动作对不对、物理真不真”，为衡量视频模型作为世界模拟器的能力提供了严格测试平台，也明确了当前模型距离可用的具身规划器还有多远。",
+        "authors": [
+          "Patrick Amadeus Irawan",
+          "Iskandar Muda Rizky Parlambang",
+          "Rava Maulana",
+          "Qinrong Cui",
+          "Erland Hilman Fuadi",
+          "Zayd M. K. Zuhri",
+          "Nanda Ryaas Absar",
+          "Ahmed Elshabrawy"
+        ],
+        "url": "https://arxiv.org/abs/2610.01092v1",
+        "pdf_url": "https://arxiv.org/pdf/2610.01092",
+        "html_url": "https://arxiv.org/abs/2610.01092",
+        "published_at": "2026-10-01T05:35:29.000Z",
+        "upvotes": 6,
+        "heat": 2411.7603108333333,
+        "featured": true,
+        "categories": [
+          "rl",
+          "sim"
+        ],
+        "image": "",
+        "comment": "Preprint. 51 pages, 19 figures, 23 tables. Code, dataset and project website linked in the paper",
+        "relevance": 1,
+        "first_seen": "2026-10-03T05:52:12.208Z",
+        "rm": {
+          "usage": "可作为仿真/数字孪生中生成式世界模型可行性的参考：用其基准评估模型能否正确模拟工程机器人多步抓取与装配的物理过程，但该工作只做第一人称视频生成评测，未给出可直接用于实车感知、位姿估计或控制的算法，关联较弱。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "low"
         }
       },
       {
@@ -4456,48 +4501,6 @@
           "task": "多机协同与策略学习",
           "value": "mid"
         }
-      },
-      {
-        "id": "arxiv:2610.00487",
-        "arxiv_id": "2610.00487",
-        "source": "arXiv",
-        "cats": [
-          "cs.RO",
-          "cs.LG"
-        ],
-        "title_en": "ScaffoldM3C: A Multimodal Sequential Monte Carlo Framework for Generative Stable Construction Planning",
-        "title_zh": "",
-        "abstract_en": "Autonomously constructing physically realizable 3D structures remains a significant challenge due to combinatorial action spaces, interchangeable components, equifinal assembly sequences, and strict stability requirements during construction. State-of-the-art methods fine-tune large language models for text-based generative construction. However, these approaches do not allow for Multimodal (text, image, sketch) conditioning, overlook the practical role of scaffolding for stabilizing intermediate structures, and suffer from slow inference speeds. Therefore, we formulate construction as a probabilistic next-block generation task with multiple potential assembly actions and multiple potential task conditioning modalities. Concurrently, we explicitly consider the utility of scaffolding by introducing an auxiliary scaffold block token. We present Scaffold Multimodal Monte Carlo (ScaffoldM3C), a multimodal, lightweight, auto-regressive model for stable block-based construction, that proposes a set of next-step candidate blocks. Leveraging these candidates, we utilize Sequential Monte Carlo (SMC) to maintain a population of possible assembly sequences, allowing us to consider multiple, potentially different, assembly directions simultaneously. We train our multimodal architecture by extending the StableText2Brick dataset to contain image conditioning prompts and scaffold-stabilized build sequences. ScaffoldM3C is 4x smaller than competing baselines, yielding a 5x to 20x speedup during inference, while achieving comparable construction quality to state-of-the-art methods and higher overall stability. We demonstrate the effectiveness of our approach through simulations and real-world robot assembly demonstrations.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Gadiel Sznaier Camps",
-          "Chengyang He",
-          "Guillaume Sartoretti",
-          "Eduardo Montijano",
-          "Mac Schwager"
-        ],
-        "url": "https://arxiv.org/abs/2610.00487v1",
-        "pdf_url": "https://arxiv.org/pdf/2610.00487",
-        "html_url": "https://arxiv.org/abs/2610.00487",
-        "published_at": "2026-09-30T18:00:17.000Z",
-        "upvotes": 0,
-        "heat": 2105.844167777778,
-        "featured": false,
-        "categories": [
-          "sim"
-        ],
-        "image": "",
-        "comment": "This work has been submitted to IEEE Transactions on Robotics and Learning (T-RL) and is currently under review. Project Page: https://stanfordmsl.github.io/ScaffoldM3C/",
-        "relevance": 2,
-        "first_seen": "2026-10-03T00:11:47.083Z",
-        "rm": {
-          "usage": "生成式稳定结构建造规划（含脚手架与稳定性约束），与工程机器人装配能量单元的单件精细装配差异较大，仅稳定性/序列规划思路略有参考。",
-          "task_id": "engineer",
-          "task": "工程视觉装配（能量单元）",
-          "value": "low"
-        }
       }
     ]
   },
@@ -4783,7 +4786,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 17.57,
+        "relevance": 12.57,
         "first_seen": "2026-10-02T19:42:30.471Z"
       },
       {
@@ -4806,7 +4809,7 @@
         "categories": [
           "other"
         ],
-        "relevance": 8.54,
+        "relevance": 8.55,
         "first_seen": "2026-10-02T19:42:30.471Z"
       },
       {
@@ -4942,7 +4945,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.45,
+        "relevance": 7.45,
         "first_seen": "2026-10-02T19:42:30.471Z"
       },
       {
@@ -5072,7 +5075,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.34,
+        "relevance": 7.34,
         "first_seen": "2026-10-02T19:42:30.471Z"
       },
       {
@@ -5095,7 +5098,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.33,
+        "relevance": 7.33,
         "first_seen": "2026-10-02T19:42:30.471Z"
       },
       {
@@ -5187,7 +5190,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.25,
+        "relevance": 17.25,
         "first_seen": "2026-10-02T19:42:30.471Z"
       },
       {
@@ -5303,7 +5306,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 22.14,
+        "relevance": 17.14,
         "first_seen": "2026-10-02T19:42:30.471Z"
       },
       {
@@ -5595,7 +5598,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 26.98,
+        "relevance": 21.98,
         "first_seen": "2026-10-02T19:42:30.471Z"
       },
       {
@@ -5625,7 +5628,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 11.97,
+        "relevance": 21.97,
         "first_seen": "2026-10-02T19:42:30.471Z"
       },
       {
@@ -5704,7 +5707,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 27.92,
+        "relevance": 22.92,
         "first_seen": "2026-10-02T19:42:30.471Z"
       },
       {
@@ -5812,7 +5815,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 21.88,
+        "relevance": 16.88,
         "first_seen": "2026-10-02T19:42:30.471Z"
       }
     ]
