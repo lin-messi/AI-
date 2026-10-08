@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "generatedAt": "2026-10-08T06:47:26.834Z",
+  "generatedAt": "2026-10-08T14:09:28.278Z",
   "categories": [
     {
       "key": "aim",
@@ -3316,6 +3316,44 @@
         }
       },
       {
+        "id": "arxiv:2610.10213",
+        "arxiv_id": "2610.10213",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG"
+        ],
+        "title_en": "Edge Accuracy Is Not Enough: Why Dynamics-Learned Structure Fails to Transfer to Inverse Problems",
+        "title_zh": "",
+        "abstract_en": "A natural strategy for inverse problems with scarce labelled data is to transfer relational structure learned from abundant forward-simulation data. We show this strategy fails systematically, even when it satisfies the standard theoretical justification for why structure should help. We prove that approximate structure provides estimation-error benefits whenever the edge error satisfies $Δ< n^2 - kn$, reducing sample complexity from $O(n^2)$ to $O(kn+Δ)$. Structure learned via Neural Relational Inference (NRI) from dynamics prediction satisfies this condition, yet on a source-localisation task across 180 CFD-simulated hydrogen-leak scenarios and 180 acoustic scenarios, it degrades performance by 116% and 201% relative to a flexible, task-optimised attention baseline, while a physics-based prior (Green's function) degrades by only 69-72%. Four independent lines of evidence show this is not a tuning failure: NRI improves only 0.5% when given 18x more training data (versus 16.6% for the task-optimised baseline, $p<0.001$); performance is insensitive to the NRI edge threshold across a wide range; the dynamics-learned graph overlaps the task-optimal graph on only 6% of edges; and two further dynamics-derived structure estimators (correlation- and mutual-information-based) show no measurable benefit over a structure-free baseline, with the correlation-based estimator performing markedly worse. We formalise this gap as a statement about approximation error that the edge-accuracy condition cannot control, and we provide a lightweight transferability test (Jaccard similarity against a partially-observed target-task graph) that separates successful from failed transfer in all four domain/structure pairs we evaluate, using under an hour of computation and 15-20% of target-domain data; we present this as a heuristic calibrated on few cases, not a validated general threshold.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Nicholas Tan Jerome",
+          "Fangnian Wang"
+        ],
+        "url": "https://arxiv.org/abs/2610.10213v1",
+        "pdf_url": "https://arxiv.org/pdf/2610.10213",
+        "html_url": "https://arxiv.org/abs/2610.10213",
+        "published_at": "2026-10-07T15:10:31.000Z",
+        "upvotes": 0,
+        "heat": 2137.057595,
+        "featured": false,
+        "categories": [
+          "sim"
+        ],
+        "image": "",
+        "comment": "13 pages, 8 tables. Code: https://github.com/nicolaisi/edge-accuracy-is-not-enough",
+        "relevance": 1,
+        "first_seen": "2026-10-08T14:09:25.623Z",
+        "rm": {
+          "usage": "该文是图/关系结构学习从仿真迁移到逆问题会系统性失败的理论分析，与哨兵/策略的仿真到实车迁移只有非常间接的类比价值；可提醒 sim-to-real 时不要盲目迁移仿真中学习到的结构（如交互图、多机协同关系图），但缺少可直接落地的算法或实验结论，实际帮助很有限。",
+          "task_id": "sim",
+          "task": "仿真与 sim-to-real",
+          "value": "low"
+        }
+      },
+      {
         "id": "arxiv:2610.03616",
         "arxiv_id": "2610.03616",
         "source": "arXiv",
@@ -4433,49 +4471,6 @@
           "task": "",
           "value": "low"
         }
-      },
-      {
-        "id": "arxiv:2610.08444",
-        "arxiv_id": "2610.08444",
-        "source": "arXiv",
-        "cats": [
-          "cs.RO",
-          "cs.AR"
-        ],
-        "title_en": "ActTune: Action-Aware Precision and GPU Operating-Point Adaptation for Energy-Efficient Vision-Language-Action Inference",
-        "title_zh": "",
-        "abstract_en": "Vision-language-action (VLA) policies repeatedly invoke inference to control robots, making graphics processing unit (GPU) energy a recurring cost of task execution. Reducing energy per inference call, however, may not reduce energy per successful task if numerical errors increase failures or slower inference prolongs execution. We therefore target GPU energy per successful task while preserving task success and keeping the inference-latency increase within 10\\%. Our approach builds on two observations: quantization sensitivity varies across action classes, model layers, and weights versus activations; and numerical precision changes the workload, shifting favorable GPU operating points. We introduce ActTune, an action-aware framework that connects layer-wise precision allocation with workload-dependent GPU operating-point selection over requested frequency--power-cap pairs. A lightweight decision tree learns its splits and leaf precision configurations directly from configuration action errors, then selects precision before each policy call. The controller forecasts the next workload and applies the selected GPU operating point asynchronously using a lookup table calibrated under a latency budget. A shared resident quantized weight bank enables configuration switching without weight reconstruction or additional policy evaluations. On LIBERO, a benchmark for lifelong robot learning, ActTune improves mean task success by up to 2.3\\% relative to state of the art. Relative to the original BF16 implementations, it delivers up to $2.02\\times$ faster inference and, with GPU operating-point adaptation, reduces energy per successful task by up to 76.8\\%.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Zou Qingyun",
-          "Bin Gao",
-          "Wenju Zhao",
-          "Weng-Fai Wong",
-          "Bingsheng He",
-          "Tulika Mitra"
-        ],
-        "url": "https://arxiv.org/abs/2610.08444v1",
-        "pdf_url": "https://arxiv.org/pdf/2610.08444",
-        "html_url": "https://arxiv.org/abs/2610.08444",
-        "published_at": "2026-10-06T14:35:22.000Z",
-        "upvotes": 0,
-        "heat": 2130.3468666666668,
-        "featured": false,
-        "categories": [
-          "aim"
-        ],
-        "image": "",
-        "comment": "",
-        "relevance": 2,
-        "first_seen": "2026-10-07T20:16:46.070Z",
-        "rm": {
-          "usage": "面向VLA的按动作类别量化与能耗-成功率的权衡思路，可迁移到哨兵/自瞄网络在Jetson等边缘GPU上的量化部署，但RM不用VLA，仅供参考。",
-          "task_id": "sentry",
-          "task": "哨兵自主导航与决策",
-          "value": "low"
-        }
       }
     ]
   },
@@ -4531,7 +4526,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 7.92,
+        "relevance": 7.93,
         "first_seen": "2026-10-07T20:16:46.070Z"
       },
       {
@@ -4556,7 +4551,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 17.82,
+        "relevance": 12.82,
         "first_seen": "2026-10-07T20:16:46.070Z"
       },
       {
@@ -4605,7 +4600,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 27.68,
+        "relevance": 12.68,
         "first_seen": "2026-10-07T20:16:46.070Z"
       },
       {
@@ -4919,7 +4914,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.45,
+        "relevance": 12.45,
         "first_seen": "2026-10-07T20:16:46.070Z"
       },
       {
@@ -5072,7 +5067,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 14.34,
+        "relevance": 9.34,
         "first_seen": "2026-10-07T20:16:46.070Z"
       },
       {
@@ -5118,7 +5113,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 17.32,
+        "relevance": 12.32,
         "first_seen": "2026-10-07T20:16:46.070Z"
       },
       {
@@ -5603,7 +5598,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 21.97,
+        "relevance": 11.97,
         "first_seen": "2026-10-07T20:16:46.070Z"
       },
       {
@@ -5790,7 +5785,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 11.88,
+        "relevance": 16.88,
         "first_seen": "2026-10-07T20:16:46.070Z"
       }
     ]
