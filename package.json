@@ -17,7 +17,11 @@
     "rules:monitor": "node scripts/monitor-rm-rules.mjs",
     "ai:ping": "node scripts/ai-ping.mjs",
     "enrich": "node scripts/enrich.mjs",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:cloudflare": "node scripts/build-cloudflare.mjs",
+    "preview:cloudflare": "npm run build:cloudflare && wrangler dev",
+    "deploy:cloudflare": "npm run build:cloudflare && wrangler deploy",
+    "test:cloudflare": "node --test tests/cloudflare.test.mjs"
   },
   "dependencies": {
     "next": "^16.2.6",
@@ -27,6 +31,7 @@
     "rss-parser": "^3.13.0"
   },
   "devDependencies": {
-    "cross-env": "^10.1.0"
+    "cross-env": "^10.1.0",
+    "wrangler": "^4.149.0"
   }
 }

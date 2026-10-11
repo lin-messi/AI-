@@ -109,11 +109,11 @@ export async function translatePaperTitles(papers) {
 }
 
 // —— 按需翻译单篇（供运行时 API 调用）——
-export async function translateOnePaper({ title, abstract }) {
-  const { enabled } = getAIConfig();
+export async function translateOnePaper({ title, abstract }, options = {}) {
+  const { enabled } = getAIConfig(options.env);
   if (!enabled) throw new Error("未配置 AI_API_KEY");
   const json = await chatJSONWithRetry(
-    buildFullMessages([{ title_en: title, abstract_en: abstract }])
+    buildFullMessages([{ title_en: title, abstract_en: abstract }]), options
   );
   const r = (json.results || [])[0] || {};
   return {

@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ai-news-tracker",
+  "main": "worker/index.mjs",
+  "compatibility_date": "2026-10-11",
+  "assets": {
+    "directory": ".cloudflare-build/out",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"],
+    "html_handling": "force-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "observability": { "enabled": true }
+}
