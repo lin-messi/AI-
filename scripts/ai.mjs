@@ -13,13 +13,13 @@ try {
   /* 没有 .env 文件也没关系，可用系统环境变量 */
 }
 
-export function getAIConfig() {
-  const apiKey = process.env.AI_API_KEY || "";
-  const baseURL = (process.env.AI_BASE_URL || "https://api.deepseek.com").replace(
+export function getAIConfig(env = process.env) {
+  const apiKey = env.AI_API_KEY || "";
+  const baseURL = (env.AI_BASE_URL || "https://api.deepseek.com").replace(
     /\/$/,
     ""
   );
-  const model = process.env.AI_MODEL || "deepseek-v4-flash";
+  const model = env.AI_MODEL || "deepseek-v4-flash";
   return { apiKey, baseURL, model, enabled: Boolean(apiKey) };
 }
 
@@ -96,11 +96,12 @@ export async function chatAnthropicJSONWithRetry(messages, opts = {}, retries = 
 }
 
 // 调用对话接口，要求返回 JSON 对象
-export async function chatJSON(messages, { temperature = 0.2 } = {}) {
-  const { apiKey, baseURL, model } = getAIConfig();
+export async function chatJSON(messages, { temperature = 0.2, env, timeoutMs } = {}) {
+  const { apiKey, baseURL, model } = getAIConfig(env);
   if (!apiKey) throw new Error("缺少 AI_API_KEY");
 
   const res = await fetch(`${baseURL}/chat/completions`, {
+    ...(timeoutMs ? { signal: AbortSignal.timeout(timeoutMs) } : {}),
     method: "POST",
     headers: {
       "Content-Type": "application/json",

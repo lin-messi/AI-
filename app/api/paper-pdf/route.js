@@ -25,15 +25,26 @@ export async function GET(req) {
     return new Response("不允许的来源", { status: 403 });
   }
   try {
-    const upstream = await fetch(u.toString(), {
-      headers: { "User-Agent": "Mozilla/5.0 (compatible; AIPapersTracker/1.0)" },
-      redirect: "follow",
-    });
+    let upstream;
+    for (let redirects = 0; redirects <= 5; redirects++) {
+      upstream = await fetch(u.toString(), {
+        headers: { "User-Agent": "Mozilla/5.0 (compatible; AIPapersTracker/1.0)" },
+        redirect: "manual",
+        signal: AbortSignal.timeout(30000),
+      });
+      if (![301, 302, 303, 307, 308].includes(upstream.status)) break;
+      const location = upstream.headers.get("location");
+      await upstream.body?.cancel();
+      if (!location || redirects === 5) return new Response("重定向失败", { status: 502 });
+      u = new URL(location, u);
+      if (u.protocol !== "https:" || !ALLOW_HOSTS.includes(u.host)) {
+        return new Response("不允许的重定向来源", { status: 403 });
+      }
+    }
     if (!upstream.ok) {
       return new Response(`上游错误 ${upstream.status}`, { status: 502 });
     }
-    const buf = await upstream.arrayBuffer();
-    return new Response(buf, {
+    return new Response(upstream.body, {
       status: 200,
       headers: {
         "Content-Type": upstream.headers.get("content-type") || "application/pdf",
