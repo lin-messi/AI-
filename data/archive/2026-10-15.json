@@ -1,6 +1,6 @@
 {
   "date": "2026-10-15",
-  "generatedAt": "2026-10-15T04:56:01.385Z",
+  "generatedAt": "2026-10-15T05:13:19.259Z",
   "count": 100,
   "items": [
     {
@@ -1108,6 +1108,163 @@
       "lang": "en"
     },
     {
+      "id": "arxiv.org/abs/2610.15218",
+      "title_zh": "减少循环次数会消除循环深度语言模型的拒答行为",
+      "title_en": "Running Fewer Loops Removes Refusal Behaviour in Recurrent-Depth Language Models",
+      "summary_zh": "循环深度语言模型会连续多次复用同一组权重块，重复次数（即“循环数”）在模型运行时而非训练时决定，部署方可以选择跑更少的循环以降低成本、提升速度。一篇 arXiv 新研究（arXiv:2610.15218）发现，减少循环次数会让这类模型变得更不安全，而且安全性的损失幅度超过研究中测量的任何其他能力损失。作者考察了四个已发布的 Ouro 检查点以及 Huginn-0125：在训练深度的一半上运行，Ouro-1.4B-Thinking 仍能解出 GSM8K 数学题中的 0.692，但拒答行为随之消失。这提示为了省算力而调低的推理配置，可能悄悄移除了模型的安全护栏。",
+      "summary_en": "arXiv:2610.15218v1 Announce Type: new Abstract: A recurrent-depth language model reuses one block of weights several times in a row. The number of repetitions, which we call loops, is chosen when the model runs, not when it is trained, and running fewer is cheaper and faster, so a deployment may choose to do it. Running fewer loops also makes these models less safe, and the loss of safety is larger than the loss of anything else we measured. We study four released Ouro checkpoints and Huginn-0125. At half of its trained depth, Ouro-1.4B-Thinking still solves 0.692 of the GSM8K maths problems,…",
+      "why_zh": "循环数是部署时可调的参数，追求更低成本的推理配置可能在无人察觉的情况下削弱模型的安全拒答能力。",
+      "why_en": "Loop count is a deployment-time knob, so cost-cutting inference settings may silently strip away a model's safety refusals.",
+      "source": "arXiv cs.AI",
+      "url": "https://arxiv.org/abs/2610.15218",
+      "published_at": "2026-10-15T04:00:00.000Z",
+      "tags": [],
+      "importance": 5,
+      "image": "",
+      "category": "policy",
+      "lang": "en"
+    },
+    {
+      "id": "arxiv.org/abs/2610.18603",
+      "title_zh": "AgentStripes：面向 AI 智能体的证据分级成熟度模型",
+      "title_en": "AgentStripes: An Evidence-Graded Maturity Model for AI Agents",
+      "summary_zh": "现有基准只能说明 AI 智能体在某套任务上“能做什么”，却无法回答某个已发布版本是否配备了使其可靠、安全、可观测的工程控制，以及这些控制有多强的证据支撑。为此研究者提出 AgentStripes，一个证据分级的智能体成熟度模型：定义 0 到 7 个“条纹”等级、12 个过程域共 40 项能力，以及三道关卡（基础、安全、证明）——无论分数多高，只要未过关卡就会被卡在当前等级；每项适用能力还用 E0 到 E5 的证据等级标注其验证强度。",
+      "summary_en": "arXiv:2610.18603v1 Announce Type: new Abstract: Benchmarks report what an Artificial Intelligence (AI) agent can do on a task suite, but not whether one released version has been engineered with the controls that make it reliable, safe and observable, or how strongly that is shown. This paper proposes AgentStripes, an evidence-graded maturity model for AI agents. It defines levels (0 to 7 stripes), process areas (12 areas holding 40 capabilities), three gates (basic, safety, proof) that hold an agent at a level however high its score, and evidence grades E0 to E5. Each applicable capability re…",
+      "why_zh": "它把“能不能做”与“是否被工程化地做对并有证据支撑”区分开来，为智能体发布提供了可审计的成熟度标尺。",
+      "why_en": "It separates capability from engineered, evidenced reliability, giving agent releases an auditable maturity yardstick.",
+      "source": "arXiv cs.AI",
+      "url": "https://arxiv.org/abs/2610.18603",
+      "published_at": "2026-10-15T04:00:00.000Z",
+      "tags": [
+        "智能体"
+      ],
+      "importance": 5,
+      "image": "",
+      "category": "policy",
+      "lang": "en"
+    },
+    {
+      "id": "arxiv.org/abs/2610.16042",
+      "title_zh": "GPT 系大模型如何表征心理健康污名：AI 估计与人类感知在性别群体间的差距",
+      "title_en": "AI Representations of Mental Health Stigma: Quantifying the Gap Between AI Estimations and Human Perceptions Across Gender Groups Using GPT-Based LLMs",
+      "summary_zh": "随着 AI 在心理健康应用中的使用日益增加，人们担心它会内化并延续社会偏见。这项研究评估 GPT-4 与 GPT-5 在表征不同性别群体心理健康感知时存在的差异与错位，共包含两项研究。研究一采用被广泛使用的社会距离、刻板印象与求助态度量表，考察 AI 模型是否呈现出系统性的性别差异。（可见摘要未提供研究结论与第二项研究的具体设计。）",
+      "summary_en": "arXiv:2610.16042v1 Announce Type: cross Abstract: The increasing use of artificial intelligence (AI) in mental health applications raises concerns about its potential to internalize and perpetuate societal biases. This research evaluates both disparities and misalignment in how large language models (LLMs), GPT-4 and GPT-5, represent perceptions of mental health across gender groups. The research comprises two studies. Study 1 applied widely adopted measures of Social Distance, Stereotypes, and Attitudes Toward Seeking Help to assess whether the AI models depict systematic gender differences.…",
+      "why_zh": "如果心理健康类 AI 系统性地放大性别偏见，将直接影响其在高敏感场景中的公平性与可信度。",
+      "why_en": "If mental-health AI systematically amplifies gender bias, it undermines fairness and trust in highly sensitive applications.",
+      "source": "arXiv cs.AI",
+      "url": "https://arxiv.org/abs/2610.16042",
+      "published_at": "2026-10-15T04:00:00.000Z",
+      "tags": [
+        "OpenAI",
+        "大模型",
+        "融资"
+      ],
+      "importance": 5,
+      "image": "",
+      "category": "policy",
+      "lang": "en"
+    },
+    {
+      "id": "arxiv.org/abs/2610.18694",
+      "title_zh": "GeoReader：为视觉语言模型学习用于空间推理的隐式几何",
+      "title_en": "GeoReader: Learning Latent Geometry for Spatial Reasoning in Vision-Language Models",
+      "summary_zh": "视觉语言模型（VLM）难以处理 RGB 观测中隐而未显的度量关系与多视角关系。几何基础模型能够从 RGB 中恢复这类结构，但现有做法要么把估计出的几何特征与视觉 token 融合、仅靠问答任务学会如何使用它们，要么把 VLM 的隐表示与几何特征对齐。问题在于“捕获几何”不等于“使用几何”：在一个已发布的对齐模型上，把对齐后的隐表示置零，其准确率竟然毫无变化。为此作者提出 GeoReader 框架，让模型真正学会利用几何信息。",
+      "summary_en": "arXiv:2610.18694v1 Announce Type: cross Abstract: Vision-language models (VLMs) struggle with metric and multi-view relationships that remain implicit in RGB observations. Geometry foundation models recover this structure from RGB, but existing methods either fuse the estimated features with visual tokens and learn to use them from question answering alone, or align VLM latents with geometry features. Capturing geometry, however, does not ensure its use: zeroing the aligned latents of a released feature-alignment model leaves its accuracy unchanged. We introduce GeoReader, a framework that lea…",
+      "why_zh": "它点破了“对齐了却没在用”的隐表示假象，为 VLM 空间推理提供了更可靠的几何利用方式。",
+      "why_en": "It exposes the illusion of aligned-but-unused latents and offers a more faithful way to exploit geometry in VLM spatial reasoning.",
+      "source": "arXiv cs.AI",
+      "url": "https://arxiv.org/abs/2610.18694",
+      "published_at": "2026-10-15T04:00:00.000Z",
+      "tags": [
+        "大模型",
+        "多模态"
+      ],
+      "importance": 5,
+      "image": "",
+      "category": "policy",
+      "lang": "en"
+    },
+    {
+      "id": "arxiv.org/abs/2607.18360",
+      "title_zh": "HALLMARK：如何诊断 LLM 引文核查器，以及何时该部署它们",
+      "title_en": "HALLMARK: How to Diagnose LLM Citation Verifiers and When to Deploy Them",
+      "summary_zh": "GPTZero 发现 NeurIPS 2025 录用的 53 篇论文存在虚构引文，如今不少会议已用自动参考文献检查工具筛查投稿。基于规则与基于大模型的核查器不断涌现，但许多发布时缺少共同评测标准，且各自标记的错误类型不同，令人难以判断该信任哪一个、何时部署。为此作者提出 HALLMARK（幻觉基准）：包含 2,526 条 BibTeX 条目、覆盖 14 类幻觉，带有分类型与诊断性子测试标签，以及进一步的时间、跨领域等维度标注。",
+      "summary_en": "arXiv:2607.18360v2 Announce Type: replace-cross Abstract: GPTZero found 53 NeurIPS 2025 accepted papers with hallucinated citations, and venues now screen submissions with automated reference checkers. Rule- and Large Language Model (LLM)-based verifiers are emerging, but many are released without a shared evaluation and each flags a different kind of error, so it is unclear which to trust or when to deploy them. We address this with HALLMARK (Hallucination benchmark): 2,526 BibTeX entries spanning 14 hallucination types, with per-type and diagnostic sub-test labels and further temporal, cross…",
+      "why_zh": "它给杂乱生长的引文核查工具提供了统一的诊断标尺，帮助会议与作者判断该信任哪种核查器、何时部署。",
+      "why_en": "It gives the fast-growing field of citation verifiers a shared diagnostic yardstick for deciding which to trust and when to deploy them.",
+      "source": "arXiv cs.AI",
+      "url": "https://arxiv.org/abs/2607.18360",
+      "published_at": "2026-10-15T04:00:00.000Z",
+      "tags": [
+        "大模型"
+      ],
+      "importance": 5,
+      "image": "",
+      "category": "policy",
+      "lang": "en"
+    },
+    {
+      "id": "arxiv.org/abs/2607.26455",
+      "title_zh": "ForgetBench：评测语言模型长期参数记忆的遗忘动态",
+      "title_en": "ForgetBench: Benchmarking Forgetting Dynamics of Long-Term Parametric Memory in Language Models",
+      "summary_zh": "大语言模型在知识获取与推理上表现强劲，但在反复更新之后能否保留此前掌握的知识，仍缺乏充分理解。现有评测范式多聚焦单步推理或静态知识编辑，难以刻画持续模型修改过程中知识保留与退化的时间动态。为此作者提出 ForgetBench，一个用于测量语言模型遗忘动态的基准。（可见摘要未提供该基准的具体构成与评测指标。）",
+      "summary_en": "arXiv:2607.26455v2 Announce Type: replace-cross Abstract: Large language models (LLMs) have demonstrated strong capabilities in knowledge acquisition and reasoning, yet their ability to retain previously acquired knowledge under repeated updates remains insufficiently understood. Existing evaluation paradigms primarily focus on single-step reasoning or static knowledge editing, which fail to capture the temporal dynamics of knowledge retention and degradation during continual model modification. In this work, we propose \\textbf{ForgetBench}, a benchmark for measuring forgetting dynamics in the…",
+      "why_zh": "随着模型被不断更新与再训练，量化“遗忘”是评估长期记忆可靠性的关键缺口。",
+      "why_en": "As models are repeatedly updated, quantifying forgetting is a key missing measure of long-term memory reliability.",
+      "source": "arXiv cs.AI",
+      "url": "https://arxiv.org/abs/2607.26455",
+      "published_at": "2026-10-15T04:00:00.000Z",
+      "tags": [
+        "大模型"
+      ],
+      "importance": 5,
+      "image": "",
+      "category": "policy",
+      "lang": "en"
+    },
+    {
+      "id": "arxiv.org/abs/2609.09090",
+      "title_zh": "SPINE：测量持续多轮施压下大语言模型的谄媚行为",
+      "title_en": "SPINE: Measuring LLM Sycophancy under Sustained Multi-Turn Pressure",
+      "summary_zh": "当用户提出反对时，大语言模型可能放弃原本正确的立场，这种失败模式被称为谄媚（sycophancy）。现有评测多采用简短、预先设定好的对话，可能漏掉在持续、自适应的分歧中才暴露的问题。研究者提出 SPINE 基准：由一个 LLM 代理扮演“固执但错误”的用户，自适应地挑战目标模型，最多持续 25 轮。他们用该基准评测了四款商用模型——Claude Sonnet 5、GPT-5.6 Terra、Gemini 3.1 Pro 与 DeepSeek V4 Pro。",
+      "summary_en": "arXiv:2609.09090v2 Announce Type: replace-cross Abstract: Large language models (LLMs) may abandon correct positions when users push back, exhibiting a failure mode known as sycophancy. Existing evaluations typically use short, prespecified conversations and may therefore miss failures that emerge under sustained, adaptive disagreement. We introduce SPINE, a benchmark in which an LLM proxy plays a persistent but mistaken user and adaptively challenges a target model for up to 25 turns. We evaluate four commercial models (Claude Sonnet 5, GPT-5.6 Terra, Gemini 3.1 Pro, and DeepSeek V4 Pro) and…",
+      "why_zh": "持续多轮施压更接近真实使用场景，能揭示短对话评测看不到的立场动摇风险。",
+      "why_en": "Sustained pressure better mirrors real usage and exposes stance-collapse risks that short-conversation evaluations miss.",
+      "source": "arXiv cs.AI",
+      "url": "https://arxiv.org/abs/2609.09090",
+      "published_at": "2026-10-15T04:00:00.000Z",
+      "tags": [
+        "OpenAI",
+        "Anthropic",
+        "Google",
+        "国内",
+        "大模型"
+      ],
+      "importance": 5,
+      "image": "",
+      "category": "policy",
+      "lang": "en"
+    },
+    {
+      "id": "arxiv.org/abs/2610.18054",
+      "title_zh": "基于同态加密的金融交易图隐私保护 GNN 推理",
+      "title_en": "Privacy-Preserving GNN Inference on Financial Transaction Graphs via Homomorphic Encryption",
+      "summary_zh": "金融网络中的反洗钱（AML）需要建模跨机构的多方交易模式，但受严格隐私法规限制，银行之间无法共享账户与交易特征。作者提出一个面向多银行场景的隐私保护图神经网络（GNN）推理框架：中心服务器以明文持有图连接信息与预训练模型权重，各家银行则保持自己的交易特征加密，推理过程完全在加密状态下完成。（可见摘要未提供具体加密协议与效果数据。）",
+      "summary_en": "arXiv:2610.18054v2 Announce Type: replace-cross Abstract: Anti-money laundering (AML) in financial networks requires modeling transaction patterns that span multiple institutions. In practice, however, banks cannot share account and transaction features due to strict privacy regulations. We propose a privacy-preserving graph neural network (GNN) inference framework tailored to this multi-bank setting. A central server holds the graph connectivity and pretrained model weights in plaintext, while each bank keeps its transaction features encrypted. Inference is then carried out entirely on encryp…",
+      "why_zh": "它在不违反隐私法规的前提下打通了跨行反洗钱建模，展示了同态加密在金融图学习中的落地路径。",
+      "why_en": "It enables cross-bank AML modelling without violating privacy rules, showing a deployment path for homomorphic encryption in financial graph learning.",
+      "source": "arXiv cs.LG",
+      "url": "https://arxiv.org/abs/2610.18054",
+      "published_at": "2026-10-15T04:00:00.000Z",
+      "tags": [
+        "政策监管"
+      ],
+      "importance": 5,
+      "image": "",
+      "category": "policy",
+      "lang": "en"
+    },
+    {
       "id": "news.google.com/rss/articles/cbmimwfbvv95cuxpb0pwui1kvna2sdhrz2tktlhnmkpewu9httracwphudl1avhzwlnhlupiwux4mjq2dfnfd2vjztddbuvtv3hcvjrdvdhncnzzwdbezvdjzeqtcvnatfrvbwdenmvqzkdryxkybw9uclljvy0wluterjn3c1a2m2pdaktkc0tjseizmtfdm0pqywr5a1zcetnoyzfrsdiboafbvv95cuxoa09zvhmzlvc3rk9srfhsrgq0nkfsymzuluplqjmyy0hyrti5bu9rngk5vei1a2t3mfnhnthmtlzyvfhtmfgzmdlqdvi3wkncudrfdfphtxbfbhl5zdv6d3hrcuresmnjqwfiyvjzatitvwjiv1nsbtn5y2zoaezfwtd3rwlxmwlyx0dqmhqzyli4ym5mrzkzdy1ksu9yqxnk",
       "title_zh": "传 Anthropic 第三季度营收达 168 亿美元，IPO 在即",
       "title_en": "Anthropic's third-quarter revenue is said to hit $16.8 billion ahead of IPO",
@@ -1183,6 +1340,26 @@
       "lang": "zh"
     },
     {
+      "id": "www.ithome.com/1/013/269.htm",
+      "title_zh": "中国科学家首次用中国大模型攻克世界级数学难题，曾困扰学界 30 余年",
+      "title_en": "Chinese Scientists Solve 3D Ghys Conjecture Using Domestic Large Model",
+      "summary_zh": "IT之家 10 月 15 日消息，上海人工智能实验室今日发文，困扰数学界 30 余年的世界级难题 —— 三维 Ghys 猜想 迎来了破解。 上海人工智能实验室访问学者、大湾区大学教授许地生团队依托书生科学多模态大模型 S2（书生-S2），基于“通专融合”技术路径， 通过人机协同完成了三维 Ghys 猜想证明 。 北京大学董彬教授、刘若川院士团队利用其开发的 SHEAF 框架对本次证明完成形式化验证，验证了这一工作的正确性。 这标志着中国科学家首次用中国大模型攻克世界级数学难题 。 Ghys 猜想由法国数学家艾蒂安 · 吉斯（Étienne Ghys）于 1995 年提出，猜测每一个紧致复流形上的全纯 Anosov 系统，都双全纯共轭于某个复 infra-幂零流形上的全纯仿射自同构。该问题兼具理论难度与学科标志性价值，被动力系统领域数学专家公认为该领域重要的长期公开问题之一，是检验数学推理能力的一块试金石。 相关论文已在预印本平台（arXiv）发布，其形式化代码也在 Github 平台公开。IT之家附链接如下： https://github.com/frenzymath/HolomorphicAnosov 上海人工智能实验室表示，本项研究的意义还在于验证了一种新的科研范式。传统数学研究依赖个体天才的漫长摸索，而本次攻关将专家直觉系统性接入机器求解回路，形成“系统探索 — 专家判断 —…",
+      "summary_en": "A team led by Xu Disheng at Shanghai AI Laboratory used the multimodal scientific model Shusheng-S2 with human-machine collaboration to prove the three-dimensional Ghys conjecture, a problem open for over 30 years. Peking University researchers formally verified the proof using their SHEAF framework. The paper is on arXiv and the formalization code is on GitHub.",
+      "why_zh": "这是中国科学家首次借助国产大模型攻克世界级数学难题，并验证了“专家直觉接入机器求解回路”的新科研范式。",
+      "why_en": "It marks the first time Chinese scientists have cracked a world-class math problem with a domestic large model, showcasing a new human-machine research paradigm.",
+      "source": "IT之家",
+      "url": "https://www.ithome.com/1/013/269.htm",
+      "published_at": "2026-10-15T03:23:31.000Z",
+      "tags": [
+        "大模型",
+        "多模态"
+      ],
+      "importance": 5,
+      "image": "https://img.ithome.com/newsuploadfiles/2026/10/49ca6739-1185-4654-b6b7-c7574884a402.jpg?x-bce-process=image/format,f_auto",
+      "category": "research",
+      "lang": "zh"
+    },
+    {
       "id": "www.ithome.com/1/013/268.htm",
       "title_zh": "阶跃 Step 5 Preview 大模型权重开放，支持 100 万 token 上下文窗口",
       "title_en": "StepFun Opens Step 5 Preview Weights, Supporting a 1M-Token Context Window",
@@ -1230,6 +1407,26 @@
       "summary_en": "Apple Intelligence is reportedly in the final stage of launching in mainland China, with Bloomberg saying Apple plans to roll it out via the iOS 27.3 update in December, starting with AI features already released in the US two years ago and excluding the new Siri AI assistant. Baidu is expected to partner on search and Siri-related features, while Alibaba will supply AI model capabilities for Chinese users across iOS, iPadOS, macOS and visionOS. The service cleared generative AI filing on July 8 and obtained launch approval on September 29.",
       "why_zh": "这标志着苹果 AI 在华落地进入最后阶段，并明确了阿里、百度两大本土合作方。",
       "why_en": "It marks the final stretch of Apple Intelligence's China rollout and confirms Alibaba and Baidu as its two local partners.",
+      "source": "IT之家",
+      "url": "https://www.ithome.com/1/013/257.htm",
+      "published_at": "2026-10-15T02:59:04.000Z",
+      "tags": [
+        "国内",
+        "多模态"
+      ],
+      "importance": 5,
+      "image": "https://img.ithome.com/newsuploadfiles/2026/10/07bcbf35-691b-473f-8705-6488399342d3.png",
+      "category": "product",
+      "lang": "zh"
+    },
+    {
+      "id": "www.ithome.com/1/013/257.htm",
+      "title_zh": "苹果 AI 国内供应商浮出水面：阿里、百度，消息称 12 月 iOS 27.3 上线",
+      "title_en": "Apple Intelligence China Partners Revealed: Alibaba and Baidu, Possibly Launching with iOS 27.3 in December",
+      "summary_zh": "IT之家 10 月 15 日消息，苹果 Apple Intelligence（苹果智能）在中国大陆的上线有望进入最后阶段。 据彭博社今日报道， 苹果计划于今年 12 月通过 iOS 27.3 系统更新正式推出苹果智能 ，首批上线的是两年前已在美国发布的 AI 功能，覆盖 iPhone、iPad 和 Mac，不包含今年发布的全新 Siri AI 助手。 此前，该服务已于 7 月 8 日 通过网信部门生成式 AI 服务备案 ， 9 月 29 日取得上线许可 。 百度：搜索与 Siri 相关功能的合作方 据彭博社报道，苹果在中国市场推进 AI 能力落地过程中， 与百度就搜索及 Siri 相关功能展开合作 。 该表述与今年 7 月国内媒体披露的信息一致：苹果将在 Siri 语音助手及视觉智能（Visual Intelligence）功能中嵌入百度的软件服务。 更早一条可追溯的线索来自代码层面。第三方开发者对 iOS 27 Beta 2 固件的拆解显示，系统内新增了名为「 Baidu Visual Search 」的模块，指向视觉搜索能力的接入。这一模块的出现，与百度在视觉搜索领域长期积累的能力方向一致。 阿里：AI 模型能力接入 此前据国内媒体报道， 阿里将作为 AI 能力集成至 Apple 智能 ，为 iOS、iPadOS、macOS 和 visionOS 的中国用户提供文本与图像理解、…",
+      "summary_en": "Bloomberg reports Apple plans to launch Apple Intelligence in mainland China in December via iOS 27.3, starting with AI features released in the US two years ago and excluding the new Siri assistant. Baidu is partnering on search and Siri-related features, while Alibaba provides AI model capabilities for text and image understanding.",
+      "why_zh": "这标志着苹果 AI 功能在中国大陆落地进入最后阶段，也明确了阿里、百度作为其本土 AI 合作方的角色。",
+      "why_en": "It signals the final stage of Apple Intelligence's China rollout and clarifies Alibaba and Baidu as its domestic AI partners.",
       "source": "IT之家",
       "url": "https://www.ithome.com/1/013/257.htm",
       "published_at": "2026-10-15T02:59:04.000Z",
@@ -1715,196 +1912,6 @@
       "importance": 5,
       "image": "",
       "category": "product",
-      "lang": "en"
-    },
-    {
-      "id": "news.google.com/rss/articles/cbminafbvv95cuxqrnhvawd4mv8ybfhlcgxfofpgz2kysdawq1zmzs1rdnzloexpngr5snrbugotmjdwchzyrgzqx1jjtkjpqmfhbkniqmdwc2hsv19dtdjlbgzvsw44ywxvvjhgwlvycw9yvmc0ekvsrkdvoeqtehrgmdlgrelzz0tvuhj5s183avryyuvkuhlfsxa4vunqymtwb09nzly",
-      "title_zh": "AI模型提供更快探索蛋白质运动的方法，研究显示",
-      "title_en": "AI model offers a faster way to explore how proteins move, study finds - University of Illinois Urbana-Champaign",
-      "summary_zh": "伊利诺伊大学厄巴纳-香槟分校的一项研究发现，一种 AI 模型能够更快地探索蛋白质的运动方式。研究人员认为，这有助于更高效地理解蛋白质动态，可能加速药物发现和生物医学研究。该研究展示了 AI 在计算生物学领域的应用潜力，但具体模型和性能细节未在摘要中展开。",
-      "summary_en": "AI model offers a faster way to explore how proteins move, study finds University of Illinois Urbana-Champaign",
-      "why_zh": "更快模拟蛋白质运动有望加速药物研发与基础生物学研究。",
-      "why_en": "Faster protein motion exploration may speed up drug discovery and basic biology research.",
-      "source": "Google News",
-      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQRnhVaWd4MV8ybFhlcGxfOFpGZ2kySDAwQ1ZmZS1rdnZlOExPNGR5SnRBUGotMjdWcHZyRGZQX1JjTkJpQmFhbkNIQmdwc2hSV19DTDJlbGZVSW44YWxvVjhGWlVycW9yVmc0ekVSRkdVOEQteHRGMDlGRElZZ0tVUHJ5S183aVRyYUVKUHlfSXA4VUNqYmtwb09NZlY?oc=5",
-      "published_at": "2026-10-14T17:14:25.000Z",
-      "tags": [],
-      "importance": 5,
-      "image": "",
-      "category": "policy",
-      "lang": "en"
-    },
-    {
-      "id": "news.google.com/rss/articles/cbmi2afbvv95cuxocjgxdhhrzv9nbnf4cvnbbkg0zgjgwxftz2hda2dtmxvct3r4owf6adnzsjvnadjeym5pbujqszdtadhpei1vbxu1sglszhfiofhbnevsauz1wlfsyjj6zgnpc1nvnk9fvvvqtvlymetpbjdkz2hncg9xm0vbluptvflhsi0ytvztngptoda2sgpob3jluxq1s1e3whz6rzrldnzkef8tamjoduzjmuc1oxn2dwi2qmhfuuk3bkzzr0zaxzznd2lnmndlmuzgamrhmho3luvfdm8",
-      "title_zh": "OpenAI指控离职加入苹果的员工带走未发布设备文件",
-      "title_en": "OpenAI employee who left for Apple took files about unreleased device, OpenAI alleges",
-      "summary_zh": "据路透社报道，OpenAI 指控一名离职加入苹果的员工带走了关于未发布设备的文件。这是苹果与 OpenAI 之间商业秘密纠纷的一部分，但此次由 OpenAI 提出指控。文件涉及至少一款未发布设备，目前苹果方面未作回应。案件细节仍待进一步披露。",
-      "summary_en": "OpenAI employee who left for Apple took files about unreleased device, OpenAI alleges Reuters",
-      "why_zh": "凸显 AI 硬件领域人才流动中的商业秘密风险，可能影响苹果与 OpenAI 的关系。",
-      "why_en": "It underscores trade secret risks in AI hardware talent mobility and may affect Apple-OpenAI relations.",
-      "source": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOcjgxdHhRZV9nbnF4cVNBbkg0ZGJGWXFTZ2hDa2dTMXVCT3R4OWF6aDNZSjVnaDJEYm5pbUJqSzdtaDhPei1VbXU1SGlsZHFIOFhBNEVsaUZ1WlFsYjJ6ZGNPc1NVNk9fVVVQTVlYMEtPbjdKZ2hNcG9xM0VBLUpTVFlHSi0yTVZtNGpTODA2SGpOb3JLUXQ1S1E3WHZ6RzRldnZkeF8tamJodUZjMUc1OXN2dWI2QmhfUUk3bkZzR0ZaXzZnd2lNMndLMUZGamRhMHo3LUVfdm8?oc=5",
-      "published_at": "2026-10-14T17:12:05.000Z",
-      "tags": [
-        "OpenAI"
-      ],
-      "importance": 5,
-      "image": "",
-      "category": "product",
-      "lang": "en"
-    },
-    {
-      "id": "news.google.com/rss/articles/cbmijafbvv95cuxobzllr0j2mvljsfzbawkwwvbuvjrvalntzk0yr1hxv1poqjvjndrud0zhs3rhythtcm9cam1yse5oa05slvy4vzlksm9ezdu3sxpivenur212v2drbwi4s3bhewcyyvgtsdi4wnjlbedmdxvgujvkve4wndr3rjnic3zhvuvvaw4xzxh4va",
-      "title_zh": "约150款应用拒接豆包手机助手，iPhone Duo新增大模型备案编号，苹果表睡眠呼吸暂停功能上线，这就是今天的其他大新闻！",
-      "title_en": "About 150 Apps Refuse Doubao Phone Assistant; iPhone Duo Adds Large Model Filing Number; Apple Watch Sleep Apnea Feature Launches",
-      "summary_zh": "约150款应用拒接豆包手机助手，iPhone Duo新增大模型备案编号，苹果表睡眠呼吸暂停功能上线，这就是今天的其他大新闻！ 搜狐",
-      "summary_en": "Today's news: about 150 apps refuse to integrate Doubao phone assistant; iPhone Duo adds a large model filing number; Apple Watch sleep apnea feature launches. These reflect competition in AI assistants, large model compliance, and wearable health trends.",
-      "why_zh": "反映 AI 助手生态竞争、大模型备案合规及可穿戴健康功能趋势。",
-      "why_en": "They reflect competition in AI assistant ecosystems, large model compliance, and wearable health trends.",
-      "source": "搜狐",
-      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxObzllR0J2MVljSFZBaWkwWVBuVjRvalNtZk0yR1hxV1poQjVJNDRUd0ZhS3RHYThTcm9Cam1ySE5Oa05sLVY4VzlkSm9EZDU3SXpIVENUR212V2dRbWI4S3BHeWcyYVgtSDI4WnJlbEdMdXVGUjVKVE4wNDR3RjNic3ZHVUVVaW4xZXh4VA?oc=5",
-      "published_at": "2026-10-14T17:05:05.000Z",
-      "tags": [
-        "大模型"
-      ],
-      "importance": 5,
-      "image": "",
-      "category": "product",
-      "lang": "zh"
-    },
-    {
-      "id": "www.theverge.com/ai-artificial-intelligence/1011276/openai-employee-unreleased-product-plans",
-      "title_zh": "OpenAI称前员工带走产品计划并展示给苹果",
-      "title_en": "OpenAI claims an ex-employee took its product plans and presented them to Apple",
-      "summary_zh": "OpenAI 声称一名前员工在加入苹果前带走了超过 100 份与其产品计划相关的文件。在周三提交的文件中，OpenAI 指控该匿名员工将这些信息发送到个人账户，并展示给苹果领导层，包括苹果亚洲运营副总裁。该文件与苹果和 OpenAI 之间围绕商业秘密的法律纠纷有关，但这次是 OpenAI 提出指控。文件据称包含至少一款未发布设备的图像及其他机密信息。",
-      "summary_en": "OpenAI claims a former employee took more than 100 files related to its product plans before joining Apple. In a document filed on Wednesday , OpenAI accuses the unnamed employee of sending this information to a personal account and then presenting it to Apple leadership, including the vice president of the company's operations in Asia. The filing, reported earlier by Reuters , is tied to a legal battle between Apple and OpenAI over trade secrets - but this time, OpenAI is doing the accusing. It alleges that the files in question contain images of at least one unreleased device, along with sup…",
-      "why_zh": "此案凸显 AI 硬件领域商业秘密与人才流动的紧张关系，可能影响苹果与 OpenAI 的竞争格局。",
-      "why_en": "It highlights tensions over trade secrets and talent mobility in AI hardware, potentially affecting Apple-OpenAI competition.",
-      "source": "The Verge",
-      "url": "https://www.theverge.com/ai-artificial-intelligence/1011276/openai-employee-unreleased-product-plans",
-      "published_at": "2026-10-14T16:43:24.000Z",
-      "tags": [
-        "OpenAI",
-        "多模态"
-      ],
-      "importance": 5,
-      "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2025/02/STK155_OPEN_AI_2025_CVirgiia_B.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100",
-      "category": "product",
-      "lang": "en"
-    },
-    {
-      "id": "www.theverge.com/science/1011127/ai-weather-forecast-microsoft",
-      "title_zh": "微软推出新机器学习工具，提升天气预报准确度",
-      "title_en": "Microsoft has a new machine learning tool to improve weather forecasts",
-      "summary_zh": "微软研究人员开发了一种新的机器学习工具，用于提升 2 至 6 周的中期天气预报准确度。传统物理模型和现有 AI 模型在两周后往往可靠性下降，而该工具声称能以更具成本效益的方式解决这一问题，帮助农民和应急响应人员更确定地提前规划。研究成果已发表在《自然》期刊，工具现已开源。微软由此加入谷歌、英伟达等公司开发 AI 天气预报工具的行列。",
-      "summary_en": "Old-school physics-based weather forecasting and even new AI models typically become less reliable beyond two weeks, a problem Microsoft claims to have solved using machine learning. Researchers with the company say they've found a new, cost-effective way to make more accurate weather forecasts two to six weeks in advance - allowing farmers and emergency responders to plan ahead with greater certainty. The findings were published today in the journal Nature , and the tool is now open-source software . Microsoft joins Google , Nvidia , and other companies developing AI tools for weather forecas…",
-      "why_zh": "更准确的中期天气预报可帮助农业、应急管理等领域提前决策，也显示 AI 在科学计算中的落地潜力。",
-      "why_en": "More accurate medium-range forecasts can help agriculture and emergency management plan ahead, showing AI's potential in scientific computing.",
-      "source": "The Verge",
-      "url": "https://www.theverge.com/science/1011127/ai-weather-forecast-microsoft",
-      "published_at": "2026-10-14T16:05:21.000Z",
-      "tags": [
-        "Google",
-        "芯片",
-        "开源"
-      ],
-      "importance": 5,
-      "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2025/02/STK438_CLIMATE_CHANGE_G.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100",
-      "category": "research",
-      "lang": "en"
-    },
-    {
-      "id": "www.theverge.com/tech/1009086/square-kiosk",
-      "title_zh": "Square推出新自助终端，可与AI对话点单",
-      "title_en": "Square’s new kiosk lets you talk to AI for help with your order",
-      "summary_zh": "Square 推出了一款名为 Square Kiosk 的新硬件，这是一个大型药丸形状的自助点单终端，配备 21.5 英寸触摸屏，并支持与 AI 对话。Square 表示，该终端具备“代理式对话语音层”，能完整理解商家的菜单，实时聆听和回应，让顾客像与店员自然交谈一样点单。顾客可以向 AI 提问、要求修改或替换菜品，设备还能在顾客靠近时主动欢迎。",
-      "summary_en": "Square is launching new hardware: a big kiosk for ordering things that has a touchscreen and lets you talk to an AI. It's called the Square Kiosk. Square says the Kiosk, which has a large pill shape, has an \"agentic, conversational voice layer\" that \"fully understands a seller's menu and listens and responds in real time, enabling customers to order the way they'd naturally talk to staff.\" While talking with the AI agent, you can do things like ask questions and request modifications and substitutions. The touchscreen on the Kiosk is 21.5 inches, and the device can welcome you as you approach…",
-      "why_zh": "将对话式 AI 引入线下点单场景，可能改变餐饮零售的顾客服务与运营效率。",
-      "why_en": "Bringing conversational AI to in-person ordering could transform customer service and operational efficiency in retail and restaurants.",
-      "source": "The Verge",
-      "url": "https://www.theverge.com/tech/1009086/square-kiosk",
-      "published_at": "2026-10-14T16:00:00.000Z",
-      "tags": [
-        "智能体",
-        "多模态"
-      ],
-      "importance": 5,
-      "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/10/Square-Kiosk-Payment.png?quality=90&#038;strip=all&#038;crop=0,0,100,100",
-      "category": "product",
-      "lang": "en"
-    },
-    {
-      "id": "www.theverge.com/tech/1010928/android-scam-protection-enhanced-protection-google-messages",
-      "title_zh": "Android 在 Google Messages 中用 AI 识别诈骗分子",
-      "title_en": "Android is using AI to suss out scammers in Google Messages",
-      "summary_zh": "Android 正在推出一系列新的防诈骗功能，帮助用户更轻松地避开移动端诈骗，其中包括在 Google Messages 中强化保护、以及新增的其他安全工具。在现有 Scam Detection 功能基础上，一项名为“增强保护”（enhanced protection）的新设置将在未来几周内逐步推送，它会调用基于云端的 Gemini AI 模型，在与陌生发件人的对话中快速判断对方是否怀有诈骗意图。Google 表示，诈骗者常常把真实目的隐藏在进展缓慢的聊天之中，因此需要 AI 来提前识别风险。",
-      "summary_en": "Begone, Bot. | Image: Google / Android Android is introducing new scam defense features that aim to make it easier for users to evade mobile fraud, including bolstered protection in Google Messages and additional safeguarding tools. Building on the Scam Detection feature in Google Messages, a new \"enhanced protection\" setting will be rolling out in the coming weeks that taps into cloud-based Gemini AI models to quickly evaluate a potential scammer's intentions in conversations with an unrecognized sender. \"Scammers often disguise their true motives behind slow-burn conversations,\" Google said…",
-      "why_zh": "这是 Gemini 模型被直接嵌入日常通讯场景的一次典型落地，也意味着反诈判断正从本地规则转向云端大模型。",
-      "why_en": "It marks a notable deployment of Gemini models inside everyday messaging, signaling a shift in fraud detection from on-device rules to cloud-based large models.",
-      "source": "The Verge",
-      "url": "https://www.theverge.com/tech/1010928/android-scam-protection-enhanced-protection-google-messages",
-      "published_at": "2026-10-14T16:00:00.000Z",
-      "tags": [
-        "Google",
-        "多模态"
-      ],
-      "importance": 5,
-      "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/10/Android-scam-detection-google-messages.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100",
-      "category": "product",
-      "lang": "en"
-    },
-    {
-      "id": "news.google.com/rss/articles/cbmif0fvx3lxte9fmevmb0nvoxlfowdnz20ytdvpuu02r2nwytmxd2rozs1cz1lycc1xrfzsvthovtfptnhmawzxoupftnpbbul2edhyx191rhnpv3itwwnjbfy0y0hma1o0bxa5t19wnwlxbgnhni1kogtprxnzqzzimm95bjj3nkk",
-      "title_zh": "有消息称，DeepSeek第二轮融资或达到千亿规模",
-      "title_en": "Report: DeepSeek's second funding round could reach 100 billion",
-      "summary_zh": "有消息称，DeepSeek第二轮融资或达到千亿规模 新浪网",
-      "summary_en": "Reports suggest DeepSeek's second funding round could reach the 100 billion mark. Details on investors and terms remain unconfirmed, but if accurate it would be one of the largest AI model fundraises in China.",
-      "why_zh": "若融资规模属实，将刷新国内大模型公司融资量级，直接影响行业竞争格局与算力投入。",
-      "why_en": "If accurate, the round would set a new scale for Chinese LLM financing and reshape competition and compute investment in the sector.",
-      "source": "新浪网",
-      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9fMEVMb0NVOXlfOWdNZ20yTDVPUU02R2NWYTMxd2ROZS1CZ1lYcC1xRFZSVThoVTFpTnhMaWZXOUpfTnpBbUl2eDhyX191RHNPV3ItWWNJbFY0Y0hma1o0bXA5T19wNWlXbGNhNi1kOGtPRXNZQzZiMm95bjJ3Nkk?oc=5",
-      "published_at": "2026-10-14T15:03:00.000Z",
-      "tags": [
-        "国内",
-        "融资"
-      ],
-      "importance": 5,
-      "image": "",
-      "category": "business",
-      "lang": "zh"
-    },
-    {
-      "id": "news.google.com/rss/articles/cbmiiafbvv95cuxpvetgruprt19sswxjc3h4rulzb1pfcmlpn2nzndlydm1nqmhpqklyzurzx1dkbwy1zhixqxe1rhroym1oyvroq2r2mwr2bexdewhreve0cxowdlzmv1aynxbloetaamxtyuu2ymdcskwxqjhmckrfdurbb0tfm3q3afjdngdoqm5z",
-      "title_zh": "Sentient 推出首个测试 AI 模型归属权的开放基准",
-      "title_en": "Sentient launches first open benchmark to test AI model ownership",
-      "summary_zh": "Sentient 发布了据称是首个用于测试 AI 模型归属权的开放基准。该基准旨在为判断模型的所有权与来源提供公开、可比较的评测方式，填补当前在模型溯源与知识产权认定方面缺乏统一标准的空白。此举可能对开源与闭源模型生态、以及模型衍生与知识产权争议产生实际影响。",
-      "summary_en": "Sentient launches first open benchmark to test AI model ownership Quartz",
-      "why_zh": "模型归属与溯源长期缺乏公开标准，该基准有望成为判定模型来源和知识产权的共同参照。",
-      "why_en": "Model provenance lacks public standards; this benchmark could become a shared reference for ownership and IP disputes.",
-      "source": "Quartz",
-      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPVEtGRUpRT19sSWxjc3h4RUlzb1pfcmlPN2NZNDlYdm1NQmhPQklYZURZX1dKbWY1ZHIxQXE1RHRoYm1oYVRoQ2R2MWR2bExDeWhReVE0cXowdlZMV1AyNXBlOEtaamxtYUU2YmdCSkwxQjhMckRfdURBb0tFM3Q3aFJDNGdOQm5z?oc=5",
-      "published_at": "2026-10-14T14:51:42.000Z",
-      "tags": [],
-      "importance": 5,
-      "image": "",
-      "category": "research",
-      "lang": "en"
-    },
-    {
-      "id": "news.google.com/rss/articles/cbmivgfbvv95cuxqbjjzbjq4nmyyafphcwtseuxtujm3ee1un2r6c0nmms1tyjm5ue16bjjvznbknjzutvdvthn1ymlhohd6b1ixx3vwvwu2ww8wmkhlb1druhmyv2owcluyvc13rlzhd09pdghyukhdmhvscmj4x0vzsuprt2xkng50zvzwrutvtgfbmgfudfnmvi1aww9rtnzhaw9ctezfr3hjveezsty3s0put2fublnkqtzts04twfotqnlrsjvn",
-      "title_zh": "扎克伯格豪掷千亿美元的 AI 计划，风头被一杯吉尼斯抢走",
-      "title_en": "Mark Zuckerberg tried to hype his $100 billion artificial intelligence plans, but the real winner was Guinness, as a single awkward sip of the dark beer instantly stole the spotlight and handed the brand millions in free viral marketing across America",
-      "summary_zh": "马克·扎克伯格试图为其规模高达 1000 亿美元的人工智能计划造势，但真正出圈的却是他 awkward 地喝下一口吉尼斯黑啤的瞬间。这一画面迅速抢走全场焦点，也让吉尼斯在全美收获了大量免费病毒式传播。报道指出，这段意外的社交媒体热度为品牌带来的曝光价值数以百万计。",
-      "summary_en": "Mark Zuckerberg tried to hype his $100 billion artificial intelligence plans, but the real winner was Guinness, as a single awkward sip of the dark beer instantly stole the spotlight and handed the brand millions in free viral marketing across America Luxurylaunches",
-      "why_zh": "它说明在注意力经济中，一场高投入的科技发布也可能被一个意外瞬间彻底盖过。",
-      "why_en": "It shows how a single unscripted moment can overshadow even a multi-billion-dollar tech announcement in the attention economy.",
-      "source": "Luxurylaunches",
-      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQbjJZbjQ4NmYyaFphcWtseUxtUjM3eE1UN2R6c0NMMS1TYjM5UE16bjJVZnBkNjZuTVdVTHN1YmlHOHd6b1IxX3VwVWU2WW8wMkhLb1dRUHMyV2owclUyVC13RlZHd09PdGhyUkhDMHVScmJ4X0VZSUprT2xKNG50ZVZWRUtvTGFBMGFudFNmVi1aWW9RTnZhaW9CTEZFR3hJVEEzSTY3S0pUT2FUblNKQTZtS04tWFotQnlRSjVn?oc=5",
-      "published_at": "2026-10-14T14:51:23.000Z",
-      "tags": [],
-      "importance": 5,
-      "image": "",
-      "category": "business",
       "lang": "en"
     }
   ]
