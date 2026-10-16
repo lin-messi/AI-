@@ -1,6 +1,6 @@
 {
   "date": "2026-10-16",
-  "generatedAt": "2026-10-16T05:19:23.004Z",
+  "generatedAt": "2026-10-16T12:04:02.557Z",
   "categories": [
     {
       "key": "aim",
@@ -178,6 +178,50 @@
           "usage": "它用视锥板块对应做区域级上下文选择来加速视频世界模型的长时 rollout，可作「学习式仿真环境做长时间导航训练」的思路参考，但 RM 仿真主流仍是物理引擎，关联较弱。",
           "task_id": "sim",
           "task": "仿真与 sim-to-real",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2610.21095",
+        "arxiv_id": "2610.21095",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Can World and Action Modeling Benefit Each Other under Unified Causal Training?",
+        "title_zh": "统一因果训练下，世界建模与动作建模能否互惠？",
+        "abstract_en": "World and action modeling are closely related, yet their reciprocal benefits under unified causal training remain unclear. We introduce OneWM, a simple framework for unified causal training that treats actions as both conditions for world prediction and targets for policy learning within a shared video-action architecture. Using this framework, we investigate whether learning forward dynamics conditioned on specified actions improves action learning, and whether learning to generate actions in turn improves action-conditioned world modeling. We use LIBERO, LIBERO-Plus, and RoboCasa365 as embodied testbeds to evaluate both policy learning and world modeling, complemented by real-world policy experiments. Learning the visual consequences of specified actions improves policy performance and generalization across changing scenes. In turn, action learning improves multi-view world-prediction fidelity under the same architecture. Together, these results answer both questions positively, supporting reciprocal benefits between world modeling and action generation under unified causal training.",
+        "abstract_zh": "世界建模与动作建模关系密切，但二者在统一因果训练下能否相互促进仍不清楚。我们提出 OneWM：一个面向统一因果训练的简洁框架，在共享的视频–动作架构中把动作同时作为世界预测的条件与策略学习的目标。基于该框架，我们考察两问：以指定动作学习前向动力学能否改善动作学习？学习生成动作又能否反过来提升动作条件下的世界建模？我们在 LIBERO、LIBERO-Plus、RoboCasa365 与真实世界实验上同时评估策略学习与世界建模。结果显示，学习特定动作的视觉后果可提升策略性能及跨场景泛化；反过来，动作学习也提升了同一架构下多视角世界预测的保真度。两个问题均获肯定回答，支持世界建模与动作生成在统一因果训练下的互惠关系。",
+        "highlight_zh": "统一因果训练下，世界建模与动作生成可相互促进",
+        "digest_zh": "研究问题：机器人里有两类模型——负责“想象未来画面”的世界模型，和负责“决定怎么动”的策略（动作）模型。它们通常分开训练。一个自然的疑问是：如果放进同一套因果训练里，它们能不能互相帮忙、一起变强？此前没有明确答案。\n\n方法：作者提出 OneWM，框架本身很简洁——用同一套视频–动作架构，既让动作作为条件去预测未来的视觉画面，又让模型直接输出动作作为策略学习的目标，两部分共享参数、统一按因果方式训练。随后做两个方向的检验：在给定动作的条件下学习前向动力学，能否让策略学得更好；以及学习生成动作，能否让世界模型预测得更准。\n\n测试平台：仿真侧的 LIBERO、LIBERO-Plus、RoboCasa365，再加上真实机器人上的策略实验；评价同时覆盖策略表现与世界建模质量。\n\n结果：学习“某个动作会带来什么视觉后果”能提升策略性能，并让它在场景变化时更容易泛化；反过来，加入动作学习后，同一架构的多视角世界预测保真度也提高了。两个问题都得到了肯定的答案。\n\n意义：这说明世界模型与动作模型并非彼此独立的两件事，而是可以互相供能的“共生体”。对具身智能而言，这意味着用一套统一训练就能同时得到更好的策略与更好的世界模型，为统一架构的设计提供了实证依据。",
+        "authors": [
+          "Yue Su",
+          "Bokai Lin",
+          "Xinkai Wang",
+          "Chubin Zhang",
+          "Xiangnan Wu",
+          "Kuan Zhang",
+          "Weiyang Jin",
+          "Jiwen Yu"
+        ],
+        "url": "https://arxiv.org/abs/2610.21095v1",
+        "pdf_url": "https://arxiv.org/pdf/2610.21095",
+        "html_url": "https://arxiv.org/abs/2610.21095",
+        "published_at": "2026-10-15T01:53:07.000Z",
+        "upvotes": 10,
+        "heat": 2625.862423611111,
+        "featured": true,
+        "categories": [
+          "rl"
+        ],
+        "image": "",
+        "comment": "Project page: https://selen-suyue.github.io/OneWMNet",
+        "relevance": 0,
+        "first_seen": "2026-10-16T12:03:56.400Z",
+        "rm": {
+          "usage": "考察世界建模与策略学习相互促进，可迁移到哨兵/自主交火的强化学习训练思路：用动作条件视频预测作为辅助监督提升策略泛化，但论文面向机械臂操作与LIBERO/RoboCasa基准，离RM实车感知与决策较远，仅作方法论参考。",
+          "task_id": "strategy",
+          "task": "多机协同与策略学习",
           "value": "low"
         }
       },
@@ -1689,6 +1733,48 @@
           "task_id": "",
           "task": "",
           "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2610.16355",
+        "arxiv_id": "2610.16355",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "PINT: A Unified Model with Shared Predictive Intent for Robot Manipulation",
+        "title_zh": "PINT：一种用于机器人操作的具有共享预测意图的统一模型",
+        "abstract_en": "Generalist robot manipulation can benefit from pretrained vision-language models (VLMs) for semantic reasoning and video generation models (VGMs) for world modeling. However, existing unified models that directly fuse them through shared attention at multiple layers can make it harder to draw on their specialized capabilities. We introduce PINT, a unified model that coordinates semantic reasoning, world modeling, and action generation through a shared chunk-level Predictive Intent while preserving expert-specific pathways. PINT inserts learnable Intent Tokens into the VLM sequence to form this representation, conditioning both the VGM and an Action Expert (AE). It replaces only the VGM's prompt conditioning and retains the VGM at inference, where the AE reads its representations through one-way attention. Rather than prescribing what Predictive Intent should encode, PINT learns it jointly from the native prediction objectives of the VLM, VGM, and AE, which provide complementary views of the same upcoming task execution. Training uses two stages: Stage 1 freezes the VGM so that future video prediction shapes Predictive Intent with task-relevant future dynamics, while Stage 2 fixes the learned Intent and adapts the VGM and AE. Without embodied pretraining, PINT achieves strong in-distribution (ID) performance and substantially improves out-of-distribution (OOD) generalization, reaching 15.5% on RoboTwin 2.0-Hard compared with 1.8% for Fast-WAM and 3.2% for StarVLA, and 79.5% on LIBERO-Plus compared with 51.5% and 75.0%, respectively. Across five real-world bimanual tasks, PINT reaches 68% ID and 24% OOD success, compared with 35%/9% for pretrained Motus and 67%/35% for pretrained $π_{0.5}$.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Xinyu Guo",
+          "Chao Jing",
+          "Li Yi",
+          "Xingyu Chen",
+          "Zhengxing Wu"
+        ],
+        "url": "https://arxiv.org/abs/2610.16355v1",
+        "pdf_url": "https://arxiv.org/pdf/2610.16355",
+        "html_url": "https://arxiv.org/abs/2610.16355",
+        "published_at": "2026-10-12T08:12:42.000Z",
+        "upvotes": 2,
+        "heat": 2160.188814722222,
+        "featured": false,
+        "categories": [
+          "aim",
+          "radar"
+        ],
+        "image": "",
+        "comment": "29 pages, 9 figures, 17 tables. Project page: https://zgca-hmi-lab.github.io/PINT",
+        "relevance": 2,
+        "first_seen": "2026-10-16T12:03:56.400Z",
+        "rm": {
+          "usage": "面向通用机器人操作的VLM+视频生成统一模型，其语义推理与世界建模分工思路可参考用于工程机器人视觉抓取/装配的能量单元位姿估计与机械臂控制，但需大量数据与改造，无法直接落地。",
+          "task_id": "engineer",
+          "task": "工程视觉装配（能量单元）",
+          "value": "mid"
         }
       },
       {
@@ -4420,88 +4506,6 @@
           "task": "仿真与 sim-to-real",
           "value": "mid"
         }
-      },
-      {
-        "id": "arxiv:2610.20244",
-        "arxiv_id": "2610.20244",
-        "source": "arXiv",
-        "cats": [
-          "cs.CG",
-          "cs.DS",
-          "cs.RO"
-        ],
-        "title_en": "FPTAS for Polygonal Multi-Robot Motion Planning",
-        "title_zh": "",
-        "abstract_en": "We study multi-robot motion planning in a polygonal environment with polygonal robots. The setting of the problem consists of a polygonal domain $\\mathcal{W}$ with $n$ vertices and $k$ robots $R_1,\\dots,R_k$ translating in $\\mathcal{W}$ each of which is represented by a polygon of constant complexity. Given a source configuration $\\mathbf{s}$ and a target configuration $\\mathbf{t}$ of the robots in $\\mathcal{W}$, the goal of the problem is to find a collision-free motion plan from $\\mathbf{s}$ to $\\mathbf{t}$ that is shortest with respect to some cost function. We present the first fully polynomial-time approximation schemes (FPTAS) for motion planning with any fixed number $k$ of robots, under the min-sum objective, the min-max objective, and the min-makespan objective. Here, the min-sum variant aims to minimize the total traveling distance of all robots, the min-max variant aims to minimize the maximum traveling distance of a single robot, and the min-makespan variant aims to minimize the total time cost under the assumption that all robots move with a maximum speed $1$. The algorithm directly generalizes to the problem in any fixed dimension $d$, with a polytope environment and polytope robots. Our result settles an open question of Agarwal, Halperin, Sharir, Steiger [SODA'24] and Agarwal, Holmgren, Steiger [SODA'26], who gave an FPTAS for $k=2$ unit-square robots and a bicriteria-approximation algorithm for a fixed number $k$ of unit-square or unit-disk robots, respectively. Compared to the previous results, our algorithm is substantially simpler.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Sayan Bandyapadhyay",
-          "William Lochet",
-          "Saket Saurabh",
-          "Jie Xue"
-        ],
-        "url": "https://arxiv.org/abs/2610.20244v1",
-        "pdf_url": "https://arxiv.org/pdf/2610.20244",
-        "html_url": "https://arxiv.org/abs/2610.20244",
-        "published_at": "2026-10-14T14:19:02.000Z",
-        "upvotes": 0,
-        "heat": 2128.4498355555556,
-        "featured": false,
-        "categories": [
-          "slam",
-          "planning",
-          "radar"
-        ],
-        "image": "",
-        "comment": "To appear in SODA 2027",
-        "relevance": 3,
-        "first_seen": "2026-10-15T21:54:20.191Z",
-        "rm": {
-          "usage": "多边形多机器人最短运动规划的FPTAS，可借鉴其多机协同/避碰路径规划框架用于哨兵或团队规划，但纯理论、实时性差，直接落地困难。",
-          "task_id": "strategy",
-          "task": "多机协同与策略学习",
-          "value": "low"
-        }
-      },
-      {
-        "id": "cvf:CVPR2026:CME-CAD: Heterogeneous Collaborative Multi-Expert Reinforcem",
-        "arxiv_id": "",
-        "source": "CVPR",
-        "cats": [],
-        "title_en": "CME-CAD: Heterogeneous Collaborative Multi-Expert Reinforcement Learning for CAD Code Generation",
-        "title_zh": "",
-        "abstract_en": "Computer-Aided Design (CAD) is essential in industrial design, but the complexity of traditional CAD modeling and workflows presents significant challenges for automating the generation of high-precision, editable CAD models. Existing methods, such as 3D reconstruction from sketches, often produce non-editable, approximate models that fall short of meeting the stringent requirements for precision and editability in industrial design. Moreover, the reliance on text or image-based inputs often requires significant manual annotation, limiting their scalability and applicability in industrial settings. To overcome these challenges, we propose the Heterogeneous Collaborative Multi-Expert Reinforcement Learning (CME-CAD) paradigm, a novel training paradigm for CAD code generation. Our approach integrates the complementary strengths of these models, facilitating collaborative learning and improving the model&#x27;s ability to generate accurate, constraint-compatible, and fully editable CAD models. We introduce a two-stage training process: Multi-Expert Fine-Tuning (MEFT), and Multi-Expert Reinforcement Learning (MERL). Additionally, we present CADExpert, an open-source benchmark consisting of 17,299 instances, including orthographic projections with precise dimension annotations, expert-generated Chain-of-Thought (CoT) processes, executable CADQuery code, and rendered 3D models. The CADExpert dataset is publicly available at https://modelscope.cn/datasets/zhuofanChen/CADExpert.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [],
-        "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Niu_CME-CAD_Heterogeneous_Collaborative_Multi-Expert_Reinforcement_Learning_for_CAD_Code_Generation_CVPR_2026_paper.html",
-        "pdf_url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Niu_CME-CAD_Heterogeneous_Collaborative_Multi-Expert_Reinforcement_Learning_for_CAD_Code_Generation_CVPR_2026_paper.pdf",
-        "html_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Niu_CME-CAD_Heterogeneous_Collaborative_Multi-Expert_Reinforcement_Learning_for_CAD_Code_Generation_CVPR_2026_paper.html",
-        "published_at": "2026-06-01T00:00:00.000Z",
-        "upvotes": 0,
-        "heat": 120,
-        "featured": false,
-        "categories": [
-          "rl"
-        ],
-        "image": "",
-        "comment": "Accepted to CVPR 2026",
-        "conf": "CVPR",
-        "confYear": 2026,
-        "confTag": "CVPR 2026",
-        "confWeight": 6,
-        "confVision": true,
-        "relevance": 8,
-        "first_seen": "2026-10-15T21:54:20.191Z",
-        "rm": {
-          "usage": "面向CAD代码生成的多专家RL，与工程机器人能量单元视觉装配/机械臂抓取关联很弱，基本用不上。",
-          "task_id": "",
-          "task": "",
-          "value": "low"
-        }
       }
     ]
   },
@@ -4631,7 +4635,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 17.69,
+        "relevance": 12.69,
         "first_seen": "2026-10-15T21:54:20.191Z"
       },
       {
@@ -4946,7 +4950,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.45,
+        "relevance": 12.45,
         "first_seen": "2026-10-15T21:54:20.191Z"
       },
       {
@@ -5030,7 +5034,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 20.37,
+        "relevance": 25.37,
         "first_seen": "2026-10-15T21:54:20.191Z"
       },
       {
@@ -5076,7 +5080,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.34,
+        "relevance": 12.34,
         "first_seen": "2026-10-15T21:54:20.191Z"
       },
       {
@@ -5145,7 +5149,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.32,
+        "relevance": 17.32,
         "first_seen": "2026-10-15T21:54:20.191Z"
       },
       {
@@ -5191,7 +5195,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.26,
+        "relevance": 12.26,
         "first_seen": "2026-10-15T21:54:20.191Z"
       },
       {
@@ -5334,7 +5338,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 22.13,
+        "relevance": 17.13,
         "first_seen": "2026-10-15T21:54:20.191Z"
       },
       {
@@ -5633,7 +5637,7 @@
           "rune",
           "sim"
         ],
-        "relevance": 11.97,
+        "relevance": 21.97,
         "first_seen": "2026-10-15T21:54:20.191Z"
       },
       {
@@ -5657,7 +5661,7 @@
           "aim",
           "radar"
         ],
-        "relevance": 12.95,
+        "relevance": 7.95,
         "first_seen": "2026-10-15T21:54:20.191Z"
       },
       {
@@ -5820,7 +5824,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 16.88,
+        "relevance": 21.88,
         "first_seen": "2026-10-15T21:54:20.191Z"
       }
     ]
