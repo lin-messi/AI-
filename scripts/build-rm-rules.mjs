@@ -23,6 +23,9 @@ const ROOT = path.resolve(__dirname, "..");
 const RULES_DIR = path.join(ROOT, "rules");
 const OUT_FILE = path.join(ROOT, "data", "rm-rules.json");
 const ARCHIVE_DIR = path.join(ROOT, "data", "rm-rules-archive");
+// 文本抽取缓存目录：受限环境无法用 spawnSync 捕获子进程输出时，可预先用 pdftotext
+// 生成 .txt 放在这里（文件名 = PDF basename + .txt），脚本会优先读取，避免 EPERM。
+const PDFTEXT_DIR = path.join(ROOT, "scripts", "_pdftext");
 
 // 单份文档进入提炼的字符上限（防止超出模型上下文，过长时截断）。
 const PER_DOC_CHARS = 22000;
@@ -51,8 +54,23 @@ function listPDFs() {
     .sort();
 }
 
+// 优先读取预生成的缓存文本（scripts/_pdftext/<basename>.txt）。
+function cachedPdfText(pdfPath) {
+  const base = path.basename(pdfPath, path.extname(pdfPath));
+  try {
+    const s = fs.readFileSync(path.join(PDFTEXT_DIR, `${base}.txt`), "utf8");
+    if (s && s.trim()) return s;
+  } catch {
+    /* 无缓存 */
+  }
+  return "";
+}
+
 // 用 pdftotext 抽取，失败回退 python+pypdf。返回纯文本（可能为空字符串）。
 function extractPdfText(pdfPath) {
+  const cached = cachedPdfText(pdfPath);
+  if (cached) return cached;
+
   // 1) pdftotext -enc UTF-8 input - （输出到 stdout）
   try {
     const r = spawnSync("pdftotext", ["-enc", "UTF-8", pdfPath, "-"], {
