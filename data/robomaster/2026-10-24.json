@@ -1,6 +1,6 @@
 {
   "date": "2026-10-24",
-  "generatedAt": "2026-10-24T01:19:32.273Z",
+  "generatedAt": "2026-10-24T07:49:14.673Z",
   "categories": [
     {
       "key": "aim",
@@ -88,7 +88,13 @@
         "image": "",
         "comment": "",
         "relevance": 4,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "可作为装甲板检测+编号/图案识别的统一感知模型参考，把检测框与数字OCR合并到一个模型里；但该类大模型推理延迟高，难以满足自瞄实时性，只能作为离线标注或教材参考。",
+          "task_id": "autoaim",
+          "task": "装甲板自瞄与射击控制",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.29677",
@@ -129,7 +135,13 @@
         "image": "",
         "comment": "93 pages, 15 figures, 21 tables. Project page: https://physical2rsi.github.io/",
         "relevance": 2,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "讨论物理世界中的递归自我改进范式，属方法论综述，无法直接落地到自瞄、导航等具体环节，仅可作为算法迭代流程设计的思路参考。",
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.30320",
@@ -166,7 +178,13 @@
         "image": "",
         "comment": "27 pages; Project page: https://huiwon-jang.github.io/FRED/",
         "relevance": 2,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "用视频扩散先验做机器人策略的世界模型训练，可在仿真中生成对抗场景视频以增强哨兵导航/决策策略的泛化，但训练成本高、与比赛实时要求差距大。",
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.31623",
@@ -207,7 +225,13 @@
         "confWeight": 3,
         "confVision": false,
         "relevance": 10,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "类别级RGB-D位姿估计，可直接用于工程机器人识别能量单元、科技核心等对称/弱纹理目标的6D位姿，支撑机械臂抓取与装配对接；也可推广到能量机关受击面姿态估计。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2610.31518",
@@ -247,7 +271,13 @@
         "confWeight": 5,
         "confVision": false,
         "relevance": 10,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "面向长程任务的场景图构建与规划数据生成，可参考其自动生成可解规划数据的方法，为哨兵/多机战术的LLM决策训练构造离线数据集，但需大量改造到RM赛制。",
+          "task_id": "strategy",
+          "task": "多机协同与战术决策",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.30519",
@@ -289,7 +319,13 @@
         "confWeight": 5,
         "confVision": true,
         "relevance": 5,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "多智能体轨迹与姿态联合预测，可改造为雷达/哨兵的敌方运动预测模块，基于历史轨迹预测敌方未来位置与朝向，辅助提前预瞄与拦截决策。",
+          "task_id": "radar",
+          "task": "雷达目标探测与信息融合",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2610.29570",
@@ -331,7 +367,13 @@
         "confWeight": 5,
         "confVision": false,
         "relevance": 7,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "雅可比性能指标的关节角不变性分析，可用于工程机械臂的构型选择与工作空间可操作度评估，简化装配任务中的姿态评价，但属离线设计工具，不直接提升赛场表现。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.29565",
@@ -375,7 +417,13 @@
         "confWeight": 5,
         "confVision": false,
         "relevance": 8,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "考虑执行器约束与重力补偿的主从遥操作方法，可借鉴到工程机器人上位机操作手对机械臂的映射控制，改善大负载姿态下的跟随平顺性。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2610.29452",
@@ -420,7 +468,13 @@
         "confWeight": 5,
         "confVision": false,
         "relevance": 14,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "把欧氏距离场（EDF）作为观测的强化学习避障框架，可迁移到哨兵/工程机器人在场地高地、环形高地、立柱间的实时避障策略训练，距离场观测比稀疏激光/栅格更稳定，便于在仿真中训练后上真机。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2610.27974",
@@ -464,7 +518,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 8,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "面向伪造人脸/视频/音频的取证平台，与 RM 自瞄、导航、决策等环节基本无关，除非赛事有反作弊/图传内容审核需求，否则用不上。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.28941",
@@ -502,7 +562,13 @@
         "confWeight": 5,
         "confVision": true,
         "relevance": 8,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "换装行人重识别思路可参考用于雷达/哨兵的多目标跟踪数据关联：机器人被遮挡后外观（装甲编号朝向、遮挡）变化下的身份再确认，或作为 ReID 特征用于雷达航迹-目标匹配，但需从行人域迁移到装甲域。",
+          "task_id": "radar",
+          "task": "雷达目标探测与信息融合",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.28856",
@@ -541,7 +607,13 @@
         "confWeight": 5,
         "confVision": true,
         "relevance": 5,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "利用单目深度增强少样本分类，可思路性用于样本稀缺的新赛季装甲板/能量机关贴纸类别识别与前景-背景解耦；但深度估计在赛场高速运动下开销大，仅作特征增强参考。",
+          "task_id": "autoaim",
+          "task": "装甲板自瞄与射击控制",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.31111",
@@ -585,7 +657,13 @@
         "confWeight": 3,
         "confVision": false,
         "relevance": 6,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "长描述中位置感知的评测与 RL 优化方法，与 RM 视觉任务（检测+测距+控制）关联很弱，不构成可用组件。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.30834",
@@ -629,7 +707,13 @@
         "confWeight": 3,
         "confVision": false,
         "relevance": 6,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "VLM 推理中反复回看图像证据的机制，对赛场实时自瞄/导航无直接价值，仅在赛后用大模型做规则问答或日志复盘时略有参考。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.30814",
@@ -674,7 +758,13 @@
         "confWeight": 3,
         "confVision": false,
         "relevance": 6,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "以策略收益而非像素预测质量训练世界模型，可直接用于 sim 任务：用想象 rollout 训练自瞄/导航/多机决策的 RL 策略，减少与仿真器交互成本，并避免单纯追求渲染逼真。",
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2610.26096",
@@ -713,7 +803,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 11,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "可微的神经 PnP 位姿求解器可直接替换工程机器人视觉装配中的 solvePnP-RANSAC，用于视觉标签与科技核心的 6D 位姿回归，提升弱纹理、部分遮挡下的装配对准鲁棒性；也可用于装甲板位姿解算，但单目标 0.46s 时延需剪枝或轻量化后才能上机。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2610.27485",
@@ -749,7 +845,13 @@
         "confWeight": 5,
         "confVision": false,
         "relevance": 7,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "可借鉴其用传感器判定长程操作任务链完成度的评测思路，为工程机器人视觉装配流程设计分步验证；但该文是操作基准而非装配算法，直接用于赛场装配的关联较弱。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.29768",
@@ -793,7 +895,13 @@
         "confWeight": 3,
         "confVision": false,
         "relevance": 10,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "可尝试用其部件级可供性推理来辅助工程机器人识别模块化发射机构、能量单元的可抓取/可装配部位，为机械臂操作提供候选几何区域；但仍需结合RM视觉标签和位姿估计改造。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2610.27110",
@@ -834,7 +942,13 @@
         "confWeight": 5,
         "confVision": true,
         "relevance": 12,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "其基于已知几何模型与表面法向匹配的GNSS拒止定位思路，可启发哨兵在已知场地结构下做视觉重定位；但城市LoD模型与RM赛场差异大，不能直接套用。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.26810",
@@ -874,7 +988,13 @@
         "confWeight": 5,
         "confVision": false,
         "relevance": 10,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "研究的是腿足-空中混合机器人的推力辅助运动控制，与RM轮式/麦轮底盘、云台控制和自瞄导航等任务基本无关。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.29426",
@@ -918,7 +1038,13 @@
         "confWeight": 3,
         "confVision": false,
         "relevance": 6,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "面向语言模型智能体的有状态数据环境RL训练框架，与RM仿真中的机器人策略训练和战术决策环境构建关联很弱。",
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.29196",
@@ -958,7 +1084,13 @@
         "confWeight": 3,
         "confVision": false,
         "relevance": 4,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "可借鉴其物理对抗鲁棒性评测方法，用于测试装甲板/能量机关视觉检测在光照、遮挡和扰动下的稳定性；但边缘VLM与RM传统检测自瞄流程差异较大，需大幅改造。",
+          "task_id": "autoaim",
+          "task": "装甲板自瞄与射击控制",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.28990",
@@ -1001,7 +1133,13 @@
         "confWeight": 3,
         "confVision": false,
         "relevance": 8,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "可作为仿真中基于扩散/流策略的强化学习微调方法，用于训练哨兵导航或战术决策策略，绕开生成策略似然不可解的问题；需在RM仿真环境里接入并验证。",
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2610.28883",
@@ -1043,7 +1181,13 @@
         "confWeight": 3,
         "confVision": false,
         "relevance": 7,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "可用于分析RM仿真在线RL训练中不同经验片段对策略更新的贡献，辅助经验筛选和训练诊断；属于支撑性工具，离具体比赛任务较远。",
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.25701",
@@ -1081,7 +1225,13 @@
         "confWeight": 5,
         "confVision": false,
         "relevance": 8,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "人形机器人按发育量表学运动技能，与 RoboMaster 的轮式/云台机器人运动控制差异大，只能作为 RL 训练流程的泛泛参考，几乎用不上。",
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.27960",
@@ -1121,7 +1271,13 @@
         "confWeight": 3,
         "confVision": false,
         "relevance": 3,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "把 SAM3 改造成多类语义分割，可用于自瞄中同时分割装甲板、能量机关灯臂、工程视觉标签等多个目标；但需评估实时性并做轻量化蒸馏才能在嵌入式端跑。",
+          "task_id": "autoaim",
+          "task": "装甲板自瞄与射击控制",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2610.27946",
@@ -1165,7 +1321,13 @@
         "confWeight": 3,
         "confVision": false,
         "relevance": 7,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "以第一视角动作解耦做世界模拟，可用于生成仿真对抗视频数据，但与 RM 具体环节距离远，关联很弱。",
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.28950",
@@ -1202,7 +1364,13 @@
         "image": "",
         "comment": "Accepted at Conference on Robot Learning (CoRL 2026)",
         "relevance": 4,
-        "first_seen": "2026-10-23T21:49:03.942Z"
+        "first_seen": "2026-10-23T21:49:03.942Z",
+        "rm": {
+          "usage": "超高速四旋翼仿真器的批量光线追踪渲染思路，可借鉴到 RM 仿真平台（自瞄/导航训练用的 RGB、深度、分割、光流输出），但对象是无人机，需重写动力学与战场场景。",
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2610.25401",
@@ -1243,7 +1411,13 @@
         "confWeight": 5,
         "confVision": false,
         "relevance": 9,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "混合密度策略处理多模态动作，可参考用于哨兵导航或云台控制中多解动作的建模，但并非针对 RM 任务，改造量大。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.25376",
@@ -1283,7 +1457,13 @@
         "image": "",
         "comment": "Project page: https://hku-sail.github.io/TILDE",
         "relevance": 5,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "从具身大模型蒸馏操作策略，理论上可迁移到工程机器人机械臂装配，但需要大量示教与算力，短期内对 RM 实用度低。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.31661",
@@ -1325,7 +1505,13 @@
         "image": "",
         "comment": "14 pages, 14 figures. Project website, open-source hardware and software, and demonstration videos: https://opentac.github.io",
         "relevance": 3,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "可定制触觉皮肤，RM 机器人几乎不依赖触觉感知，与自瞄、导航、装配视觉等任务关联很弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.31656",
@@ -1362,7 +1548,13 @@
         "image": "",
         "comment": "9 pages",
         "relevance": 3,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "元强化学习的测试时记忆适配，可作为哨兵在对手风格变化时快速调整策略的参考思路，但与具体任务差距较大。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.31624",
@@ -1397,7 +1589,13 @@
         "image": "",
         "comment": "",
         "relevance": 2,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "讨论大模型RLVR中的工具性收敛与检查点证据，和RoboMaster的感知、控制、战术算法没有直接关系，基本只能作为AI安全背景材料。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.31617",
@@ -1437,7 +1635,13 @@
         "image": "",
         "comment": "",
         "relevance": 5,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "其“学习世界模型+可微仿真联合优化策略”的思路可用于RM仿真环境中训练哨兵导航或云台高频控制，但四旋翼动态穿门场景与地面机器人差异大，需要重做动力学与任务建模。",
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2610.31613",
@@ -1474,7 +1678,13 @@
         "image": "",
         "comment": "",
         "relevance": 2,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "轻量运行时进度监控可用于工程机器人视觉装配过程中判断当前子任务是否跑偏/失败并触发重试，但论文面向VLA策略，RM中需替换为装配状态估计与失败检测模块。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.31608",
@@ -1514,7 +1724,13 @@
         "image": "",
         "comment": "under review",
         "relevance": 3,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "人形机器人复杂地形全身运动RL与RM轮式/云台机器人运动控制关联很弱，基本用不上。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.31569",
@@ -1553,7 +1769,13 @@
         "image": "",
         "comment": "Project page: https://lyfeng001.github.io/Echo/",
         "relevance": 3,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "任务状态信号与动作联合去噪可用于工程装配的成功/失败判定和重规划，但VLA框架与RM工程视觉装配流程差距较大，只能作为失败检测思路参考。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.31562",
@@ -1591,7 +1813,13 @@
         "image": "",
         "comment": "10 pages, 6 figures, 4 tables",
         "relevance": 3,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "面向空间多航天器协同搬运的分散双层优化，与RM多机战术/导航的耦合约束和通信条件差异很大，直接可用性很低。",
+          "task_id": "strategy",
+          "task": "多机协同与战术决策",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.31544",
@@ -1626,7 +1854,13 @@
         "image": "",
         "comment": "",
         "relevance": 2,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "长序列决策中的反事实信用分配思想可迁移到多机战术或仿真强化学习的奖励归因，但论文针对LLM agentic搜索，需大幅改造后才能用于RM策略训练。",
+          "task_id": "strategy",
+          "task": "多机协同与战术决策",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.31540",
@@ -1663,7 +1897,13 @@
         "image": "",
         "comment": "19 pages, 5 figures, 7 tables. Submitted to IEEE Transactions on Robotics",
         "relevance": 6,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "分散式实时多机器人联合优化规划器可借鉴到RM多机协同路径/任务分配与哨兵自主导航中的冲突消解，但RM更强调战术决策和有限通信，需简化联合动力学模型。",
+          "task_id": "strategy",
+          "task": "多机协同与战术决策",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2610.31483",
@@ -1701,7 +1941,13 @@
         "image": "",
         "comment": "19 pages, 5 figures, 5 tables",
         "relevance": 2,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "与 RoboMaster 的自瞄、导航、决策等视觉/控制任务关联很弱；若用于多机战术决策中的工具选择，也缺乏直接落地场景。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.31476",
@@ -1739,7 +1985,13 @@
         "image": "",
         "comment": "",
         "relevance": 6,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "可借鉴其可精化点级语义地图与动态环境点重评估思路，用于哨兵导航中的动态障碍物剔除和长期场景记忆，但赛场地图已知且以静态为主，需较大改造。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2610.31427",
@@ -1774,7 +2026,13 @@
         "image": "",
         "comment": "Github:https://github.com/FastHarness/fast-harness",
         "relevance": 3,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "面向 VLA 策略的执行监控与失败恢复调度，与 RoboMaster 现有自瞄、导航、决策管线不直接匹配，最多作为哨兵异常恢复的参考思路。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.31423",
@@ -1808,7 +2066,13 @@
         "image": "",
         "comment": "Accepted at CoRL 2026",
         "relevance": 4,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "多视角动态路由可启发工程机器人装配时的相机视角选择，但论文面向 VLA 操作策略，和 RM 工程视觉装配的几何位姿估计流程差距较大。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.31299",
@@ -1845,7 +2109,13 @@
         "image": "",
         "comment": "Project page: https://virtualhumans.mpi-inf.mpg.de/PiHand/",
         "relevance": 3,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "灵巧手-物体交互策略学习与 RoboMaster 工程机器人装配任务关联较弱，RM 更依赖夹爪/机械臂位姿控制而非高自由度灵巧手。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.31293",
@@ -1879,7 +2149,13 @@
         "image": "",
         "comment": "",
         "relevance": 0,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "在线语义高斯泼溅与几何召回可用于哨兵/雷达的开放词汇场景理解，但计算开销和工程复杂度高，对已知赛场环境的直接收益有限。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.31253",
@@ -1917,7 +2193,13 @@
         "image": "",
         "comment": "",
         "relevance": 3,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "医学影像肿瘤定位与 RoboMaster 比赛任务几乎无关，不建议投入。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.31221",
@@ -1953,7 +2235,13 @@
         "image": "",
         "comment": "Submitted to IEEE Robotics and Automation Letters (RA-L)",
         "relevance": 4,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "分布式不变 EKF SLAM 与点/对象特征融合可参考用于哨兵在通信受限下的多源定位与地图融合，也可启发雷达信息融合，但赛场地图已知，需裁剪为轻量状态估计模块。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2610.31186",
@@ -1985,7 +2273,13 @@
         "image": "",
         "comment": "",
         "relevance": 6,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "可把雷达站/机载激光雷达的点云语义分割用于战场内机器人、障碍的分割与建图，辅助雷达目标探测与多目标跟踪中的点云聚类标注；但需替换数据集并适配RM场地尺度。",
+          "task_id": "radar",
+          "task": "雷达目标探测与信息融合",
+          "value": "mid"
+        }
       },
       {
         "id": "arxiv:2610.31166",
@@ -2023,7 +2317,13 @@
         "image": "",
         "comment": "8 pages, 4 figures, 5 tables. Submitted to IEEE Robotics and Automation Letters (RA-L). Project page: https://memory-before-goal.github.io",
         "relevance": 2,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "其物体级跨时记忆思路可参考用于工程机器人连续装配任务中目标丢失后的重定位，但论文面向人形VLA全身控制，与RM轮式底盘+机械臂差异大，直接迁移困难。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.31162",
@@ -2061,7 +2361,13 @@
         "image": "",
         "comment": "",
         "relevance": 7,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "面向Minecraft的层次化VLA智能体，与RM的规则化对抗和实时控制需求差异明显，只能作为长时程决策架构的泛泛参考，实用价值很低。",
+          "task_id": "strategy",
+          "task": "多机协同与战术决策",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.31121",
@@ -2098,7 +2404,13 @@
         "image": "",
         "comment": "",
         "relevance": 2,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "用于评估生成的机器人视频是否正确反映交互关系，可作为仿真中自瞄/装配视频生成的评测工具，但RM算法环节几乎用不上。",
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.22951",
@@ -2134,7 +2446,13 @@
         "image": "",
         "comment": "",
         "relevance": 6,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "用Mamba替换流匹配VLA的动作专家以降低推理延迟，若未来在工程装配或策略决策中部署VLA可借鉴提速；当前RM任务基本不涉及VLA，关联很弱。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.31064",
@@ -2172,7 +2490,13 @@
         "image": "",
         "comment": "12 pages, 5 figures, 9 tables. Code and assets: https://github.com/AstroUpLab/AstroBench ; project website: https://astroup.com/astrobench/",
         "relevance": 5,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "空间机器人自由漂浮目标捕获的基准，与RM地面场地、固定目标场景不符，仅飞镖/装配的抓取评测思路可泛泛参考，实用度低。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.31051",
@@ -2206,7 +2530,13 @@
         "image": "",
         "comment": "5 figures",
         "relevance": 1,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "倾转旋翼无人机的建模、EKF多模态状态估计与级联PD控制，若赛事有空中机器人或需要在仿真中做飞控验证可参考，但主体不涉及RM地面机器人任务。",
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.31020",
@@ -2246,7 +2576,13 @@
         "image": "",
         "comment": "Accepted on RAAI 2026",
         "relevance": 6,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "示教+动态运动基元（DMP）的轨迹编码方法，可借鉴用于工程机器人机械臂的模块化装配动作示教复现，但喂食场景与RM装配差异大，需大量改造。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.31010",
@@ -2284,7 +2620,13 @@
         "image": "",
         "comment": "8 pages, 3 figures, 2 tables",
         "relevance": 9,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "该工作将特权状态策略蒸馏为纯视觉策略，可借鉴到工程机器人视觉装配中，降低对精确状态估计的依赖；但腹腔镜手术场景与RM差异很大，需大量改造。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.30991",
@@ -2323,7 +2665,13 @@
         "image": "",
         "comment": "14 pages, 5 figures, 4 tables. Project page: https://kksham111.github.io/UniFlowWAM_ProjectPage/",
         "relevance": 4,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "带视觉语义和4D几何的世界动作模型可借鉴到工程机器人装配策略中，用场景流预测动作后果；但它不是RM场景，落地需改造且关联偏弱。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.30988",
@@ -2360,7 +2708,13 @@
         "image": "",
         "comment": "",
         "relevance": 5,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "面向软织物双臂操作的世界模型与RM任务几乎无关；若硬套，只能为工程机器人操作柔性物体提供一点思路，关联很弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.30969",
@@ -2396,7 +2750,13 @@
         "image": "",
         "comment": "Preprint",
         "relevance": 3,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "低自由度手在支撑面辅助下固定不规则物体的抓取合成，可为工程机器人夹取异形模块提供参考；但RM装配以结构化机构为主，直接用途有限。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "low"
+        }
       },
       {
         "id": "arxiv:2610.25006",
@@ -2435,7 +2795,13 @@
         "confWeight": 5,
         "confVision": false,
         "relevance": 12,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "MR半自主遥操作可用于采集工程机器人机械臂装配演示数据或辅助精细操作；但RM比赛要求全自主且系统复杂，只能作为数据采集工具的参考。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "low"
+        }
       },
       {
         "id": "cvf:CVPR2026:Generalizable Structure-Aware Keypoint Correspondence for Ca",
@@ -2467,7 +2833,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 12,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "类别统一的点云3D单目标跟踪可用于雷达或场端激光点云中对敌方机器人做连续跟踪，减少按车型分别建模；需适配RM目标尺寸、稀疏点和多目标关联。",
+          "task_id": "radar",
+          "task": "雷达目标探测与信息融合",
+          "value": "mid"
+        }
       },
       {
         "id": "cvf:CVPR2026:CME-CAD: Heterogeneous Collaborative Multi-Expert Reinforcem",
@@ -2499,7 +2871,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 8,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "CAD代码生成与RM算法任务无关，最多在机械结构设计自动化上有极弱参考，比赛算法中基本用不上。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "cvf:CVPR2026:PanoEnv: Exploring 3D Spatial Intelligence in Panoramic Envi",
@@ -2532,7 +2910,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 12,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "全景环境3D空间推理基准可启发哨兵全向场景理解或VLM决策，但RM常用普通视角且该工作偏VQA评测，直接可用性低。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "low"
+        }
       },
       {
         "id": "cvf:CVPR2026:SenseSearch: Empowering Vision-Language Models with High-Res",
@@ -2566,7 +2950,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 8,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "面向视觉语言模型的高分辨率工具协同搜索推理，与自瞄、导航等实时机器人任务关联很弱，难以直接用于RoboMaster。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "cvf:CVPR2026:SynCLIP: Synonym-Coherent Language-Image Pretraining for Rob",
@@ -2598,7 +2988,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 7,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "开放词汇密集感知的同义词一致性可提升检测/分割的语义鲁棒性，但RoboMaster目标类别固定且强调实时，只能作为感知鲁棒性参考。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "cvf:CVPR2026:Prompt-Anchored Vision-Text Distillation for Lifelong Person",
@@ -2631,7 +3027,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 8,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "终身行人重识别与RoboMaster机器人目标不匹配，装甲板编号已提供身份信息；跨域ReID思路对雷达多目标关联仅有间接参考。",
+          "task_id": "radar",
+          "task": "雷达目标探测与信息融合",
+          "value": "low"
+        }
       },
       {
         "id": "cvf:CVPR2026:An Efficient Token Compression Framework for Visual Object T",
@@ -2663,7 +3065,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 8,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "视觉跟踪中的token压缩可降低自瞄跟踪网络的计算量、提升帧率，适合移植到装甲板跟踪器做轻量化加速。",
+          "task_id": "autoaim",
+          "task": "装甲板自瞄与射击控制",
+          "value": "mid"
+        }
       },
       {
         "id": "cvf:CVPR2026:ConceptPose: Training-Free Zero-Shot Object Pose Estimation ",
@@ -2695,7 +3103,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 12,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "零样本物体位姿估计可用于工程机器人识别科技核心/能量单元并估计6D位姿，辅助机械臂装配对准。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "mid"
+        }
       },
       {
         "id": "cvf:CVPR2026:JoPPO: Hierarchical Photography Assessment via Contrastive J",
@@ -2728,7 +3142,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 8,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "摄影美学评估与RoboMaster算法任务基本无关，不能用于自瞄、导航、决策等环节。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "cvf:CVPR2026:DROID-SLAM in the Wild",
@@ -2761,7 +3181,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 10,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "动态环境下的鲁棒RGB SLAM可直接用于哨兵在移动机器人干扰、人员走动场地中的实时定位与建图，提升自主导航稳定性。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "high"
+        }
       },
       {
         "id": "cvf:CVPR2026:Towards Robust Multi-Modal Semantic Segmentation with Teache",
@@ -2793,7 +3219,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 6,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "缺失模态鲁棒多模态语义分割可为哨兵在相机/雷达等传感器降级时的融合感知提供思路，但需改造且非核心任务。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "mid"
+        }
       },
       {
         "id": "cvf:CVPR2026:ExtrinSplat: Decoupling Geometry and Semantics for Open-Voca",
@@ -2826,7 +3258,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 6,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "面向3DGS场景的开放词汇语义理解，与RM自瞄、导航、雷达等任务的目标形态（装甲板、灯臂、机器人刚体）差异很大，几乎没有直接落地环节，关联很弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "cvf:CVPR2026:Vocabulary Scaling Law: Tuning Open-vocabulary Predictors fo",
@@ -2858,7 +3296,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 6,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "讨论开放词汇预测器在词表扩张下的稳定性与可扩展性微调，可类比自瞄/雷达中类别集随赛季变化时的检测器增量训练策略，但仅为方法论参考，需大量改造。",
+          "task_id": "autoaim",
+          "task": "装甲板自瞄与射击控制",
+          "value": "low"
+        }
       },
       {
         "id": "cvf:CVPR2026:Taming Preference Mode Collapse via Directional Decoupling A",
@@ -2890,7 +3334,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 8,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "扩散模型偏好对齐中的奖励攻击问题，与RM算法任务（自瞄、导航、决策）基本无关，仅在用生成模型做仿真数据增广时有一点间接参考价值。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "cvf:CVPR2026:OpenVoxel: Training-Free Grouping and Captioning Voxels for ",
@@ -2923,7 +3373,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 6,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "无需训练的稀疏体素分组与描述可用于雷达/哨兵构建的战场三维语义地图，把敌方机器人、掩体等分组标注，但目前更偏静态场景理解，落地需大改。",
+          "task_id": "radar",
+          "task": "雷达目标探测与信息融合",
+          "value": "low"
+        }
       },
       {
         "id": "cvf:CVPR2026:SPAN: Spatial-Projection Alignment for Monocular 3D Object D",
@@ -2956,7 +3412,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 9,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "单目3D检测的空间-投影对齐思路可用于自瞄中由单张图传图像直接回归装甲板/机器人的三维框与朝向，作为PnP之外的几何一致约束，提升测距与姿态稳定性。",
+          "task_id": "autoaim",
+          "task": "装甲板自瞄与射击控制",
+          "value": "mid"
+        }
       },
       {
         "id": "cvf:CVPR2026:Explore with Long-term Memory: A Benchmark and Multimodal LL",
@@ -2990,7 +3452,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 9,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "长期记忆驱动的具身探索与决策框架，可借鉴到哨兵全自动巡逻：用历史片段记忆维护战场热点地图，指导探索路线与遭遇战决策，但需针对RMUC/RMUL场地重训。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "mid"
+        }
       },
       {
         "id": "cvf:CVPR2026:Generalized-CVO: Fast and Correspondence-Free Local Point Cl",
@@ -3023,7 +3491,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 9,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "无需对应的快速局部点云配准可用于哨兵/雷达的激光里程计与多帧点云对齐，提升战场内自主定位与建图精度；也可用于场端雷达多传感器外参在线标定与多目标跟踪的点云关联。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "mid"
+        }
       },
       {
         "id": "cvf:CVPR2026:ReAttnCLIP: Training-Free Open-Vocabulary Remote Sensing Ima",
@@ -3056,7 +3530,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 7,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "遥感图像开放词汇分割，与RM场景（室内场地、小目标装甲板）差异明显，仅在需要按文本prompt分割场地/障碍物时有微弱参考，基本用不上。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       },
       {
         "id": "cvf:CVPR2026:PAM: A Pose-Appearance-Motion Engine for Sim-to-Real HOI Vid",
@@ -3090,7 +3570,13 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 13,
-        "first_seen": "2026-10-23T18:50:56.429Z"
+        "first_seen": "2026-10-23T18:50:56.429Z",
+        "rm": {
+          "usage": "该工作面向手-物交互视频生成与仿真到真实的视觉合成，和 RoboMaster 的自瞄、导航、决策、装配等任务关联很弱；最多只能作为仿真数据生成/域适应的泛化思路参考，但无法直接用于工程机器人视觉装配或算法验证。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
       }
     ]
   },
@@ -3731,7 +4217,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.32,
+        "relevance": 12.32,
         "first_seen": "2026-10-23T18:50:56.429Z"
       },
       {
@@ -3918,7 +4404,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.13,
+        "relevance": 17.13,
         "first_seen": "2026-10-23T18:50:56.429Z"
       },
       {
@@ -3970,7 +4456,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 7.08,
+        "relevance": 12.08,
         "first_seen": "2026-10-23T18:50:56.429Z"
       },
       {
@@ -4154,7 +4640,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 17,
+        "relevance": 22,
         "first_seen": "2026-10-23T18:50:56.429Z"
       },
       {
@@ -4401,7 +4887,7 @@
         "categories": [
           "other"
         ],
-        "relevance": 1.88,
+        "relevance": 16.88,
         "first_seen": "2026-10-23T18:50:56.429Z"
       }
     ]
