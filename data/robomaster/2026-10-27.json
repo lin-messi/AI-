@@ -1,6 +1,6 @@
 {
   "date": "2026-10-27",
-  "generatedAt": "2026-10-27T05:49:12.239Z",
+  "generatedAt": "2026-10-27T12:48:44.537Z",
   "categories": [
     {
       "key": "aim",
@@ -136,6 +136,143 @@
           "usage": "统一的视频-语言具身大脑与长时程视觉规划，可借鉴到哨兵机器人或多机战术决策的“预测对手未来状态+选子任务”设计，但模型规模 16B、面向机械臂控制，直接迁移到 RM 不现实。",
           "task_id": "sentry",
           "task": "哨兵机器人自主导航与决策",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2610.32093",
+        "arxiv_id": "2610.32093",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "DiscoDemo: Discovering Efficient and Diverse Robot Demonstrations for Imitation Learning",
+        "title_zh": "DiscoDemo：为模仿学习发现高效且多样的机器人演示",
+        "abstract_en": "Behavior cloning for robotic manipulation is highly sensitive to the coverage of its training data, yet collecting diverse successful demonstrations remains costly. We study reinforcement learning (RL) not as a deployable controller, but as a data generator for downstream visuomotor imitation learning. Our key premise is that multiple successful solution modes cover a broader range of successful trajectories than repeatedly collecting a single narrow solution. We introduce DiscoDemo, which trains a privileged latent-conditioned RL generator with a parallel reverse curriculum and a success-gated diversity objective to discover diverse solutions while preserving task success. The trained generator produces multiple successful closed-loop behaviors, which are safety-filtered and exported as a static dataset for downstream imitation learning. Across four manipulation tasks, DiscoDemo produces broader successful-state coverage and improves downstream visuomotor policies in both simulation and the real world. Averaged across tasks, downstream success increases to 62% from 40% for the strongest baseline in simulation, and to 78% from 39% on the real robot, respectively. These results suggest that successful solution diversity improves imitation learning for a pretrained flow-matching VLA and remains complementary to corrective data collection. Project page: https://davian-robotics.github.io/DiscoDemo",
+        "abstract_zh": "机器人操作的行为克隆对训练数据的覆盖度高度敏感，而收集多样的成功演示代价高昂。本文不把强化学习（RL）当作可部署的控制器，而是作为下游视觉-运动模仿学习的数据生成器。核心前提是：多个成功的解法模式比反复采集单一狭窄解法能覆盖更广的成功轨迹。我们提出 DiscoDemo，训练一个带特权潜在条件、使用并行逆向课程与成功门控多样性目标的 RL 生成器，在保持任务成功的前提下发现多样解法。生成器产生多种成功的闭环行为，经安全过滤后导出为静态数据集供下游模仿学习使用。在四个操作任务上，DiscoDemo 带来更广的成功状态覆盖，并在仿真与真实世界中提升下游视觉-运动策略：仿真中最强基线平均成功率 40% 提升至 62%，真实机器人上由 39% 提升至 78%。结果表明，成功解法的多样性可改善预训练 flow-matching VLA 的模仿学习，并与纠正性数据采集互补。",
+        "highlight_zh": "用 RL 当数据生成器，多样性演示让 VLA 成功率大幅提升",
+        "digest_zh": "1. 研究问题：训练机器人模仿学习（行为克隆）时，数据是否覆盖足够多的成功方式，直接决定策略好坏；但人工收集多样演示昂贵，只重复采集同一种做法又会让策略过于狭窄。\n2. 方法思路：作者不把强化学习当作最终控制器，而是当作“演示生产机”。DiscoDemo 训练一个带特权信息的潜在条件 RL 生成器，用并行逆向课程加速学习，并加入“成功门控的多样性”目标——只有仍然完成任务的行为才被计入多样性，从而在保证成功的同时找到多种不同解法。生成的多条闭环行为经安全过滤后，导出一个静态数据集。\n3. 实验结果：在四个操作任务上，生成的演示覆盖了更广的成功状态；用这些数据训练下游视觉-运动策略，仿真平均成功率从最强基线的 40% 升到 62%，真实机器人从 39% 升到 78%。\n4. 为何重要：它说明“成功方式的多样性”本身就是一种可扩展的数据增强手段，且与人工纠正数据互补，为降低机器人数据采集成本提供了新路径。",
+        "authors": [
+          "Minho Park",
+          "Kinam Kim",
+          "Donghu Kim",
+          "Byungkun Lee",
+          "Dongyoon Hwang",
+          "Yongjae Shin",
+          "Junha Hyung",
+          "Hojoon Lee"
+        ],
+        "url": "https://arxiv.org/abs/2610.32093v1",
+        "pdf_url": "https://arxiv.org/pdf/2610.32093",
+        "html_url": "https://arxiv.org/abs/2610.32093",
+        "published_at": "2026-10-23T02:55:17.000Z",
+        "upvotes": 19,
+        "heat": 3004.144706111111,
+        "featured": true,
+        "categories": [
+          "slam",
+          "rl",
+          "radar"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 8,
+        "first_seen": "2026-10-27T12:48:33.248Z",
+        "rm": {
+          "usage": "可借鉴其「RL 只作数据生成器」的思路：在仿真里为工程机器人机械臂装配/取弹任务并行探索多种成功轨迹，导出成数据集再训练视觉-运动策略，提升策略对位姿偏差的鲁棒性。但论文面向桌面操作，迁移到 RM 需重写任务与奖励，实用度有限。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2610.33413",
+        "arxiv_id": "2610.33413",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.MM"
+        ],
+        "title_en": "AV-FABLE: Audio-Visual Manipulation Forensics in Long-Form Videos",
+        "title_zh": "AV-FABLE：长视频中的音视频操作取证",
+        "abstract_en": "Localized AI manipulations in long-form videos often affect brief events within otherwise authentic content, making video-level classification insufficient for forensic analysis. Existing audio-visual deepfake benchmarks largely focus on short talking-head clips, while long-form temporal forensics remains predominantly visual. We introduce AV-FABLE, a dual-timeline benchmark for sparse manipulations in open-scene long-form audio-visual videos. AV-FABLE contains 16,650 pristine--manipulated twin pairs (998 hours) created with 27 editing configurations, with separate audio and visual timelines that enable modality-specific temporal localization and expose errors hidden by joint-timeline evaluation. On AV-FABLE, zero-shot prompting of audio-visual large language models (AV-LLMs) yields near-chance detection and poor temporal localization. In contrast, supervised readouts of their frozen perception features recover strong forensic signals, suggesting manipulation evidence is encoded in these representations but not effectively exposed through language outputs. Motivated by this observation, we propose NFSR(Native Forensics via Separated Readouts), which reads frozen AV-LLM features with separate audio and visual temporal decoders. NFSR achieves the best audio-visual localization performance in-domain and across all three out-of-distribution settings, including transfer to held-out videos from an external long-video forensic benchmark. AV-FABLE, code, and model weights will be publicly released.",
+        "abstract_zh": "长视频中局部的 AI 篡改往往只影响真实内容中的短暂事件，因此视频级分类不足以支撑取证分析。现有音视频深度伪造基准多聚焦短视频说话人片段，长视频时序取证也以视觉为主。我们提出 AV-FABLE，一个面向开放场景长视频稀疏篡改的双时间线基准，包含 16,650 对原始—篡改孪生样本（998 小时），由 27 种编辑配置生成，音频与视觉时间线相互独立，从而支持分模态的时序定位，并暴露联合时间线评测所掩盖的错误。在 AV-FABLE 上，零样本提示音视频大语言模型（AV-LLM）的检测接近随机、时序定位很差；相反，对其冻结感知特征做有监督读出则能恢复强取证信号，说明篡改证据已编码在这些表征中，却未被语言输出有效暴露。据此我们提出 NFSR，用分离的音频与视觉时序解码器读取冻结 AV-LLM 特征，在域内及全部三种分布外设置（含迁移到外部长视频取证基准的留出视频）上取得最佳音视频定位性能。AV-FABLE、代码与模型权重将公开。",
+        "highlight_zh": "首个长视频音视频双时间线篡改基准，并提出 NFSR 读出法",
+        "digest_zh": "1. 研究问题：长视频里的 AI 篡改常常只改几秒钟的片段，判断“整段视频真假”远远不够，需要精确指出改在哪、什么时候改。但现有音视频伪造数据集基本是短视频说话人片段，长视频取证也主要看画面，声音被忽视。\n2. 数据构建：作者推出 AV-FABLE，专门针对开放场景长视频中的稀疏篡改。它包含 16,650 对“原片—篡改片”，共 998 小时，用 27 种编辑方式生成；关键在于音频和视觉各有一条独立时间线，可分别评测定位能力，也揭示出用单一联合时间线评测会掩盖的错误。\n3. 发现与方法：测试发现，直接让音视频大模型（AV-LLM）零样本判断，检测几乎靠猜、定位很差；但若把这些模型冻结的感知特征拿出来做有监督读出，就能得到很强的取证信号——说明模型内部“知道”哪里被改，只是语言输出没说出来。受此启发，作者提出 NFSR，用音频、视觉两个独立时序解码器读取冻结特征。\n4. 结果与意义：NFSR 在域内和三种分布外设置（包括迁移到外部长视频取证基准）上均取得最佳音视频定位表现，为长视频音视频取证提供了新基准与新范式。",
+        "authors": [
+          "Yuesheng Huang",
+          "Hoi Fan Au",
+          "Jiaqi Hou",
+          "Ruicheng Zhang",
+          "Jiarui He",
+          "Haocheng Yang",
+          "Bin Hu",
+          "Kewei Zhang"
+        ],
+        "url": "https://arxiv.org/abs/2610.33413v1",
+        "pdf_url": "https://arxiv.org/pdf/2610.33413",
+        "html_url": "https://arxiv.org/abs/2610.33413",
+        "published_at": "2026-10-24T03:01:21.000Z",
+        "upvotes": 12,
+        "heat": 2678.2458138888887,
+        "featured": true,
+        "categories": [
+          "radar"
+        ],
+        "image": "",
+        "comment": "41 pages, 10 figures, including appendices",
+        "relevance": 3,
+        "first_seen": "2026-10-27T12:48:33.248Z",
+        "rm": {
+          "usage": "长视频音视频深度伪造的时序定位与取证，与 RoboMaster 的自瞄、导航、决策等环节基本无关，赛事中也没有伪造检测需求，关联很弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2610.34356",
+        "arxiv_id": "2610.34356",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "RynnVLA-Latent: Scaling Robotic Manipulation Foundation Models with 3D-Grounded Latent Actions",
+        "title_zh": "RynnVLA-Latent：用三维接地的潜在动作扩展机器人操作基础模型",
+        "abstract_en": "Scaling vision-language-action (VLA) models is constrained by scarce action-labeled demonstrations and incompatible control spaces across robot embodiments. We present RynnVLA-Latent, a framework that turns heterogeneous interaction videos into scalable supervision for robot policy pretraining. At its core, RynnLAM learns continuous, 3D-grounded latent actions from visual transitions without requiring native robot controls. By combining residual future-feature prediction, camera-compensated 3D-flow supervision, and camera-motion decoupling, RynnLAM encourages representations that capture control-relevant motion rather than appearance changes alone. We apply RynnLAM to 30.1K hours of human, robot, and simulation videos, producing 745.52M latent-action descriptors. RynnVLA-Latent then learns to predict latent-action chunks from visual observations and language through flow matching, before adapting its pretrained backbone and action expert to embodiment-specific robot actions. The resulting 4B policy achieves 98.8% success on LIBERO, 84.7% on LIBERO-Plus without benchmark-specific adaptation, 51.9% average success across five VLABench tracks, and 88.6% average success on the RoboTwin 2.0 bimanual benchmark. It also achieves the highest observed success rates among the compared methods on six real-world manipulation tasks across dexterous-hand and mobile-gripper platforms. Together with representation ablations and data-scaling results, these findings demonstrate the potential of latent-action supervision for scaling robot policy learning beyond native action-labeled data.",
+        "abstract_zh": "扩展视觉-语言-动作（VLA）模型受限于带动作标注的演示稀缺，以及不同机器人本体控制空间不兼容。我们提出 RynnVLA-Latent，将异构交互视频转化为可扩展的机器人策略预训练监督。其核心 RynnLAM 无需原生机器人控制信号，即可从视觉变化中学习连续、三维接地的潜在动作；通过结合残差未来特征预测、相机补偿的三维光流监督与相机运动解耦，RynnLAM 促使表征捕捉与控制相关的运动而非仅外观变化。我们将 RynnLAM 应用于 30.1K 小时的人类、机器人与仿真视频，生成 7.4552 亿条潜在动作描述子。随后，RynnVLA-Latent 通过 flow matching 从视觉观测与语言预测潜在动作块，再将预训练主干与动作专家适配到具体本体的机器人动作。所得 4B 策略在 LIBERO 上达 98.8% 成功率，在无需基准特定适配的 LIBERO-Plus 上达 84.7%，在 VLABench 五条赛道平均 51.9%，在 RoboTwin 2.0 双臂基准上平均 88.6%；在灵巧手与移动夹爪平台上的六个真实操作任务中也取得对比方法中最高的成功率。结合表征消融与数据规模实验，这些结果表明潜在动作监督有望让机器人策略学习突破原生动作标注数据的限制。",
+        "highlight_zh": "从 3 万小时视频学三维潜在动作，4B 模型多基准领先",
+        "digest_zh": "1. 研究问题：视觉-语言-动作（VLA）模型想做大，却卡在两件事：带动作标签的机器人演示太少；不同机器人（机械臂、灵巧手、移动底盘）的动作空间互不兼容，难以共享数据。\n2. 方法核心：作者提出 RynnVLA-Latent，把大量异构交互视频变成预训练监督。关键模块 RynnLAM 不需要机器人原生控制信号，只从画面变化中学习连续、三维接地的“潜在动作”。它同时用三招：预测残差的未来特征、用相机补偿后的三维光流做监督、把相机自身运动解耦出去，从而让学到的表征关注“控制相关的运动”而非单纯外观变化。\n3. 规模与训练：作者把 RynnLAM 跑在 30.1K 小时的人类、机器人、仿真视频上，产出约 7.46 亿条潜在动作描述子。RynnVLA-Latent 先用 flow matching 从视觉观测和语言预测潜在动作块，再把预训练主干和动作专家适配到具体本体的真实动作上，得到 4B 参数策略。\n4. 结果与意义：LIBERO 上 98.8%、无需专门适配的 LIBERO-Plus 上 84.7%、VLABench 五赛道平均 51.9%、RoboTwin 2.0 双臂平均 88.6%，并在灵巧手与移动夹爪的真实任务中成功率居首。说明用潜在动作做监督，能突破“必须有原生动作标注”的数据瓶颈。",
+        "authors": [
+          "Haoyu Zhao",
+          "Xingyue Zhao",
+          "Zhian Su",
+          "Bohan Hou",
+          "Yinzhou Tang",
+          "Fengyi Wang",
+          "Kehan Li",
+          "Yuming Jiang"
+        ],
+        "url": "https://arxiv.org/abs/2610.34356v1",
+        "pdf_url": "https://arxiv.org/pdf/2610.34356",
+        "html_url": "https://arxiv.org/abs/2610.34356",
+        "published_at": "2026-10-25T15:05:32.000Z",
+        "upvotes": 9,
+        "heat": 2564.315540277778,
+        "featured": true,
+        "categories": [
+          "aim",
+          "radar",
+          "sim"
+        ],
+        "image": "",
+        "comment": "Project page: https://alibaba-damo-academy.github.io/RynnVLA-Latent.github.io/, GitHub: https://github.com/alibaba-damo-academy/RynnVLA-Latent",
+        "relevance": 4,
+        "first_seen": "2026-10-27T12:48:33.248Z",
+        "rm": {
+          "usage": "其「从无动作标注视频中学习三维接地潜在动作、再适配到具体本体」的路线，可用于工程机器人机械臂操作的预训练，缓解 RM 装配数据稀缺问题；但当前只验证了桌面操作任务，短期难直接落地到赛场。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
           "value": "low"
         }
       },
@@ -603,6 +740,44 @@
           "task_id": "",
           "task": "",
           "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2610.33718",
+        "arxiv_id": "2610.33718",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.LG"
+        ],
+        "title_en": "RoboJev: An Open Vision-Language Judge for Robot Success Detection",
+        "title_zh": "RoboJev：用于机器人成功检测的开放视觉-语言评判器",
+        "abstract_en": "Many robot manipulation videos do not indicate whether the task was successfully completed. RoboJev-27B is an open-weight vision-language model that takes a task instruction, 10 frames of a manipulation attempt, and (if available) final frames from auxiliary cameras and predicts whether the robot accomplished the task. RoboJev-27B is a variant of JEV-27B-VL, trained with a rank-32 LoRA adapter on the language model only (keeping the vision encoder frozen) using 52,598 episode records. It also uses a source-specific KL penalty that applies only to research data, anchoring predictions closer to the original model on those sources. It uses a calibrated two-token readout that outputs success/failure probabilities in a single forward pass. On 268 held-out episodes of the same robot model (SO-101), RoboJev-27B attains 95.2% balanced accuracy and 0.993 AUROC. It also generalises to episodes collected by unseen labs/robots (AUROC = 0.890 over 459 episodes) as well as to clearly labelled community-collected episodes (accuracy = 93.3% over 135 episodes), where the base model attains an AUROC = 0.900 on the unseen-lab/robot subset with the same inputs. It takes 0.26 seconds per episode (median, serial) to infer on a single H100, which is about \\$0.19 per 1,000 success predictions at \\$2.69 per GPU-hour (not including media processing and serving costs). RoboJev-27B is released together with its inference code, along with a transparent evaluation: 20,628 predictions organized into 29 model/protocol entries are made available to facilitate browsing and to enable reproducible benchmarking of success detection. We also compare against strong API-based frontier VLMs, which take in fewer input frames (4 images from the primary camera only); note that this comparison is not strictly like-for-like because RoboJev-27B is given more frames at inference.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Josef Liyanjun Chen"
+        ],
+        "url": "https://arxiv.org/abs/2610.33718v1",
+        "pdf_url": "https://arxiv.org/pdf/2610.33718",
+        "html_url": "https://arxiv.org/abs/2610.33718",
+        "published_at": "2026-10-24T15:06:27.000Z",
+        "upvotes": 2,
+        "heat": 2190.3308177777776,
+        "featured": false,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "15 pages, 5 figures",
+        "relevance": 3,
+        "first_seen": "2026-10-27T12:48:33.248Z",
+        "rm": {
+          "usage": "可作为自动「成功判定器」：给工程机器人装配/取弹的回放或仿真画面加任务指令，自动判断动作是否完成，用于批量打标数据、以及在仿真回归测试中自动统计任务成功率，减少人工看视频。需注意其对 RM 场景与相机视角的泛化要重新验证。",
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "value": "mid"
         }
       },
       {
@@ -4322,176 +4497,6 @@
           "task": "算法仿真与验证",
           "value": "mid"
         }
-      },
-      {
-        "id": "arxiv:2610.32525",
-        "arxiv_id": "2610.32525",
-        "source": "arXiv",
-        "cats": [
-          "cs.RO"
-        ],
-        "title_en": "From Freehand Demonstrations to Autonomous Robotic Ultrasound: An Anatomy-Anchored Learning Framework",
-        "title_zh": "从手绘演示到自主机器人超声：一种以解剖结构为锚的学习框架",
-        "abstract_en": "Ultrasound imaging is highly operator-dependent, motivating robotic systems that reproduce expert scanning skills consistently. These skills involve coordinated interpretation of anatomical landmarks, ultrasound images, and probe-tissue interactions that are difficult to encode in hand-designed control strategies. Imitation learning offers an alternative, but its observation and action representations should reflect the anatomically structured nature of scanning. We propose an anatomy-anchored imitation-learning framework that combines anatomy-guided probe placement with learned ultrasound navigation. The placement module identifies a task-specific anatomical starting point from external visual observations and establishes the initial probe pose as the reference frame for scanning. A flow-based policy then generates scanning motions from anchor-relative probe poses, ultrasound images, probe-mounted camera views, and contact forces, while a termination head predicts task completion. This avoids continuous reliance on third-person vision and reduces dependence on the robot-patient configuration. A handheld acquisition platform enables multimodal demonstrations to be collected during natural freehand scanning without a robot. On 16 unseen participants, task success reaches 96%, 94%, 88%, and 94% for kidney, gallbladder, and liver standard-plane acquisition and radial artery sweeping, respectively. Compared with a fine-tuned pi_0 model, success on the abdominal tasks improves by 10-42 percentage points, with lower time-to-target, peak contact force, and trajectory jerk. Ablations support the complementary roles of anatomical anchoring, egocentric vision, and force feedback. End-to-end trials with automatic placement achieve 90-100% success, and the policies transfer without retraining to a second robot with 83-100% success.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Yuan Bi",
-          "Fangxu Han",
-          "Ye Su",
-          "Yiping Zhou",
-          "Zhongliang Jiang",
-          "Nassir Navab"
-        ],
-        "url": "https://arxiv.org/abs/2610.32525v1",
-        "pdf_url": "https://arxiv.org/pdf/2610.32525",
-        "html_url": "https://arxiv.org/abs/2610.32525",
-        "published_at": "2026-10-23T11:58:26.000Z",
-        "upvotes": 0,
-        "heat": 2075.782959722222,
-        "featured": false,
-        "categories": [
-          "aim",
-          "rl",
-          "radar"
-        ],
-        "image": "",
-        "comment": "",
-        "relevance": 7,
-        "first_seen": "2026-10-27T00:13:42.286Z",
-        "rm": {
-          "usage": "面向机器人超声扫描的解剖锚定模仿学习，与RM自瞄、导航、装配等任务关联很弱；仅其示教学习框架对工程机器人机械臂操作有很远的参考价值。",
-          "task_id": "",
-          "task": "",
-          "value": "low"
-        }
-      },
-      {
-        "id": "arxiv:2610.32439",
-        "arxiv_id": "2610.32439",
-        "source": "arXiv",
-        "cats": [
-          "cs.RO"
-        ],
-        "title_en": "$R^2E:$ A Role-driven Reward Evolutionary Framework for Automated Reward Function Design",
-        "title_zh": "$R^2E$：一种角色驱动的奖励进化框架用于自动化奖励函数设计",
-        "abstract_en": "Designing effective reward functions is a critical challenge in Reinforcement Learning (RL), which traditionally requires costly manual trial-and-error. While Large Language Model (LLM)-based methods have shown promise in reward design, undifferentiated sampling and limited use of historical feedback often lead to insufficient exploration of the reward space and optimization instability. To address these challenges, we propose $R^2E$, a Role-driven Reward Evolutionary framework for automated reward function design that structures the process through explicit role specialization. $R^2E$ employs multiple LLM roles with complementary objectives: an Explorer that promotes novelty to expand the search space, a Guardian that performs conservative refinements to improve training stability, and an Evolver that recombines high-performing rewards via crossover and mutation to integrate effective structures. A dynamic scheduling strategy coordinates these roles, progressively shifting the search from broad exploration to focused exploitation. To mitigate optimization instability and provide a medium for cross-role collaboration, $R^2E$ incorporates a Global Elite Pool that retains the best-performing rewards to guide subsequent generations, thereby enabling coordinated interaction among roles and ensuring a reliable and consistent refinement process. Extensive experiments on multiple robotic tasks demonstrate the effectiveness of our method.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Shouhao Chang",
-          "Xuan Liu",
-          "Hongye Zhu",
-          "Xinning Chen",
-          "Shigeng Zhang"
-        ],
-        "url": "https://arxiv.org/abs/2610.32439v1",
-        "pdf_url": "https://arxiv.org/pdf/2610.32439",
-        "html_url": "https://arxiv.org/abs/2610.32439",
-        "published_at": "2026-10-23T10:06:40.000Z",
-        "upvotes": 0,
-        "heat": 2073.9201819444443,
-        "featured": false,
-        "categories": [
-          "rl",
-          "radar"
-        ],
-        "image": "",
-        "comment": "",
-        "relevance": 4,
-        "first_seen": "2026-10-27T00:13:42.286Z",
-        "rm": {
-          "usage": "可用角色驱动的LLM奖励进化框架自动化设计强化学习奖励函数，适合在RM仿真中训练自瞄、导航或多机战术策略时减少手工调参；需接入具体仿真环境与任务指标。",
-          "task_id": "sim",
-          "task": "算法仿真与验证",
-          "value": "mid"
-        }
-      },
-      {
-        "id": "arxiv:2610.32348",
-        "arxiv_id": "2610.32348",
-        "source": "arXiv",
-        "cats": [
-          "cs.RO"
-        ],
-        "title_en": "LogLook: Execution-Grounded Memory for Frontier-Model Robot Planners",
-        "title_zh": "LogLook：面向前沿模型机器人规划器的基于执行落地的记忆",
-        "abstract_en": "Many manipulation tasks require a robot to remember what it has done and what it has seen. Frontier vision-language models can plan such tasks without task-specific training, but how such a planner should remember an episode is an open question. We argue that its memory must keep track of what the planner has done and learned, and must let the planner choose what to look at, since every frame costs tokens; a note rewritten at every step meets both poorly. We propose LogLook, whose execution-grounded memory lets the system keep the record, an execution log and the model's earlier notes, while the model decides where to look: frames are returned only where it expects a change, and demonstrations are skimmed before it inspects the parts it chooses. Measured with the benchmark's motion planner, LogLook matches the success of a note-only memory with 43% fewer tokens and less than half the images, and fails far fewer episodes through what it remembered or saw. With direct control, LogLook solves 93.5% of the RoboMME test set.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Tianyi Jiang",
-          "Tianyao Tong",
-          "Zhenshan Bing"
-        ],
-        "url": "https://arxiv.org/abs/2610.32348v1",
-        "pdf_url": "https://arxiv.org/pdf/2610.32348",
-        "html_url": "https://arxiv.org/abs/2610.32348",
-        "published_at": "2026-10-23T08:43:15.000Z",
-        "upvotes": 0,
-        "heat": 2072.5299041666667,
-        "featured": false,
-        "categories": [
-          "aim",
-          "radar"
-        ],
-        "image": "",
-        "comment": "19 pages, 11 figures, 10 tables",
-        "relevance": 3,
-        "first_seen": "2026-10-27T00:13:42.286Z",
-        "rm": {
-          "usage": "面向VLM机器人规划器的执行记忆机制主要服务于长程操作任务，与RM自瞄、导航、决策等核心环节关联很弱，基本用不上。",
-          "task_id": "",
-          "task": "",
-          "value": "low"
-        }
-      },
-      {
-        "id": "arxiv:2610.32330",
-        "arxiv_id": "2610.32330",
-        "source": "arXiv",
-        "cats": [
-          "cs.RO"
-        ],
-        "title_en": "DynaSlots: Slot-Centric 3D Dynamics Pretraining for Robot Manipulation",
-        "title_zh": "",
-        "abstract_en": "Robot manipulation involves localized changes: picking up a cup moves the cup while leaving the surrounding scene largely unchanged. Yet existing 3D visual pretraining methods, including recent dynamics-aware variants, model state transitions at the scene level, compressing the motion of everything in a scene into a single global latent action. This conflates semantically distinct transitions in scenes with multiple moving parts, obscures dependencies between changing regions, and leaves the learned representation vulnerable to task-irrelevant scene content. We introduce DynaSlots, an action-free, label-free pretraining framework that decomposes each point cloud frame into a small set of temporally consistent slots and models dynamics at this per-slot level rather than the scene level. A temporal slot propagation module promotes consistent slot assignments across frames; an inverse dynamics model then extracts one latent action per slot from feature differences, and a diffusion-based forward dynamics model, paired with a self-supervised interaction head, predicts each slot's future state while learning pairwise proximity-and-motion relations. Experiments on Meta-World, Adroit, and a RealMan RM65-B robot demonstrate that DynaSlots outperforms prior scene-level baselines. It achieves superior success rates in simulation and exhibits strong robustness to scene clutter and unseen objects in real-world manipulation. Code is available at \\href{https://zhucezhanghao12345-source.github.io/DynaSlots-Anonymous/}{https://zhucezhanghao12345-source.github.io/DynaSlots-Anonymous/}.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Meng Li",
-          "Lijiang Chen",
-          "Qi Zhao",
-          "Jun Jiang",
-          "Longhao Zou",
-          "Shuchang Lyu",
-          "Guangliang Cheng"
-        ],
-        "url": "https://arxiv.org/abs/2610.32330v1",
-        "pdf_url": "https://arxiv.org/pdf/2610.32330",
-        "html_url": "https://arxiv.org/abs/2610.32330",
-        "published_at": "2026-10-23T08:26:13.000Z",
-        "upvotes": 0,
-        "heat": 2072.2460152777776,
-        "featured": false,
-        "categories": [
-          "radar",
-          "sim"
-        ],
-        "image": "",
-        "comment": "",
-        "relevance": 4,
-        "first_seen": "2026-10-27T00:13:42.286Z",
-        "rm": {
-          "usage": "以物体槽为中心的3D动态预训练思路或可用于工程机器人装配时对模块/能量单元的位姿变化建模，但论文面向通用操作学习，迁移到RM视觉装配需大量改造和数据。",
-          "task_id": "engineer",
-          "task": "重装机器人视觉装配",
-          "value": "low"
-        }
       }
     ]
   },
@@ -5041,7 +5046,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 9.37,
+        "relevance": 9.38,
         "first_seen": "2026-10-27T00:13:42.286Z"
       },
       {
@@ -5617,7 +5622,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 11.97,
+        "relevance": 21.97,
         "first_seen": "2026-10-27T00:13:42.286Z"
       },
       {
@@ -5804,7 +5809,7 @@
         "categories": [
           "other"
         ],
-        "relevance": 16.88,
+        "relevance": 16.89,
         "first_seen": "2026-10-27T00:13:42.286Z"
       }
     ]
