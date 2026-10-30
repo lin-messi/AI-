@@ -1,6 +1,6 @@
 {
   "date": "2026-10-30",
-  "generatedAt": "2026-10-30T06:35:14.483Z",
+  "generatedAt": "2026-10-30T13:43:00.126Z",
   "categories": [
     {
       "key": "aim",
@@ -221,6 +221,52 @@
           "usage": "提供了一个低成本机械臂语言条件操作的仿真基准与数字孪生评测流程，可作为工程机器人机械臂抓取/装配策略训练与仿真-真机排序验证的参考框架；但其任务（桌面空间放置、未见物体泛化）与 RM 工程装配的视觉标签位姿识别、精确对接流程差距较大，只能借鉴评测设计思路。",
           "task_id": "engineer",
           "task": "重装机器人视觉装配",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2610.39287",
+        "arxiv_id": "2610.39287",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "OpenFlyV2: An onboard vision-language-action model for aerial perception and navigation",
+        "title_zh": "OpenFlyV2：面向空中感知与导航的机载视觉-语言-动作模型",
+        "abstract_en": "Human cognition flexibly draws on a shared perceptual foundation to understand environments, attend to referenced entities, reason about spatial relationships, and act. Endowing aerial robots with an analogous functional organization remains challenging, as existing systems are often specialized for individual capabilities, dependent on offboard computation, or unable to sustain closed-loop operation on resource-constrained platforms. We present OpenFlyV2, a unified onboard vision-language-action architecture that uses a shared vision-language representation to support semantic understanding, language-grounded perception, spatial reasoning, and continuous aerial control within a single model. A compact action expert converts the shared multimodal context into short-horizon flight waypoints, while motion-aware temporal memory and action priors reduce the computational cost of closed-loop execution. We construct \\dataset{}, a simulation-based dataset comprising approximately 70,000 navigation trajectories and 60,000 vision-language instruction--response pairs. OpenFlyV2 generates action chunks, each comprising 12 waypoints, entirely onboard at 10 Hz using an NVIDIA Jetson Orin NX. It transfers zero-shot from simulation to physical quadrotor flight, achieving a 48\\% navigation success rate across four real-world environments without real-world aerial training data. Extensive results demonstrate that broad vision-language competence and continuous closed-loop flight can coexist within a single model on a resource-constrained aerial platform. Code will be made publicly available at https://github.com/Ideal-ljl/AeroBrain.",
+        "abstract_zh": "人类认知能灵活调用共享的感知基础来理解环境、关注被指称的实体、推理空间关系并采取行动。让空中机器人具备类似的功能组织仍很困难：现有系统往往只针对单一能力、依赖机载外计算，或无法在资源受限平台上持续闭环运行。我们提出 OpenFlyV2，一个统一的机载视觉-语言-动作架构，用共享的视觉-语言表征在单一模型中支持语义理解、语言定位感知、空间推理与连续空中控制。紧凑的动作专家把共享多模态上下文转成短时域飞行航点，运动感知的时序记忆与动作先验降低闭环执行开销。我们构建了约 7 万条导航轨迹、6 万对视觉-语言指令-响应的仿真数据集。OpenFlyV2 在 NVIDIA Jetson Orin NX 上完全机载、以 10 Hz 生成每块 12 个航点的动作，并在无真实飞行训练数据的情况下零样本迁移到真实四旋翼，在四类真实环境中取得 48% 的导航成功率。",
+        "highlight_zh": "单一机载 VLA 实现 10Hz 闭环飞行，零样本迁移真机成功率 48%",
+        "digest_zh": "1) 问题：无人机要在真实环境自主飞行，需要同时看懂场景、听懂“飞到红色建筑左侧”这类指令、判断空间关系并控制飞行。现有系统往往各管一摊：有的只做语义分割，有的把重计算放到地面服务器，很难在算力有限的机载平台上长时间闭环运行。\n2) 方法：OpenFlyV2 把这些能力放进一个统一的视觉-语言-动作模型：共享的视觉-语言表征既用于语义理解、语言定位感知和空间推理，又直接输入一个紧凑的“动作专家”，把多模态上下文转成未来一小段飞行航点。为降低闭环开销，作者加入运动感知的时序记忆和动作先验。训练数据为仿真生成的约 7 万条导航轨迹与 6 万对“指令—响应”。\n3) 结果：模型在 NVIDIA Jetson Orin NX 这类机载边缘设备上完全本地运行，以 10 Hz 输出每块含 12 个航点的动作块。更关键的是，它没有用任何真实飞行数据训练，就直接零样本迁移到真实四旋翼上，在四类真实环境中平均导航成功率为 48%。\n4) 意义：这说明“广博的视觉-语言能力”与“连续闭环飞行控制”可以共存于同一个模型、同一块资源受限的机载芯片上，为不依赖地面站的自主无人机提供了可行路径；48% 的成功率也表明从仿真到真机仍有明显差距，是后续改进空间。",
+        "authors": [
+          "Junli Liu",
+          "Zhongrui You",
+          "Chenhui Li",
+          "Zhen Li",
+          "Yuyang Tian",
+          "Qizhen Chen",
+          "Delin Qu",
+          "Haoming Song"
+        ],
+        "url": "https://arxiv.org/abs/2610.39287v1",
+        "pdf_url": "https://arxiv.org/pdf/2610.39287",
+        "html_url": "https://arxiv.org/abs/2610.39287",
+        "published_at": "2026-10-29T03:35:30.000Z",
+        "upvotes": 3,
+        "heat": 2275.9253530555557,
+        "featured": true,
+        "categories": [
+          "aim",
+          "rl",
+          "radar"
+        ],
+        "image": "",
+        "comment": "12page, 6figures",
+        "relevance": 4,
+        "first_seen": "2026-10-30T13:42:57.851Z",
+        "rm": {
+          "usage": "面向无人机机载视觉-语言-动作导航，与地面哨兵自主导航有一定思路借鉴（共享视觉表征+短时域航点输出、Jetson 上部署的轻量化闭环），但空域、语言指令范式与 RMUC/RMUL 的场地定位建图需求差别大，难以直接迁移。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
           "value": "low"
         }
       },
@@ -4424,47 +4470,6 @@
           "task": "重装机器人视觉装配",
           "value": "mid"
         }
-      },
-      {
-        "id": "arxiv:2610.37043",
-        "arxiv_id": "2610.37043",
-        "source": "arXiv",
-        "cats": [
-          "cs.RO"
-        ],
-        "title_en": "State estimation for a hybrid rigid-continuum space manipulator system",
-        "title_zh": "",
-        "abstract_en": "Spacecraft-mounted robotic manipulators can support long-term operability of orbiting assets by conducting tasks such as on-orbit assembly, repair, upgrade, and refueling. In this context, the integration of continuum/soft robotic mechanisms into space manipulator designs promises to reduce stowage volume and mass, as well as to improve operational safety through the inherent mechanical compliance of soft structures. This work presents a novel state reconstruction pipeline for a hybrid soft-rigid space manipulator, in which the distal link is a tendon-driven continuum robot. The estimation problem is formulated as a maximum a posteriori (MAP) inference problem over the hybrid manipulator's configuration, conditioned on discrete, noisy measurements from joint encoders and a vision-based sensing pipeline. The resulting soft-constrained optimization problem is transcribed as a factor graph, providing a compact representation for fusing heterogeneous measurements with the rigid-soft kinematic model. Furthermore, the adoption of the Geometric Variable Strain (GVS) approach yields a minimum-order parameterization of the configuration, a property expected to facilitate model-based feedback control design in future work. The proposed implementation is validated in simulation on a closed-loop trajectory where, for better realism, position measurements for the continuum link are obtained by means of a simulated visual pipeline leveraging synthetic photorealistic images. The state reconstruction accuracy and computational performance confirm the potential of the proposed framework for hybrid soft-rigid robotic applications in orbit.",
-        "abstract_zh": "",
-        "highlight_zh": "",
-        "digest_zh": "",
-        "authors": [
-          "Lorenzo Ticozzi",
-          "Patricio A. Vela",
-          "Panagiotis Tsiotras"
-        ],
-        "url": "https://arxiv.org/abs/2610.37043v1",
-        "pdf_url": "https://arxiv.org/pdf/2610.37043",
-        "html_url": "https://arxiv.org/abs/2610.37043",
-        "published_at": "2026-10-27T11:14:36.000Z",
-        "upvotes": 0,
-        "heat": 2103.2209505555556,
-        "featured": false,
-        "categories": [
-          "aim",
-          "rl",
-          "sim"
-        ],
-        "image": "",
-        "comment": "10 pages, 9 figures. Version submitted to \"Soft Robotics\"",
-        "relevance": 3,
-        "first_seen": "2026-10-29T20:03:42.446Z",
-        "rm": {
-          "usage": "面向空间柔性-刚性混合机械臂的状态重构，与 RM 中刚性云台/机械臂的状态估计问题差异大，几乎无直接可用性。",
-          "task_id": "",
-          "task": "",
-          "value": "low"
-        }
       }
     ]
   },
@@ -4594,7 +4599,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.69,
+        "relevance": 17.69,
         "first_seen": "2026-10-29T20:03:42.446Z"
       },
       {
@@ -5084,7 +5089,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.34,
+        "relevance": 7.34,
         "first_seen": "2026-10-29T20:03:42.446Z"
       },
       {
@@ -5107,7 +5112,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.33,
+        "relevance": 7.33,
         "first_seen": "2026-10-29T20:03:42.446Z"
       },
       {
@@ -5153,7 +5158,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.26,
+        "relevance": 7.26,
         "first_seen": "2026-10-29T20:03:42.446Z"
       },
       {
@@ -5531,7 +5536,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 22.02,
+        "relevance": 17.02,
         "first_seen": "2026-10-29T20:03:42.446Z"
       },
       {
@@ -5644,7 +5649,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 27.93,
+        "relevance": 22.93,
         "first_seen": "2026-10-29T20:03:42.446Z"
       },
       {
@@ -5778,7 +5783,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 16.89,
+        "relevance": 11.89,
         "first_seen": "2026-10-29T20:03:42.446Z"
       }
     ]
