@@ -1,6 +1,6 @@
 {
   "date": "2026-11-03",
-  "generatedAt": "2026-11-02T20:40:14.211Z",
+  "generatedAt": "2026-11-03T02:46:23.831Z",
   "categories": [
     {
       "key": "aim",
@@ -49,7 +49,7 @@
     }
   ],
   "papers": {
-    "count": 80,
+    "count": 95,
     "items": [
       {
         "id": "arxiv:2610.42149",
@@ -652,6 +652,52 @@
           "task_id": "engineer",
           "task": "重装机器人视觉装配",
           "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2611.00522",
+        "arxiv_id": "2611.00522",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.LG"
+        ],
+        "title_en": "Behavioral Steering of Vision-Language-Action Models in the Low-Parameter Regime",
+        "title_zh": "低参数条件下视觉-语言-动作模型的行为引导",
+        "abstract_en": "Reinforcement learning (RL) is increasingly used to adapt pretrained vision-language-action models (VLAs). We investigate the problem of behavioral steering: adapting a VLA's execution style to preferences such as carrying objects higher. To investigate how little trainable capacity such steering requires and how much pretrained capability can be retained, we freeze an OpenVLA-OFT 7B policy and optimize TinyLoRA adapters with 8 to 384 trainable parameters using either policy-gradient RL (GRPO) or evolutionary search (CMA-ES). With just 256 trainable parameters, we raise carry height by 120 mm on trained tasks at 92% success and by 74 mm on a held-out task at 80% success. By rescaling the learned update, we can tune the trade-off between style gains and capability retention without retraining. Increasing adapter capacity generally improves this trade-off, retaining more pretrained capability at comparable style gains. The choice of optimizer also depends on capacity, with CMA-ES being competitive at low parameter counts, while GRPO offers better trade-offs as capacity grows. These findings show that extremely low-dimensional updates can steer pretrained VLA behavior, with adapter capacity, optimizer choice, and update scaling offering practical control over adaptation and retention.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "James Tcheng",
+          "Feiyu Gavin Zhu"
+        ],
+        "url": "https://arxiv.org/abs/2611.00522v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.00522",
+        "html_url": "https://arxiv.org/abs/2611.00522",
+        "published_at": "2026-10-31T01:23:01.000Z",
+        "upvotes": 0,
+        "heat": 2146.6568630555557,
+        "featured": false,
+        "categories": [
+          "aim",
+          "slam",
+          "rl"
+        ],
+        "image": "",
+        "comment": "NeurIPS 2026 RoboPAD Workshop",
+        "conf": "NeurIPS",
+        "confYear": 2026,
+        "confTag": "NeurIPS 2026",
+        "confWeight": 3,
+        "confVision": false,
+        "relevance": 6,
+        "first_seen": "2026-11-03T02:46:05.240Z",
+        "rm": {
+          "usage": "该文研究用极少可训练参数（LoRA+RL）对 VLA 策略做行为风格微调，而 RoboMaster 各环节（自瞄、导航、装配）主要依赖视觉几何与控制算法，并不使用大规模 VLA 策略，因此可直接借鉴的空间很小，只能算作「小样本策略微调」的方法论参考。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
         }
       },
       {
@@ -1358,6 +1404,51 @@
         }
       },
       {
+        "id": "arxiv:2611.00615",
+        "arxiv_id": "2611.00615",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.AI"
+        ],
+        "title_en": "Learning from an Imitable Teacher: Competition Solution for the MetaFine Challenge",
+        "title_zh": "向可模仿的教师学习：MetaFine挑战赛的竞赛解决方案",
+        "abstract_en": "The MetaFine Open Competition (RoboFineMani workshop, CoRL 2026) evaluates fine-grained manipulation beyond binary success. Its five simulated tasks, from grasping a bottle by an instructed part to inserting letter-shaped pegs with 4 mm clearance, are scored on perception under lighting and camera changes, instruction understanding, and behavior. This report presents Team Friday's solution, which got second place with an overall score of 0.947, more than twice the $π_0$ baseline. Instead of fine-tuning a large vision-language-action (VLA) model, we train one 19M-parameter policy per task with a separate instruction classifier and focus on the data, all generated in the simulator by a privileged scripted teacher, including its corrections of the student's mistakes. By analyzing failed episodes, we find that a teacher that almost always succeeds can still teach a memoryless student badly: its pauses become stalls, its fixed habits become shortcuts, and it never shows the errors the student makes. Making the teacher \\emph{imitable} raised the official score on letter insertion, the hardest task, from 0.44 to 0.82 with 32\\% more data and the same architecture, and finally to 0.88. We summarize practical lessons on demonstration data and evaluation, which we hope will help in imitation learning for precise manipulation.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Yanze Zhang",
+          "Hao Liu",
+          "Haochang Hao",
+          "Zhixiang Shen",
+          "Chunyu Miao",
+          "Yuyao Yang"
+        ],
+        "url": "https://arxiv.org/abs/2611.00615v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.00615",
+        "html_url": "https://arxiv.org/abs/2611.00615",
+        "published_at": "2026-10-31T04:33:26.000Z",
+        "upvotes": 0,
+        "heat": 2089.8304744444445,
+        "featured": false,
+        "categories": [
+          "aim",
+          "slam",
+          "rl"
+        ],
+        "image": "",
+        "comment": "2026 CoRL MetaFine Open Competition 2nd place solution",
+        "relevance": 4,
+        "first_seen": "2026-11-03T02:46:05.240Z",
+        "rm": {
+          "usage": "其「按任务训练小规模专用策略、而非微调大 VLA」的思路，以及在光照和相机变化下考核感知鲁棒性的做法，可用于工程机器人视觉装配（如 42mm 发射机构、能量单元插装）的分任务策略设计与小间隙插装鲁棒性评测。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "mid"
+        }
+      },
+      {
         "id": "arxiv:2610.36079",
         "arxiv_id": "2610.36079",
         "source": "arXiv",
@@ -1411,6 +1502,47 @@
         }
       },
       {
+        "id": "arxiv:2611.00558",
+        "arxiv_id": "2611.00558",
+        "source": "arXiv",
+        "cats": [
+          "q-bio.QM",
+          "cs.LG"
+        ],
+        "title_en": "Can agents reliably design therapeutic antibodies?",
+        "title_zh": "智能体能否可靠地设计治疗性抗体？",
+        "abstract_en": "Recent work has demonstrated agents driving protein design workflows, either through orchestration of specialized tools or direct manipulation of sequences. Yet the fidelity with which agents follow protein design instructions and the factors contributing to their effectiveness remain understudied. We examine agentic antibody design under two settings: when explicit molecular-editing instructions are provided and when agents receive only previously-scored sequences and are prompted to propose improvements. We call the first task-guided and the second black-box design. For the task-guided setting, we curate ten expert-validated affinity-improvement tasks and show that LLM judges closely reproduce programmatic evaluations of instruction following. We then study two augmentations: access to antibody-relevant tools and to previously scored design history. Tools improve instruction following (IF) and sequence space exploration while reducing optimization performance, whereas design history reduces IF but improves optimization performance at the expense of exploration. Finally, we combine taskguided and black-box design within an in silico optimization loop and show that our agentic optimizer performs comparably to an established Bayesian optimization baseline.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Asli Alpman",
+          "Nick Bhattacharya",
+          "Aaron Solomon",
+          "Hunter Elliott"
+        ],
+        "url": "https://arxiv.org/abs/2611.00558v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.00558",
+        "html_url": "https://arxiv.org/abs/2611.00558",
+        "published_at": "2026-10-31T02:35:17.000Z",
+        "upvotes": 0,
+        "heat": 2087.8612994444443,
+        "featured": false,
+        "categories": [
+          "slam"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 1,
+        "first_seen": "2026-11-03T02:46:05.240Z",
+        "rm": {
+          "usage": "抗体设计智能体与 RoboMaster 的视觉、导航、决策任务没有交集，关联极弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
         "id": "arxiv:2610.35630",
         "arxiv_id": "2610.35630",
         "source": "arXiv",
@@ -1453,6 +1585,90 @@
           "usage": "面向全尺寸车辆的遥操作人机界面（BEV 可视化）评估，RM 中操作手仅提供极有限的场端/飞镖/雷达界面参考；比赛要求机器人全自主，遥操作本身不可用，关联很弱。",
           "task_id": "",
           "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2611.00527",
+        "arxiv_id": "2611.00527",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.RO",
+          "physics.app-ph"
+        ],
+        "title_en": "3D Neural Rendering for Automated Ultrasonic Laser Scans",
+        "title_zh": "用于自动超声激光扫描的3D神经渲染",
+        "abstract_en": "Laser doppler vibrometer (LDV) scans can be used to detect defects and cracks in manufactured parts before they are deployed. This work presents a method for reconstructing the steady-state surface wavefield of a three-dimensional part by combining automated robotic manipulation with neural rendering. A six-degree-of-freedom (6-DOF) robotic manipulator (UFactory xArm6) with an embedded piezoelectric transducer presented an acoustically excited test article to a stationary LDV at a sequence of known orientations, yielding a set of complex-valued 2D scans with poses derived analytically from the arm kinematics rather than from image-based pose estimation. These scans were used to train a novel complex-nerfacto model, a modified Neural Radiance Field (NeRF) pipeline that replaces the standard three-channel RGB output head with a two-channel output. Complex-nerfacto represents the real and imaginary velocity components of a wavefield, preserving the complex measurement without quantization. Reconstructions of a welded aluminum cylinder and a welded T-bracket were evaluated against measured scans using Z-normalized cross-correlation (ZNCC). The complex-valued pipeline achieved a mean ZNCC of 0.60 at held-out viewing angles, compared with 0.28 for a baseline RGB nerfacto model trained on rendered images of the same data. The resulting surface wavefield reconstructions supported defect detection and characterization on complex components. We identify geometry reconstruction from sparse LDV scans as the remaining obstacle to practical deployment.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Thomas Pierson",
+          "Matthew Mitchell",
+          "Kira Perna",
+          "Anand Iyer",
+          "Eric Flynn",
+          "Adam Wachtor"
+        ],
+        "url": "https://arxiv.org/abs/2611.00527v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.00527",
+        "html_url": "https://arxiv.org/abs/2611.00527",
+        "published_at": "2026-10-31T01:32:31.000Z",
+        "upvotes": 0,
+        "heat": 2086.8151966666665,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl",
+          "sim"
+        ],
+        "image": "",
+        "comment": "LA-UR-26-28755 , For SEM-IMAC-CV",
+        "relevance": 9,
+        "first_seen": "2026-11-03T02:46:05.240Z",
+        "rm": {
+          "usage": "用机械臂多视角扫描并结合神经渲染重建物体，和工程机器人装配环节的位姿重建有一点形式上的相似，但对象是超声场、依赖激光测振仪，难以迁移到赛场视觉装配。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2611.00513",
+        "arxiv_id": "2611.00513",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "WorldSketch: Sketching World Models for Zero-Shot Mobile Manipulation",
+        "title_zh": "WorldSketch：为零样本移动操作勾勒世界模型",
+        "abstract_en": "Most agentic robotic systems use vision-language models (VLMs) either to orchestrate predefined skills or to directly generate actions, constraints, and control programs. The former is limited by the available skill library, while the latter requires VLMs to reason about precise geometry and contact. In this paper, we propose WorldSketch, a new paradigm for agentic robotics in which a VLM constructs a world model rather than generating robot actions. The VLM acts as an agent that actively queries perception tools to build and visually validate a minimal kinematic world model, capturing only task-relevant objects, their interaction geometry, and possible motions. A geometric planner then jointly optimizes contact and whole-body motion on the resulting model. Moreover, the world model is self-improving: execution feedback verifies outcomes, updates uncertain hypotheses, and enables the agent to revise the model when its predictions are contradicted. We demonstrate the generality of this paradigm across RoboCasa, LIBERO-PRO, and R2R-CE navigation, achieving zero-shot success rates of 91%, 97%, and 76%, respectively. On RoboCasa, WorldSketch outperforms the next-best zero-shot agent baseline by 58 percentage points while using 10 times fewer VLM input tokens; on LIBERO-PRO, it exceeds CaP-X by 82 percentage points. In navigation, it matches the success rate of step-by-step VLM agents while using 6 times fewer input tokens.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Jiaming Wang"
+        ],
+        "url": "https://arxiv.org/abs/2611.00513v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.00513",
+        "html_url": "https://arxiv.org/abs/2611.00513",
+        "published_at": "2026-10-31T01:06:20.000Z",
+        "upvotes": 0,
+        "heat": 2086.3788075,
+        "featured": false,
+        "categories": [
+          "aim",
+          "radar"
+        ],
+        "image": "",
+        "comment": "40 pages, 4 figures",
+        "relevance": 6,
+        "first_seen": "2026-11-03T02:46:05.240Z",
+        "rm": {
+          "usage": "VLM 不直接输出动作而是先构建最小运动学世界模型、再规划零样本移动操作，这一思路可借鉴到哨兵机器人：用地图与感知结果构建简化可通行/对抗模型再做自主决策，但原方法面向桌面操作，需较大改造。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
           "value": "low"
         }
       },
@@ -1503,6 +1719,45 @@
           "usage": "技能离散化 + 后训练对齐（拒绝采样微调与粒度优化）可提升工程机器人机械臂装配（安装 42mm 发射机构、能量单元）的模仿学习策略质量，也可用于把复杂战术动作拆成技能原语训练。",
           "task_id": "engineer",
           "task": "重装机器人视觉装配",
+          "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2611.00482",
+        "arxiv_id": "2611.00482",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.RO"
+        ],
+        "title_en": "A Straight Line Is Not a Camera Pose: Auditing Short-Clip Pose Benchmarks",
+        "title_zh": "直线不是相机位姿：对短片段位姿基准的审计",
+        "abstract_en": "The absolute trajectory error (ATE) is the standard measure of camera-motion accuracy, from SLAM to feed-forward 3D reconstruction. On the common Sintel protocol, a constant-velocity straight line using no images has a lower mean ATE than 10 of 11 recent models re-run with official code. Two properties of ATE's alignment explain this. First, it maps any constant-velocity prediction onto the best-fitting line through the true path, so the line scores the path's regression residual. A residual signal-to-noise ratio (SNR) criterion predicts when moving a prediction towards its constant-velocity fit lowers ATE. It gives the outcome for 95% of 1056 model-clip pairs, 98% of 792 held-out pairs and 97% of 1034 ScanNet pairs, and it separates Sintel (median SNR 0.86) from TUM, ScanNet and full-length Bonn and Wild-SLAM (2.7 to 27), where straightening raises every model's mean ATE. Second, position-only alignment ignores where cameras look: rotating a trajectory by 30 degrees against its orientations leaves ATE unchanged, yet worsens the reprojection of static points for every model on Sintel, TUM and ScanNet in the main setting, and the line, second by mean ATE on Sintel, places them worst by geometric mean: a lower ATE need not mean better geometry. Fitting the alignment's rotation to the predicted orientations gives pose-anchored ATE, a one-function change in ATE's units costing 0.17 ms per clip (ATE: 0.11 ms). It ranks every image-free reference below every model on Sintel, tracks the reprojection error under rotation and straightening, where ATE does not (Spearman 0.61 vs. 0.32), largely preserves the models' order, and ties 10-frame translational relative pose error (RPE) and the discernible trajectory error (DTE) on our rotation and reference tests. Code, predictions and results will be released.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Xinyi Shi"
+        ],
+        "url": "https://arxiv.org/abs/2611.00482v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.00482",
+        "html_url": "https://arxiv.org/abs/2611.00482",
+        "published_at": "2026-10-31T00:14:11.000Z",
+        "upvotes": 0,
+        "heat": 2085.5096408333334,
+        "featured": false,
+        "categories": [
+          "slam",
+          "radar"
+        ],
+        "image": "",
+        "comment": "34 pages (8-page main text and appendix), 7 figures, 21 tables",
+        "relevance": 2,
+        "first_seen": "2026-11-03T02:46:05.240Z",
+        "rm": {
+          "usage": "指出 ATE 在短片段上会被匀速直线「骗过」，这提醒我们在评估哨兵/SLAM 定位与仿真里程计精度时，不能只看 ATE，需补充残差信噪比等指标，可用于导航算法与仿真评测体系的指标设计。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
           "value": "mid"
         }
       },
@@ -1840,6 +2095,91 @@
         }
       },
       {
+        "id": "arxiv:2611.00455",
+        "arxiv_id": "2611.00455",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "TacMind: Benchmarking and Modeling Tactile Interaction States for Robotic Manipulation",
+        "title_zh": "TacMind：面向机器人操作的触觉交互状态基准测试与建模",
+        "abstract_en": "Tactile sensing provides robots with direct observations of contact physics, local geometry, and interaction dynamics, making it a vital source of feedback for contact-rich manipulation. However, existing tactile manipulation studies are often developed and evaluated within specific task settings, making it difficult to systematically compare how tactile information contributes under different interaction conditions. In this work, we develop a benchmark in simulation comprising 128 tasks organized around three complementary evaluation regimes: Precise, Recognition, and Dynamic. The benchmark further includes controlled static and dynamic task variants and 12 perturbation settings for evaluating robustness under changes in visual and physical conditions. These settings motivate studying tactile information as a temporally evolving interaction representation rather than only as an instantaneous observation. We therefore propose an action-conditioned latent predictive world model that integrates tactile history and learns a tactile state through prediction of future tactile latents. Building on this representation, we design a model that conditions action generation on the learned tactile state and uses predicted future tactile information to refine candidate actions through predictive tactile reflection. Experiments on the proposed benchmark show consistent gains from incorporating tactile information across the evaluated regimes. Project Page: https://tacmind-bench.github.io/",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Jiaxin Shi",
+          "Zibin Wu",
+          "Yichi Zhang",
+          "Jianghua Duan",
+          "Siyu Zhu",
+          "Weihao Yuan"
+        ],
+        "url": "https://arxiv.org/abs/2611.00455v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.00455",
+        "html_url": "https://arxiv.org/abs/2611.00455",
+        "published_at": "2026-10-30T23:13:52.000Z",
+        "upvotes": 0,
+        "heat": 2084.5043630555556,
+        "featured": false,
+        "categories": [
+          "radar",
+          "sim"
+        ],
+        "image": "",
+        "comment": "Project Page: https://tacmind-bench.github.io/",
+        "relevance": 4,
+        "first_seen": "2026-11-03T02:46:05.240Z",
+        "rm": {
+          "usage": "触觉基准面向接触丰富的操作任务，而 RoboMaster 工程装配主要依赖视觉位姿估计、几乎不用触觉反馈，关联较弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2611.00452",
+        "arxiv_id": "2611.00452",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG"
+        ],
+        "title_en": "Compositional Self-Improvement: Promises and Pitfalls",
+        "title_zh": "组合式自我改进：前景与陷阱",
+        "abstract_en": "Although self-improvement is becoming increasingly important as tasks become more complex, models struggle to generate reliable supervision for harder, out-of-distribution instances. One way to address this challenge is to exploit compositional structure: models often solve simpler subproblems more reliably than full problems, so their subproblem predictions can be composed into supervision for harder ones. We systematically study when this kind of composed supervision supports self-improvement and when it fails. Our controlled experiments identify three failure modes: unreliable subproblem predictions, errors introduced by composition, and limited supervision coverage. Beyond controlled settings, these findings carry over to more realistic coding and reasoning tasks: composed labels are more accurate than direct self-generated labels and improve performance even on compositions longer than those seen during training, while the failure modes remain visible. Further, although these failure modes often keep compositional self-improvement from fully succeeding on its own, a short SFT warmup with compositional self-improvement can bootstrap reinforcement learning on tasks that require composing skills the model already has, particularly when direct exploration rarely succeeds. Together, these findings characterize when compositional self-improvement can provide sufficiently reliable supervision to expand model capabilities.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Changho Shin",
+          "Daiwei Chen",
+          "Brenden Lake",
+          "Frederic Sala",
+          "Ramya Korlakai Vinayak"
+        ],
+        "url": "https://arxiv.org/abs/2611.00452v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.00452",
+        "html_url": "https://arxiv.org/abs/2611.00452",
+        "published_at": "2026-10-30T23:09:03.000Z",
+        "upvotes": 0,
+        "heat": 2084.4240769444446,
+        "featured": false,
+        "categories": [
+          "aim",
+          "rl"
+        ],
+        "image": "",
+        "comment": "38 pages",
+        "relevance": 3,
+        "first_seen": "2026-11-03T02:46:05.240Z",
+        "rm": {
+          "usage": "讨论组合式子监督自我改进的失败模式，属于通用大模型训练方法论，与自瞄、导航、决策等赛场算法关联很弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
         "id": "arxiv:2610.42026",
         "arxiv_id": "2610.42026",
         "source": "arXiv",
@@ -2092,6 +2432,44 @@
         }
       },
       {
+        "id": "arxiv:2611.00407",
+        "arxiv_id": "2611.00407",
+        "source": "arXiv",
+        "cats": [
+          "cs.AI",
+          "cs.LG"
+        ],
+        "title_en": "Hacking or Just Failing? A More Capable LLM Monitor Better Separates Reward Hacking from Honest Failure",
+        "title_zh": "是奖励黑客还是单纯失败？能力更强的 LLM 监控器能更好地区分奖励黑客行为与诚实失败",
+        "abstract_en": "An agent's visible score can exceed its real progress because it gamed the score or because it simply made mistakes, so a useful reward-hacking monitor must tell the two apart. We built a sandboxed task in which an agent can game a completion score, labelled every episode by replaying it and repairing the final state counterfactually, and ran five pre-registered studies. On 60 episodes from a Llama 3.1 8B agent, small local monitors (Llama 3B and 8B) did not separate exploit attempts from honest failures with the same score gap: prompt changes traded missed exploits for false alarms, and the pre-registered primary monitor reached AUC 0.64. On identical inputs, Gemini 3.1 Flash-Lite, which completed 9/10 clean tasks against 2/10 for the 8B model, met our pre-registered criterion (AUC 0.80, 95% interval [0.66, 0.93]; 1/35 honest failures flagged); with only 14 exploit episodes, this estimate is uncertain. On an exploit that no prompt names, Gemini usually described the action correctly yet never flagged it, in 5 and then 25 new episodes, even when manipulation was defined by its effect on the score. Given the full trace, the 8B monitor flagged all 25 replication episodes and none of 25 honest look-alikes, but its explanations described actions that had not occurred; given additional structured evidence, it also flagged 15 of the 25 look-alikes. A two-rule deterministic check caught every known exploit. We release the environment, labels, pre-registrations and per-judgement logs.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Kaushik Kezendirane"
+        ],
+        "url": "https://arxiv.org/abs/2611.00407v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.00407",
+        "html_url": "https://arxiv.org/abs/2611.00407",
+        "published_at": "2026-10-30T21:52:47.000Z",
+        "upvotes": 0,
+        "heat": 2083.1529658333334,
+        "featured": false,
+        "categories": [
+          "other"
+        ],
+        "image": "",
+        "comment": "14 pages, 2 figures, 4 tables. Code, data and pre-registrations: https://github.com/KaushikKC/weak-monitor-lab",
+        "relevance": 1,
+        "first_seen": "2026-11-03T02:46:05.240Z",
+        "rm": {
+          "usage": "可用于仿真强化学习训练中监控“奖励作弊”与诚实失败，但论文针对LLM智能体沙盒，迁移到RoboMaster策略训练需重建任务与标签，关联较弱。",
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "value": "low"
+        }
+      },
+      {
         "id": "arxiv:2610.41903",
         "arxiv_id": "2610.41903",
         "source": "arXiv",
@@ -2225,6 +2603,132 @@
         }
       },
       {
+        "id": "arxiv:2611.00395",
+        "arxiv_id": "2611.00395",
+        "source": "arXiv",
+        "cats": [
+          "stat.ML",
+          "cs.LG",
+          "stat.AP"
+        ],
+        "title_en": "Transformer-Based Reinforcement Learning for Phase I Dose Allocation",
+        "title_zh": "基于 Transformer 的强化学习用于 I 期剂量分配",
+        "abstract_en": "Phase I dose-finding trials must learn from sparse toxicity observations while limiting exposure to overly toxic doses. We develop a single reinforcement-learning policy for trials with different numbers of ordered dose levels. Each dose is represented as a token containing its normalized position, accumulated patient count, observed dose-limiting toxicities (DLTs), and current-dose indicator. A Transformer encoder summarizes the dose tokens, trial-conditioned cross-attention produces a fixed-dimensional trial representation, and a three-action policy chooses de-escalation, staying, or escalation. The final maximum tolerated dose (MTD) decision is deliberately kept outside the learned policy: after the planned sample size, weighted isotonic regression and a prespecified safety cap select the dose closest to the target toxicity probability. In the simulations, toxicity-penalized policies reduce DLT burden while unpenalized policies improve selection accuracy at the cost of greater toxicity. These results demonstrate a controllable safety--accuracy trade-off but do not establish superiority over conventional dose-finding designs.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Shijie Yuan"
+        ],
+        "url": "https://arxiv.org/abs/2611.00395v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.00395",
+        "html_url": "https://arxiv.org/abs/2611.00395",
+        "published_at": "2026-10-30T21:22:44.000Z",
+        "upvotes": 0,
+        "heat": 2082.6521325,
+        "featured": false,
+        "categories": [
+          "rl",
+          "sim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 4,
+        "first_seen": "2026-11-03T02:46:05.240Z",
+        "rm": {
+          "usage": "面向临床试验剂量分配的Transformer强化学习，与RoboMaster自瞄、导航、决策等任务无明显对应，基本用不上。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2611.00392",
+        "arxiv_id": "2611.00392",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Emergent Control of Ant Learning Walks in a Mobile Robot",
+        "title_zh": "移动机器人中蚂蚁学习行走行为的涌现控制",
+        "abstract_en": "Before foraging, desert ants perform learning walks (LWs) to acquire visual memories around their nest. With experience, these walks expand, become straighter, and contain fewer visual scans. We previously proposed a model in which these behaviours emerge from the angular mismatch between path integration (PI) and a mushroom-body-inspired visual compass (VC). Here, we test whether this mechanism can generate learning walks on a physical robot, despite the sensory and motor noise inherent to real-world conditions. We implement the model on a four-wheeled robot equipped with a panoramic camera, an IMU and wheel encoders providing compass and stride information for PI, and test it outdoors using a replicated desert-ant experimental setup. The PI--VC mismatch regulates walking speed, turning, pirouettes, and returns to the nest, while PI provides a teaching signal for visual learning. The robot autonomously decides when to acquire visual memories, while its behaviour gradually shifts from exploration towards foraging as visual learning progresses. The robot reproduces desert-ant LW features, including expanding and straightening trajectories, decreasing pirouette frequency, and improved visual homing. These results demonstrate that a simple error-driven mechanism can generate key features of learning walks under real-world conditions, supporting its plausibility as an explanation for active visual learning in desert ants. More broadly, this work illustrates how physical robots can be used to test biological models.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Thomas Misiek",
+          "Andrew Philippides",
+          "Paul Graham",
+          "James Knight"
+        ],
+        "url": "https://arxiv.org/abs/2611.00392v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.00392",
+        "html_url": "https://arxiv.org/abs/2611.00392",
+        "published_at": "2026-10-30T21:16:30.000Z",
+        "upvotes": 0,
+        "heat": 2082.5482519444445,
+        "featured": false,
+        "categories": [
+          "slam",
+          "nav",
+          "rl"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 3,
+        "first_seen": "2026-11-03T02:46:05.240Z",
+        "rm": {
+          "usage": "其视觉罗盘与路径积分模型对哨兵无GPS自主定位/探索有思路参考，但实验为蚂蚁学习行走的四轮机器人，需大幅改造，实用度低。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2611.00387",
+        "arxiv_id": "2611.00387",
+        "source": "arXiv",
+        "cats": [
+          "q-bio.NC",
+          "cs.AI",
+          "cs.CL",
+          "cs.LG"
+        ],
+        "title_en": "Geometric and algebraic inference in humans and neural networks",
+        "title_zh": "人类与神经网络中的几何与代数推理",
+        "abstract_en": "Humans possess a remarkable ability to draw inferences from limited data. While some inferences are made intuitively from past experience, others require online reasoning based on novel information given in context. Here, we formalize these strategies, which we term geometric and algebraic inference, and study their computational tradeoffs in humans and neural networks. The geometric strategy gradually shapes representational geometry to reflect underlying relational structure, making subsequent inference cheap. The algebraic strategy flexibly attends to and reasons over novel relations given in context, but costs additional computation at inference time. We identify opposing signatures of these two strategies in transitive inference, a domain widely studied across species, and characterize the conditions under which each is observed. Our framework predicts that the geometric strategy should be dominant when relations are familiar, whereas the algebraic should emerge to support de novo inferences drawn in context. Multiple experiments demonstrate these opposing signatures in humans, neural networks trained from scratch, and large language models (LLMs). Causal interventions in the neural networks reveal that the geometric and algebraic strategies depend on representational geometry and selective attention mechanisms, respectively, and reproduce the effects of analogous neurobiological disruptions in humans. Our framework unifies these effects with disparate phenomena, including content effects observed in human and LLM reasoning and data-distribution effects observed in machine learning. Our findings reconcile competing views of cognitive flexibility that emphasize either representational geometry or algebraic manipulation by showing that each can have unique strengths, and can characterize different aspects of both human and neural network behavior.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Jacob Russin",
+          "Joonhwa Kim",
+          "Ellie Pavlick",
+          "Michael J. Frank"
+        ],
+        "url": "https://arxiv.org/abs/2611.00387v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.00387",
+        "html_url": "https://arxiv.org/abs/2611.00387",
+        "published_at": "2026-10-30T21:07:44.000Z",
+        "upvotes": 0,
+        "heat": 2082.4021325,
+        "featured": false,
+        "categories": [
+          "slam",
+          "rl"
+        ],
+        "image": "",
+        "comment": "Equal contribution: J. Russin, J. Kim. Joint senior authors: E. Pavlick, M. J. Frank. 99 pages (17 main text, 13 references, 69 appendix), 5 figures, 45 supplementary figures, 9 supplementary tables. Code: https://github.com/jlrussin/geometric-algebraic-ti-transformers, https://github.com/jlrussin/geometric-algebraic-ti-humans, https://github.com/joonhwakim/geometric-algebraic-ti-llms",
+        "relevance": 1,
+        "first_seen": "2026-11-03T02:46:05.240Z",
+        "rm": {
+          "usage": "研究人类与神经网络的几何/代数推理机制，与RoboMaster具体算法环节关联很弱，难以直接落地。",
+          "task_id": "",
+          "task": "",
+          "value": "low"
+        }
+      },
+      {
         "id": "arxiv:2610.41844",
         "arxiv_id": "2610.41844",
         "source": "arXiv",
@@ -2346,6 +2850,51 @@
           "task_id": "sim",
           "task": "算法仿真与验证",
           "value": "low"
+        }
+      },
+      {
+        "id": "arxiv:2611.00342",
+        "arxiv_id": "2611.00342",
+        "source": "arXiv",
+        "cats": [
+          "cs.LG"
+        ],
+        "title_en": "DEPLOY-RL: Active Boundary Discovery and Conservative Certification for Deployable Reinforcement Learning in Safety-Critical Continuous Processes",
+        "title_zh": "DEPLOY-RL：面向安全关键连续过程中可部署强化学习的主动边界发现与保守认证",
+        "abstract_en": "Reinforcement learning (RL) policies often outperform classical controllers in simulation, yet rarely reach production in safety-critical processes. The barrier is that there is no principled way to answer \"Is this policy safe to deploy?\" with statistical guarantees. We introduce DEPLOY-RL, a post-training certification framework built on one key insight: deployment certification requires discovering where failures occur (boundary discovery), not measuring how much everywhere (uniform reconstruction). Our contributions: (1) a contract-coupled acquisition function that concentrates sampling on certification-critical boundaries, achieving approximately 2x sample efficiency with a semi-empirical ambiguity reduction bound (domain-calibrated convergence guarantee); (2) conformal risk control providing finite-sample false-go guarantees ( 85% coverage among 14 baselines under our evaluation protocol.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Yeojin Jang",
+          "Minu Baek",
+          "Gihun Gil",
+          "Minsung Jung",
+          "Beomdo Park",
+          "Woohyeon Kwon",
+          "Hyeonseok Jang",
+          "Junseong Park"
+        ],
+        "url": "https://arxiv.org/abs/2611.00342v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.00342",
+        "html_url": "https://arxiv.org/abs/2611.00342",
+        "published_at": "2026-10-30T20:19:17.000Z",
+        "upvotes": 0,
+        "heat": 2081.5946325,
+        "featured": false,
+        "categories": [
+          "rl",
+          "sim"
+        ],
+        "image": "",
+        "comment": "8 pages; published in IJCAI-ECAI 2026, AI4Tech track. This version adds a publication notice",
+        "relevance": 3,
+        "first_seen": "2026-11-03T02:46:05.240Z",
+        "rm": {
+          "usage": "可在仿真中训练哨兵导航或战术决策RL策略后，用其失败边界发现与保守认证评估可部署性，作为RL策略上线前的验证工具，但需适配RM场景。",
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "value": "mid"
         }
       },
       {
@@ -2646,6 +3195,47 @@
         }
       },
       {
+        "id": "arxiv:2611.00231",
+        "arxiv_id": "2611.00231",
+        "source": "arXiv",
+        "cats": [
+          "eess.SY",
+          "cs.AI",
+          "cs.LG",
+          "cs.RO"
+        ],
+        "title_en": "Spectral and Conformal: Neural Network Methods for Calibrated Trajectory Prediction and Control-Point Intervals",
+        "title_zh": "谱与共形：用于校准轨迹预测与控制点区间的神经网络方法",
+        "abstract_en": "Autonomous systems that navigate their environment need methods to quickly assess the feasibility and safety of desired trajectories. Traditional solutions that rely on numerical integration can be computationally heavy, while fast data-driven surrogates lack the formal guarantees that numerical approaches provide. This work demonstrates a framework that uses (1) a neural network with a spectral backbone to learn trajectories and quantile bands with built-in constraints (initial conditions and stability); (2) a modified conformal quantile regression to provide calibrated, joint trajectory-level coverage; and (3) interval arithmetic to extend noise-free coverage guarantees to control points. After refactoring the network for inference, the trajectory inference time for a quadrotor under a closed-loop linear quadratic regulator is 3.45~ms on a Raspberry Pi Zero 2 W. The total pipeline time, including trajectory inference time, is 9.81~ms, or approximately 100~Hz, consistent with typical control rates.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Jasmine Ratchford",
+          "Raffaele Romagnoli"
+        ],
+        "url": "https://arxiv.org/abs/2611.00231v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.00231",
+        "html_url": "https://arxiv.org/abs/2611.00231",
+        "published_at": "2026-10-30T18:12:26.000Z",
+        "upvotes": 0,
+        "heat": 2079.4804741666667,
+        "featured": false,
+        "categories": [
+          "other"
+        ],
+        "image": "",
+        "comment": "26 pages, 10 figures, 7 tables. Published in Transactions on Machine Learning Research",
+        "relevance": 2,
+        "first_seen": "2026-11-03T02:46:05.240Z",
+        "rm": {
+          "usage": "可为哨兵局部规划提供快速、带校准区间的候选轨迹可行性/安全性评估，减少数值积分开销，但需结合RM战场与机器人动力学改造。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "mid"
+        }
+      },
+      {
         "id": "arxiv:2610.41625",
         "arxiv_id": "2610.41625",
         "source": "arXiv",
@@ -2687,6 +3277,52 @@
           "task_id": "sentry",
           "task": "哨兵机器人自主导航与决策",
           "value": "mid"
+        }
+      },
+      {
+        "id": "arxiv:2611.00193",
+        "arxiv_id": "2611.00193",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Anchor 1: Precise and Stable Humanoid Control for Whole-Body Manipulation",
+        "title_zh": "Anchor 1：面向全身操作的精确稳定人形控制",
+        "abstract_en": "Humanoid controllers have acquired increasingly diverse motor skills, yet translating these capabilities into precise and stable whole-body manipulation remains challenging. Manipulation tasks are sensitive to execution deviations -- even small errors or unintended steps can cause failure. Introducing Anchor 1, a whole-body controller for precise and stable whole-body manipulation, together with a benchmark spanning diverse coordination demands. Anchor 1 adopts calibrated sparse motion references to preserve task-relevant human motion structure without online joint-space retargeting, leaving kinematic freedom for precise control. To guide this freedom towards stable, physically plausible whole-body coordination, we shape the training distribution through offline curation of robot motions paired with these calibrated sparse references. We further introduce explicit error feedback decoupled from motion encoding, improving control precision while supporting flexible command interfaces. To achieve a systematic evaluation of these capabilities, a benchmark is proposed to assess precision, sustained execution stability, and reachability across diverse whole-body coordination demands. Evaluations in simulation and on hardware show stronger precision and stability across all evaluation tracks. Under the most strict real-world global scoring setting, Anchor 1 achieves a 30\\% to 80\\% decrease in tracking error with fewer look-ahead inputs, and without retargeting compared to all existing controllers. Downstream experiments demonstrate more efficient teleoperated data collection and higher task success using the same deployment pipeline as well. We believe Anchor 1 supports precise and stable whole-body control as a practical basis for humanoid task execution.",
+        "abstract_zh": "",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Archon Robotics",
+          ":",
+          "Caojun Wang",
+          "Checheng Yu",
+          "Gangcheng Jiang",
+          "Guangjun Zeng",
+          "Haoran Jiang",
+          "Hongyang Li"
+        ],
+        "url": "https://arxiv.org/abs/2611.00193v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.00193",
+        "html_url": "https://arxiv.org/abs/2611.00193",
+        "published_at": "2026-10-30T17:56:53.000Z",
+        "upvotes": 0,
+        "heat": 2079.2213075,
+        "featured": false,
+        "categories": [
+          "planning",
+          "rl",
+          "radar"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 4,
+        "first_seen": "2026-11-03T02:46:05.240Z",
+        "rm": {
+          "usage": "其精确稳定全身操作控制对工程机器人视觉装配有操作稳定性思路参考，但人形全身控制与RM底盘+机械臂差异大，难以直接迁移。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "low"
         }
       },
       {
@@ -3585,7 +4221,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.86,
+        "relevance": 17.86,
         "first_seen": "2026-11-02T20:38:32.332Z"
       },
       {
@@ -3634,7 +4270,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.69,
+        "relevance": 22.69,
         "first_seen": "2026-11-02T20:38:32.332Z"
       },
       {
@@ -3736,7 +4372,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 13.61,
+        "relevance": 8.61,
         "first_seen": "2026-11-02T20:38:32.332Z"
       },
       {
@@ -3791,7 +4427,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 17.57,
+        "relevance": 12.57,
         "first_seen": "2026-11-02T20:38:32.332Z"
       },
       {
@@ -4127,7 +4763,7 @@
           "aim",
           "rune"
         ],
-        "relevance": 17.34,
+        "relevance": 7.34,
         "first_seen": "2026-11-02T20:38:32.332Z"
       },
       {
@@ -4150,7 +4786,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 12.33,
+        "relevance": 7.33,
         "first_seen": "2026-11-02T20:38:32.332Z"
       },
       {
@@ -4524,7 +5160,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 15.04,
+        "relevance": 16.04,
         "first_seen": "2026-11-02T20:38:32.332Z"
       },
       {
@@ -4574,7 +5210,7 @@
         "categories": [
           "aim"
         ],
-        "relevance": 17.03,
+        "relevance": 27.03,
         "first_seen": "2026-11-02T20:38:32.332Z"
       },
       {
@@ -4634,7 +5270,7 @@
         "categories": [
           "sim"
         ],
-        "relevance": 11.97,
+        "relevance": 21.97,
         "first_seen": "2026-11-02T20:38:32.332Z"
       },
       {
@@ -4658,7 +5294,7 @@
           "aim",
           "radar"
         ],
-        "relevance": 12.97,
+        "relevance": 7.97,
         "first_seen": "2026-11-02T20:38:32.332Z"
       },
       {
@@ -4687,7 +5323,7 @@
           "aim",
           "sim"
         ],
-        "relevance": 22.93,
+        "relevance": 27.94,
         "first_seen": "2026-11-02T20:38:32.332Z"
       },
       {
@@ -4821,7 +5457,7 @@
         "categories": [
           "other"
         ],
-        "relevance": 6.88,
+        "relevance": 16.88,
         "first_seen": "2026-11-02T20:38:32.332Z"
       }
     ]
