@@ -104,6 +104,9 @@ export default function RepoCard({ repo, tags, badge, isNew }) {
           </span>
         )}
         {repo.rm?.task && <span className="task-chip">{repo.rm.task}</span>}
+        {!repo.rm?.task && repo.rule_matches?.some(m => m.task_id === "aerial") && (
+          <span className="task-chip">{lang === "en" ? "Autonomous aerial systems" : "空中系统自主飞行"}</span>
+        )}
         {tags?.map((s) => (
           <span className="field-chip" key={s}>
             {s}

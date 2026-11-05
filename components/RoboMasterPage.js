@@ -41,8 +41,8 @@ export default function RoboMasterPage({ day, dates = [], latest, curated, gener
   const [active, setActive] = useState(null);
   const [curatedOpen, setCuratedOpen] = useState(true);
   const [rulesOpen, setRulesOpen] = useState(false);
-  // 排序方式（论文 / 开源库 各自独立记忆）：default = 热度/星标，new = 最新收录
-  const [sort, setSort] = useState({ papers: "default", repos: "default" });
+  // New rules-based defaults; remember explicit sort choices separately from the old heat-first version.
+  const [sort, setSort] = useState({ papers: "relevance", repos: "relevance" });
   // 上次访问时间（论文 / 开源库 各自独立）：用于标 NEW；首次访问为 null（不标）
   const [lastVisit, setLastVisit] = useState({ papers: null, repos: null });
 
@@ -66,8 +66,8 @@ export default function RoboMasterPage({ day, dates = [], latest, curated, gener
       if (vr !== null) setRulesOpen(vr === "1");
 
       // 读取记忆的排序方式
-      const sp = localStorage.getItem("robo_sort_papers");
-      const sr = localStorage.getItem("robo_sort_repos");
+      const sp = localStorage.getItem("robo_sort_v2_papers");
+      const sr = localStorage.getItem("robo_sort_v2_repos");
       const validSort = (v) => ["new", "default", "relevance"].includes(v);
       setSort((s) => ({
         papers: validSort(sp) ? sp : s.papers,
@@ -91,7 +91,7 @@ export default function RoboMasterPage({ day, dates = [], latest, curated, gener
     setSort((s) => {
       const key = view === "papers" ? "papers" : "repos";
       try {
-        localStorage.setItem(`robo_sort_${key}`, val);
+        localStorage.setItem(`robo_sort_v2_${key}`, val);
       } catch {}
       return { ...s, [key]: val };
     });

@@ -10,8 +10,9 @@
     "RoboMaster 2027 机甲大师高校系列赛机器人制作规范手册 V1.0.0（20261015）",
     "RoboMaster 2027 机甲大师高校联盟赛比赛规则手册 V1.0.0（20261015）"
   ],
-  "summary_zh": "2027赛季覆盖RMUC超级对抗赛与RMUL高校联盟赛，比赛以机器人对抗为核心：RMUC为多机器人战术对抗，通过占领阵地、攻击对方机器人、激活场地机制争夺控制度；RMUL 3V3对抗赛以控制度归零或更高控制度获胜，步兵对抗赛以剩余血量高者胜。算法核心集中在视觉自瞄（识别点阵装甲模块、预测动态目标、控制射击）、能量机关识别与击打、哨兵全自动导航与决策、雷达目标探测与多机信息融合、飞镖精确打击、重装机器人视觉装配、多机协同与资源决策等环节。复杂场地、光线变化、对抗干扰和大量数值化机制（热量、功率、经济、性能体系）要求算法具备鲁棒性与实时性。",
+  "summary_zh": "2027赛季覆盖RMUC超级对抗赛与RMUL高校联盟赛，比赛以机器人对抗为核心：RMUC为多机器人战术对抗，通过占领阵地、攻击对方机器人、激活场地机制争夺控制度；RMUL 3V3对抗赛以控制度归零或更高控制度获胜，步兵对抗赛以剩余血量高者胜。算法核心集中在视觉自瞄（识别点阵装甲模块、预测动态目标、控制射击）、能量机关识别与击打、哨兵全自动导航与决策、雷达目标探测与多机信息融合、飞镖精确打击、重装机器人视觉装配、多机协同与资源决策等环节。复杂场地、光线变化、对抗干扰和大量数值化机制（热量、功率、经济、性能体系）要求算法具备鲁棒性与实时性。 RMUC空中系统全自动运行并与机库配合，需要关注轻量自主飞行和通信约束。",
   "changes_zh": [
+    "RMUC原空中机器人调整为空中系统（空中机器人+机库），全自动运行，取消飞手和云台手，新增指挥手和安全员。",
     "新增重装机器人，取消英雄机器人，原自定义控制器与自定义客户端合并为自定义终端；",
     "3V3对抗赛新增隧道和工作台，调整操作间整体布置；",
     "新增重装机器人特殊机制和场地增益机制，调整控制区及控制度机制；",
@@ -19,6 +20,64 @@
     "取消工程挑战赛。"
   ],
   "tasks": [
+    {
+      "id": "aerial",
+      "name_zh": "空中系统自主飞行与机库交互",
+      "competition": "RMUC",
+      "categories": [
+        "aerial",
+        "slam",
+        "planning",
+        "nav"
+      ],
+      "robots": [
+        "空中机器人",
+        "机库"
+      ],
+      "desc_zh": "RMUC 2027 空中系统由空中机器人和机库组成。空中机器人全自动运行，配备遥控器仅用于急停，多机通信仅允许通过机库间接进行。算法研究重点可放在室内自主定位、轻量机载感知、避障和轨迹规划、稳定悬停、自动起降及机库交互；这些是实现建议，并非手册逐项规定的考核任务。",
+      "scoring_zh": "依据 RMUC 比赛规则 3.2.1（印刷页27），以及制作规范 2.4.4、S75-S83（印刷页31-35）：须持续悬停至少10秒；机库装载上限4台；空中机器人不允许安装发射机构。算法方案须结合轻量化、能源及通信限制改造，不能把完整开源整机视为可直接参赛。",
+      "keywords_zh": [
+        "无人机",
+        "空中机器人",
+        "自主飞行",
+        "机库",
+        "自主降落",
+        "视觉惯性定位",
+        "四旋翼"
+      ],
+      "keywords_en": [
+        "quadrotor",
+        "quadcopter",
+        "multirotor",
+        "micro aerial vehicle",
+        "aerial robot",
+        "drone navigation",
+        "autonomous flight",
+        "drone landing",
+        "visual inertial odometry",
+        "collision avoidance"
+      ],
+      "source_refs": [
+        {
+          "source": "RoboMaster 2027 机甲大师超级对抗赛比赛规则手册 V1.0.0（20261015）",
+          "section": "3.2.1",
+          "pages": [
+            27
+          ]
+        },
+        {
+          "source": "RoboMaster 2027 机甲大师高校系列赛机器人制作规范手册 V1.0.0（20261015）",
+          "section": "2.4.4, S75-S83",
+          "pages": [
+            31,
+            32,
+            33,
+            34,
+            35
+          ]
+        }
+      ]
+    },
     {
       "id": "autoaim",
       "name_zh": "装甲板自瞄与射击控制",
@@ -249,7 +308,17 @@
       "reinforcement learning",
       "simultaneous localization and mapping",
       "object tracking",
-      "projectile prediction"
+      "projectile prediction",
+      "quadrotor",
+      "quadcopter",
+      "multirotor",
+      "micro aerial vehicle",
+      "aerial robot",
+      "drone navigation",
+      "autonomous flight",
+      "drone landing",
+      "visual inertial odometry",
+      "collision avoidance"
     ],
     "paperCtx": [
       "turret",
@@ -257,21 +326,33 @@
       "shooting",
       "armor detection",
       "rune",
-      "autonomous robot"
+      "autonomous robot",
+      "drone",
+      "uav",
+      "quadrotor",
+      "autonomous flight"
     ],
     "githubQueries": [
       "robomaster sentry slam",
       "robomaster auto aim",
       "robomaster rune detection",
       "robomaster radar",
-      "robomaster dart"
+      "robomaster dart",
+      "robomaster drone",
+      "robomaster uav",
+      "robomaster 空中"
     ],
     "generalTopics": [
       "topic:pose-estimation",
       "topic:object-detection",
       "topic:slam",
       "topic:reinforcement-learning",
-      "topic:robomaster"
+      "topic:robomaster",
+      "topic:quadrotor",
+      "topic:autonomous-drone",
+      "topic:visual-inertial-odometry",
+      "drone landing robotics"
     ]
-  }
+  },
+  "reviewedAt": "2026-11-05T09:16:49.561Z"
 }
