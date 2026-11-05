@@ -26,12 +26,11 @@ import {
   ARXIV_MAX,
   REPO_MIN_STARS,
   FEATURED_TOP,
-  TRANSLATE_TITLE_TOP,
   RM_RULES, AERIAL_ARXIV_QUERIES, AERIAL_PAPERS_MIN, AERIAL_NATIVE_MIN,
 } from "./robomaster-feeds.mjs";
 import { classifyRM, isAerialRelevant, selectWithAerialCoverage, annotateRules, rulesFingerprint } from "./rm-recommendation-policy.mjs";
-import { translatePapersFull, translatePaperTitles } from "./enrich-papers.mjs";
-import { translateRepos } from "./enrich-github.mjs";
+import { translatePapersFull } from "./enrich-papers.mjs";
+import { fillTranslationGaps, translateRMContent } from "./rm-translations.mjs";
 import { assessRMUsage } from "./enrich-rm-usage.mjs";
 import { detectConference } from "./conference.mjs";
 import { scorePaperRelevance, scoreRepoRelevance } from "./relevance.mjs";
@@ -358,9 +357,7 @@ async function main() {
     annotateRules(p, RM_RULES);
   }
   papers.slice(0, FEATURED_TOP).forEach((p) => (p.featured = true));
-  await translatePapersFull(papers.filter((p) => p.featured));
-  await translatePaperTitles(papers.filter((p) => !p.title_zh).slice(0, TRANSLATE_TITLE_TOP));
-  // 翻译补全中文后重算相关度（中文标题/摘要可能新增命中）
+  // 复用已有中文后重算相关度；缺失译文在最终合并后统一补齐。
   for (const p of papers) p.relevance = scorePaperRelevance(p);
 
   // ===== 开源库 =====
@@ -386,8 +383,7 @@ async function main() {
   for (const r of repos) r.relevance = scoreRepoRelevance(r);
   repos = selectWithAerialCoverage(repos.sort((a, b) => b.relevance - a.relevance || b.stars - a.stars), REPOS_MAX, AERIAL_NATIVE_MIN);
   console.log(`  · 去重 + 星标过滤后保留库：${repos.length}`);
-  await translateRepos(repos);
-  // 翻译后再分类：中文简介/亮点信息更丰富，分类更准确
+  // 先按采集元数据分类，译文在最终合并后统一补齐。
   for (const r of repos) {
     const text = `${r.full_name} ${r.description_en} ${r.description_zh} ${r.highlight_zh} ${(r.topics || []).join(" ")}`;
     r.categories = classify(text);
@@ -423,12 +419,14 @@ async function main() {
     }
     if (np.relevance != null) ex.relevance = np.relevance;
     ex.categories = np.categories;
+    fillTranslationGaps(ex, np);
   }
   const newRepoById = new Map(repos.map((r) => [repoKey(r), r]));
   for (const ex of existing.repos) {
     const nr = newRepoById.get(repoKey(ex));
     if (nr && nr.relevance != null) ex.relevance = nr.relevance;
     if (nr) ex.categories = nr.categories;
+    if (nr) fillTranslationGaps(ex, nr, "repo");
   }
 
   const combinedPapers = dedupeBy([...existing.papers, ...papers], paperKey);
@@ -440,6 +438,12 @@ async function main() {
   }
   const finalPapers = selectWithAerialCoverage(combinedPapers.sort((a, b) => b.relevance - a.relevance || b.heat - a.heat), PAPERS_CUMULATIVE_MAX, AERIAL_PAPERS_MIN);
   const finalRepos = selectWithAerialCoverage(combinedRepos.sort((a, b) => b.relevance - a.relevance || b.stars - a.stars), REPOS_MAX, AERIAL_NATIVE_MIN);
+
+  // Translate after selection/merge so every displayed item gets a Chinese preview,
+  // including older cumulative entries and newly added aerial candidates.
+  await translateRMContent(finalPapers, "paper");
+  await translatePapersFull(finalPapers.filter(p => p.featured));
+  await translateRMContent(finalRepos, "repo");
 
   // first_seen：条目「首次被收录」时间，用于「最新」排序与 NEW 角标。
   // 已有则保留；历史条目（此前已存在却无此字段）回填发布/更新时间，避免被误标为新；
