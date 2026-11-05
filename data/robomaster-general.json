@@ -1,7 +1,8 @@
 {
-  "updatedAt": "2026-11-05T11:58:27.669Z",
+  "updatedAt": "2026-11-05T13:37:42.639Z",
   "note": "通用利器：本身不带 robomaster、但能直接用于 RM 任务的优质开源库（白名单 + 主题搜索，每日刷新）。",
   "count": 40,
+  "rules_fingerprint": "10860871a3567726",
   "items": [
     {
       "id": "openvlc/OpenVLC",
@@ -9,8 +10,8 @@
       "name": "OpenVLC",
       "owner": "openvlc",
       "description_en": "OpenVLC is an open-source and open-hardware, flexible, and low-cost Visible Light Communication platform.",
-      "description_zh": "OpenVLC 是一个开源、开放硬件、灵活且低成本的可视光通信平台。",
-      "highlight_zh": "",
+      "description_zh": "OpenVLC 是一个开源软硬件、灵活且低成本的可见光通信（VLC）平台，提供 LED 收发所需的硬件设计与驱动代码，便于研究者搭建并验证可见光通信链路。",
+      "highlight_zh": "可用于机器人间 LED 光通信链路的原型验证",
       "stars": 173,
       "forks": 71,
       "language": "C",
@@ -45,11 +46,12 @@
           "task_id": "optical",
           "task": "空中系统可见光通信链路",
           "keywords": [
-            "visible light communication"
+            "visible light communication",
+            "可见光通信"
           ]
         }
       ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
+      "rules_fingerprint": "10860871a3567726",
       "recommendation": {
         "lane": "established",
         "score": 36.12,
@@ -66,7 +68,261 @@
           "checked_at": "2026-11-05T11:44:51.690Z"
         }
       },
-      "relevance": 52.36
+      "rm": {
+        "usage": "可作为空中系统可见光通信链路的光电二极管收发与驱动参考，尤其机库端或机间短距VLC原型；但BeagleBone方案移植到轻型机需重评体积、功耗、视场和照度，不能直接上机。",
+        "task_id": "optical",
+        "task": "空中系统可见光通信链路",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 54.36
+    },
+    {
+      "id": "haoran-zha/Awesome-Spiking-Neural-Networks-Hub",
+      "full_name": "haoran-zha/Awesome-Spiking-Neural-Networks-Hub",
+      "name": "Awesome-Spiking-Neural-Networks-Hub",
+      "owner": "haoran-zha",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/141123184?v=4",
+      "description_en": "The comprehensive bilingual (EN/中文) hub for Spiking Neural Networks — 340+ papers, models, neuromorphic hardware, datasets, tools & research groups.",
+      "description_zh": "脉冲神经网络（SNN）综合中英双语资源库，收录 340 多篇论文、模型、神经形态硬件、数据集、工具与研究团队，并涉及事件相机等方向。",
+      "highlight_zh": "事件相机+SNN 高速目标识别，辅助自瞄装甲板检测",
+      "stars": 119,
+      "forks": 1,
+      "language": "Python",
+      "topics": [
+        "awesome",
+        "awesome-list",
+        "brain-inspired-computing",
+        "deep-learning",
+        "event-camera",
+        "machine-learning"
+      ],
+      "url": "https://github.com/haoran-zha/Awesome-Spiking-Neural-Networks-Hub",
+      "homepage": "",
+      "created_at": "2026-07-20T12:55:19Z",
+      "pushed_at": "2026-10-12T09:09:34Z",
+      "source": "general",
+      "categories": [
+        "optical",
+        "aim"
+      ],
+      "readme_excerpt": "communication; LED; camera; event camera; decoder; hardware; RIS",
+      "license": "MIT",
+      "first_seen": "2026-11-05T13:36:13.422Z",
+      "rule_matches": [
+        {
+          "task_id": "optical",
+          "task": "空中系统可见光通信链路",
+          "keywords": []
+        }
+      ],
+      "rules_fingerprint": "10860871a3567726",
+      "recommendation": {
+        "lane": "recent",
+        "score": 36.04,
+        "reason_zh": "事件相机接收的可见光数据链路；近一年有代码更新",
+        "receiver": "event_camera",
+        "evidence_url": "https://github.com/haoran-zha/Awesome-Spiking-Neural-Networks-Hub",
+        "limitations_zh": "需进一步核对光谱、光源与接收器条件，不能仅凭 LED 名称认定符合比赛要求",
+        "quality": "implementation",
+        "metric": {
+          "label": "GitHub Stars",
+          "value": 119,
+          "source": "GitHub",
+          "source_url": "https://github.com/haoran-zha/Awesome-Spiking-Neural-Networks-Hub"
+        }
+      },
+      "rm": {
+        "usage": "仅是SNN与事件相机资源汇总，不提供可直接部署的通信解调或机器人算法；最多用于检索事件相机接收端的思路，关联很弱。",
+        "task_id": "",
+        "task": "",
+        "value": "low",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 12.08
+    },
+    {
+      "id": "omron-sinicx/maru",
+      "full_name": "omron-sinicx/maru",
+      "name": "maru",
+      "owner": "omron-sinicx",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/59957587?v=4",
+      "description_en": "",
+      "description_zh": "由 OMRON sinicx 发布的 Python 项目仓库，未提供英文简介，从命名看属于其研究相关的代码实现，具体功能需参阅仓库内的文档与源码。",
+      "highlight_zh": "信息不足，暂难对应具体 RM 算法场景",
+      "stars": 25,
+      "forks": 3,
+      "language": "Python",
+      "topics": [],
+      "url": "https://github.com/omron-sinicx/maru",
+      "homepage": "https://omron-sinicx.github.io/maru",
+      "created_at": "2024-03-01T14:59:23Z",
+      "pushed_at": "2026-10-30T08:15:01Z",
+      "source": "general",
+      "categories": [
+        "optical",
+        "other"
+      ],
+      "readme_excerpt": "visible light communication; visible light; communication; LED; photodiode; firmware; hardware; circuit; STM32",
+      "license": "MIT",
+      "first_seen": "2026-11-05T13:36:13.422Z",
+      "rule_matches": [
+        {
+          "task_id": "optical",
+          "task": "空中系统可见光通信链路",
+          "keywords": []
+        }
+      ],
+      "rules_fingerprint": "10860871a3567726",
+      "recommendation": {
+        "lane": "recent",
+        "score": 35.71,
+        "reason_zh": "LED–光电探测器数据链路，可参考收发与调制解调；近一年有代码更新",
+        "receiver": "photodiode",
+        "evidence_url": "https://github.com/omron-sinicx/maru",
+        "limitations_zh": "",
+        "quality": "implementation",
+        "metric": {
+          "label": "GitHub Stars",
+          "value": 25,
+          "source": "GitHub",
+          "source_url": "https://github.com/omron-sinicx/maru"
+        }
+      },
+      "rm": {
+        "usage": "仓库无明确功能说明，无法判断与RoboMaster任务的可迁移性，基本用不上。",
+        "task_id": "",
+        "task": "",
+        "value": "low",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 49.12
+    },
+    {
+      "id": "toggio/PacketLED",
+      "full_name": "toggio/PacketLED",
+      "name": "PacketLED",
+      "owner": "toggio",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/3741592?v=4",
+      "description_en": "Packet communication over bidirectional LEDs, inspired by Packet Radio. Arduino library for ESP32 implementing the LX.25 protocol, tested up to 2.5 m.",
+      "description_zh": "PacketLED 是用双向 LED 实现数据包通信的 Arduino 库，灵感来自分组无线电，面向 ESP32 实现 LX.25 协议，实测通信距离可达 2.5 米。",
+      "highlight_zh": "可做机器人间 LED 光通信的简易低速链路",
+      "stars": 18,
+      "forks": 4,
+      "language": "C++",
+      "topics": [
+        "arduino",
+        "arduino-library",
+        "esp32",
+        "led",
+        "li-fi",
+        "optical-communications"
+      ],
+      "url": "https://github.com/toggio/PacketLED",
+      "homepage": "https://www.lucasoltoggio.it",
+      "created_at": "2026-09-24T14:08:18Z",
+      "pushed_at": "2026-10-03T14:29:07Z",
+      "source": "general",
+      "categories": [
+        "optical",
+        "other"
+      ],
+      "readme_excerpt": "communication; LED; photodiode; receiver; hardware; implementation; simulation; Arduino",
+      "license": "Apache-2.0",
+      "first_seen": "2026-11-05T13:36:13.422Z",
+      "rule_matches": [
+        {
+          "task_id": "optical",
+          "task": "空中系统可见光通信链路",
+          "keywords": []
+        }
+      ],
+      "rules_fingerprint": "10860871a3567726",
+      "recommendation": {
+        "lane": "recent",
+        "score": 35.64,
+        "reason_zh": "LED 接收或双向 LED 数据链路；近一年有代码更新",
+        "receiver": "led",
+        "evidence_url": "https://github.com/toggio/PacketLED",
+        "limitations_zh": "",
+        "quality": "implementation",
+        "metric": {
+          "label": "GitHub Stars",
+          "value": 18,
+          "source": "GitHub",
+          "source_url": "https://github.com/toggio/PacketLED"
+        }
+      },
+      "rm": {
+        "usage": "可借鉴其LED双向数据包调制与短距链路实现，用于机库近场或机库-空中机器人可见光链路的低成本原型；注意只能用于额外通信LED，不能对七颗航行外观灯做PWM/OOK调制。",
+        "task_id": "optical",
+        "task": "空中系统可见光通信链路",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 48.92
+    },
+    {
+      "id": "Tomer27cz/xt211",
+      "full_name": "Tomer27cz/xt211",
+      "name": "xt211",
+      "owner": "Tomer27cz",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/85194189?v=4",
+      "description_en": "ESPHome component DLMS/Cosem PUSH mode readout. Works with ČEZ Sagemcom XT211 AMM",
+      "description_zh": "面向 ESPHome 的组件，实现 DLMS/COSEM 协议的 PUSH 模式数据读取，配合 ČEZ 的 Sagemcom XT211 智能电表使用，用于读取电表推送的数据。",
+      "highlight_zh": "可借鉴其 ESP32 数据采集思路做电源监测",
+      "stars": 16,
+      "forks": 0,
+      "language": "C",
+      "topics": [],
+      "url": "https://github.com/Tomer27cz/xt211",
+      "homepage": "",
+      "created_at": "2025-11-04T18:01:45Z",
+      "pushed_at": "2026-06-18T11:08:25Z",
+      "source": "general",
+      "categories": [
+        "optical",
+        "other"
+      ],
+      "readme_excerpt": "communication; LED; photodiode; hardware",
+      "license": "MIT",
+      "first_seen": "2026-11-05T13:36:13.422Z",
+      "rule_matches": [
+        {
+          "task_id": "optical",
+          "task": "空中系统可见光通信链路",
+          "keywords": []
+        }
+      ],
+      "rules_fingerprint": "10860871a3567726",
+      "recommendation": {
+        "lane": "recent",
+        "score": 34.62,
+        "reason_zh": "LED–光电探测器数据链路，可参考收发与调制解调；近一年有代码更新",
+        "receiver": "photodiode",
+        "evidence_url": "https://github.com/Tomer27cz/xt211",
+        "limitations_zh": "需进一步核对光谱、光源与接收器条件，不能仅凭 LED 名称认定符合比赛要求",
+        "quality": "implementation",
+        "metric": {
+          "label": "GitHub Stars",
+          "value": 16,
+          "source": "GitHub",
+          "source_url": "https://github.com/Tomer27cz/xt211"
+        }
+      },
+      "rm": {
+        "usage": "智能电表DLMS/COSEM推送读取组件，与RoboMaster任何算法任务无直接关系。",
+        "task_id": "",
+        "task": "",
+        "value": "low",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 47.85
     },
     {
       "id": "VCAS-UOI/violin-pd",
@@ -74,8 +330,8 @@
       "name": "violin-pd",
       "owner": "VCAS-UOI",
       "description_en": "Visible light communication (VLC) system using STM32 MCUs and photodiodes.",
-      "description_zh": "使用 STM32 微控制器和光电二极管的可视光通信（VLC）系统。",
-      "highlight_zh": "",
+      "description_zh": "violin-pd 是一套基于 STM32 微控制器与光电二极管的可见光通信（VLC）系统，包含发送端调制与接收端光电信号采集处理的实现。",
+      "highlight_zh": "STM32 光电信号采集可用于光通信与光电检测",
       "stars": 3,
       "forks": 1,
       "language": "C",
@@ -111,11 +367,12 @@
           "task": "空中系统可见光通信链路",
           "keywords": [
             "visible light communication",
+            "可见光通信",
             "光电二极管"
           ]
         }
       ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
+      "rules_fingerprint": "10860871a3567726",
       "recommendation": {
         "lane": "reference",
         "score": 30.3,
@@ -132,7 +389,15 @@
           "checked_at": "2026-11-05T11:44:51.690Z"
         }
       },
-      "relevance": 46.9
+      "rm": {
+        "usage": "提供STM32+光电二极管的VLC发送调制与接收采集实现，可直接参考空中系统可见光通信的嵌入式收发链路搭建；仍需自行验证机载功耗、环境光和视场。",
+        "task_id": "optical",
+        "task": "空中系统可见光通信链路",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 48.9
     },
     {
       "id": "ziweiWWANG/Event-Beacon-Communication",
@@ -140,8 +405,8 @@
       "name": "Event-Beacon-Communication",
       "owner": "ziweiWWANG",
       "description_en": "Code and data for paper: \"Smart Visual Beacons with Asynchronous Optical Communications using Event Cameras\", IROS 2022. A novel smart visual beacon architecture with both LED modulation and event camera demodulation algorithms.",
-      "description_zh": "论文《Smart Visual Beacons with Asynchronous Optical Communications using Event Cameras》（IROS 2022）的代码和数据。一种新颖的智能视觉信标架构，包含 LED 调制和事件相机解调算法。",
-      "highlight_zh": "",
+      "description_zh": "IROS 2022 论文《使用事件相机的异步光通信智能视觉信标》的代码与数据，提出兼具 LED 调制与事件相机解调的智能视觉信标架构。",
+      "highlight_zh": "事件相机高速信标识别，可用于自瞄快速目标跟踪",
       "stars": 14,
       "forks": 2,
       "language": "MATLAB",
@@ -178,7 +443,7 @@
           "keywords": []
         }
       ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
+      "rules_fingerprint": "10860871a3567726",
       "recommendation": {
         "lane": "reference",
         "score": 30.59,
@@ -195,48 +460,403 @@
           "checked_at": "2026-11-05T11:44:51.690Z"
         }
       },
-      "relevance": 43.77
+      "rm": {
+        "usage": "事件相机解调LED信标的代码与数据，可用于研究空中系统可见光通信中事件相机接收端的调制识别与同步；属研究基线，需补发射端硬件和嵌入式移植。",
+        "task_id": "optical",
+        "task": "空中系统可见光通信链路",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 48.77
     },
     {
-      "id": "ultralytics/ultralytics",
-      "full_name": "ultralytics/ultralytics",
-      "name": "ultralytics",
-      "owner": "ultralytics",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/26833451?v=4",
-      "description_en": "Ultralytics YOLO27, YOLO26, YOLO11, YOLOv8 — object detection, instance segmentation, semantic segmentation, image classification, pose estimation, object tracking",
-      "description_zh": "Ultralytics YOLO，用于计算机视觉目标检测、分割等。",
-      "highlight_zh": "可用于自瞄装甲板检测和能量机关目标识别。",
-      "stars": 63118,
-      "forks": 11965,
+      "id": "jufgutierrezgo/python-vlc-rolling",
+      "full_name": "jufgutierrezgo/python-vlc-rolling",
+      "name": "python-vlc-rolling",
+      "owner": "jufgutierrezgo",
+      "description_en": "This repository contains a python package project to simulate rolling shutter-based optical camera communication using the color shift keying modulation.",
+      "description_zh": "一个 Python 包项目，用于仿真基于卷帘快门相机的光学相机通信（OCC），采用色移键控（CSK）调制方式生成并解析图像信号。",
+      "highlight_zh": "卷帘快门相机解调 LED 信号的通信仿真参考",
+      "stars": 5,
+      "forks": 0,
       "language": "Python",
-      "topics": [
-        "computer-vision",
-        "deep-learning",
-        "image-classification",
-        "instance-segmentation",
-        "machine-learning",
-        "object-detection"
-      ],
-      "url": "https://github.com/ultralytics/ultralytics",
-      "homepage": "https://platform.ultralytics.com",
-      "created_at": "2022-09-11T16:39:45Z",
-      "pushed_at": "2026-11-04T12:27:44Z",
+      "topics": [],
+      "created_at": "2025-02-19T19:42:30Z",
+      "pushed_at": "2025-08-20T19:21:08Z",
+      "url": "https://github.com/jufgutierrezgo/python-vlc-rolling",
+      "homepage": null,
+      "license": "MIT",
+      "archived": false,
       "source": "general",
       "categories": [
-        "aim"
+        "optical",
+        "sim"
       ],
-      "first_seen": "2026-06-03T10:20:36Z",
+      "readme_excerpt": "visible light communication; optical camera communication; visible light; communication; LED; camera; rolling shutter; receiver; transmitter; decoding; modulation; simulation; theoretical",
+      "optical_review": {
+        "full_name": "jufgutierrezgo/python-vlc-rolling",
+        "receiver": "rolling_shutter_camera",
+        "reason_zh": "该Python包可模拟滚动快门相机接收、CSK颜色调制、曝光与读出、LoS/NLoS及噪声，适合在制作硬件前筛查相机和调制参数。",
+        "limitations_zh": "这是低星仿真工具，不是实机固件或高影响成熟项目；仿真结果不能替代移动、强环境光和实际相机自动曝光条件下的通信试验，CSK还须受比赛通信灯颜色条件约束。",
+        "source_url": "https://github.com/jufgutierrezgo/python-vlc-rolling",
+        "kind": "simulation",
+        "license_note": "MIT。",
+        "verified": true,
+        "checked_at": "2026-11-05T11:58:05.108Z"
+      },
+      "metadata_fetched_at": "2026-11-05T11:44:51.690Z",
+      "first_seen": "2026-11-05T11:40:55.096Z",
       "rule_matches": [
+        {
+          "task_id": "optical",
+          "task": "空中系统可见光通信链路",
+          "keywords": [
+            "optical camera communication",
+            "rolling shutter"
+          ]
+        },
+        {
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "keywords": [
+            "仿真"
+          ]
+        }
+      ],
+      "rules_fingerprint": "10860871a3567726",
+      "recommendation": {
+        "lane": "reference",
+        "score": 7,
+        "reason_zh": "该Python包可模拟滚动快门相机接收、CSK颜色调制、曝光与读出、LoS/NLoS及噪声，适合在制作硬件前筛查相机和调制参数；仅作仿真参考",
+        "receiver": "rolling_shutter_camera",
+        "evidence_url": "https://github.com/jufgutierrezgo/python-vlc-rolling",
+        "limitations_zh": "这是低星仿真工具，不是实机固件或高影响成熟项目；仿真结果不能替代移动、强环境光和实际相机自动曝光条件下的通信试验，CSK还须受比赛通信灯颜色条件约束。",
+        "quality": "simulation",
+        "metric": {
+          "label": "GitHub Stars",
+          "value": 5,
+          "source": "GitHub",
+          "source_url": "https://github.com/jufgutierrezgo/python-vlc-rolling",
+          "checked_at": "2026-11-05T11:44:51.690Z"
+        }
+      },
+      "rm": {
+        "usage": "可先用其卷帘快门OCC仿真验证机库到无人机的相机接收解码流程与CSK调制；仿真不能替代运动、强环境光及通信灯颜色约束下的实机测试。",
+        "task_id": "optical",
+        "task": "空中系统可见光通信链路",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 25.78
+    },
+    {
+      "id": "HKPolyU-UAV/FLVIS",
+      "full_name": "HKPolyU-UAV/FLVIS",
+      "name": "FLVIS",
+      "owner": "HKPolyU-UAV",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/19852419?v=4",
+      "description_en": "FLVIS: Feedback Loop Based Visual Inertial SLAM",
+      "description_zh": "FLVIS 是一个基于反馈回环的视觉惯性 SLAM 系统，融合相机与 IMU 数据实现定位与建图，提供 ROS 接口，面向空中机器人等平台。",
+      "highlight_zh": "哨兵/无人机视觉惯性定位与建图",
+      "stars": 215,
+      "forks": 41,
+      "language": "C++",
+      "topics": [
+        "aerial-robotics",
+        "localization",
+        "ros",
+        "slam",
+        "visual-inertial-odometry"
+      ],
+      "url": "https://github.com/HKPolyU-UAV/FLVIS",
+      "homepage": "",
+      "created_at": "2019-07-16T07:33:55Z",
+      "pushed_at": "2026-04-09T16:59:32Z",
+      "source": "general",
+      "categories": [
+        "aerial",
+        "aim",
+        "slam",
+        "nav"
+      ],
+      "license": "BSD-2-Clause",
+      "first_seen": "2026-11-05T13:36:13.422Z",
+      "rule_matches": [
+        {
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "keywords": [
+            "visual inertial odometry",
+            "空中机器人"
+          ]
+        },
+        {
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "keywords": [
+            "SLAM",
+            "SLAM"
+          ]
+        }
+      ],
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "可作为空中机器人在机库内与场馆内无GPS条件下的视觉惯性里程计参考，融合相机与IMU做位姿估计，支撑稳定悬停与自动起降；需按4Wh机载算力裁剪并注意初始化与光照稳定性。",
+        "task_id": "aerial",
+        "task": "空中系统自主飞行与机库交互",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 25.33
+    },
+    {
+      "id": "zhaohaojie1998/Grey-Wolf-Optimizer-for-Path-Planning",
+      "full_name": "zhaohaojie1998/Grey-Wolf-Optimizer-for-Path-Planning",
+      "name": "Grey-Wolf-Optimizer-for-Path-Planning",
+      "owner": "zhaohaojie1998",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/95571288?v=4",
+      "description_en": "灰狼优化算法(GWO)路径规划/轨迹规划/轨迹优化、多智能体/多无人机航迹规划",
+      "description_zh": "基于灰狼优化算法（GWO）的路径规划、轨迹规划与轨迹优化代码合集，支持多智能体、多无人机航迹规划等场景，使用 MATLAB 实现。",
+      "highlight_zh": "哨兵或多机器人路径规划与轨迹优化参考",
+      "stars": 757,
+      "forks": 62,
+      "language": "MATLAB",
+      "topics": [
+        "grey-wolf-optimizer",
+        "gwo",
+        "multi-agent-systems",
+        "path-planning",
+        "trajectory-optimization",
+        "uav"
+      ],
+      "url": "https://github.com/zhaohaojie1998/Grey-Wolf-Optimizer-for-Path-Planning",
+      "homepage": "",
+      "created_at": "2022-09-17T02:07:21Z",
+      "pushed_at": "2025-12-05T11:45:08Z",
+      "source": "general",
+      "categories": [
+        "aerial",
+        "nav",
+        "planning"
+      ],
+      "license": null,
+      "first_seen": "2026-11-05T13:36:13.422Z",
+      "rule_matches": [
+        {
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "keywords": [
+            "无人机"
+          ]
+        },
+        {
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "keywords": [
+            "路径规划"
+          ]
+        },
         {
           "task_id": "engineer",
           "task": "重装机器人视觉装配",
           "keywords": [
-            "pose estimation"
+            "路径规划"
           ]
         }
       ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 30.8
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "MATLAB离线的GWO航迹优化代码，可在仿真阶段做多机航路/避障路径的粗略全局规划对比，但难以机载实时运行；对空中或哨兵导航只是思路参考。",
+        "task_id": "sim",
+        "task": "算法仿真与验证",
+        "value": "low",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 25.88
+    },
+    {
+      "id": "learnsyslab/gym-pybullet-drones",
+      "full_name": "learnsyslab/gym-pybullet-drones",
+      "name": "gym-pybullet-drones",
+      "owner": "learnsyslab",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/19434714?v=4",
+      "description_en": "PyBullet Gymnasium environments for single and multi-agent reinforcement learning of quadcopter control",
+      "description_zh": "基于 PyBullet 与 Gymnasium 的单/多智能体四旋翼控制强化学习仿真环境，接口与 Gym 兼容，便于训练和对比飞行控制策略。",
+      "highlight_zh": "无人机/哨兵控制策略的 RL 仿真训练",
+      "stars": 2199,
+      "forks": 578,
+      "language": "Python",
+      "topics": [
+        "betaflight",
+        "control",
+        "crazyflie",
+        "gym",
+        "gymnasium",
+        "multi-agent"
+      ],
+      "url": "https://github.com/learnsyslab/gym-pybullet-drones",
+      "homepage": "https://arxiv.org/pdf/2103.02142",
+      "created_at": "2020-08-10T07:38:09Z",
+      "pushed_at": "2026-11-04T04:27:09Z",
+      "source": "general",
+      "categories": [
+        "aerial",
+        "nav",
+        "rl",
+        "sim"
+      ],
+      "license": "MIT",
+      "first_seen": "2026-11-05T13:36:13.422Z",
+      "rule_matches": [
+        {
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "keywords": [
+            "quadcopter",
+            "四旋翼"
+          ]
+        },
+        {
+          "task_id": "strategy",
+          "task": "多机协同与战术决策",
+          "keywords": [
+            "reinforcement learning",
+            "强化学习"
+          ]
+        },
+        {
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "keywords": [
+            "仿真"
+          ]
+        }
+      ],
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "可用于搭建空中机器人悬停/轨迹跟踪的强化学习训练与对比环境，验证控制策略后再迁移；是仿真训练平台，不等同可参赛固件。",
+        "task_id": "sim",
+        "task": "算法仿真与验证",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 28.34
+    },
+    {
+      "id": "uzh-rpg/agilicious",
+      "full_name": "uzh-rpg/agilicious",
+      "name": "agilicious",
+      "owner": "uzh-rpg",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/1941290?v=4",
+      "description_en": "Agile flight done right!",
+      "description_zh": "苏黎世大学 RPG 的四旋翼敏捷自主飞行框架，集成状态估计、控制与轨迹跟踪等模块，并配有仿真与实机部署工具。",
+      "highlight_zh": "敏捷飞行控制与轨迹跟踪算法参考",
+      "stars": 660,
+      "forks": 71,
+      "language": "TeX",
+      "topics": [
+        "agile",
+        "autonomous",
+        "flight",
+        "quadrotor"
+      ],
+      "url": "https://github.com/uzh-rpg/agilicious",
+      "homepage": "",
+      "created_at": "2022-06-14T16:42:51Z",
+      "pushed_at": "2023-03-07T18:30:25Z",
+      "source": "general",
+      "categories": [
+        "aerial",
+        "sim"
+      ],
+      "license": null,
+      "first_seen": "2026-11-05T09:19:12.555Z",
+      "rule_matches": [
+        {
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "keywords": [
+            "quadrotor",
+            "autonomous flight",
+            "自主飞行",
+            "四旋翼"
+          ]
+        },
+        {
+          "task_id": "radar",
+          "task": "雷达目标探测与信息融合",
+          "keywords": [
+            "状态估计"
+          ]
+        },
+        {
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "keywords": [
+            "仿真"
+          ]
+        }
+      ],
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "其状态估计-控制-轨迹跟踪的分层架构可借鉴到空中机器人自主飞行与稳定悬停模块设计；但原始系统偏高速敏捷飞行，常依赖外部动捕/VIO与较高算力，需大幅轻量化改造。",
+        "task_id": "aerial",
+        "task": "空中系统自主飞行与机库交互",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 25.82
+    },
+    {
+      "id": "bitcraze/crazyflie-firmware",
+      "full_name": "bitcraze/crazyflie-firmware",
+      "name": "crazyflie-firmware",
+      "owner": "bitcraze",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/5947135?v=4",
+      "description_en": "The main firmware for the Crazyflie Nano Quadcopter, Crazyflie Bolt Quadcopter and Roadrunner Positioning Tag.",
+      "description_zh": "Crazyflie 纳米四旋翼、Crazyflie Bolt 飞控板与 Roadrunner 定位标签的主固件源码。",
+      "highlight_zh": "小型四旋翼飞控固件，适合室内测试",
+      "stars": 1568,
+      "forks": 1296,
+      "language": "C",
+      "topics": [],
+      "url": "https://github.com/bitcraze/crazyflie-firmware",
+      "homepage": "",
+      "created_at": "2014-02-21T14:22:05Z",
+      "pushed_at": "2026-11-05T13:15:18Z",
+      "source": "general",
+      "categories": [
+        "aerial",
+        "sim"
+      ],
+      "license": "GPL-3.0",
+      "first_seen": "2026-11-05T09:19:12.555Z",
+      "rule_matches": [
+        {
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "keywords": [
+            "quadcopter",
+            "四旋翼"
+          ]
+        }
+      ],
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "可参考其微型四旋翼的机载姿态估计、光流定点与低功耗调度实现，用于空中机器人轻量飞控设计；但绑定Crazyflie硬件，整机固件不能直接用于参赛机型。",
+        "task_id": "aerial",
+        "task": "空中系统自主飞行与机库交互",
+        "value": "low",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 19.2
     },
     {
       "id": "HKUST-Aerial-Robotics/Fast-Planner",
@@ -266,6 +886,7 @@
         "nav",
         "planning"
       ],
+      "license": "GPL-3.0",
       "first_seen": "2024-10-24T13:12:43Z",
       "rule_matches": [
         {
@@ -283,337 +904,66 @@
           ]
         }
       ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "适合室内无GPS下的避障与轨迹规划环节，可基于深度图/栅格地图做机库内起降与场内避障航迹生成，是空中机器人自主导航的核心可借鉴方案；需按机载算力裁剪地图分辨率与规划频率。",
+        "task_id": "aerial",
+        "task": "空中系统自主飞行与机库交互",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
       "relevance": 26.54
     },
     {
-      "id": "jufgutierrezgo/python-vlc-rolling",
-      "full_name": "jufgutierrezgo/python-vlc-rolling",
-      "name": "python-vlc-rolling",
-      "owner": "jufgutierrezgo",
-      "description_en": "This repository contains a python package project to simulate rolling shutter-based optical camera communication using the color shift keying modulation.",
-      "description_zh": "该仓库包含一个 Python 包项目，用于模拟使用色移键控调制的基于卷帘快门的光学相机通信。",
-      "highlight_zh": "",
-      "stars": 5,
-      "forks": 0,
-      "language": "Python",
-      "topics": [],
-      "created_at": "2025-02-19T19:42:30Z",
-      "pushed_at": "2025-08-20T19:21:08Z",
-      "url": "https://github.com/jufgutierrezgo/python-vlc-rolling",
-      "homepage": null,
-      "license": "MIT",
-      "archived": false,
-      "source": "general",
-      "categories": [
-        "optical",
-        "other"
-      ],
-      "readme_excerpt": "visible light communication; optical camera communication; visible light; communication; LED; camera; rolling shutter; receiver; transmitter; decoding; modulation; simulation; theoretical",
-      "optical_review": {
-        "full_name": "jufgutierrezgo/python-vlc-rolling",
-        "receiver": "rolling_shutter_camera",
-        "reason_zh": "该Python包可模拟滚动快门相机接收、CSK颜色调制、曝光与读出、LoS/NLoS及噪声，适合在制作硬件前筛查相机和调制参数。",
-        "limitations_zh": "这是低星仿真工具，不是实机固件或高影响成熟项目；仿真结果不能替代移动、强环境光和实际相机自动曝光条件下的通信试验，CSK还须受比赛通信灯颜色条件约束。",
-        "source_url": "https://github.com/jufgutierrezgo/python-vlc-rolling",
-        "kind": "simulation",
-        "license_note": "MIT。",
-        "verified": true,
-        "checked_at": "2026-11-05T11:58:05.108Z"
-      },
-      "metadata_fetched_at": "2026-11-05T11:44:51.690Z",
-      "first_seen": "2026-11-05T11:40:55.096Z",
-      "rule_matches": [
-        {
-          "task_id": "optical",
-          "task": "空中系统可见光通信链路",
-          "keywords": [
-            "optical camera communication",
-            "rolling shutter"
-          ]
-        }
-      ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "recommendation": {
-        "lane": "reference",
-        "score": 7,
-        "reason_zh": "该Python包可模拟滚动快门相机接收、CSK颜色调制、曝光与读出、LoS/NLoS及噪声，适合在制作硬件前筛查相机和调制参数；仅作仿真参考",
-        "receiver": "rolling_shutter_camera",
-        "evidence_url": "https://github.com/jufgutierrezgo/python-vlc-rolling",
-        "limitations_zh": "这是低星仿真工具，不是实机固件或高影响成熟项目；仿真结果不能替代移动、强环境光和实际相机自动曝光条件下的通信试验，CSK还须受比赛通信灯颜色条件约束。",
-        "quality": "simulation",
-        "metric": {
-          "label": "GitHub Stars",
-          "value": 5,
-          "source": "GitHub",
-          "source_url": "https://github.com/jufgutierrezgo/python-vlc-rolling",
-          "checked_at": "2026-11-05T11:44:51.690Z"
-        }
-      },
-      "relevance": 23.78
-    },
-    {
-      "id": "DeepLabCut/DeepLabCut",
-      "full_name": "DeepLabCut/DeepLabCut",
-      "name": "DeepLabCut",
-      "owner": "DeepLabCut",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/59848143?v=4",
-      "description_en": "Official implementation of DeepLabCut: Markerless pose estimation of user-defined features with deep learning for all animals incl. humans",
-      "description_zh": "DeepLabCut 是基于深度学习的无标记姿态估计工具，可对用户定义的特征（包括人类和动物）进行关键点检测。",
-      "highlight_zh": "可用于自瞄中的装甲板关键点检测，提高瞄准精度。",
-      "stars": 5811,
-      "forks": 1800,
-      "language": "Python",
-      "topics": [
-        "animal-pose-estimation",
-        "behavior-analysis",
-        "deep-learning",
-        "deeplabcut",
-        "feature-detectors",
-        "keypoint-detection"
-      ],
-      "url": "https://github.com/DeepLabCut/DeepLabCut",
-      "homepage": "http://deeplabcut.org",
-      "created_at": "2018-03-26T22:29:12Z",
-      "pushed_at": "2026-11-04T08:55:32Z",
-      "source": "general",
-      "categories": [
-        "aim"
-      ],
-      "first_seen": "2026-06-04T08:37:00.867Z",
-      "rule_matches": [
-        {
-          "task_id": "engineer",
-          "task": "重装机器人视觉装配",
-          "keywords": [
-            "pose estimation"
-          ]
-        }
-      ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 20.76
-    },
-    {
-      "id": "PX4/PX4-Autopilot",
-      "full_name": "PX4/PX4-Autopilot",
-      "name": "PX4-Autopilot",
-      "owner": "PX4",
-      "description_en": "PX4 Autopilot Software",
-      "description_zh": "PX4 自动驾驶仪软件",
-      "highlight_zh": "",
-      "stars": 12969,
-      "forks": 16255,
+      "id": "amov-lab/Prometheus",
+      "full_name": "amov-lab/Prometheus",
+      "name": "Prometheus",
+      "owner": "amov-lab",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/48793847?v=4",
+      "description_en": "Open source software for autonomous drones.",
+      "description_zh": "面向自主无人机的开源软件包，结合 PX4、MAVROS、Gazebo 仿真与 SLAM，提供控制、规划与视觉感知模块。",
+      "highlight_zh": "无人机 SLAM 建图导航与仿真验证",
+      "stars": 3292,
+      "forks": 467,
       "language": "C++",
       "topics": [
-        "autonomous",
-        "autopilot",
-        "avoidance",
-        "dds",
-        "drone",
-        "dronecode",
-        "drones",
-        "fixed-wing",
-        "mavlink",
+        "control",
+        "gazebo",
         "mavros",
-        "multicopter",
-        "pixhawk",
         "px4",
-        "qgroundcontrol",
-        "ros",
-        "ros2",
-        "uas",
-        "uav",
-        "ugv"
+        "slam"
       ],
-      "url": "https://github.com/PX4/PX4-Autopilot",
-      "homepage": "https://px4.io",
-      "pushed_at": "2026-11-05T09:17:42Z",
-      "created_at": "2012-08-04T21:19:36Z",
+      "url": "https://github.com/amov-lab/Prometheus",
+      "homepage": "https://github.com/amov-lab/Prometheus",
+      "created_at": "2019-12-03T06:28:07Z",
+      "pushed_at": "2026-04-03T05:10:39Z",
       "source": "general",
-      "first_seen": "2026-11-05T09:19:12.555Z",
       "categories": [
         "aerial",
+        "aim",
+        "slam",
+        "nav",
         "sim"
       ],
-      "rule_matches": [
-        {
-          "task_id": "aerial",
-          "task": "空中系统自主飞行与机库交互",
-          "keywords": []
-        }
-      ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 20.11
-    },
-    {
-      "id": "roboflow/rf-detr",
-      "full_name": "roboflow/rf-detr",
-      "name": "rf-detr",
-      "owner": "roboflow",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/53104118?v=4",
-      "description_en": "RF-DETR is a real-time object detection and segmentation model architecture developed by Roboflow, SOTA on COCO, designed for fine-tuning. [ICLR 2026]",
-      "description_zh": "Roboflow 提出的实时目标检测与分割模型架构 RF-DETR，在 COCO 上达到 SOTA，专为微调设计，发表于 ICLR 2026。",
-      "highlight_zh": "可微调用于装甲板检测与自瞄目标分割",
-      "stars": 9970,
-      "forks": 1260,
-      "language": "Python",
-      "topics": [
-        "computer-vision",
-        "detr",
-        "instance-segmentation",
-        "machine-learning",
-        "object-detection",
-        "rf-detr"
-      ],
-      "url": "https://github.com/roboflow/rf-detr",
-      "homepage": "https://rfdetr.roboflow.com",
-      "created_at": "2025-03-19T20:43:00Z",
-      "pushed_at": "2026-11-03T18:23:50Z",
-      "source": "general",
-      "categories": [
-        "aim"
-      ],
-      "first_seen": "2026-10-20T10:28:38.699Z",
-      "rule_matches": [],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 20
-    },
-    {
-      "id": "uzh-rpg/agilicious",
-      "full_name": "uzh-rpg/agilicious",
-      "name": "agilicious",
-      "owner": "uzh-rpg",
-      "description_en": "Agile flight done right! ",
-      "description_zh": "正确地实现敏捷飞行！",
-      "highlight_zh": "",
-      "stars": 660,
-      "forks": 71,
-      "language": "TeX",
-      "topics": [
-        "agile",
-        "autonomous",
-        "flight",
-        "quadrotor"
-      ],
-      "url": "https://github.com/uzh-rpg/agilicious",
-      "homepage": "",
-      "pushed_at": "2023-03-07T18:30:25Z",
-      "created_at": "2022-06-14T16:42:51Z",
-      "source": "general",
-      "first_seen": "2026-11-05T09:19:12.555Z",
-      "categories": [
-        "aerial"
-      ],
+      "license": "Apache-2.0",
+      "first_seen": "2026-11-05T13:36:13.422Z",
       "rule_matches": [
         {
           "task_id": "aerial",
           "task": "空中系统自主飞行与机库交互",
           "keywords": [
-            "quadrotor",
-            "autonomous flight"
+            "无人机"
           ]
-        }
-      ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 19.82
-    },
-    {
-      "id": "ultralytics/yolov5",
-      "full_name": "ultralytics/yolov5",
-      "name": "yolov5",
-      "owner": "ultralytics",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/26833451?v=4",
-      "description_en": "Ultralytics YOLOv5 in PyTorch for object detection, instance segmentation, classification, training, and export.",
-      "description_zh": "Ultralytics 出品的 YOLOv5 的 PyTorch 实现，支持目标检测、实例分割、分类，并涵盖训练、推理与多格式导出。",
-      "highlight_zh": "训练部署装甲板检测与自瞄目标识别模型",
-      "stars": 58250,
-      "forks": 17445,
-      "language": "",
-      "topics": [
-        "computer-vision",
-        "coreml",
-        "deep-learning",
-        "image-classification",
-        "inference",
-        "instance-segmentation"
-      ],
-      "url": "https://github.com/ultralytics/yolov5",
-      "homepage": "https://docs.ultralytics.com/yolov5/",
-      "created_at": "2020-05-18T03:45:11Z",
-      "pushed_at": "2026-11-04T10:15:57Z",
-      "source": "general",
-      "categories": [
-        "aim"
-      ],
-      "first_seen": "2026-10-20T10:28:38.699Z",
-      "rule_matches": [],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 19.77
-    },
-    {
-      "id": "open-mmlab/mmyolo",
-      "full_name": "open-mmlab/mmyolo",
-      "name": "mmyolo",
-      "owner": "open-mmlab",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/10245193?v=4",
-      "description_en": "OpenMMLab YOLO series toolbox and benchmark. Implemented RTMDet, RTMDet-Rotated,YOLOv5, YOLOv6, YOLOv7, YOLOv8,YOLOX, PPYOLOE, etc.",
-      "description_zh": "OpenMMLab YOLO系列工具箱和基准。实现了RTMDet、RTMDet-Rotated、YOLOv5、YOLOv6、YOLOv7、YOLOv8、YOLOX、PPYOLOE等。",
-      "highlight_zh": "可用于自瞄中的装甲板检测，支持旋转目标检测。",
-      "stars": 3487,
-      "forks": 627,
-      "language": "Python",
-      "topics": [
-        "deep-learning",
-        "object-detection",
-        "ppyoloe",
-        "pytorch",
-        "rotated-object-detection",
-        "rtmdet"
-      ],
-      "url": "https://github.com/open-mmlab/mmyolo",
-      "homepage": "https://mmyolo.readthedocs.io/zh_CN/dev/",
-      "created_at": "2022-09-18T01:36:06Z",
-      "pushed_at": "2024-07-14T02:44:12Z",
-      "source": "general",
-      "categories": [
-        "aim"
-      ],
-      "first_seen": "2024-07-14T02:44:12Z",
-      "rule_matches": [],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 19.54
-    },
-    {
-      "id": "Unity-Technologies/Unity-Robotics-Hub",
-      "full_name": "Unity-Technologies/Unity-Robotics-Hub",
-      "name": "Unity-Robotics-Hub",
-      "owner": "Unity-Technologies",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/426196?v=4",
-      "description_en": "Central repository for tools, tutorials, resources, and documentation for robotics simulation in Unity.",
-      "description_zh": "Unity 中机器人仿真的工具、教程、资源和文档的中央仓库，提供基于 Unity 的仿真环境，涉及自主机器人、运动规划、物理仿真等方向。",
-      "highlight_zh": "可用于自瞄/装甲板检测的仿真数据生成与算法验证。",
-      "stars": 2610,
-      "forks": 472,
-      "language": "C#",
-      "topics": [
-        "autonomous-robots",
-        "autonomy",
-        "manipulation",
-        "motion-planning",
-        "physics-3d",
-        "physics-simulation"
-      ],
-      "url": "https://github.com/Unity-Technologies/Unity-Robotics-Hub",
-      "homepage": "",
-      "created_at": "2020-09-24T17:23:13Z",
-      "pushed_at": "2026-09-22T15:03:28Z",
-      "source": "general",
-      "categories": [
-        "planning",
-        "sim"
-      ],
-      "first_seen": "2026-09-23T10:21:35.573Z",
-      "rule_matches": [
+        },
+        {
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "keywords": [
+            "SLAM",
+            "SLAM"
+          ]
+        },
         {
           "task_id": "sim",
           "task": "算法仿真与验证",
@@ -622,172 +972,100 @@
           ]
         }
       ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 19.42
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "提供PX4+MAVROS+Gazebo+SLAM的完整自主飞行范例，可用来快速搭仿真验证定位、避障与起降流程，并参考其模块划分；实机部分依赖PX4生态与外部定位，需重构成轻量机载方案。",
+        "task_id": "aerial",
+        "task": "空中系统自主飞行与机库交互",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 27.52
     },
     {
-      "id": "ZJU-FAST-Lab/Fast-Drone-250",
-      "full_name": "ZJU-FAST-Lab/Fast-Drone-250",
-      "name": "Fast-Drone-250",
-      "owner": "ZJU-FAST-Lab",
-      "description_en": "hardware and software design of the 250mm autonomous drone",
-      "description_zh": "250mm 自主无人机的硬件与软件设计",
-      "highlight_zh": "",
-      "stars": 2575,
-      "forks": 425,
+      "id": "PX4/PX4-Autopilot",
+      "full_name": "PX4/PX4-Autopilot",
+      "name": "PX4-Autopilot",
+      "owner": "PX4",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/2096014?v=4",
+      "description_en": "PX4 Autopilot Software",
+      "description_zh": "PX4 开源飞控软件栈，支持自主飞行、避障与 DDS 通信，广泛用于无人机与无人车平台。",
+      "highlight_zh": "飞控底层，可搭空中机器人/哨兵平台",
+      "stars": 12970,
+      "forks": 16256,
       "language": "C++",
-      "topics": [],
-      "url": "https://github.com/ZJU-FAST-Lab/Fast-Drone-250",
-      "homepage": "",
-      "pushed_at": "2022-11-09T08:02:26Z",
-      "created_at": "2021-09-28T13:59:24Z",
-      "source": "general",
-      "first_seen": "2026-11-05T09:19:12.555Z",
-      "categories": [
-        "aerial"
+      "topics": [
+        "autonomous",
+        "autopilot",
+        "avoidance",
+        "dds",
+        "drone",
+        "dronecode"
       ],
-      "rule_matches": [
-        {
-          "task_id": "aerial",
-          "task": "空中系统自主飞行与机库交互",
-          "keywords": [
-            "无人机"
-          ]
-        }
-      ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 19.41
-    },
-    {
-      "id": "bitcraze/crazyflie-firmware",
-      "full_name": "bitcraze/crazyflie-firmware",
-      "name": "crazyflie-firmware",
-      "owner": "bitcraze",
-      "description_en": "The main firmware for the Crazyflie Nano Quadcopter, Crazyflie Bolt Quadcopter and Roadrunner Positioning Tag.",
-      "description_zh": "Crazyflie 纳米四旋翼、Crazyflie Bolt 四旋翼和 Roadrunner 定位标签的主固件。",
-      "highlight_zh": "",
-      "stars": 1568,
-      "forks": 1296,
-      "language": "C",
-      "topics": [],
-      "url": "https://github.com/bitcraze/crazyflie-firmware",
-      "homepage": "",
-      "pushed_at": "2026-11-04T10:18:20Z",
-      "created_at": "2014-02-21T14:22:05Z",
+      "url": "https://github.com/PX4/PX4-Autopilot",
+      "homepage": "https://px4.io",
+      "created_at": "2012-08-04T21:19:36Z",
+      "pushed_at": "2026-11-05T13:26:10Z",
       "source": "general",
-      "first_seen": "2026-11-05T09:19:12.555Z",
       "categories": [
         "aerial",
-        "sim"
+        "nav"
       ],
+      "license": "BSD-3-Clause",
+      "first_seen": "2026-11-05T09:19:12.555Z",
       "rule_matches": [
         {
           "task_id": "aerial",
           "task": "空中系统自主飞行与机库交互",
           "keywords": [
-            "quadcopter",
-            "四旋翼"
+            "无人机",
+            "自主飞行"
           ]
-        }
-      ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 19.2
-    },
-    {
-      "id": "mikel-brostrom/boxmot",
-      "full_name": "mikel-brostrom/boxmot",
-      "name": "boxmot",
-      "owner": "mikel-brostrom",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/18719680?v=4",
-      "description_en": "BoxMOT: Pluggable Python and C++ SOTA multi-object tracking modules with support for axis-aligned and oriented bounding boxes",
-      "description_zh": "BoxMOT：可插拔的Python和C++多目标跟踪模块，支持轴对齐和旋转框。",
-      "highlight_zh": "可用于自瞄中多装甲板跟踪。",
-      "stars": 8325,
-      "forks": 1916,
-      "language": "Python",
-      "topics": [
-        "boosttrack",
-        "botsort",
-        "bytetrack",
-        "deep-learning",
-        "deepocsort",
-        "machine-learning"
-      ],
-      "url": "https://github.com/mikel-brostrom/boxmot",
-      "homepage": "https://mikel-brostrom.github.io/boxmot/",
-      "created_at": "2020-06-26T09:26:23Z",
-      "pushed_at": "2026-11-04T11:57:29Z",
-      "source": "general",
-      "categories": [
-        "radar"
-      ],
-      "first_seen": "2026-06-03T09:39:32Z",
-      "rule_matches": [
+        },
         {
-          "task_id": "radar",
-          "task": "雷达目标探测与信息融合",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
           "keywords": [
-            "多目标跟踪"
+            "避障"
           ]
         }
       ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 18.92
-    },
-    {
-      "id": "uzh-rpg/rpg_mpc",
-      "full_name": "uzh-rpg/rpg_mpc",
-      "name": "rpg_mpc",
-      "owner": "uzh-rpg",
-      "description_en": "Model Predictive Control for Quadrotors with extension to Perception-Aware MPC",
-      "description_zh": "面向四旋翼的模型预测控制，并扩展至感知感知 MPC",
-      "highlight_zh": "",
-      "stars": 525,
-      "forks": 94,
-      "language": "C",
-      "topics": [],
-      "url": "https://github.com/uzh-rpg/rpg_mpc",
-      "homepage": null,
-      "pushed_at": "2022-04-04T13:21:48Z",
-      "created_at": "2018-05-14T14:48:15Z",
-      "source": "general",
-      "first_seen": "2026-11-05T09:19:49.277Z",
-      "categories": [
-        "aerial"
-      ],
-      "rule_matches": [
-        {
-          "task_id": "aerial",
-          "task": "空中系统自主飞行与机库交互",
-          "keywords": [
-            "四旋翼"
-          ]
-        }
-      ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 18.72
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "可作为空中机器人飞控与自主飞行模式（定点、自动起降、避障接口）的软件基础或架构参考，便于实现持续悬停与机库自动起降状态机；但对4Wh级小机体偏重，需评估算力与传感器配置。",
+        "task_id": "aerial",
+        "task": "空中系统自主飞行与机库交互",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 24.11
     },
     {
       "id": "IMRCLab/crazyswarm2",
       "full_name": "IMRCLab/crazyswarm2",
       "name": "crazyswarm2",
       "owner": "IMRCLab",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/86781721?v=4",
       "description_en": "A Large Quadcopter Swarm",
-      "description_zh": "大型四旋翼集群",
-      "highlight_zh": "",
+      "description_zh": "基于 ROS 2 的四旋翼集群控制框架 crazyswarm，支持多机编队、轨迹跟踪与统一调度。",
+      "highlight_zh": "多机集群编队与协同控制实验",
       "stars": 264,
       "forks": 137,
       "language": "Python",
       "topics": [],
       "url": "https://github.com/IMRCLab/crazyswarm2",
       "homepage": "",
-      "pushed_at": "2026-11-04T21:55:05Z",
       "created_at": "2021-11-04T17:12:54Z",
+      "pushed_at": "2026-11-04T21:55:05Z",
       "source": "general",
-      "first_seen": "2026-11-05T09:19:12.555Z",
       "categories": [
-        "aerial"
+        "aerial",
+        "sim"
       ],
+      "license": "MIT",
+      "first_seen": "2026-11-05T09:19:12.555Z",
       "rule_matches": [
         {
           "task_id": "aerial",
@@ -798,125 +1076,274 @@
           ]
         }
       ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 18.42
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "可借鉴其多机统一调度与轨迹跟踪框架，用于机库内4台空中机器人的起飞排程、悬停/降落轨迹生成与时间同步仿真；但其依赖Crazyradio无线链路和外部动捕定位，赛场不能照搬，需替换为机载VIO定位与合规通信方式。",
+        "task_id": "aerial",
+        "task": "空中系统自主飞行与机库交互",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 19.42
     },
     {
-      "id": "IDEA-Research/GroundingDINO",
-      "full_name": "IDEA-Research/GroundingDINO",
-      "name": "GroundingDINO",
-      "owner": "IDEA-Research",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/113572103?v=4",
-      "description_en": "[ECCV 2024] Official implementation of the paper \"Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection\"",
-      "description_zh": "Grounding DINO：将 DINO 与接地预训练结合，实现开放集目标检测。",
-      "highlight_zh": "可用于自瞄中的装甲板检测，支持开放集识别。",
-      "stars": 10732,
-      "forks": 1089,
+      "id": "rl-tools/raptor",
+      "full_name": "rl-tools/raptor",
+      "name": "raptor",
+      "owner": "rl-tools",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/145876122?v=4",
+      "description_en": "A Foundation Policy for Quadrotor Control",
+      "description_zh": "面向四旋翼控制的基础策略项目，用强化学习训练可泛化的底层飞行控制策略。",
+      "highlight_zh": "用 RL 基础策略做无人机底层控制",
+      "stars": 236,
+      "forks": 28,
+      "language": "",
+      "topics": [
+        "foundation-models",
+        "quadrotor",
+        "reinforcement-learning"
+      ],
+      "url": "https://github.com/rl-tools/raptor",
+      "homepage": "https://raptor.rl.tools",
+      "created_at": "2025-04-22T23:23:39Z",
+      "pushed_at": "2026-09-02T18:26:36Z",
+      "source": "general",
+      "categories": [
+        "aerial",
+        "rl"
+      ],
+      "license": "MIT",
+      "first_seen": "2026-11-05T13:36:13.422Z",
+      "rule_matches": [
+        {
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "keywords": [
+            "quadrotor",
+            "四旋翼"
+          ]
+        },
+        {
+          "task_id": "strategy",
+          "task": "多机协同与战术决策",
+          "keywords": [
+            "reinforcement learning",
+            "强化学习"
+          ]
+        },
+        {
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "keywords": [
+            "强化学习训练"
+          ]
+        }
+      ],
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "可用其在仿真中训练四旋翼底层控制策略，提升空中机器人在气流扰动、载荷变化下的稳定悬停与轨迹跟踪鲁棒性；需评估4Wh电池与机载算力下的轻量MLP部署，且仅为策略训练代码非整机方案。",
+        "task_id": "aerial",
+        "task": "空中系统自主飞行与机库交互",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 27.37
+    },
+    {
+      "id": "anish-bhattacharya/vitfly",
+      "full_name": "anish-bhattacharya/vitfly",
+      "name": "vitfly",
+      "owner": "anish-bhattacharya",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/38084494?v=4",
+      "description_en": "Official repository for the paper \"Vision Transformers for End-to-End Vision-Based Quadrotor Obstacle  Avoidance\"  by Bhattacharya, et al. (2024) from GRASP, Penn.",
+      "description_zh": "宾大 GRASP 实验室论文官方代码，用 Vision Transformer 实现端到端、基于视觉的四旋翼避障飞行。",
+      "highlight_zh": "端到端视觉避障，可借鉴到导航决策",
+      "stars": 221,
+      "forks": 37,
+      "language": "C++",
+      "topics": [
+        "quadrotor",
+        "robotics",
+        "vision-based-control-algorithm",
+        "vision-transformer"
+      ],
+      "url": "https://github.com/anish-bhattacharya/vitfly",
+      "homepage": "https://www.anishbhattacharya.com/research/vitfly",
+      "created_at": "2024-04-05T22:39:45Z",
+      "pushed_at": "2026-03-02T22:36:18Z",
+      "source": "general",
+      "categories": [
+        "aerial",
+        "aim",
+        "nav"
+      ],
+      "license": "NOASSERTION",
+      "first_seen": "2026-11-05T13:36:13.422Z",
+      "rule_matches": [
+        {
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "keywords": [
+            "quadrotor",
+            "四旋翼"
+          ]
+        },
+        {
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "keywords": [
+            "obstacle avoidance",
+            "避障"
+          ]
+        }
+      ],
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "其视觉端到端避障思路可直接参考到空中机器人的轻量机载感知与避障模块，用深度相机图像直接回归避障动作；但ViT算力开销大，且需自建赛场仿真数据重训，不能直接上机。",
+        "task_id": "aerial",
+        "task": "空中系统自主飞行与机库交互",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 26.35
+    },
+    {
+      "id": "learnsyslab/safe-control-gym",
+      "full_name": "learnsyslab/safe-control-gym",
+      "name": "safe-control-gym",
+      "owner": "learnsyslab",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/19434714?v=4",
+      "description_en": "PyBullet CartPole and Quadrotor environments—with CasADi symbolic a priori dynamics—for learning-based control and RL",
+      "description_zh": "PyBullet 的 CartPole 与四旋翼环境，借助 CasADi 符号化先验动力学，用于基于学习的控制与强化学习研究。",
+      "highlight_zh": "带安全约束的 RL 控制策略训练",
+      "stars": 932,
+      "forks": 169,
       "language": "Python",
       "topics": [
-        "object-detection",
-        "open-world",
-        "open-world-detection",
-        "vision-language",
-        "vision-language-transformer"
+        "cartpole",
+        "casadi",
+        "control",
+        "gym",
+        "pybullet",
+        "quadcopter"
       ],
-      "url": "https://github.com/IDEA-Research/GroundingDINO",
-      "homepage": "https://arxiv.org/abs/2303.05499",
-      "created_at": "2023-03-09T06:14:41Z",
-      "pushed_at": "2024-08-12T08:52:02Z",
+      "url": "https://github.com/learnsyslab/safe-control-gym",
+      "homepage": "https://www.dynsyslab.org/safe-robot-learning/",
+      "created_at": "2021-08-04T22:14:15Z",
+      "pushed_at": "2026-04-29T14:25:54Z",
       "source": "general",
       "categories": [
-        "aim"
+        "aerial",
+        "rl"
       ],
-      "first_seen": "2024-08-12T08:52:02Z",
-      "rule_matches": [],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 18.03
+      "license": "MIT",
+      "first_seen": "2026-11-05T13:36:13.422Z",
+      "rule_matches": [
+        {
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "keywords": [
+            "quadrotor",
+            "quadcopter",
+            "四旋翼"
+          ]
+        },
+        {
+          "task_id": "strategy",
+          "task": "多机协同与战术决策",
+          "keywords": [
+            "强化学习"
+          ]
+        }
+      ],
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "其PyBullet四旋翼动力学+CasADi符号建模可用来搭建空中机器人仿真环境，做悬停约束、避障与安全强化学习验证；偏科研环境，需按4Wh电池、100W级功率与机库起降流程改造。",
+        "task_id": "sim",
+        "task": "算法仿真与验证",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 23.97
     },
     {
-      "id": "Megvii-BaseDetection/YOLOX",
-      "full_name": "Megvii-BaseDetection/YOLOX",
-      "name": "YOLOX",
-      "owner": "Megvii-BaseDetection",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/67775453?v=4",
-      "description_en": "YOLOX is a high-performance anchor-free YOLO, exceeding yolov3~v5 with MegEngine, ONNX, TensorRT, ncnn, and OpenVINO supported. Documentation: https://yolox.readthedocs.io/",
-      "description_zh": "YOLOX 是一种高性能无锚框 YOLO，超越 yolov3~v5，支持 MegEngine、ONNX、TensorRT、ncnn 和 OpenVINO。",
-      "highlight_zh": "可用于自瞄中的装甲板实时检测，部署在 Jetson 等边缘设备。",
-      "stars": 10689,
-      "forks": 2550,
-      "language": "Python",
+      "id": "mavlink/MAVSDK",
+      "full_name": "mavlink/MAVSDK",
+      "name": "MAVSDK",
+      "owner": "mavlink",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/961247?v=4",
+      "description_en": "API and library for MAVLink compatible systems written in C++",
+      "description_zh": "用 C++ 编写的 MAVLink 兼容系统 API 与库，支持 ArduPilot、PX4 等飞控的通信与任务控制。",
+      "highlight_zh": "上位机与飞控通信，做自主任务调度",
+      "stars": 962,
+      "forks": 660,
+      "language": "C++",
       "topics": [
-        "deep-learning",
-        "megengine",
-        "ncnn",
-        "object-detection",
-        "onnx",
-        "openvino"
+        "ardupilot",
+        "cpp",
+        "cpp17",
+        "mavlink",
+        "px4"
       ],
-      "url": "https://github.com/Megvii-BaseDetection/YOLOX",
-      "homepage": "",
-      "created_at": "2021-07-17T02:01:45Z",
-      "pushed_at": "2025-06-08T03:52:54Z",
+      "url": "https://github.com/mavlink/MAVSDK",
+      "homepage": "https://mavsdk.mavlink.io",
+      "created_at": "2017-06-19T19:54:57Z",
+      "pushed_at": "2026-11-05T09:09:08Z",
       "source": "general",
       "categories": [
+        "aerial",
         "aim"
       ],
-      "first_seen": "2025-06-08T03:52:54Z",
-      "rule_matches": [],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 18.03
-    },
-    {
-      "id": "meituan/YOLOv6",
-      "full_name": "meituan/YOLOv6",
-      "name": "YOLOv6",
-      "owner": "meituan",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/977371?v=4",
-      "description_en": "YOLOv6: a single-stage object detection framework dedicated to industrial applications.",
-      "description_zh": "YOLOv6：面向工业应用的单阶段目标检测框架。",
-      "highlight_zh": "可用于自瞄中的装甲板检测，平衡速度与精度。",
-      "stars": 5893,
-      "forks": 1057,
-      "language": "Jupyter Notebook",
-      "topics": [
-        "object-detection",
-        "pytorch",
-        "yolo"
+      "license": "BSD-3-Clause",
+      "first_seen": "2026-11-05T09:19:49.277Z",
+      "rule_matches": [
+        {
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "keywords": []
+        }
       ],
-      "url": "https://github.com/meituan/YOLOv6",
-      "homepage": "",
-      "created_at": "2022-06-08T02:44:22Z",
-      "pushed_at": "2024-08-07T18:20:33Z",
-      "source": "general",
-      "categories": [
-        "aim"
-      ],
-      "first_seen": "2024-08-07T18:20:33Z",
-      "rule_matches": [],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 17.77
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "可作为空中机器人机载飞控（PX4/ArduPilot）的自主任务接口，实现自动起飞、悬停10秒、定点降落与机库交互的指令编排；属机载内部通信工具，不涉及违规机间组网，但遥控仅限急停需自行约束。",
+        "task_id": "aerial",
+        "task": "空中系统自主飞行与机库交互",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 19.98
     },
     {
       "id": "HKUST-Aerial-Robotics/VINS-Fusion",
       "full_name": "HKUST-Aerial-Robotics/VINS-Fusion",
       "name": "VINS-Fusion",
       "owner": "HKUST-Aerial-Robotics",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/28489597?v=4",
       "description_en": "An optimization-based multi-sensor state estimator",
-      "description_zh": "基于优化的多传感器状态估计器",
-      "highlight_zh": "",
-      "stars": 4772,
+      "description_zh": "一个基于优化的多传感器状态估计器，可融合相机、IMU 等数据实现实时位姿估计，是 VINS 系列中支持多传感器融合的版本。",
+      "highlight_zh": "用于哨兵/无人机的视觉惯性里程计与定位",
+      "stars": 4774,
       "forks": 1636,
       "language": "C++",
       "topics": [],
       "url": "https://github.com/HKUST-Aerial-Robotics/VINS-Fusion",
       "homepage": "",
-      "pushed_at": "2024-05-23T09:17:03Z",
       "created_at": "2019-01-10T16:14:12Z",
+      "pushed_at": "2024-05-23T09:17:03Z",
       "source": "general",
-      "first_seen": "2026-11-05T09:19:12.555Z",
       "categories": [
-        "aerial"
+        "aerial",
+        "aim",
+        "slam",
+        "nav"
       ],
+      "license": "GPL-3.0",
+      "first_seen": "2026-11-05T09:19:12.555Z",
       "rule_matches": [
         {
           "task_id": "aerial",
@@ -931,350 +1358,306 @@
           ]
         }
       ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "可直接用于空中机器人无GPS、无动捕条件下的室内视觉惯性里程计定位，支撑自主悬停、避障与精准返航降落机库；需配相机+IMU并评估机载算力，也可为地面哨兵提供辅助定位参考。",
+        "task_id": "aerial",
+        "task": "空中系统自主飞行与机库交互",
+        "value": "high",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
       "relevance": 17.68
     },
     {
-      "id": "labmlai/annotated_deep_learning_paper_implementations",
-      "full_name": "labmlai/annotated_deep_learning_paper_implementations",
-      "name": "annotated_deep_learning_paper_implementations",
-      "owner": "labmlai",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/64068543?v=4",
-      "description_en": "🧑‍🏫 60+ Implementations/tutorials of deep learning papers with side-by-side notes 📝; including transformers (original, xl, switch, feedback, vit, ...), optimizers (adam, adabelief, sophia, ...), gans(cyclegan, stylegan2, ...), 🎮 reinforcement learning (ppo, dqn), capsnet, distillation, ... 🧠",
-      "description_zh": "60 多个深度学习论文的实现与教程，配有逐行注释，涵盖 Transformer（原始、XL、ViT 等）、各类优化器、GAN、强化学习 PPO/DQN、胶囊网络与知识蒸馏等。",
-      "highlight_zh": "自瞄检测网络与决策 RL（PPO/DQN）的参考实现",
-      "stars": 67678,
-      "forks": 6781,
+      "id": "zhaohaojie1998/DRL-for-Path-Planning",
+      "full_name": "zhaohaojie1998/DRL-for-Path-Planning",
+      "name": "DRL-for-Path-Planning",
+      "owner": "zhaohaojie1998",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/95571288?v=4",
+      "description_en": "深度强化学习路径规划, SAC路径规划, Soft Actor-Critic算法, SAC-pytorch，激光雷达Lidar避障，激光雷达仿真，Adaptive-SAC",
+      "description_zh": "使用深度强化学习（SAC 及其自适应变体）进行路径规划的项目，基于 PyTorch 实现，包含 Gym 环境与 LiDAR 仿真，可实现激光雷达避障。",
+      "highlight_zh": "用于哨兵/机器人的 RL 路径规划与避障决策",
+      "stars": 603,
+      "forks": 47,
       "language": "Python",
       "topics": [
-        "attention",
-        "deep-learning",
-        "deep-learning-tutorial",
-        "gan",
-        "literate-programming",
-        "lora"
+        "adaptive-sac",
+        "drl-path-planning",
+        "drl-pytorch",
+        "gym-environment",
+        "lidar",
+        "lidar-simulation"
       ],
-      "url": "https://github.com/labmlai/annotated_deep_learning_paper_implementations",
-      "homepage": "https://nn.labml.ai",
-      "created_at": "2020-08-25T02:29:34Z",
-      "pushed_at": "2026-11-02T05:57:43Z",
+      "url": "https://github.com/zhaohaojie1998/DRL-for-Path-Planning",
+      "homepage": "",
+      "created_at": "2023-05-18T05:40:49Z",
+      "pushed_at": "2025-12-03T12:08:29Z",
       "source": "general",
       "categories": [
-        "rl"
+        "nav",
+        "planning",
+        "rl",
+        "radar",
+        "sim"
       ],
-      "first_seen": "2026-10-28T11:40:45.540Z",
+      "license": null,
+      "first_seen": "2026-11-05T13:36:13.422Z",
       "rule_matches": [
         {
-          "task_id": "strategy",
-          "task": "多机协同与战术决策",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
           "keywords": [
-            "reinforcement learning",
-            "强化学习"
+            "路径规划",
+            "避障"
           ]
-        }
-      ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 16.83
-    },
-    {
-      "id": "FoundationVision/ByteTrack",
-      "full_name": "FoundationVision/ByteTrack",
-      "name": "ByteTrack",
-      "owner": "FoundationVision",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/151817217?v=4",
-      "description_en": "[ECCV 2022] ByteTrack: Multi-Object Tracking by Associating Every Detection Box",
-      "description_zh": "[ECCV 2022] ByteTrack：通过关联每个检测框实现多目标跟踪。",
-      "highlight_zh": "可用于自瞄中连续跟踪敌方机器人，提高瞄准稳定性。",
-      "stars": 6796,
-      "forks": 1155,
-      "language": "Python",
-      "topics": [
-        "deployment",
-        "multi-object-tracking",
-        "pytorch",
-        "real-time"
-      ],
-      "url": "https://github.com/FoundationVision/ByteTrack",
-      "homepage": "",
-      "created_at": "2021-08-27T10:47:57Z",
-      "pushed_at": "2024-06-19T11:45:05Z",
-      "source": "general",
-      "categories": [
-        "radar"
-      ],
-      "first_seen": "2024-06-19T11:45:05Z",
-      "rule_matches": [
+        },
         {
           "task_id": "radar",
           "task": "雷达目标探测与信息融合",
           "keywords": [
-            "多目标跟踪"
+            "雷达"
           ]
-        }
-      ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 15.83
-    },
-    {
-      "id": "open-mmlab/mmdetection",
-      "full_name": "open-mmlab/mmdetection",
-      "name": "mmdetection",
-      "owner": "open-mmlab",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/10245193?v=4",
-      "description_en": "OpenMMLab Detection Toolbox and Benchmark",
-      "description_zh": "OpenMMLab 检测工具箱与基准，支持多种检测模型。",
-      "highlight_zh": "可用于自瞄中的装甲板检测，提供丰富的预训练模型。",
-      "stars": 33023,
-      "forks": 9818,
-      "language": "Python",
-      "topics": [
-        "cascade-rcnn",
-        "convnext",
-        "detr",
-        "fast-rcnn",
-        "faster-rcnn",
-        "glip"
-      ],
-      "url": "https://github.com/open-mmlab/mmdetection",
-      "homepage": "https://mmdetection.readthedocs.io",
-      "created_at": "2018-08-22T07:06:06Z",
-      "pushed_at": "2024-08-21T02:01:07Z",
-      "source": "general",
-      "categories": [
-        "aim"
-      ],
-      "first_seen": "2024-08-21T02:01:07Z",
-      "rule_matches": [],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 15.52
-    },
-    {
-      "id": "ZJU-FAST-Lab/ego-planner",
-      "full_name": "ZJU-FAST-Lab/ego-planner",
-      "name": "ego-planner",
-      "owner": "ZJU-FAST-Lab",
-      "description_en": "",
-      "description_zh": "项目未提供简介，请查看仓库说明",
-      "highlight_zh": "",
-      "stars": 2727,
-      "forks": 418,
-      "language": "C++",
-      "topics": [],
-      "url": "https://github.com/ZJU-FAST-Lab/ego-planner",
-      "homepage": null,
-      "pushed_at": "2025-03-08T09:23:46Z",
-      "created_at": "2020-05-10T08:26:21Z",
-      "source": "general",
-      "first_seen": "2026-11-05T09:19:49.277Z",
-      "categories": [
-        "aerial"
-      ],
-      "rule_matches": [
+        },
         {
-          "task_id": "aerial",
-          "task": "空中系统自主飞行与机库交互",
-          "keywords": []
-        }
-      ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 15.44
-    },
-    {
-      "id": "ZJU-FAST-Lab/ego-planner-swarm",
-      "full_name": "ZJU-FAST-Lab/ego-planner-swarm",
-      "name": "ego-planner-swarm",
-      "owner": "ZJU-FAST-Lab",
-      "description_en": "An efficient single/multi-agent trajectory planner for multicopters.",
-      "description_zh": "一种用于多旋翼飞行器的高效单智能体/多智能体轨迹规划器。",
-      "highlight_zh": "",
-      "stars": 2247,
-      "forks": 397,
-      "language": "C++",
-      "topics": [],
-      "url": "https://github.com/ZJU-FAST-Lab/ego-planner-swarm",
-      "homepage": "",
-      "pushed_at": "2025-03-08T14:16:40Z",
-      "created_at": "2020-10-14T05:06:22Z",
-      "source": "general",
-      "first_seen": "2026-11-05T09:19:49.277Z",
-      "categories": [
-        "aerial"
-      ],
-      "rule_matches": [
-        {
-          "task_id": "aerial",
-          "task": "空中系统自主飞行与机库交互",
-          "keywords": []
-        }
-      ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 15.35
-    },
-    {
-      "id": "WongKinYiu/yolov7",
-      "full_name": "WongKinYiu/yolov7",
-      "name": "yolov7",
-      "owner": "WongKinYiu",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/12152972?v=4",
-      "description_en": "Implementation of paper - YOLOv7: Trainable bag-of-freebies sets new state-of-the-art for real-time object detectors",
-      "description_zh": "论文YOLOv7的实现：可训练的免费赠品集为实时目标检测器树立了新标杆。",
-      "highlight_zh": "可用于自瞄中的装甲板实时检测。",
-      "stars": 14155,
-      "forks": 4342,
-      "language": "Jupyter Notebook",
-      "topics": [
-        "darknet",
-        "pytorch",
-        "scaled-yolov4",
-        "yolor",
-        "yolov3",
-        "yolov4"
-      ],
-      "url": "https://github.com/WongKinYiu/yolov7",
-      "homepage": "",
-      "created_at": "2022-07-06T15:14:06Z",
-      "pushed_at": "2024-08-19T12:57:04Z",
-      "source": "general",
-      "categories": [
-        "aim"
-      ],
-      "first_seen": "2024-08-19T12:57:04Z",
-      "rule_matches": [],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 15.15
-    },
-    {
-      "id": "Farama-Foundation/Gymnasium",
-      "full_name": "Farama-Foundation/Gymnasium",
-      "name": "Gymnasium",
-      "owner": "Farama-Foundation",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/62961550?v=4",
-      "description_en": "A standard API for single-agent reinforcement learning environments, with popular reference environments and related utilities (formerly Gym)",
-      "description_zh": "Gymnasium 是单智能体强化学习环境的 API 标准，提供流行的参考环境和相关工具（原 Gym）。",
-      "highlight_zh": "可用于训练决策强化学习模型，如哨兵自主决策或能量机关激活策略。",
-      "stars": 12772,
-      "forks": 1528,
-      "language": "Python",
-      "topics": [
-        "api",
-        "gym",
-        "reinforcement-learning"
-      ],
-      "url": "https://github.com/Farama-Foundation/Gymnasium",
-      "homepage": "https://gymnasium.farama.org",
-      "created_at": "2022-09-08T01:58:05Z",
-      "pushed_at": "2026-10-29T21:38:25Z",
-      "source": "general",
-      "categories": [
-        "rl"
-      ],
-      "first_seen": "2026-05-30T23:35:55Z",
-      "rule_matches": [
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "keywords": [
+            "路径规划"
+          ]
+        },
         {
           "task_id": "strategy",
           "task": "多机协同与战术决策",
           "keywords": [
-            "reinforcement learning",
             "强化学习"
+          ]
+        },
+        {
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "keywords": [
+            "仿真"
           ]
         }
       ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 15.11
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "其SAC路径规划与LiDAR仿真环境可迁移到哨兵机器人的自主避障路径规划与决策训练，也可作为空中机器人避障的仿真对照；需替换为真实赛场地图与感知输入，属思路与训练框架参考。",
+        "task_id": "sentry",
+        "task": "哨兵机器人自主导航与决策",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 16.78
     },
     {
-      "id": "mavlink/MAVSDK",
-      "full_name": "mavlink/MAVSDK",
-      "name": "MAVSDK",
-      "owner": "mavlink",
-      "description_en": "API and library for MAVLink compatible systems written in C++",
-      "description_zh": "用 C++ 编写的、面向兼容 MAVLink 系统的 API 和库",
-      "highlight_zh": "",
-      "stars": 962,
-      "forks": 660,
+      "id": "ultralytics/ultralytics",
+      "full_name": "ultralytics/ultralytics",
+      "name": "ultralytics",
+      "owner": "ultralytics",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/26833451?v=4",
+      "description_en": "Ultralytics YOLO27, YOLO26, YOLO11, YOLOv8 — object detection, instance segmentation, semantic segmentation, image classification, pose estimation, object tracking",
+      "description_zh": "Ultralytics YOLO，用于计算机视觉目标检测、分割等。",
+      "highlight_zh": "可用于自瞄装甲板检测和能量机关目标识别。",
+      "stars": 63155,
+      "forks": 11967,
+      "language": "Python",
+      "topics": [
+        "computer-vision",
+        "deep-learning",
+        "image-classification",
+        "instance-segmentation",
+        "machine-learning",
+        "object-detection"
+      ],
+      "url": "https://github.com/ultralytics/ultralytics",
+      "homepage": "https://platform.ultralytics.com",
+      "created_at": "2022-09-11T16:39:45Z",
+      "pushed_at": "2026-11-05T12:07:40Z",
+      "source": "general",
+      "categories": [
+        "aim",
+        "rune"
+      ],
+      "license": "AGPL-3.0",
+      "first_seen": "2026-06-03T10:20:36Z",
+      "rule_matches": [
+        {
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "keywords": [
+            "pose estimation"
+          ]
+        }
+      ],
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "可直接训练装甲板点阵屏/灯条检测模型用于自瞄目标识别，也能迁移到能量机关灯臂检测、雷达目标检测与哨兵敌方识别；需自采赛场光照与运动模糊数据微调，并做TensorRT等轻量化部署。",
+        "task_id": "autoaim",
+        "task": "装甲板自瞄与射击控制",
+        "value": "high",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 30.8
+    },
+    {
+      "id": "AtsushiSakai/PythonRobotics",
+      "full_name": "AtsushiSakai/PythonRobotics",
+      "name": "PythonRobotics",
+      "owner": "AtsushiSakai",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/3813847?v=4",
+      "description_en": "Python sample codes and textbook for robotics algorithms.",
+      "description_zh": "机器人算法Python示例代码和教科书，涵盖自主导航、控制等。",
+      "highlight_zh": "可用于哨兵自主导航和路径规划算法学习与验证。",
+      "stars": 30862,
+      "forks": 7438,
+      "language": "Python",
+      "topics": [
+        "algorithm",
+        "animation",
+        "autonomous-driving",
+        "autonomous-navigation",
+        "autonomous-vehicles",
+        "control"
+      ],
+      "url": "https://github.com/AtsushiSakai/PythonRobotics",
+      "homepage": "https://atsushisakai.github.io/PythonRobotics/",
+      "created_at": "2016-03-21T09:34:43Z",
+      "pushed_at": "2026-11-04T05:51:38Z",
+      "source": "general",
+      "categories": [
+        "nav",
+        "planning"
+      ],
+      "license": "NOASSERTION",
+      "first_seen": "2026-06-03T06:02:53Z",
+      "rule_matches": [
+        {
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "keywords": [
+            "autonomous navigation"
+          ]
+        }
+      ],
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "可作为哨兵/空中机器人路径规划、避障与控制的算法原型库，快速验证A*、RRT、MPC等思路；示例代码需按RM约束改造，不能直接部署。",
+        "task_id": "sentry",
+        "task": "哨兵机器人自主导航与决策",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 11.49
+    },
+    {
+      "id": "hku-mars/FAST-LIVO2",
+      "full_name": "hku-mars/FAST-LIVO2",
+      "name": "FAST-LIVO2",
+      "owner": "hku-mars",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/51474179?v=4",
+      "description_en": "FAST-LIVO2: Fast, Direct LiDAR-Inertial-Visual Odometry",
+      "description_zh": "FAST-LIVO2：快速直接LiDAR-惯性-视觉里程计。",
+      "highlight_zh": "可用于雷达定位和哨兵SLAM建图。",
+      "stars": 4844,
+      "forks": 885,
       "language": "C++",
       "topics": [
-        "ardupilot",
-        "cpp",
-        "cpp17",
-        "mavlink",
-        "px4"
+        "3d-reconstruction",
+        "colored-point-cloud",
+        "gaussian-splatting",
+        "lidar-camera-fusion",
+        "lidar-inertial-odometry",
+        "lidar-slam"
       ],
-      "url": "https://github.com/mavlink/MAVSDK",
-      "homepage": "https://mavsdk.mavlink.io",
-      "pushed_at": "2026-11-05T09:09:08Z",
-      "created_at": "2017-06-19T19:54:57Z",
-      "source": "general",
-      "first_seen": "2026-11-05T09:19:49.277Z",
-      "categories": [
-        "aerial"
-      ],
-      "rule_matches": [
-        {
-          "task_id": "aerial",
-          "task": "空中系统自主飞行与机库交互",
-          "keywords": []
-        }
-      ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 14.98
-    },
-    {
-      "id": "ethz-asl/mav_trajectory_generation",
-      "full_name": "ethz-asl/mav_trajectory_generation",
-      "name": "mav_trajectory_generation",
-      "owner": "ethz-asl",
-      "description_en": "Polynomial trajectory generation and optimization, especially for rotary-wing MAVs.",
-      "description_zh": "多项式轨迹生成与优化，尤其适用于旋翼微型飞行器（MAV）。",
-      "highlight_zh": "",
-      "stars": 673,
-      "forks": 238,
-      "language": "C++",
-      "topics": [],
-      "url": "https://github.com/ethz-asl/mav_trajectory_generation",
-      "homepage": null,
-      "pushed_at": "2023-05-20T10:49:20Z",
-      "created_at": "2016-12-09T13:40:46Z",
-      "source": "general",
-      "first_seen": "2026-11-05T09:19:49.277Z",
-      "categories": [
-        "aerial"
-      ],
-      "rule_matches": [
-        {
-          "task_id": "aerial",
-          "task": "空中系统自主飞行与机库交互",
-          "keywords": []
-        }
-      ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 14.83
-    },
-    {
-      "id": "facebookresearch/segment-anything",
-      "full_name": "facebookresearch/segment-anything",
-      "name": "segment-anything",
-      "owner": "facebookresearch",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/16943930?v=4",
-      "description_en": "The repository provides code for running inference with the SegmentAnything Model (SAM), links for downloading the trained model checkpoints, and example notebooks that show how to use the model.",
-      "description_zh": "该仓库提供运行SegmentAnything模型（SAM）进行推理的代码、预训练模型检查点下载链接以及展示如何使用该模型的示例笔记本。",
-      "highlight_zh": "可用于自瞄中的装甲板分割，提高检测精度。",
-      "stars": 55096,
-      "forks": 6398,
-      "language": "Jupyter Notebook",
-      "topics": [],
-      "url": "https://github.com/facebookresearch/segment-anything",
+      "url": "https://github.com/hku-mars/FAST-LIVO2",
       "homepage": "",
-      "created_at": "2023-03-23T17:03:03Z",
-      "pushed_at": "2024-09-18T17:46:55Z",
+      "created_at": "2024-04-22T12:49:47Z",
+      "pushed_at": "2026-03-08T15:40:36Z",
       "source": "general",
       "categories": [
-        "other"
+        "aim",
+        "slam",
+        "nav",
+        "radar"
       ],
-      "first_seen": "2024-09-18T17:46:55Z",
-      "rule_matches": [],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 14.74
+      "license": "GPL-2.0",
+      "first_seen": "2026-03-08T15:40:36Z",
+      "rule_matches": [
+        {
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "keywords": [
+            "SLAM",
+            "SLAM"
+          ]
+        }
+      ],
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "可作为哨兵或雷达端多传感器融合定位的参考，利用LiDAR-惯性-视觉里程计在赛场建图定位；需要激光雷达、相机、IMU与较高算力，不能当整机方案。",
+        "task_id": "sentry",
+        "task": "哨兵机器人自主导航与决策",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 13.69
+    },
+    {
+      "id": "cartographer-project/cartographer",
+      "full_name": "cartographer-project/cartographer",
+      "name": "cartographer",
+      "owner": "cartographer-project",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/20636162?v=4",
+      "description_en": "Cartographer is a system that provides real-time simultaneous localization and mapping (SLAM) in 2D and 3D across multiple platforms and sensor configurations.",
+      "description_zh": "Cartographer 是一个实时 2D 和 3D 同步定位与建图（SLAM）系统，支持多种平台和传感器配置。",
+      "highlight_zh": "可用于哨兵机器人建图与导航，实现自主定位。",
+      "stars": 8001,
+      "forks": 2352,
+      "language": "C++",
+      "topics": [
+        "localization",
+        "mapping",
+        "robotics",
+        "self-driving",
+        "slam"
+      ],
+      "url": "https://github.com/cartographer-project/cartographer",
+      "homepage": "",
+      "created_at": "2016-08-02T06:55:43Z",
+      "pushed_at": "2024-01-05T19:21:01Z",
+      "source": "general",
+      "categories": [
+        "slam",
+        "nav"
+      ],
+      "license": "Apache-2.0",
+      "first_seen": "2024-01-05T19:21:01Z",
+      "rule_matches": [
+        {
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "keywords": [
+            "SLAM",
+            "SLAM"
+          ]
+        }
+      ],
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "可作为哨兵底盘2D激光SLAM建图与定位的核心模块，支撑自主导航；需配置激光雷达和算力，并处理赛场动态目标与反光，建议集成改造后使用。",
+        "task_id": "sentry",
+        "task": "哨兵机器人自主导航与决策",
+        "value": "high",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 10.9
     },
     {
       "id": "TixiaoShan/LIO-SAM",
@@ -1285,7 +1668,7 @@
       "description_en": "LIO-SAM: Tightly-coupled Lidar Inertial Odometry via Smoothing and Mapping",
       "description_zh": "LIO-SAM：通过平滑与映射实现紧耦合激光雷达惯性里程计。",
       "highlight_zh": "可用于雷达全场定位，为哨兵提供高精度位姿估计。",
-      "stars": 4971,
+      "stars": 4970,
       "forks": 1529,
       "language": "C++",
       "topics": [
@@ -1303,8 +1686,10 @@
       "source": "general",
       "categories": [
         "slam",
+        "nav",
         "radar"
       ],
+      "license": "BSD-3-Clause",
       "first_seen": "2025-02-14T10:05:51Z",
       "rule_matches": [
         {
@@ -1323,39 +1708,43 @@
           ]
         }
       ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "可作为哨兵3D激光惯性里程计/建图的参考，用于复杂场地定位与地图维护；3D LiDAR+IMU方案较重，需裁剪算力和传感器配置，非直接参赛固件。",
+        "task_id": "sentry",
+        "task": "哨兵机器人自主导航与决策",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
       "relevance": 13.7
     },
     {
-      "id": "hku-mars/FAST-LIVO2",
-      "full_name": "hku-mars/FAST-LIVO2",
-      "name": "FAST-LIVO2",
-      "owner": "hku-mars",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/51474179?v=4",
-      "description_en": "FAST-LIVO2: Fast, Direct LiDAR-Inertial-Visual Odometry",
-      "description_zh": "FAST-LIVO2：快速直接LiDAR-惯性-视觉里程计。",
-      "highlight_zh": "可用于雷达定位和哨兵SLAM建图。",
-      "stars": 4843,
-      "forks": 884,
+      "id": "gaoxiang12/slam_in_autonomous_driving",
+      "full_name": "gaoxiang12/slam_in_autonomous_driving",
+      "name": "slam_in_autonomous_driving",
+      "owner": "gaoxiang12",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/6635511?v=4",
+      "description_en": "《自动驾驶中的SLAM技术》对应开源代码",
+      "description_zh": "书籍《自动驾驶中的 SLAM 技术》的配套开源代码，涵盖激光雷达、视觉与多传感器融合的 SLAM 实现与讲解。",
+      "highlight_zh": "学习并搭建哨兵雷达站/导航所需 SLAM 系统",
+      "stars": 2609,
+      "forks": 590,
       "language": "C++",
-      "topics": [
-        "3d-reconstruction",
-        "colored-point-cloud",
-        "gaussian-splatting",
-        "lidar-camera-fusion",
-        "lidar-inertial-odometry",
-        "lidar-slam"
-      ],
-      "url": "https://github.com/hku-mars/FAST-LIVO2",
+      "topics": [],
+      "url": "https://github.com/gaoxiang12/slam_in_autonomous_driving",
       "homepage": "",
-      "created_at": "2024-04-22T12:49:47Z",
-      "pushed_at": "2026-03-08T15:40:36Z",
+      "created_at": "2023-02-10T05:29:20Z",
+      "pushed_at": "2025-11-13T06:14:24Z",
       "source": "general",
       "categories": [
         "aim",
-        "slam"
+        "slam",
+        "nav",
+        "radar"
       ],
-      "first_seen": "2026-03-08T15:40:36Z",
+      "license": null,
+      "first_seen": "2026-11-05T13:36:13.422Z",
       "rule_matches": [
         {
           "task_id": "sentry",
@@ -1364,229 +1753,331 @@
             "SLAM",
             "SLAM"
           ]
+        },
+        {
+          "task_id": "radar",
+          "task": "雷达目标探测与信息融合",
+          "keywords": [
+            "雷达"
+          ]
         }
       ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 13.69
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "用于学习激光、视觉与多传感器融合SLAM的实现思路，可迁移到哨兵定位模块的算法选型；书籍配套代码偏教学和车载尺度，需大幅改造。",
+        "task_id": "sentry",
+        "task": "哨兵机器人自主导航与决策",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 12.42
     },
     {
-      "id": "jacobgil/pytorch-grad-cam",
-      "full_name": "jacobgil/pytorch-grad-cam",
-      "name": "pytorch-grad-cam",
-      "owner": "jacobgil",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/5342073?v=4",
-      "description_en": "Advanced AI Explainability for computer vision.  Support for CNNs, Vision Transformers, Classification, Object detection, Segmentation, Image similarity and more.",
-      "description_zh": "面向计算机视觉的高级 AI 可解释性工具包，支持 CNN、Vision Transformer，以及分类、目标检测、分割、图像相似度等任务的 Grad-CAM 可视化。",
-      "highlight_zh": "排查装甲板检测模型的关注区域与误检原因",
-      "stars": 13006,
-      "forks": 1715,
-      "language": "Python",
-      "topics": [
-        "class-activation-maps",
-        "computer-vision",
-        "deep-learning",
-        "explainable-ai",
-        "explainable-ml",
-        "grad-cam"
-      ],
-      "url": "https://github.com/jacobgil/pytorch-grad-cam",
-      "homepage": "https://jacobgil.github.io/pytorch-gradcam-book",
-      "created_at": "2017-05-31T19:55:15Z",
-      "pushed_at": "2026-11-01T05:07:17Z",
-      "source": "general",
-      "categories": [
-        "aim"
-      ],
-      "first_seen": "2026-10-20T10:28:38.699Z",
-      "rule_matches": [],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 13.11
-    },
-    {
-      "id": "ultralytics/yolov3",
-      "full_name": "ultralytics/yolov3",
-      "name": "yolov3",
-      "owner": "ultralytics",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/26833451?v=4",
-      "description_en": "PyTorch implementation of YOLOv3, YOLOv3-SPP, and YOLOv3-tiny for real-time object detection with training, validation, inference, and multi-format export.",
-      "description_zh": "YOLOv3、YOLOv3-SPP 与 YOLOv3-tiny 的 PyTorch 实现，支持实时目标检测的训练、验证、推理及多种格式导出。",
-      "highlight_zh": "轻量装甲板检测与嵌入式端实时推理部署",
-      "stars": 10634,
-      "forks": 3411,
-      "language": "Python",
-      "topics": [
-        "computer-vision",
-        "coreml",
-        "deep-learning",
-        "edge-ai",
-        "inference",
-        "model-export"
-      ],
-      "url": "https://github.com/ultralytics/yolov3",
-      "homepage": "https://docs.ultralytics.com/models/yolov3/",
-      "created_at": "2018-08-26T08:57:20Z",
-      "pushed_at": "2026-11-04T04:59:26Z",
-      "source": "general",
-      "categories": [
-        "aim"
-      ],
-      "first_seen": "2026-10-20T10:28:38.699Z",
-      "rule_matches": [],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 13.03
-    },
-    {
-      "id": "bulletphysics/bullet3",
-      "full_name": "bulletphysics/bullet3",
-      "name": "bullet3",
-      "owner": "bulletphysics",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/6955508?v=4",
-      "description_en": "Bullet Physics SDK: real-time collision detection and multi-physics simulation for VR, games, visual effects, robotics, machine learning etc.",
-      "description_zh": "Bullet 物理 SDK：面向 VR、游戏、视觉特效、机器人与机器学习等领域的实时碰撞检测与多物理仿真引擎，含 pybullet Python 接口。",
-      "highlight_zh": "用 pybullet 搭建哨兵/机器人物理仿真与 RL 训练环境",
-      "stars": 14844,
-      "forks": 3109,
+      "id": "hku-mars/r3live",
+      "full_name": "hku-mars/r3live",
+      "name": "r3live",
+      "owner": "hku-mars",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/51474179?v=4",
+      "description_en": "A Robust, Real-time, RGB-colored, LiDAR-Inertial-Visual tightly-coupled state Estimation and mapping package",
+      "description_zh": "一个鲁棒、实时的 RGB 着色 LiDAR-惯性-视觉紧耦合状态估计与建图包，融合激光雷达、相机与 IMU 输出带颜色的稠密三维地图。",
+      "highlight_zh": "用于雷达站/哨兵的多传感器融合建图与定位",
+      "stars": 2488,
+      "forks": 487,
       "language": "C++",
       "topics": [
-        "computer-animation",
-        "game-development",
-        "kinematics",
-        "pybullet",
-        "reinforcement-learning",
-        "robotics"
+        "3d-mapping",
+        "3d-reconstruction",
+        "lidar-camera-fusion",
+        "lidar-inertial-odometry",
+        "lidar-odometry",
+        "lidar-slam"
       ],
-      "url": "https://github.com/bulletphysics/bullet3",
-      "homepage": "http://bulletphysics.org",
-      "created_at": "2011-04-12T18:45:08Z",
-      "pushed_at": "2026-10-09T21:51:41Z",
+      "url": "https://github.com/hku-mars/r3live",
+      "homepage": "",
+      "created_at": "2021-09-09T13:05:05Z",
+      "pushed_at": "2025-12-04T08:57:54Z",
       "source": "general",
       "categories": [
         "aim",
-        "rl",
+        "slam",
+        "nav",
+        "radar"
+      ],
+      "license": "GPL-2.0",
+      "first_seen": "2026-11-05T13:36:13.422Z",
+      "rule_matches": [
+        {
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "keywords": [
+            "SLAM",
+            "SLAM"
+          ]
+        },
+        {
+          "task_id": "radar",
+          "task": "雷达目标探测与信息融合",
+          "keywords": [
+            "state estimation",
+            "雷达",
+            "状态估计"
+          ]
+        }
+      ],
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "可参考其LiDAR-惯性-视觉紧耦合与稠密彩色建图用于赛场三维重建或仿真环境制作；实时机器人定位不需要彩色稠密图，算力重，直接部署价值有限。",
+        "task_id": "sim",
+        "task": "算法仿真与验证",
+        "value": "low",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 18.4
+    },
+    {
+      "id": "TheNoobInventor/lidarbot",
+      "full_name": "TheNoobInventor/lidarbot",
+      "name": "lidarbot",
+      "owner": "TheNoobInventor",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/75739107?v=4",
+      "description_en": "A differential drive robot is controlled using ROS2 Jazzy running on a Raspberry Pi 4 (running Ubuntu Server 24.04). The vehicle is equipped with a Raspberry Pi camera for visual feedback and an RPLIDAR A1 sensor used for Simultaneous Localization and Mapping (SLAM), autonomous navigation and obstacle avoidance.",
+      "description_zh": "一个差速驱动机器人项目，在树莓派 4 上用 ROS2 Jazzy 控制，配有摄像头做视觉反馈和 RPLIDAR A1 实现 SLAM、自主导航与避障。",
+      "highlight_zh": "可参考搭建哨兵的 ROS2 建图导航与避障框架",
+      "stars": 236,
+      "forks": 36,
+      "language": "Python",
+      "topics": [
+        "differential-drive-robot",
+        "diy-robot",
+        "gazebosim",
+        "hardware-interface",
+        "imu",
+        "imu-sensor-broadcaster"
+      ],
+      "url": "https://github.com/TheNoobInventor/lidarbot",
+      "homepage": "",
+      "created_at": "2023-03-15T18:07:19Z",
+      "pushed_at": "2026-09-08T08:59:19Z",
+      "source": "general",
+      "categories": [
+        "aim",
+        "slam",
+        "nav",
         "sim"
       ],
-      "first_seen": "2026-10-28T11:40:45.540Z",
+      "license": "BSD-3-Clause",
+      "first_seen": "2026-11-05T13:36:13.422Z",
+      "rule_matches": [
+        {
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "keywords": [
+            "autonomous navigation",
+            "SLAM",
+            "obstacle avoidance",
+            "SLAM",
+            "避障"
+          ]
+        }
+      ],
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "可作为低成本哨兵/移动底盘原型，参考ROS2导航栈、RPLIDAR SLAM和视觉避障的集成方式；差速平台和树莓派算力与RM哨兵要求不同，需替换硬件与决策层。",
+        "task_id": "sentry",
+        "task": "哨兵机器人自主导航与决策",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 18.37
+    },
+    {
+      "id": "mrpt-ros-pkg/mrpt_navigation",
+      "full_name": "mrpt-ros-pkg/mrpt_navigation",
+      "name": "mrpt_navigation",
+      "owner": "mrpt-ros-pkg",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/5541079?v=4",
+      "description_en": "ROS 2 nodes wrapping core MRPT functionality: localization, autonomous navigation, rawlogs, etc. SLAM is in other packages.",
+      "description_zh": "将 MRPT 核心功能封装为 ROS2 节点，提供定位、自主导航、原始日志处理等能力，SLAM 功能位于其他包中。",
+      "highlight_zh": "为哨兵导航提供 ROS2 定位与路径规划节点",
+      "stars": 221,
+      "forks": 104,
+      "language": "C++",
+      "topics": [
+        "c-plus-plus",
+        "mapping",
+        "mrpt",
+        "navigation",
+        "robotics",
+        "robotics-libraries"
+      ],
+      "url": "https://github.com/mrpt-ros-pkg/mrpt_navigation",
+      "homepage": "http://wiki.ros.org/mrpt_navigation",
+      "created_at": "2013-09-25T15:24:19Z",
+      "pushed_at": "2026-11-02T22:45:35Z",
+      "source": "general",
+      "categories": [
+        "slam",
+        "nav",
+        "planning",
+        "sim"
+      ],
+      "license": "BSD-3-Clause",
+      "first_seen": "2026-11-05T13:36:13.422Z",
+      "rule_matches": [
+        {
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "keywords": [
+            "autonomous navigation",
+            "SLAM",
+            "SLAM"
+          ]
+        }
+      ],
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "提供ROS2下的定位、导航与地图处理节点，可用于哨兵导航栈原型或仿真验证；需结合RM场地、动态障碍和算力限制做集成改造。",
+        "task_id": "sentry",
+        "task": "哨兵机器人自主导航与决策",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 16.35
+    },
+    {
+      "id": "DLR-RM/stable-baselines3",
+      "full_name": "DLR-RM/stable-baselines3",
+      "name": "stable-baselines3",
+      "owner": "DLR-RM",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/25227811?v=4",
+      "description_en": "PyTorch version of Stable Baselines, reliable implementations of reinforcement learning algorithms.",
+      "description_zh": "Stable Baselines 的 PyTorch 版本，提供可靠、经过验证的强化学习算法实现，支持 Gym 环境，便于训练与对比。",
+      "highlight_zh": "用于决策/行为策略的 RL 算法训练与验证",
+      "stars": 13966,
+      "forks": 2181,
+      "language": "Python",
+      "topics": [
+        "baselines",
+        "gsde",
+        "gym",
+        "machine-learning",
+        "openai",
+        "python"
+      ],
+      "url": "https://github.com/DLR-RM/stable-baselines3",
+      "homepage": "https://stable-baselines3.readthedocs.io",
+      "created_at": "2020-05-05T05:52:26Z",
+      "pushed_at": "2026-10-26T09:35:00Z",
+      "source": "general",
+      "categories": [
+        "nav",
+        "rl"
+      ],
+      "license": "MIT",
+      "first_seen": "2026-11-05T13:36:13.422Z",
       "rule_matches": [
         {
           "task_id": "strategy",
           "task": "多机协同与战术决策",
           "keywords": [
-            "reinforcement learning"
-          ]
-        },
-        {
-          "task_id": "sim",
-          "task": "算法仿真与验证",
-          "keywords": [
-            "仿真"
+            "reinforcement learning",
+            "强化学习"
           ]
         }
       ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 12.17
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "可作为哨兵/多机战术决策的强化学习训练底座：把自研的仿真对抗环境包装成 Gym 接口，用 PPO/SAC 训练弹丸兑换、控制区争夺等决策策略，并与基线算法对比。本身不含 RM 环境与规则逻辑，需自行搭建奖励与观测。",
+        "task_id": "strategy",
+        "task": "多机协同与战术决策",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 10.15
     },
     {
-      "id": "ros-controls/ros2_control",
-      "full_name": "ros-controls/ros2_control",
-      "name": "ros2_control",
-      "owner": "ros-controls",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/4827547?v=4",
-      "description_en": "Generic and simple controls framework for ROS 2",
-      "description_zh": "ROS 2通用简单控制框架。",
-      "highlight_zh": "可用于机器人底盘控制和云台控制。",
-      "stars": 1053,
-      "forks": 506,
-      "language": "C++",
-      "topics": [
-        "control",
-        "control-systems",
-        "controllers",
-        "robot-control",
-        "robotics",
-        "ros"
-      ],
-      "url": "https://github.com/ros-controls/ros2_control",
-      "homepage": "https://control.ros.org",
-      "created_at": "2017-09-09T17:11:58Z",
-      "pushed_at": "2026-11-03T21:26:31Z",
-      "source": "general",
-      "categories": [
-        "sim"
-      ],
-      "first_seen": "2026-06-01T17:51:32Z",
-      "rule_matches": [],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 12.02
-    },
-    {
-      "id": "AtsushiSakai/PythonRobotics",
-      "full_name": "AtsushiSakai/PythonRobotics",
-      "name": "PythonRobotics",
-      "owner": "AtsushiSakai",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/3813847?v=4",
-      "description_en": "Python sample codes and textbook for robotics algorithms.",
-      "description_zh": "机器人算法Python示例代码和教科书，涵盖自主导航、控制等。",
-      "highlight_zh": "可用于哨兵自主导航和路径规划算法学习与验证。",
-      "stars": 30855,
-      "forks": 7437,
+      "id": "Farama-Foundation/Gymnasium",
+      "full_name": "Farama-Foundation/Gymnasium",
+      "name": "Gymnasium",
+      "owner": "Farama-Foundation",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/62961550?v=4",
+      "description_en": "A standard API for single-agent reinforcement learning environments, with popular reference environments and related utilities (formerly Gym)",
+      "description_zh": "Gymnasium 是单智能体强化学习环境的 API 标准，提供流行的参考环境和相关工具（原 Gym）。",
+      "highlight_zh": "可用于训练决策强化学习模型，如哨兵自主决策或能量机关激活策略。",
+      "stars": 12785,
+      "forks": 1529,
       "language": "Python",
       "topics": [
-        "algorithm",
-        "animation",
-        "autonomous-driving",
-        "autonomous-navigation",
-        "autonomous-vehicles",
-        "control"
+        "api",
+        "gym",
+        "reinforcement-learning"
       ],
-      "url": "https://github.com/AtsushiSakai/PythonRobotics",
-      "homepage": "https://atsushisakai.github.io/PythonRobotics/",
-      "created_at": "2016-03-21T09:34:43Z",
-      "pushed_at": "2026-11-04T05:51:38Z",
+      "url": "https://github.com/Farama-Foundation/Gymnasium",
+      "homepage": "https://gymnasium.farama.org",
+      "created_at": "2022-09-08T01:58:05Z",
+      "pushed_at": "2026-10-29T21:38:25Z",
       "source": "general",
       "categories": [
-        "nav"
+        "rune",
+        "nav",
+        "rl"
       ],
-      "first_seen": "2026-06-03T06:02:53Z",
+      "license": "MIT",
+      "first_seen": "2026-05-30T23:35:55Z",
       "rule_matches": [
         {
-          "task_id": "sentry",
-          "task": "哨兵机器人自主导航与决策",
+          "task_id": "strategy",
+          "task": "多机协同与战术决策",
           "keywords": [
-            "autonomous navigation"
+            "reinforcement learning",
+            "强化学习"
           ]
         }
       ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 11.49
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "作为决策与仿真训练的环境接口标准，把战场态势、热量、功率等封装成 reset/step 接口，便于与 SB3 等库对接；也可用于评估不同决策策略。只是 API 规范，不含任何赛场模型。",
+        "task_id": "sim",
+        "task": "算法仿真与验证",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 15.11
     },
     {
-      "id": "cartographer-project/cartographer",
-      "full_name": "cartographer-project/cartographer",
-      "name": "cartographer",
-      "owner": "cartographer-project",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/20636162?v=4",
-      "description_en": "Cartographer is a system that provides real-time simultaneous localization and mapping (SLAM) in 2D and 3D across multiple platforms and sensor configurations.",
-      "description_zh": "Cartographer 是一个实时 2D 和 3D 同步定位与建图（SLAM）系统，支持多种平台和传感器配置。",
-      "highlight_zh": "可用于哨兵机器人建图与导航，实现自主定位。",
-      "stars": 8000,
-      "forks": 2352,
+      "id": "UZ-SLAMLab/ORB_SLAM3",
+      "full_name": "UZ-SLAMLab/ORB_SLAM3",
+      "name": "ORB_SLAM3",
+      "owner": "UZ-SLAMLab",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/25055183?v=4",
+      "description_en": "ORB-SLAM3: An Accurate Open-Source Library for Visual, Visual-Inertial and Multi-Map SLAM",
+      "description_zh": "ORB-SLAM3：精确的开源视觉、视觉惯性及多地图 SLAM 库，支持单目、双目与 RGB-D 相机。",
+      "highlight_zh": "用于哨兵/无人机的视觉 SLAM 定位与重定位",
+      "stars": 9223,
+      "forks": 3204,
       "language": "C++",
       "topics": [
-        "localization",
-        "mapping",
-        "robotics",
-        "self-driving",
-        "slam"
+        "slam-algorithms"
       ],
-      "url": "https://github.com/cartographer-project/cartographer",
+      "url": "https://github.com/UZ-SLAMLab/ORB_SLAM3",
       "homepage": "",
-      "created_at": "2016-08-02T06:55:43Z",
-      "pushed_at": "2024-01-05T19:21:01Z",
+      "created_at": "2020-07-18T07:47:46Z",
+      "pushed_at": "2024-07-24T08:41:52Z",
       "source": "general",
       "categories": [
-        "slam"
+        "aerial",
+        "aim",
+        "slam",
+        "nav"
       ],
-      "first_seen": "2024-01-05T19:21:01Z",
+      "license": "GPL-3.0",
+      "first_seen": "2026-11-05T13:36:13.422Z",
       "rule_matches": [
         {
           "task_id": "sentry",
@@ -1597,9 +2088,287 @@
           ]
         }
       ],
-      "rules_fingerprint": "f0ffbe77e71ea7b6",
-      "relevance": 10.9
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "可用于哨兵或空中机器人的室内视觉/视觉惯性定位与建图（单目/双目/RGB-D 加 IMU），替代无 GPS 场景下的里程计；需自行标定相机-IMU、适配纹理稀疏的赛场并融合轮式/飞控里程计，且要解决实时性与重定位失败恢复。",
+        "task_id": "sentry",
+        "task": "哨兵机器人自主导航与决策",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 9.96
+    },
+    {
+      "id": "3D-Vision-World/awesome-NeRF-and-3DGS-SLAM",
+      "full_name": "3D-Vision-World/awesome-NeRF-and-3DGS-SLAM",
+      "name": "awesome-NeRF-and-3DGS-SLAM",
+      "owner": "3D-Vision-World",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/194064294?v=4",
+      "description_en": "A comprehensive list of Implicit Representations, NeRF and 3D Gaussian Splatting papers relating to SLAM/Robotics domain, including papers, videos, codes, and related websites",
+      "description_zh": "一份汇总 NeRF、3D 高斯泼溅等隐式表示在 SLAM/机器人领域相关论文、视频、代码与网站的清单。",
+      "highlight_zh": "为建图/重建选型提供 NeRF、3DGS 参考资料",
+      "stars": 2159,
+      "forks": 150,
+      "language": "",
+      "topics": [
+        "3dgs",
+        "awesome",
+        "gaussiansplatting",
+        "lidar-slam",
+        "nerf",
+        "robotics"
+      ],
+      "url": "https://github.com/3D-Vision-World/awesome-NeRF-and-3DGS-SLAM",
+      "homepage": "",
+      "created_at": "2022-12-08T09:45:53Z",
+      "pushed_at": "2026-11-04T11:10:13Z",
+      "source": "general",
+      "categories": [
+        "aim",
+        "slam"
+      ],
+      "license": null,
+      "first_seen": "2026-11-05T13:36:13.422Z",
+      "rule_matches": [
+        {
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "keywords": [
+            "SLAM",
+            "SLAM"
+          ]
+        }
+      ],
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "只是一份 NeRF/3DGS-SLAM 的论文与代码索引，可作为建图表示方式的调研起点（如用 3DGS 建场地稠密地图），但没有可直接部署的实现，对比赛为间接参考。",
+        "task_id": "",
+        "task": "",
+        "value": "low",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 9.33
+    },
+    {
+      "id": "MichaelGrupp/evo",
+      "full_name": "MichaelGrupp/evo",
+      "name": "evo",
+      "owner": "MichaelGrupp",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/8985495?v=4",
+      "description_en": "Python package for the evaluation of odometry and SLAM",
+      "description_zh": "用于评估里程计与 SLAM 系统精度的 Python 工具包，支持 EuRoC、KITTI 等数据集格式，可计算轨迹误差等指标。",
+      "highlight_zh": "评估哨兵/雷达定位与 SLAM 轨迹精度",
+      "stars": 4360,
+      "forks": 806,
+      "language": "Python",
+      "topics": [
+        "benchmark",
+        "euroc",
+        "evaluation",
+        "kitti",
+        "mapping",
+        "metrics"
+      ],
+      "url": "https://github.com/MichaelGrupp/evo",
+      "homepage": "https://michaelgrupp.github.io/evo/",
+      "created_at": "2017-09-13T19:40:00Z",
+      "pushed_at": "2026-10-30T09:00:26Z",
+      "source": "general",
+      "categories": [
+        "slam",
+        "nav",
+        "radar"
+      ],
+      "license": "GPL-3.0",
+      "first_seen": "2026-11-05T13:36:13.422Z",
+      "rule_matches": [
+        {
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "keywords": [
+            "SLAM",
+            "SLAM"
+          ]
+        }
+      ],
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "用于离线评估自研定位/里程计与 SLAM 的轨迹精度（计算 ATE/RPE），可在仿真或实测回放中量化哨兵、空中机器人定位漂移，属于评测工具而非算法本体。",
+        "task_id": "sim",
+        "task": "算法仿真与验证",
+        "value": "low",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 9.64
+    },
+    {
+      "id": "rsasaki0109/lidar_slam_ros2",
+      "full_name": "rsasaki0109/lidar_slam_ros2",
+      "name": "lidar_slam_ros2",
+      "owner": "rsasaki0109",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/18298605?v=4",
+      "description_en": "ROS 2 LiDAR SLAM for pointcloud-map authoring, benchmarking, and Autoware-compatible map workflows.",
+      "description_zh": "基于 ROS 2 的 LiDAR SLAM 项目，用于点云地图构建、算法基准测试，并支持与 Autoware 兼容的地图工作流。",
+      "highlight_zh": "哨兵/雷达站 LiDAR 建图与全场定位",
+      "stars": 936,
+      "forks": 182,
+      "language": "Python",
+      "topics": [
+        "autoware-compatible",
+        "benchmarking",
+        "gnss",
+        "lidar",
+        "lidar-slam",
+        "loop-closure"
+      ],
+      "url": "https://github.com/rsasaki0109/lidar_slam_ros2",
+      "homepage": "https://rsasaki0109.github.io/lidar_slam_ros2/",
+      "created_at": "2020-01-29T12:57:45Z",
+      "pushed_at": "2026-11-05T09:43:34Z",
+      "source": "general",
+      "categories": [
+        "slam",
+        "nav",
+        "radar",
+        "sim"
+      ],
+      "license": "BSD-2-Clause",
+      "first_seen": "2026-11-05T13:36:13.422Z",
+      "rule_matches": [
+        {
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "keywords": [
+            "SLAM",
+            "SLAM"
+          ]
+        }
+      ],
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "基于 ROS 2 的 LiDAR SLAM，但赛场机器人与场地普遍不具备激光雷达与 GNSS 条件，且其建图流程依赖 GNSS 初始化与 Autoware 地图格式，迁移到哨兵导航需大幅改造，关联较弱。",
+        "task_id": "sentry",
+        "task": "哨兵机器人自主导航与决策",
+        "value": "low",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 12.97
+    },
+    {
+      "id": "MIT-SPARK/KISS-Matcher",
+      "full_name": "MIT-SPARK/KISS-Matcher",
+      "name": "KISS-Matcher",
+      "owner": "MIT-SPARK",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/46765500?v=4",
+      "description_en": "KISS-Matcher: Fast, Robust, and Scalable Registration + ROS2 SLAM examples",
+      "description_zh": "KISS-Matcher 是一个快速、鲁棒且可扩展的点云配准与匹配方案，并提供 ROS2 SLAM 示例，可用于三维建图与回环检测。",
+      "highlight_zh": "点云配准，用于雷达定位与建图回环",
+      "stars": 814,
+      "forks": 97,
+      "language": "C++",
+      "topics": [
+        "3d-mapping",
+        "faster-pfh",
+        "feature-extraction",
+        "feature-matching",
+        "fpfh",
+        "graph-pruning"
+      ],
+      "url": "https://github.com/MIT-SPARK/KISS-Matcher",
+      "homepage": "",
+      "created_at": "2024-09-10T23:54:09Z",
+      "pushed_at": "2026-09-29T21:38:08Z",
+      "source": "general",
+      "categories": [
+        "slam",
+        "radar",
+        "sim"
+      ],
+      "license": "MIT",
+      "first_seen": "2026-11-05T13:36:13.422Z",
+      "rule_matches": [
+        {
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "keywords": [
+            "SLAM",
+            "SLAM"
+          ]
+        }
+      ],
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "快速鲁棒的点云配准可用于雷达系统或建图环节的帧间/地图匹配与回环检测，但前提是已有激光点云来源与标定，RM 主流方案以视觉为主，属可选增强模块。",
+        "task_id": "radar",
+        "task": "雷达目标探测与信息融合",
+        "value": "low",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 9.91
+    },
+    {
+      "id": "pytorch/rl",
+      "full_name": "pytorch/rl",
+      "name": "rl",
+      "owner": "pytorch",
+      "owner_avatar": "https://avatars.githubusercontent.com/u/21003710?v=4",
+      "description_en": "A modular, primitive-first, python-first PyTorch library for Reinforcement Learning.",
+      "description_zh": "PyTorch 官方推出的模块化强化学习库，以原语组件和 Python 优先为设计理念，支持分布式训练与多智能体 RL。",
+      "highlight_zh": "训练哨兵自主决策与控制的 RL 策略",
+      "stars": 3624,
+      "forks": 528,
+      "language": "Python",
+      "topics": [
+        "ai",
+        "control",
+        "decision-making",
+        "distributed-computing",
+        "machine-learning",
+        "marl"
+      ],
+      "url": "https://github.com/pytorch/rl",
+      "homepage": "https://pytorch.org/rl",
+      "created_at": "2022-02-01T17:17:36Z",
+      "pushed_at": "2026-11-05T08:23:52Z",
+      "source": "general",
+      "categories": [
+        "nav",
+        "rl"
+      ],
+      "license": "MIT",
+      "first_seen": "2026-11-05T13:36:13.422Z",
+      "rule_matches": [
+        {
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "keywords": [
+            "decision making"
+          ]
+        },
+        {
+          "task_id": "strategy",
+          "task": "多机协同与战术决策",
+          "keywords": [
+            "reinforcement learning",
+            "强化学习"
+          ]
+        }
+      ],
+      "rules_fingerprint": "10860871a3567726",
+      "rm": {
+        "usage": "多智能体 RL 原语组件适合构建多机协同（空中系统/哨兵/雷达信息共享下的分工与增益点争夺）的训练框架，支持分布式训练；需自行定义通信与规则约束的观测建模，不能直接用于实机决策。",
+        "task_id": "strategy",
+        "task": "多机协同与战术决策",
+        "value": "mid",
+        "rules_fingerprint": "10860871a3567726",
+        "season": "2027"
+      },
+      "relevance": 12.56
     }
-  ],
-  "rules_fingerprint": "f0ffbe77e71ea7b6"
+  ]
 }
