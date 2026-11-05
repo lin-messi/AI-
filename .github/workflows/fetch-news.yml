@@ -37,6 +37,11 @@ jobs:
       - name: 安装依赖
         run: npm ci
 
+      - name: 同步公开规则答疑（每日及手动，失败时保留旧快照）
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '37 5 * * *'
+        continue-on-error: true
+        run: node scripts/fetch-rm-qa.mjs
+
       - name: 抓取新闻（含翻译/摘要，需在仓库 Settings → Secrets 配置 AI_API_KEY）
         run: npm run fetch
         env:
@@ -104,7 +109,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/archive data/index.json data/papers data/papers-index.json data/github data/github-index.json data/robomaster data/robomaster-index.json data/robomaster-general.json
+          git add data/archive data/index.json data/papers data/papers-index.json data/github data/github-index.json data/robomaster data/robomaster-index.json data/robomaster-general.json data/rm-rules-qa.json
           if git diff --staged --quiet; then
             echo "没有新数据，跳过提交"
           else

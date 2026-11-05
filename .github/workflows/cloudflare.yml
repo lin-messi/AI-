@@ -49,7 +49,7 @@ jobs:
       - run: npm ci
       - run: npm run build:cloudflare
       - run: npm run test:cloudflare
-      - run: node --test tests/rm-recommendations.test.mjs
+      - run: node --test tests/rm-recommendations.test.mjs tests/rm-qa.test.mjs
       - name: 验证 Worker 包
         run: npx wrangler deploy --dry-run
       - name: 部署到 Cloudflare

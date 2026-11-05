@@ -25,7 +25,7 @@ export function isAerialRelevant(item) {
 }
 
 export function rulesFingerprint(rules) {
-  return createHash("sha256").update(JSON.stringify({ season: rules?.season, version: rules?.version, tasks: rules?.tasks || [], searchKeywords: rules?.searchKeywords || {} })).digest("hex").slice(0, 16);
+  return createHash("sha256").update(JSON.stringify({ season: rules?.season, version: rules?.version, tasks: rules?.tasks || [], searchKeywords: rules?.searchKeywords || {}, qa: rules?.clarifications?.fingerprint })).digest("hex").slice(0, 16);
 }
 
 export function matchRuleTasks(item, rules) {

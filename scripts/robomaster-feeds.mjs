@@ -320,6 +320,7 @@ export const AERIAL_GENERAL_MIN = 10;
 export const AERIAL_ARXIV_QUERIES = [
   '(cat:cs.RO OR cat:cs.SY) AND (ti:quadrotor OR ti:quadcopter OR ti:multirotor OR ti:drone OR ti:UAV)',
   '(cat:cs.RO OR cat:cs.CV) AND (all:"aerial robot" OR all:"micro aerial vehicle" OR all:"drone navigation" OR all:"autonomous landing")',
+  '(cat:cs.RO OR cat:cs.SY) AND (all:drone OR all:UAV) AND (all:"visible light communication" OR all:"optical communication" OR all:docking)',
 ];
 
 // ====== 叠加赛事规则驱动的检索关键词（data/rm-rules.json）======
@@ -327,9 +328,9 @@ export const AERIAL_ARXIV_QUERIES = [
 // 英文关键词并入上面的基础集，使「论文/开源」的检索范围随新赛季规则自动调整。
 const __feedsDir = path.dirname(fileURLToPath(import.meta.url));
 
-function loadRMRules() {
+function loadRMRules(filename = "rm-rules.json") {
   try {
-    const p = path.join(__feedsDir, "..", "data", "rm-rules.json");
+    const p = path.join(__feedsDir, "..", "data", filename);
     return JSON.parse(fs.readFileSync(p, "utf8"));
   } catch {
     return null;
@@ -337,6 +338,8 @@ function loadRMRules() {
 }
 
 export const RM_RULES = loadRMRules();
+export const RM_QA = loadRMRules("rm-rules-qa.json");
+if (RM_RULES && RM_QA?.season === RM_RULES.season) RM_RULES.clarifications = RM_QA;
 
 function mergeUnique(target, extra) {
   if (!Array.isArray(extra)) return;

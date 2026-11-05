@@ -282,6 +282,25 @@ export default function RoboMasterPage({ day, dates = [], latest, curated, gener
 
                 {rules.sources?.length > 0 && (
                   <div className="rules-block">
+                    {rules.clarifications && (
+                      <details>
+                        <summary>{lang === "en" ? "Official Q&A — aerial systems" : "规则答疑 · 空中系统重点"}（{rules.clarifications.count} / {rules.clarifications.aerialCount}）</summary>
+                        <p>{lang === "en" ? "Questions provide context; the answers clarify the rules. Some details await future updates. Check the source for the latest version." : "已读取全部答疑，下列为无人机重点问答。问题只提供语境，以官方反馈为答复；含“后续更新”的部分仍需核对后续版本。"}</p>
+                        <p>{lang === "en" ? "Snapshot date: " : "答疑快照日期："}{rules.clarifications.fetchedAt?.slice(0, 10)}</p>
+                        <a href={rules.clarifications.source_url} target="_blank" rel="noopener noreferrer">{lang === "en" ? "Open full Q&A board" : "查看完整答疑公示面板"} ↗</a>
+                        {rules.clarifications.items.map(q => (
+                          <details key={q.number} style={{ marginTop: 12 }}>
+                            <summary>#{q.number} · {q.competition} · {q.question.slice(0, 64)}{q.question.length > 64 ? "…" : ""}</summary>
+                            <p style={{ whiteSpace: "pre-wrap" }}>{q.question}</p>
+                            <p style={{ whiteSpace: "pre-wrap" }}><b>{lang === "en" ? "Official answer: " : "官方反馈："}</b>{q.answer}</p>
+                          </details>
+                        ))}
+                      </details>
+                    )}
+                  </div>
+                )}
+                {rules.sources?.length > 0 && (
+                  <div className="rules-block">
                     <h4>{t.roboRulesSource}</h4>
                     <ul className="rules-sources">
                       {rules.sources.map((s, i) => (
