@@ -27,7 +27,9 @@ import {
   REPO_MIN_STARS,
   FEATURED_TOP,
   TRANSLATE_TITLE_TOP,
+  RM_RULES, AERIAL_ARXIV_QUERIES, AERIAL_PAPERS_MIN, AERIAL_NATIVE_MIN,
 } from "./robomaster-feeds.mjs";
+import { classifyRM, isAerialRelevant, selectWithAerialCoverage, annotateRules, rulesFingerprint } from "./rm-recommendation-policy.mjs";
 import { translatePapersFull, translatePaperTitles } from "./enrich-papers.mjs";
 import { translateRepos } from "./enrich-github.mjs";
 import { assessRMUsage } from "./enrich-rm-usage.mjs";
@@ -99,18 +101,12 @@ function hoursAgo(iso) {
 
 // 多标签分类：返回命中的分类 key 数组（保持 CATEGORIES 优先级顺序）；无命中则 ["other"]
 function classify(text) {
-  const lower = text.toLowerCase();
-  const hits = [];
-  for (const rule of CATEGORY_RULES) {
-    if (rule.kw.some((k) => lower.includes(k.toLowerCase()))) hits.push(rule.key);
-  }
-  const ordered = CATEGORIES.map((c) => c.key).filter((k) => hits.includes(k));
-  return ordered.length ? ordered.slice(0, 3) : ["other"];
+  return classifyRM(text, CATEGORIES, CATEGORY_RULES);
 }
 
 // —— arXiv（各分类分开查询，按提交时间倒序，提高召回 Q21）——
-async function fetchArxivCat(cat) {
-  const url = `http://export.arxiv.org/api/query?search_query=cat:${cat}&sortBy=submittedDate&sortOrder=descending&max_results=${ARXIV_MAX}`;
+async function fetchArxivCat(cat, query = `cat:${cat}`, maximum = ARXIV_MAX) {
+  const url = `https://export.arxiv.org/api/query?search_query=${encodeURIComponent(query)}&sortBy=submittedDate&sortOrder=descending&max_results=${maximum}`;
   for (let attempt = 0; attempt < 4; attempt++) {
     try {
       const parsed = await parser.parseURL(url);
@@ -272,6 +268,10 @@ async function main() {
   console.log("\n[论文] arXiv…");
   const hfMap = await fetchHFHeat();
   let raw = await fetchArxivAll(ARXIV_CATS);
+  for (const query of AERIAL_ARXIV_QUERIES) {
+    raw.push(...await fetchArxivCat("无人机专项", query, 100));
+    await sleep(3000);
+  }
   raw = dedupeBy(raw, (p) => (p.arxiv_id ? `a:${p.arxiv_id}` : p.id));
 
   // 顶会识别（comment 优先，标题/摘要兜底）——后续过滤/加权都依赖它
@@ -282,6 +282,7 @@ async function main() {
 
   // 关键词过滤（放宽 Q19/Q12）：强主题词单独命中 / 主题词+机器人语境 / 视觉顶会+主题词
   const pool = raw.filter((p) => {
+    if (isAerialRelevant(p)) return true;
     const text = (p.title_en + " " + p.abstract_en).toLowerCase();
     if (STRONG_TOPIC_KW.some((k) => text.includes(k.toLowerCase()))) return true;
     const topic = PAPER_TOPIC_KW.some((k) => text.includes(k.toLowerCase()));
@@ -295,6 +296,7 @@ async function main() {
   for (const p of pool) {
     const text = p.title_en + " " + p.abstract_en;
     p.categories = classify(text);
+    p.relevance = scorePaperRelevance(p);
     p.upvotes = p.arxiv_id ? hfMap.get(p.arxiv_id) || 0 : 0;
     const recency = Math.max(0, BACKFILL_DAYS_PAPERS * 24 - hoursAgo(p.published_at));
     p.heat = p.upvotes * 50 + recency + (p.confWeight || 0) * 20;
@@ -303,17 +305,14 @@ async function main() {
   // 近窗优先、不足再回溯补足（Q18/Q27）：先取近 RECENT 天，凑不够 PAPERS_MAX 再用近 BACKFILL 天补。
   const recent = pool
     .filter((p) => hoursAgo(p.published_at) <= RECENT_DAYS_PAPERS * 24)
-    .sort((a, b) => b.heat - a.heat);
+    .sort((a, b) => b.relevance - a.relevance || b.heat - a.heat);
   const older = pool
     .filter((p) => {
       const h = hoursAgo(p.published_at);
       return h > RECENT_DAYS_PAPERS * 24 && h <= BACKFILL_DAYS_PAPERS * 24;
     })
-    .sort((a, b) => b.heat - a.heat);
-  let papers = recent.slice(0, PAPERS_MAX);
-  if (papers.length < PAPERS_MAX) {
-    papers = papers.concat(older.slice(0, PAPERS_MAX - papers.length));
-  }
+    .sort((a, b) => b.relevance - a.relevance || b.heat - a.heat);
+  let papers = selectWithAerialCoverage([...recent, ...older], PAPERS_MAX, AERIAL_PAPERS_MIN);
   console.log(
     `  · 过滤后 近窗${recent.length} + 回溯${older.length} → 保留论文：${papers.length}`
   );
@@ -343,7 +342,21 @@ async function main() {
   for (const p of papers) p.relevance = scorePaperRelevance(p);
 
   // 标记精选 + 翻译
-  papers.sort((a, b) => b.heat - a.heat);
+  papers.sort((a, b) => b.relevance - a.relevance || b.heat - a.heat);
+  // Reuse translations from the last successful collection, but invalidate stale rule assessments.
+  let previous = {};
+  try {
+    const idx = JSON.parse(fs.readFileSync(path.join(DATA, "robomaster-index.json"), "utf8"));
+    previous = JSON.parse(fs.readFileSync(path.join(RM, `${idx.latest}.json`), "utf8"));
+  } catch {}
+  const cachedPapers = new Map((previous.papers?.items || []).map(p => [p.id, p]));
+  for (const p of papers) {
+    const prev = cachedPapers.get(p.id);
+    if (prev) for (const key of ["title_zh", "abstract_zh", "highlight_zh", "digest_zh", "rm", "first_seen"]) {
+      if (prev[key]) p[key] = prev[key];
+    }
+    annotateRules(p, RM_RULES);
+  }
   papers.slice(0, FEATURED_TOP).forEach((p) => (p.featured = true));
   await translatePapersFull(papers.filter((p) => p.featured));
   await translatePaperTitles(papers.filter((p) => !p.title_zh).slice(0, TRANSLATE_TITLE_TOP));
@@ -370,7 +383,8 @@ async function main() {
       if (topics.includes("robomaster")) return true;
       return REPO_RELEVANCE_KW.some((k) => text.includes(k.toLowerCase()));
     });
-  repos = repos.sort((a, b) => b.stars - a.stars).slice(0, REPOS_MAX);
+  for (const r of repos) r.relevance = scoreRepoRelevance(r);
+  repos = selectWithAerialCoverage(repos.sort((a, b) => b.relevance - a.relevance || b.stars - a.stars), REPOS_MAX, AERIAL_NATIVE_MIN);
   console.log(`  · 去重 + 星标过滤后保留库：${repos.length}`);
   await translateRepos(repos);
   // 翻译后再分类：中文简介/亮点信息更丰富，分类更准确
@@ -408,19 +422,24 @@ async function main() {
       ex.confVision = np.confVision;
     }
     if (np.relevance != null) ex.relevance = np.relevance;
+    ex.categories = np.categories;
   }
   const newRepoById = new Map(repos.map((r) => [repoKey(r), r]));
   for (const ex of existing.repos) {
     const nr = newRepoById.get(repoKey(ex));
     if (nr && nr.relevance != null) ex.relevance = nr.relevance;
+    if (nr) ex.categories = nr.categories;
   }
 
-  const finalPapers = dedupeBy([...existing.papers, ...papers], paperKey)
-    .sort((a, b) => (b.heat || 0) - (a.heat || 0))
-    .slice(0, PAPERS_CUMULATIVE_MAX); // 当天累计天花板（Q26）
-  const finalRepos = dedupeBy([...existing.repos, ...repos], repoKey).sort(
-    (a, b) => (b.stars || 0) - (a.stars || 0)
-  );
+  const combinedPapers = dedupeBy([...existing.papers, ...papers], paperKey);
+  const combinedRepos = dedupeBy([...existing.repos, ...repos], repoKey);
+  for (const item of [...combinedPapers, ...combinedRepos]) {
+    item.categories = classify([item.title_en, item.abstract_en, item.full_name, item.description_en, ...(item.topics || [])].filter(Boolean).join(" "));
+    annotateRules(item, RM_RULES);
+    item.relevance = item.title_en ? scorePaperRelevance(item) : scoreRepoRelevance(item);
+  }
+  const finalPapers = selectWithAerialCoverage(combinedPapers.sort((a, b) => b.relevance - a.relevance || b.heat - a.heat), PAPERS_CUMULATIVE_MAX, AERIAL_PAPERS_MIN);
+  const finalRepos = selectWithAerialCoverage(combinedRepos.sort((a, b) => b.relevance - a.relevance || b.stars - a.stars), REPOS_MAX, AERIAL_NATIVE_MIN);
 
   // first_seen：条目「首次被收录」时间，用于「最新」排序与 NEW 角标。
   // 已有则保留；历史条目（此前已存在却无此字段）回填发布/更新时间，避免被误标为新；
@@ -446,6 +465,8 @@ async function main() {
     date,
     generatedAt: new Date().toISOString(),
     categories: CATEGORIES,
+    rules_fingerprint: rulesFingerprint(RM_RULES),
+    rules_season: RM_RULES?.season,
     papers: { count: finalPapers.length, items: finalPapers },
     repos: { count: finalRepos.length, items: finalRepos },
   };

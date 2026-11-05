@@ -10,6 +10,7 @@ import { fileURLToPath } from "node:url";
 
 // —— 分类体系（按优先级排序，便于展示时分组与高亮）——
 export const CATEGORIES = [
+  { key: "aerial", label_zh: "无人机 / 空中系统", label_en: "UAV / Aerial Systems" },
   { key: "aim", label_zh: "自瞄 / 目标检测", label_en: "Auto-Aim / Detection" },
   { key: "rune", label_zh: "能量机关", label_en: "Power Rune" },
   { key: "slam", label_zh: "SLAM / 建图", label_en: "SLAM & Mapping" },
@@ -187,6 +188,9 @@ export const CVF_MAX = 20; // CVF 补入论文上限（避免占满）
 // —— GitHub 开源库查询 ——
 // 多条查询合并去重，覆盖 RoboMaster 直接相关 + 通用机器人算法关键词。
 export const GITHUB_QUERIES = [
+  "robomaster drone",
+  "robomaster uav",
+  "robomaster 空中",
   "robomaster in:name,description,readme",
   "topic:robomaster",
   "rm_vision OR rm_auto_aim OR rmcv",
@@ -223,6 +227,17 @@ export const REPO_BLOCK_KW = [
 
 // 白名单：直接按 owner/repo 收录（抓取时取其实时星标/简介/标签）。按经验精选的公认优质项目。
 export const GENERAL_WHITELIST = [
+  // Autonomous aerial software references; hardware size/comms must be adapted to RM rules.
+  "PX4/PX4-Autopilot",
+  "mavlink/MAVSDK",
+  "bitcraze/crazyflie-firmware",
+  "IMRCLab/crazyswarm2",
+  "HKUST-Aerial-Robotics/VINS-Fusion",
+  "ZJU-FAST-Lab/ego-planner-swarm",
+  "ZJU-FAST-Lab/Fast-Drone-250",
+  "uzh-rpg/rpg_mpc",
+  "uzh-rpg/agilicious",
+  "ethz-asl/mav_trajectory_generation",
   // —— 感知：检测 / 分割 / 跟踪 ——
   "ultralytics/ultralytics",
   "WongKinYiu/yolov7",
@@ -258,6 +273,10 @@ export const GENERAL_WHITELIST = [
 
 // 主题搜索补充：偏机器人/视觉的 topic + 星标门槛，自动发现白名单之外的新项目。
 export const GENERAL_TOPIC_QUERIES = [
+  "topic:quadrotor",
+  "topic:autonomous-drone",
+  "topic:visual-inertial-odometry",
+  "drone landing robotics",
   "topic:object-detection topic:robotics",
   "topic:slam",
   "topic:lidar-slam",
@@ -294,14 +313,24 @@ export const REPO_MIN_STARS = 10; // 开源库最低星标
 export const FEATURED_TOP = 6; // 论文中标记为精选（生成精读）的数量（Q22）
 export const TRANSLATE_TITLE_TOP = 40; // 预翻译标题的论文数量（Q23）
 
+export const AERIAL_PAPERS_MIN = 12;
+export const AERIAL_NATIVE_MIN = 6;
+export const AERIAL_GENERAL_MIN = 10;
+// Query the subject directly: latest 500 generic CV/ML entries often contain no UAV work.
+export const AERIAL_ARXIV_QUERIES = [
+  '(cat:cs.RO OR cat:cs.SY) AND (ti:quadrotor OR ti:quadcopter OR ti:multirotor OR ti:drone OR ti:UAV)',
+  '(cat:cs.RO OR cat:cs.CV) AND (all:"aerial robot" OR all:"micro aerial vehicle" OR all:"drone navigation" OR all:"autonomous landing")',
+  '(cat:cs.RO OR cat:cs.SY) AND (all:drone OR all:UAV) AND (all:"visible light communication" OR all:"optical communication" OR all:docking)',
+];
+
 // ====== 叠加赛事规则驱动的检索关键词（data/rm-rules.json）======
 // 规则文件由 npm run rules:build 从官方手册提炼。这里把它的 searchKeywords 与各任务的
 // 英文关键词并入上面的基础集，使「论文/开源」的检索范围随新赛季规则自动调整。
 const __feedsDir = path.dirname(fileURLToPath(import.meta.url));
 
-function loadRMRules() {
+function loadRMRules(filename = "rm-rules.json") {
   try {
-    const p = path.join(__feedsDir, "..", "data", "rm-rules.json");
+    const p = path.join(__feedsDir, "..", "data", filename);
     return JSON.parse(fs.readFileSync(p, "utf8"));
   } catch {
     return null;
@@ -309,6 +338,8 @@ function loadRMRules() {
 }
 
 export const RM_RULES = loadRMRules();
+export const RM_QA = loadRMRules("rm-rules-qa.json");
+if (RM_RULES && RM_QA?.season === RM_RULES.season) RM_RULES.clarifications = RM_QA;
 
 function mergeUnique(target, extra) {
   if (!Array.isArray(extra)) return;

@@ -17,6 +17,7 @@ import os from "node:os";
 import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 import { chatAnthropicJSONWithRetry, getRulesAIConfig } from "./ai.mjs";
+import { selectRuleText, validateAerialCoverage } from "./rm-rule-corpus.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -34,6 +35,7 @@ const TOTAL_CHARS = 70000;
 
 // 9 大算法方向，供 AI 给任务打 categories 标签。
 const CATEGORIES = [
+  "aerial", // 无人机自主飞行/机库交互
   "aim", // 自瞄/视觉打击
   "rune", // 能量机关
   "slam", // 建图定位
@@ -83,7 +85,7 @@ function extractPdfText(pdfPath) {
   }
 
   // 2) python + pypdf 回退
-  const py = `import sys\nfrom pypdf import PdfReader\nr = PdfReader(sys.argv[1])\nout = []\nfor p in r.pages:\n    try:\n        out.append(p.extract_text() or "")\n    except Exception:\n        out.append("")\nsys.stdout.buffer.write("\\n".join(out).encode("utf-8"))\n`;
+  const py = `import sys\nfrom pypdf import PdfReader\nr = PdfReader(sys.argv[1])\nout = []\nfor p in r.pages:\n    try:\n        out.append(p.extract_text() or "")\n    except Exception:\n        out.append("")\nsys.stdout.buffer.write("\\f".join(out).encode("utf-8"))\n`;
   const tmp = path.join(os.tmpdir(), `rmrules_extract_${Date.now()}.py`);
   try {
     fs.writeFileSync(tmp, py, "utf8");
@@ -130,7 +132,7 @@ const SCHEMA_HINT = `{
     {
       "id": "英文短 id，如 autoaim/rune/sentry/radar/dart/engineer/strategy/sim",
       "name_zh": "中文任务名",
-      "categories": ["从 aim/rune/slam/nav/planning/rl/radar/sim/other 里选 1-3 个"],
+      "categories": ["从 aerial/aim/rune/slam/nav/planning/rl/radar/sim/other 里选"],
       "robots": ["涉及的机器人，如 英雄/工程/步兵/哨兵/空中/雷达/飞镖/全队"],
       "desc_zh": "该算法任务要做什么、难点是什么（结合规则中的具体机制/参数）",
       "scoring_zh": "与之相关的得分/增益机制，尽量带规则里的具体数值",
@@ -161,7 +163,7 @@ async function extractRulesWithAI(docs) {
     `严格按照以下 JSON 结构输出（字段含义见注释，实际输出不要带注释）：\n\n` +
     `${SCHEMA_HINT}\n\n` +
     `要求：\n` +
-    `1) tasks 覆盖所有需要算法的环节（自瞄、能量机关、哨兵导航决策、雷达、飞镖、工程视觉装配、多机协同/强化学习、仿真等），有则写、无则略。\n` +
+    `1) tasks 覆盖所有需要算法的环节，特别是空中系统/全自动无人机/机库（id=aerial，类别含aerial），以及自瞄、能量机关、哨兵、雷达、飞镖、重装装配、多机协同与仿真，有则写、无则略。将手册约束与算法研究建议分清，不能把算法建议写成比赛强制任务。\n` +
     `2) categories 只能取这些值：${CATEGORIES.join("、")}。\n` +
     `3) scoring_zh 尽量引用手册里的具体数值（如初速度/热量上限、能量机关转速函数、飞镖各档收益、哨兵血量等）。\n` +
     `4) searchKeywords 用于驱动论文与开源项目的检索，请给出最能反映本赛季算法重点的英文词。\n` +
@@ -216,7 +218,7 @@ async function main() {
       console.warn(`  ⚠ 无法抽取文本，跳过：${name}`);
       continue;
     }
-    const text = cleanText(raw, PER_DOC_CHARS);
+    const text = selectRuleText(cleanText(raw, raw.length), PER_DOC_CHARS);
     docs.push({ name, text });
     console.log(`  ✓ ${name}（${text.length} 字）`);
   }
@@ -233,6 +235,7 @@ async function main() {
     process.exit(1);
   }
 
+  validateAerialCoverage(extracted, docs);
   const archived = archiveOld();
   if (archived) console.log(`已归档旧规则 → ${path.relative(ROOT, archived)}`);
 

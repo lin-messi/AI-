@@ -16,7 +16,10 @@ import {
   GENERAL_MIN_STARS,
   GENERAL_ACTIVE_DAYS,
   GENERAL_MAX,
+  RM_RULES, AERIAL_GENERAL_MIN,
 } from "./robomaster-feeds.mjs";
+import { classifyRM, selectWithAerialCoverage, taskBonus, rulesFingerprint } from "./rm-recommendation-policy.mjs";
+import { scoreRepoRelevance } from "./relevance.mjs";
 import { translateGeneralRepos } from "./enrich-github.mjs";
 import { assessRMUsage } from "./enrich-rm-usage.mjs";
 
@@ -40,13 +43,7 @@ function ghHeaders() {
 
 // 多标签分类：与 RM 原生库共用一套规则（CATEGORY_RULES / CATEGORIES）
 function classify(text) {
-  const lower = text.toLowerCase();
-  const hits = [];
-  for (const rule of CATEGORY_RULES) {
-    if (rule.kw.some((k) => lower.includes(k.toLowerCase()))) hits.push(rule.key);
-  }
-  const ordered = CATEGORIES.map((c) => c.key).filter((k) => hits.includes(k));
-  return ordered.length ? ordered.slice(0, 3) : ["other"];
+  return classifyRM(text, CATEGORIES, CATEGORY_RULES);
 }
 
 function normalizeRepo(r) {
@@ -96,7 +93,7 @@ function scoreRepo(r) {
   const relHits = GENERAL_RELEVANCE_KW.filter((k) => text.includes(k.toLowerCase())).length;
   const relScore = Math.min(relHits, 4) * 0.4;
   const whitelistBoost = r._whitelist ? 3 : 0;
-  return starScore + activeBonus + relScore + whitelistBoost;
+  return starScore + activeBonus + relScore + whitelistBoost + taskBonus(r, RM_RULES);
 }
 
 async function fetchWhitelistRepo(fullName) {
@@ -192,14 +189,13 @@ async function main() {
     passesGates(r, { isWhitelist: whitelistSet.has((r.id || "").toLowerCase()) || r._whitelist })
   );
   // 综合排序，截断
-  pool = pool
+  pool = selectWithAerialCoverage(pool
     .map((r) => ({ r, s: scoreRepo(r) }))
     .sort((a, b) => b.s - a.s)
-    .slice(0, GENERAL_MAX)
     .map(({ r }) => {
       delete r._whitelist;
       return r;
-    });
+    }), GENERAL_MAX, AERIAL_GENERAL_MIN);
   console.log(`  · 过滤+排序后保留通用库：${pool.length}`);
 
   // ===== 增量合并（保留已翻译条目）=====
@@ -234,12 +230,14 @@ async function main() {
   for (const r of pool) {
     const text = `${r.full_name} ${r.description_en} ${r.description_zh} ${r.highlight_zh} ${(r.topics || []).join(" ")}`;
     r.categories = classify(text);
+    r.relevance = scoreRepoRelevance(r);
   }
 
   const payload = {
     updatedAt: new Date().toISOString(),
     note: "通用利器：本身不带 robomaster、但能直接用于 RM 任务的优质开源库（白名单 + 主题搜索，每日刷新）。",
     count: pool.length,
+    rules_fingerprint: rulesFingerprint(RM_RULES),
     items: pool,
   };
   fs.writeFileSync(OUT, JSON.stringify(payload, null, 2), "utf8");

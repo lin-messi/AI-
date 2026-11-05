@@ -1,9 +1,10 @@
 // RM 用途评估：依据 data/rm-rules.json（赛事规则提炼）为论文 / 通用利器库生成
 //   rm = { usage: 用途建议(中文), task: 对应赛事任务(中文), task_id, value: "high"|"mid"|"low" }
-// 仅对缺少 rm 字段的新条目增量生成（成本随新内容增长，不重算历史条目）。
-// 规则每年更新后（npm run rules:build），新抓取条目会自动按新规则评估。
+// 对缺少用途、或评估所依据的规则指纹过期的条目生成；已有有效译文不受影响。
 import { getAIConfig, chatJSONWithRetry } from "./ai.mjs";
-import { RM_RULES } from "./robomaster-feeds.mjs";
+import { RM_RULES, RM_QA } from "./robomaster-feeds.mjs";
+import { qaContext } from "./rm-qa.mjs";
+import { annotateRules, rulesFingerprint } from "./rm-recommendation-policy.mjs";
 
 const BATCH = 8;
 
@@ -17,7 +18,7 @@ function chunk(arr, n) {
 function rulesContext() {
   const tasks = RM_RULES?.tasks || [];
   const lines = tasks.map(
-    (t) => `- ${t.name_zh}（id=${t.id}）：${(t.desc_zh || "").slice(0, 70)}`
+    (t) => `- ${t.name_zh}（id=${t.id}）：${t.desc_zh || ""}；约束：${t.scoring_zh || ""}；答疑补充：${JSON.stringify(t.clarification_notes || [])}`
   );
   const season = RM_RULES?.season ? `赛季 ${RM_RULES.season}` : "";
   return `${season} RoboMaster 算法相关任务：\n${lines.join("\n")}`;
@@ -45,10 +46,10 @@ function buildMessages(batch, kind) {
 
   const what = isPaper ? "学术论文（含标题与摘要）" : "通用开源项目（含名称、简介、标签）";
   const sys =
-    "你是 RoboMaster 战队的算法负责人，熟悉自瞄、能量机关、哨兵导航决策、雷达全场定位、飞镖、工程视觉装配、强化学习与仿真等环节。" +
+    "你是 RoboMaster 战队的算法负责人，熟悉无人机自主定位、避障、返航降落、机库交互，以及自瞄、能量机关、哨兵导航决策、雷达全场定位、飞镖、重装装配与仿真。" +
     "你的任务是判断给定材料对 RoboMaster 比赛的可用性。只输出 JSON，不要多余文字。";
 
-  const user = `${rulesContext()}
+  const user = `${rulesContext()}${RM_QA?.season === RM_RULES?.season ? qaContext(batch, RM_QA) : ""}
 
 下面是若干${what}。请结合上面的赛事任务，为每条判断它对 RoboMaster 比赛的用途，生成：
 - usage: 中文，1-2 句，说明「具体能怎么用在 RoboMaster 上」（落到具体任务/环节，给出可操作的思路；若几乎用不上就直说关联很弱）
@@ -59,6 +60,7 @@ function buildMessages(batch, kind) {
     low = 关联很弱、基本用不上。
 
 要求：实事求是、不夸大；judgement 要严格，大多数通用成果应是 mid 或 low，只有真正切题的才给 high。
+无人机项目须区分算法可借鉴与整机可直接参赛，说明GPS、外部动捕或通信等额外前提。参照答疑，不能笼统禁止无人机之间通信：应区分可见光、库内近场，以及飞行时与机库的链路；不能认可赛场Wi-Fi/BLE/UWB组网。不得建议给空中机器人安装发射机构。
 严格返回 JSON：{"results":[{"i":0,"usage":"","task_id":"","value":"mid"}, ...]}
 
 输入数据：
@@ -76,6 +78,7 @@ function normValue(v) {
 
 // 为缺少 rm 的条目生成 RM 用途评估。kind: "paper" | "repo"
 export async function assessRMUsage(items, kind = "paper") {
+  for (const item of items) annotateRules(item, RM_RULES);
   const { enabled, model } = getAIConfig();
   if (!enabled) {
     console.log("（未配置 AI_API_KEY，跳过 RM 用途评估）");
@@ -103,6 +106,8 @@ export async function assessRMUsage(items, kind = "paper") {
           task_id: taskId,
           task: taskId ? TASK_NAME_BY_ID.get(taskId) || "" : "",
           value: normValue(r.value),
+          rules_fingerprint: rulesFingerprint(RM_RULES),
+          season: RM_RULES.season,
         };
       }
       done += batch.length;

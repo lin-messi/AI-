@@ -1,0 +1,62 @@
+// Re-rank the latest snapshot from verified archived records; no AI calls, no historical rewrites.
+// Optional --repo-metadata <file>: raw GitHub API records fetched during review.
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { CATEGORIES, CATEGORY_RULES, RM_RULES, AERIAL_PAPERS_MIN, AERIAL_GENERAL_MIN, AERIAL_NATIVE_MIN, PAPERS_CUMULATIVE_MAX, GENERAL_MAX, REPOS_MAX, BACKFILL_DAYS_PAPERS } from "./robomaster-feeds.mjs";
+import { annotateRules, classifyRM, itemText, isAerialRelevant, selectWithAerialCoverage, rulesFingerprint } from "./rm-recommendation-policy.mjs";
+import { scorePaperRelevance, scoreRepoRelevance } from "./relevance.mjs";
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const data = path.join(root, "data");
+const read = name => JSON.parse(fs.readFileSync(path.join(data, name), "utf8"));
+const idx = read("robomaster-index.json");
+const day = read(`robomaster/${idx.latest}.json`);
+const now = new Date().toISOString();
+const existing = new Map(day.papers.items.map(p => [p.id, p]));
+for (const date of idx.dates) {
+  if (Date.now() - Date.parse(date) > BACKFILL_DAYS_PAPERS * 86400000) continue;
+  const archive = read(`robomaster/${date}.json`);
+  for (const paper of archive.papers?.items || []) {
+    const age = Date.now() - Date.parse(paper.published_at);
+    if (age >= 0 && age <= BACKFILL_DAYS_PAPERS * 86400000 && isAerialRelevant(paper) && !existing.has(paper.id)) {
+      existing.set(paper.id, { ...paper, featured: false, first_seen: now });
+    }
+  }
+}
+function update(item, kind) {
+  item.categories = classifyRM(itemText(item), CATEGORIES, CATEGORY_RULES);
+  annotateRules(item, RM_RULES);
+  item.relevance = kind === "paper" ? scorePaperRelevance(item) : scoreRepoRelevance(item);
+  return item;
+}
+const rank = (a, b) => b.relevance - a.relevance || (b.heat || b.stars || 0) - (a.heat || a.stars || 0);
+day.papers.items = selectWithAerialCoverage([...existing.values()].map(p => update(p, "paper")).sort(rank), PAPERS_CUMULATIVE_MAX, AERIAL_PAPERS_MIN);
+day.papers.count = day.papers.items.length;
+day.repos.items = selectWithAerialCoverage(day.repos.items.map(r => update(r, "repo")).sort(rank), REPOS_MAX, AERIAL_NATIVE_MIN);
+day.repos.count = day.repos.items.length;
+day.categories = CATEGORIES;
+day.rules_fingerprint = rulesFingerprint(RM_RULES);
+day.rules_season = RM_RULES.season;
+day.generatedAt = now;
+const general = read("robomaster-general.json");
+const repos = new Map(general.items.map(r => [r.id.toLowerCase(), r]));
+const metadataFlag = process.argv.indexOf("--repo-metadata");
+if (metadataFlag !== -1) {
+  const metadata = JSON.parse(fs.readFileSync(process.argv[metadataFlag + 1], "utf8"));
+  for (const raw of metadata) {
+    if (!raw.full_name || !raw.html_url) throw new Error("Invalid GitHub metadata");
+    const old = repos.get(raw.full_name.toLowerCase()) || {};
+    repos.set(raw.full_name.toLowerCase(), { ...old, id: raw.full_name, full_name: raw.full_name, name: raw.name, owner: raw.owner.login,
+      description_en: raw.description || "", description_zh: old.description_zh || "", highlight_zh: old.highlight_zh || "",
+      stars: raw.stargazers_count, forks: raw.forks_count, language: raw.language, topics: raw.topics || [], url: raw.html_url,
+      homepage: raw.homepage, pushed_at: raw.pushed_at, created_at: raw.created_at, source: "general", first_seen: old.first_seen || now });
+  }
+}
+general.items = selectWithAerialCoverage([...repos.values()].map(r => update(r, "repo")).sort(rank), GENERAL_MAX, AERIAL_GENERAL_MIN);
+general.count = general.items.length;
+general.updatedAt = now;
+general.rules_fingerprint = day.rules_fingerprint;
+fs.writeFileSync(path.join(data, `robomaster/${idx.latest}.json`), JSON.stringify(day, null, 2) + "\n");
+fs.writeFileSync(path.join(data, "robomaster-general.json"), JSON.stringify(general, null, 2) + "\n");
+console.log(JSON.stringify({ date: idx.latest, aerialPapers: day.papers.items.filter(isAerialRelevant).length, aerialGeneral: general.items.filter(isAerialRelevant).length, rules: RM_RULES.season }));
