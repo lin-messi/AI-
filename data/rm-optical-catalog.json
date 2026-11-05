@@ -1,0 +1,142 @@
+{
+  "papers": [
+    {
+      "arxiv_id": "2608.24705",
+      "doi": "10.48550/arXiv.2608.24705",
+      "receiver": "event_camera",
+      "reason_zh": "2026年的八LED与事件相机实机原型面向低延迟短消息交换，可参考其设备关联、时间编码和硬件时序处理来设计机库或机间可见光链路。",
+      "limitations_zh": "论文验证的是单发单收链路，不能据此认定已支持多机网络；需事件相机，未核验到公开实现仓库，arXiv仅注明MobiHoc 2026有条件接收。",
+      "source_url": "https://arxiv.org/abs/2608.24705",
+      "kind": "implementation"
+    },
+    {
+      "arxiv_id": "2602.08474",
+      "doi": "10.48550/arXiv.2602.08474",
+      "receiver": "rolling_shutter_camera",
+      "reason_zh": "2026年的滚动快门OCC模型与实验研究曝光积分、行采样和不同步导致的码间干扰，适合评估普通相机接收LED信息时的速率与均衡方案。",
+      "limitations_zh": "需确认相机支持滚动快门并能控制曝光；文中实验使用专用LED、USRP和测量设备，不能将实验带宽直接套到机载相机；未核验公开代码，arXiv仅注明已投稿ICC。",
+      "source_url": "https://arxiv.org/abs/2602.08474",
+      "kind": "implementation"
+    },
+    {
+      "arxiv_id": "2605.05541",
+      "doi": "10.48550/arXiv.2605.05541",
+      "receiver": "event_camera",
+      "reason_zh": "VTC 2026论文以真实车辆试验评估多LED发射器识别、事件带宽与端到端时延，可参考其多光源分离方法设计运动状态下的机库或机间通信。",
+      "limitations_zh": "车辆场景不等于小型无人机场景，仍须评估视场、遮挡、姿态变化与机载功耗；文中同时接收最多三路LED不是任意规模组网保证，未核验公开代码。",
+      "source_url": "https://arxiv.org/abs/2605.05541",
+      "kind": "implementation"
+    },
+    {
+      "arxiv_id": "2504.18521",
+      "doi": "10.48550/arXiv.2504.18521",
+      "receiver": "event_camera",
+      "reason_zh": "CVPRW 2025的E-VLC提供同步事件、帧图像、LED框与相机位姿数据，覆盖运动和光照变化，适合复现可见光解码与定位评测。",
+      "limitations_zh": "这是数据集与定位研究，不是完整通信协议栈；作者GitHub仓库主要为项目和数据入口，不能宣称含已核验的完整解码算法代码，复现还需对应数据和事件相机。",
+      "source_url": "https://arxiv.org/abs/2504.18521",
+      "kind": "implementation"
+    },
+    {
+      "arxiv_id": "2208.01710",
+      "doi": "10.1109/IROS47612.2022.9982016",
+      "receiver": "event_camera",
+      "reason_zh": "IROS 2022的智能视觉信标原型同时研究LED异步信息解码与信标识别，作者公开MATLAB解码和样例数据，可作为运动机器人可见光通信的可复现基线。",
+      "limitations_zh": "公开仓库规模较小且README标明仅限学术使用；样例解码不等于完整嵌入式固件，论文中的照明、距离和发射功率条件须按RM通信灯要求重新验证。",
+      "source_url": "https://arxiv.org/abs/2208.01710",
+      "kind": "implementation",
+      "code_url": "https://github.com/ziweiWWANG/Event-Beacon-Communication"
+    },
+    {
+      "arxiv_id": "1410.0328",
+      "doi": "10.1109/MWC.2015.7096291",
+      "receiver": "led",
+      "reason_zh": "OpenVLC早期开放原型把OOK、曼彻斯特编码、介质访问与网络接口连成可运行系统，适合参考低成本嵌入式可见光链路的分层实现。",
+      "limitations_zh": "2015论文的初始实现以LED兼作探测器，不能与后续OpenVLC光电二极管版本混同；BeagleBone平台及旧驱动需要移植，不代表可直接装到轻型无人机或直接满足比赛灯光限制。",
+      "source_url": "https://arxiv.org/abs/1410.0328",
+      "kind": "implementation",
+      "code_url": "https://github.com/openvlc/OpenVLC"
+    },
+    {
+      "arxiv_id": "1812.01259",
+      "doi": "10.1016/j.phycom.2019.100900",
+      "receiver": "camera",
+      "reason_zh": "这篇2019年OCC综述系统梳理调制、编码、同步、信道和定位应用，可作为相机接收路线选型与追溯基础文献的长期参考。",
+      "limitations_zh": "属于综述，不是可直接复现的通信实现；不应以引用量替代具体方案的运动适应性、算力和合规性验证。",
+      "source_url": "https://arxiv.org/abs/1812.01259",
+      "kind": "survey"
+    },
+    {
+      "doi": "10.1109/MCOM.001.2200642",
+      "receiver": "photodiode",
+      "reason_zh": "2023年的OpenVLC原型指南介绍光电二极管接收、嵌入式协议栈与调光适配，可作为MCU或机库低速控制消息链路的硬件和协议设计参考。",
+      "limitations_zh": "这是BeagleBone与PRU平台的原型指南，涉及的高功率LED及测距结果不能直接套用RM通信灯；论文介绍的1.4版与仓库README主要说明的1.3版应分别核对。",
+      "source_url": "https://repository.tudelft.nl/record/uuid%3A95616590-7096-4a00-b2b4-456623e3125e",
+      "kind": "implementation",
+      "code_url": "https://github.com/openvlc/OpenVLC"
+    },
+    {
+      "doi": "10.1109/GLOCOMW.2012.6477759",
+      "receiver": "rolling_shutter_camera",
+      "kind": "implementation",
+      "source_url": "https://ieeexplore.ieee.org/document/6477759/",
+      "reason_zh": "2012年的CMOS相机可见光通信基础论文，适合作为滚动快门接收路线的经典文献入口；公开索引引用记录可核验，用于与近期OCC工作对照。",
+      "limitations_zh": "较早期研究，未核验公开代码；本文条目未获取原始摘要，推荐说明不是摘要译文。实际相机曝光、行读出及运动条件需查阅原文并验证，不能把经典引用量视为可直接部署的保证。"
+    },
+    {
+      "arxiv_id": "2608.16858",
+      "doi": "10.48550/arXiv.2608.16858",
+      "receiver": "event_camera",
+      "reason_zh": "2026年的ECO-ID使用LED时空编码和事件相机实现异步光源身份识别，可参考其ROI关联和相对时延编码来区分机库或机间可见光信标。",
+      "limitations_zh": "实机原型将同一八LED面板划分为两组来模拟两位用户，不能当作已验证的多无人机组网；更多用户容量主要来自理论分析，移动与环境光鲁棒性仍列为后续工作，也不能将抗重放设计等同于完整安全验证；未核验公开代码，arXiv注明投稿GLOBECOM。",
+      "source_url": "https://arxiv.org/abs/2608.16858",
+      "kind": "implementation"
+    },
+    {
+      "arxiv_id": "2605.17375",
+      "doi": "10.48550/arXiv.2605.17375",
+      "receiver": "camera",
+      "reason_zh": "2026年的实机研究通过导频、PSF约束霍夫检测与畸变暗角补偿分离密集LED光斑，可参考其方法处理通信灯失焦、光斑重叠和视野边缘识别问题。",
+      "limitations_zh": "实验采用46厘米见方的16×16 LED阵列与1000fps INFINICAM UC-1高速相机，并非普通机载相机或小型机间链路；方法依赖阵列导频和几何先验，迁移到稀疏通信灯、运动姿态与较低帧率时须重新验证；未核验公开代码或已发表会议信息。",
+      "source_url": "https://arxiv.org/abs/2605.17375",
+      "kind": "implementation"
+    }
+  ],
+  "repos": [
+    {
+      "full_name": "openvlc/OpenVLC",
+      "receiver": "photodiode",
+      "reason_zh": "这是作者持续演进的低成本开放可见光平台，含嵌入式物理层、网络驱动和硬件说明，可参考调制、同步、收发调度及抗环境光设计。",
+      "limitations_zh": "当前README主要说明1.3版的光电二极管、ADC和PRU路线，与2015论文的早期LED探测实现不同；依赖BeagleBone及对应硬件，移植到MCU和轻型机需重新评估体积、功耗、视场和照度。",
+      "source_url": "https://github.com/openvlc/OpenVLC",
+      "kind": "implementation",
+      "license_note": "作者README区分驱动GPL-3.0和PRU代码BSD-2；各子目录许可需分别遵守。"
+    },
+    {
+      "full_name": "ziweiWWANG/Event-Beacon-Communication",
+      "receiver": "event_camera",
+      "reason_zh": "IROS 2022作者提供事件相机解码脚本和LED样例数据，可直接检查异步编码的消息恢复与误码表现。",
+      "limitations_zh": "低星研究基线，不是广泛部署的成熟协议栈；只公开部分MATLAB解码与数据，仍需发射端硬件、事件相机和嵌入式移植。",
+      "source_url": "https://github.com/ziweiWWANG/Event-Beacon-Communication",
+      "kind": "implementation",
+      "license_note": "README注明For academic use only；不能当作已核验的宽松开源许可。"
+    },
+    {
+      "full_name": "jufgutierrezgo/python-vlc-rolling",
+      "receiver": "rolling_shutter_camera",
+      "reason_zh": "该Python包可模拟滚动快门相机接收、CSK颜色调制、曝光与读出、LoS/NLoS及噪声，适合在制作硬件前筛查相机和调制参数。",
+      "limitations_zh": "这是低星仿真工具，不是实机固件或高影响成熟项目；仿真结果不能替代移动、强环境光和实际相机自动曝光条件下的通信试验，CSK还须受比赛通信灯颜色条件约束。",
+      "source_url": "https://github.com/jufgutierrezgo/python-vlc-rolling",
+      "kind": "simulation",
+      "license_note": "MIT。"
+    },
+    {
+      "full_name": "VCAS-UOI/violin-pd",
+      "receiver": "photodiode",
+      "reason_zh": "约阿尼纳大学实验室公开了STM32H743ZI2发射与接收固件、LED驱动和光电二极管模拟前端说明，适合参考MCU侧的可见光链路搭建。",
+      "limitations_zh": "这是低星实验室演示原型，按人工核验实现参考收录，不属于已证实广泛使用的高影响项目；演示还包含两端Linux主机，移植成轻型机载独立系统需验证功耗、缓存、视场和环境光表现。",
+      "source_url": "https://github.com/VCAS-UOI/violin-pd",
+      "kind": "implementation",
+      "license_note": "仓库含LICENSE，但GitHub元数据标为NOASSERTION；使用时应检查源文件及硬件各部分的具体许可。"
+    }
+  ]
+}

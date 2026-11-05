@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { isAerialRelevant, itemText } from "./rm-recommendation-policy.mjs";
+import { isOpticalRelevant } from "./optical-policy.mjs";
 
 export const QA_SOURCE_URL = "https://qingflow.com/appView/g79clgn1kk02/shareView/g79clh9dkk02?exWsId=1SdM5_PB-NwUtnyPn2b8";
 export const QA_APP = "g79clgn1kk02";
@@ -29,9 +30,10 @@ export function qaFingerprint(items) {
 
 export function qaContext(items, qa, limit = 6500) {
   if (!qa?.items?.length) return "";
-  const aerial = items.some(isAerialRelevant);
+  const optical = items.some(isOpticalRelevant);
+  const aerial = items.some(isAerialRelevant) || optical;
   const text = items.map(itemText).join(" ").toLowerCase();
-  const priority = [294, 60, 323, 288, 26, 24, 331];
+  const priority = optical ? [184, 194, 168, 288, 294, 26] : [294, 60, 323, 288, 26, 24, 331];
   const candidates = qa.items.filter(q => q.status === "answered" && !q.requiresAttachments)
     .map(q => ({ q, score: (aerial && q.aerial ? 10 : 0) +
       (aerial && priority.includes(q.number) ? 20 - priority.indexOf(q.number) : 0) +

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useApp } from "./AppProvider";
 import { STRINGS } from "@/lib/i18n";
 import { downloadItem } from "@/lib/paperDownload";
+import RecommendationNote from "./RecommendationNote";
 
 // 站内精读弹层：展示中文精读 / 摘要，并可在站内打开 PDF。
 // 若该论文未预翻译，则按需调用 /api/translate 生成精读。
@@ -37,7 +38,7 @@ export default function PaperReader({ paper, onClose }) {
 
   // 缺少中文精读时按需翻译
   useEffect(() => {
-    if (paper.digest_zh || loading) return;
+    if (paper.digest_zh || loading || !(paper.abstract_en || "").trim()) return;
     let cancelled = false;
     setLoading(true);
     fetch("/api/translate", {
@@ -123,11 +124,12 @@ export default function PaperReader({ paper, onClose }) {
           </div>
         )}
 
+        <RecommendationNote item={data} />
         <div className="reader-sec">
           <h4>{t.digest}</h4>
           <p>
             {data.digest_zh ||
-              (loading ? t.translating : data.abstract_zh || data.abstract_en)}
+              (loading ? t.translating : data.abstract_zh || data.abstract_en || (lang === "en" ? "The source has no abstract. Open the original paper; a digest cannot be generated from its title alone." : "来源未提供摘要，请打开原文。当前推荐说明不等于论文摘要，不会仅凭标题生成精读。"))}
           </p>
         </div>
 

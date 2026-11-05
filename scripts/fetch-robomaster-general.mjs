@@ -16,8 +16,10 @@ import {
   GENERAL_MIN_STARS,
   GENERAL_ACTIVE_DAYS,
   GENERAL_MAX,
-  RM_RULES, AERIAL_GENERAL_MIN,
+  RM_RULES, AERIAL_GENERAL_MIN, OPTICAL_REPOS_MIN,
 } from "./robomaster-feeds.mjs";
+import { fetchOpticalLibrary } from "./fetch-rm-optical.mjs";
+import { isOpticalRelevant, opticalProfile, recommendationProfile, compactOpticalReadme } from "./optical-policy.mjs";
 import { classifyRM, selectWithAerialCoverage, taskBonus, rulesFingerprint } from "./rm-recommendation-policy.mjs";
 import { scoreRepoRelevance } from "./relevance.mjs";
 import { translateGeneralRepos } from "./enrich-github.mjs";
@@ -66,6 +68,9 @@ function normalizeRepo(r) {
     pushed_at: r.pushed_at || r.updated_at || "",
     source: "general",
     categories: [],
+    optical_review: r.optical_review,
+    readme_excerpt: r.readme_excerpt,
+    license: r.license?.spdx_id || null,
   };
 }
 
@@ -93,7 +98,8 @@ function scoreRepo(r) {
   const relHits = GENERAL_RELEVANCE_KW.filter((k) => text.includes(k.toLowerCase())).length;
   const relScore = Math.min(relHits, 4) * 0.4;
   const whitelistBoost = r._whitelist ? 3 : 0;
-  return starScore + activeBonus + relScore + whitelistBoost + taskBonus(r, RM_RULES);
+  return starScore + activeBonus + relScore + whitelistBoost + taskBonus(r, RM_RULES)
+    + (isOpticalRelevant(r) ? recommendationProfile(r, "repo").score : 0);
 }
 
 async function fetchWhitelistRepo(fullName) {
@@ -121,10 +127,10 @@ async function fetchWhitelistRepo(fullName) {
   return null;
 }
 
-async function searchRepos(q, perPage = 30) {
+async function searchRepos(q, perPage = 30, sort = "stars") {
   const url =
     `https://api.github.com/search/repositories?q=${encodeURIComponent(q)}` +
-    `&sort=stars&order=desc&per_page=${perPage}`;
+    `&sort=${sort}&order=desc&per_page=${perPage}`;
   for (let attempt = 0; attempt < 3; attempt++) {
     try {
       const res = await fetch(url, { headers: ghHeaders() });
@@ -150,6 +156,13 @@ function passesGates(r, { isWhitelist }) {
   const text = `${r.full_name} ${r.description_en} ${topics.join(" ")}`.toLowerCase();
   // 黑名单：FPS 游戏外挂等一律剔除
   if (REPO_BLOCK_KW.some((k) => text.includes(k.toLowerCase()))) return false;
+  if (r._optical_candidate && !isOpticalRelevant(r)) return false;
+  if (isOpticalRelevant(r)) {
+    if (r.optical_review?.verified && r.optical_review?.source_url) return true;
+    return opticalProfile(r).quality === "implementation" && (r.stars || 0) >= 5
+      && daysSince(r.pushed_at) >= 0 && daysSince(r.pushed_at) <= GENERAL_ACTIVE_DAYS
+      && r.readme_excerpt?.length >= 200 && r.license && !["NOASSERTION", "NONE"].includes(r.license);
+  }
   if (isWhitelist) return true; // 白名单：星标/活跃度/相关性均豁免
   if ((r.stars || 0) < GENERAL_MIN_STARS) return false;
   if (daysSince(r.pushed_at) > GENERAL_ACTIVE_DAYS) return false;
@@ -163,6 +176,8 @@ async function main() {
   // ===== 白名单 =====
   console.log(`\n[白名单] 取 ${GENERAL_WHITELIST.length} 个仓库实时数据…`);
   let pool = [];
+  try { pool.push(...(await fetchOpticalLibrary()).repos); }
+  catch (error) { console.warn(`光通信核验库暂不可用：${error.message}`); }
   for (const fullName of GENERAL_WHITELIST) {
     const raw = await fetchWhitelistRepo(fullName);
     if (raw && raw.full_name) {
@@ -177,7 +192,22 @@ async function main() {
   // ===== 主题搜索补充 =====
   console.log("\n[主题搜索] 自动发现新项目…");
   for (const q of GENERAL_TOPIC_QUERIES) {
-    const items = (await searchRepos(q, 30)).map(normalizeRepo);
+    const opticalQuery = /communication|photodiode/i.test(q);
+    let items = (await searchRepos(q, 30)).map(normalizeRepo);
+    if (opticalQuery) {
+      await sleep(2500);
+      const since = new Date(Date.now() - 365 * 86400000).toISOString().slice(0, 10);
+      const updated = (await searchRepos(`${q} pushed:>=${since} stars:>=5`, 15, "updated")).map(normalizeRepo);
+      items = dedupeBy([...updated, ...items], r => r.id.toLowerCase());
+      for (const r of items) r._optical_candidate = true;
+      for (const r of items.slice(0, 20)) {
+        try {
+          const file = await (await fetch(`https://api.github.com/repos/${r.full_name}/readme`, { headers: ghHeaders(), signal: AbortSignal.timeout(15000) })).json();
+          if (file.content) r.readme_excerpt = Buffer.from(file.content, "base64").toString("utf8").slice(0, 16000);
+        } catch {}
+        await sleep(300);
+      }
+    }
     console.log(`  ✓ 「${q}」：${items.length} 个`);
     pool.push(...items);
     await sleep(2500);
@@ -194,8 +224,9 @@ async function main() {
     .sort((a, b) => b.s - a.s)
     .map(({ r }) => {
       delete r._whitelist;
+      delete r._optical_candidate;
       return r;
-    }), GENERAL_MAX, AERIAL_GENERAL_MIN);
+    }), GENERAL_MAX, AERIAL_GENERAL_MIN, undefined, OPTICAL_REPOS_MIN);
   console.log(`  · 过滤+排序后保留通用库：${pool.length}`);
 
   // ===== 增量合并（保留已翻译条目）=====
@@ -230,6 +261,8 @@ async function main() {
   for (const r of pool) {
     const text = `${r.full_name} ${r.description_en} ${r.description_zh} ${r.highlight_zh} ${(r.topics || []).join(" ")}`;
     r.categories = classify(text);
+    if (isOpticalRelevant(r)) r.categories = [...new Set(["optical", ...r.categories])];
+    if (r.readme_excerpt) r.readme_excerpt = compactOpticalReadme(r.readme_excerpt);
     r.relevance = scoreRepoRelevance(r);
   }
 

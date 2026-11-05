@@ -1,5 +1,6 @@
 // Shared by both collectors: task matching, aerial recall and bounded coverage.
 import { createHash } from "node:crypto";
+import { isOpticalRelevant, recommendationProfile } from "./optical-policy.mjs";
 
 export function hasKeyword(text, keyword) {
   const normalize = (s) => String(s || "").toLowerCase().replace(/[-_]/g, " ").replace(/\s+/g, " ");
@@ -30,15 +31,19 @@ export function rulesFingerprint(rules) {
 
 export function matchRuleTasks(item, rules) {
   const text = itemText(item);
-  return (rules?.tasks || []).filter(task => task.id !== "aerial" || isAerialRelevant(item)).map(task => ({
+  return (rules?.tasks || []).filter(task => (task.id !== "aerial" || isAerialRelevant(item)) && (task.id !== "optical" || isOpticalRelevant(item))).map(task => ({
     task_id: task.id, task: task.name_zh,
     keywords: [...(task.keywords_en || []), ...(task.keywords_zh || [])].filter(k => hasKeyword(text, k)),
-  })).filter(match => match.keywords.length || (match.task_id === "aerial" && isAerialRelevant(item)));
+  })).filter(match => match.keywords.length || (match.task_id === "aerial" && isAerialRelevant(item)) || (match.task_id === "optical" && isOpticalRelevant(item)));
 }
 
 export function annotateRules(item, rules) {
   item.rule_matches = matchRuleTasks(item, rules);
   item.rules_fingerprint = rulesFingerprint(rules);
+  if (isOpticalRelevant(item)) {
+    item.recommendation = recommendationProfile(item, item.full_name ? "repo" : "paper");
+    item.categories = [...new Set(["optical", ...(item.categories || [])])];
+  } else if (item.recommendation) delete item.recommendation;
   // Keep generated prose only when it was assessed against this exact task set.
   if (item.rm && item.rm.rules_fingerprint !== item.rules_fingerprint) delete item.rm;
   return item;
@@ -47,6 +52,7 @@ export function annotateRules(item, rules) {
 export function classifyRM(text, categories, categoryRules) {
   const hits = categoryRules.filter(rule => rule.kw.some(k => hasKeyword(text, k))).map(rule => rule.key);
   if (isAerialRelevant(text)) hits.push("aerial");
+  if (isOpticalRelevant(text)) hits.push("optical");
   // Do not drop aerial because detection/navigation already consumed three labels.
   return categories.map(c => c.key).filter(k => hits.includes(k)).length
     ? categories.map(c => c.key).filter(k => hits.includes(k)) : ["other"];
@@ -55,15 +61,26 @@ export function classifyRM(text, categories, categoryRules) {
 export function taskBonus(item, rules) {
   const matches = matchRuleTasks(item, rules);
   return Math.min(12, matches.reduce((sum, m) => sum + Math.min(3, m.keywords.length) * 2, 0))
-    + (isAerialRelevant(item) && (rules?.tasks || []).some(t => t.id === "aerial") ? 12 : 0);
+    + (isAerialRelevant(item) && (rules?.tasks || []).some(t => t.id === "aerial") ? 12 : 0)
+    + (isOpticalRelevant(item) && (rules?.tasks || []).some(t => t.id === "optical") ? 12 : 0);
 }
 
 // Reserve relevant aerial candidates; never fabricate padding or exceed the pool limit.
 // Caller supplies an already ranked, eligible and deduplicated pool.
-export function selectWithAerialCoverage(ranked, limit, minimum, maximum = Math.max(minimum, Math.ceil(limit * 0.35))) {
+export function selectWithAerialCoverage(ranked, limit, minimum, maximum = Math.max(minimum, Math.ceil(limit * 0.35)), opticalMinimum = 0) {
   const reserved = ranked.filter(isAerialRelevant).slice(0, Math.min(limit, minimum));
   const selected = new Set(reserved);
-  let aerialCount = reserved.length;
+  // Protect specialist optical implementations and proven references alongside aerial navigation.
+  const optical = ranked.filter(isOpticalRelevant);
+  const priority = [...new Set([
+    optical.find(item => recommendationProfile(item, item.full_name ? "repo" : "paper").lane === "recent"),
+    optical.find(item => recommendationProfile(item, item.full_name ? "repo" : "paper").lane === "established"),
+    optical.find(item => ["photodiode", "led"].includes(recommendationProfile(item, item.full_name ? "repo" : "paper").receiver)),
+    optical.find(item => ["camera", "rolling_shutter_camera", "event_camera"].includes(recommendationProfile(item, item.full_name ? "repo" : "paper").receiver)),
+    ...optical,
+  ].filter(Boolean))];
+  for (const item of priority.slice(0, Math.min(opticalMinimum, Math.max(0, limit - selected.size)))) selected.add(item);
+  let aerialCount = [...selected].filter(isAerialRelevant).length;
   for (const item of ranked) {
     if (selected.size >= limit) break;
     if (selected.has(item)) continue;

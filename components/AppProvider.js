@@ -75,6 +75,7 @@ export default function AppProvider({ children }) {
   };
 
   const value = {
+    ready,
     theme,
     setTheme,
     lang,

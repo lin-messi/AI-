@@ -35,6 +35,8 @@ export default function RoboMasterPage({ day, dates = [], latest, curated, gener
   const [view, setView] = useState("papers"); // papers | repos
   const [repoSub, setRepoSub] = useState("all"); // all | rm | general
   const [cat, setCat] = useState("all");
+  const [recLane, setRecLane] = useState("all");
+  const [receiver, setReceiver] = useState("all");
   const [query, setQuery] = useState("");
   const [onlyFav, setOnlyFav] = useState(false);
   const [visible, setVisible] = useState(PAGE);
@@ -68,7 +70,7 @@ export default function RoboMasterPage({ day, dates = [], latest, curated, gener
       // 读取记忆的排序方式
       const sp = localStorage.getItem("robo_sort_v2_papers");
       const sr = localStorage.getItem("robo_sort_v2_repos");
-      const validSort = (v) => ["new", "default", "relevance"].includes(v);
+      const validSort = (v) => ["new", "published", "default", "relevance"].includes(v);
       setSort((s) => ({
         papers: validSort(sp) ? sp : s.papers,
         repos: validSort(sr) ? sr : s.repos,
@@ -129,6 +131,9 @@ export default function RoboMasterPage({ day, dates = [], latest, curated, gener
   const filtered = useMemo(() => {
     let list = isPapers ? [...papers] : [...repos];
     if (cat !== "all") list = list.filter((it) => (it.categories || []).includes(cat));
+    if (cat === "optical" && recLane !== "all") list = list.filter(it => it.recommendation?.lane === recLane);
+    if (cat === "optical" && receiver !== "all") list = list.filter(it =>
+      (receiver === "camera" ? ["camera", "rolling_shutter_camera", "event_camera"] : ["photodiode", "led"]).includes(it.recommendation?.receiver));
     if (onlyFav) list = list.filter((it) => favs.has(it.id));
     if (query.trim()) {
       const q = query.toLowerCase();
@@ -137,12 +142,14 @@ export default function RoboMasterPage({ day, dates = [], latest, curated, gener
           ? [it.title_zh, it.title_en, it.abstract_zh, it.abstract_en]
           : [it.full_name, it.description_zh, it.description_en, ...(it.topics || [])]
         )
+          .concat([it.recommendation?.reason_zh, it.recommendation?.limitations_zh])
           .join(" ")
           .toLowerCase()
           .includes(q)
       );
     }
     if (curSort === "new") list.sort((a, b) => itemTime(b) - itemTime(a));
+    else if (curSort === "published") list.sort((a, b) => (Date.parse(isPapers ? b.published_at : b.pushed_at) || 0) - (Date.parse(isPapers ? a.published_at : a.pushed_at) || 0));
     else if (curSort === "relevance")
       // 按相关度排序；同分时论文退回热度、库退回星标（Q40）。缺失视为 0（Q48）。
       list.sort(
@@ -153,11 +160,11 @@ export default function RoboMasterPage({ day, dates = [], latest, curated, gener
     else if (isPapers) list.sort((a, b) => (b.heat || 0) - (a.heat || 0));
     else list.sort((a, b) => (b.stars || 0) - (a.stars || 0));
     return list;
-  }, [isPapers, papers, repos, cat, onlyFav, query, favs, curSort]);
+  }, [isPapers, papers, repos, cat, onlyFav, query, favs, curSort, recLane, receiver]);
 
   useEffect(() => {
     setVisible(PAGE);
-  }, [view, repoSub, cat, onlyFav, query]);
+  }, [view, repoSub, cat, onlyFav, query, recLane, receiver]);
 
   const shown = filtered.slice(0, visible);
 
@@ -375,6 +382,7 @@ export default function RoboMasterPage({ day, dates = [], latest, curated, gener
               <select value={curSort} onChange={(e) => changeSort(e.target.value)}>
                 <option value="default">{t.roboSortDefault}</option>
                 <option value="relevance">{t.roboSortRelevance}</option>
+                <option value="published">{lang === "en" ? "Publication / code update date" : "按发表 / 代码更新时间"}</option>
                 <option value="new">{t.roboSortNewest}</option>
               </select>
             </label>
@@ -405,6 +413,24 @@ export default function RoboMasterPage({ day, dates = [], latest, curated, gener
           ))}
         </div>
 
+        {cat === "optical" && (
+          <section className="recommendation-note" aria-label="可见光推荐筛选">
+            <p>{lang === "en" ? "Recent work uses publication or code-update dates. Established references require verifiable evidence. Receiver type, implementation scope and constraints are shown on each card." : "近期成果按真实发表或代码更新时间判断；长期参考展示可核验的引用或项目证据。请结合接收器、许可、运动适应性与通信灯要求选型，低星原型会标为实现参考。"}</p>
+            <div className="filters">
+              <label>{lang === "en" ? "Evidence: " : "推荐类型："}<select value={recLane} onChange={e => setRecLane(e.target.value)}>
+                <option value="all">{lang === "en" ? "All" : "全部"}</option>
+                <option value="recent">{lang === "en" ? "Recent year" : "近一年成果"}</option>
+                <option value="established">{lang === "en" ? "Established" : "长期参考"}</option>
+                <option value="reference">{lang === "en" ? "Reference" : "研究 / 实现参考"}</option>
+              </select></label>
+              <label>{lang === "en" ? "Receiver: " : "接收端："}<select value={receiver} onChange={e => setReceiver(e.target.value)}>
+                <option value="all">{lang === "en" ? "All" : "两类都看"}</option>
+                <option value="camera">{lang === "en" ? "Frame / event camera" : "帧 / 滚动快门 / 事件相机"}</option>
+                <option value="photo">{lang === "en" ? "Photodiode / LED" : "光电二极管 / LED接收"}</option>
+              </select></label>
+            </div>
+          </section>
+        )}
         {filtered.length === 0 ? (
           <div className="empty">{t.roboEmpty}</div>
         ) : (

@@ -10,6 +10,7 @@ import { fileURLToPath } from "node:url";
 
 // —— 分类体系（按优先级排序，便于展示时分组与高亮）——
 export const CATEGORIES = [
+  { key: "optical", label_zh: "可见光通信 / 光学链路", label_en: "Visible-Light Communication" },
   { key: "aerial", label_zh: "无人机 / 空中系统", label_en: "UAV / Aerial Systems" },
   { key: "aim", label_zh: "自瞄 / 目标检测", label_en: "Auto-Aim / Detection" },
   { key: "rune", label_zh: "能量机关", label_en: "Power Rune" },
@@ -273,6 +274,9 @@ export const GENERAL_WHITELIST = [
 
 // 主题搜索补充：偏机器人/视觉的 topic + 星标门槛，自动发现白名单之外的新项目。
 export const GENERAL_TOPIC_QUERIES = [
+  '"visible light communication" in:name,description,readme',
+  '"optical camera communication" in:name,description,readme',
+  '"LED" "photodiode" "communication" in:description,readme',
   "topic:quadrotor",
   "topic:autonomous-drone",
   "topic:visual-inertial-odometry",
@@ -314,6 +318,13 @@ export const FEATURED_TOP = 6; // 论文中标记为精选（生成精读）的�
 export const TRANSLATE_TITLE_TOP = 40; // 预翻译标题的论文数量（Q23）
 
 export const AERIAL_PAPERS_MIN = 12;
+export const OPTICAL_PAPERS_MIN = 6;
+export const OPTICAL_REPOS_MIN = 4;
+export const OPTICAL_RECENT_DAYS = 365;
+export const OPTICAL_ARXIV_QUERIES = [
+  '(cat:eess.SP OR cat:cs.IT OR cat:cs.NI OR cat:cs.RO OR cat:cs.CV) AND (ti:"visible light communication" OR ti:"optical camera communication" OR ti:"rolling shutter" OR ti:"event camera" OR ti:"event based camera") AND (all:communication OR all:modulation OR all:decoding OR all:transmitter)',
+  '(cat:eess.SP OR cat:cs.IT OR cat:cs.NI OR cat:cs.RO) AND (all:"LED" AND (all:"camera communication" OR all:"photodiode" OR all:"visible light networking" OR all:"optical beacon"))',
+];
 export const AERIAL_NATIVE_MIN = 6;
 export const AERIAL_GENERAL_MIN = 10;
 // Query the subject directly: latest 500 generic CV/ML entries often contain no UAV work.
@@ -360,5 +371,5 @@ if (RM_RULES) {
   mergeUnique(GITHUB_QUERIES, sk.githubQueries);
   mergeUnique(GENERAL_TOPIC_QUERIES, sk.generalTopics);
   // 任务的英文关键词并入论文主题词，扩大召回（如 anti-spin / windmill / 6dof pose）。
-  for (const task of RM_RULES.tasks || []) mergeUnique(PAPER_TOPIC_KW, task.keywords_en);
+  for (const task of RM_RULES.tasks || []) mergeUnique(PAPER_TOPIC_KW, (task.keywords_en || []).filter(k => String(k).length >= 4));
 }

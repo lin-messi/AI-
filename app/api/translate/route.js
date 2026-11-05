@@ -9,6 +9,7 @@ export async function POST(req) {
     if (!title && !abstract) {
       return Response.json({ error: "缺少标题或摘要" }, { status: 400 });
     }
+    if (typeof abstract !== "string" || !abstract.trim()) return Response.json({ error: "来源未提供摘要，请打开原文；无法仅凭标题生成精读" }, { status: 422 });
     const result = await translateOnePaper({
       title: title || "",
       abstract: abstract || "",

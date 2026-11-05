@@ -5,9 +5,10 @@ import { useApp } from "./AppProvider";
 import { STRINGS } from "@/lib/i18n";
 import { timeAgo } from "@/lib/format";
 import { downloadItem } from "@/lib/paperDownload";
+import RecommendationNote from "./RecommendationNote";
 
 export default function PaperCard({ paper, fieldLabel, onOpen, isNew }) {
-  const { lang, favs, reads, toggleFav, toggleRead } = useApp();
+  const { lang, favs, reads, toggleFav, toggleRead, ready } = useApp();
   const t = STRINGS[lang === "en" ? "en" : "zh"];
 
   const isFav = favs.has(paper.id);
@@ -94,6 +95,7 @@ export default function PaperCard({ paper, fieldLabel, onOpen, isNew }) {
       )}
 
       <p className="card-summary clamp">{abstract}</p>
+      <RecommendationNote item={paper} />
 
       <div className="paper-actions">
         <button className="btn active" onClick={() => onOpen(paper)}>
@@ -108,7 +110,7 @@ export default function PaperCard({ paper, fieldLabel, onOpen, isNew }) {
       </div>
 
       <div className="card-foot">
-        <span className="time">{timeAgo(paper.published_at, lang)}</span>
+        <span className="time">{ready ? timeAgo(paper.published_at, lang) : paper.published_at?.slice(0, 10)}</span>
         <div className="card-actions">
           <button
             className={`iconbtn ${isFav ? "on" : ""}`}

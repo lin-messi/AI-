@@ -1,8 +1,202 @@
 {
-  "updatedAt": "2026-11-05T11:18:25.571Z",
+  "updatedAt": "2026-11-05T11:58:27.669Z",
   "note": "通用利器：本身不带 robomaster、但能直接用于 RM 任务的优质开源库（白名单 + 主题搜索，每日刷新）。",
   "count": 40,
   "items": [
+    {
+      "id": "openvlc/OpenVLC",
+      "full_name": "openvlc/OpenVLC",
+      "name": "OpenVLC",
+      "owner": "openvlc",
+      "description_en": "OpenVLC is an open-source and open-hardware, flexible, and low-cost Visible Light Communication platform.",
+      "description_zh": "OpenVLC 是一个开源、开放硬件、灵活且低成本的可视光通信平台。",
+      "highlight_zh": "",
+      "stars": 173,
+      "forks": 71,
+      "language": "C",
+      "topics": [],
+      "created_at": "2014-12-02T15:56:23Z",
+      "pushed_at": "2025-09-11T14:14:53Z",
+      "url": "https://github.com/openvlc/OpenVLC",
+      "homepage": "http://www.openvlc.org/",
+      "license": null,
+      "archived": false,
+      "source": "general",
+      "categories": [
+        "optical",
+        "other"
+      ],
+      "readme_excerpt": "visible light communication; visible light; communication; LED; photodiode; receiver; transmitter; firmware; experimental; BeagleBone",
+      "optical_review": {
+        "full_name": "openvlc/OpenVLC",
+        "receiver": "photodiode",
+        "reason_zh": "这是作者持续演进的低成本开放可见光平台，含嵌入式物理层、网络驱动和硬件说明，可参考调制、同步、收发调度及抗环境光设计。",
+        "limitations_zh": "当前README主要说明1.3版的光电二极管、ADC和PRU路线，与2015论文的早期LED探测实现不同；依赖BeagleBone及对应硬件，移植到MCU和轻型机需重新评估体积、功耗、视场和照度。",
+        "source_url": "https://github.com/openvlc/OpenVLC",
+        "kind": "implementation",
+        "license_note": "作者README区分驱动GPL-3.0和PRU代码BSD-2；各子目录许可需分别遵守。",
+        "verified": true,
+        "checked_at": "2026-11-05T11:58:05.108Z"
+      },
+      "metadata_fetched_at": "2026-11-05T11:44:51.690Z",
+      "first_seen": "2026-11-05T11:40:55.096Z",
+      "rule_matches": [
+        {
+          "task_id": "optical",
+          "task": "空中系统可见光通信链路",
+          "keywords": [
+            "visible light communication"
+          ]
+        }
+      ],
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
+      "recommendation": {
+        "lane": "established",
+        "score": 36.12,
+        "reason_zh": "这是作者持续演进的低成本开放可见光平台，含嵌入式物理层、网络驱动和硬件说明，可参考调制、同步、收发调度及抗环境光设计；长期项目，具有已核验实现与公开关注度记录",
+        "receiver": "photodiode",
+        "evidence_url": "https://github.com/openvlc/OpenVLC",
+        "limitations_zh": "当前README主要说明1.3版的光电二极管、ADC和PRU路线，与2015论文的早期LED探测实现不同；依赖BeagleBone及对应硬件，移植到MCU和轻型机需重新评估体积、功耗、视场和照度。",
+        "quality": "implementation",
+        "metric": {
+          "label": "GitHub Stars",
+          "value": 173,
+          "source": "GitHub",
+          "source_url": "https://github.com/openvlc/OpenVLC",
+          "checked_at": "2026-11-05T11:44:51.690Z"
+        }
+      },
+      "relevance": 52.36
+    },
+    {
+      "id": "VCAS-UOI/violin-pd",
+      "full_name": "VCAS-UOI/violin-pd",
+      "name": "violin-pd",
+      "owner": "VCAS-UOI",
+      "description_en": "Visible light communication (VLC) system using STM32 MCUs and photodiodes.",
+      "description_zh": "使用 STM32 微控制器和光电二极管的可视光通信（VLC）系统。",
+      "highlight_zh": "",
+      "stars": 3,
+      "forks": 1,
+      "language": "C",
+      "topics": [],
+      "created_at": "2024-09-07T11:16:10Z",
+      "pushed_at": "2024-10-05T08:47:22Z",
+      "url": "https://github.com/VCAS-UOI/violin-pd",
+      "homepage": null,
+      "license": "NOASSERTION",
+      "archived": false,
+      "source": "general",
+      "categories": [
+        "optical",
+        "sim"
+      ],
+      "readme_excerpt": "visible light communication; visible light; communication; LED; photodiode; receiver; transmitter; firmware; hardware; prototype; circuit; RIS; STM32",
+      "optical_review": {
+        "full_name": "VCAS-UOI/violin-pd",
+        "receiver": "photodiode",
+        "reason_zh": "约阿尼纳大学实验室公开了STM32H743ZI2发射与接收固件、LED驱动和光电二极管模拟前端说明，适合参考MCU侧的可见光链路搭建。",
+        "limitations_zh": "这是低星实验室演示原型，按人工核验实现参考收录，不属于已证实广泛使用的高影响项目；演示还包含两端Linux主机，移植成轻型机载独立系统需验证功耗、缓存、视场和环境光表现。",
+        "source_url": "https://github.com/VCAS-UOI/violin-pd",
+        "kind": "implementation",
+        "license_note": "仓库含LICENSE，但GitHub元数据标为NOASSERTION；使用时应检查源文件及硬件各部分的具体许可。",
+        "verified": true,
+        "checked_at": "2026-11-05T11:58:05.108Z"
+      },
+      "metadata_fetched_at": "2026-11-05T11:44:51.690Z",
+      "first_seen": "2026-11-05T11:40:55.096Z",
+      "rule_matches": [
+        {
+          "task_id": "optical",
+          "task": "空中系统可见光通信链路",
+          "keywords": [
+            "visible light communication",
+            "光电二极管"
+          ]
+        }
+      ],
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
+      "recommendation": {
+        "lane": "reference",
+        "score": 30.3,
+        "reason_zh": "约阿尼纳大学实验室公开了STM32H743ZI2发射与接收固件、LED驱动和光电二极管模拟前端说明，适合参考MCU侧的可见光链路搭建；参考资料，尚无近期或长期影响的充分证据",
+        "receiver": "photodiode",
+        "evidence_url": "https://github.com/VCAS-UOI/violin-pd",
+        "limitations_zh": "这是低星实验室演示原型，按人工核验实现参考收录，不属于已证实广泛使用的高影响项目；演示还包含两端Linux主机，移植成轻型机载独立系统需验证功耗、缓存、视场和环境光表现。",
+        "quality": "implementation",
+        "metric": {
+          "label": "GitHub Stars",
+          "value": 3,
+          "source": "GitHub",
+          "source_url": "https://github.com/VCAS-UOI/violin-pd",
+          "checked_at": "2026-11-05T11:44:51.690Z"
+        }
+      },
+      "relevance": 46.9
+    },
+    {
+      "id": "ziweiWWANG/Event-Beacon-Communication",
+      "full_name": "ziweiWWANG/Event-Beacon-Communication",
+      "name": "Event-Beacon-Communication",
+      "owner": "ziweiWWANG",
+      "description_en": "Code and data for paper: \"Smart Visual Beacons with Asynchronous Optical Communications using Event Cameras\", IROS 2022. A novel smart visual beacon architecture with both LED modulation and event camera demodulation algorithms.",
+      "description_zh": "论文《Smart Visual Beacons with Asynchronous Optical Communications using Event Cameras》（IROS 2022）的代码和数据。一种新颖的智能视觉信标架构，包含 LED 调制和事件相机解调算法。",
+      "highlight_zh": "",
+      "stars": 14,
+      "forks": 2,
+      "language": "MATLAB",
+      "topics": [],
+      "created_at": "2022-07-07T06:57:06Z",
+      "pushed_at": "2023-05-02T05:29:58Z",
+      "url": "https://github.com/ziweiWWANG/Event-Beacon-Communication",
+      "homepage": "",
+      "license": null,
+      "archived": false,
+      "source": "general",
+      "categories": [
+        "optical",
+        "aim"
+      ],
+      "readme_excerpt": "communication; LED; camera; event camera; decoder; decoding; modulation; prototype; RIS",
+      "optical_review": {
+        "full_name": "ziweiWWANG/Event-Beacon-Communication",
+        "receiver": "event_camera",
+        "reason_zh": "IROS 2022作者提供事件相机解码脚本和LED样例数据，可直接检查异步编码的消息恢复与误码表现。",
+        "limitations_zh": "低星研究基线，不是广泛部署的成熟协议栈；只公开部分MATLAB解码与数据，仍需发射端硬件、事件相机和嵌入式移植。",
+        "source_url": "https://github.com/ziweiWWANG/Event-Beacon-Communication",
+        "kind": "implementation",
+        "license_note": "README注明For academic use only；不能当作已核验的宽松开源许可。",
+        "verified": true,
+        "checked_at": "2026-11-05T11:58:05.108Z"
+      },
+      "metadata_fetched_at": "2026-11-05T11:44:51.690Z",
+      "first_seen": "2026-11-05T11:40:55.096Z",
+      "rule_matches": [
+        {
+          "task_id": "optical",
+          "task": "空中系统可见光通信链路",
+          "keywords": []
+        }
+      ],
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
+      "recommendation": {
+        "lane": "reference",
+        "score": 30.59,
+        "reason_zh": "IROS 2022作者提供事件相机解码脚本和LED样例数据，可直接检查异步编码的消息恢复与误码表现；参考资料，尚无近期或长期影响的充分证据",
+        "receiver": "event_camera",
+        "evidence_url": "https://github.com/ziweiWWANG/Event-Beacon-Communication",
+        "limitations_zh": "低星研究基线，不是广泛部署的成熟协议栈；只公开部分MATLAB解码与数据，仍需发射端硬件、事件相机和嵌入式移植。",
+        "quality": "implementation",
+        "metric": {
+          "label": "GitHub Stars",
+          "value": 14,
+          "source": "GitHub",
+          "source_url": "https://github.com/ziweiWWANG/Event-Beacon-Communication",
+          "checked_at": "2026-11-05T11:44:51.690Z"
+        }
+      },
+      "relevance": 43.77
+    },
     {
       "id": "ultralytics/ultralytics",
       "full_name": "ultralytics/ultralytics",
@@ -41,7 +235,7 @@
           ]
         }
       ],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 30.8
     },
     {
@@ -89,8 +283,74 @@
           ]
         }
       ],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 26.54
+    },
+    {
+      "id": "jufgutierrezgo/python-vlc-rolling",
+      "full_name": "jufgutierrezgo/python-vlc-rolling",
+      "name": "python-vlc-rolling",
+      "owner": "jufgutierrezgo",
+      "description_en": "This repository contains a python package project to simulate rolling shutter-based optical camera communication using the color shift keying modulation.",
+      "description_zh": "该仓库包含一个 Python 包项目，用于模拟使用色移键控调制的基于卷帘快门的光学相机通信。",
+      "highlight_zh": "",
+      "stars": 5,
+      "forks": 0,
+      "language": "Python",
+      "topics": [],
+      "created_at": "2025-02-19T19:42:30Z",
+      "pushed_at": "2025-08-20T19:21:08Z",
+      "url": "https://github.com/jufgutierrezgo/python-vlc-rolling",
+      "homepage": null,
+      "license": "MIT",
+      "archived": false,
+      "source": "general",
+      "categories": [
+        "optical",
+        "other"
+      ],
+      "readme_excerpt": "visible light communication; optical camera communication; visible light; communication; LED; camera; rolling shutter; receiver; transmitter; decoding; modulation; simulation; theoretical",
+      "optical_review": {
+        "full_name": "jufgutierrezgo/python-vlc-rolling",
+        "receiver": "rolling_shutter_camera",
+        "reason_zh": "该Python包可模拟滚动快门相机接收、CSK颜色调制、曝光与读出、LoS/NLoS及噪声，适合在制作硬件前筛查相机和调制参数。",
+        "limitations_zh": "这是低星仿真工具，不是实机固件或高影响成熟项目；仿真结果不能替代移动、强环境光和实际相机自动曝光条件下的通信试验，CSK还须受比赛通信灯颜色条件约束。",
+        "source_url": "https://github.com/jufgutierrezgo/python-vlc-rolling",
+        "kind": "simulation",
+        "license_note": "MIT。",
+        "verified": true,
+        "checked_at": "2026-11-05T11:58:05.108Z"
+      },
+      "metadata_fetched_at": "2026-11-05T11:44:51.690Z",
+      "first_seen": "2026-11-05T11:40:55.096Z",
+      "rule_matches": [
+        {
+          "task_id": "optical",
+          "task": "空中系统可见光通信链路",
+          "keywords": [
+            "optical camera communication",
+            "rolling shutter"
+          ]
+        }
+      ],
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
+      "recommendation": {
+        "lane": "reference",
+        "score": 7,
+        "reason_zh": "该Python包可模拟滚动快门相机接收、CSK颜色调制、曝光与读出、LoS/NLoS及噪声，适合在制作硬件前筛查相机和调制参数；仅作仿真参考",
+        "receiver": "rolling_shutter_camera",
+        "evidence_url": "https://github.com/jufgutierrezgo/python-vlc-rolling",
+        "limitations_zh": "这是低星仿真工具，不是实机固件或高影响成熟项目；仿真结果不能替代移动、强环境光和实际相机自动曝光条件下的通信试验，CSK还须受比赛通信灯颜色条件约束。",
+        "quality": "simulation",
+        "metric": {
+          "label": "GitHub Stars",
+          "value": 5,
+          "source": "GitHub",
+          "source_url": "https://github.com/jufgutierrezgo/python-vlc-rolling",
+          "checked_at": "2026-11-05T11:44:51.690Z"
+        }
+      },
+      "relevance": 23.78
     },
     {
       "id": "DeepLabCut/DeepLabCut",
@@ -130,7 +390,7 @@
           ]
         }
       ],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 20.76
     },
     {
@@ -182,7 +442,7 @@
           "keywords": []
         }
       ],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 20.11
     },
     {
@@ -215,7 +475,7 @@
       ],
       "first_seen": "2026-10-20T10:28:38.699Z",
       "rule_matches": [],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 20
     },
     {
@@ -254,7 +514,7 @@
           ]
         }
       ],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 19.82
     },
     {
@@ -287,7 +547,7 @@
       ],
       "first_seen": "2026-10-20T10:28:38.699Z",
       "rule_matches": [],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 19.77
     },
     {
@@ -320,7 +580,7 @@
       ],
       "first_seen": "2024-07-14T02:44:12Z",
       "rule_matches": [],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 19.54
     },
     {
@@ -362,8 +622,76 @@
           ]
         }
       ],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 19.42
+    },
+    {
+      "id": "ZJU-FAST-Lab/Fast-Drone-250",
+      "full_name": "ZJU-FAST-Lab/Fast-Drone-250",
+      "name": "Fast-Drone-250",
+      "owner": "ZJU-FAST-Lab",
+      "description_en": "hardware and software design of the 250mm autonomous drone",
+      "description_zh": "250mm 自主无人机的硬件与软件设计",
+      "highlight_zh": "",
+      "stars": 2575,
+      "forks": 425,
+      "language": "C++",
+      "topics": [],
+      "url": "https://github.com/ZJU-FAST-Lab/Fast-Drone-250",
+      "homepage": "",
+      "pushed_at": "2022-11-09T08:02:26Z",
+      "created_at": "2021-09-28T13:59:24Z",
+      "source": "general",
+      "first_seen": "2026-11-05T09:19:12.555Z",
+      "categories": [
+        "aerial"
+      ],
+      "rule_matches": [
+        {
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "keywords": [
+            "无人机"
+          ]
+        }
+      ],
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
+      "relevance": 19.41
+    },
+    {
+      "id": "bitcraze/crazyflie-firmware",
+      "full_name": "bitcraze/crazyflie-firmware",
+      "name": "crazyflie-firmware",
+      "owner": "bitcraze",
+      "description_en": "The main firmware for the Crazyflie Nano Quadcopter, Crazyflie Bolt Quadcopter and Roadrunner Positioning Tag.",
+      "description_zh": "Crazyflie 纳米四旋翼、Crazyflie Bolt 四旋翼和 Roadrunner 定位标签的主固件。",
+      "highlight_zh": "",
+      "stars": 1568,
+      "forks": 1296,
+      "language": "C",
+      "topics": [],
+      "url": "https://github.com/bitcraze/crazyflie-firmware",
+      "homepage": "",
+      "pushed_at": "2026-11-04T10:18:20Z",
+      "created_at": "2014-02-21T14:22:05Z",
+      "source": "general",
+      "first_seen": "2026-11-05T09:19:12.555Z",
+      "categories": [
+        "aerial",
+        "sim"
+      ],
+      "rule_matches": [
+        {
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "keywords": [
+            "quadcopter",
+            "四旋翼"
+          ]
+        }
+      ],
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
+      "relevance": 19.2
     },
     {
       "id": "mikel-brostrom/boxmot",
@@ -403,8 +731,75 @@
           ]
         }
       ],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 18.92
+    },
+    {
+      "id": "uzh-rpg/rpg_mpc",
+      "full_name": "uzh-rpg/rpg_mpc",
+      "name": "rpg_mpc",
+      "owner": "uzh-rpg",
+      "description_en": "Model Predictive Control for Quadrotors with extension to Perception-Aware MPC",
+      "description_zh": "面向四旋翼的模型预测控制，并扩展至感知感知 MPC",
+      "highlight_zh": "",
+      "stars": 525,
+      "forks": 94,
+      "language": "C",
+      "topics": [],
+      "url": "https://github.com/uzh-rpg/rpg_mpc",
+      "homepage": null,
+      "pushed_at": "2022-04-04T13:21:48Z",
+      "created_at": "2018-05-14T14:48:15Z",
+      "source": "general",
+      "first_seen": "2026-11-05T09:19:49.277Z",
+      "categories": [
+        "aerial"
+      ],
+      "rule_matches": [
+        {
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "keywords": [
+            "四旋翼"
+          ]
+        }
+      ],
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
+      "relevance": 18.72
+    },
+    {
+      "id": "IMRCLab/crazyswarm2",
+      "full_name": "IMRCLab/crazyswarm2",
+      "name": "crazyswarm2",
+      "owner": "IMRCLab",
+      "description_en": "A Large Quadcopter Swarm",
+      "description_zh": "大型四旋翼集群",
+      "highlight_zh": "",
+      "stars": 264,
+      "forks": 137,
+      "language": "Python",
+      "topics": [],
+      "url": "https://github.com/IMRCLab/crazyswarm2",
+      "homepage": "",
+      "pushed_at": "2026-11-04T21:55:05Z",
+      "created_at": "2021-11-04T17:12:54Z",
+      "source": "general",
+      "first_seen": "2026-11-05T09:19:12.555Z",
+      "categories": [
+        "aerial"
+      ],
+      "rule_matches": [
+        {
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "keywords": [
+            "quadcopter",
+            "四旋翼"
+          ]
+        }
+      ],
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
+      "relevance": 18.42
     },
     {
       "id": "IDEA-Research/GroundingDINO",
@@ -435,7 +830,7 @@
       ],
       "first_seen": "2024-08-12T08:52:02Z",
       "rule_matches": [],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 18.03
     },
     {
@@ -468,7 +863,7 @@
       ],
       "first_seen": "2025-06-08T03:52:54Z",
       "rule_matches": [],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 18.03
     },
     {
@@ -498,25 +893,25 @@
       ],
       "first_seen": "2024-08-07T18:20:33Z",
       "rule_matches": [],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 17.77
     },
     {
-      "id": "ZJU-FAST-Lab/Fast-Drone-250",
-      "full_name": "ZJU-FAST-Lab/Fast-Drone-250",
-      "name": "Fast-Drone-250",
-      "owner": "ZJU-FAST-Lab",
-      "description_en": "hardware and software design of the 250mm autonomous drone",
-      "description_zh": "250mm 自主无人机的硬件与软件设计",
+      "id": "HKUST-Aerial-Robotics/VINS-Fusion",
+      "full_name": "HKUST-Aerial-Robotics/VINS-Fusion",
+      "name": "VINS-Fusion",
+      "owner": "HKUST-Aerial-Robotics",
+      "description_en": "An optimization-based multi-sensor state estimator",
+      "description_zh": "基于优化的多传感器状态估计器",
       "highlight_zh": "",
-      "stars": 2575,
-      "forks": 425,
+      "stars": 4772,
+      "forks": 1636,
       "language": "C++",
       "topics": [],
-      "url": "https://github.com/ZJU-FAST-Lab/Fast-Drone-250",
+      "url": "https://github.com/HKUST-Aerial-Robotics/VINS-Fusion",
       "homepage": "",
-      "pushed_at": "2022-11-09T08:02:26Z",
-      "created_at": "2021-09-28T13:59:24Z",
+      "pushed_at": "2024-05-23T09:17:03Z",
+      "created_at": "2019-01-10T16:14:12Z",
       "source": "general",
       "first_seen": "2026-11-05T09:19:12.555Z",
       "categories": [
@@ -527,44 +922,17 @@
           "task_id": "aerial",
           "task": "空中系统自主飞行与机库交互",
           "keywords": []
-        }
-      ],
-      "rules_fingerprint": "1809be74dc878da7",
-      "relevance": 17.41
-    },
-    {
-      "id": "bitcraze/crazyflie-firmware",
-      "full_name": "bitcraze/crazyflie-firmware",
-      "name": "crazyflie-firmware",
-      "owner": "bitcraze",
-      "description_en": "The main firmware for the Crazyflie Nano Quadcopter, Crazyflie Bolt Quadcopter and Roadrunner Positioning Tag.",
-      "description_zh": "Crazyflie 纳米四旋翼、Crazyflie Bolt 四旋翼和 Roadrunner 定位标签的主固件。",
-      "highlight_zh": "",
-      "stars": 1568,
-      "forks": 1296,
-      "language": "C",
-      "topics": [],
-      "url": "https://github.com/bitcraze/crazyflie-firmware",
-      "homepage": "",
-      "pushed_at": "2026-11-04T10:18:20Z",
-      "created_at": "2014-02-21T14:22:05Z",
-      "source": "general",
-      "first_seen": "2026-11-05T09:19:12.555Z",
-      "categories": [
-        "aerial",
-        "sim"
-      ],
-      "rule_matches": [
+        },
         {
-          "task_id": "aerial",
-          "task": "空中系统自主飞行与机库交互",
+          "task_id": "radar",
+          "task": "雷达目标探测与信息融合",
           "keywords": [
-            "quadcopter"
+            "状态估计"
           ]
         }
       ],
-      "rules_fingerprint": "1809be74dc878da7",
-      "relevance": 17.2
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
+      "relevance": 17.68
     },
     {
       "id": "labmlai/annotated_deep_learning_paper_implementations",
@@ -605,72 +973,8 @@
           ]
         }
       ],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 16.83
-    },
-    {
-      "id": "uzh-rpg/rpg_mpc",
-      "full_name": "uzh-rpg/rpg_mpc",
-      "name": "rpg_mpc",
-      "owner": "uzh-rpg",
-      "description_en": "Model Predictive Control for Quadrotors with extension to Perception-Aware MPC",
-      "description_zh": "面向四旋翼的模型预测控制，并扩展至感知感知 MPC",
-      "highlight_zh": "",
-      "stars": 525,
-      "forks": 94,
-      "language": "C",
-      "topics": [],
-      "url": "https://github.com/uzh-rpg/rpg_mpc",
-      "homepage": null,
-      "pushed_at": "2022-04-04T13:21:48Z",
-      "created_at": "2018-05-14T14:48:15Z",
-      "source": "general",
-      "first_seen": "2026-11-05T09:19:49.277Z",
-      "categories": [
-        "aerial"
-      ],
-      "rule_matches": [
-        {
-          "task_id": "aerial",
-          "task": "空中系统自主飞行与机库交互",
-          "keywords": []
-        }
-      ],
-      "rules_fingerprint": "1809be74dc878da7",
-      "relevance": 16.72
-    },
-    {
-      "id": "IMRCLab/crazyswarm2",
-      "full_name": "IMRCLab/crazyswarm2",
-      "name": "crazyswarm2",
-      "owner": "IMRCLab",
-      "description_en": "A Large Quadcopter Swarm",
-      "description_zh": "大型四旋翼集群",
-      "highlight_zh": "",
-      "stars": 264,
-      "forks": 137,
-      "language": "Python",
-      "topics": [],
-      "url": "https://github.com/IMRCLab/crazyswarm2",
-      "homepage": "",
-      "pushed_at": "2026-11-04T21:55:05Z",
-      "created_at": "2021-11-04T17:12:54Z",
-      "source": "general",
-      "first_seen": "2026-11-05T09:19:12.555Z",
-      "categories": [
-        "aerial"
-      ],
-      "rule_matches": [
-        {
-          "task_id": "aerial",
-          "task": "空中系统自主飞行与机库交互",
-          "keywords": [
-            "quadcopter"
-          ]
-        }
-      ],
-      "rules_fingerprint": "1809be74dc878da7",
-      "relevance": 16.42
     },
     {
       "id": "FoundationVision/ByteTrack",
@@ -708,39 +1012,8 @@
           ]
         }
       ],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 15.83
-    },
-    {
-      "id": "HKUST-Aerial-Robotics/VINS-Fusion",
-      "full_name": "HKUST-Aerial-Robotics/VINS-Fusion",
-      "name": "VINS-Fusion",
-      "owner": "HKUST-Aerial-Robotics",
-      "description_en": "An optimization-based multi-sensor state estimator",
-      "description_zh": "基于优化的多传感器状态估计器",
-      "highlight_zh": "",
-      "stars": 4772,
-      "forks": 1636,
-      "language": "C++",
-      "topics": [],
-      "url": "https://github.com/HKUST-Aerial-Robotics/VINS-Fusion",
-      "homepage": "",
-      "pushed_at": "2024-05-23T09:17:03Z",
-      "created_at": "2019-01-10T16:14:12Z",
-      "source": "general",
-      "first_seen": "2026-11-05T09:19:12.555Z",
-      "categories": [
-        "aerial"
-      ],
-      "rule_matches": [
-        {
-          "task_id": "aerial",
-          "task": "空中系统自主飞行与机库交互",
-          "keywords": []
-        }
-      ],
-      "rules_fingerprint": "1809be74dc878da7",
-      "relevance": 15.68
     },
     {
       "id": "open-mmlab/mmdetection",
@@ -772,7 +1045,7 @@
       ],
       "first_seen": "2024-08-21T02:01:07Z",
       "rule_matches": [],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 15.52
     },
     {
@@ -803,7 +1076,7 @@
           "keywords": []
         }
       ],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 15.44
     },
     {
@@ -834,7 +1107,7 @@
           "keywords": []
         }
       ],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 15.35
     },
     {
@@ -867,7 +1140,7 @@
       ],
       "first_seen": "2024-08-19T12:57:04Z",
       "rule_matches": [],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 15.15
     },
     {
@@ -906,7 +1179,7 @@
           ]
         }
       ],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 15.11
     },
     {
@@ -943,7 +1216,7 @@
           "keywords": []
         }
       ],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 14.98
     },
     {
@@ -974,7 +1247,7 @@
           "keywords": []
         }
       ],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 14.83
     },
     {
@@ -1000,7 +1273,7 @@
       ],
       "first_seen": "2024-09-18T17:46:55Z",
       "rule_matches": [],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 14.74
     },
     {
@@ -1050,7 +1323,7 @@
           ]
         }
       ],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 13.7
     },
     {
@@ -1093,7 +1366,7 @@
           ]
         }
       ],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 13.69
     },
     {
@@ -1126,7 +1399,7 @@
       ],
       "first_seen": "2026-10-20T10:28:38.699Z",
       "rule_matches": [],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 13.11
     },
     {
@@ -1159,7 +1432,7 @@
       ],
       "first_seen": "2026-10-20T10:28:38.699Z",
       "rule_matches": [],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 13.03
     },
     {
@@ -1209,7 +1482,7 @@
           ]
         }
       ],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 12.17
     },
     {
@@ -1242,7 +1515,7 @@
       ],
       "first_seen": "2026-06-01T17:51:32Z",
       "rule_matches": [],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 12.02
     },
     {
@@ -1283,7 +1556,7 @@
           ]
         }
       ],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 11.49
     },
     {
@@ -1324,165 +1597,9 @@
           ]
         }
       ],
-      "rules_fingerprint": "1809be74dc878da7",
+      "rules_fingerprint": "f0ffbe77e71ea7b6",
       "relevance": 10.9
-    },
-    {
-      "id": "gaoxiang12/slam_in_autonomous_driving",
-      "full_name": "gaoxiang12/slam_in_autonomous_driving",
-      "name": "slam_in_autonomous_driving",
-      "owner": "gaoxiang12",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/6635511?v=4",
-      "description_en": "《自动驾驶中的SLAM技术》对应开源代码",
-      "description_zh": "《自动驾驶中的SLAM技术》对应开源代码，涵盖多种 SLAM 算法实现。",
-      "highlight_zh": "可用于学习并实现哨兵 SLAM 算法，提升建图与定位能力。",
-      "stars": 2609,
-      "forks": 590,
-      "language": "C++",
-      "topics": [],
-      "url": "https://github.com/gaoxiang12/slam_in_autonomous_driving",
-      "homepage": "",
-      "created_at": "2023-02-10T05:29:20Z",
-      "pushed_at": "2025-11-13T06:14:24Z",
-      "source": "general",
-      "categories": [
-        "slam"
-      ],
-      "first_seen": "2025-11-13T06:14:24Z",
-      "rule_matches": [
-        {
-          "task_id": "sentry",
-          "task": "哨兵机器人自主导航与决策",
-          "keywords": [
-            "SLAM",
-            "SLAM"
-          ]
-        }
-      ],
-      "rules_fingerprint": "1809be74dc878da7",
-      "relevance": 10.42
-    },
-    {
-      "id": "ShisatoYano/AutonomousVehicleControlBeginnersGuide",
-      "full_name": "ShisatoYano/AutonomousVehicleControlBeginnersGuide",
-      "name": "AutonomousVehicleControlBeginnersGuide",
-      "owner": "ShisatoYano",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/40762735?v=4",
-      "description_en": "Python sample codes and documents about Autonomous vehicle control algorithm. This project can be used as a technical guide book to study the algorithms and the software architectures for beginners.",
-      "description_zh": "面向初学者的自动驾驶控制算法 Python 示例代码与文档，可作为技术指南学习相关算法与软件架构。",
-      "highlight_zh": "可借鉴其定位与导航架构用于哨兵建图导航。",
-      "stars": 1930,
-      "forks": 318,
-      "language": "Python",
-      "topics": [
-        "algorithm",
-        "autonomous-driving",
-        "autonomous-navigation",
-        "autonomous-vehicles",
-        "calibration",
-        "localization"
-      ],
-      "url": "https://github.com/ShisatoYano/AutonomousVehicleControlBeginnersGuide",
-      "homepage": "https://www.eureka-moments-blog.com/",
-      "created_at": "2022-07-01T14:00:16Z",
-      "pushed_at": "2026-11-01T13:16:38Z",
-      "source": "general",
-      "categories": [
-        "nav"
-      ],
-      "first_seen": "2026-11-03T13:05:54.899Z",
-      "rule_matches": [
-        {
-          "task_id": "sentry",
-          "task": "哨兵机器人自主导航与决策",
-          "keywords": [
-            "autonomous navigation"
-          ]
-        }
-      ],
-      "rules_fingerprint": "1809be74dc878da7",
-      "relevance": 10.29
-    },
-    {
-      "id": "DLR-RM/stable-baselines3",
-      "full_name": "DLR-RM/stable-baselines3",
-      "name": "stable-baselines3",
-      "owner": "DLR-RM",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/25227811?v=4",
-      "description_en": "PyTorch version of Stable Baselines, reliable implementations of reinforcement learning algorithms.",
-      "description_zh": "Stable Baselines的PyTorch版本，可靠的强化学习算法实现。",
-      "highlight_zh": "可用于训练决策强化学习模型。",
-      "stars": 13961,
-      "forks": 2180,
-      "language": "Python",
-      "topics": [
-        "baselines",
-        "gsde",
-        "gym",
-        "machine-learning",
-        "openai",
-        "python"
-      ],
-      "url": "https://github.com/DLR-RM/stable-baselines3",
-      "homepage": "https://stable-baselines3.readthedocs.io",
-      "created_at": "2020-05-05T05:52:26Z",
-      "pushed_at": "2026-10-26T09:35:00Z",
-      "source": "general",
-      "categories": [
-        "rl"
-      ],
-      "first_seen": "2026-05-11T15:36:50Z",
-      "rule_matches": [
-        {
-          "task_id": "strategy",
-          "task": "多机协同与战术决策",
-          "keywords": [
-            "reinforcement learning",
-            "强化学习"
-          ]
-        }
-      ],
-      "rules_fingerprint": "1809be74dc878da7",
-      "relevance": 10.14
-    },
-    {
-      "id": "UZ-SLAMLab/ORB_SLAM3",
-      "full_name": "UZ-SLAMLab/ORB_SLAM3",
-      "name": "ORB_SLAM3",
-      "owner": "UZ-SLAMLab",
-      "owner_avatar": "https://avatars.githubusercontent.com/u/25055183?v=4",
-      "description_en": "ORB-SLAM3: An Accurate Open-Source Library for Visual, Visual-Inertial and Multi-Map SLAM",
-      "description_zh": "ORB-SLAM3：一个精确的开源视觉、视觉-惯性及多地图SLAM库。",
-      "highlight_zh": "可用于哨兵视觉SLAM定位与建图。",
-      "stars": 9219,
-      "forks": 3203,
-      "language": "C++",
-      "topics": [
-        "slam-algorithms"
-      ],
-      "url": "https://github.com/UZ-SLAMLab/ORB_SLAM3",
-      "homepage": "",
-      "created_at": "2020-07-18T07:47:46Z",
-      "pushed_at": "2024-07-24T08:41:52Z",
-      "source": "general",
-      "categories": [
-        "aim",
-        "slam"
-      ],
-      "first_seen": "2024-07-24T08:41:52Z",
-      "rule_matches": [
-        {
-          "task_id": "sentry",
-          "task": "哨兵机器人自主导航与决策",
-          "keywords": [
-            "SLAM",
-            "SLAM"
-          ]
-        }
-      ],
-      "rules_fingerprint": "1809be74dc878da7",
-      "relevance": 9.96
     }
   ],
-  "rules_fingerprint": "1809be74dc878da7"
+  "rules_fingerprint": "f0ffbe77e71ea7b6"
 }

@@ -48,6 +48,7 @@ export default {
         return json({ error: "缺少有效的标题或摘要" }, 400);
       }
       if (title.length > 1000 || abstract.length > 10000) return json({ error: "标题或摘要过长" }, 413);
+      if (!abstract.trim()) return json({ error: "来源未提供摘要，请打开原文；无法仅凭标题生成精读" }, 422);
       if (!env.AI_API_KEY) return json({ error: "未配置站内翻译密钥，请在 Cloudflare 添加 AI_API_KEY" }, 503);
       try {
         return json(await translateOnePaper({ title, abstract }, { env, timeoutMs: 60000 }));

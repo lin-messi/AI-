@@ -5,6 +5,7 @@ import { useApp } from "./AppProvider";
 import { STRINGS } from "@/lib/i18n";
 import { timeAgo } from "@/lib/format";
 import { downloadItem } from "@/lib/paperDownload";
+import RecommendationNote from "./RecommendationNote";
 
 // 主语言对应的小圆点颜色（覆盖常见语言，其余用默认色）
 const LANG_COLORS = {
@@ -36,7 +37,7 @@ function fmtStars(n) {
 }
 
 export default function RepoCard({ repo, tags, badge, isNew }) {
-  const { lang, favs, reads, toggleFav, toggleRead } = useApp();
+  const { lang, favs, reads, toggleFav, toggleRead, ready } = useApp();
   const t = STRINGS[lang === "en" ? "en" : "zh"];
 
   const isFav = favs.has(repo.id);
@@ -142,6 +143,7 @@ export default function RepoCard({ repo, tags, badge, isNew }) {
         </p>
       )}
 
+      <RecommendationNote item={repo} />
       <div className="paper-actions">
         <a
           className="btn active"
@@ -168,7 +170,7 @@ export default function RepoCard({ repo, tags, badge, isNew }) {
 
       <div className="card-foot">
         <span className="time">
-          {repo.pushed_at ? timeAgo(repo.pushed_at, lang) : ""}
+          {repo.pushed_at ? (ready ? timeAgo(repo.pushed_at, lang) : repo.pushed_at.slice(0, 10)) : ""}
         </span>
         <div className="card-actions">
           <button

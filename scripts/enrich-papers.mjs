@@ -43,7 +43,7 @@ export async function translatePapersFull(papers) {
     console.log("（未配置 AI_API_KEY，跳过论文精读翻译）");
     return 0;
   }
-  const todo = papers.filter((p) => !p.digest_zh || !p.title_zh);
+  const todo = papers.filter((p) => (p.abstract_en || "").trim() && (!p.digest_zh || !p.title_zh));
   if (!todo.length) return 0;
   console.log(`使用 ${model} 生成精读 ${todo.length} 篇…`);
   const batches = chunk(todo, FULL_BATCH);
@@ -110,6 +110,7 @@ export async function translatePaperTitles(papers) {
 
 // —— 按需翻译单篇（供运行时 API 调用）——
 export async function translateOnePaper({ title, abstract }, options = {}) {
+  if (typeof abstract !== "string" || !abstract.trim()) throw new Error("来源未提供摘要，请打开原文；无法仅凭标题生成精读");
   const { enabled } = getAIConfig(options.env);
   if (!enabled) throw new Error("未配置 AI_API_KEY");
   const json = await chatJSONWithRetry(

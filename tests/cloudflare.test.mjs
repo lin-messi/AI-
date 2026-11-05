@@ -33,7 +33,8 @@ test("translation rejects invalid inputs without making AI calls", async () => {
     assert.equal((await worker.fetch(request("/api/translate", body), {})).status, expected);
   }
   assert.equal((await worker.fetch(request("/api/translate", { title: "Paper" }, { origin: "https://evil.example" }), {})).status, 403);
-  assert.equal((await worker.fetch(request("/api/translate", { title: "Paper" }), {})).status, 503);
+  assert.equal((await worker.fetch(request("/api/translate", { title: "Paper" }), {})).status, 422);
+  assert.equal((await worker.fetch(request("/api/translate", { title: "Paper", abstract: "Original abstract" }), {})).status, 503);
   assert.equal((await worker.fetch(new Request("https://example.com/api/translate", { method: "POST", headers: { "Content-Type": "application/json" }, body: "{" }), {})).status, 400);
 });
 

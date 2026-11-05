@@ -3,6 +3,7 @@
 // 开源库：关键词三档命中 + topic 含 robomaster + 星标轻量加权（Q33）。
 import { RELEVANCE_WEIGHTS, RELEVANCE_TIER_SCORE, RM_RULES } from "./robomaster-feeds.mjs";
 import { hasKeyword, taskBonus } from "./rm-recommendation-policy.mjs";
+import { isOpticalRelevant, recommendationProfile } from "./optical-policy.mjs";
 
 // 统计三档关键词命中得分（每词命中只计一次，避免长文堆词刷分）。
 function keywordScore(text) {
@@ -22,6 +23,7 @@ export function scorePaperRelevance(p) {
   const text = `${p.title_en || ""} ${p.title_zh || ""} ${p.abstract_en || ""} ${p.abstract_zh || ""}`;
   let score = keywordScore(text) + taskBonus(p, RM_RULES);
   if (p.conf) score += (p.confWeight || 0);
+  if (isOpticalRelevant(p)) score += recommendationProfile(p, "paper").score;
   return score;
 }
 
@@ -33,5 +35,6 @@ export function scoreRepoRelevance(r) {
   if (topics.includes("robomaster")) score += 5;
   // 星标 log 加权（≤约5分），仅作轻量 tie-break，不让大库压过强相关小库。
   score += Math.min(5, Math.log10((r.stars || 0) + 1));
+  if (isOpticalRelevant(r)) score += recommendationProfile(r, "repo").score;
   return Math.round(score * 100) / 100;
 }

@@ -35,12 +35,15 @@ function buildMessages(batch, kind) {
           i: idx,
           title: it.title_zh || it.title_en || "",
           abstract: (it.abstract_zh || it.abstract_en || "").slice(0, 600),
+          source_abstract_available: Boolean(it.abstract_en?.trim()),
+          implementation: it.optical_review ? { kind: it.optical_review.kind, receiver: it.optical_review.receiver, reason: it.optical_review.reason_zh, limitation: it.optical_review.limitations_zh } : undefined,
         }
       : {
           i: idx,
           name: it.full_name,
           desc: (it.description_zh || it.description_en || "").slice(0, 300),
           topics: it.topics || [],
+          implementation: it.optical_review ? { receiver: it.optical_review.receiver, limitation: it.optical_review.limitations_zh } : undefined,
         }
   );
 
@@ -61,6 +64,7 @@ function buildMessages(batch, kind) {
 
 要求：实事求是、不夸大；judgement 要严格，大多数通用成果应是 mid 或 low，只有真正切题的才给 high。
 无人机项目须区分算法可借鉴与整机可直接参赛，说明GPS、外部动捕或通信等额外前提。参照答疑，不能笼统禁止无人机之间通信：应区分可见光、库内近场，以及飞行时与机库的链路；不能认可赛场Wi-Fi/BLE/UWB组网。不得建议给空中机器人安装发射机构。
+可见光通信论文应区分普通帧相机、滚动快门、事件相机、光电二极管或LED兼作接收器；既有算法也可用于机库链路，不强求论文出现无人机字样。结合#184区分额外通信LED与七颗航行外观灯，不能建议对航行外观灯做PWM调制。仿真、数据集、局部作者代码不等同于可直接部署的完整固件。
 严格返回 JSON：{"results":[{"i":0,"usage":"","task_id":"","value":"mid"}, ...]}
 
 输入数据：
