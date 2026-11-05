@@ -53,6 +53,7 @@ export async function translateRMContent(items, kind = "paper", {
           seen.add(row.i);
           const translated = {};
           for (const key of kind === "paper" ? ["title_zh", "abstract_zh"] : ["description_zh"]) {
+            if (key === "abstract_zh" && !filled(batch[row.i].abstract_en)) continue;
             if (filled(row[key]) && /[\u3400-\u9fff]/.test(row[key])) translated[key] = row[key].trim();
           }
           fillTranslationGaps(batch[row.i], translated, kind);

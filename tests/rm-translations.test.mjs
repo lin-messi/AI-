@@ -1,6 +1,12 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { fillTranslationGaps, translateRMContent, missingRMTranslation } from "../scripts/rm-translations.mjs";
+import { translateOnePaper, translatePapersFull } from "../scripts/enrich-papers.mjs";
+
+test("digest APIs and batch enrichment never invent content from a title without an abstract", async () => {
+  await assert.rejects(translateOnePaper({ title: "Only a title", abstract: "" }, { env: {} }), /来源未提供摘要/);
+  assert.equal(await translatePapersFull([{ title_en: "Only a title", abstract_en: "" }]), 0);
+});
 
 test("new translations fill old cumulative blanks without replacing good translations or metadata", () => {
   const old = { id: "same", title_zh: "", abstract_zh: " ", digest_zh: "已有精读", rm: { usage: "Old rules" }, first_seen: "old-date" };
@@ -54,4 +60,11 @@ test("new general repos get Chinese descriptions; unavailable AI never claims su
   const result = await translateRMContent([repo], "repo", { config: { enabled: true }, chat: async () => ({ results: [{ i: 0, description_zh: "自主飞行控制软件" }] }) });
   assert.equal(result.remaining, 0);
   assert.equal(repo.description_zh, "自主飞行控制软件");
+});
+
+test("a source with no original abstract never acquires a fabricated abstract from translation", async () => {
+  const item = { title_en: "Paper with DOI metadata only", abstract_en: "" };
+  await translateRMContent([item], "paper", { config: { enabled: true }, chat: async () => ({ results: [{ i: 0, title_zh: "仅有元数据的论文", abstract_zh: "不能当作原文摘要的内容" }] }) });
+  assert.equal(item.title_zh, "仅有元数据的论文");
+  assert.equal(item.abstract_zh, undefined);
 });

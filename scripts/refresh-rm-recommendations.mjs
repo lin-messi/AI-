@@ -3,7 +3,9 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { CATEGORIES, CATEGORY_RULES, RM_RULES, AERIAL_PAPERS_MIN, AERIAL_GENERAL_MIN, AERIAL_NATIVE_MIN, PAPERS_CUMULATIVE_MAX, GENERAL_MAX, REPOS_MAX, BACKFILL_DAYS_PAPERS } from "./robomaster-feeds.mjs";
+import { CATEGORIES, CATEGORY_RULES, RM_RULES, AERIAL_PAPERS_MIN, AERIAL_GENERAL_MIN, AERIAL_NATIVE_MIN, PAPERS_CUMULATIVE_MAX, GENERAL_MAX, REPOS_MAX, BACKFILL_DAYS_PAPERS, OPTICAL_PAPERS_MIN, OPTICAL_REPOS_MIN } from "./robomaster-feeds.mjs";
+import { isOpticalRelevant } from "./optical-policy.mjs";
+import { fillTranslationGaps } from "./rm-translations.mjs";
 import { annotateRules, classifyRM, itemText, isAerialRelevant, selectWithAerialCoverage, rulesFingerprint } from "./rm-recommendation-policy.mjs";
 import { scorePaperRelevance, scoreRepoRelevance } from "./relevance.mjs";
 
@@ -14,6 +16,14 @@ const idx = read("robomaster-index.json");
 const day = read(`robomaster/${idx.latest}.json`);
 const now = new Date().toISOString();
 const existing = new Map(day.papers.items.map(p => [p.id, p]));
+let optical = { papers: [], repos: [] };
+try { optical = read("rm-optical-library.json"); } catch {}
+for (const paper of optical.papers.filter(isOpticalRelevant)) {
+  const old = existing.get(paper.id);
+  const updated = { ...paper, first_seen: old?.first_seen || now };
+  if (old) fillTranslationGaps(updated, old);
+  existing.set(paper.id, updated);
+}
 for (const date of idx.dates) {
   if (Date.now() - Date.parse(date) > BACKFILL_DAYS_PAPERS * 86400000) continue;
   const archive = read(`robomaster/${date}.json`);
@@ -31,7 +41,7 @@ function update(item, kind) {
   return item;
 }
 const rank = (a, b) => b.relevance - a.relevance || (b.heat || b.stars || 0) - (a.heat || a.stars || 0);
-day.papers.items = selectWithAerialCoverage([...existing.values()].map(p => update(p, "paper")).sort(rank), PAPERS_CUMULATIVE_MAX, AERIAL_PAPERS_MIN);
+day.papers.items = selectWithAerialCoverage([...existing.values()].map(p => update(p, "paper")).sort(rank), PAPERS_CUMULATIVE_MAX, AERIAL_PAPERS_MIN, undefined, OPTICAL_PAPERS_MIN);
 day.papers.count = day.papers.items.length;
 day.repos.items = selectWithAerialCoverage(day.repos.items.map(r => update(r, "repo")).sort(rank), REPOS_MAX, AERIAL_NATIVE_MIN);
 day.repos.count = day.repos.items.length;
@@ -41,6 +51,12 @@ day.rules_season = RM_RULES.season;
 day.generatedAt = now;
 const general = read("robomaster-general.json");
 const repos = new Map(general.items.map(r => [r.id.toLowerCase(), r]));
+for (const repo of optical.repos.filter(isOpticalRelevant)) {
+  const old = repos.get(repo.id.toLowerCase());
+  const updated = { ...repo, first_seen: old?.first_seen || now };
+  if (old) fillTranslationGaps(updated, old, "repo");
+  repos.set(repo.id.toLowerCase(), updated);
+}
 const metadataFlag = process.argv.indexOf("--repo-metadata");
 if (metadataFlag !== -1) {
   const metadata = JSON.parse(fs.readFileSync(process.argv[metadataFlag + 1], "utf8"));
@@ -53,10 +69,10 @@ if (metadataFlag !== -1) {
       homepage: raw.homepage, pushed_at: raw.pushed_at, created_at: raw.created_at, source: "general", first_seen: old.first_seen || now });
   }
 }
-general.items = selectWithAerialCoverage([...repos.values()].map(r => update(r, "repo")).sort(rank), GENERAL_MAX, AERIAL_GENERAL_MIN);
+general.items = selectWithAerialCoverage([...repos.values()].map(r => update(r, "repo")).sort(rank), GENERAL_MAX, AERIAL_GENERAL_MIN, undefined, OPTICAL_REPOS_MIN);
 general.count = general.items.length;
 general.updatedAt = now;
 general.rules_fingerprint = day.rules_fingerprint;
 fs.writeFileSync(path.join(data, `robomaster/${idx.latest}.json`), JSON.stringify(day, null, 2) + "\n");
 fs.writeFileSync(path.join(data, "robomaster-general.json"), JSON.stringify(general, null, 2) + "\n");
-console.log(JSON.stringify({ date: idx.latest, aerialPapers: day.papers.items.filter(isAerialRelevant).length, aerialGeneral: general.items.filter(isAerialRelevant).length, rules: RM_RULES.season }));
+console.log(JSON.stringify({ date: idx.latest, aerialPapers: day.papers.items.filter(isAerialRelevant).length, aerialGeneral: general.items.filter(isAerialRelevant).length, opticalPapers: day.papers.items.filter(isOpticalRelevant).length, opticalRepos: general.items.filter(isOpticalRelevant).length, rules: RM_RULES.season }));

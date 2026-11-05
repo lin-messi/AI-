@@ -27,8 +27,11 @@ import {
   REPO_MIN_STARS,
   FEATURED_TOP,
   RM_RULES, AERIAL_ARXIV_QUERIES, AERIAL_PAPERS_MIN, AERIAL_NATIVE_MIN,
+  OPTICAL_ARXIV_QUERIES, OPTICAL_RECENT_DAYS, OPTICAL_PAPERS_MIN,
 } from "./robomaster-feeds.mjs";
-import { classifyRM, isAerialRelevant, selectWithAerialCoverage, annotateRules, rulesFingerprint } from "./rm-recommendation-policy.mjs";
+import { fetchOpticalLibrary } from "./fetch-rm-optical.mjs";
+import { isOpticalRelevant, rejectUnrelatedOpticalTopic } from "./optical-policy.mjs";
+import { classifyRM, isAerialRelevant, selectWithAerialCoverage, annotateRules, rulesFingerprint, hasKeyword } from "./rm-recommendation-policy.mjs";
 import { translatePapersFull } from "./enrich-papers.mjs";
 import { fillTranslationGaps, translateRMContent } from "./rm-translations.mjs";
 import { assessRMUsage } from "./enrich-rm-usage.mjs";
@@ -271,6 +274,13 @@ async function main() {
     raw.push(...await fetchArxivCat("无人机专项", query, 100));
     await sleep(3000);
   }
+  for (const query of OPTICAL_ARXIV_QUERIES) {
+    raw.push(...(await fetchArxivCat("可见光通信专项", query, 100)).map(p => ({ ...p, optical_query: true })));
+    await sleep(3000);
+  }
+  let opticalLibrary = { papers: [], repos: [] };
+  try { opticalLibrary = await fetchOpticalLibrary(); }
+  catch (error) { console.warn(`光通信核验库暂不可用：${error.message}`); }
   raw = dedupeBy(raw, (p) => (p.arxiv_id ? `a:${p.arxiv_id}` : p.id));
 
   // 顶会识别（comment 优先，标题/摘要兜底）——后续过滤/加权都依赖它
@@ -281,10 +291,12 @@ async function main() {
 
   // 关键词过滤（放宽 Q19/Q12）：强主题词单独命中 / 主题词+机器人语境 / 视觉顶会+主题词
   const pool = raw.filter((p) => {
+    if (rejectUnrelatedOpticalTopic(p)) return false;
+    if (isOpticalRelevant(p)) return true;
     if (isAerialRelevant(p)) return true;
     const text = (p.title_en + " " + p.abstract_en).toLowerCase();
-    if (STRONG_TOPIC_KW.some((k) => text.includes(k.toLowerCase()))) return true;
-    const topic = PAPER_TOPIC_KW.some((k) => text.includes(k.toLowerCase()));
+    if (STRONG_TOPIC_KW.some((k) => hasKeyword(text, k))) return true;
+    const topic = PAPER_TOPIC_KW.some((k) => hasKeyword(text, k));
     if (!topic) return false;
     const ctx = PAPER_CTX_KW.some((k) => text.includes(k.toLowerCase()));
     if (ctx) return true;
@@ -308,10 +320,10 @@ async function main() {
   const older = pool
     .filter((p) => {
       const h = hoursAgo(p.published_at);
-      return h > RECENT_DAYS_PAPERS * 24 && h <= BACKFILL_DAYS_PAPERS * 24;
+      return h > RECENT_DAYS_PAPERS * 24 && h <= (isOpticalRelevant(p) ? OPTICAL_RECENT_DAYS : BACKFILL_DAYS_PAPERS) * 24;
     })
     .sort((a, b) => b.relevance - a.relevance || b.heat - a.heat);
-  let papers = selectWithAerialCoverage([...recent, ...older], PAPERS_MAX, AERIAL_PAPERS_MIN);
+  let papers = selectWithAerialCoverage([...recent, ...older], PAPERS_MAX, AERIAL_PAPERS_MIN, undefined, OPTICAL_PAPERS_MIN);
   console.log(
     `  · 过滤后 近窗${recent.length} + 回溯${older.length} → 保留论文：${papers.length}`
   );
@@ -336,6 +348,13 @@ async function main() {
   });
   console.log(`  · CVF 去重后补入：${cvf.length} 篇`);
   papers = papers.concat(cvf);
+  // Verified older prototypes are allowed through the dedicated evidence library, not disguised as recent.
+  const opticalById = new Map(opticalLibrary.papers.map(p => [p.arxiv_id || p.id, p]));
+  for (const p of papers) {
+    const verified = opticalById.get(p.arxiv_id || p.id);
+    if (verified) for (const key of ["optical_review", "impact", "doi"]) if (verified[key]) p[key] = verified[key];
+  }
+  papers = dedupeBy([...papers, ...opticalLibrary.papers.filter(isOpticalRelevant)], p => p.arxiv_id || p.id);
 
   // 相关度评分（Q32/Q34）
   for (const p of papers) p.relevance = scorePaperRelevance(p);
@@ -418,6 +437,7 @@ async function main() {
       ex.confVision = np.confVision;
     }
     if (np.relevance != null) ex.relevance = np.relevance;
+    for (const key of ["optical_review", "impact"]) if (np[key]) ex[key] = np[key];
     ex.categories = np.categories;
     fillTranslationGaps(ex, np);
   }
@@ -436,7 +456,7 @@ async function main() {
     annotateRules(item, RM_RULES);
     item.relevance = item.title_en ? scorePaperRelevance(item) : scoreRepoRelevance(item);
   }
-  const finalPapers = selectWithAerialCoverage(combinedPapers.sort((a, b) => b.relevance - a.relevance || b.heat - a.heat), PAPERS_CUMULATIVE_MAX, AERIAL_PAPERS_MIN);
+  const finalPapers = selectWithAerialCoverage(combinedPapers.sort((a, b) => b.relevance - a.relevance || b.heat - a.heat), PAPERS_CUMULATIVE_MAX, AERIAL_PAPERS_MIN, undefined, OPTICAL_PAPERS_MIN);
   const finalRepos = selectWithAerialCoverage(combinedRepos.sort((a, b) => b.relevance - a.relevance || b.stars - a.stars), REPOS_MAX, AERIAL_NATIVE_MIN);
 
   // Translate after selection/merge so every displayed item gets a Chinese preview,

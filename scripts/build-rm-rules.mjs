@@ -35,6 +35,7 @@ const TOTAL_CHARS = 70000;
 
 // 9 大算法方向，供 AI 给任务打 categories 标签。
 const CATEGORIES = [
+  "optical", // 可见光通信（LED相机或光电二极管收发）
   "aerial", // 无人机自主飞行/机库交互
   "aim", // 自瞄/视觉打击
   "rune", // 能量机关
@@ -132,7 +133,7 @@ const SCHEMA_HINT = `{
     {
       "id": "英文短 id，如 autoaim/rune/sentry/radar/dart/engineer/strategy/sim",
       "name_zh": "中文任务名",
-      "categories": ["从 aerial/aim/rune/slam/nav/planning/rl/radar/sim/other 里选"],
+      "categories": ["从 optical/aerial/aim/rune/slam/nav/planning/rl/radar/sim/other 里选"],
       "robots": ["涉及的机器人，如 英雄/工程/步兵/哨兵/空中/雷达/飞镖/全队"],
       "desc_zh": "该算法任务要做什么、难点是什么（结合规则中的具体机制/参数）",
       "scoring_zh": "与之相关的得分/增益机制，尽量带规则里的具体数值",
