@@ -12,7 +12,8 @@ export default function NewsGrid({ items }) {
   const [query, setQuery] = useState("");
   const [cat, setCat] = useState("all");
   const [region, setRegion] = useState("all");
-  const [sort, setSort] = useState("importance");
+  const [sort, setSort] = useState("recommendation");
+  const [sourceType, setSourceType] = useState("all");
   const [onlyFav, setOnlyFav] = useState(false);
   const { favs } = useApp();
 
@@ -25,6 +26,7 @@ export default function NewsGrid({ items }) {
   const filtered = useMemo(() => {
     let list = [...items];
     if (cat !== "all") list = list.filter((i) => i.category === cat);
+    if (sourceType !== "all") list = list.filter((i) => (i.recommendation?.source_type || "unknown") === sourceType);
     if (region === "cn") list = list.filter((i) => i.lang === "zh");
     else if (region === "global") list = list.filter((i) => i.lang !== "zh");
     if (onlyFav) list = list.filter((i) => favs.has(i.id));
@@ -36,14 +38,20 @@ export default function NewsGrid({ items }) {
           i.title_en,
           i.summary_zh,
           i.summary_en,
-          ...i.tags,
+          ...(i.tags || []),
         ]
           .join(" ")
           .toLowerCase()
           .includes(q)
       );
     }
-    if (sort === "importance") {
+    if (sort === "recommendation") {
+      list.sort((a, b) => {
+        const ar = Number.isFinite(a.recommendation?.score), br = Number.isFinite(b.recommendation?.score);
+        return ar && br ? b.recommendation.score - a.recommendation.score || (b.importance || 0) - (a.importance || 0)
+          : Number(br) - Number(ar) || (b.importance || 0) - (a.importance || 0);
+      });
+    } else if (sort === "importance") {
       list.sort((a, b) => b.importance - a.importance);
     } else {
       list.sort(
@@ -51,7 +59,7 @@ export default function NewsGrid({ items }) {
       );
     }
     return list;
-  }, [items, cat, region, query, sort, onlyFav, favs]);
+  }, [items, cat, region, query, sort, sourceType, onlyFav, favs]);
 
   return (
     <>
@@ -66,6 +74,9 @@ export default function NewsGrid({ items }) {
         </div>
 
         <div className="filters">
+          <button className={`btn ${sort === "recommendation" ? "active" : ""}`} onClick={() => setSort("recommendation")}>
+            {lang === "en" ? "Recommended" : "综合推荐"}
+          </button>
           <button
             className={`btn ${sort === "importance" ? "active" : ""}`}
             onClick={() => setSort("importance")}
@@ -86,6 +97,17 @@ export default function NewsGrid({ items }) {
           </button>
         </div>
       </div>
+
+      <label className="evidence-filter">
+        {lang === "en" ? "Source type: " : "来源类型："}
+        <select value={sourceType} onChange={e => setSourceType(e.target.value)}>
+          <option value="all">{t.all}</option>
+          <option value="primary">{lang === "en" ? "Primary releases" : "一手发布"}</option>
+          <option value="report">{lang === "en" ? "Media reports" : "媒体报道"}</option>
+          <option value="aggregator">{lang === "en" ? "Aggregators" : "聚合入口"}</option>
+          <option value="unknown">{lang === "en" ? "Unverified sources" : "来源待核验"}</option>
+        </select>
+      </label>
 
       <div className="filters" style={{ marginTop: 4 }}>
         <button

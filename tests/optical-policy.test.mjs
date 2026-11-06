@@ -10,6 +10,14 @@ const now = Date.parse("2026-11-05T12:00:00Z");
 const paper = { title_en: "A rolling-shutter LED-camera visible light communication prototype", abstract_en: "A hardware transmitter and camera receiver decode a data link.", published_at: "2026-05-01", url: "https://example.org/paper" };
 const review = (receiver = "camera", kind = "implementation") => ({ verified: true, kind, receiver, source_url: "https://example.org/author", reason_zh: "作者公开的可见光收发实现", limitations_zh: "光源和部署条件需改造" });
 
+test("audited historical mentions do not masquerade as reusable optical firmware", () => {
+  for (const full_name of ["Tomer27cz/xt211", "omron-sinicx/maru"]) assert.equal(isOpticalRelevant({ full_name, description_en: "LED photodiode visible light communication firmware" }), false);
+  const link = opticalProfile({ full_name: "toggio/PacketLED", description_en: "Visible light communication between LEDs", readme_excerpt: "There is no photodiode: each LED emits light to transmit and is used as a light sensor to receive." });
+  assert.equal(link.relevant, true);
+  assert.equal(link.receiver, "led");
+  assert.match(link.limitations_zh, /1024/);
+});
+
 test("generic mobile/control context cannot let rejected NOMA theory re-enter the RM pool", () => {
   assert.equal(rejectUnrelatedOpticalTopic({ title_en: "NOMA power allocation for mobile visible light communication networks" }), true);
   assert.equal(rejectUnrelatedOpticalTopic(paper), false);

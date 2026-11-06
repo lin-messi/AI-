@@ -13,6 +13,7 @@
     "fetch:robomaster": "node scripts/fetch-robomaster.mjs",
     "fetch:robomaster:general": "node scripts/fetch-robomaster-general.mjs",
     "fetch:rm-optical": "node scripts/fetch-rm-optical.mjs",
+    "fetch:references": "node scripts/fetch-research-references.mjs",
     "repair:rm-translations": "node scripts/repair-rm-translations.mjs",
     "rules:build": "node scripts/build-rm-rules.mjs",
     "rules:fetch": "node scripts/fetch-rm-rules.mjs",
@@ -24,7 +25,8 @@
     "build:cloudflare": "node scripts/build-cloudflare.mjs",
     "preview:cloudflare": "npm run build:cloudflare && wrangler dev",
     "deploy:cloudflare": "npm run build:cloudflare && wrangler deploy",
-    "test:cloudflare": "node --test tests/cloudflare.test.mjs"
+    "test:cloudflare": "node --test tests/cloudflare.test.mjs",
+    "test:recommendations": "node --test tests/rm-recommendations.test.mjs tests/rm-qa.test.mjs tests/rm-translations.test.mjs tests/optical-policy.test.mjs tests/rm-topic-policy.test.mjs tests/rm-usage.test.mjs tests/editorial-policy.test.mjs tests/paper-policy.test.mjs"
   },
   "dependencies": {
     "next": "^16.2.6",

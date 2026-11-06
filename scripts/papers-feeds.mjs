@@ -43,7 +43,7 @@ export const FIELDS = [
 ];
 
 // 每个领域最多保留的论文条数（按热度排序后截断）。
-export const MAX_PER_FIELD = 60;
+export const MAX_PER_FIELD = 24;
 // 每个领域预翻译标题的条数（其余按需翻译，节省成本）。
 export const TRANSLATE_TITLE_TOP = 15;
 // 每个领域预生成「精读 + 一句话亮点」的精选条数。

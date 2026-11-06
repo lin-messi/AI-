@@ -11,11 +11,19 @@ export default function GithubGrid({ items }) {
 
   const [query, setQuery] = useState("");
   const [language, setLanguage] = useState("all");
-  const [sort, setSort] = useState("stars");
+  const [sort, setSort] = useState("recommendation");
+  const [lane, setLane] = useState("all");
+  const [topic, setTopic] = useState("all");
   const [onlyFav, setOnlyFav] = useState(false);
 
   const PAGE = 60;
   const [visible, setVisible] = useState(PAGE);
+
+  const topics = useMemo(() => {
+    const map = new Map();
+    for (const repo of items) for (const entry of repo.recommendation?.topics || []) map.set(entry.key, entry);
+    return [...map.values()];
+  }, [items]);
 
   // 当前数据里出现过的语言（按项目数排序，取前 10 个做筛选标签）
   const languages = useMemo(() => {
@@ -29,6 +37,8 @@ export default function GithubGrid({ items }) {
   const filtered = useMemo(() => {
     let list = [...items];
     if (language !== "all") list = list.filter((r) => r.language === language);
+    if (lane !== "all") list = list.filter((r) => r.recommendation?.lane === lane);
+    if (topic !== "all") list = list.filter((r) => (r.recommendation?.topics || []).some(entry => entry.key === topic));
     if (onlyFav) list = list.filter((r) => favs.has(r.id));
     if (query.trim()) {
       const q = query.toLowerCase();
@@ -39,14 +49,19 @@ export default function GithubGrid({ items }) {
           .includes(q)
       );
     }
-    if (sort === "stars") list.sort((a, b) => (b.stars || 0) - (a.stars || 0));
+    if (sort === "recommendation") list.sort((a, b) => {
+      const ar = Number.isFinite(a.recommendation?.score), br = Number.isFinite(b.recommendation?.score);
+      return ar && br ? b.recommendation.score - a.recommendation.score || (b.stars || 0) - (a.stars || 0)
+        : Number(br) - Number(ar) || (b.stars || 0) - (a.stars || 0);
+    });
+    else if (sort === "stars") list.sort((a, b) => (b.stars || 0) - (a.stars || 0));
     else list.sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
     return list;
-  }, [items, language, sort, onlyFav, query, favs]);
+  }, [items, language, sort, lane, topic, onlyFav, query, favs]);
 
   useEffect(() => {
     setVisible(PAGE);
-  }, [language, sort, onlyFav, query]);
+  }, [language, sort, lane, topic, onlyFav, query]);
 
   const shown = filtered.slice(0, visible);
 
@@ -62,6 +77,9 @@ export default function GithubGrid({ items }) {
           />
         </div>
         <div className="filters">
+          <button className={`btn ${sort === "recommendation" ? "active" : ""}`} onClick={() => setSort("recommendation")}>
+            {lang === "en" ? "Recommended" : "综合推荐"}
+          </button>
           <button
             className={`btn ${sort === "stars" ? "active" : ""}`}
             onClick={() => setSort("stars")}
@@ -81,6 +99,25 @@ export default function GithubGrid({ items }) {
             ★ {t.fav}
           </button>
         </div>
+      </div>
+
+      <div className="evidence-filters">
+        <label className="evidence-filter">
+          {lang === "en" ? "Recommendation type: " : "推荐类型："}
+          <select value={lane} onChange={e => setLane(e.target.value)}>
+            <option value="all">{t.all}</option>
+            <option value="recent">{lang === "en" ? "Recently updated" : "近期更新"}</option>
+            <option value="established">{lang === "en" ? "Established references" : "长期参考"}</option>
+            <option value="reference">{lang === "en" ? "Implementation references" : "研究 / 实现参考"}</option>
+          </select>
+        </label>
+        {topics.length > 0 && <label className="evidence-filter">
+          {lang === "en" ? "Topic: " : "方向："}
+          <select value={topic} onChange={e => setTopic(e.target.value)}>
+            <option value="all">{t.all}</option>
+            {topics.map(entry => <option key={entry.key} value={entry.key}>{lang === "en" ? entry.label_en || entry.label_zh : entry.label_zh || entry.label_en}</option>)}
+          </select>
+        </label>}
       </div>
 
       {languages.length > 0 && (

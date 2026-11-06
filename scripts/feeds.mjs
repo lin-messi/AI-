@@ -4,6 +4,10 @@
 // lang 标记源语言，用于决定填充中文还是英文字段。
 
 export const FEEDS = [
+  // 官方公告补充媒体报道；来源身份仍以每条消息的实际 URL 域名判断。
+  { url: "https://openai.com/news/rss.xml", source: "OpenAI", lang: "en", weight: 3 },
+  { url: "https://blog.google/technology/ai/rss/", source: "Google AI", lang: "en", weight: 3 },
+  { url: "https://huggingface.co/blog/feed.xml", source: "Hugging Face", lang: "en", weight: 3 },
   // —— Google News 聚合（量大、时效强，海外可达）——
   {
     url: "https://news.google.com/rss/search?q=artificial%20intelligence%20when:2d&hl=en-US&gl=US&ceid=US:en",
@@ -55,19 +59,7 @@ export const FEEDS = [
     lang: "en",
     weight: 2,
   },
-  // —— 学术（arXiv）——
-  {
-    url: "https://rss.arxiv.org/rss/cs.AI",
-    source: "arXiv cs.AI",
-    lang: "en",
-    weight: 2,
-  },
-  {
-    url: "https://rss.arxiv.org/rss/cs.LG",
-    source: "arXiv cs.LG",
-    lang: "en",
-    weight: 2,
-  },
+  // 学术预印本由论文栏目独立采集，避免重复占用新闻位置。
   // —— 中文源（部分网络/地区可达，失败自动跳过）——
   {
     url: "https://news.google.com/rss/search?q=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%20OR%20%E5%A4%A7%E6%A8%A1%E5%9E%8B%20when:3d&hl=zh-CN&gl=US&ceid=US:zh-Hans",
@@ -145,10 +137,10 @@ export const IMPORTANCE_KEYWORDS = {
 
 // 分类关键词
 export const CATEGORY_RULES = [
-  { cat: "policy", kw: ["regulation", "law", "act", "ban", "lawsuit", "court", "congress", "policy", "antitrust", "监管", "法案", "立法", "诉讼", "禁令", "合规"] },
+  { cat: "policy", kw: ["regulation", "regulations", "law", "laws", "ai act", "ban", "lawsuit", "court", "congress", "policy", "antitrust", "监管", "法案", "立法", "诉讼", "禁令", "合规", "网信办", "工信部", "整治", "进网管理", "条例"] },
   { cat: "business", kw: ["funding", "raises", "raised", "valuation", "billion", "million", "acquire", "acquisition", "ipo", "revenue", "invest", "融资", "估值", "收购", "营收", "投资", "上市"] },
   { cat: "research", kw: ["arxiv", "paper", "study", "researchers", "benchmark", "dataset", "weights", "论文", "研究", "数据集", "基准", "权重", "学术"] },
-  { cat: "product", kw: ["launch", "release", "app", "feature", "available", "update", "unveil", "api", "发布", "推出", "上线", "功能", "更新", "应用"] },
+  { cat: "product", kw: ["launch", "launches", "release", "releases", "released", "open-source", "open-sources", "open source", "app", "feature", "available", "update", "unveil", "api", "发布", "推出", "开源", "上线", "功能", "更新", "应用"] },
 ];
 
 // 标签关键词（命中即打标签）

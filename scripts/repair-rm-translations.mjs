@@ -26,17 +26,25 @@ for (const date of index.dates) {
     if (target) fillTranslationGaps(target, repo, "repo");
   }
 }
-const save = () => {
-  day.generatedAt = new Date().toISOString();
-  general.updatedAt = day.generatedAt;
-  fs.writeFileSync(path.join(data, dayFile), JSON.stringify(day, null, 2) + "\n");
-  fs.writeFileSync(path.join(data, "robomaster-general.json"), JSON.stringify(general, null, 2) + "\n");
+const save = async () => {
+  day.translation_updated_at = new Date().toISOString();
+  general.translation_updated_at = day.translation_updated_at;
+  for (let attempt = 0; ; attempt++) {
+    try {
+      fs.writeFileSync(path.join(data, dayFile), JSON.stringify(day, null, 2) + "\n");
+      fs.writeFileSync(path.join(data, "robomaster-general.json"), JSON.stringify(general, null, 2) + "\n");
+      return;
+    } catch (error) {
+      if (attempt >= 4 || !["UNKNOWN", "EPERM", "EBUSY"].includes(error.code)) throw error;
+      await new Promise(resolve => setTimeout(resolve, 100 * (attempt + 1)));
+    }
+  }
 };
-save();
+await save();
 const options = { checkpoint: save, ...(process.argv.includes("--no-ai") ? { config: { enabled: false } } : {}) };
 console.log(`先复用归档译文；论文待翻译 ${day.papers.items.filter(p => missingRMTranslation(p, "paper")).length}，项目待翻译 ${repos.filter(r => missingRMTranslation(r, "repo")).length}`);
 const papers = await translateRMContent(day.papers.items, "paper", options);
 const libraries = await translateRMContent(repos, "repo", options);
-save();
+await save();
 console.log(JSON.stringify({ date: index.latest, papers, libraries }));
 if (papers.remaining || libraries.remaining) process.exitCode = 1;

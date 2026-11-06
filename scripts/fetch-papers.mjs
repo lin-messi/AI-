@@ -18,6 +18,9 @@ import {
 } from "./papers-feeds.mjs";
 import { translatePapersFull, translatePaperTitles } from "./enrich-papers.mjs";
 import { detectFrontier, fallbackFrontierField, scoreFrontier } from "./frontier.mjs";
+import { arxivQueryGroups, classifyPaperField, mergePaperRecords, paperProfile, publicationAge, selectPapers } from "./paper-policy.mjs";
+import { fetchResearchReferences } from "./fetch-research-references.mjs";
+import { translateRMContent } from "./rm-translations.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -95,7 +98,7 @@ function hoursAgo(iso) {
 // 合并为一个请求可避免 API 限频（429）；周末也有数据（RSS 周末为空）。
 async function fetchArxivAll(cats) {
   const q = cats.map((c) => `cat:${c}`).join("+OR+");
-  const url = `http://export.arxiv.org/api/query?search_query=${q}&sortBy=submittedDate&sortOrder=descending&max_results=300`;
+  const url = `https://export.arxiv.org/api/query?search_query=${q}&sortBy=submittedDate&sortOrder=descending&max_results=200`;
   // 重试：429/超时时退避重试
   for (let attempt = 0; attempt < 4; attempt++) {
     try {
@@ -119,9 +122,8 @@ async function fetchArxivAll(cats) {
           .concat(e.catList || [])
           .map((c) => (typeof c === "string" ? c : c?.$?.term || c?.term || ""))
           .filter(Boolean);
-        const publishedAt = new Date(
-          e.isoDate || e.pubDate || Date.now()
-        ).toISOString();
+        const published = e.isoDate || e.pubDate;
+        const publishedAt = published && Number.isFinite(Date.parse(published)) ? new Date(published).toISOString() : null;
         return {
           id: arxivId ? `arxiv:${arxivId}` : link,
           arxiv_id: arxivId,
@@ -134,7 +136,7 @@ async function fetchArxivAll(cats) {
           highlight_zh: "",
           digest_zh: "",
           authors,
-          url: link,
+          url: arxivId ? `https://arxiv.org/abs/${arxivId}` : link,
           pdf_url: arxivId ? `https://arxiv.org/pdf/${arxivId}` : "",
           html_url: arxivId ? `https://arxiv.org/abs/${arxivId}` : link,
           published_at: publishedAt,
@@ -185,7 +187,7 @@ async function fetchBiorxiv(server) {
         .map((s) => s.trim())
         .filter(Boolean)
         .slice(0, 8);
-      const publishedAt = new Date(p.date || Date.now()).toISOString();
+      const publishedAt = p.date && Number.isFinite(Date.parse(p.date)) ? new Date(p.date).toISOString() : null;
       return {
         id: doi ? `doi:${doi}` : p.title,
         arxiv_id: "",
@@ -198,9 +200,9 @@ async function fetchBiorxiv(server) {
         highlight_zh: "",
         digest_zh: "",
         authors,
-        url: doi ? `https://www.biorxiv.org/content/${doi}` : "",
-        pdf_url: doi ? `https://www.biorxiv.org/content/${doi}v1.full.pdf` : "",
-        html_url: doi ? `https://www.biorxiv.org/content/${doi}v1.full` : "",
+        url: doi ? `https://www.${server}.org/content/${doi}` : "",
+        pdf_url: doi ? `https://www.${server}.org/content/${doi}v1.full.pdf` : "",
+        html_url: doi ? `https://www.${server}.org/content/${doi}v1.full` : "",
         published_at: publishedAt,
         upvotes: 0,
         heat: 0,
@@ -249,173 +251,68 @@ function dedupe(items) {
   return [...seen.values()];
 }
 
-function classifyField(item) {
-  // bioRxiv/medRxiv 归入 bio
-  if (item.source === "bioRxiv" || item.source === "medRxiv") return "bio";
-  // arXiv：按论文所属分类匹配领域（取首个命中的领域，FIELDS 顺序即优先级）
-  const cats = item.cats || [];
-  for (const f of FIELDS) {
-    if (f.arxiv && f.arxiv.some((c) => cats.includes(c))) return f.key;
-  }
-  return null;
-}
-
-function computeHeat(item, hfMap) {
-  const up = item.arxiv_id ? hfMap.get(item.arxiv_id) || 0 : 0;
-  item.upvotes = up;
-  const recency = Math.max(0, RECENT_HOURS - hoursAgo(item.published_at));
-  return up * 50 + recency;
-}
-
 async function main() {
-  console.log("开始抓取学术论文…");
+  console.log('开始按领域抓取并核验证据…');
   fs.mkdirSync(PAPERS, { recursive: true });
-
-  const hfMap = await fetchHFHeat();
-
-  // 收集所有源（arXiv 单次合并查询，避免限频）
-  // 在 6 大基础领域分类之外，并入「交叉前沿」额外分类（器件/硬件/交叉）。
-  const arxivCats = [
-    ...new Set([...FIELDS.flatMap((f) => f.arxiv || []), ...FRONTIER.extraArxiv]),
-  ];
-  const all = [];
-  all.push(...(await fetchArxivAll(arxivCats)));
-  const bioServers = [...new Set(FIELDS.flatMap((f) => f.biorxiv || []))];
-  for (const s of bioServers) {
-    all.push(...(await fetchBiorxiv(s)));
-  }
-
-  // 去重 → 近窗过滤 → 归类 → 子标签 → 热度
-  let merged = dedupe(all).filter(
-    (it) => hoursAgo(it.published_at) <= RECENT_HOURS
-  );
-  for (const it of merged) {
-    // 先判交叉前沿（用到 cats/标题/摘要）
-    const fr = detectFrontier(it);
-    it.frontier = fr.frontier;
-    it.crossTag = fr.crossTag;
-    // 基础领域；交叉论文若无基础领域则回退到就近领域，保证它也在原领域出现
-    it.field = classifyField(it) || (it.frontier ? fallbackFrontierField(it) : null);
-    const text = (it.title_en + " " + it.abstract_en).toLowerCase();
-    it.subtags = detectSubtags(text);
-    it.heat = computeHeat(it, hfMap);
-  }
-  merged = merged.filter((it) => it.field);
-
-  // 按领域分组、按热度排序、截断
-  const byField = {};
-  for (const f of FIELDS) byField[f.key] = [];
-  for (const it of merged) byField[it.field].push(it);
-
-  const kept = [];
-  for (const f of FIELDS) {
-    const list = byField[f.key].sort((a, b) => b.heat - a.heat);
-    const top = list.slice(0, MAX_PER_FIELD);
-    // 标记每领域前 FEATURED_TOP 为精选
-    top.slice(0, FEATURED_TOP).forEach((p) => (p.featured = true));
-    kept.push(...top);
-    console.log(`  · ${f.label_zh}: 保留 ${top.length}/${list.length}`);
-  }
-
-  // 交叉前沿：独立挑选（与基础领域并存）。用便宜模型打分丢弃误判（单学科）后取 Top N。
-  let frontierCands = merged.filter((it) => it.frontier);
-  frontierCands = await scoreFrontier(frontierCands);
-  frontierCands = frontierCands.filter((it) => it.frontierScore !== "low");
-  const scoreOrder = { high: 0, mid: 1 };
-  frontierCands.sort(
-    (a, b) =>
-      (scoreOrder[a.frontierScore] ?? 2) - (scoreOrder[b.frontierScore] ?? 2) ||
-      b.heat - a.heat
-  );
-  const frontierKept = frontierCands.slice(0, FRONTIER.maxPerField);
-  frontierKept.slice(0, FRONTIER.featuredTop).forEach((p) => (p.featured = true));
-  // 未入选（low 或超出上限）的论文撤销前沿标记，避免「交叉前沿」tab 出现未入选项。
-  const frontierSet = new Set(frontierKept.map((p) => p.id));
-  for (const it of merged) {
-    if (it.frontier && !frontierSet.has(it.id)) {
-      it.frontier = false;
-      it.crossTag = "";
-    }
-  }
-  console.log(`  · ${FRONTIER.label_zh}: 保留 ${frontierKept.length}/${frontierCands.length}`);
-
-  // 合并基础领域与交叉前沿（按 id 去重，保留同一对象引用）
-  const keptById = new Map();
-  for (const it of [...kept, ...frontierKept]) keptById.set(it.id, it);
-  const keptAll = [...keptById.values()];
-
-  // 预翻译：精选（全文精读）+ 各领域前 N 标题 + 交叉前沿标题
-  const featured = keptAll.filter((p) => p.featured);
-  await translatePapersFull(featured);
-
-  const titleTodoSet = new Map();
-  for (const f of FIELDS) {
-    keptAll
-      .filter((p) => p.field === f.key && !p.title_zh)
-      .slice(0, TRANSLATE_TITLE_TOP)
-      .forEach((p) => titleTodoSet.set(p.id, p));
-  }
-  for (const p of keptAll) {
-    if (p.frontier && !p.title_zh) titleTodoSet.set(p.id, p);
-  }
-  await translatePaperTitles([...titleTodoSet.values()]);
-
-  // 写入归档
   const date = todayStr();
-  const file = path.join(PAPERS, `${date}.json`);
-
-  // 合并当天已有数据（支持一天多次抓取增量）：
-  // existing 排在前面，dedupe 会保留先遇到的同一篇论文，
-  // 因此先前抓到的论文（含已生成的中文标题/精读翻译）会被完整保留，
-  // 本次新发现的论文追加进来。不截断，确保「原来的」不会被覆盖丢失。
+  const file = path.join(PAPERS, date + '.json');
   let existing = [];
-  if (fs.existsSync(file)) {
-    try {
-      existing = JSON.parse(fs.readFileSync(file, "utf8")).items || [];
-    } catch {}
+  try { existing = JSON.parse(fs.readFileSync(file, 'utf8')).items || []; } catch {}
+  const hfMap = await fetchHFHeat();
+  const all = [];
+  // Each field gets its own candidate budget; a busy CV/ML feed cannot crowd out optics or bio.
+  const groups = arxivQueryGroups(FIELDS, FRONTIER.extraArxiv);
+  for (let i = 0; i < groups.length; i++) {
+    all.push(...await fetchArxivAll(groups[i].cats));
+    if (i < groups.length - 1) await sleep(3100);
   }
-  // 把本次新判定的「交叉前沿」标记叠加回 existing 中的同一篇论文，
-  // 否则旧数据（在前沿功能上线前抓到的）会因为 dedupe 优先保留而拿不到 frontier 标记。
-  const newById = new Map(keptAll.map((p) => [p.id, p]));
-  for (const ex of existing) {
-    const np = newById.get(ex.id);
-    if (!np) continue;
-    if (np.frontier) {
-      ex.frontier = true;
-      ex.crossTag = ex.crossTag || np.crossTag;
+  for (const server of [...new Set(FIELDS.flatMap(f => f.biorxiv || []))]) all.push(...await fetchBiorxiv(server));
+  if (!all.some(item => { const age = publicationAge(item); return age !== null && age <= RECENT_HOURS / 24; })) {
+    console.warn('本轮没有取得有效的近期论文，保留上一快照和抓取时间；参考文献缓存不冒充日更成功');
+    return;
+  }
+  let references = [];
+  try { references = (await fetchResearchReferences()).papers; }
+  catch (error) { console.warn('长期文献更新失败，保留已有证据：', error.message); }
+  const now = Date.now();
+  let merged = mergePaperRecords(existing, [...all, ...references]);
+  for (const item of merged) {
+    const frontier = detectFrontier(item);
+    item.frontier = frontier.frontier;
+    item.crossTag = frontier.crossTag;
+    item.field = classifyPaperField(item, FIELDS) || (frontier.frontier ? fallbackFrontierField(item) : null);
+    item.subtags = detectSubtags((item.title_en + ' ' + item.abstract_en).toLowerCase());
+    if (hfMap.has(item.arxiv_id)) {
+      item.upvotes = hfMap.get(item.arxiv_id);
+      item.interest_checked_at = new Date(now).toISOString();
     }
-    if (np.featured) ex.featured = true;
+    item.recommendation = paperProfile(item, now);
+    item.heat = Math.round(Math.min(20, Math.log2(Math.max(0, item.upvotes || 0) + 1) * 2) * 100) / 100;
+    item.featured = false;
   }
-  const finalItems = dedupe([...existing, ...keptAll]);
-  // 按领域分组、组内按热度排序，保证展示有序
-  const fieldOrder = {};
-  FIELDS.forEach((f, i) => (fieldOrder[f.key] = i));
-  finalItems.sort(
-    (a, b) =>
-      (fieldOrder[a.field] ?? 99) - (fieldOrder[b.field] ?? 99) ||
-      (b.heat || 0) - (a.heat || 0)
-  );
-
-  const payload = {
-    date,
-    generatedAt: new Date().toISOString(),
-    count: finalItems.length,
-    // 「交叉前沿」置于领域筛选最前（Q44）
-    fields: [
-      { key: FRONTIER.key, label_zh: FRONTIER.label_zh, label_en: FRONTIER.label_en },
-      ...FIELDS.map((f) => ({
-        key: f.key,
-        label_zh: f.label_zh,
-        label_en: f.label_en,
-      })),
-    ],
-    items: finalItems,
-  };
-  fs.writeFileSync(file, JSON.stringify(payload, null, 2), "utf8");
-  console.log(
-    `  合并：已有 ${existing.length} + 本次保留 ${keptAll.length} → 去重后 ${finalItems.length}`
-  );
-
+  const finalItems = selectPapers(merged, { now, perField: MAX_PER_FIELD, recentHours: RECENT_HOURS });
+  // Only selected frontier candidates incur model usage; a field cap is applied after merging.
+  let frontier = await scoreFrontier(finalItems.filter(p => p.frontier));
+  frontier = frontier.filter(p => p.frontierScore !== 'low').sort((a,b) => b.recommendation.score - a.recommendation.score).slice(0, FRONTIER.maxPerField);
+  const frontierIds = new Set(frontier.map(p => p.id));
+  for (const item of finalItems) {
+    item.frontier = frontierIds.has(item.id);
+    if (!item.frontier) item.crossTag = '';
+  }
+  for (const field of FIELDS) {
+    finalItems.filter(p => p.field === field.key).slice(0, FEATURED_TOP).forEach(p => p.featured = true);
+    console.log('  ' + field.label_zh + ': ' + finalItems.filter(p => p.field === field.key).length);
+  }
+  frontier.slice(0, FRONTIER.featuredTop).forEach(p => p.featured = true);
+  // Both old translations and freshly fetched metrics survive same-day updates.
+  const payload = { date, generatedAt: new Date(now).toISOString(), count: finalItems.length,
+    fields: [{ key: FRONTIER.key, label_zh: FRONTIER.label_zh, label_en: FRONTIER.label_en }, ...FIELDS.map(({key,label_zh,label_en}) => ({key,label_zh,label_en}))], items: finalItems };
+  const save = () => fs.writeFileSync(file, JSON.stringify(payload, null, 2) + '\n', 'utf8');
+  if (!finalItems.length) { console.warn('没有有效论文，保留已有快照与抓取时间'); return; }
+  save();
+  await translateRMContent(finalItems, 'paper', { checkpoint: save });
+  await translatePapersFull(finalItems.filter(p => p.featured));
+  save();
   // 更新索引
   const dates = fs
     .readdirSync(PAPERS)

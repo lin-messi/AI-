@@ -1,160 +1,77 @@
-// 抓取 GitHub 每日推荐开源项目（全领域热门，综合选取约 20 个/天）
-// → GitHub Search API（新晋高星 + 近期活跃高星混合）→ 清洗 → 去重 → 翻译简介
-// → 当天增量合并写入 data/github/<date>.json
-// 运行：npm run fetch:github
+// Topic-directed AI/research repositories, with separate new and established lanes.
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { translateRepos } from "./enrich-github.mjs";
+import { REPO_TOPICS, mergeEditorialItems } from "./editorial-policy.mjs";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.join(__dirname, "..");
+const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DATA = path.join(ROOT, "data");
 const GH = path.join(DATA, "github");
+const DAILY_TARGET = 32;
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+const todayStr = () => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+const daysAgoStr = n => new Date(Date.now() - n * 86400000).toISOString().slice(0, 10);
 
-const DAILY_TARGET = 20; // 每日推荐数量
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
-function todayStr() {
-  const fmt = new Intl.DateTimeFormat("en-CA", {
-    timeZone: "Asia/Shanghai",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  });
-  return fmt.format(new Date());
-}
-
-// 返回 N 天前的 UTC 日期（YYYY-MM-DD），用于 GitHub Search 的 created/pushed 过滤
-function daysAgoStr(n) {
-  return new Date(Date.now() - n * 86400000).toISOString().slice(0, 10);
-}
-
-// —— GitHub Search API ——
-// 未配置 token 也能用（限频 10 次/分钟，本地测试足够）；
-// 在 Actions 里用内置 GITHUB_TOKEN 注入，可提升到 30 次/分钟。
-async function searchRepos(q, perPage = 30) {
-  const token = process.env.GITHUB_TOKEN || "";
-  const headers = {
-    Accept: "application/vnd.github+json",
-    "User-Agent": "AINewsTracker/1.0",
-    "X-GitHub-Api-Version": "2022-11-28",
-  };
-  if (token) headers.Authorization = `Bearer ${token}`;
-  const url =
-    `https://api.github.com/search/repositories?q=${encodeURIComponent(q)}` +
-    `&sort=stars&order=desc&per_page=${perPage}`;
+async function searchRepos(query, perPage = 15) {
+  const headers = { Accept: "application/vnd.github+json", "User-Agent": "AINewsTracker/1.0", "X-GitHub-Api-Version": "2022-11-28" };
+  if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+  const url = `https://api.github.com/search/repositories?q=${encodeURIComponent(query)}&sort=stars&order=desc&per_page=${perPage}`;
   for (let attempt = 0; attempt < 3; attempt++) {
     try {
-      const res = await fetch(url, { headers });
-      if (res.status === 403 || res.status === 429) {
-        console.log(`  · 限频(${res.status})，退避重试…`);
-        await sleep(8000 * (attempt + 1));
-        continue;
-      }
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
-      return data.items || [];
-    } catch (e) {
-      console.log(`  · 查询第 ${attempt + 1} 次失败 (${e.message})，重试…`);
-      await sleep(4000 * (attempt + 1));
+      const response = await fetch(url, { headers, signal: AbortSignal.timeout(25000) });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      return { items: (await response.json()).items || [], checked_at: new Date().toISOString() };
+    } catch (error) {
+      console.log(`  · 查询第 ${attempt + 1} 次失败 (${error.message})`);
+      if (attempt < 2) await sleep(8000 * (attempt + 1));
     }
   }
-  console.log(`  ✗ 查询失败：${q}`);
-  return [];
+  return null;
 }
 
-function normalize(r) {
+export function normalizeGithubRepo(repo, checked_at = "") {
   return {
-    id: r.full_name, // owner/repo，作为去重与收藏的稳定 key
-    full_name: r.full_name,
-    name: r.name,
-    owner: r.owner?.login || "",
-    owner_avatar: r.owner?.avatar_url || "",
-    description_en: (r.description || "").trim(),
-    description_zh: "",
-    highlight_zh: "",
-    stars: r.stargazers_count || 0,
-    forks: r.forks_count || 0,
-    language: r.language || "",
-    topics: Array.isArray(r.topics) ? r.topics.slice(0, 6) : [],
-    url: r.html_url,
-    homepage: r.homepage || "",
-    created_at: r.created_at || "",
-    pushed_at: r.pushed_at || r.updated_at || "",
+    id: repo.full_name, full_name: repo.full_name, name: repo.name,
+    owner: typeof repo.owner === "string" ? repo.owner : repo.owner?.login || "",
+    owner_avatar: repo.owner?.avatar_url || repo.owner_avatar || "",
+    description_en: (repo.description || repo.description_en || "").trim(), description_zh: repo.description_zh || "", highlight_zh: repo.highlight_zh || "",
+    stars: repo.stargazers_count ?? repo.stars ?? 0, forks: repo.forks_count ?? repo.forks ?? 0,
+    language: repo.language || "", topics: Array.isArray(repo.topics) ? repo.topics : [],
+    url: repo.html_url || repo.url, homepage: repo.homepage || "",
+    created_at: repo.created_at || "", pushed_at: repo.pushed_at || "",
+    license: typeof repo.license === "string" ? repo.license : repo.license?.spdx_id || "",
+    archived: !!repo.archived, disabled: !!repo.disabled, is_fork: !!(repo.fork || repo.is_fork),
+    checked_at: checked_at || repo.checked_at || "",
   };
 }
 
-function dedupe(items) {
-  const seen = new Map();
-  for (const it of items) {
-    const key = (it.id || it.full_name || "").toLowerCase();
-    if (key && !seen.has(key)) seen.set(key, it);
-  }
-  return [...seen.values()];
-}
-
-async function main() {
-  console.log("开始抓取 GitHub 推荐开源项目…");
+export async function main() {
   fs.mkdirSync(GH, { recursive: true });
-
-  // 综合选取：A 桶=近 30 天新晋高星（新鲜、每天滑动变化）；
-  //           B 桶=近 2 天活跃的中高星项目（覆盖正在迭代的成熟项目，增加多样性）。
-  const bucketA = (await searchRepos(`created:>=${daysAgoStr(30)} stars:>=50`, 30)).map(
-    normalize
-  );
-  console.log(`  ✓ A 桶（近 30 天新晋高星）：${bucketA.length} 个`);
-  await sleep(2000);
-  const bucketB = (
-    await searchRepos(`pushed:>=${daysAgoStr(2)} stars:200..20000`, 30)
-  ).map(normalize);
-  console.log(`  ✓ B 桶（近 2 天活跃中高星）：${bucketB.length} 个`);
-
-  // A 优先（更新鲜），合并去重，截取目标数量
-  const picked = dedupe([...bucketA, ...bucketB]).slice(0, DAILY_TARGET);
-  console.log(`  · 综合去重后取前 ${picked.length} 个`);
-
-  // 翻译简介 + 生成一句话中文亮点（仅这 ~20 条，成本低）
-  await translateRepos(picked);
-
-  // 写入归档（当天增量合并：existing 在前，dedupe 保留已翻译版本，新项目追加，不截断）
-  const date = todayStr();
-  const file = path.join(GH, `${date}.json`);
-  let existing = [];
-  if (fs.existsSync(file)) {
-    try {
-      existing = JSON.parse(fs.readFileSync(file, "utf8")).items || [];
-    } catch {}
+  const candidates = [];
+  let successfulQueries = 0;
+  for (const topic of REPO_TOPICS) {
+    for (const lane of ["recent", "established"]) {
+      const constraint = lane === "recent" ? `created:>=${daysAgoStr(90)} pushed:>=${daysAgoStr(90)} stars:>=5` : `created:<=${daysAgoStr(730)} pushed:>=${daysAgoStr(365)} stars:>=500`;
+      const result = await searchRepos(`${topic.query} ${constraint} archived:false fork:false`);
+      if (result) { successfulQueries++; candidates.push(...result.items.map(item => normalizeGithubRepo(item, result.checked_at))); }
+      console.log(`  · ${topic.label_zh} / ${lane}: ${result?.items.length ?? "失败"}`);
+      await sleep(process.env.GITHUB_TOKEN ? 2200 : 6500);
+    }
   }
-  const finalItems = dedupe([...existing, ...picked]).sort(
-    (a, b) => (b.stars || 0) - (a.stars || 0)
-  );
-
-  const payload = {
-    date,
-    generatedAt: new Date().toISOString(),
-    count: finalItems.length,
-    items: finalItems,
-  };
-  fs.writeFileSync(file, JSON.stringify(payload, null, 2), "utf8");
-  console.log(
-    `  合并：已有 ${existing.length} + 本次 ${picked.length} → 去重后 ${finalItems.length}`
-  );
-
-  // 更新索引
-  const dates = fs
-    .readdirSync(GH)
-    .filter((f) => f.endsWith(".json") && f !== "index.json")
-    .map((f) => f.replace(".json", ""))
-    .sort()
-    .reverse();
-  fs.writeFileSync(
-    path.join(DATA, "github-index.json"),
-    JSON.stringify({ latest: dates[0], dates }, null, 2),
-    "utf8"
-  );
-
-  console.log(`\n完成：${date} 共 ${finalItems.length} 个项目，已写入 ${file}`);
+  if (!successfulQueries || !candidates.length) {
+    console.log("所有定向查询均未返回可用项目，保留原快照及其抓取时间。");
+    return;
+  }
+  const date = todayStr(), file = path.join(GH, `${date}.json`);
+  let existing = [];
+  try { existing = JSON.parse(fs.readFileSync(file, "utf8")).items || []; } catch {}
+  const items = mergeEditorialItems(existing, candidates, { kind: "repo", maxItems: DAILY_TARGET });
+  await translateRepos(items);
+  fs.writeFileSync(file, JSON.stringify({ date, generatedAt: new Date().toISOString(), count: items.length, items }, null, 2), "utf8");
+  const dates = fs.readdirSync(GH).filter(name => /^\d{4}-\d{2}-\d{2}\.json$/.test(name)).map(name => name.slice(0, -5)).sort().reverse();
+  fs.writeFileSync(path.join(DATA, "github-index.json"), JSON.stringify({ latest: dates[0], dates }, null, 2), "utf8");
+  console.log(`完成：${date}，${items.length} 个相关项目（${successfulQueries} 个查询成功）。`);
 }
 
-main();
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main().catch(error => { console.error(error); process.exitCode = 1; });

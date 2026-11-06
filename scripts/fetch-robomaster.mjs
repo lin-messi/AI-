@@ -27,11 +27,12 @@ import {
   REPO_MIN_STARS,
   FEATURED_TOP,
   RM_RULES, AERIAL_ARXIV_QUERIES, AERIAL_PAPERS_MIN, AERIAL_NATIVE_MIN,
-  OPTICAL_ARXIV_QUERIES, OPTICAL_RECENT_DAYS, OPTICAL_PAPERS_MIN,
+  OPTICAL_ARXIV_QUERIES, OPTICAL_RECENT_DAYS, OPTICAL_PAPERS_MIN, RM_TOPIC_ARXIV_QUERIES,
 } from "./robomaster-feeds.mjs";
 import { fetchOpticalLibrary } from "./fetch-rm-optical.mjs";
 import { isOpticalRelevant, rejectUnrelatedOpticalTopic } from "./optical-policy.mjs";
-import { classifyRM, isAerialRelevant, selectWithAerialCoverage, annotateRules, rulesFingerprint, hasKeyword } from "./rm-recommendation-policy.mjs";
+import { classifyRM, isAerialRelevant, selectWithTopicCoverage, annotateRules, rulesFingerprint, hasKeyword } from "./rm-recommendation-policy.mjs";
+import { isRMTopicRelevant, validSourceDate, sourceAgeHours } from "./rm-topic-policy.mjs";
 import { translatePapersFull } from "./enrich-papers.mjs";
 import { fillTranslationGaps, translateRMContent } from "./rm-translations.mjs";
 import { assessRMUsage } from "./enrich-rm-usage.mjs";
@@ -96,9 +97,7 @@ function arxivIdFromLink(link = "") {
   return m ? m[1] : "";
 }
 function hoursAgo(iso) {
-  const t = new Date(iso).getTime();
-  if (isNaN(t)) return 9999999;
-  return (Date.now() - t) / 3600000;
+  return sourceAgeHours(iso);
 }
 
 // 多标签分类：返回命中的分类 key 数组（保持 CATEGORIES 优先级顺序）；无命中则 ["other"]
@@ -131,9 +130,8 @@ async function fetchArxivCat(cat, query = `cat:${cat}`, maximum = ARXIV_MAX) {
           .concat(e.catList || [])
           .map((c) => (typeof c === "string" ? c : c?.$?.term || c?.term || ""))
           .filter(Boolean);
-        const publishedAt = new Date(
-          e.isoDate || e.pubDate || Date.now()
-        ).toISOString();
+        const publishedAt = validSourceDate(e.isoDate || e.pubDate);
+        if (!publishedAt) return null;
         return {
           id: arxivId ? `arxiv:${arxivId}` : link,
           arxiv_id: arxivId,
@@ -157,7 +155,7 @@ async function fetchArxivCat(cat, query = `cat:${cat}`, maximum = ARXIV_MAX) {
           image: "",
           comment: stripHtml(e.comment || ""), // arXiv:comment，用于顶会识别
         };
-      });
+      }).filter(Boolean);
       console.log(`  ✓ arXiv ${cat}：${items.length} 条`);
       return items;
     } catch (e) {
@@ -244,11 +242,14 @@ function normalizeRepo(r) {
     stars: r.stargazers_count || 0,
     forks: r.forks_count || 0,
     language: r.language || "",
-    topics: Array.isArray(r.topics) ? r.topics.slice(0, 6) : [],
+    topics: Array.isArray(r.topics) ? r.topics : [],
     url: r.html_url,
     homepage: r.homepage || "",
     created_at: r.created_at || "",
-    pushed_at: r.pushed_at || r.updated_at || "",
+    pushed_at: validSourceDate(r.pushed_at),
+    license: r.license?.spdx_id || null,
+    archived: Boolean(r.archived),
+    metadata_fetched_at: new Date().toISOString(),
     categories: [],
   };
 }
@@ -274,6 +275,10 @@ async function main() {
     raw.push(...await fetchArxivCat("无人机专项", query, 100));
     await sleep(3000);
   }
+  for (const query of RM_TOPIC_ARXIV_QUERIES) {
+    raw.push(...await fetchArxivCat("RM能力专项", query, 100));
+    await sleep(3000);
+  }
   for (const query of OPTICAL_ARXIV_QUERIES) {
     raw.push(...(await fetchArxivCat("可见光通信专项", query, 100)).map(p => ({ ...p, optical_query: true })));
     await sleep(3000);
@@ -291,22 +296,16 @@ async function main() {
 
   // 关键词过滤（放宽 Q19/Q12）：强主题词单独命中 / 主题词+机器人语境 / 视觉顶会+主题词
   const pool = raw.filter((p) => {
+    if (!validSourceDate(p.published_at)) return false;
     if (rejectUnrelatedOpticalTopic(p)) return false;
     if (isOpticalRelevant(p)) return true;
-    if (isAerialRelevant(p)) return true;
-    const text = (p.title_en + " " + p.abstract_en).toLowerCase();
-    if (STRONG_TOPIC_KW.some((k) => hasKeyword(text, k))) return true;
-    const topic = PAPER_TOPIC_KW.some((k) => hasKeyword(text, k));
-    if (!topic) return false;
-    const ctx = PAPER_CTX_KW.some((k) => text.includes(k.toLowerCase()));
-    if (ctx) return true;
-    return !!(p.conf && p.confVision); // 视觉顶会豁免机器人语境
+    return isRMTopicRelevant(p, "paper");
   });
 
   // 分类 + 热度（含顶会加权 Q6）
   for (const p of pool) {
     const text = p.title_en + " " + p.abstract_en;
-    p.categories = classify(text);
+    p.categories = classify(p);
     p.relevance = scorePaperRelevance(p);
     p.upvotes = p.arxiv_id ? hfMap.get(p.arxiv_id) || 0 : 0;
     const recency = Math.max(0, BACKFILL_DAYS_PAPERS * 24 - hoursAgo(p.published_at));
@@ -315,26 +314,29 @@ async function main() {
 
   // 近窗优先、不足再回溯补足（Q18/Q27）：先取近 RECENT 天，凑不够 PAPERS_MAX 再用近 BACKFILL 天补。
   const recent = pool
-    .filter((p) => hoursAgo(p.published_at) <= RECENT_DAYS_PAPERS * 24)
+    .filter((p) => {
+      const h = hoursAgo(p.published_at);
+      return Number.isFinite(h) && h >= 0 && h <= RECENT_DAYS_PAPERS * 24;
+    })
     .sort((a, b) => b.relevance - a.relevance || b.heat - a.heat);
   const older = pool
     .filter((p) => {
       const h = hoursAgo(p.published_at);
-      return h > RECENT_DAYS_PAPERS * 24 && h <= (isOpticalRelevant(p) ? OPTICAL_RECENT_DAYS : BACKFILL_DAYS_PAPERS) * 24;
+      return Number.isFinite(h) && h >= 0 && h > RECENT_DAYS_PAPERS * 24 && h <= (isOpticalRelevant(p) ? OPTICAL_RECENT_DAYS : BACKFILL_DAYS_PAPERS) * 24;
     })
     .sort((a, b) => b.relevance - a.relevance || b.heat - a.heat);
-  let papers = selectWithAerialCoverage([...recent, ...older], PAPERS_MAX, AERIAL_PAPERS_MIN, undefined, OPTICAL_PAPERS_MIN);
+  let papers = selectWithTopicCoverage([...recent, ...older], PAPERS_MAX, { aerialMinimum: AERIAL_PAPERS_MIN, opticalMinimum: OPTICAL_PAPERS_MIN });
   console.log(
     `  · 过滤后 近窗${recent.length} + 回溯${older.length} → 保留论文：${papers.length}`
   );
 
   // ===== CVF 顶会论文补入（需求1 选 c）=====
   console.log("\n[论文] CVF openaccess…");
-  let cvf = await fetchCVFPapers();
+  let cvf = (await fetchCVFPapers()).filter(p => validSourceDate(p.published_at) && (isOpticalRelevant(p) || isRMTopicRelevant(p, "paper")));
   for (const p of cvf) {
     const c = detectConference(p);
     if (c) Object.assign(p, c);
-    p.categories = classify(p.title_en + " " + p.abstract_en);
+    p.categories = classify(p);
     p.heat = (p.confWeight || 0) * 20; // CVF 无 arXiv/HF 热度，仅顶会权重
   }
   // 与 arXiv 论文按规整标题去重（CVPR 论文常同时挂 arXiv）
@@ -396,16 +398,15 @@ async function main() {
       // 黑名单：FPS 游戏外挂等无关库一律剔除
       if (REPO_BLOCK_KW.some((k) => text.includes(k.toLowerCase()))) return false;
       // 相关性白名单：标签精确含 robomaster，或 名称/简介/标签 命中专属关键词
-      if (topics.includes("robomaster")) return true;
-      return REPO_RELEVANCE_KW.some((k) => text.includes(k.toLowerCase()));
+      return isRMTopicRelevant(r, "repo") && (topics.includes("robomaster") || REPO_RELEVANCE_KW.some((k) => text.includes(k.toLowerCase())));
     });
   for (const r of repos) r.relevance = scoreRepoRelevance(r);
-  repos = selectWithAerialCoverage(repos.sort((a, b) => b.relevance - a.relevance || b.stars - a.stars), REPOS_MAX, AERIAL_NATIVE_MIN);
+  repos = selectWithTopicCoverage(repos.sort((a, b) => b.relevance - a.relevance || b.stars - a.stars), REPOS_MAX, { aerialMinimum: AERIAL_NATIVE_MIN });
   console.log(`  · 去重 + 星标过滤后保留库：${repos.length}`);
   // 先按采集元数据分类，译文在最终合并后统一补齐。
   for (const r of repos) {
     const text = `${r.full_name} ${r.description_en} ${r.description_zh} ${r.highlight_zh} ${(r.topics || []).join(" ")}`;
-    r.categories = classify(text);
+    r.categories = classify(r);
     r.relevance = scoreRepoRelevance(r); // 相关度评分（Q33）
   }
 
@@ -446,18 +447,21 @@ async function main() {
     const nr = newRepoById.get(repoKey(ex));
     if (nr && nr.relevance != null) ex.relevance = nr.relevance;
     if (nr) ex.categories = nr.categories;
-    if (nr) fillTranslationGaps(ex, nr, "repo");
+    if (nr) {
+      for (const key of ["stars", "forks", "pushed_at", "created_at", "license", "archived", "metadata_fetched_at"]) ex[key] = nr[key];
+      fillTranslationGaps(ex, nr, "repo");
+    }
   }
 
-  const combinedPapers = dedupeBy([...existing.papers, ...papers], paperKey);
-  const combinedRepos = dedupeBy([...existing.repos, ...repos], repoKey);
+  const combinedPapers = dedupeBy([...existing.papers, ...papers], paperKey).filter(p => isOpticalRelevant(p) || isRMTopicRelevant(p, "paper"));
+  const combinedRepos = dedupeBy([...existing.repos, ...repos], repoKey).filter(r => isOpticalRelevant(r) || isRMTopicRelevant(r, "repo"));
   for (const item of [...combinedPapers, ...combinedRepos]) {
-    item.categories = classify([item.title_en, item.abstract_en, item.full_name, item.description_en, ...(item.topics || [])].filter(Boolean).join(" "));
+    item.categories = classify(item);
     annotateRules(item, RM_RULES);
     item.relevance = item.title_en ? scorePaperRelevance(item) : scoreRepoRelevance(item);
   }
-  const finalPapers = selectWithAerialCoverage(combinedPapers.sort((a, b) => b.relevance - a.relevance || b.heat - a.heat), PAPERS_CUMULATIVE_MAX, AERIAL_PAPERS_MIN, undefined, OPTICAL_PAPERS_MIN);
-  const finalRepos = selectWithAerialCoverage(combinedRepos.sort((a, b) => b.relevance - a.relevance || b.stars - a.stars), REPOS_MAX, AERIAL_NATIVE_MIN);
+  const finalPapers = selectWithTopicCoverage(combinedPapers.sort((a, b) => b.relevance - a.relevance || b.heat - a.heat), PAPERS_CUMULATIVE_MAX, { aerialMinimum: AERIAL_PAPERS_MIN, opticalMinimum: OPTICAL_PAPERS_MIN });
+  const finalRepos = selectWithTopicCoverage(combinedRepos.sort((a, b) => b.relevance - a.relevance || b.stars - a.stars), REPOS_MAX, { aerialMinimum: AERIAL_NATIVE_MIN });
 
   // Translate after selection/merge so every displayed item gets a Chinese preview,
   // including older cumulative entries and newly added aerial candidates.

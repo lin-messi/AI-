@@ -4,9 +4,10 @@ import { useState } from "react";
 import { useApp } from "./AppProvider";
 import { STRINGS } from "@/lib/i18n";
 import { timeAgo } from "@/lib/format";
+import RecommendationNote from "./RecommendationNote";
 
 export default function NewsCard({ item }) {
-  const { lang, role, favs, reads, toggleFav, toggleRead } = useApp();
+  const { lang, role, favs, reads, toggleFav, toggleRead, ready } = useApp();
   const t = STRINGS[lang === "en" ? "en" : "zh"];
   const [copied, setCopied] = useState(false);
   const [expanded, setExpanded] = useState(false);
@@ -92,8 +93,10 @@ export default function NewsCard({ item }) {
         </div>
       )}
 
+      <RecommendationNote item={item} />
+
       <div className="tags">
-        {item.tags.map((tag) => (
+        {(item.tags || []).map((tag) => (
           <span className="tag" key={tag}>
             #{tag}
           </span>
@@ -101,7 +104,7 @@ export default function NewsCard({ item }) {
       </div>
 
       <div className="card-foot">
-        <span className="time">{timeAgo(item.published_at, lang)}</span>
+        <span className="time">{ready ? timeAgo(item.published_at, lang) : (item.published_at || "").slice(0, 10)}</span>
         <div className="card-actions">
           <button
             className={`iconbtn ${isFav ? "on" : ""}`}

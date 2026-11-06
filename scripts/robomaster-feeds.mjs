@@ -17,6 +17,8 @@ export const CATEGORIES = [
   { key: "slam", label_zh: "SLAM / 建图", label_en: "SLAM & Mapping" },
   { key: "nav", label_zh: "导航 / 决策", label_en: "Navigation & Decision" },
   { key: "planning", label_zh: "路径规划", label_en: "Path Planning" },
+  { key: "control", label_zh: "控制 / 嵌入式", label_en: "Control & Embedded" },
+  { key: "assembly", label_zh: "视觉伺服 / 装配", label_en: "Visual Servoing & Assembly" },
   { key: "rl", label_zh: "强化学习", label_en: "Reinforcement Learning" },
   { key: "radar", label_zh: "雷达 / 全场定位", label_en: "Radar & Localization" },
   { key: "sim", label_zh: "仿真 / 平台", label_en: "Simulation & Platform" },
@@ -239,6 +241,10 @@ export const GENERAL_WHITELIST = [
   "uzh-rpg/rpg_mpc",
   "uzh-rpg/agilicious",
   "ethz-asl/mav_trajectory_generation",
+  "BehaviorTree/BehaviorTree.CPP",
+  "acados/acados",
+  "moveit/moveit2",
+  "AprilRobotics/apriltag",
   // —— 感知：检测 / 分割 / 跟踪 ——
   "ultralytics/ultralytics",
   "WongKinYiu/yolov7",
@@ -289,6 +295,10 @@ export const GENERAL_TOPIC_QUERIES = [
   "topic:multi-object-tracking",
   "topic:reinforcement-learning topic:robotics",
   "topic:ros2 topic:navigation",
+  "topic:model-predictive-control topic:robotics",
+  "topic:visual-servoing",
+  "topic:robotic-assembly",
+  "robomaster controller firmware",
 ];
 
 // 主题搜索结果的相关性闸门：名称/简介/标签需命中以下机器人/视觉语境词之一，
@@ -332,6 +342,16 @@ export const AERIAL_ARXIV_QUERIES = [
   '(cat:cs.RO OR cat:cs.SY) AND (ti:quadrotor OR ti:quadcopter OR ti:multirotor OR ti:drone OR ti:UAV)',
   '(cat:cs.RO OR cat:cs.CV) AND (all:"aerial robot" OR all:"micro aerial vehicle" OR all:"drone navigation" OR all:"autonomous landing")',
   '(cat:cs.RO OR cat:cs.SY) AND (all:drone OR all:UAV) AND (all:"visible light communication" OR all:"optical communication" OR all:docking)',
+];
+
+// Independent capability queries prevent high-volume generic CV/ML feeds from hiding
+// navigation, control, tracking and assembly work. Eligibility is assessed after retrieval.
+export const RM_TOPIC_ARXIV_QUERIES = [
+  '(cat:cs.RO OR cat:cs.CV) AND (all:robomaster OR all:"armor detection" OR all:"power rune" OR all:"gimbal control")',
+  '(cat:cs.RO OR cat:cs.CV) AND (ti:"target tracking" OR ti:"multi-object tracking" OR ti:"small object detection") AND (all:"real-time" OR all:robot OR all:embedded)',
+  '(cat:cs.RO OR cat:cs.SY) AND (all:"mobile robot" OR all:"wheeled robot" OR all:sentry) AND (all:navigation OR all:localization OR all:"motion planning")',
+  '(cat:cs.RO OR cat:cs.SY OR cat:eess.SY) AND (ti:"model predictive control" OR ti:"trajectory tracking" OR ti:"motor control" OR ti:"gimbal control") AND (all:robot OR all:quadrotor)',
+  '(cat:cs.RO OR cat:cs.CV) AND (ti:"visual servoing" OR ti:"robotic assembly" OR ti:"fiducial" OR (ti:"pose estimation" AND all:"rigid object"))',
 ];
 
 // ====== 叠加赛事规则驱动的检索关键词（data/rm-rules.json）======
