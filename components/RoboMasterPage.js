@@ -131,7 +131,7 @@ export default function RoboMasterPage({ day, dates = [], latest, curated, gener
   const filtered = useMemo(() => {
     let list = isPapers ? [...papers] : [...repos];
     if (cat !== "all") list = list.filter((it) => (it.categories || []).includes(cat));
-    if (cat === "optical" && recLane !== "all") list = list.filter(it => it.recommendation?.lane === recLane);
+    if (recLane !== "all") list = list.filter(it => it.recommendation?.lane === recLane);
     if (cat === "optical" && receiver !== "all") list = list.filter(it =>
       (receiver === "camera" ? ["camera", "rolling_shutter_camera", "event_camera"] : ["photodiode", "led"]).includes(it.recommendation?.receiver));
     if (onlyFav) list = list.filter((it) => favs.has(it.id));
@@ -413,9 +413,10 @@ export default function RoboMasterPage({ day, dates = [], latest, curated, gener
           ))}
         </div>
 
-        {cat === "optical" && (
-          <section className="recommendation-note" aria-label="可见光推荐筛选">
-            <p>{lang === "en" ? "Recent work uses publication or code-update dates. Established references require verifiable evidence. Receiver type, implementation scope and constraints are shown on each card." : "近期成果按真实发表或代码更新时间判断；长期参考展示可核验的引用或项目证据。请结合接收器、许可、运动适应性与通信灯要求选型，低星原型会标为实现参考。"}</p>
+          <section className="recommendation-note" aria-label={lang === "en" ? "RM recommendation filters" : "RM推荐筛选"}>
+            <p>{cat === "optical"
+              ? (lang === "en" ? "Recent work uses publication or code-update dates. Established references require verifiable evidence. Receiver type, implementation scope and constraints are shown on each card." : "近期成果按真实发表或代码更新时间判断；长期参考展示可核验的引用或项目证据。请结合接收器、许可、运动适应性与通信灯要求选型，低星原型会标为实现参考。")
+              : (lang === "en" ? "Recent work uses publication or code-update dates. Check the task, hardware, license and adaptation limits on each card; a reference is not a ready-to-compete system." : "近期成果按真实发表或代码更新时间判断。请核对卡片中的任务、硬件、许可与适用限制；研究参考仍需改造和实测。")}</p>
             <div className="filters">
               <label>{lang === "en" ? "Evidence: " : "推荐类型："}<select value={recLane} onChange={e => setRecLane(e.target.value)}>
                 <option value="all">{lang === "en" ? "All" : "全部"}</option>
@@ -423,14 +424,13 @@ export default function RoboMasterPage({ day, dates = [], latest, curated, gener
                 <option value="established">{lang === "en" ? "Established" : "长期参考"}</option>
                 <option value="reference">{lang === "en" ? "Reference" : "研究 / 实现参考"}</option>
               </select></label>
-              <label>{lang === "en" ? "Receiver: " : "接收端："}<select value={receiver} onChange={e => setReceiver(e.target.value)}>
+              {cat === "optical" && <label>{lang === "en" ? "Receiver: " : "接收端："}<select value={receiver} onChange={e => setReceiver(e.target.value)}>
                 <option value="all">{lang === "en" ? "All" : "两类都看"}</option>
                 <option value="camera">{lang === "en" ? "Frame / event camera" : "帧 / 滚动快门 / 事件相机"}</option>
                 <option value="photo">{lang === "en" ? "Photodiode / LED" : "光电二极管 / LED接收"}</option>
-              </select></label>
+              </select></label>}
             </div>
           </section>
-        )}
         {filtered.length === 0 ? (
           <div className="empty">{t.roboEmpty}</div>
         ) : (

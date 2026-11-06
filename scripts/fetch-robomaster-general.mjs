@@ -20,7 +20,8 @@ import {
 } from "./robomaster-feeds.mjs";
 import { fetchOpticalLibrary } from "./fetch-rm-optical.mjs";
 import { isOpticalRelevant, opticalProfile, recommendationProfile, compactOpticalReadme } from "./optical-policy.mjs";
-import { classifyRM, selectWithAerialCoverage, taskBonus, rulesFingerprint } from "./rm-recommendation-policy.mjs";
+import { classifyRM, selectWithTopicCoverage, taskBonus, rulesFingerprint } from "./rm-recommendation-policy.mjs";
+import { isRMTopicRelevant, validSourceDate } from "./rm-topic-policy.mjs";
 import { scoreRepoRelevance } from "./relevance.mjs";
 import { translateGeneralRepos } from "./enrich-github.mjs";
 import { assessRMUsage } from "./enrich-rm-usage.mjs";
@@ -61,16 +62,18 @@ function normalizeRepo(r) {
     stars: r.stargazers_count || 0,
     forks: r.forks_count || 0,
     language: r.language || "",
-    topics: Array.isArray(r.topics) ? r.topics.slice(0, 6) : [],
+    topics: Array.isArray(r.topics) ? r.topics : [],
     url: r.html_url || `https://github.com/${r.full_name}`,
     homepage: r.homepage || "",
     created_at: r.created_at || "",
-    pushed_at: r.pushed_at || r.updated_at || "",
+    pushed_at: validSourceDate(r.pushed_at),
     source: "general",
     categories: [],
     optical_review: r.optical_review,
     readme_excerpt: r.readme_excerpt,
     license: r.license?.spdx_id || null,
+    archived: Boolean(r.archived),
+    metadata_fetched_at: new Date().toISOString(),
   };
 }
 
@@ -91,15 +94,7 @@ function daysSince(iso) {
 
 // 综合评分：星标(对数) + 近期活跃 + 相关度命中 + 白名单加权
 function scoreRepo(r) {
-  const starScore = Math.log10((r.stars || 0) + 1); // 0 ~ ~5
-  const d = daysSince(r.pushed_at);
-  const activeBonus = d <= 90 ? 2 : d <= 365 ? 1 : 0;
-  const text = `${r.full_name} ${r.description_en} ${(r.topics || []).join(" ")}`.toLowerCase();
-  const relHits = GENERAL_RELEVANCE_KW.filter((k) => text.includes(k.toLowerCase())).length;
-  const relScore = Math.min(relHits, 4) * 0.4;
-  const whitelistBoost = r._whitelist ? 3 : 0;
-  return starScore + activeBonus + relScore + whitelistBoost + taskBonus(r, RM_RULES)
-    + (isOpticalRelevant(r) ? recommendationProfile(r, "repo").score : 0);
+  return scoreRepoRelevance(r);
 }
 
 async function fetchWhitelistRepo(fullName) {
@@ -163,11 +158,11 @@ function passesGates(r, { isWhitelist }) {
       && daysSince(r.pushed_at) >= 0 && daysSince(r.pushed_at) <= GENERAL_ACTIVE_DAYS
       && r.readme_excerpt?.length >= 200 && r.license && !["NOASSERTION", "NONE"].includes(r.license);
   }
-  if (isWhitelist) return true; // 白名单：星标/活跃度/相关性均豁免
+  if (!isRMTopicRelevant(r, "repo")) return false;
+  if (isWhitelist) return true; // 经典实现可豁免活跃度，不能豁免具体能力证据
   if ((r.stars || 0) < GENERAL_MIN_STARS) return false;
-  if (daysSince(r.pushed_at) > GENERAL_ACTIVE_DAYS) return false;
-  // 相关性：需命中机器人/视觉语境词，避免纯 NLP/前端等无关高星库
-  return GENERAL_RELEVANCE_KW.some((k) => text.includes(k.toLowerCase()));
+  if (!validSourceDate(r.pushed_at) || daysSince(r.pushed_at) < 0 || daysSince(r.pushed_at) > GENERAL_ACTIVE_DAYS) return false;
+  return true;
 }
 
 async function main() {
@@ -207,6 +202,12 @@ async function main() {
         } catch {}
         await sleep(300);
       }
+    } else {
+      // Discover new specialist implementations as well as already popular projects.
+      await sleep(2500);
+      const since = new Date(Date.now() - GENERAL_ACTIVE_DAYS * 86400000).toISOString().slice(0, 10);
+      const updated = (await searchRepos(`${q} pushed:>=${since} stars:>=${GENERAL_MIN_STARS}`, 15, "updated")).map(normalizeRepo);
+      items = dedupeBy([...updated, ...items], r => r.id.toLowerCase());
     }
     console.log(`  ✓ 「${q}」：${items.length} 个`);
     pool.push(...items);
@@ -219,14 +220,14 @@ async function main() {
     passesGates(r, { isWhitelist: whitelistSet.has((r.id || "").toLowerCase()) || r._whitelist })
   );
   // 综合排序，截断
-  pool = selectWithAerialCoverage(pool
+  pool = selectWithTopicCoverage(pool
     .map((r) => ({ r, s: scoreRepo(r) }))
     .sort((a, b) => b.s - a.s)
     .map(({ r }) => {
       delete r._whitelist;
       delete r._optical_candidate;
       return r;
-    }), GENERAL_MAX, AERIAL_GENERAL_MIN, undefined, OPTICAL_REPOS_MIN);
+    }), GENERAL_MAX, { aerialMinimum: AERIAL_GENERAL_MIN, opticalMinimum: OPTICAL_REPOS_MIN });
   console.log(`  · 过滤+排序后保留通用库：${pool.length}`);
 
   // ===== 增量合并（保留已翻译条目）=====
@@ -260,7 +261,7 @@ async function main() {
   // 翻译后分类：中文简介/用途更丰富，分类更准
   for (const r of pool) {
     const text = `${r.full_name} ${r.description_en} ${r.description_zh} ${r.highlight_zh} ${(r.topics || []).join(" ")}`;
-    r.categories = classify(text);
+    r.categories = classify(r);
     if (isOpticalRelevant(r)) r.categories = [...new Set(["optical", ...r.categories])];
     if (r.readme_excerpt) r.readme_excerpt = compactOpticalReadme(r.readme_excerpt);
     r.relevance = scoreRepoRelevance(r);

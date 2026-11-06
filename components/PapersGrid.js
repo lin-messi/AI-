@@ -12,7 +12,8 @@ export default function PapersGrid({ items, fields }) {
 
   const [query, setQuery] = useState("");
   const [field, setField] = useState("all");
-  const [sort, setSort] = useState("heat");
+  const [sort, setSort] = useState("recommendation");
+  const [lane, setLane] = useState("all");
   const [onlyFav, setOnlyFav] = useState(false);
   const [onlyFeatured, setOnlyFeatured] = useState(false);
   const [active, setActive] = useState(null); // 当前打开的论文
@@ -32,6 +33,7 @@ export default function PapersGrid({ items, fields }) {
     else if (field !== "all") list = list.filter((p) => p.field === field);
     if (onlyFav) list = list.filter((p) => favs.has(p.id));
     if (onlyFeatured) list = list.filter((p) => p.featured);
+    if (lane !== "all") list = list.filter((p) => p.recommendation?.lane === lane);
     if (query.trim()) {
       const q = query.toLowerCase();
       list = list.filter((p) =>
@@ -41,15 +43,34 @@ export default function PapersGrid({ items, fields }) {
           .includes(q)
       );
     }
-    if (sort === "heat") list.sort((a, b) => b.heat - a.heat);
+    if (sort === "recommendation") {
+      list.sort((a, b) => {
+        const ar = Number.isFinite(a.recommendation?.score), br = Number.isFinite(b.recommendation?.score);
+        return ar && br ? b.recommendation.score - a.recommendation.score || (b.heat || 0) - (a.heat || 0)
+          : Number(br) - Number(ar) || (b.heat || 0) - (a.heat || 0);
+      });
+      // Keep small fields visible in the combined feed; rank within each field first.
+      if (field === "all") {
+        const groups = new Map(fields.filter(entry => entry.key !== "frontier").map(entry => [entry.key, []]));
+        for (const paper of list) {
+          const key = paper.field || "other";
+          if (!groups.has(key)) groups.set(key, []);
+          groups.get(key).push(paper);
+        }
+        const queues = [...groups.values()];
+        list = [];
+        for (let i = 0; queues.some(group => i < group.length); i++) for (const group of queues) if (group[i]) list.push(group[i]);
+      }
+    }
+    else if (sort === "heat") list.sort((a, b) => (b.heat || 0) - (a.heat || 0));
     else list.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
     return list;
-  }, [items, field, sort, onlyFav, onlyFeatured, query, favs]);
+  }, [items, fields, field, sort, lane, onlyFav, onlyFeatured, query, favs]);
 
   // 切换筛选/搜索/排序时重置可见数量，回到第一批
   useEffect(() => {
     setVisible(PAGE);
-  }, [field, sort, onlyFav, onlyFeatured, query]);
+  }, [field, sort, lane, onlyFav, onlyFeatured, query]);
 
   const shown = filtered.slice(0, visible);
 
@@ -65,6 +86,9 @@ export default function PapersGrid({ items, fields }) {
           />
         </div>
         <div className="filters">
+          <button className={`btn ${sort === "recommendation" ? "active" : ""}`} onClick={() => setSort("recommendation")}>
+            {lang === "en" ? "Recommended" : "综合推荐"}
+          </button>
           <button
             className={`btn ${sort === "heat" ? "active" : ""}`}
             onClick={() => setSort("heat")}
@@ -91,6 +115,16 @@ export default function PapersGrid({ items, fields }) {
           </button>
         </div>
       </div>
+
+      <label className="evidence-filter">
+        {lang === "en" ? "Recommendation type: " : "推荐类型："}
+        <select value={lane} onChange={e => setLane(e.target.value)}>
+          <option value="all">{t.all}</option>
+          <option value="recent">{lang === "en" ? "Recent research" : "近期成果"}</option>
+          <option value="established">{lang === "en" ? "Established references" : "长期参考"}</option>
+          <option value="reference">{lang === "en" ? "Research references" : "研究 / 实现参考"}</option>
+        </select>
+      </label>
 
       <div className="filters" style={{ marginTop: 4 }}>
         <button

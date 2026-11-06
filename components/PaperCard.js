@@ -48,7 +48,9 @@ export default function PaperCard({ paper, fieldLabel, onOpen, isNew }) {
           <span className="source-dot" />
           {paper.source}
         </span>
-        <span className="heat" title={`${t.heat} ${Math.round(paper.heat)}`}>
+        <span className="heat" title={paper.upvotes > 0
+          ? (lang === "en" ? `Hugging Face community likes: ${paper.upvotes}; not citations or peer review.` : `Hugging Face 社区点赞：${paper.upvotes}；非论文引用或同行评审结论。`)
+          : (lang === "en" ? "Computed interest score; not citations or a quality guarantee." : "本站热度分，非论文引用或质量认证。") }>
           🔥 {paper.upvotes > 0 ? paper.upvotes : Math.round(paper.heat)}
         </span>
       </div>

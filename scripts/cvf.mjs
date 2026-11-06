@@ -119,7 +119,10 @@ async function fetchOne(proc, budget) {
       url: detailUrl,
       pdf_url: pdfUrl,
       html_url: detailUrl,
-      published_at: year ? `${year}-06-01T00:00:00.000Z` : new Date().toISOString(),
+      // Proceedings identify a year, not an exact publication day. Jan 1 is only
+      // the sortable lower bound; the UI always shows the explicit year precision.
+      published_at: year && year <= new Date().getUTCFullYear() ? `${year}-01-01T00:00:00.000Z` : null,
+      published_precision: "year",
       upvotes: 0,
       heat: 0,
       featured: false,

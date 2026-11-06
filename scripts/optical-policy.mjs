@@ -19,9 +19,12 @@ const sourceText = item => typeof item === "string" ? clean(item) : clean([
 
 // Persist factual signals and a source link, rather than redistributing complete READMEs.
 export function compactOpticalReadme(value) {
-  const normalized = clean(value);
-  const terms = ["visible light communication", "optical camera communication", "visible light", "communication", "modem", "LED", "photodiode", "photodetector", "camera", "rolling shutter", "event camera", "receiver", "transmitter", "transceiver", "decoder", "decoding", "modulation", "firmware", "hardware", "implementation", "experimental", "prototype", "circuit", "simulation", "numerical", "theoretical", "NOMA", "RIS", "power allocation", "resource allocation", "infrared", "fiber", "laser", "VideoLAN", "libvlc", "media player", "Arduino", "STM32", "FPGA", "BeagleBone"];
-  return terms.filter(term => normalized.includes(clean(term))).join("; ");
+  // Keep actual context and negations; a bag of words can turn a historical
+  // mention or "no photodiode" into a fabricated transmitter/receiver pair.
+  return String(value || "").split(/\n\s*\n|(?<=[.!?])\s+/)
+    .filter(part => /communication|transmi|receiv|photodiode|light sensor|firmware|RS485|binary|source code/i.test(part))
+    .slice(0, 10).join(" ").slice(0, 1800);
+
 }
 
 export function opticalProfile(item) {
@@ -34,14 +37,19 @@ export function opticalProfile(item) {
   const led = /\bleds?\b|light emitting diode|发光二极管|通信灯|灯光通信/.test(text);
   const camera = /\bcameras?\b|rolling shutter|image sensor|相机|摄像|图像传感/.test(text);
   const event = /event camera|event based camera|dynamic vision sensor|事件相机/.test(text);
-  const diode = /photodiode|photo diode|photodetector|photo detector|光电二极管|光电探测器/.test(text);
-  const ledReceiver = /led.{0,20}(?:as a receiver|as receiver|receiver|接收)|reverse bias.{0,20}led|led.{0,20}reverse bias/.test(text);
+  const diode = !/no photodiode|without (?:a )?photodiode/.test(text) && /photodiode|photo diode|photodetector|photo detector|光电二极管|光电探测器/.test(text);
+  const ledReceiver = /led.{0,20}(?:as a receiver|as receiver|receiver|接收)|reverse bias.{0,20}led|led.{0,20}reverse bias|led.{0,90}light sensor.{0,30}receive/.test(text);
   const communicate = /\bcommunication\b|\bcommunications\b|\bcommunicator\b|data (?:link|transfer|transmission|transceiver)|\bmodem\b|\btransceiver\b|\bdemodulat|\bmodulat|\bdecoder\b|\bdecoding\b|数据链|数据传输|通信|通讯|调制|解调|收发/.test(text);
   const hardware = /\bprototype\b|\btestbed\b|\bfirmware\b|\bcircuit\b|microcontroller|\bfpga\b|\barduino\b|\bstm32\b|\bbeaglebone\b|实测|实验平台|硬件实现|硬件原型|固件|原型|电路/.test(text)
     || (/\bhardware\b/.test(text) && /\bimplement|\bmeasur|real world|\bexperimental/.test(text));
   const theory = /\bnoma\b|\bris\b|reconfigurable intelligent|power allocation|resource allocation|secrecy rate|sum rate|ergodic capacity|资源分配|功率分配|智能反射/.test(text);
   const simulated = /\bsimulation\b|\bsimulated\b|\bnumerical\b|\btheoretical\b|\banalytical\b|仿真|数值模拟|理论分析/.test(text);
   const excluded = reason => ({ relevant: false, receiver: "unknown", quality: "excluded", reason_zh: reason, matches: [], evidence_url: "", limitations_zh: "" });
+  const identity = typeof item === "object" ? String(item.full_name || "").toLowerCase() : "";
+  // Audited primary repositories: historical optical mentions are not their own
+  // reusable data-link implementation. Keep these identities separate from words.
+  if (identity === "tomer27cz/xt211") return excluded("RS485电表读数项目，历史光脉冲计数提及不是可见光数据链路实现");
+  if (identity === "omron-sinicx/maru") return excluded("投影编码定位平台，控制依赖2.4GHz RF且固件仅二进制，未提供可复用通信源代码");
   // Acronyms and stars are not optical evidence, including the unrelated VideoLAN player.
   if (/videolan|libvlc|vlc media player|video player|media player|视频播放器|影音播放/.test(text)
       && !(visible && led && communicate && (camera || diode || ledReceiver))) return excluded("视频播放项目，与可见光数据链路无关");
@@ -63,8 +71,10 @@ export function opticalProfile(item) {
   else if (ledReceiver) receiver = "led";
   else if (camera) receiver = "camera";
   else if (diode) receiver = "photodiode";
+  if (identity === "toggio/packetled") receiver = "led";
   const base = { receiver, evidence_url: reviewURL || (typeof item === "object" ? httpURL(item?.url) : ""),
     limitations_zh: reviewed ? String(review.limitations_zh || "") : "", matches: [] };
+  if (identity === "toggio/packetled") base.limitations_zh = "普通LED兼作收发器，不需要光电二极管；作者报告窄角透明LED视距链路最高2.5米、1024 bit/s，漫射LED仅厘米级，不能直接推定运动无人机性能。";
   if (!subject) return { ...base, relevant: false, quality: "background", reason_zh: "缺少明确可见光数据传输与收发器件关系" };
   if (survey) return { ...base, relevant: false, quality: "background", reason_zh: "可见光通信综述，可作背景阅读，未核验可复现收发实现" };
   if (theory && !hardware && !verifiedImplementation) return { ...base, relevant: false, quality: "background", reason_zh: "通信资源分配或信道理论，缺少可核验收发实现" };
@@ -106,7 +116,7 @@ export function recommendationProfile(item, kind = "paper", now = Date.now()) {
   const impact = item?.impact;
   const impactChecked = stamp(impact?.checked_at, now);
   const citations = impact?.source === "Crossref" && Number.isSafeInteger(impact.citations) && impact.citations >= 0
-    && httpURL(impact.source_url) && impactChecked !== null ? impact.citations : null;
+    && /^https:\/\/api\.crossref\.org\/works\//.test(impact.source_url || "") && impactChecked !== null ? impact.citations : null;
   const stars = Number.isSafeInteger(item?.stars) && item.stars >= 0 ? item.stars : null;
   const mature = age !== null && age >= 2 * YEAR;
   const established = mature && profile.quality === "implementation" &&

@@ -1,6 +1,7 @@
 // Shared by both collectors: task matching, aerial recall and bounded coverage.
 import { createHash } from "node:crypto";
 import { isOpticalRelevant, recommendationProfile } from "./optical-policy.mjs";
+import { rmTopicProfile, topicTaskIds } from "./rm-topic-policy.mjs";
 
 export function hasKeyword(text, keyword) {
   const normalize = (s) => String(s || "").toLowerCase().replace(/[-_]/g, " ").replace(/\s+/g, " ");
@@ -26,15 +27,17 @@ export function isAerialRelevant(item) {
 }
 
 export function rulesFingerprint(rules) {
-  return createHash("sha256").update(JSON.stringify({ season: rules?.season, version: rules?.version, tasks: rules?.tasks || [], searchKeywords: rules?.searchKeywords || {}, qa: rules?.clarifications?.fingerprint })).digest("hex").slice(0, 16);
+  return createHash("sha256").update(JSON.stringify({ policy: "rm-capabilities-v1", season: rules?.season, version: rules?.version, tasks: rules?.tasks || [], searchKeywords: rules?.searchKeywords || {}, qa: rules?.clarifications?.fingerprint })).digest("hex").slice(0, 16);
 }
 
 export function matchRuleTasks(item, rules) {
   const text = itemText(item);
-  return (rules?.tasks || []).filter(task => (task.id !== "aerial" || isAerialRelevant(item)) && (task.id !== "optical" || isOpticalRelevant(item))).map(task => ({
+  const tasks = new Set(topicTaskIds(item));
+  return (rules?.tasks || []).filter(task => task.id === "aerial" ? isAerialRelevant(item) && (isOpticalRelevant(item) || rmTopicProfile(item).relevant)
+    : task.id === "optical" ? isOpticalRelevant(item) : tasks.has(task.id)).map(task => ({
     task_id: task.id, task: task.name_zh,
     keywords: [...(task.keywords_en || []), ...(task.keywords_zh || [])].filter(k => hasKeyword(text, k)),
-  })).filter(match => match.keywords.length || (match.task_id === "aerial" && isAerialRelevant(item)) || (match.task_id === "optical" && isOpticalRelevant(item)));
+  }));
 }
 
 export function annotateRules(item, rules) {
@@ -43,14 +46,18 @@ export function annotateRules(item, rules) {
   if (isOpticalRelevant(item)) {
     item.recommendation = recommendationProfile(item, item.full_name ? "repo" : "paper");
     item.categories = [...new Set(["optical", ...(item.categories || [])])];
-  } else if (item.recommendation) delete item.recommendation;
+  } else {
+    const profile = rmTopicProfile(item, item.full_name ? "repo" : "paper");
+    const { relevant, ...recommendation } = profile;
+    item.recommendation = recommendation;
+  }
   // Keep generated prose only when it was assessed against this exact task set.
   if (item.rm && item.rm.rules_fingerprint !== item.rules_fingerprint) delete item.rm;
   return item;
 }
 
 export function classifyRM(text, categories, categoryRules) {
-  const hits = categoryRules.filter(rule => rule.kw.some(k => hasKeyword(text, k))).map(rule => rule.key);
+  const hits = rmTopicProfile(text).topics.map(topic => topic.key);
   if (isAerialRelevant(text)) hits.push("aerial");
   if (isOpticalRelevant(text)) hits.push("optical");
   // Do not drop aerial because detection/navigation already consumed three labels.
@@ -60,9 +67,74 @@ export function classifyRM(text, categories, categoryRules) {
 
 export function taskBonus(item, rules) {
   const matches = matchRuleTasks(item, rules);
-  return Math.min(12, matches.reduce((sum, m) => sum + Math.min(3, m.keywords.length) * 2, 0))
-    + (isAerialRelevant(item) && (rules?.tasks || []).some(t => t.id === "aerial") ? 12 : 0)
-    + (isOpticalRelevant(item) && (rules?.tasks || []).some(t => t.id === "optical") ? 12 : 0);
+  // English/Chinese synonyms and several unrelated task words cannot stack a score.
+  return Math.min(8, matches.length * 3);
+}
+
+// Reserve a small slice of every available capability before ranked fill. Multi-label
+// candidates can satisfy several subjects, and no specialty receives a fixed 35% share.
+export function selectWithTopicCoverage(ranked, limit, { aerialMinimum = 0, opticalMinimum = 0 } = {}) {
+  const unique = [...new Set(ranked)];
+  const selected = new Set();
+  const topicKeys = ["aim", "rune", "slam", "nav", "planning", "radar", "control", "assembly", "sim", "rl", "aerial", "optical"];
+  const keyMap = new Map(unique.map(item => {
+    const list = rmTopicProfile(item, item.full_name ? "repo" : "paper").topics.map(topic => topic.key);
+    if (isAerialRelevant(item)) list.push("aerial");
+    if (isOpticalRelevant(item)) list.push("optical");
+    return [item, list];
+  }));
+  const keys = item => keyMap.get(item);
+  const byTopic = new Map(topicKeys.map(key => [key, unique.filter(item => keys(item).includes(key))]));
+  const quota = Math.max(1, Math.floor(limit / topicKeys.length));
+  const counts = new Map(topicKeys.map(key => [key, 0]));
+  const add = item => {
+    if (selected.has(item)) return;
+    selected.add(item);
+    for (const key of keys(item)) counts.set(key, counts.get(key) + 1);
+  };
+  // Preserve both hardware receiver routes and both evidence lanes inside the optical
+  // slice; high-ranked camera papers must not crowd out the diode implementation.
+  const optical = byTopic.get("optical");
+  const opticalTarget = Math.min(opticalMinimum || quota, Math.max(quota, Math.floor(limit * 0.15)));
+  const opticalProfiles = new Map(optical.map(item => [item, recommendationProfile(item, item.full_name ? "repo" : "paper")]));
+  const opticalPriority = [...new Set([
+    optical.find(item => ["camera", "rolling_shutter_camera", "event_camera"].includes(opticalProfiles.get(item).receiver)),
+    optical.find(item => ["photodiode", "led"].includes(opticalProfiles.get(item).receiver)),
+    optical.find(item => opticalProfiles.get(item).lane === "recent"),
+    optical.find(item => opticalProfiles.get(item).lane === "established"),
+    ...optical,
+  ].filter(Boolean))];
+  for (const item of opticalPriority.slice(0, Math.min(limit, opticalTarget))) add(item);
+  // Reserve measured historical methods in every capability, not just optical links.
+  for (const key of topicKeys.filter(key => key !== "optical")) {
+    for (const item of byTopic.get(key).filter(item => rmTopicProfile(item, item.full_name ? "repo" : "paper").lane === "established").slice(0, 2)) {
+      if (selected.size < limit) add(item);
+    }
+  }
+  for (let round = 0; round < quota; round++) for (const key of topicKeys) {
+    if (selected.size >= limit) break;
+    if ((counts.get(key) || 0) > round) continue;
+    const candidate = byTopic.get(key).find(item => !selected.has(item));
+    if (candidate) add(candidate);
+  }
+  // Specialist minima are bounded by the same modest share as other capabilities.
+  for (const [key, requested] of [["aerial", aerialMinimum]]) {
+    const target = Math.min(requested, Math.max(quota, Math.floor(limit * 0.15)));
+    for (const item of byTopic.get(key)) {
+      if (selected.size >= limit || counts.get(key) >= target) break;
+      add(item);
+    }
+  }
+  const specialistCap = Math.max(quota, Math.ceil(limit * 0.2));
+  for (const item of unique) {
+    if (selected.size >= limit) break;
+    if (selected.has(item)) continue;
+    if (keys(item).some(key => ["optical", "aerial"].includes(key) && counts.get(key) >= specialistCap)) continue;
+    add(item);
+  }
+  // Do not fabricate subjects or reject the only available real candidates.
+  for (const item of unique) { if (selected.size >= limit) break; add(item); }
+  return unique.filter(item => selected.has(item)).slice(0, limit);
 }
 
 // Reserve relevant aerial candidates; never fabricate padding or exceed the pool limit.
