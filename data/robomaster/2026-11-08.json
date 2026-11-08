@@ -1,6 +1,6 @@
 {
   "date": "2026-11-08",
-  "generatedAt": "2026-11-08T06:49:56.324Z",
+  "generatedAt": "2026-11-08T14:05:00.170Z",
   "categories": [
     {
       "key": "optical",
@@ -68,7 +68,7 @@
       "label_en": "Other"
     }
   ],
-  "rules_fingerprint": "0e895dab6e3ef455",
+  "rules_fingerprint": "52c994ace5d2c1ff",
   "rules_season": "2027",
   "papers": {
     "count": 70,
@@ -110,14 +110,6 @@
         "image": "",
         "comment": "This work has been submitted to the IEEE for possible publication",
         "relevance": 49,
-        "rm": {
-          "usage": "用事件相机接收 PWM 占空比编码的 LED 标记，做身份关联+像素级跟踪+6DoF 相对位姿，可直接借鉴到空中机器人与机库/机间可见光链路的「调制编码—灯珠识别与同步」环节，也用于对着陆/悬停的相对定位；注意它针对额外通信 LED（可用 PWM/OOK），不能用于七颗航行外观灯，且接收端是事件相机而非普通帧相机，光源颜色与 40mm 处 ≤300Lux 等条件需另行核对。",
-          "task_id": "optical",
-          "task": "空中系统可见光通信链路",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T10:02:17.245Z",
         "rule_matches": [
           {
@@ -134,7 +126,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "lane": "recent",
           "score": 35,
@@ -143,6 +135,14 @@
           "evidence_url": "https://arxiv.org/abs/2611.07630v1",
           "limitations_zh": "需进一步核对光谱、光源与接收器条件，不能仅凭 LED 名称认定符合比赛要求",
           "quality": "implementation"
+        },
+        "rm": {
+          "usage": "用 PWM 占空比编码 LED 身份、事件相机做高帧率 LED 跟踪并解算 6-DoF 相对位姿，可直接迁到可见光链路：把额外通信 LED（非七颗航行外观灯）做 ID 调制与运动/HDR 下解码同步，位姿输出还能用于空中机器人对准机库悬停与自动降落；落地前需按 S24 核对颜色与 40mm 内 ≤300Lux 照度，并确认接收端确为事件相机。",
+          "task_id": "optical",
+          "task": "空中系统可见光通信链路",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -182,14 +182,6 @@
         "image": "",
         "comment": "9 pages, 6 figures, 5 tables. Added project website to abstract and updated author affiliation; research content unchanged",
         "relevance": 49,
-        "rm": {
-          "usage": "提供轻量（183k 参数）LiDAR 距离图像编码器与导航对齐预训练思路，若哨兵或空中平台配全景激光雷达，可参考其各向异性卷积/环形 padding 与 BEV 辅助监督做避障表征；但 RM 常用相机方案、论文为四足验证，需替换传感器并自建仿真环境，不能当作现成导航策略。",
-          "task_id": "sentry",
-          "task": "哨兵机器人自主导航与决策",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T13:13:42.426Z",
         "rule_matches": [
           {
@@ -198,7 +190,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -219,6 +211,14 @@
           "reason_zh": "地面自主导航、机器人策略学习的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；策略学习框架不自带RM战术环境、奖励函数或已验证策略",
           "evidence_url": "https://arxiv.org/abs/2610.29845v2"
+        },
+        "rm": {
+          "usage": "其轻量 LiDAR 距离图像编码器与「重建+语义+BEV」预训练思路，可作为哨兵 360° 激光感知的骨干网络，先在仿真预训练再冻结接入导航策略；需用 RM 场地数据与机载算力重新验证，未提供战术决策能力。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -254,14 +254,6 @@
         "image": "",
         "comment": "9 pages, 11 figures",
         "relevance": 49,
-        "rm": {
-          "usage": "GPU 加速的图表示建图/规划库（ROS 2 接口 + 向量化并行训练），理论上可作为哨兵导航中拓扑图建图与强化学习策略并行训练的基础设施；但属通用工具，不含 RM 场地语义、奖励与已验证策略，需自行搭建与验证。",
-          "task_id": "sentry",
-          "task": "哨兵机器人自主导航与决策",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -270,7 +262,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -291,6 +283,14 @@
           "reason_zh": "定位与建图、机器人策略学习的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；里程计、配准或建图不等于完整导航；须验证退化场景、重定位、传感器与标定条件；策略学习框架不自带RM战术环境、奖励函数或已验证策略",
           "evidence_url": "https://arxiv.org/abs/2610.28953v1"
+        },
+        "rm": {
+          "usage": "可用作哨兵导航的图表示基础设施：把局部地图建成图做路径规划，并用 GPU 并行环境批量训练导航/探索策略；属工具库，不含 RM 战术奖励与已验证策略。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -326,14 +326,6 @@
         "image": "",
         "comment": "8 pages, 2 figures",
         "relevance": 47,
-        "rm": {
-          "usage": "核心是 7-DoF 机械臂隐空间规划 + 神经控制屏障函数保证安全性，与哨兵自主导航关联较弱；只能借用「在规划步上做闭式 CBF 投影保证不撞」的思路，用于哨兵或空中避障安全层，需自行定义动力学与安全集。",
-          "task_id": "sentry",
-          "task": "哨兵机器人自主导航与决策",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T01:16:28.227Z",
         "rule_matches": [
           {
@@ -346,7 +338,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -372,6 +364,14 @@
           "reason_zh": "地面自主导航、运动规划、机器人控制的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2611.01814v1"
+        },
+        "rm": {
+          "usage": "面向 7-DoF 机械臂潜空间规划的安全约束方法，与哨兵底盘导航关联很弱；仅 CBF 安全层思想可参考做地面机器人安全约束，但需完全重构。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -409,14 +409,6 @@
         "image": "",
         "comment": "",
         "relevance": 47,
-        "rm": {
-          "usage": "全机载四鱼眼图像目标导航 + 注意力 RL 策略 + 碰撞安全层，可借鉴到空中机器人室内自主飞行、以机库/指定区域图像为目标点的返航与避障；其零样本 sim-to-real 未依赖外部动捕，但需自备鱼眼相机与机载算力，且不覆盖悬停 10 秒、机库近场/可见光链路等规则要求。",
-          "task_id": "aerial",
-          "task": "空中系统自主飞行与机库交互",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-05T09:23:05.025Z",
         "rule_matches": [
           {
@@ -428,7 +420,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -444,6 +436,14 @@
           "reason_zh": "运动规划的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场",
           "evidence_url": "https://arxiv.org/abs/2610.36968v1"
+        },
+        "rm": {
+          "usage": "全机载多鱼眼图像目标导航 + 碰撞安全层、无外部定位，思路可用于空中机器人室内自主飞行与避障，并把机库外观图作为目标做返航接近；需自备鱼眼相机并在 RM 场地重训策略，不能整套照搬。",
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -479,14 +479,6 @@
         "image": "",
         "comment": "8 pages, 6 figures, 2 tables. Published in IEEE Robotics and Automation Letters (RA-L)",
         "relevance": 47,
-        "rm": {
-          "usage": "基于点云的端到端四旋翼避障导航（静态+动态障碍，低推理开销），可参考其 patch 编码与无权专家示范的无监督轨迹代价训练，用于空中机器人场地内避障与轨迹规划；需提供深度/点云感知与机载算力，悬停稳定、机库交互与通信限制仍需另行实现。",
-          "task_id": "aerial",
-          "task": "空中系统自主飞行与机库交互",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-05T09:23:05.025Z",
         "rule_matches": [
           {
@@ -498,7 +490,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -514,6 +506,14 @@
           "reason_zh": "运动规划的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场",
           "evidence_url": "https://arxiv.org/abs/2610.23635v1"
+        },
+        "rm": {
+          "usage": "Transformer 端到端点云避障、推理开销低，可参考做空中机器人轻量机载感知—避障与轨迹预测；前提是机上有可用的点云/深度源并重训，静态与动态混合障碍需在赛场验证。",
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -549,14 +549,6 @@
         "image": "",
         "comment": "Conditionally accepted to the IEEE Transactions on Robotics",
         "relevance": 46,
-        "rm": {
-          "usage": "四旋翼主动 SLAM（前沿探索+主动回环+感知感知规划），RM 场地尺寸固定且结构已知、飞行时间短，探索收益有限；仅可借鉴其感知感知轨迹优化思想用于空中机器人定位漂移抑制，不能当作现成室内定位方案。",
-          "task_id": "aerial",
-          "task": "空中系统自主飞行与机库交互",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-05T09:23:05.025Z",
         "rule_matches": [
           {
@@ -577,7 +569,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -593,6 +585,14 @@
           "reason_zh": "定位与建图的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；里程计、配准或建图不等于完整导航；须验证退化场景、重定位、传感器与标定条件；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2610.37111v1"
+        },
+        "rm": {
+          "usage": "主动 SLAM 探索规划面向未知环境建图，而 RM 场地地图固定、无需探索，整体帮助有限；仅其定位不确定度处理与感知感知轨迹生成可作室内悬停稳定性参考。",
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -629,17 +629,9 @@
         "image": "",
         "comment": "",
         "relevance": 46,
-        "rm": {
-          "usage": "越野场景可通行性学习（视觉基础模型建体素图 + BEV 可通行性/代价预测），面向野外高速越野，与 RM 平整室内场地、结构化赛道差异大，几乎用不上。",
-          "task_id": "",
-          "task": "",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T13:13:42.426Z",
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -660,6 +652,14 @@
           "reason_zh": "运动规划、机器人策略学习的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；策略学习框架不自带RM战术环境、奖励函数或已验证策略",
           "evidence_url": "https://arxiv.org/abs/2610.32130v1"
+        },
+        "rm": {
+          "usage": "越野地形通行性学习与 RM 室内平整场地导航几乎无关，关联很弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -697,14 +697,6 @@
         "image": "",
         "comment": "",
         "relevance": 46,
-        "rm": {
-          "usage": "可借鉴其四阶CBF安全滤波器，把避障约束直接下放到力矩层、与姿态控制统一求解，用于空中机器人在机库附近起飞/降落与场地内飞行时做避障安全兜底和稳定悬停保护；但需要自备室内定位与较准确的机体动力学模型，属于算法改造参考而非整机方案，且空中机器人不得装发射机构。",
-          "task_id": "aerial",
-          "task": "空中系统自主飞行与机库交互",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T01:16:28.227Z",
         "rule_matches": [
           {
@@ -716,7 +708,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -737,6 +729,14 @@
           "reason_zh": "运动规划、机器人控制的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场",
           "evidence_url": "https://arxiv.org/abs/2610.14522v1"
+        },
+        "rm": {
+          "usage": "四阶CBF把姿态与力矩动态纳入避障约束，可作为空中机器人室内避障/稳定悬停的安全滤波器思路；但需完整刚体模型与可靠的室内状态估计，赛场无动捕/GPS时需自行解决定位与算力，属需改造的方法参考。",
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -775,14 +775,6 @@
         "image": "",
         "comment": "",
         "relevance": 46,
-        "rm": {
-          "usage": "其“图像到相对运动推断+有界残差位姿修正”的闭环视觉伺服框架可作思路参考，用于重装机械臂对准科技核心/能量单元时的视觉伺服收敛与防越界；但超声B模式图像与RM的标签/刚体位姿差异很大，不能直接迁移，需换成基于标签或点云的物体位姿估计。",
-          "task_id": "engineer",
-          "task": "重装机器人视觉装配",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -793,7 +785,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -809,6 +801,14 @@
           "reason_zh": "视觉伺服与装配的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；须验证科技核心标签、刚体位姿与装配精度，人体姿态不能替代物体位姿",
           "evidence_url": "https://arxiv.org/abs/2610.06010v1"
+        },
+        "rm": {
+          "usage": "其「图像到相对位姿的闭环迭代对准 + 有界残差修正」框架可借鉴到重装机器人对科技核心/能量单元视觉标签的位姿伺服装配；但输入是超声B模图像、需自建目标视图数据，与RM标签位姿检测差异大，不能直接套用。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -846,14 +846,6 @@
         "image": "",
         "comment": "Accepted at RiTA 2026",
         "relevance": 45,
-        "rm": {
-          "usage": "开源ROS2栈（YOLO检测方向标志、RGB-D SLAM、行为树任务管理、路径跟随）可作哨兵自主导航的整体架构参考，帮助搭定位—规划—行为状态机的骨架；但任务是轮式巡线取物，需替换为RM场地地图、装甲识别与自定决策，里程计/建图不等于完整哨兵导航。",
-          "task_id": "sentry",
-          "task": "哨兵机器人自主导航与决策",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T10:02:17.245Z",
         "rule_matches": [
           {
@@ -866,7 +858,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -887,6 +879,14 @@
           "reason_zh": "定位与建图、地面自主导航的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；里程计、配准或建图不等于完整导航；须验证退化场景、重定位、传感器与标定条件；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2611.08100v1"
+        },
+        "rm": {
+          "usage": "可参考其ROS2分层集成方式（检测+YOLO方向估计+RGB-D SLAM+行为树任务管理）来组织哨兵导航决策链路；但为轮式低速平台、依赖RGB-D SLAM与箭头/锥桶路标，赛场需替换为RM场地地图与自定位模块。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -922,14 +922,6 @@
         "image": "",
         "comment": "Accepted by CoRL 2026",
         "relevance": 45,
-        "rm": {
-          "usage": "可作为哨兵定位与建图的轻量特征匹配前端，在嵌入式算力下提升重定位和连续位姿估计的精度与速度；仍需在RM场地光照与退化场景下标定验证，不能视为完整导航系统。",
-          "task_id": "sentry",
-          "task": "哨兵机器人自主导航与决策",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -942,7 +934,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -963,6 +955,14 @@
           "reason_zh": "定位与建图、地面自主导航的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；里程计、配准或建图不等于完整导航；须验证退化场景、重定位、传感器与标定条件；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2611.03932v1"
+        },
+        "rm": {
+          "usage": "连续坐标细化的特征匹配可提升哨兵在重复纹理场地下重定位/建图的匹配精度与边缘端速度；但摘要只到匹配精度，需自行接到RM地图与重定位流程中验证。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -997,14 +997,6 @@
         "image": "",
         "comment": "",
         "relevance": 45,
-        "rm": {
-          "usage": "其把监督决策（重规划/等待/求援）从LLM在线蒸馏成决策树的思路，可类比用于哨兵在卡死或局部路径不可行时的“重规划/等待/换目标”监督逻辑；但场景为轮式MPC冻结恢复，与RM战术决策差距大且依赖仿真与LLM标注，只能作低频参考。",
-          "task_id": "sentry",
-          "task": "哨兵机器人自主导航与决策",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T13:13:42.426Z",
         "rule_matches": [
           {
@@ -1016,7 +1008,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -1037,6 +1029,14 @@
           "reason_zh": "地面自主导航、机器人控制的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统",
           "evidence_url": "https://arxiv.org/abs/2610.39775v1"
+        },
+        "rm": {
+          "usage": "把「重规划/等待/求助」的监督决策蒸馏成决策树，可类比用于哨兵在卡死或路径不可达时切换策略；但场景与RM战术差异大，且「呼叫人工」不适用，仅作监督层设计思路。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -1078,14 +1078,6 @@
         "image": "",
         "comment": "",
         "relevance": 45,
-        "rm": {
-          "usage": "flow matching生成多模态候选路径、再由MPC在线满足约束与避障并事件触发重规划，可用于哨兵在对抗拥挤环境中的动态路径生成与安全跟随；目前只有仿真结果，需用RM场地数据重训并解决实时性。",
-          "task_id": "sentry",
-          "task": "哨兵机器人自主导航与决策",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -1097,7 +1089,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -1123,6 +1115,14 @@
           "reason_zh": "地面自主导航、运动规划、机器人控制的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2610.29377v1"
+        },
+        "rm": {
+          "usage": "flow matching生成多模态路径 + MPC路径跟随与事件触发重规划，可比照做哨兵全局路径生成与局部避障执行的两级结构；但论文仅在移动机器人仿真中验证，需在实车与RM场地重做。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -1158,14 +1158,6 @@
         "image": "",
         "comment": "",
         "relevance": 45,
-        "rm": {
-          "usage": "将离线可达性安全值函数学成隐式表征，作为MPC终端约束或CBF候选，用于空中机器人对动态障碍（其他机器人、飞镖等）的实时避障与悬停安全判定；论文含空中平台实验，但离线求解与在线算力、室内定位前提需自行满足。",
-          "task_id": "aerial",
-          "task": "空中系统自主飞行与机库交互",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -1177,7 +1169,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -1198,6 +1190,14 @@
           "reason_zh": "运动规划、机器人控制的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场",
           "evidence_url": "https://arxiv.org/abs/2610.16522v2"
+        },
+        "rm": {
+          "usage": "离线学习的可达性安全表示作为MPC终端约束或CBF候选，可用于空中机器人在狭窄空域的实时避障与悬停安全包络；需按自身机体参数重建离线求解器并解决室内定位前提。",
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -1240,14 +1240,6 @@
         "confWeight": 5,
         "confVision": false,
         "relevance": 44,
-        "rm": {
-          "usage": "其“基于信息量指标触发重定位”的思路可用于空中机器人在RM场地低纹理、重复结构区域的VIO漂移监控与主动重定位提示；但主动投放地面标记、接触墙面做标记的做法会污染/干扰赛场道具与场地，不可照搬。相关结论在OptiTrack辅助下取得，赛场无外部动捕，效果需重新验证。",
-          "task_id": "aerial",
-          "task": "空中系统自主飞行与机库交互",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -1264,7 +1256,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -1285,6 +1277,14 @@
           "reason_zh": "定位与建图、机器人控制的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；里程计、配准或建图不等于完整导航；须验证退化场景、重定位、传感器与标定条件；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2611.07687v1"
+        },
+        "rm": {
+          "usage": "关联很弱：其核心是向场地主动投放/贴附视觉标记抑制VIO漂移，这在RM赛场属于改变场地道具且不现实，实验还依赖OptiTrack；仅「用信息量指标触发重定位/降速」的策略可作提示。",
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -1320,17 +1320,9 @@
         "image": "",
         "comment": "",
         "relevance": 44,
-        "rm": {
-          "usage": "面向六轴机械臂的安全集/MPC递推可行性方法，理论上可参考到重装机械臂装配运动的安全约束设计，但与RoboMaster赛场规则、任务与实时算力条件差距大，且重装装配不在可评估任务内，实际可用性很弱。",
-          "task_id": "",
-          "task": "",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T01:16:28.227Z",
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -1351,6 +1343,14 @@
           "reason_zh": "机器人控制、机器人策略学习的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；策略学习框架不自带RM战术环境、奖励函数或已验证策略",
           "evidence_url": "https://arxiv.org/abs/2611.06196v1"
+        },
+        "rm": {
+          "usage": "控制不变集/安全集与 MPC 递推可行性的理论工具，可在哨兵或重装机械臂的 MPC 控制中约束预测时域节点以避免越界，但论文只在 6 轴机械臂上验证，与 RM 任务链条关联较弱，只能作为安全约束设计的思路参考。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -1388,14 +1388,6 @@
         "image": "",
         "comment": "Submit to IEEE Transactions on Intelligent Transportation Systems IEEE TITS",
         "relevance": 44,
-        "rm": {
-          "usage": "可借鉴其“视觉标签+几何约束求相对位姿”的思路，用于空中机器人相对机库/着陆标记的精确对准与稳定悬停；MPC-RCAPID 这类在线辨识+滚动优化自整定 PID 可用于抗地面效应、气流扰动的悬停与轨迹跟踪控制。注意其验证仅限 AirSim 与 Tello，标签检测依赖已知标记，进赛场需替换为机库可见光/标记识别并核对机载算力，不能当作整机方案。",
-          "task_id": "aerial",
-          "task": "空中系统自主飞行与机库交互",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-07T13:40:51.705Z",
         "rule_matches": [
           {
@@ -1406,7 +1398,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -1422,6 +1414,14 @@
           "reason_zh": "机器人控制的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场",
           "evidence_url": "https://arxiv.org/abs/2610.35342v1"
+        },
+        "rm": {
+          "usage": "可借鉴其「视觉检测标记→几何约束解算相对位置→MPC 校正自适应 PID 跟踪」的思路，用于空中机器人对机库/通信光源标记的精确对位与稳定悬停、以及动态目标跟踪；需自行提供室内定位或机载视觉基准，Tello/AirSim 结论不能替代赛场验证。",
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -1456,14 +1456,6 @@
         "image": "",
         "comment": "23 pages, 16 figures, including supplementary material. Jiyeong Chae and Hyunkyo Seo contributed equally. Project page: https://a56239637-dot.github.io/Natural-Language-to-Nav2-Project-Page/",
         "relevance": 44,
-        "rm": {
-          "usage": "可参考其“把人工指令解析成禁行区/区域代价/时段条件并注入Nav2代价地图层”的做法，为哨兵提供赛前或局间由操作手快速配置巡逻区域、禁行区、优先通道的接口；需自行适配RM的导航栈与地图，且本地LLM解析的误接受风险要加确定性校验。",
-          "task_id": "sentry",
-          "task": "哨兵机器人自主导航与决策",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T13:13:42.426Z",
         "rule_matches": [
           {
@@ -1472,7 +1464,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -1488,6 +1480,14 @@
           "reason_zh": "地面自主导航的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统",
           "evidence_url": "https://arxiv.org/abs/2610.32633v1"
+        },
+        "rm": {
+          "usage": "把自然语言指令转成 costmap 的 keepout/区域代价策略，思路可用于哨兵导航栈的禁区与阵地/控制区代价配置；但哨兵是全自动运行、无操作员下发指令，LLM 接口本身用不上，只有 costmap 适配层的工程做法有参考价值。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -1522,14 +1522,6 @@
         "image": "",
         "comment": "",
         "relevance": 44,
-        "rm": {
-          "usage": "面向 4Wh 供电、轻量化受限的空中机器人，其“事件驱动稀疏感知+低功耗导航”的思路可作为机载感知功耗预算的参考；但方法依赖事件相机与 Intel Loihi 神经形态处理器，赛场常规算力平台难以复现，且只输出航点，不解决机库交互与链路限制，只能作低功耗设计取舍的参考。",
-          "task_id": "aerial",
-          "task": "空中系统自主飞行与机库交互",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-07T13:40:51.705Z",
         "rule_matches": [
           {
@@ -1538,7 +1530,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -1554,6 +1546,14 @@
           "reason_zh": "运动规划的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场",
           "evidence_url": "https://arxiv.org/abs/2610.21978v1"
+        },
+        "rm": {
+          "usage": "事件相机+脉冲神经网络的轻量视觉导航思路，对算力与功耗受限的空中机器人有参考意义，但依赖 Loihi 类神经形态芯片与事件相机，RM 机载通常不具备，短期难以落地。",
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -1589,14 +1589,6 @@
         "image": "",
         "comment": "24 pages, 8 figures",
         "relevance": 43,
-        "rm": {
-          "usage": "面向人类共存环境的社交导航基准，其社会性代价与舒适度指标与RM赛场无关；仅其多控制器（DWA/MPPI）对比评测协议对哨兵局部规划器选型有非常间接的参考价值，基本用不上。",
-          "task_id": "sentry",
-          "task": "哨兵机器人自主导航与决策",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -1605,7 +1597,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -1621,6 +1613,14 @@
           "reason_zh": "地面自主导航的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统",
           "evidence_url": "https://arxiv.org/abs/2611.02937v1"
+        },
+        "rm": {
+          "usage": "以真人社交导航为中心的基准与评测协议，RM 场地上没有行人社交约束，其社交代价地图与社会性指标基本不适用，仅可参考其实验设计与评测流程的组织方式。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -1661,14 +1661,6 @@
         "image": "",
         "comment": "Conference on Robot Learning (CoRL 2026); Project Website: https://coopuq.github.io/",
         "relevance": 43,
-        "rm": {
-          "usage": "其不确定性感知的多机协同占据预测依赖机器人之间的持续信息共享，RM中哨兵只能接收雷达数据、空中系统只能经机库间接通信，前提不成立；仅“用预测不确定性调节风险敏感度”的思想可在雷达/决策侧做概念参考，实用度低。",
-          "task_id": "strategy",
-          "task": "多机协同与战术决策",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T13:13:42.426Z",
         "rule_matches": [
           {
@@ -1680,7 +1672,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -1696,6 +1688,14 @@
           "reason_zh": "机器人策略学习的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；策略学习框架不自带RM战术环境、奖励函数或已验证策略",
           "evidence_url": "https://arxiv.org/abs/2610.26852v1"
+        },
+        "rm": {
+          "usage": "多机协同占用预测＋不确定性约束的 MARL 框架，可迁移为「雷达/机库共享敌方占用栅格并带不确定性，用于哨兵与多机避碰与风险决策」的建模思路；但需自建 RM 仿真环境和奖励，且通信须遵守赛场链路限制。",
+          "task_id": "strategy",
+          "task": "多机协同与战术决策",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -1741,14 +1741,6 @@
           "verified": true,
           "checked_at": "2026-11-05T11:58:05.108Z"
         },
-        "rm": {
-          "usage": "直接对应空中系统可见光链路：可参考其八LED发射端编码与事件相机接收的设备关联、时间戳不一致、拖尾与不应期补偿方案，用于设计机库—空中机器人或机间短报文链路，尤其适合低延迟握手与同步。注意论文只验证单发单收、需要事件相机硬件，不能据此认为已支持多机组网；发射端须是S80七灯之外的额外通信LED并满足S24照度与队伍颜色要求。",
-          "task_id": "optical",
-          "task": "空中系统可见光通信链路",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-05T11:40:55.096Z",
         "rule_matches": [
           {
@@ -1757,7 +1749,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "lane": "recent",
           "score": 38,
@@ -1766,6 +1758,14 @@
           "evidence_url": "https://arxiv.org/abs/2608.24705",
           "limitations_zh": "论文验证的是单发单收链路，不能据此认定已支持多机网络；需事件相机，未核验到公开实现仓库，arXiv仅注明MobiHoc 2026有条件接收。",
           "quality": "implementation"
+        },
+        "rm": {
+          "usage": "事件相机做光通信的单发单收链路原型，直接对应空中系统可见光链路：其设备关联、时间戳不一致/拖尾/不应期等硬件时序处理可用于机库-空中机器人或机间短报文链路设计；注意仅验证单链路、需机载事件相机，且调制对象应是 S80 七灯之外额外加装的通信 LED，不能对航行外观灯做调制。",
+          "task_id": "optical",
+          "task": "空中系统可见光通信链路",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -1801,14 +1801,6 @@
         "image": "",
         "comment": "7 pages, 6 figures, accepted for publication in ICARCV 2026",
         "relevance": 42,
-        "rm": {
-          "usage": "可借鉴其“先做机器人相关IK筛选与运动规划、再统一执行判定”的抓取管线评测协议，用于搭建重装视觉装配（如能量单元抓取与安装）的MuJoCo仿真评测流程；但它是方法评测基准而非装配算法，也缺少RM专用对象与位姿定义，需要自行构建场景与奖励。",
-          "task_id": "sim",
-          "task": "算法仿真与验证",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -1817,7 +1809,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -1838,6 +1830,14 @@
           "reason_zh": "运动规划、机器人仿真与工具的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2611.07651v1"
+        },
+        "rm": {
+          "usage": "在 MuJoCo 中按 IK 过滤＋运动规划＋固定接近-闭合-抬升执行的完整流程评测抓取管线，可借鉴为仿真环节里评估重装机械臂抓取能量单元/装配模块的可执行成功率协议；属评测方法而非 RM 专用实现。",
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -1873,14 +1873,6 @@
         "image": "",
         "comment": "accepted to ACM ISS 2026 (ISS track of PACMHCI)",
         "relevance": 42,
-        "rm": {
-          "usage": "与 RoboMaster 赛项基本无关：它是人手操控群体机器人模拟流体的 HCI 研究，其编队变形不涉及哨兵所需的定位、建图或战术决策，不建议投入阅读。",
-          "task_id": "",
-          "task": "",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -1892,7 +1884,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -1908,6 +1900,14 @@
           "reason_zh": "地面自主导航的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统",
           "evidence_url": "https://arxiv.org/abs/2611.06068v1"
+        },
+        "rm": {
+          "usage": "与 RM 赛场几乎无关：它是人机交互场景下用手部动作调节集群机器人“流体”行为的系统，既非自主定位也非战术决策；最多只能借鉴其编队绕障/推物的形态控制思路，无法迁移到哨兵全自动导航与决策。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -1944,17 +1944,9 @@
         "image": "",
         "comment": "",
         "relevance": 42,
-        "rm": {
-          "usage": "其 BEV 语义地图加强化学习的联合避障/语义路径规划思路，可为哨兵在动态障碍（敌方机器人）间穿行提供奖励设计参考；但论文场景为行人城市环境，须在 RM 场地重训，且不能直接当作战术决策系统。",
-          "task_id": "",
-          "task": "",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T13:20:53.974Z",
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -1975,6 +1967,14 @@
           "reason_zh": "运动规划、机器人策略学习的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；策略学习框架不自带RM战术环境、奖励函数或已验证策略；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2611.03498v2"
+        },
+        "rm": {
+          "usage": "其“单张语义 BEV 图 + 强化学习联合处理语义区域与动态障碍”的思路，可为哨兵导航中把场地分区（禁区、控制区、坡道）与敌我动态目标统一进一张代价图提供参考；但赛场没有行人、社交规范不适用，需重建地图表示与奖励函数并在机载算力上验证。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -2009,14 +2009,6 @@
         "image": "",
         "comment": "8 pages, 4 figures, submitted to Robotics and Automation Letters (RA-L)",
         "relevance": 42,
-        "rm": {
-          "usage": "可用于哨兵（及机库端）激光惯性定位建图的方案参考：几何 LiDAR-惯性高频估计加神经隐式后端做全局优化，缓解长走廊重复结构的漂移；但神经后端算力开销与退化/重定位仍需在 RM 场地与车载算力上验证，且建图不等于完整导航。",
-          "task_id": "sentry",
-          "task": "哨兵机器人自主导航与决策",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -2028,7 +2020,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -2044,6 +2036,14 @@
           "reason_zh": "定位与建图的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；里程计、配准或建图不等于完整导航；须验证退化场景、重定位、传感器与标定条件；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2610.21199v1"
+        },
+        "rm": {
+          "usage": "可作为哨兵/地面机器人激光-惯性建图定位的候选方案参考，其轻量化神经隐式后端在 Jetson Orin NX + 16 线雷达上实时运行，对“算力受限下的重复走廊重定位”有借鉴价值；需在 RM 场地尺寸、反光与拥挤环境下重测退化与重定位性能，里程计本身不等于完整导航。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -2083,14 +2083,6 @@
         "confWeight": 3,
         "confVision": false,
         "relevance": 41,
-        "rm": {
-          "usage": "主要用于从外部相机估计远处小型无人机的光流，与空中机器人机载自主定位关系间接；若要用于空中机器人自身运动估计，只能借鉴其分辨率归一化指标与光流模型选型经验，前提是自己采集机载数据。",
-          "task_id": "aerial",
-          "task": "空中系统自主飞行与机库交互",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -2101,7 +2093,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -2117,6 +2109,14 @@
           "reason_zh": "检测与目标跟踪的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；未证明装甲板/点阵屏幕识别、反陀螺预测与弹道闭环；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2611.07705v1"
+        },
+        "rm": {
+          "usage": "关联很弱：它是从外部相机估计远处小型无人机光流的合成数据集与基准，用于空中监视/远距目标跟踪，并非机载自定位；若用于空中机器人自身悬停的光流测速需另行采集室内数据，不能直接照搬。",
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -2156,14 +2156,6 @@
         "image": "",
         "comment": "Under Review",
         "relevance": 41,
-        "rm": {
-          "usage": "若重装用 RGB-D 对能量单元、42mm 发射机构等反光/透明金属件做位姿估计，可借其不确定性引导的深度修复提升点云质量；但需自备 RGB-D 与算力，且不能替代基于视觉标签的标定与装配精度验证。",
-          "task_id": "engineer",
-          "task": "重装机器人视觉装配",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -2174,7 +2166,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -2190,6 +2182,14 @@
           "reason_zh": "视觉伺服与装配的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；须验证科技核心标签、刚体位姿与装配精度，人体姿态不能替代物体位姿；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2611.01645v1"
+        },
+        "rm": {
+          "usage": "对工程机器人装配的可用性有限：其不确定性感知深度修复针对透明/反光材质，若科技核心或金属件在深度图上出现空洞可作预处理思路；但依赖深度基础模型、算力开销大，标签类目标用常规 PnP 已足够，属于改造后才可能用上的支撑工具。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -2223,14 +2223,6 @@
         "image": "",
         "comment": "10 pages, 7 figures, 6 tables",
         "relevance": 41,
-        "rm": {
-          "usage": "研究的是单目行人跟踪的安全决策误差归因，与赛场上无行人的哨兵/雷达任务关联很弱；最多借鉴其“规则误差 vs 感知误差”分离评估方法用于离线分析决策失误。",
-          "task_id": "",
-          "task": "",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -2239,7 +2231,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -2255,6 +2247,14 @@
           "reason_zh": "地面自主导航的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2610.40199v1"
+        },
+        "rm": {
+          "usage": "与 RM 关联很弱：研究的是单目 RGB 行人跟踪中“感知误差如何影响停止/前进决策”的归因方法，赛场无行人；仅其“把感知误差折算成安全裕度”的评估思路可借来评估哨兵避障决策的漏检风险，但不涉及实车避障验证。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -2304,14 +2304,6 @@
           "verified": true,
           "checked_at": "2026-11-05T11:58:05.108Z"
         },
-        "rm": {
-          "usage": "事件相机接收的可见光通信身份识别，时空编码（LED 子集空间分离＋用户特定时延免同步）可直接迁移到机库与空中机器人、以及机间额外通信 LED 的链路设计与解码；注意其原型仅用单块八灯面板模拟两用户，移动与环境光鲁棒性未验证，且调制只针对额外通信 LED，不得用于七颗航行外观灯。",
-          "task_id": "optical",
-          "task": "空中系统可见光通信链路",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-05T11:58:13.189Z",
         "rule_matches": [
           {
@@ -2323,7 +2315,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "lane": "recent",
           "score": 38,
@@ -2332,6 +2324,14 @@
           "evidence_url": "https://arxiv.org/abs/2608.16858",
           "limitations_zh": "实机原型将同一八LED面板划分为两组来模拟两位用户，不能当作已验证的多无人机组网；更多用户容量主要来自理论分析，移动与环境光鲁棒性仍列为后续工作，也不能将抗重放设计等同于完整安全验证；未核验公开代码，arXiv注明投稿GLOBECOM。",
           "quality": "implementation"
+        },
+        "rm": {
+          "usage": "与可见光通信任务较贴合：其用事件相机接收、以 LED 子集做空间分离 + 用户相对时延做身份编码的异步方案，可参考用于区分机库信标与机间通信灯、实现免同步的快速识别；注意其接收端是事件相机（多数队伍用普通帧相机或光电二极管），且运动与环境光鲁棒性未验证，其多用户容量多为理论分析，不能视作已完成的机间组网，也不能把该类调制施加到七颗航行外观灯上。",
+          "task_id": "optical",
+          "task": "空中系统可见光通信链路",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -2365,14 +2365,6 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 41,
-        "rm": {
-          "usage": "免训练的零样本 6DoF 相对位姿估计，可作为重装面对无标签、弱纹理装配对象（如能量单元）时的备选位姿方案；但依赖大型视觉语言模型，机载算力与实时性风险大，不能取代已标定的科技核心标签流程。",
-          "task_id": "engineer",
-          "task": "重装机器人视觉装配",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -2383,7 +2375,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -2399,6 +2391,14 @@
           "reason_zh": "视觉伺服与装配的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；须验证科技核心标签、刚体位姿与装配精度，人体姿态不能替代物体位姿；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Kuang_ConceptPose_Training-Free_Zero-Shot_Object_Pose_Estimation_using_Concept_Vectors_CVPR_2026_paper.html"
+        },
+        "rm": {
+          "usage": "可作工程机器人位姿估计的思路参考（用概念向量建立 3D-3D 对应做免训练 6DoF 位姿），但依赖 VLM 生成概念图，机载实时性与精度难满足科技核心/能量单元的装配节拍；实际更可能沿用标签 + PnP，因此关联偏弱。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -2445,14 +2445,6 @@
           "verified": true,
           "checked_at": "2026-11-05T11:58:05.108Z"
         },
-        "rm": {
-          "usage": "相机接收可见光通信的解码前端：用导频帧+PSF约束霍夫检测和暗角/径向畸变补偿，处理机库或机间通信灯在失焦、光斑重叠、视野边缘时的光斑定位与分离。可直接借鉴到 RMUC 空中系统-机库可见光链路中相机接收端的灯点检测与同步；但原实验用 1000fps 高速相机拍 16×16 密集阵列，迁移到机载普通/卷帘快门相机、稀疏通信灯和运动姿态需重新验证，且只能用于 #184 允许的额外通信 LED，不能调制七颗航行外观灯。",
-          "task_id": "optical",
-          "task": "空中系统可见光通信链路",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-05T11:58:13.189Z",
         "rule_matches": [
           {
@@ -2464,7 +2456,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "lane": "recent",
           "score": 37,
@@ -2473,6 +2465,14 @@
           "evidence_url": "https://arxiv.org/abs/2605.17375",
           "limitations_zh": "实验采用46厘米见方的16×16 LED阵列与1000fps INFINICAM UC-1高速相机，并非普通机载相机或小型机间链路；方法依赖阵列导频和几何先验，迁移到稀疏通信灯、运动姿态与较低帧率时须重新验证；未核验公开代码或已发表会议信息。",
           "quality": "implementation"
+        },
+        "rm": {
+          "usage": "可用于空中系统可见光链路（机间/机库—无人机）的接收端解码：借鉴其导频帧引导、PSF 约束霍夫圆检测与径向畸变/暗角补偿，处理机载相机在失焦、光斑重叠、视野边缘时对额外通信 LED 的定位与识别问题；需把稀疏通信灯、普通帧率相机与飞行姿态变化重新标定，不能直接搬用高速相机的密集阵列参数。",
+          "task_id": "optical",
+          "task": "空中系统可见光通信链路",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -2506,17 +2506,9 @@
         "image": "",
         "comment": "6 pages, 8 figures, accepted for publication in ICARCV 2026",
         "relevance": 40,
-        "rm": {
-          "usage": "按里程计/地图变化/检测置信度动态调度检测帧率以省电的思路，可参考用于哨兵或空中机器人机载算力平台的功耗与算力分配；但它做的是开放词表 YOLO-World 目标搜索，不是装甲板点阵识别，且 Jetson 输入功率与底盘 100W 功率上限不是同一指标，落地需自行改造。",
-          "task_id": "",
-          "task": "",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -2532,6 +2524,14 @@
           "reason_zh": "检测与目标跟踪的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；未证明装甲板/点阵屏幕识别、反陀螺预测与弹道闭环；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2611.07663v1"
+        },
+        "rm": {
+          "usage": "只有限参考其“按机器人状态/置信度动态切换检测算力档位”的调度思路，可用于哨兵或空中机载算力受限时的功耗管理；其开放词汇检测器与导航场景和装甲板点阵识别无关，不能当作自瞄检测方案。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -2568,14 +2568,6 @@
         "image": "",
         "comment": "",
         "relevance": 40,
-        "rm": {
-          "usage": "单目人体 3D 定位与社会上下文，与 RM 场地内无行人、目标是装甲板/机器人的设定基本不符，关联很弱；最多在多人/多机遮挡场景下的位姿回归思路有极弱的参考价值。",
-          "task_id": "",
-          "task": "",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -2584,7 +2576,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -2600,6 +2592,14 @@
           "reason_zh": "地面自主导航的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2611.03189v1"
+        },
+        "rm": {
+          "usage": "面向单目图像中人体三维定位，与 RM 赛场目标（装甲板、能量机关、科技核心）不对应，最多借其“复用姿态网络内部特征”的轻量化思路，实用价值很弱。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -2636,14 +2636,6 @@
         "image": "",
         "comment": "",
         "relevance": 40,
-        "rm": {
-          "usage": "带显式状态约束的 actor-critic MPC，可参考用于哨兵在狭窄通道、多机动态对抗下的局部避障与轨迹跟踪：把机器人与障碍用顶点/半空间表示，将避碰约束凸化进可微 MPC 层并加松弛变量。需要换成哨兵的实际底盘动力学与场地尺寸后重新训练验证，不能直接当完整导航系统。",
-          "task_id": "sentry",
-          "task": "哨兵机器人自主导航与决策",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -2652,7 +2644,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -2673,6 +2665,14 @@
           "reason_zh": "地面自主导航、机器人控制的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2610.41477v1"
+        },
+        "rm": {
+          "usage": "可作为哨兵/地面机器人动态避障与轨迹跟踪的规划控制参考：带显式状态约束的可微 MPC 层 + actor-critic 调参，适合狭窄通道和移动障碍下的实时避障；需替换为 RM 场地尺寸、底盘运动学与算力条件重新训练验证。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -2709,17 +2709,9 @@
         "image": "",
         "comment": "First two listed authors have equal contribution. Submitted to IEEE Transactions on Field Robotics",
         "relevance": 40,
-        "rm": {
-          "usage": "语义+前沿驱动的自主探索与风险感知建图，RM 场地地图固定且已知，不需要未知区域探索，关联很弱；仅在把敌方目标作为语义层融入代价地图这一思路上有微弱参考。",
-          "task_id": "",
-          "task": "",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -2735,6 +2727,14 @@
           "reason_zh": "运动规划的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2610.41456v1"
+        },
+        "rm": {
+          "usage": "语义—前沿联合探索可用于哨兵在未知场地的自主探索建图，但 RM 场地尺寸固定且已先验已知，风险感知探索收益有限；关联较弱，仅作探索策略参考。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -2768,14 +2768,6 @@
         "image": "",
         "comment": "8 pages, 11 figures. Accepted to 2026 IEEE International Symposium on Safety, Security, and Rescue Robotics (SSRR)",
         "relevance": 40,
-        "rm": {
-          "usage": "系绳机器人通过缆绳张力判断碰撞物可移动性的方法，RM 机器人无线缆、也不允许用线缆与机库相连（答疑 #315），几乎用不上。",
-          "task_id": "",
-          "task": "",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -2786,7 +2778,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -2802,6 +2794,14 @@
           "reason_zh": "地面自主导航的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2610.24449v1"
+        },
+        "rm": {
+          "usage": "讨论系绳机器人的缆绳—障碍物张力感知，与 RM 中任何机器人形态（无系绳、无拖缆导航）都不对应，基本用不上。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -2835,14 +2835,6 @@
         "image": "",
         "comment": "",
         "relevance": 40,
-        "rm": {
-          "usage": "机载空气声呐的 6-DoF SLAM，哨兵实际用激光雷达/轮式里程计而非声呐，传感器前提不成立；仅位姿图+闭环验证的整体框架有泛泛参考，无法直接迁移。",
-          "task_id": "",
-          "task": "",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -2854,7 +2846,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -2870,6 +2862,14 @@
           "reason_zh": "定位与建图的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；里程计、配准或建图不等于完整导航；须验证退化场景、重定位、传感器与标定条件；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2610.22552v1"
+        },
+        "rm": {
+          "usage": "6-DoF 位姿图、子图描述子回环与 CFAR 稀疏化思路对哨兵室内定位建图有方法参考价值，但传感器是空中三维成像声呐，RM 用激光/视觉，需完全替换前端并验证退化与重定位，不能当作现成导航方案。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -2903,14 +2903,6 @@
         "image": "",
         "comment": "",
         "relevance": 40,
-        "rm": {
-          "usage": "开源 MuJoCo 四旋翼仿真框架（含 SE(3) 几何跟踪控制器、由模型描述直接生成旋翼分配矩阵），可作为构建空中机器人动力学仿真、验证悬停/轨迹跟踪/抗扰动的底座，服务于 sim 与 aerial 的算法预验证；但软体连续机械臂载荷与 RM 空中机器人无关，且仿真不涉及赛场可见光链路、4Wh 电池与轻量化约束，不能当作可参赛整机方案。",
-          "task_id": "sim",
-          "task": "算法仿真与验证",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -2930,7 +2922,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -2946,6 +2938,14 @@
           "reason_zh": "机器人仿真与工具的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2610.15308v1"
+        },
+        "rm": {
+          "usage": "基于 MuJoCo 的四旋翼仿真框架（SE(3) 几何跟踪控制、由模型直接生成旋翼分配矩阵）可作为空中机器人悬停、轨迹跟踪与机库起降策略的仿真试验台；其软体机械臂载荷与 RM 空中机器人轻量化、无发射机构的前提不符，需删去并加入 4Wh 能量与室内定位假设。",
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -2984,14 +2984,6 @@
         "image": "",
         "comment": "",
         "relevance": 40,
-        "rm": {
-          "usage": "这是一个机载异构算力与算法流水线的闭环协同仿真框架；它可以在整机集成前评估「感知/定位算法＋算力平台＋通信链路」在闭环飞行中会带来多少延迟与性能损失。可用于空中系统（起飞—悬停≥10秒—避障—返航—机库交互）在仿真阶段的部署方案与算力选型权衡（如分辨率和模型规模）；但需要自行搭建RM场地、机库与飞控模型，不能视为可直接参赛的整机方案。",
-          "task_id": "sim",
-          "task": "算法仿真与验证",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -3009,7 +3001,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -3025,6 +3017,14 @@
           "reason_zh": "机器人仿真与工具的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2610.14715v1"
+        },
+        "rm": {
+          "usage": "可把机载定位、感知、避障算法与算力平台、通信缓冲建成参数化数据流图做闭环仿真，用来在实机前比较不同算力/部署方案对悬停、起降与机库交互时序的影响；需自行按RM场地与传感器建模，不能直接出参赛系统。",
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -3073,14 +3073,6 @@
           "verified": true,
           "checked_at": "2026-11-05T11:58:05.108Z"
         },
-        "rm": {
-          "usage": "面向事件相机接收端的可见光通信实测：采用只保留正事件模式的协议，抑制事件带宽饱和，分离并同时识别多路LED发射器，并测量端到端时延。它正对应任务中「运动与环境光下解码、多光源识别、同步与时延」这些难点，可迁移到机间通信链路或机库链路中为多颗额外通信LED编号；使用时需重新核验机载视场、姿态遮挡与功耗。这类调制只针对额外通信LED，不能用于七颗航行外观灯。",
-          "task_id": "optical",
-          "task": "空中系统可见光通信链路",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-05T11:40:55.096Z",
         "rule_matches": [
           {
@@ -3092,7 +3084,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "lane": "recent",
           "score": 36,
@@ -3101,6 +3093,14 @@
           "evidence_url": "https://arxiv.org/abs/2605.05541",
           "limitations_zh": "车辆场景不等于小型无人机场景，仍须评估视场、遮挡、姿态变化与机载功耗；文中同时接收最多三路LED不是任意规模组网保证，未核验公开代码。",
           "quality": "implementation"
+        },
+        "rm": {
+          "usage": "其事件相机接收的可见光链路方案（仅正事件模式抑制带宽饱和、多LED发射器分离、端到端时延实测）可参考用于空中机器人机间或与机库的可见光链路，重点是区分多架无人机光源与运动下解码；需重新评估小型无人机视场、遮挡、姿态变化与机载功耗，车辆场景结论不能直接套用。",
+          "task_id": "optical",
+          "task": "空中系统可见光通信链路",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -3144,14 +3144,6 @@
         },
         "metadata_fetched_at": "2026-11-05T11:44:51.690Z",
         "relevance": 39.76,
-        "rm": {
-          "usage": "OpenVLC是开源嵌入式可见光通信原型，包含OOK/曼彻斯特编码、介质访问和IP互通等分层实现。可参考它的分层结构，搭建机库端或机载的低成本可见光链路协议栈。注意此版本把LED兼作探测器，与后续光电二极管方案不同；BeagleBone平台与旧驱动需要移植，并且需要核对亮度与照度限值（例如距空中机器人40mm内不超过300Lux）。",
-          "task_id": "optical",
-          "task": "空中系统可见光通信链路",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-05T11:40:55.096Z",
         "rule_matches": [
           {
@@ -3163,7 +3155,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "lane": "established",
           "score": 35.76,
@@ -3179,6 +3171,14 @@
             "source_url": "https://api.crossref.org/works/10.1109%2FMWC.2015.7096291",
             "checked_at": "2026-11-05T11:43:05.529Z"
           }
+        },
+        "rm": {
+          "usage": "可参考其OOK/曼彻斯特编码加介质访问与网络接口的分层结构，低成本搭建机库端或机间可见光链路原型，并作为额外通信LED调制编码的入门实现；但为2015年LED兼作探测器的旧平台，需移植到新硬件并单独核对S24照度与S81通信灯颜色要求，不得调制七颗航行外观灯。",
+          "task_id": "optical",
+          "task": "空中系统可见光通信链路",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -3230,7 +3230,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "lane": "established",
           "score": 36.28,
@@ -3280,14 +3280,6 @@
         "image": "",
         "comment": "11 pages. Author-accepted manuscript of the article published in IEEE Sensors Journal, 2022",
         "relevance": 39,
-        "rm": {
-          "usage": "轮式差速底盘专用的RGB-D视觉惯性SLAM，通过编码器在视觉特征短暂丢失或高速运动时兜底。哨兵自定位可参考它的编码器紧耦合建模思路，并把编码器与激光、IMU联合使用；但该模型假设为差速底盘，而RM赛场存在高速对抗、光照变化和动态遮挡，因此需要重新做传感器标定，并验证退化场景与重定位，不能直接拿来用。",
-          "task_id": "sentry",
-          "task": "哨兵机器人自主导航与决策",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -3299,7 +3291,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -3315,6 +3307,14 @@
           "reason_zh": "定位与建图的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；里程计、配准或建图不等于完整导航；须验证退化场景、重定位、传感器与标定条件；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2610.41768v1"
+        },
+        "rm": {
+          "usage": "紧耦合VIO+轮式编码器的思路可迁移到哨兵底盘定位，在图像特征短暂缺失或快速运动时用轮速约束提升位姿估计鲁棒性；但只是里程计/SLAM，不含建图避障与战术决策，需在RM场地与实机算力上验证。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -3354,17 +3354,9 @@
         "image": "",
         "comment": "8 pages",
         "relevance": 39,
-        "rm": {
-          "usage": "跨形态运动规划与本体无关世界模型，面向杂波环境中的通用导航策略。RM中没有对应接口（赛事任务列表也没给出可对应的任务），机体和场景差异大，基本用不上；最多只能当作「把多机数据汇总后训练统一策略」的思路参考。",
-          "task_id": "",
-          "task": "",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -3385,6 +3377,14 @@
           "reason_zh": "运动规划、机器人策略学习的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；策略学习框架不自带RM战术环境、奖励函数或已验证策略；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2610.41330v1"
+        },
+        "rm": {
+          "usage": "跨具身运动规划与可微自我动力学主要用于多形态机器人平地规划的通用框架，与RM具体机器人几何、场地与对抗任务差距较大，关联很弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -3421,17 +3421,9 @@
         "image": "",
         "comment": "8 pages, 8 figures",
         "relevance": 39,
-        "rm": {
-          "usage": "GPS拒止环境下的多机协同定位与规划（机会约束避障＋定位不确定度终值约束），在海洋场景中验证。与RM多机战术、雷达信息融合只有方法论层面的相似性，缺少场地、通信和算力前提；实用关联很弱，不建议投入。",
-          "task_id": "",
-          "task": "",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -3452,6 +3444,14 @@
           "reason_zh": "运动规划、机器人控制的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2610.41235v1"
+        },
+        "rm": {
+          "usage": "GPS拒止下多机协同定位的规划思路与RM多机协同略有相通之处，但面向海上多智能体与不确定性约束，缺少RM对抗、通信限制与场地前提，难以直接落地。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -3487,17 +3487,9 @@
         "image": "",
         "comment": "9 pages, 5 figures, 2 tables",
         "relevance": 39,
-        "rm": {
-          "usage": "异构多机安全导航的图控制障碍函数方法，通过可达速度集条件化实现零样本迁移。理论上可参考多机同时运动的避障安全约束，但RM中地面机器人对抗以命中与热量为核心、空中系统又不允许发射机构，场景与收益不匹配，关联很弱。",
-          "task_id": "",
-          "task": "",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -3513,6 +3505,14 @@
           "reason_zh": "机器人控制的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统",
           "evidence_url": "https://arxiv.org/abs/2610.41214v1"
+        },
+        "rm": {
+          "usage": "异构多机器人安全导航的控制屏障函数方法偏通用多机安全控制，与RM的哨兵/多机战术决策场景差异明显，且赛场多机通信受限，基本用不上。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -3551,17 +3551,9 @@
         "image": "",
         "comment": "",
         "relevance": 39,
-        "rm": {
-          "usage": "把在线轨迹优化蒸馏成直接控制策略，用于移动机器人保持目标可见且平滑地动态跟踪，计算周期为4~6ms。可借鉴其平滑控制与短时安全回退思路，用于哨兵或云台的动态目标跟随；但它不包含装甲板/点阵屏识别、反陀螺预测与弹道闭环，不能当作自瞄方案使用。",
-          "task_id": "",
-          "task": "",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -3582,6 +3574,14 @@
           "reason_zh": "检测与目标跟踪、运动规划的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；未证明装甲板/点阵屏幕识别、反陀螺预测与弹道闭环；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2610.34929v1"
+        },
+        "rm": {
+          "usage": "把跟踪优化离线蒸馏为直接控制策略、并带障碍间隙安全检查的动态目标跟踪框架，与自瞄中跟瞄运动目标有概念相似性，但未涉及装甲板/点阵识别、云台弹道闭环与热量约束，只能作为跟踪控制思路参考。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -3620,14 +3620,6 @@
         "image": "",
         "comment": "",
         "relevance": 39,
-        "rm": {
-          "usage": "可借鉴其「数字孪生+仿真增广」的 sim-to-real 流程：在仿真中按 RMUC 28m×15m 场地建数字孪生，训练哨兵导航策略，再用实车数据微调，并按成功率、平滑度、机载算力分项评测。注意这是工业 AGV/人形移动平台案例，依赖 Isaac/Cosmos 与 GPU 训练资源，不提供 RM 地图、战术或已验证策略，需自行重建环境与传感器配置。",
-          "task_id": "sentry",
-          "task": "哨兵机器人自主导航与决策",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -3636,7 +3628,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -3652,6 +3644,14 @@
           "reason_zh": "地面自主导航的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2610.28432v3"
+        },
+        "rm": {
+          "usage": "可借鉴其“数字孪生场景微调+sim-to-real数据增强+机载Jetson部署”的流程，为哨兵/地面机器人搭建RM场地数字孪生并训练学习型导航策略；但需自建28m×15m场地孪生与奖励函数，且不能直接沿用其工业AMR整机栈。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -3683,17 +3683,9 @@
         "image": "",
         "comment": "14 pages, 4 figures, 13 tables; supplementary material included as appendix; qualitative video as ancillary file",
         "relevance": 39,
-        "rm": {
-          "usage": "其 IMM 卡尔曼滤波+不确定度自适应搜索域可迁移到自瞄/雷达的装甲目标跟踪：对急停急转、云台扫视造成的图像位移增大关联门限，并在轨迹交叉后用外观特征做一次性 ID 纠正。但论文验证场景是体育转播人体目标，未涉及点阵屏识别、反陀螺预测与弹道闭环，需在装甲板数据上重标定参数。",
-          "task_id": "",
-          "task": "",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -3709,6 +3701,14 @@
           "reason_zh": "检测与目标跟踪的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；未证明装甲板/点阵屏幕识别、反陀螺预测与弹道闭环；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2610.22306v1"
+        },
+        "rm": {
+          "usage": "其IMM卡尔曼+不确定度自适应关联门限、以及交叉后一次性身份纠正的思路可用于雷达多目标跟踪的航迹管理与ID切换抑制，或自瞄目标短暂遮挡后的重关联；但不含装甲板识别与反陀螺预测，需自建检测前端。",
+          "task_id": "",
+          "task": "",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -3743,14 +3743,6 @@
         "image": "",
         "comment": "This work has been submitted to an Elsevier journal for possible publication. Copyright may be transferred without notice, after which this version may no longer be accessible",
         "relevance": 39,
-        "rm": {
-          "usage": "可作为重装装配任务的评测协议参考：把装配拆成拧紧、放置、插入、卡扣等多步原语，按容差等级与分步得分统计，用来设计仿真中长时序装配的成功率与误差累积指标。但它是工业力位控制基准，不含科技核心/视觉标签的位姿估计与机械臂视觉伺服，实际装配算法需另行开发。",
-          "task_id": "engineer",
-          "task": "重装机器人视觉装配",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -3759,7 +3751,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -3775,6 +3767,14 @@
           "reason_zh": "视觉伺服与装配的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；须验证科技核心标签、刚体位姿与装配精度，人体姿态不能替代物体位姿；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2610.16398v1"
+        },
+        "rm": {
+          "usage": "可借用其长时序装配任务的分解方式与可靠性/得分评价指标，为工程机器人“先标签定位再插入”的装配流程做自测基准与误差累积分析；但论文基于DIN标准件与力位控制，缺少视觉标签与位姿识别环节。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -3810,14 +3810,6 @@
         },
         "metadata_fetched_at": "2026-11-05T11:44:51.690Z",
         "relevance": 39,
-        "rm": {
-          "usage": "直接服务于可见光链路接收端设计：把机载滚动快门相机建模为曝光时间宽度的矩形匹配滤波器加行采样，据此确定可达符号率上限，并把收发不同步引起的码间干扰当作三抽头信道用线性均衡补偿。可用于评估空中机器人相机接收机库/机间通信 LED 时该选多大曝光、多少波特率以及是否需要均衡。注意其带宽实验用专用 LED 与 USRP 测得，需在机载相机与额外通信 LED（非七颗航行外观灯）上重新标定，且要求相机支持滚动快门与曝光控制。",
-          "task_id": "optical",
-          "task": "空中系统可见光通信链路",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-05T11:40:55.096Z",
         "rule_matches": [
           {
@@ -3831,7 +3823,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "lane": "recent",
           "score": 36,
@@ -3840,6 +3832,14 @@
           "evidence_url": "https://arxiv.org/abs/2602.08474",
           "limitations_zh": "需确认相机支持滚动快门并能控制曝光；文中实验使用专用LED、USRP和测量设备，不能将实验带宽直接套到机载相机；未核验公开代码，arXiv仅注明已投稿ICC。",
           "quality": "implementation"
+        },
+        "rm": {
+          "usage": "直接面向滚动快门相机接收LED的OCC链路：可据其矩形匹配滤波模型确定行扫描采样率上限、评估收发不同步导致的码间干扰并用线性均衡补偿，用于设计空中机器人—机库可见光链路的符号率与同步方案；需确认机载相机可锁定曝光，且实验带宽不可直接照搬。",
+          "task_id": "optical",
+          "task": "空中系统可见光通信链路",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -3881,17 +3881,9 @@
         "confWeight": 5,
         "confVision": false,
         "relevance": 38,
-        "rm": {
-          "usage": "与前馈几何基础模型单目 SLAM 相关，思路是在子图间加尺度锚定与回环 Sim(3) 约束抑制漂移，理论上可用于哨兵/无人机的单目重定位。但该方案依赖大模型推理，算力与实时性远高于机载平台，也缺少 RM 场地退化场景验证，短期内仅作方法了解。",
-          "task_id": "",
-          "task": "",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -3907,6 +3899,14 @@
           "reason_zh": "定位与建图的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；里程计、配准或建图不等于完整导航；须验证退化场景、重定位、传感器与标定条件；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2611.06308v1"
+        },
+        "rm": {
+          "usage": "单目稠密重建+尺度锚定与回环的思路可作哨兵/雷达定位建图的参考，但其基于前馈几何大模型的算力需求远超机载平台，与RM室内固定场地关联较弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -3945,17 +3945,9 @@
         "confWeight": 5,
         "confVision": false,
         "relevance": 38,
-        "rm": {
-          "usage": "面向交互式驾驶的置信度自适应 MPC，强调在歧义大时主动增加观测、置信提升后放松约束。其思想可类比多机对抗中「先探明对方意图再压上」的决策，但场景与动力学是道路车辆，不含 RM 经济/控制度机制，直接可用性很弱。",
-          "task_id": "",
-          "task": "",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -3971,6 +3963,14 @@
           "reason_zh": "机器人控制的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2611.02240v1"
+        },
+        "rm": {
+          "usage": "其“信息清晰度作为规划变量、按不确定度收紧/放松安全约束”的信念空间MPC，可启发哨兵在视野受限、敌情不明时先探明再行动；但场景为城市交互驾驶，需重新设计状态与代价，关联偏弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -4010,17 +4010,9 @@
         "image": "",
         "comment": "",
         "relevance": 38,
-        "rm": {
-          "usage": "激光-惯性-视觉里程计，可在无外参标定、无时间同步条件下融合多传感器，思路对哨兵或机载定位的传感器安装容错有一定参考价值。但需激光雷达与相机同时在场且算力充足，未验证 RM 场地快速运动与遮挡退化，不能直接当作全场定位或导航系统。",
-          "task_id": "",
-          "task": "",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -4036,6 +4028,14 @@
           "reason_zh": "定位与建图的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；里程计、配准或建图不等于完整导航；须验证退化场景、重定位、传感器与标定条件；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2611.07463v1"
+        },
+        "rm": {
+          "usage": "激光-惯性-视觉紧耦合且不要求雷 cam 刚性标定与时间同步，适合雷达站/哨兵多传感器异构安装时的里程计与标定退化处理；但仅为里程计，需另接地图与决策，且未在RM场地验证。",
+          "task_id": "",
+          "task": "",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -4071,17 +4071,9 @@
         "image": "",
         "comment": "Under Review",
         "relevance": 38,
-        "rm": {
-          "usage": "面向城市户外的地图-语言-轨迹导航，依赖 GNSS 与街景卫星图，与 RMUC 室内场地、固定禁区与裁判系统坐标系完全不匹配，几乎无法用于哨兵或无人机导航。",
-          "task_id": "",
-          "task": "",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -4097,6 +4089,14 @@
           "reason_zh": "机器人策略学习的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；策略学习框架不自带RM战术环境、奖励函数或已验证策略；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2611.05129v1"
+        },
+        "rm": {
+          "usage": "依赖卫星地图、GNSS与网络路径指令的室外导航层级，与RM室内固定场地、无GNSS的条件不符，可迁移的仅“语言指令+轨迹追踪”的分层结构，实用价值很低。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -4133,17 +4133,9 @@
         "image": "",
         "comment": "Website link: https://umishra.me/TAMPAgent/",
         "relevance": 38,
-        "rm": {
-          "usage": "面向移动操作的长程任务与运动规划框架，含不确定条件下的信念空间规划与工具调用。它与重装机器人「取件—对位—装配」的流程拆解有思路层面参考，但依赖大模型与仿真闭环，且不涉及科技核心位姿识别，基本只能当规划架构参考。",
-          "task_id": "",
-          "task": "",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -4159,6 +4151,14 @@
           "reason_zh": "运动规划的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2611.03584v1"
+        },
+        "rm": {
+          "usage": "关联很弱：其「信念空间规划 + 工具 API」的分层结构至多能启发重装装配的长时程任务拆解与执行反馈闭环，但依赖大型 LVLM 和闭世界 TAMP 假设，机载算力与赛场规则下基本用不上。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -4194,14 +4194,6 @@
         "image": "",
         "comment": "7 pages, 2 figures. Presented at ICCSSE 2026",
         "relevance": 38,
-        "rm": {
-          "usage": "装配任务的视觉伺服加触觉扩散策略，加入触觉动力学辅助预测。重装机器人装配模块化42mm发射机构、能量单元时，可以借鉴「接触状态变化时用局部信息辅助对齐」的思路；但需要指尖触觉硬件，未提供则核心增益无法落地，须自行改造。",
-          "task_id": "engineer",
-          "task": "重装机器人视觉装配",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -4210,7 +4202,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -4226,6 +4218,14 @@
           "reason_zh": "视觉伺服与装配的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；须验证科技核心标签、刚体位姿与装配精度，人体姿态不能替代物体位姿；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2611.02677v1"
+        },
+        "rm": {
+          "usage": "可借鉴其「多视角历史 + 未来接触变化预测」的思路，用于重装机器人夹取能量单元、42mm 发射机构插入对准阶段的动作序列生成；但方法强依赖指尖触觉图像，RM 装配主要靠标签位姿视觉伺服，硬件与任务颗粒度都需要大改。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -4261,17 +4261,9 @@
         "image": "",
         "comment": "",
         "relevance": 38,
-        "rm": {
-          "usage": "把ReID嵌入检测器颈部，在一次前向里输出检测与外观向量，并用运动/IoU/外观多线索关联加低分召回。可用于雷达多目标跟踪的数据关联与ID保持思路，或自瞄中多目标短时遮挡时的ID切换抑制；但它是无人机视角车辆数据集，不涉及装甲板识别与弹道，需重新训练与调参。",
-          "task_id": "",
-          "task": "",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -4287,6 +4279,14 @@
           "reason_zh": "检测与目标跟踪的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；未证明装甲板/点阵屏幕识别、反陀螺预测与弹道闭环；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2611.00105v1"
+        },
+        "rm": {
+          "usage": "检测器内嵌 embedding 加运动、IoU、外观多线索关联的思路，可用于雷达多目标跟踪的小目标遮挡下 ID 保持，也可参考其低分挽救机制做自瞄目标选择；但数据集是俯视航拍车辆，不是装甲板或点阵屏，需重新训练与场地验证。",
+          "task_id": "",
+          "task": "",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -4325,14 +4325,6 @@
         "image": "",
         "comment": "",
         "relevance": 38,
-        "rm": {
-          "usage": "以图册说明书指导长程装配的基准与智能体方法。与重装机器人按位姿完成模块装配的流程差异较大（LEGO积木、以步骤图解为主），最多作为装配任务分解与失败恢复的参考，不能当作可部署方案。",
-          "task_id": "engineer",
-          "task": "重装机器人视觉装配",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -4341,7 +4333,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -4357,6 +4349,14 @@
           "reason_zh": "视觉伺服与装配的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；须验证科技核心标签、刚体位姿与装配精度，人体姿态不能替代物体位姿；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2610.27618v1"
+        },
+        "rm": {
+          "usage": "JARVIS 的结构感知评分协议与「工具化执行 + 执行反馈恢复」流程，可作为重装装配任务仿真的评测框架参考；但其任务是长时程 LEGO 装配，缺少 RM 科技核心标签与刚体位姿前提，无法直接迁移到实机装配。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -4390,17 +4390,9 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 38,
-        "rm": {
-          "usage": "面向动态杂乱场景的RGB SLAM，用多视图特征不一致估计逐像素不确定性，实时约10FPS。可用于哨兵在有人车快速移动的场地中的定位与建图鲁棒性改造，抑制动态物体造成的漂移；但需自备算力与标定，且不是完整导航决策方案。",
-          "task_id": "",
-          "task": "",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -4416,6 +4408,14 @@
           "reason_zh": "定位与建图的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；里程计、配准或建图不等于完整导航；须验证退化场景、重定位、传感器与标定条件；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Li_DROID-SLAM_in_the_Wild_CVPR_2026_paper.html"
+        },
+        "rm": {
+          "usage": "其利用多视图特征不一致估计逐像素不确定性的动态 RGB SLAM，可用于哨兵在有多台机器人运动的场地内做稳健定位建图，抑制移动目标导致的跟踪丢失；但约 10FPS 且算力开销较大，需在赛场纹理与光照条件下重新验证，且只是里程计/建图，并非完整导航。",
+          "task_id": "",
+          "task": "",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -4449,14 +4449,6 @@
         "comment": "",
         "optical_query": true,
         "relevance": 38,
-        "rm": {
-          "usage": "数字可见光通信的噪声抑制：用交流照明干扰的周期性做噪声波形相减，或仿主动降噪增设一路光电二极管实时对消。这与机库—空中机器人可见光链路的接收端直接对口，能在场馆灯光下降低误码率；注意仅用于允许的额外通信LED，不涉及对七颗航行外观灯的调制，也需自行完成调制编码与同步。",
-          "task_id": "optical",
-          "task": "空中系统可见光通信链路",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -4469,7 +4461,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "lane": "recent",
           "score": 33,
@@ -4478,6 +4470,14 @@
           "evidence_url": "https://arxiv.org/abs/2602.18187v1",
           "limitations_zh": "",
           "quality": "implementation"
+        },
+        "rm": {
+          "usage": "直接对应可见光链路：其中交流光源周期性噪声的波形相减与「额外光电二极管 + 相减电路」主动降噪，可用于机库—空中机器人及机间 VLC 接收端，在场地灯光频闪下降低误码率，配合 LED 调制编码与同步一起做链路自测。",
+          "task_id": "optical",
+          "task": "空中系统可见光通信链路",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -4511,17 +4511,9 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 37,
-        "rm": {
-          "usage": "无对应的三维点云局部配准与二阶黎曼优化，主要针对LiDAR/RGB-D帧间跟踪。哨兵若使用三维点云做定位可参考其提速思路，但赛场上以二维激光与轮式里程计为主，且算力受限，整体迁移价值偏弱。",
-          "task_id": "",
-          "task": "",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -4537,6 +4529,14 @@
           "reason_zh": "定位与建图的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；里程计、配准或建图不等于完整导航；须验证退化场景、重定位、传感器与标定条件；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_Generalized-CVO_Fast_and_Correspondence-Free_Local_Point_Cloud_Registration_with_Second_CVPR_2026_paper.html"
+        },
+        "rm": {
+          "usage": "二阶黎曼优化的无对应点点云配准，可作为哨兵或空中机器人激光/深度里程计的前端，在特征稀疏场地减少帧间漂移；但只是局部配准，仍需重定位与地图配合，不构成全场定位。",
+          "task_id": "",
+          "task": "",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -4570,17 +4570,9 @@
         "confWeight": 6,
         "confVision": true,
         "relevance": 36,
-        "rm": {
-          "usage": "视觉跟踪中的模板token压缩与分层交互，可在精度几乎不掉的前提下大幅降算力。可用于自瞄/雷达目标跟踪网络在机载或嵌入式平台上的轻量化改造，缓解多帧模板带来的计算压力；但未涉及装甲板点阵识别、反陀螺预测与弹道控制，需自行移植与验证。",
-          "task_id": "",
-          "task": "",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -4596,6 +4588,14 @@
           "reason_zh": "检测与目标跟踪的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；未证明装甲板/点阵屏幕识别、反陀螺预测与弹道闭环；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://openaccess.thecvf.com/content/CVPR2026/html/Wu_An_Efficient_Token_Compression_Framework_for_Visual_Object_Tracking_CVPR_2026_paper.html"
+        },
+        "rm": {
+          "usage": "模板 token 压缩可降低跟踪网络的计算量，适合把多历史帧跟踪搬到自瞄机载算力上以维持高帧率；但论文是通用单目标跟踪，未验证装甲板/点阵屏识别、反陀螺预测与弹道闭环。",
+          "task_id": "",
+          "task": "",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -4640,14 +4640,6 @@
         },
         "metadata_fetched_at": "2026-11-05T11:44:51.690Z",
         "relevance": 34.7,
-        "rm": {
-          "usage": "面向VLC链路的LED高频调制与事件相机异步解调方案，可直接借鉴到空中机器人额外通信LED（S22/S81允许的独立通信灯，非七颗航行外观灯）的调制编码与接收解码上，并含信标识别与距离/速率关系评估；但需事件相机硬件，且照度、颜色条件须按S24与答疑#168/#288重新标定。",
-          "task_id": "optical",
-          "task": "空中系统可见光通信链路",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -4656,7 +4648,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "lane": "reference",
           "score": 30.7,
@@ -4672,6 +4664,14 @@
             "source_url": "https://api.crossref.org/works/10.1109%2FIROS47612.2022.9982016",
             "checked_at": "2026-11-05T11:43:05.529Z"
           }
+        },
+        "rm": {
+          "usage": "可直接用于空中系统可见光链路：把额外通信LED做高频调制、事件相机端做异步解码与信标识别，作为机间/机库链路的可复现解码基线；需注意其接收端是事件相机，须按RM通信灯照度（40mm内≤300Lux）与颜色要求重新验证，且公开代码仅为MATLAB解码样例，不是嵌入式固件。",
+          "task_id": "optical",
+          "task": "空中系统可见光通信链路",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -4724,7 +4724,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "lane": "reference",
           "score": 30.72,
@@ -4775,14 +4775,6 @@
         },
         "metadata_fetched_at": "2026-11-05T11:44:51.690Z",
         "relevance": 33,
-        "rm": {
-          "usage": "可作为可见光解码与基于LED的相机相对定位的评测基准：用其同步事件/帧图像与位姿真值，检验机库—空中机器人链路的解码鲁棒性与基于通信灯的接近定位；注意它只是数据集与定位方法，不含完整通信协议栈，且需事件相机。",
-          "task_id": "optical",
-          "task": "空中系统可见光通信链路",
-          "value": "mid",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -4794,7 +4786,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "lane": "reference",
           "score": 30,
@@ -4803,6 +4795,14 @@
           "evidence_url": "https://arxiv.org/abs/2504.18521",
           "limitations_zh": "这是数据集与定位研究，不是完整通信协议栈；作者GitHub仓库主要为项目和数据入口，不能宣称含已核验的完整解码算法代码，复现还需对应数据和事件相机。",
           "quality": "implementation"
+        },
+        "rm": {
+          "usage": "作为可见光解码与LED标记定位的评测数据与基准：可用其同步事件/帧图像与位姿数据检验机库或机间链路的解码鲁棒性和相对LED的空间定位思路；但它是数据集与定位研究，需自备事件相机，且不含完整通信协议栈，不能直接当机载链路实现。",
+          "task_id": "optical",
+          "task": "空中系统可见光通信链路",
+          "value": "mid",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -4843,14 +4843,6 @@
         "image": "",
         "comment": "",
         "relevance": 31,
-        "rm": {
-          "usage": "若要在仿真中复现事件相机、SPAD、iToF等新型传感器的失效模式（如事件不应期丢点、饱和、运动伪影），可借助其物理级建模来预演可见光通信接收端在强光/运动下的表现；对RM以弹道、热量、战术为主的仿真环境属外围补充，需自行接入场地与机器人参数。",
-          "task_id": "sim",
-          "task": "算法仿真与验证",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -4861,7 +4853,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -4877,6 +4869,14 @@
           "reason_zh": "机器人仿真与工具的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；仿真能力不代表已完成实机验证",
           "evidence_url": "https://arxiv.org/abs/2611.08368v1"
+        },
+        "rm": {
+          "usage": "可参考其对事件相机、LiDAR、iToF等传感器物理失效模式的建模方式，在自建仿真里加入感知退化来检验可见光解码或自瞄鲁棒性；但它是通用多模态感知仿真器，不含RM场地、弹道、热量等机制，需大量改造，与赛事任务关联偏弱。",
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       },
       {
@@ -4915,14 +4915,6 @@
         "image": "",
         "comment": "",
         "relevance": 29,
-        "rm": {
-          "usage": "基于大规模视频生成与动作条件的世界模型模拟器，主要用于操作类长时程任务；与RM仿真需要的战场尺寸、弹丸弹道、热量与伤害机制不匹配，几乎不能直接用于自瞄/导航/决策训练，关联很弱。",
-          "task_id": "sim",
-          "task": "算法仿真与验证",
-          "value": "low",
-          "rules_fingerprint": "0e895dab6e3ef455",
-          "season": "2027"
-        },
         "first_seen": "2026-11-06T17:51:17.642Z",
         "rule_matches": [
           {
@@ -4933,7 +4925,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -4949,6 +4941,14 @@
           "reason_zh": "机器人仿真与工具的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；仿真能力不代表已完成实机验证",
           "evidence_url": "https://arxiv.org/abs/2611.04870v1"
+        },
+        "rm": {
+          "usage": "与RoboMaster关联很弱：其动作条件世界模型仿真面向操作任务视频生成与长时序一致性，缺少战场尺寸、弹丸参数、射击热量与规则机制，难以支撑自瞄、导航或战术的仿真验证。",
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "value": "low",
+          "rules_fingerprint": "52c994ace5d2c1ff",
+          "season": "2027"
         }
       }
     ]
@@ -4987,7 +4987,7 @@
         "pushed_at": "2026-10-29T20:42:19.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:30.256Z",
+        "metadata_fetched_at": "2026-11-08T14:02:16.030Z",
         "categories": [
           "control",
           "sim"
@@ -5000,7 +5000,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -5026,7 +5026,7 @@
             "value": 253,
             "source": "GitHub",
             "source_url": "https://github.com/xrobot-org/XRobot",
-            "checked_at": "2026-11-08T06:49:30.256Z"
+            "checked_at": "2026-11-08T14:02:16.030Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -5056,7 +5056,7 @@
         "pushed_at": "2022-04-07T15:12:20.000Z",
         "license": "NOASSERTION",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:26.889Z",
+        "metadata_fetched_at": "2026-11-08T14:02:12.576Z",
         "categories": [
           "nav",
           "planning"
@@ -5069,7 +5069,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -5095,7 +5095,7 @@
             "value": 899,
             "source": "GitHub",
             "source_url": "https://github.com/RoboMaster/RoboRTS",
-            "checked_at": "2026-11-08T06:49:26.889Z"
+            "checked_at": "2026-11-08T14:02:12.576Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -5109,7 +5109,7 @@
         "description_en": "Shenzhen MSU-BIT University PolarBear Team's Sentry Navigation Sim2Real Package for RoboMaster2025. QQ group: 932119307",
         "description_zh": "深圳北理莫斯科大学 PolarBear 战队面向 RoboMaster2025 的哨兵导航 Sim2Real 软件包。QQ 群：932119307",
         "highlight_zh": "",
-        "stars": 461,
+        "stars": 464,
         "forks": 71,
         "language": "C++",
         "topics": [
@@ -5126,7 +5126,7 @@
         "pushed_at": "2026-11-03T00:01:02.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:30.256Z",
+        "metadata_fetched_at": "2026-11-08T14:02:16.029Z",
         "categories": [
           "nav"
         ],
@@ -5138,7 +5138,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -5156,10 +5156,10 @@
           "evidence_url": "https://github.com/SMBU-PolarBear-Robotics-Team/pb2025_sentry_nav",
           "metric": {
             "label": "GitHub Stars",
-            "value": 461,
+            "value": 464,
             "source": "GitHub",
             "source_url": "https://github.com/SMBU-PolarBear-Robotics-Team/pb2025_sentry_nav",
-            "checked_at": "2026-11-08T06:49:30.256Z"
+            "checked_at": "2026-11-08T14:02:16.029Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -5190,7 +5190,7 @@
         "pushed_at": "2024-11-08T07:08:13.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:26.889Z",
+        "metadata_fetched_at": "2026-11-08T14:02:12.576Z",
         "categories": [
           "aim"
         ],
@@ -5202,7 +5202,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -5223,7 +5223,7 @@
             "value": 242,
             "source": "GitHub",
             "source_url": "https://github.com/chenjunnn/rm_vision",
-            "checked_at": "2026-11-08T06:49:26.889Z"
+            "checked_at": "2026-11-08T14:02:12.576Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -5252,7 +5252,7 @@
         "pushed_at": "2024-06-08T04:57:53.000Z",
         "license": "MIT",
         "archived": true,
-        "metadata_fetched_at": "2026-11-08T06:49:26.889Z",
+        "metadata_fetched_at": "2026-11-08T14:02:12.576Z",
         "categories": [
           "sim"
         ],
@@ -5266,7 +5266,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -5287,7 +5287,7 @@
             "value": 349,
             "source": "GitHub",
             "source_url": "https://github.com/LihanChen2004/pb_rm_simulation",
-            "checked_at": "2026-11-08T06:49:26.889Z"
+            "checked_at": "2026-11-08T14:02:12.576Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -5320,7 +5320,7 @@
         "pushed_at": "2023-04-19T10:41:35.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:21.172Z",
+        "metadata_fetched_at": "2026-11-08T14:02:06.825Z",
         "categories": [
           "aim",
           "control"
@@ -5333,7 +5333,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -5359,7 +5359,7 @@
             "value": 45,
             "source": "GitHub",
             "source_url": "https://github.com/ittuann/RoboMaster-NEFU-Ares-UAVGimbal",
-            "checked_at": "2026-11-08T06:49:21.172Z"
+            "checked_at": "2026-11-08T14:02:06.825Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -5373,8 +5373,8 @@
         "description_en": "同济大学SuperPower战队25赛季视觉框架",
         "description_zh": "同济大学SuperPower战队25赛季视觉框架",
         "highlight_zh": "",
-        "stars": 727,
-        "forks": 182,
+        "stars": 728,
+        "forks": 181,
         "language": "C",
         "topics": [
           "robomaster"
@@ -5385,13 +5385,13 @@
         "pushed_at": "2026-08-13T04:54:40.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:26.889Z",
+        "metadata_fetched_at": "2026-11-08T14:02:12.576Z",
         "categories": [
           "aim"
         ],
         "relevance": 59.43,
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -5409,10 +5409,10 @@
           "evidence_url": "https://github.com/TongjiSuperPower/sp_vision_25",
           "metric": {
             "label": "GitHub Stars",
-            "value": 727,
+            "value": 728,
             "source": "GitHub",
             "source_url": "https://github.com/TongjiSuperPower/sp_vision_25",
-            "checked_at": "2026-11-08T06:49:26.889Z"
+            "checked_at": "2026-11-08T14:02:12.576Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -5436,7 +5436,7 @@
         "pushed_at": "2024-09-20T17:06:01.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:36.769Z",
+        "metadata_fetched_at": "2026-11-08T14:02:23.035Z",
         "categories": [
           "aim"
         ],
@@ -5450,7 +5450,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -5471,7 +5471,7 @@
             "value": 212,
             "source": "GitHub",
             "source_url": "https://github.com/HHgzs/TJURM-2024",
-            "checked_at": "2026-11-08T06:49:36.769Z"
+            "checked_at": "2026-11-08T14:02:23.035Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -5500,7 +5500,7 @@
         "pushed_at": "2023-05-27T01:24:43.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:30.256Z",
+        "metadata_fetched_at": "2026-11-08T14:02:16.030Z",
         "categories": [
           "aim"
         ],
@@ -5512,7 +5512,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -5533,7 +5533,7 @@
             "value": 86,
             "source": "GitHub",
             "source_url": "https://github.com/chenjunnn/rm_auto_aim",
-            "checked_at": "2026-11-08T06:49:30.256Z"
+            "checked_at": "2026-11-08T14:02:16.030Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -5557,13 +5557,13 @@
         "pushed_at": "2021-03-29T06:45:54.000Z",
         "license": "NOASSERTION",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:26.889Z",
+        "metadata_fetched_at": "2026-11-08T14:02:12.576Z",
         "categories": [
           "control"
         ],
         "relevance": 57.31,
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -5584,7 +5584,7 @@
             "value": 410,
             "source": "GitHub",
             "source_url": "https://github.com/RoboMaster/RoboRTS-Firmware",
-            "checked_at": "2026-11-08T06:49:26.889Z"
+            "checked_at": "2026-11-08T14:02:12.576Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -5612,7 +5612,7 @@
         "pushed_at": "2026-08-15T10:43:21.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:50.905Z",
+        "metadata_fetched_at": "2026-11-08T14:02:37.392Z",
         "categories": [
           "aim",
           "rune"
@@ -5627,7 +5627,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -5653,7 +5653,7 @@
             "value": 23,
             "source": "GitHub",
             "source_url": "https://github.com/SZURPVision/RuneDetectionModel",
-            "checked_at": "2026-11-08T06:49:50.905Z"
+            "checked_at": "2026-11-08T14:02:37.392Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -5684,7 +5684,7 @@
         "pushed_at": "2026-10-23T13:58:09.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:42.566Z",
+        "metadata_fetched_at": "2026-11-08T14:02:29.067Z",
         "categories": [
           "radar",
           "sim"
@@ -5706,7 +5706,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -5732,7 +5732,7 @@
             "value": 14,
             "source": "GitHub",
             "source_url": "https://github.com/diaofenyuan/RMUC_2027map_unity",
-            "checked_at": "2026-11-08T06:49:42.566Z"
+            "checked_at": "2026-11-08T14:02:29.067Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -5766,13 +5766,13 @@
         "pushed_at": "2025-05-19T10:06:49.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:30.256Z",
+        "metadata_fetched_at": "2026-11-08T14:02:16.030Z",
         "categories": [
           "aim"
         ],
         "relevance": 53.02,
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -5793,7 +5793,7 @@
             "value": 110,
             "source": "GitHub",
             "source_url": "https://github.com/WayneMao/RoboMatrix",
-            "checked_at": "2026-11-08T06:49:30.256Z"
+            "checked_at": "2026-11-08T14:02:16.030Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -5821,7 +5821,7 @@
         "pushed_at": "2026-07-21T09:26:22.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:30.256Z",
+        "metadata_fetched_at": "2026-11-08T14:02:16.030Z",
         "categories": [
           "aim"
         ],
@@ -5833,7 +5833,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -5854,7 +5854,7 @@
             "value": 108,
             "source": "GitHub",
             "source_url": "https://github.com/WUST-RM/awakening",
-            "checked_at": "2026-11-08T06:49:30.256Z"
+            "checked_at": "2026-11-08T14:02:16.030Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -5887,13 +5887,13 @@
         "pushed_at": "2023-08-08T17:08:01.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:30.256Z",
+        "metadata_fetched_at": "2026-11-08T14:02:16.030Z",
         "categories": [
           "control"
         ],
         "relevance": 51.94,
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -5914,7 +5914,7 @@
             "value": 76,
             "source": "GitHub",
             "source_url": "https://github.com/rm-controls/rm_usb2can",
-            "checked_at": "2026-11-08T06:49:30.256Z"
+            "checked_at": "2026-11-08T14:02:16.030Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -5942,7 +5942,7 @@
         "pushed_at": "2026-11-03T00:00:00.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:30.256Z",
+        "metadata_fetched_at": "2026-11-08T14:02:16.030Z",
         "categories": [
           "nav"
         ],
@@ -5957,7 +5957,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -5978,7 +5978,7 @@
             "value": 47,
             "source": "GitHub",
             "source_url": "https://github.com/SMBU-PolarBear-Robotics-Team/pb2025_sentry_behavior",
-            "checked_at": "2026-11-08T06:49:30.256Z"
+            "checked_at": "2026-11-08T14:02:16.030Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -6006,13 +6006,13 @@
         "pushed_at": "2021-12-04T08:48:47.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:30.256Z",
+        "metadata_fetched_at": "2026-11-08T14:02:16.030Z",
         "categories": [
           "aim"
         ],
         "relevance": 51.81,
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -6033,7 +6033,7 @@
             "value": 40,
             "source": "GitHub",
             "source_url": "https://github.com/wildwolf-team/WolfVision",
-            "checked_at": "2026-11-08T06:49:30.256Z"
+            "checked_at": "2026-11-08T14:02:16.030Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -6064,7 +6064,7 @@
         "pushed_at": "2026-03-11T10:18:41.000Z",
         "license": "GPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:30.256Z",
+        "metadata_fetched_at": "2026-11-08T14:02:16.030Z",
         "categories": [
           "radar"
         ],
@@ -6078,7 +6078,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -6099,7 +6099,7 @@
             "value": 28,
             "source": "GitHub",
             "source_url": "https://github.com/BreCaspian/LiDAR-Camera_Calibration_Validator",
-            "checked_at": "2026-11-08T06:49:30.256Z"
+            "checked_at": "2026-11-08T14:02:16.030Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -6130,7 +6130,7 @@
         "pushed_at": "2026-08-11T09:52:37.000Z",
         "license": "NOASSERTION",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:42.566Z",
+        "metadata_fetched_at": "2026-11-08T14:02:29.067Z",
         "categories": [
           "aim",
           "radar"
@@ -6145,7 +6145,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -6171,7 +6171,7 @@
             "value": 18,
             "source": "GitHub",
             "source_url": "https://github.com/coach114514/TCR-RM2026-Radar-OpenSource",
-            "checked_at": "2026-11-08T06:49:42.566Z"
+            "checked_at": "2026-11-08T14:02:29.067Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -6202,7 +6202,7 @@
         "pushed_at": "2021-11-13T13:13:17.000Z",
         "license": "LGPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:26.889Z",
+        "metadata_fetched_at": "2026-11-08T14:02:12.576Z",
         "categories": [
           "rl",
           "sim"
@@ -6222,7 +6222,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -6248,7 +6248,7 @@
             "value": 150,
             "source": "GitHub",
             "source_url": "https://github.com/yizhengzhang1/RoboMaster-Simulator",
-            "checked_at": "2026-11-08T06:49:26.889Z"
+            "checked_at": "2026-11-08T14:02:12.576Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -6275,7 +6275,7 @@
         "pushed_at": "2026-08-14T08:15:40.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:30.256Z",
+        "metadata_fetched_at": "2026-11-08T14:02:16.030Z",
         "categories": [
           "nav"
         ],
@@ -6287,7 +6287,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -6308,7 +6308,7 @@
             "value": 143,
             "source": "GitHub",
             "source_url": "https://github.com/Polyacetone/HWSentryNav26",
-            "checked_at": "2026-11-08T06:49:30.256Z"
+            "checked_at": "2026-11-08T14:02:16.030Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -6337,7 +6337,7 @@
         "pushed_at": "2023-08-30T08:46:21.000Z",
         "license": "Apache-2.0",
         "archived": true,
-        "metadata_fetched_at": "2026-11-08T06:49:30.256Z",
+        "metadata_fetched_at": "2026-11-08T14:02:16.030Z",
         "categories": [
           "aim",
           "rune"
@@ -6357,7 +6357,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -6383,7 +6383,7 @@
             "value": 133,
             "source": "GitHub",
             "source_url": "https://github.com/zRzRzRzRzRzRzR/YOLO-of-RoboMaster-Keypoints-Detection-2023",
-            "checked_at": "2026-11-08T06:49:30.256Z"
+            "checked_at": "2026-11-08T14:02:16.030Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -6413,7 +6413,7 @@
         "pushed_at": "2026-08-18T04:51:00.000Z",
         "license": "AGPL-3.0",
         "archived": true,
-        "metadata_fetched_at": "2026-11-08T06:49:30.256Z",
+        "metadata_fetched_at": "2026-11-08T14:02:16.030Z",
         "categories": [
           "aim",
           "sim"
@@ -6428,7 +6428,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -6454,7 +6454,7 @@
             "value": 81,
             "source": "GitHub",
             "source_url": "https://github.com/Blackjack200/at_vision_simulator",
-            "checked_at": "2026-11-08T06:49:30.256Z"
+            "checked_at": "2026-11-08T14:02:16.030Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -6485,7 +6485,7 @@
         "pushed_at": "2026-06-03T02:56:54.000Z",
         "license": "AGPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:30.256Z",
+        "metadata_fetched_at": "2026-11-08T14:02:16.030Z",
         "categories": [
           "aerial",
           "aim"
@@ -6500,7 +6500,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -6521,7 +6521,7 @@
             "value": 30,
             "source": "GitHub",
             "source_url": "https://github.com/BreCaspian/LaserTracking-2026",
-            "checked_at": "2026-11-08T06:49:30.256Z"
+            "checked_at": "2026-11-08T14:02:16.030Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -6545,7 +6545,7 @@
         "pushed_at": "2026-04-21T07:34:25.000Z",
         "license": "NOASSERTION",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:26.889Z",
+        "metadata_fetched_at": "2026-11-08T14:02:12.576Z",
         "categories": [
           "aerial",
           "sim"
@@ -6565,7 +6565,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -6586,7 +6586,7 @@
             "value": 237,
             "source": "GitHub",
             "source_url": "https://github.com/RoboMaster/IntelligentUAVChampionshipSimulator",
-            "checked_at": "2026-11-08T06:49:26.889Z"
+            "checked_at": "2026-11-08T14:02:12.576Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -6616,7 +6616,7 @@
         "pushed_at": "2026-11-03T00:03:13.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:30.256Z",
+        "metadata_fetched_at": "2026-11-08T14:02:16.030Z",
         "categories": [
           "sim"
         ],
@@ -6630,7 +6630,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -6651,7 +6651,7 @@
             "value": 110,
             "source": "GitHub",
             "source_url": "https://github.com/SMBU-PolarBear-Robotics-Team/rmu_gazebo_simulator",
-            "checked_at": "2026-11-08T06:49:30.256Z"
+            "checked_at": "2026-11-08T14:02:16.030Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -6675,13 +6675,13 @@
         "pushed_at": "2024-06-19T15:40:33.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:26.889Z",
+        "metadata_fetched_at": "2026-11-08T14:02:12.576Z",
         "categories": [
           "aim"
         ],
         "relevance": 49.13,
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -6702,7 +6702,7 @@
             "value": 183,
             "source": "GitHub",
             "source_url": "https://github.com/FaterYU/rm_vision",
-            "checked_at": "2026-11-08T06:49:26.889Z"
+            "checked_at": "2026-11-08T14:02:12.576Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -6726,7 +6726,7 @@
         "pushed_at": "2026-10-23T14:01:51.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:33.625Z",
+        "metadata_fetched_at": "2026-11-08T14:02:19.638Z",
         "categories": [
           "aim"
         ],
@@ -6738,7 +6738,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -6759,7 +6759,7 @@
             "value": 52,
             "source": "GitHub",
             "source_url": "https://github.com/Alliance-Algorithm/rmcs_auto_aim_v2",
-            "checked_at": "2026-11-08T06:49:33.625Z"
+            "checked_at": "2026-11-08T14:02:19.638Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -6790,7 +6790,7 @@
         "pushed_at": "2026-08-26T04:46:24.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:30.256Z",
+        "metadata_fetched_at": "2026-11-08T14:02:16.030Z",
         "categories": [
           "sim"
         ],
@@ -6802,7 +6802,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -6823,7 +6823,7 @@
             "value": 34,
             "source": "GitHub",
             "source_url": "https://github.com/ClearWei/RM26_Client",
-            "checked_at": "2026-11-08T06:49:30.256Z"
+            "checked_at": "2026-11-08T14:02:16.030Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -6855,13 +6855,13 @@
         "pushed_at": "2026-06-17T02:17:30.000Z",
         "license": "GPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:30.256Z",
+        "metadata_fetched_at": "2026-11-08T14:02:16.030Z",
         "categories": [
           "control"
         ],
         "relevance": 48.77,
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -6882,7 +6882,7 @@
             "value": 33,
             "source": "GitHub",
             "source_url": "https://github.com/buke18/robomaster-soldier-robot",
-            "checked_at": "2026-11-08T06:49:30.256Z"
+            "checked_at": "2026-11-08T14:02:16.030Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -6910,7 +6910,7 @@
         "pushed_at": "2026-01-25T11:51:13.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:30.256Z",
+        "metadata_fetched_at": "2026-11-08T14:02:16.030Z",
         "categories": [
           "sim"
         ],
@@ -6924,7 +6924,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -6945,7 +6945,7 @@
             "value": 32,
             "source": "GitHub",
             "source_url": "https://github.com/robomaster-oss/rmoss_gazebo",
-            "checked_at": "2026-11-08T06:49:30.256Z"
+            "checked_at": "2026-11-08T14:02:16.030Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -6973,7 +6973,7 @@
         "pushed_at": "2025-05-29T04:05:50.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:30.256Z",
+        "metadata_fetched_at": "2026-11-08T14:02:16.030Z",
         "categories": [
           "aim",
           "rune"
@@ -6989,7 +6989,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -7015,7 +7015,7 @@
             "value": 52,
             "source": "GitHub",
             "source_url": "https://github.com/zmsbruce/rm_power_rune",
-            "checked_at": "2026-11-08T06:49:30.256Z"
+            "checked_at": "2026-11-08T14:02:16.030Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -7039,7 +7039,7 @@
         "pushed_at": "2026-11-05T08:23:01.000Z",
         "license": "BSD-3-Clause",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:26.889Z",
+        "metadata_fetched_at": "2026-11-08T14:02:12.576Z",
         "categories": [
           "sim"
         ],
@@ -7053,7 +7053,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -7074,7 +7074,7 @@
             "value": 310,
             "source": "GitHub",
             "source_url": "https://github.com/rm-controls/rm_control",
-            "checked_at": "2026-11-08T06:49:26.889Z"
+            "checked_at": "2026-11-08T14:02:12.576Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -7104,13 +7104,13 @@
         "pushed_at": "2026-08-23T17:34:55.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:26.889Z",
+        "metadata_fetched_at": "2026-11-08T14:02:12.576Z",
         "categories": [
           "aim"
         ],
         "relevance": 46.3,
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -7131,7 +7131,7 @@
             "value": 391,
             "source": "GitHub",
             "source_url": "https://github.com/NeoZng/vision_tutorial",
-            "checked_at": "2026-11-08T06:49:26.889Z"
+            "checked_at": "2026-11-08T14:02:12.576Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -7165,7 +7165,7 @@
         "pushed_at": "2025-07-19T17:11:48.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:26.889Z",
+        "metadata_fetched_at": "2026-11-08T14:02:12.576Z",
         "categories": [
           "aim"
         ],
@@ -7179,7 +7179,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -7200,7 +7200,7 @@
             "value": 299,
             "source": "GitHub",
             "source_url": "https://github.com/julyfun/rm.cv.fans",
-            "checked_at": "2026-11-08T06:49:26.889Z"
+            "checked_at": "2026-11-08T14:02:12.576Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -7227,7 +7227,7 @@
         "pushed_at": "2024-07-23T01:41:01.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:30.256Z",
+        "metadata_fetched_at": "2026-11-08T14:02:16.030Z",
         "categories": [
           "aim"
         ],
@@ -7239,7 +7239,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -7260,7 +7260,7 @@
             "value": 144,
             "source": "GitHub",
             "source_url": "https://github.com/robomaster-oss/rmoss_core",
-            "checked_at": "2026-11-08T06:49:30.256Z"
+            "checked_at": "2026-11-08T14:02:16.030Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -7284,7 +7284,7 @@
         "pushed_at": "2026-05-20T11:55:55.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:36.769Z",
+        "metadata_fetched_at": "2026-11-08T14:02:23.035Z",
         "categories": [
           "aim"
         ],
@@ -7298,7 +7298,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -7319,7 +7319,7 @@
             "value": 116,
             "source": "GitHub",
             "source_url": "https://github.com/chiguayeshao/obs-snap-detector",
-            "checked_at": "2026-11-08T06:49:36.769Z"
+            "checked_at": "2026-11-08T14:02:23.035Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -7343,7 +7343,7 @@
         "pushed_at": "2024-06-16T01:48:03.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:36.769Z",
+        "metadata_fetched_at": "2026-11-08T14:02:23.035Z",
         "categories": [
           "aim",
           "radar"
@@ -7363,7 +7363,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -7389,7 +7389,7 @@
             "value": 92,
             "source": "GitHub",
             "source_url": "https://github.com/SCAU-RM-NAV/RM2023_Radar_Dataset",
-            "checked_at": "2026-11-08T06:49:36.769Z"
+            "checked_at": "2026-11-08T14:02:23.035Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -7418,13 +7418,13 @@
         "pushed_at": "2026-03-20T17:31:42.000Z",
         "license": "NOASSERTION",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:30.256Z",
+        "metadata_fetched_at": "2026-11-08T14:02:16.030Z",
         "categories": [
           "control"
         ],
         "relevance": 45.86,
         "rule_matches": [],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -7445,7 +7445,7 @@
             "value": 52,
             "source": "GitHub",
             "source_url": "https://github.com/ZhuaX0/RoboMasterSuperCapCtrller_Adernal",
-            "checked_at": "2026-11-08T06:49:30.256Z"
+            "checked_at": "2026-11-08T14:02:16.030Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -7474,7 +7474,7 @@
         "pushed_at": "2023-08-30T08:19:48.000Z",
         "license": "Apache-2.0",
         "archived": true,
-        "metadata_fetched_at": "2026-11-08T06:49:42.566Z",
+        "metadata_fetched_at": "2026-11-08T14:02:29.067Z",
         "categories": [
           "radar"
         ],
@@ -7489,7 +7489,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -7510,7 +7510,7 @@
             "value": 18,
             "source": "GitHub",
             "source_url": "https://github.com/zRzRzRzRzRzRzR/Mult-YOLO-alogorithm-of-RoboMaster-Radar-Detection-2023",
-            "checked_at": "2026-11-08T06:49:42.566Z"
+            "checked_at": "2026-11-08T14:02:29.067Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -7534,7 +7534,7 @@
         "pushed_at": "2026-08-13T09:08:29.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:42.566Z",
+        "metadata_fetched_at": "2026-11-08T14:02:29.067Z",
         "categories": [
           "radar"
         ],
@@ -7549,7 +7549,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -7570,7 +7570,7 @@
             "value": 11,
             "source": "GitHub",
             "source_url": "https://github.com/JNU-SHARK/shark-radar-system",
-            "checked_at": "2026-11-08T06:49:42.566Z"
+            "checked_at": "2026-11-08T14:02:29.067Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -7601,7 +7601,7 @@
         "pushed_at": "2025-05-29T04:08:31.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:30.256Z",
+        "metadata_fetched_at": "2026-11-08T14:02:16.030Z",
         "categories": [
           "aim",
           "radar"
@@ -7617,7 +7617,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -7643,7 +7643,7 @@
             "value": 52,
             "source": "GitHub",
             "source_url": "https://github.com/zmsbruce/rm_radar",
-            "checked_at": "2026-11-08T06:49:30.256Z"
+            "checked_at": "2026-11-08T14:02:16.030Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -7667,7 +7667,7 @@
         "pushed_at": "2022-09-23T09:09:07.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:21.172Z",
+        "metadata_fetched_at": "2026-11-08T14:02:06.825Z",
         "categories": [
           "aerial",
           "planning",
@@ -7688,7 +7688,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -7714,7 +7714,7 @@
             "value": 14,
             "source": "GitHub",
             "source_url": "https://github.com/BSSNBSSN/Ego-plannerforIntelligentUAVChampionshipSimulator",
-            "checked_at": "2026-11-08T06:49:21.172Z"
+            "checked_at": "2026-11-08T14:02:06.825Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -7746,7 +7746,7 @@
         "pushed_at": "2023-06-09T17:04:49.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:30.256Z",
+        "metadata_fetched_at": "2026-11-08T14:02:16.030Z",
         "categories": [
           "sim"
         ],
@@ -7758,7 +7758,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -7779,7 +7779,7 @@
             "value": 93,
             "source": "GitHub",
             "source_url": "https://github.com/Spphire/RM-labeling-tool",
-            "checked_at": "2026-11-08T06:49:30.256Z"
+            "checked_at": "2026-11-08T14:02:16.030Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -7803,7 +7803,7 @@
         "pushed_at": "2019-10-09T09:14:22.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:33.625Z",
+        "metadata_fetched_at": "2026-11-08T14:02:19.638Z",
         "categories": [
           "aim"
         ],
@@ -7817,7 +7817,7 @@
             ]
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -7838,7 +7838,7 @@
             "value": 79,
             "source": "GitHub",
             "source_url": "https://github.com/EinstainBohr/RM-computer-vision",
-            "checked_at": "2026-11-08T06:49:33.625Z"
+            "checked_at": "2026-11-08T14:02:19.638Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -7862,7 +7862,7 @@
         "pushed_at": "2024-06-16T19:50:16.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:33.625Z",
+        "metadata_fetched_at": "2026-11-08T14:02:19.638Z",
         "categories": [
           "aim"
         ],
@@ -7874,7 +7874,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -7895,7 +7895,7 @@
             "value": 76,
             "source": "GitHub",
             "source_url": "https://github.com/FaterYU/rm_auto_aim",
-            "checked_at": "2026-11-08T06:49:33.625Z"
+            "checked_at": "2026-11-08T14:02:19.638Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -7927,7 +7927,7 @@
         "pushed_at": "2024-08-12T03:53:11.000Z",
         "license": "GPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:30.256Z",
+        "metadata_fetched_at": "2026-11-08T14:02:16.030Z",
         "categories": [
           "sim"
         ],
@@ -7939,7 +7939,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -7960,7 +7960,7 @@
             "value": 71,
             "source": "GitHub",
             "source_url": "https://github.com/scutrobotlab/SimulatorX",
-            "checked_at": "2026-11-08T06:49:30.256Z"
+            "checked_at": "2026-11-08T14:02:16.030Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -7987,7 +7987,7 @@
         "pushed_at": "2025-03-19T12:59:10.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:39.365Z",
+        "metadata_fetched_at": "2026-11-08T14:02:25.667Z",
         "categories": [
           "nav"
         ],
@@ -7999,7 +7999,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -8020,7 +8020,7 @@
             "value": 67,
             "source": "GitHub",
             "source_url": "https://github.com/IRobot-Algorithm/sentry_navigation",
-            "checked_at": "2026-11-08T06:49:39.365Z"
+            "checked_at": "2026-11-08T14:02:25.667Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -8044,7 +8044,7 @@
         "pushed_at": "2022-10-07T08:41:29.000Z",
         "license": "GPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:48.481Z",
+        "metadata_fetched_at": "2026-11-08T14:02:35.019Z",
         "categories": [
           "aim"
         ],
@@ -8056,7 +8056,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -8077,7 +8077,7 @@
             "value": 63,
             "source": "GitHub",
             "source_url": "https://github.com/XianMengxi/AutoAim_HUST",
-            "checked_at": "2026-11-08T06:49:48.481Z"
+            "checked_at": "2026-11-08T14:02:35.019Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
@@ -8101,7 +8101,7 @@
         "pushed_at": "2024-01-04T04:48:26.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-08T06:49:33.625Z",
+        "metadata_fetched_at": "2026-11-08T14:02:19.638Z",
         "categories": [
           "aim"
         ],
@@ -8113,7 +8113,7 @@
             "keywords": []
           }
         ],
-        "rules_fingerprint": "0e895dab6e3ef455",
+        "rules_fingerprint": "52c994ace5d2c1ff",
         "recommendation": {
           "scope": "rm",
           "topics": [
@@ -8134,7 +8134,7 @@
             "value": 61,
             "source": "GitHub",
             "source_url": "https://github.com/Ericsii/rm_vision",
-            "checked_at": "2026-11-08T06:49:33.625Z"
+            "checked_at": "2026-11-08T14:02:19.638Z"
           }
         },
         "first_seen": "2026-11-07T19:10:45.191Z"
