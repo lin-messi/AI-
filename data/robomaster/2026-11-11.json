@@ -1,6 +1,6 @@
 {
   "date": "2026-11-11",
-  "generatedAt": "2026-11-10T21:09:10.017Z",
+  "generatedAt": "2026-11-11T02:24:07.536Z",
   "categories": [
     {
       "key": "optical",
@@ -71,7 +71,7 @@
   "rules_fingerprint": "905853fc9404e81c",
   "rules_season": "2027",
   "papers": {
-    "count": 70,
+    "count": 74,
     "items": [
       {
         "id": "arxiv:2611.11164",
@@ -1775,6 +1775,75 @@
         }
       },
       {
+        "id": "arxiv:2611.13499",
+        "arxiv_id": "2611.13499",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "DeRep: Learning Depth Representations for End-to-End Navigation in Cluttered Environments",
+        "title_zh": "DeRep：面向杂乱环境中端到端导航的深度表示学习",
+        "abstract_en": "End-to-end navigation in cluttered environments relies on compact visual representations to support collision avoidance and goal-directed motion. Existing methods typically learn these representations jointly with the policy or through observation reconstruction, which does not explicitly specify what information the representation should preserve. Moreover, they are usually evaluated with a single downstream policy learner, although the benefit of a representation may depend on how the policy is learned. It therefore remains unclear how different representation-learning objectives affect downstream navigation performance and robustness. This work proposes DeRep, a navigation-oriented representation-learning method that combines local bird's-eye-view reachability supervision with depth reconstruction. To compare representation objectives under controlled conditions, we pretrain encoders with a common architecture and freeze them during downstream learning. We evaluate the representations using a linear policy probe, flow-matching imitation learning, and reinforcement learning with PPO. DeRep achieves the lowest linear policy probe prediction error and outperforms reconstruction alone across all six tested PPO conditions. In imitation learning, both reachability-based objectives achieve higher mean success rates than reconstruction alone, with similar mean success rates between the reachability-only and joint objectives. These results demonstrate consistent benefits of incorporating reachability supervision into depth representation pretraining across different downstream learning methods and evaluation conditions. We further deploy the PPO policy with the frozen DeRep encoder in Gazebo and on a physical quadrotor without fine-tuning, demonstrating its capability for zero-shot sim-to-sim and sim-to-real transfer.",
+        "abstract_zh": "杂乱环境中的端到端导航依赖于紧凑的视觉表示来支持避碰和目标导向运动。现有方法通常将这些表示与策略联合学习，或通过观测重建来学习，这并未明确指定表示应保留哪些信息。此外，它们通常仅用单一的下游策略学习器进行评估，尽管表示带来的收益可能取决于策略的学习方式。因此，不同表示学习目标如何影响下游导航性能和鲁棒性仍不清楚。本文提出 DeRep，一种面向导航的表示学习方法，将局部鸟瞰图可达性监督与深度重建相结合。为在受控条件下比较表示目标，我们使用相同架构预训练编码器，并在下游学习期间将其冻结。我们使用线性策略探针、流匹配模仿学习和 PPO 强化学习来评估这些表示。DeRep 取得最低的线性策略探针预测误差，并在所有六种测试的 PPO 条件下优于仅重建方法。在模仿学习中，两种基于可达性的目标均比仅重建取得更高的平均成功率，而仅可达性目标与联合目标的平均成功率相近。这些结果表明，在不同下游学习方法和评估条件下，将可达性监督纳入深度表示预训练具有一致的收益。我们进一步将带有冻结 DeRep 编码器的 PPO 策略部署到 Gazebo 和实体四旋翼上，无需微调，展示了其零样本 sim-to-sim 和 sim-to-real 迁移能力。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Hanyu Jin",
+          "Kenji Shimada"
+        ],
+        "url": "https://arxiv.org/abs/2611.13499v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.13499",
+        "html_url": "https://arxiv.org/abs/2611.13499",
+        "published_at": "2026-11-10T03:11:47.000Z",
+        "upvotes": 0,
+        "heat": 2136.818978611111,
+        "featured": false,
+        "categories": [
+          "aerial",
+          "planning"
+        ],
+        "image": "",
+        "comment": "8 pages, 5 figures",
+        "relevance": 43,
+        "rule_matches": [
+          {
+            "task_id": "aerial",
+            "task": "空中系统自主飞行与机库交互",
+            "keywords": [
+              "quadrotor",
+              "collision avoidance",
+              "四旋翼"
+            ]
+          }
+        ],
+        "rules_fingerprint": "905853fc9404e81c",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "planning",
+              "label_zh": "运动规划",
+              "label_en": "Motion Planning"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "运动规划的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2611.13499v1"
+        },
+        "first_seen": "2026-11-11T02:23:58.122Z",
+        "rm": {
+          "usage": "可借鉴其「局部BEV可达性监督+深度重建」的预训练表示，用于空中机器人在机库、窄通道和障碍密集区域内的机载轻量避障与目标点导航，把可达性作为监督信号训练深度编码器；但需在赛场自采数据并在机载算力上重训验证，且不能替代室内定位与轨迹规划整机方案。",
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "value": "mid",
+          "rules_fingerprint": "905853fc9404e81c",
+          "season": "2027"
+        }
+      },
+      {
         "id": "arxiv:2611.09005",
         "arxiv_id": "2611.09005",
         "source": "arXiv",
@@ -2187,6 +2256,72 @@
           "reason_zh": "机器人控制、机器人策略学习的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；策略学习框架不自带RM战术环境、奖励函数或已验证策略",
           "evidence_url": "https://arxiv.org/abs/2611.10451v1"
+        }
+      },
+      {
+        "id": "arxiv:2611.12949",
+        "arxiv_id": "2611.12949",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "eess.SY"
+        ],
+        "title_en": "Maze Runner: Autonomous Maze Navigation with Line-Based Localization and Control Barrier Functions",
+        "title_zh": "Maze Runner：基于线定位与控制障碍函数的自主迷宫导航",
+        "abstract_en": "Maze navigation requires localization from sparse, repetitive geometry, planning through narrow corridors, and control that stays safe when the estimate or the map is wrong. We present Maze Runner, an open autonomy stack in C++ and ROS 2 that addresses these needs end to end on a simulated Husarion ROSbot XL with a 2D LiDAR in Gazebo. Perception extracts wall lines from each scan with RANSAC and total least squares, with per-line uncertainty. The same line front end feeds two estimators: an Extended Kalman Filter (EKF) that localizes against a line map built from the maze mesh, and an EKF SLAM variant that builds the line map online. Planning runs online on an inflated occupancy grid with A* plus line-of-sight shortcutting, or with a forward-only Hybrid A*. A nonlinear Model Predictive Controller (NMPC) tracks the plan while discrete-time Control Barrier Functions (CBFs) on world-frame LiDAR points keep the robot clear of walls and unmapped obstacles. The algorithms live in a ROS-free, unit-tested core library, and the whole stack builds and runs from a single reproducible environment. In simulation, the robot drives a 135 m route through the maze with 1.0 cm localization RMSE against the known map and 24 cm in SLAM mode, the planner returns a path in 6 ms, and the NMPC solves in 11.7 ms on average, never exceeding its 80 ms budget.",
+        "abstract_zh": "迷宫导航需要从稀疏、重复的几何结构中定位，在狭窄走廊中规划，并在估计或地图错误时保持安全的控制。我们提出 Maze Runner，一个基于 C++ 和 ROS 2 的开源自主软件栈，在 Gazebo 中使用带 2D LiDAR 的仿真 Husarion ROSbot XL 上端到端地满足这些需求。感知使用 RANSAC 和总体最小二乘从每次扫描中提取墙壁线，并给出每条线的不确定性。相同的线特征前端馈入两个估计器：一个扩展卡尔曼滤波器（EKF），其基于由迷宫网格构建的线地图进行定位；以及一个在线构建线地图的 EKF SLAM 变体。规划在膨胀占据栅格上在线运行，使用 A* 加视线捷径，或使用仅前向 Hybrid A*。非线性模型预测控制器（NMPC）跟踪该计划，同时在世界坐标系 LiDAR 点上的离散时间控制障碍函数（CBF）使机器人避开墙壁和未建图障碍物。这些算法位于一个不依赖 ROS、经过单元测试的核心库中，整个软件栈可在单一可复现环境中构建和运行。在仿真中，机器人沿穿过迷宫的 135 m 路线行驶，相对于已知地图的定位 RMSE 为 1.0 cm，在 SLAM 模式下为 24 cm；规划器在 6 ms 内返回路径，NMPC 平均在 11.7 ms 内求解，从未超过其 80 ms 预算。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Alvaro J. Gaona",
+          "Lucas Gómez-Velayos",
+          "Peter Pasuy-Quevedo"
+        ],
+        "url": "https://arxiv.org/abs/2611.12949v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.12949",
+        "html_url": "https://arxiv.org/abs/2611.12949",
+        "published_at": "2026-11-06T22:32:59.000Z",
+        "upvotes": 0,
+        "heat": 2060.1722802777776,
+        "featured": false,
+        "categories": [
+          "slam",
+          "control"
+        ],
+        "image": "",
+        "comment": "10 pages, 8 figures, 1 table. Code: https://github.com/alvgaona/maze-runner",
+        "relevance": 42,
+        "rule_matches": [],
+        "rules_fingerprint": "905853fc9404e81c",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "slam",
+              "label_zh": "定位与建图",
+              "label_en": "Localization & Mapping"
+            },
+            {
+              "key": "control",
+              "label_zh": "机器人控制",
+              "label_en": "Robot Control"
+            }
+          ],
+          "lane": "recent",
+          "score": 34,
+          "quality": "method",
+          "reason_zh": "定位与建图、机器人控制的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；里程计、配准或建图不等于完整导航；须验证退化场景、重定位、传感器与标定条件；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2611.12949v1"
+        },
+        "first_seen": "2026-11-11T02:23:58.122Z",
+        "rm": {
+          "usage": "其线特征RANSAC+EKF/EKF-SLAM与A*/Hybrid A*加NMPC+CBF的组合，可参考用于哨兵在RMUC 28m×15m场地内的二维激光定位、狭窄通道绕行与安全速度约束；但论文验证平台是Gazebo中的ROSbot，需替换为赛场地图、真实标定与实机算力，且不包含战术决策，不能直接当完整哨兵导航系统。",
+          "task_id": "",
+          "task": "",
+          "value": "mid",
+          "rules_fingerprint": "905853fc9404e81c",
+          "season": "2027"
         }
       },
       {
@@ -2681,6 +2816,78 @@
           "reason_zh": "检测与目标跟踪的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；未证明装甲板/点阵屏幕识别、反陀螺预测与弹道闭环；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2611.10864v1"
+        }
+      },
+      {
+        "id": "arxiv:2609.29407",
+        "arxiv_id": "2609.29407",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "WRAP: Fixtureless Wrench-aware Multi-Robot Assembly Planning",
+        "title_zh": "WRAP：无夹具、力旋量感知的多机器人装配规划",
+        "abstract_en": "Assembly using robots often requires specially designed fixtures, or relies on top-down only assembly strategies. Using multiple robots, we can avoid using fixtures and make robotic assembly more flexible. Planning assembly sequences for multiple robots is challenging due to the high number of possible task assignments and orders. In addition, we need to reason over forces that occur during the assembly process, e.g., to decide if multiple robots are required for support, or if external support such as a table should be used. We present Wrap, a multi-robot assembly planner for multi-part assemblies, given the inter-part ordering-dependencies, the part meshes, and their initial state. We formulate a linear program to reason about valid grasps for supporting the forces that occur during assembly. The search leverages the assembly sequence, and greedily finds a feasible solution per assembly step by computing a heuristic via a cheap backwards search, and using the heuristic in the more expensive forward search. We then solve the multi-robot, multi-goal motion planning problem, and for execution, we split the plan into contact-rich assembly skills, and free space motion. We benchmark the planner on a variety of multi-part assemblies, and apply the planner to groups of robots differing in size and kinematics. We validate the work both in a physics simulation, and in real. Videos and code are available at https://www.vhartmann.com/wrap.",
+        "abstract_zh": "使用机器人进行装配通常需要专门设计的夹具，或依赖仅自顶向下的装配策略。使用多机器人，我们可以避免使用夹具，并使机器人装配更加灵活。为多机器人规划装配序列具有挑战性，因为可能的任务分配和顺序数量庞大。此外，我们需要对装配过程中出现的力进行推理，例如决定是否需要多个机器人提供支撑，或是否应使用桌子等外部支撑。我们提出 Wrap，一种用于多零件装配的多机器人装配规划器，给定零件间顺序依赖关系、零件网格及其初始状态。我们构建一个线性规划来推理用于支撑装配过程中所产生力的有效抓取。搜索利用装配序列，并通过廉价的后向搜索计算启发式，再在更昂贵的前向搜索中使用该启发式，从而为每个装配步骤贪心地找到可行解。随后我们求解多机器人、多目标运动规划问题；在执行时，我们将计划分解为富接触装配技能和自由空间运动。我们在多种多零件装配上对规划器进行基准测试，并将其应用于尺寸和运动学不同的机器人群体。我们在物理仿真和真实环境中验证了该工作。视频和代码见 https://www.vhartmann.com/wrap。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Valentin N. Hartmann",
+          "Huang Su",
+          "Yijiang Huang",
+          "Stelian Coros"
+        ],
+        "url": "https://arxiv.org/abs/2609.29407v1",
+        "pdf_url": "https://arxiv.org/pdf/2609.29407",
+        "html_url": "https://arxiv.org/abs/2609.29407",
+        "published_at": "2026-09-24T11:31:07.000Z",
+        "upvotes": 0,
+        "heat": 1017.1407227777777,
+        "featured": false,
+        "categories": [
+          "planning",
+          "assembly"
+        ],
+        "image": "",
+        "comment": "8 pages, 9 figures, 5 tables",
+        "relevance": 41,
+        "rule_matches": [
+          {
+            "task_id": "engineer",
+            "task": "重装机器人视觉装配",
+            "keywords": []
+          }
+        ],
+        "rules_fingerprint": "905853fc9404e81c",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "planning",
+              "label_zh": "运动规划",
+              "label_en": "Motion Planning"
+            },
+            {
+              "key": "assembly",
+              "label_zh": "视觉伺服与装配",
+              "label_en": "Visual Servoing & Assembly"
+            }
+          ],
+          "lane": "recent",
+          "score": 34,
+          "quality": "method",
+          "reason_zh": "运动规划、视觉伺服与装配的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；须验证科技核心标签、刚体位姿与装配精度，人体姿态不能替代物体位姿；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2609.29407v1"
+        },
+        "first_seen": "2026-11-11T02:23:58.122Z",
+        "rm": {
+          "usage": "其「无夹具装配+受力支撑推理+装配序列搜索」思路，对工程机器人安装42mm发射机构或能量单元时的抓取位姿选择、接触阶段分解与支撑判断有参考；但RM工程只有单臂、不存在多机协同装配场景，且仍需自建科技核心与视觉标签的位姿感知，落地价值有限。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "low",
+          "rules_fingerprint": "905853fc9404e81c",
+          "season": "2027"
         }
       },
       {
@@ -3995,6 +4202,63 @@
         }
       },
       {
+        "id": "arxiv:2610.22306",
+        "arxiv_id": "2610.22306",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "ARC-SORT: Adaptive, Robust, Compensated Multi-Object Tracking with Interacting Multiple Models",
+        "title_zh": "ARC-SORT：基于交互式多模型的自适应、鲁棒、补偿式多目标跟踪",
+        "abstract_en": "Multi-object tracking in sports broadcasts is hard for two reasons: athletes move fast and change direction abruptly, and the camera pans and zooms at the same time. We present ARC-SORT (Adaptive, Robust, Compensated SORT), a tracking-by-detection tracker that trains nothing and runs in real time. Its design rule: the tracker measures its own uncertainty, and that measurement decides how it acts. An Interacting Multiple Model (IMM) Kalman filter gives every track a predictive covariance, and we turn it into a per-track search region: the less reliable the motion prediction, the larger the region in which a detection may match (uncertainty-adaptive Expansion IoU, EIoU). On identical inputs, this continuous coupling is what matters: the same covariance used as a hard Mahalanobis gate hurts at every threshold we swept, and richer covariance summaries add nothing measurable. When two tracks cross, the assignment cost itself reports whether the decision was close. ARC-SORT keeps such pairs under review and applies at most one corrective identity swap once post-crossing appearance evidence shows the first decision was wrong; this adds +1.0 HOTA (higher order tracking accuracy) on both the SportsMOT and DanceTrack test sets at under a millisecond per frame. For players who leave the frame for seconds, motion extrapolation carries no information, so our offline re-identification drops the usual motion gate and links tracklets by appearance alone. ARC-SORT reaches 81.82 HOTA on the SportsMOT test set with the fewest identity switches of the 69 leaderboard entries as of August 2026 and tied-third multi-object tracking accuracy (MOTA, 97.09), and 62.1 HOTA on DanceTrack test with the same association settings. On Deep-EIoU's public detections and embeddings it reaches 80.31 HOTA, +3.1 over Deep-EIoU. It runs at about 50 frames per second on a laptop RTX 3060 GPU. Code will be released.",
+        "abstract_zh": "体育转播中的多目标跟踪之所以困难，有两个原因：运动员移动速度快且会突然改变方向，同时摄像机还会平移和变焦。我们提出 ARC-SORT（自适应、鲁棒、补偿式 SORT），一种基于检测的跟踪器，无需训练且可实时运行。其设计规则是：跟踪器度量自身的不确定性，并由该度量决定其行为方式。交互式多模型（IMM）卡尔曼滤波器为每个轨迹给出预测协方差，我们将其转化为每条轨迹的搜索区域：运动预测越不可靠，检测可能匹配的区域就越大（不确定性自适应 Expansion IoU，EIoU）。在相同输入上，这种连续耦合才是关键：将同一协方差用作硬马氏门控，在我们扫描的每个阈值下都会造成损害，而更丰富的协方差摘要没有带来可测量的增益。当两条轨迹交叉时，分配代价本身会报告该决策是否接近边界。ARC-SORT 将此类轨迹对置于复核状态，并在交叉后的外观证据表明首次决策错误时，至多应用一次纠正性身份交换；这在 SportsMOT 和 DanceTrack 测试集上均带来 +1.0 HOTA（高阶跟踪准确率），且每帧耗时低于 1 毫秒。对于离开画面数秒的球员，运动外推不携带信息，因此我们的离线重识别去掉通常的运动门控，仅通过外观关联轨迹片段。ARC-SORT 在 SportsMOT 测试集上达到 81.82 HOTA，在截至 2026 年 8 月的 69 个排行榜条目中身份切换最少，并以 97.09 的多目标跟踪准确率（MOTA）并列第三；在相同的关联设置下，在 DanceTrack 测试集上达到 62.1 HOTA。在 Deep-EIoU 的公开检测和嵌入上，它达到 80.31 HOTA，比 Deep-EIoU 高 +3.1。在笔记本电脑 RTX 3060 GPU 上以约 50 帧/秒运行。代码将发布。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Girish Kumar Adari"
+        ],
+        "url": "https://arxiv.org/abs/2610.22306v1",
+        "pdf_url": "https://arxiv.org/pdf/2610.22306",
+        "html_url": "https://arxiv.org/abs/2610.22306",
+        "published_at": "2026-10-15T17:49:09.000Z",
+        "upvotes": 0,
+        "heat": 1527.4415480555556,
+        "featured": false,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "14 pages, 4 figures, 13 tables; supplementary material included as appendix; qualitative video as ancillary file",
+        "relevance": 39,
+        "rule_matches": [],
+        "rules_fingerprint": "905853fc9404e81c",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "aim",
+              "label_zh": "检测与目标跟踪",
+              "label_en": "Detection & Tracking"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "检测与目标跟踪的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；未证明装甲板/点阵屏幕识别、反陀螺预测与弹道闭环；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2610.22306v1"
+        },
+        "first_seen": "2026-11-11T02:23:58.122Z",
+        "rm": {
+          "usage": "IMM卡尔曼配合「按预测协方差自适应关联门限」以及交叉后有限次身份纠正的思路，可用于雷达多目标跟踪的数据关联和自瞄中目标短暂遮挡/交叉时的ID保持；但论文针对体育转播的相机平移缩放补偿，需换成赛场固定或云台相机与装甲板检测前端，未验证点阵屏识别与弹道闭环。",
+          "task_id": "",
+          "task": "",
+          "value": "mid",
+          "rules_fingerprint": "905853fc9404e81c",
+          "season": "2027"
+        }
+      },
+      {
         "id": "arxiv:2610.16398",
         "arxiv_id": "2610.16398",
         "source": "arXiv",
@@ -5029,10 +5293,10 @@
         "url": "https://github.com/xrobot-org/XRobot",
         "homepage": "https://xrobot.work/",
         "created_at": "2022-12-27T10:35:12Z",
-        "pushed_at": "2026-11-10T04:08:33.000Z",
+        "pushed_at": "2026-11-11T00:07:14.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:39.837Z",
+        "metadata_fetched_at": "2026-11-11T02:23:07.363Z",
         "categories": [
           "control",
           "sim"
@@ -5071,7 +5335,7 @@
             "value": 254,
             "source": "GitHub",
             "source_url": "https://github.com/xrobot-org/XRobot",
-            "checked_at": "2026-11-10T21:07:39.837Z"
+            "checked_at": "2026-11-11T02:23:07.363Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -5101,7 +5365,7 @@
         "pushed_at": "2022-04-07T15:12:20.000Z",
         "license": "NOASSERTION",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:35.876Z",
+        "metadata_fetched_at": "2026-11-11T02:23:03.976Z",
         "categories": [
           "nav",
           "planning"
@@ -5140,7 +5404,7 @@
             "value": 899,
             "source": "GitHub",
             "source_url": "https://github.com/RoboMaster/RoboRTS",
-            "checked_at": "2026-11-10T21:07:35.876Z"
+            "checked_at": "2026-11-11T02:23:03.976Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -5171,7 +5435,7 @@
         "pushed_at": "2026-11-09T22:44:08.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:39.837Z",
+        "metadata_fetched_at": "2026-11-11T02:23:07.363Z",
         "categories": [
           "nav"
         ],
@@ -5204,7 +5468,7 @@
             "value": 463,
             "source": "GitHub",
             "source_url": "https://github.com/SMBU-PolarBear-Robotics-Team/pb2025_sentry_nav",
-            "checked_at": "2026-11-10T21:07:39.837Z"
+            "checked_at": "2026-11-11T02:23:07.363Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -5235,7 +5499,7 @@
         "pushed_at": "2024-11-08T07:08:13.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:35.876Z",
+        "metadata_fetched_at": "2026-11-11T02:23:03.976Z",
         "categories": [
           "aim"
         ],
@@ -5268,7 +5532,7 @@
             "value": 243,
             "source": "GitHub",
             "source_url": "https://github.com/chenjunnn/rm_vision",
-            "checked_at": "2026-11-10T21:07:35.876Z"
+            "checked_at": "2026-11-11T02:23:03.976Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -5297,7 +5561,7 @@
         "pushed_at": "2024-06-08T04:57:53.000Z",
         "license": "MIT",
         "archived": true,
-        "metadata_fetched_at": "2026-11-10T21:07:35.876Z",
+        "metadata_fetched_at": "2026-11-11T02:23:03.976Z",
         "categories": [
           "sim"
         ],
@@ -5306,7 +5570,9 @@
           {
             "task_id": "sim",
             "task": "算法仿真与验证",
-            "keywords": []
+            "keywords": [
+              "仿真"
+            ]
           }
         ],
         "rules_fingerprint": "905853fc9404e81c",
@@ -5330,7 +5596,7 @@
             "value": 349,
             "source": "GitHub",
             "source_url": "https://github.com/LihanChen2004/pb_rm_simulation",
-            "checked_at": "2026-11-10T21:07:35.876Z"
+            "checked_at": "2026-11-11T02:23:03.976Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -5363,7 +5629,7 @@
         "pushed_at": "2023-04-19T10:41:35.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:29.616Z",
+        "metadata_fetched_at": "2026-11-11T02:22:57.286Z",
         "categories": [
           "aim",
           "control"
@@ -5402,7 +5668,7 @@
             "value": 45,
             "source": "GitHub",
             "source_url": "https://github.com/ittuann/RoboMaster-NEFU-Ares-UAVGimbal",
-            "checked_at": "2026-11-10T21:07:29.616Z"
+            "checked_at": "2026-11-11T02:22:57.286Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -5428,7 +5694,7 @@
         "pushed_at": "2026-08-13T04:54:40.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:35.876Z",
+        "metadata_fetched_at": "2026-11-11T02:23:03.976Z",
         "categories": [
           "aim"
         ],
@@ -5455,7 +5721,7 @@
             "value": 731,
             "source": "GitHub",
             "source_url": "https://github.com/TongjiSuperPower/sp_vision_25",
-            "checked_at": "2026-11-10T21:07:35.876Z"
+            "checked_at": "2026-11-11T02:23:03.976Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -5479,7 +5745,7 @@
         "pushed_at": "2024-09-20T17:06:01.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:47.535Z",
+        "metadata_fetched_at": "2026-11-11T02:23:15.250Z",
         "categories": [
           "aim"
         ],
@@ -5514,7 +5780,7 @@
             "value": 212,
             "source": "GitHub",
             "source_url": "https://github.com/HHgzs/TJURM-2024",
-            "checked_at": "2026-11-10T21:07:47.535Z"
+            "checked_at": "2026-11-11T02:23:15.250Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -5543,7 +5809,7 @@
         "pushed_at": "2023-05-27T01:24:43.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:39.837Z",
+        "metadata_fetched_at": "2026-11-11T02:23:07.363Z",
         "categories": [
           "aim"
         ],
@@ -5576,7 +5842,7 @@
             "value": 86,
             "source": "GitHub",
             "source_url": "https://github.com/chenjunnn/rm_auto_aim",
-            "checked_at": "2026-11-10T21:07:39.837Z"
+            "checked_at": "2026-11-11T02:23:07.363Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -5600,7 +5866,7 @@
         "pushed_at": "2021-03-29T06:45:54.000Z",
         "license": "NOASSERTION",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:35.876Z",
+        "metadata_fetched_at": "2026-11-11T02:23:03.976Z",
         "categories": [
           "control"
         ],
@@ -5627,7 +5893,7 @@
             "value": 410,
             "source": "GitHub",
             "source_url": "https://github.com/RoboMaster/RoboRTS-Firmware",
-            "checked_at": "2026-11-10T21:07:35.876Z"
+            "checked_at": "2026-11-11T02:23:03.976Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -5655,7 +5921,7 @@
         "pushed_at": "2026-08-15T10:43:21.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:08:03.808Z",
+        "metadata_fetched_at": "2026-11-11T02:23:31.219Z",
         "categories": [
           "aim",
           "rune"
@@ -5665,7 +5931,9 @@
           {
             "task_id": "rune",
             "task": "能量机关识别与击打",
-            "keywords": []
+            "keywords": [
+              "能量机关"
+            ]
           }
         ],
         "rules_fingerprint": "905853fc9404e81c",
@@ -5694,7 +5962,7 @@
             "value": 23,
             "source": "GitHub",
             "source_url": "https://github.com/SZURPVision/RuneDetectionModel",
-            "checked_at": "2026-11-10T21:08:03.808Z"
+            "checked_at": "2026-11-11T02:23:31.219Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -5725,7 +5993,7 @@
         "pushed_at": "2026-10-23T13:58:09.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:54.351Z",
+        "metadata_fetched_at": "2026-11-11T02:23:22.164Z",
         "categories": [
           "radar",
           "sim"
@@ -5773,7 +6041,7 @@
             "value": 14,
             "source": "GitHub",
             "source_url": "https://github.com/diaofenyuan/RMUC_2027map_unity",
-            "checked_at": "2026-11-10T21:07:54.351Z"
+            "checked_at": "2026-11-11T02:23:22.164Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -5807,7 +6075,7 @@
         "pushed_at": "2025-05-19T10:06:49.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:39.837Z",
+        "metadata_fetched_at": "2026-11-11T02:23:07.363Z",
         "categories": [
           "aim"
         ],
@@ -5834,7 +6102,7 @@
             "value": 110,
             "source": "GitHub",
             "source_url": "https://github.com/WayneMao/RoboMatrix",
-            "checked_at": "2026-11-10T21:07:39.837Z"
+            "checked_at": "2026-11-11T02:23:07.363Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -5862,7 +6130,7 @@
         "pushed_at": "2026-07-21T09:26:22.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:39.837Z",
+        "metadata_fetched_at": "2026-11-11T02:23:07.363Z",
         "categories": [
           "aim"
         ],
@@ -5895,7 +6163,7 @@
             "value": 110,
             "source": "GitHub",
             "source_url": "https://github.com/WUST-RM/awakening",
-            "checked_at": "2026-11-10T21:07:39.837Z"
+            "checked_at": "2026-11-11T02:23:07.363Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -5928,7 +6196,7 @@
         "pushed_at": "2023-08-08T17:08:01.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:39.837Z",
+        "metadata_fetched_at": "2026-11-11T02:23:07.363Z",
         "categories": [
           "control"
         ],
@@ -5955,7 +6223,7 @@
             "value": 76,
             "source": "GitHub",
             "source_url": "https://github.com/rm-controls/rm_usb2can",
-            "checked_at": "2026-11-10T21:07:39.837Z"
+            "checked_at": "2026-11-11T02:23:07.363Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -5983,7 +6251,7 @@
         "pushed_at": "2026-11-09T22:40:45.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:39.837Z",
+        "metadata_fetched_at": "2026-11-11T02:23:07.363Z",
         "categories": [
           "nav"
         ],
@@ -6019,7 +6287,7 @@
             "value": 47,
             "source": "GitHub",
             "source_url": "https://github.com/SMBU-PolarBear-Robotics-Team/pb2025_sentry_behavior",
-            "checked_at": "2026-11-10T21:07:39.837Z"
+            "checked_at": "2026-11-11T02:23:07.363Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -6047,7 +6315,7 @@
         "pushed_at": "2021-12-04T08:48:47.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:39.837Z",
+        "metadata_fetched_at": "2026-11-11T02:23:07.363Z",
         "categories": [
           "aim"
         ],
@@ -6074,7 +6342,7 @@
             "value": 40,
             "source": "GitHub",
             "source_url": "https://github.com/wildwolf-team/WolfVision",
-            "checked_at": "2026-11-10T21:07:39.837Z"
+            "checked_at": "2026-11-11T02:23:07.363Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -6105,7 +6373,7 @@
         "pushed_at": "2026-03-11T10:18:41.000Z",
         "license": "GPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:39.837Z",
+        "metadata_fetched_at": "2026-11-11T02:23:07.363Z",
         "categories": [
           "radar"
         ],
@@ -6140,7 +6408,7 @@
             "value": 28,
             "source": "GitHub",
             "source_url": "https://github.com/BreCaspian/LiDAR-Camera_Calibration_Validator",
-            "checked_at": "2026-11-10T21:07:39.837Z"
+            "checked_at": "2026-11-11T02:23:07.363Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -6171,7 +6439,7 @@
         "pushed_at": "2026-08-11T09:52:37.000Z",
         "license": "NOASSERTION",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:54.351Z",
+        "metadata_fetched_at": "2026-11-11T02:23:22.164Z",
         "categories": [
           "aim",
           "radar"
@@ -6212,7 +6480,7 @@
             "value": 19,
             "source": "GitHub",
             "source_url": "https://github.com/coach114514/TCR-RM2026-Radar-OpenSource",
-            "checked_at": "2026-11-10T21:07:54.351Z"
+            "checked_at": "2026-11-11T02:23:22.164Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -6243,7 +6511,7 @@
         "pushed_at": "2021-11-13T13:13:17.000Z",
         "license": "LGPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:35.876Z",
+        "metadata_fetched_at": "2026-11-11T02:23:03.976Z",
         "categories": [
           "rl",
           "sim"
@@ -6260,7 +6528,9 @@
           {
             "task_id": "sim",
             "task": "算法仿真与验证",
-            "keywords": []
+            "keywords": [
+              "仿真"
+            ]
           }
         ],
         "rules_fingerprint": "905853fc9404e81c",
@@ -6289,7 +6559,7 @@
             "value": 150,
             "source": "GitHub",
             "source_url": "https://github.com/yizhengzhang1/RoboMaster-Simulator",
-            "checked_at": "2026-11-10T21:07:35.876Z"
+            "checked_at": "2026-11-11T02:23:03.976Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -6316,7 +6586,7 @@
         "pushed_at": "2026-08-14T08:15:40.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:39.837Z",
+        "metadata_fetched_at": "2026-11-11T02:23:07.363Z",
         "categories": [
           "nav"
         ],
@@ -6349,7 +6619,7 @@
             "value": 144,
             "source": "GitHub",
             "source_url": "https://github.com/Polyacetone/HWSentryNav26",
-            "checked_at": "2026-11-10T21:07:39.837Z"
+            "checked_at": "2026-11-11T02:23:07.363Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -6378,7 +6648,7 @@
         "pushed_at": "2023-08-30T08:46:21.000Z",
         "license": "Apache-2.0",
         "archived": true,
-        "metadata_fetched_at": "2026-11-10T21:07:39.837Z",
+        "metadata_fetched_at": "2026-11-11T02:23:07.363Z",
         "categories": [
           "aim",
           "rune"
@@ -6424,7 +6694,7 @@
             "value": 133,
             "source": "GitHub",
             "source_url": "https://github.com/zRzRzRzRzRzRzR/YOLO-of-RoboMaster-Keypoints-Detection-2023",
-            "checked_at": "2026-11-10T21:07:39.837Z"
+            "checked_at": "2026-11-11T02:23:07.363Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -6454,7 +6724,7 @@
         "pushed_at": "2026-08-18T04:51:00.000Z",
         "license": "AGPL-3.0",
         "archived": true,
-        "metadata_fetched_at": "2026-11-10T21:07:39.837Z",
+        "metadata_fetched_at": "2026-11-11T02:23:07.363Z",
         "categories": [
           "aim",
           "sim"
@@ -6464,7 +6734,10 @@
           {
             "task_id": "sim",
             "task": "算法仿真与验证",
-            "keywords": []
+            "keywords": [
+              "仿真",
+              "算法验证"
+            ]
           }
         ],
         "rules_fingerprint": "905853fc9404e81c",
@@ -6493,7 +6766,7 @@
             "value": 81,
             "source": "GitHub",
             "source_url": "https://github.com/Blackjack200/at_vision_simulator",
-            "checked_at": "2026-11-10T21:07:39.837Z"
+            "checked_at": "2026-11-11T02:23:07.363Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -6524,7 +6797,7 @@
         "pushed_at": "2026-06-03T02:56:54.000Z",
         "license": "AGPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:39.837Z",
+        "metadata_fetched_at": "2026-11-11T02:23:07.363Z",
         "categories": [
           "aerial",
           "aim"
@@ -6560,7 +6833,7 @@
             "value": 30,
             "source": "GitHub",
             "source_url": "https://github.com/BreCaspian/LaserTracking-2026",
-            "checked_at": "2026-11-10T21:07:39.837Z"
+            "checked_at": "2026-11-11T02:23:07.363Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -6584,7 +6857,7 @@
         "pushed_at": "2026-04-21T07:34:25.000Z",
         "license": "NOASSERTION",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:35.876Z",
+        "metadata_fetched_at": "2026-11-11T02:23:03.976Z",
         "categories": [
           "aerial",
           "sim"
@@ -6594,7 +6867,9 @@
           {
             "task_id": "aerial",
             "task": "空中系统自主飞行与机库交互",
-            "keywords": []
+            "keywords": [
+              "无人机"
+            ]
           },
           {
             "task_id": "sim",
@@ -6623,7 +6898,7 @@
             "value": 237,
             "source": "GitHub",
             "source_url": "https://github.com/RoboMaster/IntelligentUAVChampionshipSimulator",
-            "checked_at": "2026-11-10T21:07:35.876Z"
+            "checked_at": "2026-11-11T02:23:03.976Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -6653,7 +6928,7 @@
         "pushed_at": "2026-11-09T22:45:47.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:39.837Z",
+        "metadata_fetched_at": "2026-11-11T02:23:07.363Z",
         "categories": [
           "sim"
         ],
@@ -6662,7 +6937,9 @@
           {
             "task_id": "sim",
             "task": "算法仿真与验证",
-            "keywords": []
+            "keywords": [
+              "仿真"
+            ]
           }
         ],
         "rules_fingerprint": "905853fc9404e81c",
@@ -6686,7 +6963,7 @@
             "value": 111,
             "source": "GitHub",
             "source_url": "https://github.com/SMBU-PolarBear-Robotics-Team/rmu_gazebo_simulator",
-            "checked_at": "2026-11-10T21:07:39.837Z"
+            "checked_at": "2026-11-11T02:23:07.363Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -6710,7 +6987,7 @@
         "pushed_at": "2024-06-19T15:40:33.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:35.876Z",
+        "metadata_fetched_at": "2026-11-11T02:23:03.976Z",
         "categories": [
           "aim"
         ],
@@ -6737,7 +7014,7 @@
             "value": 184,
             "source": "GitHub",
             "source_url": "https://github.com/FaterYU/rm_vision",
-            "checked_at": "2026-11-10T21:07:35.876Z"
+            "checked_at": "2026-11-11T02:23:03.976Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -6761,7 +7038,7 @@
         "pushed_at": "2026-10-23T14:01:51.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:43.850Z",
+        "metadata_fetched_at": "2026-11-11T02:23:11.749Z",
         "categories": [
           "aim"
         ],
@@ -6794,7 +7071,7 @@
             "value": 54,
             "source": "GitHub",
             "source_url": "https://github.com/Alliance-Algorithm/rmcs_auto_aim_v2",
-            "checked_at": "2026-11-10T21:07:43.850Z"
+            "checked_at": "2026-11-11T02:23:11.749Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -6825,7 +7102,7 @@
         "pushed_at": "2026-08-26T04:46:24.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:39.837Z",
+        "metadata_fetched_at": "2026-11-11T02:23:07.363Z",
         "categories": [
           "sim"
         ],
@@ -6858,7 +7135,7 @@
             "value": 35,
             "source": "GitHub",
             "source_url": "https://github.com/ClearWei/RM26_Client",
-            "checked_at": "2026-11-10T21:07:39.837Z"
+            "checked_at": "2026-11-11T02:23:07.363Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -6890,7 +7167,7 @@
         "pushed_at": "2026-06-17T02:17:30.000Z",
         "license": "GPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:39.837Z",
+        "metadata_fetched_at": "2026-11-11T02:23:07.363Z",
         "categories": [
           "control"
         ],
@@ -6917,7 +7194,7 @@
             "value": 33,
             "source": "GitHub",
             "source_url": "https://github.com/buke18/robomaster-soldier-robot",
-            "checked_at": "2026-11-10T21:07:39.837Z"
+            "checked_at": "2026-11-11T02:23:07.363Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -6945,7 +7222,7 @@
         "pushed_at": "2026-01-25T11:51:13.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:39.837Z",
+        "metadata_fetched_at": "2026-11-11T02:23:07.363Z",
         "categories": [
           "sim"
         ],
@@ -6980,7 +7257,7 @@
             "value": 32,
             "source": "GitHub",
             "source_url": "https://github.com/robomaster-oss/rmoss_gazebo",
-            "checked_at": "2026-11-10T21:07:39.837Z"
+            "checked_at": "2026-11-11T02:23:07.363Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -7008,7 +7285,7 @@
         "pushed_at": "2025-05-29T04:05:50.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:39.837Z",
+        "metadata_fetched_at": "2026-11-11T02:23:07.363Z",
         "categories": [
           "aim",
           "rune"
@@ -7019,7 +7296,8 @@
             "task_id": "rune",
             "task": "能量机关识别与击打",
             "keywords": [
-              "rune detection"
+              "rune detection",
+              "能量机关"
             ]
           }
         ],
@@ -7049,7 +7327,7 @@
             "value": 53,
             "source": "GitHub",
             "source_url": "https://github.com/zmsbruce/rm_power_rune",
-            "checked_at": "2026-11-10T21:07:39.837Z"
+            "checked_at": "2026-11-11T02:23:07.363Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -7073,7 +7351,7 @@
         "pushed_at": "2026-11-05T08:23:01.000Z",
         "license": "BSD-3-Clause",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:35.876Z",
+        "metadata_fetched_at": "2026-11-11T02:23:03.976Z",
         "categories": [
           "sim"
         ],
@@ -7082,7 +7360,9 @@
           {
             "task_id": "sim",
             "task": "算法仿真与验证",
-            "keywords": []
+            "keywords": [
+              "仿真"
+            ]
           }
         ],
         "rules_fingerprint": "905853fc9404e81c",
@@ -7106,7 +7386,7 @@
             "value": 310,
             "source": "GitHub",
             "source_url": "https://github.com/rm-controls/rm_control",
-            "checked_at": "2026-11-10T21:07:35.876Z"
+            "checked_at": "2026-11-11T02:23:03.976Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -7136,7 +7416,7 @@
         "pushed_at": "2026-08-23T17:34:55.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:35.876Z",
+        "metadata_fetched_at": "2026-11-11T02:23:03.976Z",
         "categories": [
           "aim"
         ],
@@ -7163,7 +7443,7 @@
             "value": 391,
             "source": "GitHub",
             "source_url": "https://github.com/NeoZng/vision_tutorial",
-            "checked_at": "2026-11-10T21:07:35.876Z"
+            "checked_at": "2026-11-11T02:23:03.976Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -7197,7 +7477,7 @@
         "pushed_at": "2025-07-19T17:11:48.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:35.876Z",
+        "metadata_fetched_at": "2026-11-11T02:23:03.976Z",
         "categories": [
           "aim"
         ],
@@ -7232,7 +7512,7 @@
             "value": 299,
             "source": "GitHub",
             "source_url": "https://github.com/julyfun/rm.cv.fans",
-            "checked_at": "2026-11-10T21:07:35.876Z"
+            "checked_at": "2026-11-11T02:23:03.976Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -7259,7 +7539,7 @@
         "pushed_at": "2024-07-23T01:41:01.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:39.837Z",
+        "metadata_fetched_at": "2026-11-11T02:23:07.363Z",
         "categories": [
           "aim"
         ],
@@ -7292,7 +7572,7 @@
             "value": 144,
             "source": "GitHub",
             "source_url": "https://github.com/robomaster-oss/rmoss_core",
-            "checked_at": "2026-11-10T21:07:39.837Z"
+            "checked_at": "2026-11-11T02:23:07.363Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -7316,7 +7596,7 @@
         "pushed_at": "2026-05-20T11:55:55.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:47.535Z",
+        "metadata_fetched_at": "2026-11-11T02:23:15.250Z",
         "categories": [
           "aim"
         ],
@@ -7351,7 +7631,7 @@
             "value": 116,
             "source": "GitHub",
             "source_url": "https://github.com/chiguayeshao/obs-snap-detector",
-            "checked_at": "2026-11-10T21:07:47.535Z"
+            "checked_at": "2026-11-11T02:23:15.250Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -7375,7 +7655,7 @@
         "pushed_at": "2024-06-16T01:48:03.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:47.535Z",
+        "metadata_fetched_at": "2026-11-11T02:23:15.250Z",
         "categories": [
           "aim",
           "radar"
@@ -7421,7 +7701,7 @@
             "value": 92,
             "source": "GitHub",
             "source_url": "https://github.com/SCAU-RM-NAV/RM2023_Radar_Dataset",
-            "checked_at": "2026-11-10T21:07:47.535Z"
+            "checked_at": "2026-11-11T02:23:15.250Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -7450,7 +7730,7 @@
         "pushed_at": "2026-03-20T17:31:42.000Z",
         "license": "NOASSERTION",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:39.837Z",
+        "metadata_fetched_at": "2026-11-11T02:23:07.363Z",
         "categories": [
           "control"
         ],
@@ -7477,7 +7757,7 @@
             "value": 52,
             "source": "GitHub",
             "source_url": "https://github.com/ZhuaX0/RoboMasterSuperCapCtrller_Adernal",
-            "checked_at": "2026-11-10T21:07:39.837Z"
+            "checked_at": "2026-11-11T02:23:07.363Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -7506,7 +7786,7 @@
         "pushed_at": "2023-08-30T08:19:48.000Z",
         "license": "Apache-2.0",
         "archived": true,
-        "metadata_fetched_at": "2026-11-10T21:07:54.351Z",
+        "metadata_fetched_at": "2026-11-11T02:23:22.164Z",
         "categories": [
           "radar"
         ],
@@ -7542,7 +7822,7 @@
             "value": 18,
             "source": "GitHub",
             "source_url": "https://github.com/zRzRzRzRzRzRzR/Mult-YOLO-alogorithm-of-RoboMaster-Radar-Detection-2023",
-            "checked_at": "2026-11-10T21:07:54.351Z"
+            "checked_at": "2026-11-11T02:23:22.164Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -7566,7 +7846,7 @@
         "pushed_at": "2026-08-13T09:08:29.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:54.351Z",
+        "metadata_fetched_at": "2026-11-11T02:23:22.164Z",
         "categories": [
           "radar"
         ],
@@ -7576,7 +7856,8 @@
             "task_id": "radar",
             "task": "雷达目标探测与信息融合",
             "keywords": [
-              "robomaster radar"
+              "robomaster radar",
+              "雷达"
             ]
           }
         ],
@@ -7601,7 +7882,7 @@
             "value": 11,
             "source": "GitHub",
             "source_url": "https://github.com/JNU-SHARK/shark-radar-system",
-            "checked_at": "2026-11-10T21:07:54.351Z"
+            "checked_at": "2026-11-11T02:23:22.164Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -7632,7 +7913,7 @@
         "pushed_at": "2025-05-29T04:08:31.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:39.837Z",
+        "metadata_fetched_at": "2026-11-11T02:23:07.363Z",
         "categories": [
           "aim",
           "radar"
@@ -7643,7 +7924,8 @@
             "task_id": "radar",
             "task": "雷达目标探测与信息融合",
             "keywords": [
-              "robomaster radar"
+              "robomaster radar",
+              "雷达"
             ]
           }
         ],
@@ -7673,7 +7955,7 @@
             "value": 52,
             "source": "GitHub",
             "source_url": "https://github.com/zmsbruce/rm_radar",
-            "checked_at": "2026-11-10T21:07:39.837Z"
+            "checked_at": "2026-11-11T02:23:07.363Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -7697,7 +7979,7 @@
         "pushed_at": "2022-09-23T09:09:07.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:29.616Z",
+        "metadata_fetched_at": "2026-11-11T02:22:57.286Z",
         "categories": [
           "aerial",
           "planning",
@@ -7744,7 +8026,7 @@
             "value": 14,
             "source": "GitHub",
             "source_url": "https://github.com/BSSNBSSN/Ego-plannerforIntelligentUAVChampionshipSimulator",
-            "checked_at": "2026-11-10T21:07:29.616Z"
+            "checked_at": "2026-11-11T02:22:57.286Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -7776,7 +8058,7 @@
         "pushed_at": "2023-06-09T17:04:49.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:39.837Z",
+        "metadata_fetched_at": "2026-11-11T02:23:07.363Z",
         "categories": [
           "sim"
         ],
@@ -7809,7 +8091,7 @@
             "value": 93,
             "source": "GitHub",
             "source_url": "https://github.com/Spphire/RM-labeling-tool",
-            "checked_at": "2026-11-10T21:07:39.837Z"
+            "checked_at": "2026-11-11T02:23:07.363Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -7833,7 +8115,7 @@
         "pushed_at": "2019-10-09T09:14:22.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:43.850Z",
+        "metadata_fetched_at": "2026-11-11T02:23:11.749Z",
         "categories": [
           "aim"
         ],
@@ -7868,7 +8150,7 @@
             "value": 79,
             "source": "GitHub",
             "source_url": "https://github.com/EinstainBohr/RM-computer-vision",
-            "checked_at": "2026-11-10T21:07:43.850Z"
+            "checked_at": "2026-11-11T02:23:11.749Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -7892,7 +8174,7 @@
         "pushed_at": "2024-06-16T19:50:16.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:43.850Z",
+        "metadata_fetched_at": "2026-11-11T02:23:11.749Z",
         "categories": [
           "aim"
         ],
@@ -7925,7 +8207,7 @@
             "value": 76,
             "source": "GitHub",
             "source_url": "https://github.com/FaterYU/rm_auto_aim",
-            "checked_at": "2026-11-10T21:07:43.850Z"
+            "checked_at": "2026-11-11T02:23:11.749Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -7957,7 +8239,7 @@
         "pushed_at": "2024-08-12T03:53:11.000Z",
         "license": "GPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:39.837Z",
+        "metadata_fetched_at": "2026-11-11T02:23:07.363Z",
         "categories": [
           "sim"
         ],
@@ -7990,7 +8272,7 @@
             "value": 71,
             "source": "GitHub",
             "source_url": "https://github.com/scutrobotlab/SimulatorX",
-            "checked_at": "2026-11-10T21:07:39.837Z"
+            "checked_at": "2026-11-11T02:23:07.363Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -8017,7 +8299,7 @@
         "pushed_at": "2025-03-19T12:59:10.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:50.361Z",
+        "metadata_fetched_at": "2026-11-11T02:23:18.206Z",
         "categories": [
           "nav"
         ],
@@ -8050,7 +8332,7 @@
             "value": 67,
             "source": "GitHub",
             "source_url": "https://github.com/IRobot-Algorithm/sentry_navigation",
-            "checked_at": "2026-11-10T21:07:50.361Z"
+            "checked_at": "2026-11-11T02:23:18.206Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -8074,7 +8356,7 @@
         "pushed_at": "2022-10-07T08:41:29.000Z",
         "license": "GPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:08:01.357Z",
+        "metadata_fetched_at": "2026-11-11T02:23:28.726Z",
         "categories": [
           "aim"
         ],
@@ -8107,7 +8389,7 @@
             "value": 63,
             "source": "GitHub",
             "source_url": "https://github.com/XianMengxi/AutoAim_HUST",
-            "checked_at": "2026-11-10T21:08:01.357Z"
+            "checked_at": "2026-11-11T02:23:28.726Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
@@ -8131,7 +8413,7 @@
         "pushed_at": "2024-01-04T04:48:26.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-10T21:07:43.850Z",
+        "metadata_fetched_at": "2026-11-11T02:23:11.749Z",
         "categories": [
           "aim"
         ],
@@ -8164,7 +8446,7 @@
             "value": 62,
             "source": "GitHub",
             "source_url": "https://github.com/Ericsii/rm_vision",
-            "checked_at": "2026-11-10T21:07:43.850Z"
+            "checked_at": "2026-11-11T02:23:11.749Z"
           }
         },
         "first_seen": "2026-11-10T21:08:51.887Z"
