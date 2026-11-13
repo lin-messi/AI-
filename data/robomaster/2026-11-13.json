@@ -1,6 +1,6 @@
 {
   "date": "2026-11-13",
-  "generatedAt": "2026-11-12T18:45:30.696Z",
+  "generatedAt": "2026-11-13T00:12:31.712Z",
   "categories": [
     {
       "key": "optical",
@@ -71,8 +71,88 @@
   "rules_fingerprint": "0c84c6c447662688",
   "rules_season": "2027",
   "papers": {
-    "count": 70,
+    "count": 96,
     "items": [
+      {
+        "id": "arxiv:2609.22925",
+        "arxiv_id": "2609.22925",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "\"Dear LLaVA, Please Drive\": A Depth-Aware Vision-Language Agent for Closed-Loop Robotic Control",
+        "title_zh": "“亲爱的 LLaVA，请驾驶”：面向闭环机器人控制的深度感知视觉语言智能体",
+        "abstract_en": "Vision-language models (VLMs) provide a compelling foundation for reasoning-driven mobile navigation, offering rich contextual understanding and strong generalization from large-scale pretraining. Most existing navigation frameworks rely on imitation learning and therefore require substantial labeled trajectory data, limiting their scalability and robustness. In this work, we propose a parameter-efficient approach to fine-tune a pretrained VLM for autonomous navigation using an Imperative Learning paradigm. By optimizing against differentiable geometric cost fields rather than labeled trajectories, our model learns to generate collision-free paths exclusively from stereoscopic depth observations. We introduce a unified end-to-end navigation pipeline for natural-language-driven robotic control. This system leverages a shared VLM backbone with task-specific Low-Rank Adaptation (LoRA) modules, effectively bridging the gap from semantic target selection to low-level trajectory planning. Our approach achieves competitive Success weighted by Path Length (SPL) in unseen environments while updating less than 1% of the model's total parameters. Qualitative real-world experiments validate sim-to-real generalization and stable path planning without fine-tuning on real-world data. These results highlight a practical approach for deploying VLM-based agents on mobile robots, enabling high-level semantic navigation without the prohibitive requirement for large-scale, labeled trajectory data.",
+        "abstract_zh": "视觉语言模型（VLM）具备丰富的上下文理解能力与大规模预训练带来的强泛化性，为推理驱动的移动导航提供了坚实基础。现有导航框架多依赖模仿学习，需大量标注轨迹数据，限制了可扩展性与鲁棒性。本文提出一种参数高效的方法，采用“指令式学习”（Imperative Learning）范式微调预训练 VLM 以实现自主导航：模型不拟合标注轨迹，而是针对可微几何代价场进行优化，仅凭立体深度观测即可学会生成无碰撞路径。作者构建了统一的端到端导航流水线，共享 VLM 主干并挂载任务专用的低秩适配（LoRA）模块，将语义目标选取与底层轨迹规划打通。在未见环境中取得具竞争力的 SPL 指标，且仅更新不足 1% 的模型参数；真实世界定性实验验证了仿真到现实的泛化能力与稳定路径规划，无需真实数据微调。",
+        "highlight_zh": "以可微几何代价场替代轨迹标注，仅调不到 1% 参数即可无碰撞导航",
+        "digest_zh": "一、研究了什么问题：让机器人在室内自主移动，通常要先“看懂”环境再规划路线。视觉语言模型虽然“懂语义”，但现有做法靠模仿人类驾驶轨迹来训练，需要海量带标注的轨迹数据，代价高且换个环境就容易失效。\n二、用了什么方法：作者提出“指令式学习”范式——不再让模型去模仿某条标准轨迹，而是定义一个可微的几何代价场（比如离障碍物太近就扣分、偏离目标就扣分），让模型直接朝“代价更低”的方向优化。输入只有立体相机得到的深度图，输出是无碰撞的行驶路径。系统用共享的 VLM 主干加若干任务专用的 LoRA 模块（一种只训练极少量参数的高效微调技术），把“理解自然语言指令、选定目标”和“生成底层转向/速度指令”串成一条端到端流水线。\n三、有什么结果：在没见过的环境中取得了有竞争力的 SPL（成功率按路径长度加权）成绩，而训练的参数量不到模型总量的 1%。真机实验表明，不用任何真实世界数据微调，也能稳定规划路径，实现从仿真到现实的迁移。\n四、为何重要：它说明部署 VLM 机器人不必再依赖昂贵的大规模标注轨迹数据，大幅降低数据与算力门槛，为把大模型智能体真正装到移动机器人上提供了一条可行、省成本的路径。",
+        "authors": [
+          "Sebastian Berger",
+          "Katharina Winter",
+          "Fabian B. Flohr"
+        ],
+        "url": "https://arxiv.org/abs/2609.22925v1",
+        "pdf_url": "https://arxiv.org/pdf/2609.22925",
+        "html_url": "https://arxiv.org/abs/2609.22925",
+        "published_at": "2026-09-19T10:12:55.000Z",
+        "upvotes": 0,
+        "heat": 850.0561080555556,
+        "featured": true,
+        "categories": [
+          "nav",
+          "planning",
+          "rl"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 51,
+        "rule_matches": [
+          {
+            "task_id": "sentry",
+            "task": "哨兵机器人自主导航与决策",
+            "keywords": [
+              "autonomous navigation",
+              "路径规划"
+            ]
+          }
+        ],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "nav",
+              "label_zh": "地面自主导航",
+              "label_en": "Ground Navigation"
+            },
+            {
+              "key": "planning",
+              "label_zh": "运动规划",
+              "label_en": "Motion Planning"
+            },
+            {
+              "key": "rl",
+              "label_zh": "机器人策略学习",
+              "label_en": "Robot Policy Learning"
+            }
+          ],
+          "lane": "recent",
+          "score": 40,
+          "quality": "implementation",
+          "reason_zh": "地面自主导航、运动规划、机器人策略学习的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；策略学习框架不自带RM战术环境、奖励函数或已验证策略",
+          "evidence_url": "https://arxiv.org/abs/2609.22925v1"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "其“从语义目标选择到无碰撞路径生成”的分层思路（共享骨干+LoRA 双头）可借鉴到哨兵的目标选择与路径规划衔接；但 VLM 推理对机载算力要求高，RM 场地地图已知、语义类别固定，需大幅裁剪并改为轻量几何代价替代。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "mid",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
+        }
+      },
       {
         "id": "arxiv:2611.11164",
         "arxiv_id": "2611.11164",
@@ -442,6 +522,83 @@
         }
       },
       {
+        "id": "arxiv:2609.20435",
+        "arxiv_id": "2609.20435",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Time-Efficient Iterative Learning Planning for Safety-Critical Dynamic Obstacle Avoidance",
+        "title_zh": "面向安全关键动态避障的高时效迭代学习规划",
+        "abstract_en": "Autonomous mobile robots require timeefficient planning and safety-critical dynamic obstacle avoidance under constrained onboard computation. While Iterative Learning Planning (ILP) offers lightweight and efficient traversal planning, it lacks explicit mechanisms for dynamic obstacle perception and avoidance. This article extends ILP to safety-critical navigation in dynamic environments by integrating an anticipatory risk-blended control barrier function (ARB-CBF). The extended ILP learns traversal-speed and steering-bias profiles via a fractionalpower update based on local obstacle risk, generating nominal control commands that ARB-CBF modifies at runtime for real-time safety guarantees. Algorithmic analysis demonstrates that the ILP replanning stage scales at O(kN) for k iterations and N waypoints, while ARB-CBF executes with linear complexity. Comprehensive simulations and real-world experiments validate the framework, demonstrating superior temporal efficiency and safety with lower computational overhead compared to optimizationbased baselines, making it highly suitable for resourceconstrained platforms.",
+        "abstract_zh": "自主移动机器人需要在受限的车载算力下实现高时效规划与安全关键的动态避障。迭代学习规划（ILP）虽能提供轻量高效的通行规划，却缺乏显式的动态障碍感知与规避机制。本文将 ILP 扩展到动态环境中的安全关键导航，引入预判式风险融合控制屏障函数（ARB-CBF）。扩展后的 ILP 依据局部障碍风险，通过分数幂更新学习通行速度与转向偏置曲线，生成名义控制指令；ARB-CBF 在运行时修正这些指令，以提供实时安全保障。算法分析表明，ILP 重规划阶段在 k 次迭代、N 个路点时复杂度为 O(kN)，ARB-CBF 则以线性复杂度执行。充分的仿真与真实世界实验验证了该框架，相比基于优化的基线方法，展现出更优的时间效率与安全性，且计算开销更低，非常适合资源受限平台。",
+        "highlight_zh": "把控制屏障函数嵌入迭代学习规划，实现低算力的实时动态避障",
+        "digest_zh": "一、研究了什么问题：小型移动机器人（如配送机器人、巡检机器人）的车载芯片算力有限，既要规划得快，又必须在遇到突然出现的人或车时保证安全。已有的迭代学习规划（ILP）方法计算很轻，但只看静态地图、不会预判和躲避移动物体，因此无法用于安全关键场景。\n二、用了什么方法：作者给 ILP 加了一层“安全护栏”——预判式风险融合控制屏障函数（ARB-CBF）。控制屏障函数可以理解为一种数学保险机制：只要系统状态接近危险边界，它就会强制修正控制指令，使机器人绝不越过安全线。具体做法是：ILP 根据附近障碍物的风险程度，用分数幂更新规则学习速度与转向偏置曲线，先给出一组“名义指令”；ARB-CBF 随后在运行时对这些指令做最小幅度的修正，从而在保证实时性的同时守住安全约束。\n三、有什么结果：论文从理论上分析了复杂度——ILP 重规划为 O(kN)（k 为迭代次数、N 为路点数），ARB-CBF 为线性复杂度，说明整体开销随规模温和增长。仿真和真机实验显示，与基于优化的基线方法相比，该框架规划更快、更安全，计算开销反而更低。\n四、为何重要：它让“轻量规划 + 实时安全保证”可以同时成立，对算力、功耗、成本都受限的机器人平台尤为实用，为动态人群环境中的安全自主导航提供了可落地的方案。",
+        "authors": [
+          "Zhiyi Chen",
+          "Shuli Lv",
+          "Chen Min",
+          "Yong Xu",
+          "Jian Sun",
+          "Quan Quan"
+        ],
+        "url": "https://arxiv.org/abs/2609.20435v1",
+        "pdf_url": "https://arxiv.org/pdf/2609.20435",
+        "html_url": "https://arxiv.org/abs/2609.20435",
+        "published_at": "2026-09-17T14:12:36.000Z",
+        "upvotes": 0,
+        "heat": 806.0508263888889,
+        "featured": true,
+        "categories": [
+          "nav",
+          "control"
+        ],
+        "image": "",
+        "comment": "10 pages, 13 figures",
+        "relevance": 48,
+        "rule_matches": [
+          {
+            "task_id": "sentry",
+            "task": "哨兵机器人自主导航与决策",
+            "keywords": [
+              "obstacle avoidance",
+              "避障"
+            ]
+          }
+        ],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "nav",
+              "label_zh": "地面自主导航",
+              "label_en": "Ground Navigation"
+            },
+            {
+              "key": "control",
+              "label_zh": "机器人控制",
+              "label_en": "Robot Control"
+            }
+          ],
+          "lane": "recent",
+          "score": 38,
+          "quality": "implementation",
+          "reason_zh": "地面自主导航、机器人控制的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统",
+          "evidence_url": "https://arxiv.org/abs/2609.20435v1"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "轻量迭代学习规划+控制障碍函数（ARB-CBF）的分工很适合哨兵：用 ILP 出低算力巡航/转向偏置，再用 CBF 在检测到敌方机器人等动态障碍时做实时安全修正，可嵌进 100W 底盘现有规划器。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "mid",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
+        }
+      },
+      {
         "id": "arxiv:2610.36968",
         "arxiv_id": "2610.36968",
         "source": "arXiv",
@@ -579,6 +736,83 @@
           "task_id": "aerial",
           "task": "空中系统自主飞行与机库交互",
           "value": "mid",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
+        }
+      },
+      {
+        "id": "arxiv:2609.14543",
+        "arxiv_id": "2609.14543",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "NavPatch: Evidence-Guided Object-Level Costmap Correction with Vision-Language Models",
+        "title_zh": "NavPatch：使用视觉-语言模型的证据引导对象级代价地图校正",
+        "abstract_en": "Mobile robots typically rely on geometric maps for obstacle avoidance and path planning, but the resulting obstacle representation does not always match how an object should affect navigation. A low lying cable may be missed, a flexible curtain may create spurious blockage, and a traffic cone may require an exclusion region larger than its observed footprint. We present NavPatch, an object level correction layer that assigns ADD, REMOVE, or EXTEND to navigation relevant object categories through periodic scene understanding with a vision-language model. Open vocabulary grounding localizes object instances, and LiDAR and RGB-D observations provide 3D support. Observation quality filtering and cross frame maintenance determine when each correction patch is committed, replaced, or revoked. In 50 real robot trials across five layouts, NavPatch achieves an overall success rate of 86.0%. An ablation study of four configurations with 200 runs in total shows that NavPatch improves the success rate from 70.0% to 86.0% and reduces the false commit rate from 68.4% to 40.7% compared with updates based only on the current observation.",
+        "abstract_zh": "移动机器人通常依赖几何地图进行避障和路径规划，但所得的障碍物表示并不总是与物体应如何影响导航相匹配。低矮的线缆可能被漏检，柔性窗帘可能产生虚假的阻塞，交通锥可能需要比其观测足迹更大的排除区域。我们提出 NavPatch，一种对象级校正层，通过使用视觉-语言模型进行周期性场景理解，为导航相关物体类别分配 ADD、REMOVE 或 EXTEND。开放词汇定位对物体实例进行定位，LiDAR 和 RGB-D 观测提供 3D 支撑。观测质量过滤和跨帧维护决定每个校正补丁何时提交、替换或撤销。在五种布局上的 50 次真实机器人试验中，NavPatch 达到 86.0% 的总体成功率。对四种配置共 200 次运行的消融研究表明，与仅基于当前观测的更新相比，NavPatch 将成功率从 70.0% 提高到 86.0%，并将错误提交率从 68.4% 降至 40.7%。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Shiji Sun",
+          "Xingyu Tao",
+          "Hao Wang",
+          "Ling Wang",
+          "Zhengyi Chen"
+        ],
+        "url": "https://arxiv.org/abs/2609.14543v1",
+        "pdf_url": "https://arxiv.org/pdf/2609.14543",
+        "html_url": "https://arxiv.org/abs/2609.14543",
+        "published_at": "2026-09-13T14:30:55.000Z",
+        "upvotes": 0,
+        "heat": 710.3560977777777,
+        "featured": false,
+        "categories": [
+          "nav",
+          "planning"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 47,
+        "rule_matches": [
+          {
+            "task_id": "sentry",
+            "task": "哨兵机器人自主导航与决策",
+            "keywords": [
+              "obstacle avoidance",
+              "路径规划",
+              "避障"
+            ]
+          }
+        ],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "nav",
+              "label_zh": "地面自主导航",
+              "label_en": "Ground Navigation"
+            },
+            {
+              "key": "planning",
+              "label_zh": "运动规划",
+              "label_en": "Motion Planning"
+            }
+          ],
+          "lane": "recent",
+          "score": 38,
+          "quality": "implementation",
+          "reason_zh": "地面自主导航、运动规划的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统",
+          "evidence_url": "https://arxiv.org/abs/2609.14543v1"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "把“目标类别→代价地图加/删/扩”的校正层搬到哨兵，可处理诸如场地道具、台阶、临时遮挡造成的代价地图失真；但需要 VLM 与 LiDAR/RGB-D 支撑，哨兵传感器配置未必满足，且 RM 场地静态结构已知，收益有限。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "low",
           "rules_fingerprint": "0c84c6c447662688",
           "season": "2027"
         }
@@ -1339,6 +1573,83 @@
           "task_id": "sentry",
           "task": "哨兵机器人自主导航与决策",
           "value": "mid",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
+        }
+      },
+      {
+        "id": "arxiv:2609.07091",
+        "arxiv_id": "2609.07091",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Human-Aware Target Tracking and Navigation: Fusing Kinematic State Estimation with Structural Map Constraints",
+        "title_zh": "人类感知的目标跟踪与导航：融合运动状态估计与结构地图约束",
+        "abstract_en": "Autonomous mobile robots performing person-following tasks often suffer from temporary occlusions and sensor track loss in dynamic environments. This research presents an end-to-end autonomous navigation stack that addresses target occlusion through map-informed spatial reasoning. The proposed system features a multi-modal perception pipeline, fusing deep learning-based visual tracking with 2-dimensional LiDAR point clustering to maintain high-fidelity tracking of a tagged person. A continuous state estimator integrates this perception data with wheel odometry and IMU sensors for stable localization. When the active track is lost due to occlusion, the system activates a map-based recovery framework. Leveraging a predefined topological map, the system executes a graph-based search to propagate the target's last known trajectory along structurally defined walking lanes, adhering to left-hand regional conventions. By generating a discrete set of feasible future trajectories, the robot reasons about potential structural trajectory changes, such as continuing a heading or turning at an intersection. This map-informed prediction is fed directly to the local obstacle avoidance planner, enabling the robot to continue following its target safely and predictably until the person is visually reacquired. Real-world evaluations in dense multi-person environments demonstrate the system's robustness, achieving a 71.4\\% target reacquisition success rate during major occlusion events lasting up to 7 seconds.",
+        "abstract_zh": "执行人员跟随任务的自主移动机器人在动态环境中常常遭受临时遮挡和传感器跟踪丢失。本研究提出一个端到端自主导航栈，通过地图信息空间推理解决目标遮挡问题。所提系统具有多模态感知流水线，融合基于深度学习的视觉跟踪与二维 LiDAR 点聚类，以保持对佩戴标签人员的高保真跟踪。连续状态估计器将该感知数据与轮式里程计和 IMU 传感器集成，以实现稳定定位。当主动跟踪因遮挡而丢失时，系统激活基于地图的恢复框架。利用预定义拓扑地图，系统执行基于图的搜索，将目标的最后已知轨迹沿结构定义的步行通道传播，并遵循左侧区域惯例。通过生成一组离散的可行未来轨迹，机器人推理潜在的结构性轨迹变化，例如继续朝向或在交叉口转弯。这种地图信息预测直接馈送到局部避障规划器，使机器人能够安全且可预测地继续跟随其目标，直到视觉上重新捕获该人员。在密集多人环境中的真实世界评估证明了系统的鲁棒性，在持续长达 7 秒的重大遮挡事件期间达到 71.4% 的目标重新捕获成功率。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Sagar Gupta",
+          "Don Gideon",
+          "Seng W. Loke",
+          "Kevin Lee",
+          "Bijo Sebastian"
+        ],
+        "url": "https://arxiv.org/abs/2609.07091v1",
+        "pdf_url": "https://arxiv.org/pdf/2609.07091",
+        "html_url": "https://arxiv.org/abs/2609.07091",
+        "published_at": "2026-09-07T06:31:17.000Z",
+        "upvotes": 0,
+        "heat": 558.3623602777777,
+        "featured": false,
+        "categories": [
+          "aim",
+          "nav"
+        ],
+        "image": "",
+        "comment": "Submitted to Australian Conference on Robotics and Automation",
+        "relevance": 45,
+        "rule_matches": [
+          {
+            "task_id": "sentry",
+            "task": "哨兵机器人自主导航与决策",
+            "keywords": [
+              "autonomous navigation",
+              "obstacle avoidance",
+              "避障"
+            ]
+          }
+        ],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "aim",
+              "label_zh": "检测与目标跟踪",
+              "label_en": "Detection & Tracking"
+            },
+            {
+              "key": "nav",
+              "label_zh": "地面自主导航",
+              "label_en": "Ground Navigation"
+            }
+          ],
+          "lane": "recent",
+          "score": 34,
+          "quality": "method",
+          "reason_zh": "检测与目标跟踪、地面自主导航的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；未证明装甲板/点阵屏幕识别、反陀螺预测与弹道闭环；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2609.07091v1"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "其“视觉跟踪+激光聚类+地图先验的遮挡后目标重捕”思路可参考到哨兵对敌方机器人的短时丢失恢复（沿已知通道预测去向并局部避障）；但论文跟踪的是人员、依赖拓扑步道先验，与装甲板检测和战术决策差距较大。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "low",
           "rules_fingerprint": "0c84c6c447662688",
           "season": "2027"
         }
@@ -2472,6 +2783,224 @@
         }
       },
       {
+        "id": "arxiv:2610.27414",
+        "arxiv_id": "2610.27414",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "eess.SY"
+        ],
+        "title_en": "Real-Time Disturbance-Aware Koopman Model Predictive Control for Quadrotors in Spatially Varying Winds",
+        "title_zh": "空间变化风场中四旋翼的实时扰动感知 Koopman 模型预测控制",
+        "abstract_en": "Reliable quadrotor flight in disturbed environments requires predictive models that remain accurate as unmodeled aerodynamic effects change during deployment. We introduce a disturbance-aware Koopman Control Family (DA-KCF) framework that preserves an offline-identified nominal model while learning only a disturbance-induced correction online. A reference-dependent KCF is first learned from simulation data and calibrated using limited hardware data. During deployment, the nominal KCF remains fixed while a lightweight residual ensemble learns a low-dimensional disturbance correction from causal state-command-state transitions. The Adaptive DA-KCF model is incorporated into MPC, where disturbance corrections are evaluated along the prediction horizon to optimize position and yaw references sent to the onboard stabilizing controller. Hardware experiments on a nano-quadrotor under uniform wind and a spatially varying wake demonstrate that online adaptation improves multi-step prediction and trajectory tracking as disturbance-induced model mismatch increases, while satisfying real-time control requirements.",
+        "abstract_zh": "在受扰环境中实现可靠的四旋翼飞行，需要预测模型在部署期间未建模气动效应变化时仍保持准确。我们引入一种扰动感知 Koopman 控制族（DA-KCF）框架，该框架保留离线辨识的名义模型，同时仅在线学习扰动引起的校正。首先从仿真数据学习依赖参考的 KCF，并使用有限的硬件数据进行校准。在部署期间，名义 KCF 保持固定，而一个轻量级残差集成从因果的状态-命令-状态转移中学习低维扰动校正。自适应 DA-KCF 模型被纳入 MPC，其中扰动校正在预测时域上被评估，以优化发送至机载稳定控制器的位置和偏航参考。在均匀风和空间变化尾流下对纳米四旋翼进行的硬件实验表明，随着扰动引起的模型失配增加，在线自适应改善了多步预测和轨迹跟踪，同时满足实时控制要求。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Stella Kombo",
+          "Masih Haseli",
+          "Alejandro A. Stefan-Zavala",
+          "Peter I. Renn",
+          "Morteza Gharib",
+          "Joel W. Burdick"
+        ],
+        "url": "https://arxiv.org/abs/2610.27414v2",
+        "pdf_url": "https://arxiv.org/pdf/2610.27414",
+        "html_url": "https://arxiv.org/abs/2610.27414",
+        "published_at": "2026-10-20T00:09:22.000Z",
+        "upvotes": 0,
+        "heat": 1583.9971502777778,
+        "featured": false,
+        "categories": [
+          "aerial",
+          "control"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 42,
+        "rule_matches": [
+          {
+            "task_id": "aerial",
+            "task": "空中系统自主飞行与机库交互",
+            "keywords": [
+              "quadrotor",
+              "四旋翼"
+            ]
+          }
+        ],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "control",
+              "label_zh": "机器人控制",
+              "label_en": "Robot Control"
+            }
+          ],
+          "lane": "recent",
+          "score": 36,
+          "quality": "implementation",
+          "reason_zh": "机器人控制的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场",
+          "evidence_url": "https://arxiv.org/abs/2610.27414v2"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "扰动感知 Koopman-MPC 的“离线标称模型+在线低维扰动残差修正”结构，可用于空中机器人在机库附近及其他无人机下洗气流中的稳定悬停与轨迹跟踪；需在室内定位与机载算力条件下重标定，且不解决通信与机库交互规则问题。",
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "value": "mid",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
+        }
+      },
+      {
+        "id": "arxiv:2610.22092",
+        "arxiv_id": "2610.22092",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Onboard Lightweight LLM Reasoning for Human-Aware Safe UAV Navigation",
+        "title_zh": "用于人类感知安全 UAV 导航的机载轻量级 LLM 推理",
+        "abstract_en": "Aerial robots operating near people must treat a pedestrian, a parked car, and a wall differently, yet conventional perception--planning stacks reduce all of them to occupied geometry---a \\emph{human-aware safety gap} in which category-specific clearance is unavailable to the planner and temporary occlusions remove pedestrian-specific constraints from its map. We present a modular, fully onboard pipeline that closes this gap by turning visual observations into context-dependent safety constraints for real-time UAV navigation. A shared BLIP encoder drives scene captioning and text-conditioned segmentation, which is fused with depth to localize obstacles in 3D. Obstacle-specific risk is inferred by a lightweight LLM (Qwen-2.5-0.5B) stabilized with retrieval-augmented generation and grammar-constrained decoding that restricts its output to a planner-compatible JSON schema. The LLM reasons once per object category rather than per frame: its verdicts are cached per class, so previously seen categories are resolved without inference and new ones trigger a fresh retrieval-grounded query; detections are additionally given persistent identities and held in the map across occlusions. The perception pipeline runs at 10\\,Hz on a Jetson Orin NX, while fallback LLM queries take approximately 0.8\\,s and remain off the control-critical path. In Gazebo, low-altitude urban navigation among pedestrians and vehicles shows a roughly $3\\times$ reduction in collision events over a geometric planner, and semantics-aware landing among moving actors raises success from 34\\% to 96\\%. The 224-pixel encoder input limits reliable small-object perception at range; conservative pedestrian margins and short-term persistence mitigate this limitation during navigation.",
+        "abstract_zh": "在人员附近运行的空机器人必须对行人、停放车辆和墙壁区别对待，而传统感知-规划栈将所有这些都简化为占据几何——这是一种人类感知安全缺口，其中规划器无法获得类别特定的间隙，临时遮挡会从地图中移除行人特定的约束。我们提出一个模块化、完全机载的流水线，通过将视觉观测转化为用于实时 UAV 导航的上下文相关安全约束来弥补这一缺口。共享 BLIP 编码器驱动场景描述和文本条件分割，并与深度融合以在 3D 中定位障碍物。障碍物特定风险由轻量级 LLM（Qwen-2.5-0.5B）推断，该 LLM 通过检索增强生成和语法约束解码进行稳定化，后者将其输出限制为规划器兼容的 JSON schema。LLM 对每个对象类别推理一次，而不是每帧推理一次：其判定按类别缓存，因此先前见过的类别无需推理即可解决，而新类别会触发新的基于检索的查询；检测结果还被赋予持久身份，并在遮挡期间保留在地图中。感知流水线在 Jetson Orin NX 上以 10 Hz 运行，而回退 LLM 查询耗时约 0.8 s，并保持在控制关键路径之外。在 Gazebo 中，行人和车辆之间的低空城市导航显示，与几何规划器相比，碰撞事件大约减少 3 倍；在移动参与者之间进行语义感知着陆将成功率从 34% 提高到 96%。224 像素编码器输入限制了远距离可靠的小物体感知；保守的行人裕度和短期持续性在导航期间缓解了这一限制。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Siwei Cai",
+          "Yuwei Wu",
+          "Vijay Kumar",
+          "Lifeng Zhou"
+        ],
+        "url": "https://arxiv.org/abs/2610.22092v1",
+        "pdf_url": "https://arxiv.org/pdf/2610.22092",
+        "html_url": "https://arxiv.org/abs/2610.22092",
+        "published_at": "2026-10-15T15:43:49.000Z",
+        "upvotes": 0,
+        "heat": 1579.5713122222223,
+        "featured": false,
+        "categories": [
+          "aerial",
+          "planning"
+        ],
+        "image": "",
+        "comment": "HEAI -- IROS 2026 Workshop",
+        "conf": "IROS",
+        "confYear": 2026,
+        "confTag": "IROS 2026",
+        "confWeight": 5,
+        "confVision": false,
+        "relevance": 42,
+        "rule_matches": [
+          {
+            "task_id": "aerial",
+            "task": "空中系统自主飞行与机库交互",
+            "keywords": []
+          }
+        ],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "planning",
+              "label_zh": "运动规划",
+              "label_en": "Motion Planning"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "运动规划的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2610.22092v1"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "其“语义风险约束+分区着陆评估”可用于空中机器人自主返航时的降落点安全判断，但机载轻量 LLM 与 Jetson Orin NX 的算力、外部场景类别都不符合 4Wh 电池与室内场地的约束，实用关联偏弱。",
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "value": "low",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
+        }
+      },
+      {
+        "id": "arxiv:2610.22225",
+        "arxiv_id": "2610.22225",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Safe and Fuel-Efficient Motion Planning for Lunar Propulsive Drones",
+        "title_zh": "安全且燃料高效的月球推进式无人机运动规划",
+        "abstract_en": "Propulsive drones are a promising new technology for generating high-resolution terrain models of the Moon. In future lunar missions, propulsive drones will complete a series of hops across the lunar surface while capturing images with downward-facing cameras. We present an autonomous motion planning framework that uses a vision-guided optimal control strategy for performing safe, efficient hops between specified waypoints. The drone plans parabolic hops between waypoints generated by a global-level planner; if a nominal waypoint is unsafe or unreachable, the drone then completes a diversion maneuver to safely land. To evaluate the validity of potential landing sites, we develop a custom semantic segmentation model for identifying obstacles from aerial images, and we introduce an approach for rapidly calculating reachable terrain. We then use model predictive control (MPC) to robustly track hop trajectories that guide the drone towards safe landing sites. We test the optimal hop planner in a high-fidelity lunar simulation environment. Our results demonstrate that our unified motion planning framework yields safe, fuel-efficient hop trajectories which can be tracked rapidly and with low error via MPC.",
+        "abstract_zh": "推进式无人机是一种有望用于生成月球高分辨率地形模型的新技术。在未来的月球任务中，推进式无人机将在月表完成一系列跳跃，同时用朝下的相机拍摄图像。我们提出一种自主运动规划框架，采用视觉引导的最优控制策略，在指定航点之间执行安全、高效的跳跃。无人机在全局规划器生成的航点之间规划抛物线跳跃；若标称航点不安全或不可达，无人机则执行转向机动以安全着陆。为评估潜在着陆点的有效性，我们开发了定制的语义分割模型，用于从航拍图像中识别障碍物，并提出一种快速计算可达地形的方法。随后使用模型预测控制（MPC）稳健跟踪引导无人机前往安全着陆点的跳跃轨迹。我们在高保真月球仿真环境中测试最优跳跃规划器。结果表明，我们的统一运动规划框架能够生成安全、燃料高效的跳跃轨迹，并可通过MPC快速、低误差地跟踪。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Elena Wittemyer",
+          "Grace Gao"
+        ],
+        "url": "https://arxiv.org/abs/2610.22225v2",
+        "pdf_url": "https://arxiv.org/pdf/2610.22225",
+        "html_url": "https://arxiv.org/abs/2610.22225",
+        "published_at": "2026-10-15T17:05:04.000Z",
+        "upvotes": 0,
+        "heat": 1480.9254802777778,
+        "featured": false,
+        "categories": [
+          "aerial",
+          "planning",
+          "control"
+        ],
+        "image": "",
+        "comment": "This work has been submitted to the 2027 IEEE Aerospace Conference",
+        "relevance": 42,
+        "rule_matches": [
+          {
+            "task_id": "aerial",
+            "task": "空中系统自主飞行与机库交互",
+            "keywords": [
+              "无人机"
+            ]
+          }
+        ],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "planning",
+              "label_zh": "运动规划",
+              "label_en": "Motion Planning"
+            },
+            {
+              "key": "control",
+              "label_zh": "机器人控制",
+              "label_en": "Robot Control"
+            }
+          ],
+          "lane": "recent",
+          "score": 34,
+          "quality": "method",
+          "reason_zh": "运动规划、机器人控制的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2610.22225v2"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "月球跳跃式推进无人机的位姿规划与 MPC 跟踪与 RM 空中机器人的旋翼悬停/精确起降动力学差异极大，仅“视觉选降落点+可达域快速计算”的思路可作机库上方着陆区评估的弱参考。",
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "value": "low",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
+        }
+      },
+      {
         "id": "arxiv:2610.21199",
         "arxiv_id": "2610.21199",
         "source": "arXiv",
@@ -2971,6 +3500,85 @@
         }
       },
       {
+        "id": "arxiv:2611.12767",
+        "arxiv_id": "2611.12767",
+        "source": "arXiv",
+        "cats": [
+          "eess.SY",
+          "cs.RO"
+        ],
+        "title_en": "Certified Zonotopic Reachability Analysis for Trajectory Tracking on Lie Groups",
+        "title_zh": "李群上轨迹跟踪的经认证环带多面体可达性分析",
+        "abstract_en": "Autonomous vehicles track planned trajectories close to obstacles. Unknown disturbances make them deviate from these trajectories. With a bound on the tracking error that disturbances can cause, a planned trajectory can be certified as safe before execution. Existing set-based methods bound the tracking error by one invariant ellipsoid for the whole trajectory or by intervals, which are both conservative. For aerial and space vehicles, the tracking error evolves on a matrix Lie group with nonlinear dynamics. However, for group-affine systems, the error dynamics are linear in Lie algebra coordinates when the vehicle receives the inputs of the reference. The control input and the disturbance enter through the inverse right Jacobian, a matrix that depends on the error. We propagate the linear part of the error dynamics with zonotopes and enclose the effect of the inverse right Jacobian on the disturbance in closed form. The resulting tubes are tight and provably contain all reachable tracking errors in continuous time. When some error components have no input, the inverse right Jacobian leaves unmatched nonlinear terms in the closed loop. None of the tested methods certifies such a closed loop. Hybrid coordinates make these terms matched, so that our controller cancels every nonlinear term that does not contain the disturbance. Our tubes give tighter bounds than the ellipsoid method in simulations of a planar aircraft and a fully actuated multirotor and in real flights of a quadrotor, where the tube contains every measured attitude error. Under larger disturbances and the same feedback gain, the ellipsoid method yields no valid ellipsoid, whereas our tubes remain valid.",
+        "abstract_zh": "自主载具在靠近障碍物处跟踪规划轨迹。未知扰动使它们偏离这些轨迹。若能给出扰动可能造成的跟踪误差上界，规划轨迹可在执行前被认证为安全。现有基于集合的方法用整条轨迹的单一不变椭球或区间来界定跟踪误差，二者均较保守。对于空中和空间载具，跟踪误差在具有非线性动力学的矩阵李群上演化。然而，对于群仿射系统，当载具接收参考输入时，误差动力学在李代数坐标下是线性的。控制输入和扰动通过逆右雅可比矩阵进入，该矩阵依赖于误差。我们用环带多面体传播误差动力学的线性部分，并以闭式形式包络逆右雅可比矩阵对扰动的影响。所得管道紧致，并可证明在连续时间中包含所有可达跟踪误差。当某些误差分量没有输入时，逆右雅可比矩阵会在闭环中留下不匹配的非线性项。所测试的方法均无法认证此类闭环。混合坐标使这些项匹配，从而我们的控制器可抵消所有不含扰动的非线性项。在平面飞行器和全驱动多旋翼的仿真以及四旋翼真实飞行中，我们的管道比椭球方法给出更紧的边界，且管道包含每个测得姿态误差。在更大扰动和相同反馈增益下，椭球方法无法给出有效椭球，而我们的管道仍然有效。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Yanliang Huang",
+          "Peng Xie",
+          "Zhen Zhang",
+          "Zhuoqi Zeng",
+          "Amr Alanwar"
+        ],
+        "url": "https://arxiv.org/abs/2611.12767v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.12767",
+        "html_url": "https://arxiv.org/abs/2611.12767",
+        "published_at": "2026-11-09T17:40:43.000Z",
+        "upvotes": 0,
+        "heat": 2081.519406388889,
+        "featured": false,
+        "categories": [
+          "aerial",
+          "planning",
+          "control"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 40,
+        "rule_matches": [
+          {
+            "task_id": "aerial",
+            "task": "空中系统自主飞行与机库交互",
+            "keywords": [
+              "quadrotor",
+              "multirotor",
+              "四旋翼"
+            ]
+          }
+        ],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "planning",
+              "label_zh": "运动规划",
+              "label_en": "Motion Planning"
+            },
+            {
+              "key": "control",
+              "label_zh": "机器人控制",
+              "label_en": "Robot Control"
+            }
+          ],
+          "lane": "recent",
+          "score": 34,
+          "quality": "method",
+          "reason_zh": "运动规划、机器人控制的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2611.12767v1"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "带保证的误差管道可用于验证空中机器人在机库、场地结构附近的轨迹跟踪安全裕度（把跟踪误差上下界纳入轨迹安全检查）；但理论偏重、需要可靠的状态估计与扰动界建模，属于离线验证工具而非机载实时模块。",
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "value": "low",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
+        }
+      },
+      {
         "id": "arxiv:2611.12099",
         "arxiv_id": "2611.12099",
         "source": "arXiv",
@@ -3109,6 +3717,75 @@
         }
       },
       {
+        "id": "arxiv:2611.12317",
+        "arxiv_id": "2611.12317",
+        "source": "arXiv",
+        "cats": [
+          "cs.NE",
+          "cs.RO"
+        ],
+        "title_en": "Maximizing Detection Probability in UAV Search Missions using Random-Key Optimizers",
+        "title_zh": "使用随机键优化器最大化无人机搜索任务中的检测概率",
+        "abstract_en": "This paper focuses on the stochastic and real-time constraints of Unmanned Aerial Vehicle (UAV) path planning in Search and Rescue (SAR) missions. We introduce a configurable data-driven and intelligent routing architecture that combines a closed-loop probability update with the Random-Key Optimizers (RKO). Our problem is mathematically modeled as a dynamic probabilistic variant of the Open Vehicle Routing Problem (OVRP), enabling the solver to switch adaptively between two objectives, thereby balancing probability maximization and resource minimization. The framework degrades elegantly under noisy priors but not under biased ones: a systematically biased map performs about half as well as flying with no prior at all. Computational tests show that the proposed scheme is scalable and competitive with single-path scenarios in terms of solution performance and serves as a strong decision guide for intelligent planning in SAR operations in unstable environments",
+        "abstract_zh": "本文关注搜救（SAR）任务中无人机（UAV）路径规划的随机性与实时约束。我们提出一种可配置的数据驱动智能路径规划架构，将闭环概率更新与随机键优化器（RKO）相结合。我们的问题被数学建模为开放式车辆路径问题（OVRP）的动态概率变体，使求解器能够在两个目标之间自适应切换，从而平衡概率最大化与资源最小化。该框架在含噪先验下可优雅退化，但在有偏先验下则不然：系统性有偏地图的性能约为完全无先验飞行的二分之一。计算测试表明，所提方案具有可扩展性，在求解性能上可与单路径场景竞争，并为不稳定环境中SAR操作的智能规划提供有力决策指导。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Antonio Dantas",
+          "Elcio Shiguemori",
+          "Antonio Chaves"
+        ],
+        "url": "https://arxiv.org/abs/2611.12317v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.12317",
+        "html_url": "https://arxiv.org/abs/2611.12317",
+        "published_at": "2026-11-09T12:40:38.000Z",
+        "upvotes": 0,
+        "heat": 2076.518274722222,
+        "featured": false,
+        "categories": [
+          "aerial",
+          "planning"
+        ],
+        "image": "",
+        "comment": "21 pages, 3 figures",
+        "relevance": 40,
+        "rule_matches": [
+          {
+            "task_id": "aerial",
+            "task": "空中系统自主飞行与机库交互",
+            "keywords": [
+              "无人机"
+            ]
+          }
+        ],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "planning",
+              "label_zh": "运动规划",
+              "label_en": "Motion Planning"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "运动规划的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2611.12317v1"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "面向搜救的搜索概率路径规划，与RM空中系统的悬停、避障、自动起降和机库交互任务差异较大；只有随机键优化器可作为航点/轨迹优化的通用求解思路参考，难以直接迁移到赛场。",
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "value": "low",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
+        }
+      },
+      {
         "id": "arxiv:2611.11718",
         "arxiv_id": "2611.11718",
         "source": "arXiv",
@@ -3232,6 +3909,73 @@
           "task_id": "",
           "task": "",
           "value": "low",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
+        }
+      },
+      {
+        "id": "arxiv:2610.32645",
+        "arxiv_id": "2610.32645",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Monte Carlo-Based Indoor UAV Localization in Dynamic Environments Using Only Four Onboard Range Sensors",
+        "title_zh": "动态环境中仅使用四个机载测距传感器的基于蒙特卡洛的室内无人机定位",
+        "abstract_en": "Indoor UAV localization with minimal onboard sensing remains challenging, particularly in dynamic environments. We propose augmented filtered Monte Carlo localization (AF-MCL) for 2D localization using only four single-point range sensors and measured heading. AF-MCL rejects range measurements inconsistent with the known static map and adaptively injects particles to recover from localization divergence and kidnapping. Beam classification is performed only at the previous position estimate, making its ray-casting cost independent of the particle count. The particle distribution additionally provides an online measure of localization uncertainty. Real-world experiments in a 2.10x1.63 m environment yield mean position errors of 6.4-7.7 cm under static and dynamic conditions. Simulations in 6x6 m and 10x10 m environments yield 4.5-5.2 cm mean errors; under dynamic obstacles, standard MCL reaches 12.3 cm and reliable MCL 7.7 cm. The results show that robust indoor localization under dynamic obstacles is achievable with only four single-point range measurements and heading.",
+        "abstract_zh": "使用最少机载传感的室内无人机定位仍具挑战性，尤其是在动态环境中。我们提出增强滤波蒙特卡洛定位（AF-MCL），仅使用四个单点测距传感器和测量的航向进行二维定位。AF-MCL拒绝与已知静态地图不一致的测距测量，并自适应注入粒子，以从定位发散和定位绑架中恢复。波束分类仅在先前的位姿估计处进行，使其射线投射成本与粒子数无关。粒子分布还提供定位不确定性的在线度量。在2.10×1.63 m环境中的真实实验在静态和动态条件下得到6.4–7.7 cm的平均位置误差。在6×6 m和10×10 m环境中的仿真得到4.5–5.2 cm平均误差；在动态障碍物下，标准MCL达到12.3 cm，可靠MCL为7.7 cm。结果表明，仅使用四个单点测距测量和航向即可在动态障碍物下实现稳健室内定位。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Mohammad Reza Ranjbar Divkoti",
+          "A. Pedro Aguiar"
+        ],
+        "url": "https://arxiv.org/abs/2610.32645v1",
+        "pdf_url": "https://arxiv.org/pdf/2610.32645",
+        "html_url": "https://arxiv.org/abs/2610.32645",
+        "published_at": "2026-10-23T13:54:30.000Z",
+        "upvotes": 0,
+        "heat": 1669.7493736111112,
+        "featured": false,
+        "categories": [
+          "aerial",
+          "planning"
+        ],
+        "image": "",
+        "comment": "8 pages, 8 figures",
+        "relevance": 40,
+        "rule_matches": [
+          {
+            "task_id": "aerial",
+            "task": "空中系统自主飞行与机库交互",
+            "keywords": [
+              "无人机"
+            ]
+          }
+        ],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "planning",
+              "label_zh": "运动规划",
+              "label_en": "Motion Planning"
+            }
+          ],
+          "lane": "recent",
+          "score": 36,
+          "quality": "implementation",
+          "reason_zh": "运动规划的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场",
+          "evidence_url": "https://arxiv.org/abs/2610.32645v1"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "仅用四个单点测距加航向的二维蒙特卡洛定位，可用于机库附近和低空的轻量室内定位与悬停位置保持；其动态障碍测距剔除与粒子重注入恢复机制，能提高起降、机库对接阶段的定位鲁棒性。需按RM场地尺度核实测距量程、地图先验与机载算力。",
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "value": "mid",
           "rules_fingerprint": "0c84c6c447662688",
           "season": "2027"
         }
@@ -3366,6 +4110,161 @@
           "usage": "基于空中超声成像声呐的6-DoF SLAM，RoboMaster没有声呐传感器与粗糙地形需求，关联很弱。",
           "task_id": "",
           "task": "",
+          "value": "low",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
+        }
+      },
+      {
+        "id": "arxiv:2610.15308",
+        "arxiv_id": "2610.15308",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "eess.SY"
+        ],
+        "title_en": "An Open MuJoCo Simulation Framework for a Quadrotor Carrying a Tendon-Driven Soft Continuum Arm",
+        "title_zh": "用于携带腱驱动软连续体机械臂的四旋翼的开放MuJoCo仿真框架",
+        "abstract_en": "Combining aerial robots with soft continuum manipulators promises safe, compliant interaction with the environment, but the coupled dynamics of a free-flying base and a highly deformable, underactuated arm are difficult to study without a suitable simulator. This paper describes an open-source simulation framework, built on the MuJoCo physics engine, for a quadrotor that carries a tendon-driven soft continuum arm underneath its body. The arm is modelled as a pseudo-rigid-body chain of twelve segments joined by pairs of orthogonal compliant hinges. Three tendons, spaced \\SI{120}{\\degree} apart and routed through every segment, bend it in any direction. A geometric tracking controller on $SE(3)$ flies the vehicle; its rotor allocation matrix is generated directly from the model description. A closed-form tendon-tension allocation keeps every tension within its limits and gives the same bending moment in every direction. We report the full set of modelling choices and parameters, and we evaluate the framework in four simulated scenarios: a \\SI{36}{\\second} mission with a figure-eight and a tendon-driven tip sweep, an attitude-gain study, a quasi-static characterization of the bending workspace, and an impulsive disturbance applied to the arm tip. With the nominal gains the vehicle tracks the mission with \\SI{3.1}{\\centi\\meter} RMS position error while the arm tip swings up to \\SI{37}{\\centi\\meter} from the body axis. The gain study shows that a low-bandwidth attitude loop lets the arm excite sustained oscillations. The simulation runs about $15\\times$ faster than real time on a laptop CPU. All models, controllers and scripts that reproduce the figures are released.",
+        "abstract_zh": "将空中机器人与软连续体机械臂相结合，有望实现安全、柔顺的环境交互，但自由飞行基座与高度可变形、欠驱动机械臂的耦合动力学若无合适仿真器则难以研究。本文描述一个基于MuJoCo物理引擎的开源仿真框架，用于在机体下方携带腱驱动软连续体机械臂的四旋翼。该机械臂被建模为伪刚体链，由十二段组成，各段通过成对的正交柔顺铰链连接。三根腱间隔120°，穿过每一段，可使机械臂向任意方向弯曲。采用SE(3)上的几何跟踪控制器飞行；其旋翼分配矩阵直接由模型描述生成。闭式腱张力分配使每根腱张力保持在其限制内，并在每个方向给出相同弯矩。我们报告完整的建模选择与参数，并在四个仿真场景中评估该框架：一个包含八字机动和腱驱动末端扫掠的36秒任务、姿态增益研究、弯曲工作空间的准静态表征，以及施加于机械臂末端的脉冲扰动。在标称增益下，载具以3.1厘米RMS位置误差跟踪任务，而机械臂末端相对机体轴摆动可达37厘米。增益研究表明，低带宽姿态环会使机械臂激发持续振荡。该仿真在笔记本电脑CPU上运行速度约为实时的15倍。所有可复现论文图表的模型、控制器和脚本均已发布。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Haitham El-Hussieny"
+        ],
+        "url": "https://arxiv.org/abs/2610.15308v1",
+        "pdf_url": "https://arxiv.org/pdf/2610.15308",
+        "html_url": "https://arxiv.org/abs/2610.15308",
+        "published_at": "2026-10-11T03:32:57.000Z",
+        "upvotes": 0,
+        "heat": 1371.390194722222,
+        "featured": false,
+        "categories": [
+          "aerial",
+          "sim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 40,
+        "rule_matches": [
+          {
+            "task_id": "aerial",
+            "task": "空中系统自主飞行与机库交互",
+            "keywords": [
+              "quadrotor",
+              "空中机器人",
+              "四旋翼"
+            ]
+          },
+          {
+            "task_id": "sim",
+            "task": "算法仿真与验证",
+            "keywords": [
+              "仿真"
+            ]
+          }
+        ],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "sim",
+              "label_zh": "机器人仿真与工具",
+              "label_en": "Robot Simulation & Tools"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "机器人仿真与工具的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2610.15308v1"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "四旋翼搭载腱驱动软体连续臂的MuJoCo仿真框架，与RM空中系统（不允许发射机构、无软体臂任务）基本无关；只有其中四旋翼建模与SE(3)跟踪控制器的仿真搭建方式可作通用参考。",
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "value": "low",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
+        }
+      },
+      {
+        "id": "arxiv:2610.14715",
+        "arxiv_id": "2610.14715",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "C2Flight: A Closed-Loop Co-Simulation Framework for Early-Stage Evaluation of Heterogeneous UAV Computing Systems",
+        "title_zh": "C2Flight：用于异构无人机计算系统早期评估的闭环协同仿真框架",
+        "abstract_en": "Early-stage design of heterogeneous UAV computing systems requires evaluating how algorithm, hardware, communication, and system topology affect closed-loop flight before the complete system is available. However, design choices interact through the robotic feedback loop, making task performance difficult to predict from isolated component metrics, while existing execution-driven approaches postpone system-level design feedback until the computing system is integrated. This work presents C2Flight, a closed-loop co-simulation framework that represents target systems as parameterized dataflow graphs and integrates models of hardware under design with independently accessible physical hardware through a unified node interface. Its graph runtime captures the combined effects of buffering, activation, resource sharing, communication, and local timing on closed-loop flight behavior. Validation against onboard and wireless offboard physical computing pipelines confirms its timing fidelity and closed-loop prediction accuracy. Two case studies demonstrate early-stage exploration of deployment and accelerator bit-width choices. These results show that C2Flight exposes system-level design trade-offs before full-system integration, enabling rapid early-stage design refinement.",
+        "abstract_zh": "异构无人机计算系统的早期设计需要在完整系统可用之前，评估算法、硬件、通信和系统拓扑如何影响闭环飞行。然而，设计选择通过机器人反馈环相互作用，使得任务性能难以从孤立的组件指标预测，而现有执行驱动方法将系统级设计反馈推迟到计算系统集成之后。本文提出C2Flight，一种闭环协同仿真框架，将目标系统表示为参数化数据流图，并通过统一节点接口将设计中硬件的模型与可独立访问的物理硬件集成。其图运行时捕捉缓冲、激活、资源共享、通信和局部时序对闭环飞行行为的综合影响。针对机载和无线离板物理计算流水线的验证确认了其时序保真度和闭环预测精度。两个案例研究展示了对部署和加速器位宽选择的早期探索。这些结果表明，C2Flight可在全系统集成之前揭示系统级设计权衡，从而实现快速的早期设计改进。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Xizhu Chen",
+          "Shuyuan Zhang",
+          "Yixuan Li",
+          "Huazhong Yang",
+          "Yu Wang",
+          "Jincheng Yu",
+          "Hongyang Jia"
+        ],
+        "url": "https://arxiv.org/abs/2610.14715v1",
+        "pdf_url": "https://arxiv.org/pdf/2610.14715",
+        "html_url": "https://arxiv.org/abs/2610.14715",
+        "published_at": "2026-10-10T08:31:54.000Z",
+        "upvotes": 0,
+        "heat": 1352.3726936111111,
+        "featured": false,
+        "categories": [
+          "aerial",
+          "sim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 40,
+        "rule_matches": [
+          {
+            "task_id": "aerial",
+            "task": "空中系统自主飞行与机库交互",
+            "keywords": [
+              "无人机"
+            ]
+          },
+          {
+            "task_id": "sim",
+            "task": "算法仿真与验证",
+            "keywords": [
+              "仿真"
+            ]
+          }
+        ],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "sim",
+              "label_zh": "机器人仿真与工具",
+              "label_en": "Robot Simulation & Tools"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "机器人仿真与工具的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2610.14715v1"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "异构建模下机载计算流水线的闭环联合仿真，可用来评估空中机器人视觉感知链路的缓冲、时延与调度对飞行闭环的影响；但需按RM自制平台重建数据流图与硬件模型，属于支撑性工具。",
+          "task_id": "sim",
+          "task": "算法仿真与验证",
           "value": "low",
           "rules_fingerprint": "0c84c6c447662688",
           "season": "2027"
@@ -3590,6 +4489,74 @@
             "source_url": "https://api.crossref.org/works/10.1109%2FGLOCOMW.2012.6477759",
             "checked_at": "2026-11-12T14:03:33.807Z"
           }
+        }
+      },
+      {
+        "id": "arxiv:2611.12226",
+        "arxiv_id": "2611.12226",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "eess.SY"
+        ],
+        "title_en": "A Game-Theoretic MPC Planner for Cooperative and Adversarial Drone Coordination",
+        "title_zh": "用于无人机协同与对抗协调的博弈论MPC规划器",
+        "abstract_en": "We present and evaluate a game-theoretic model predictive control planner for cooperative goal reaching and adversarial pursuit-evasion with drones. The planner combines 3D prediction, individual objectives, optional shared separation constraints and trajectory-tracking interfaces. A comparison of cooperative game solvers assesses their ability to find feasible trajectories that resolve conflicts. A computational study quantifies how number of drones, prediction horizon and move blocking affect computation time and numerical acceptance. Move blocking holds control inputs constant over groups of prediction steps, reducing the number of independent control variables and lowering computation time. Timing measurements identify the practical limits of real-time planning in the tested configurations. PyBullet simulations demonstrate cooperative goal reaching and pursuit-evasion. A laboratory flight complements the simulations by validating the trajectory-tracking interfaces on physical drones. The planner can serve as a basis for further evaluation and controller development.",
+        "abstract_zh": "我们提出并评估一种博弈论模型预测控制规划器，用于无人机协同到达目标和对抗性追逃。该规划器结合了三维预测、个体目标、可选的共享分离约束和轨迹跟踪接口。对协同博弈求解器进行比较，评估其找到可解决冲突的可行轨迹的能力。一项计算研究量化了无人机数量、预测时域和移动阻塞（move blocking）如何影响计算时间和数值接受度。移动阻塞在若干组预测步长上保持控制输入恒定，减少独立控制变量并降低计算时间。时序测量识别了所测试配置下实时规划的实际限制。PyBullet仿真展示了协同到达目标和追逃。一次实验室飞行通过在实体无人机上验证轨迹跟踪接口，对仿真进行补充。该规划器可作为进一步评估和控制器开发的基础。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Zdeněk Bouček",
+          "Miroslav Flídr"
+        ],
+        "url": "https://arxiv.org/abs/2611.12226v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.12226",
+        "html_url": "https://arxiv.org/abs/2611.12226",
+        "published_at": "2026-11-09T11:19:57.000Z",
+        "upvotes": 0,
+        "heat": 2075.1735516666668,
+        "featured": false,
+        "categories": [
+          "aerial",
+          "control"
+        ],
+        "image": "",
+        "comment": "7 pages, 4 figures, submitted to European Control Conference (ECC27)",
+        "relevance": 39,
+        "rule_matches": [
+          {
+            "task_id": "aerial",
+            "task": "空中系统自主飞行与机库交互",
+            "keywords": [
+              "无人机"
+            ]
+          }
+        ],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "control",
+              "label_zh": "机器人控制",
+              "label_en": "Robot Control"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "机器人控制的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2611.12226v1"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "博弈论MPC的多无人机协同与追逃规划，可用于多架空中机器人同时飞行时的互相避让、冲突消解与协同到达（答疑已明确机间通信本身允许）；其move blocking降算力思路利于机载实时，但对抗追逃部分不符合RM空中系统不打击的定位。",
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "value": "mid",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
         }
       },
       {
@@ -3919,6 +4886,76 @@
         }
       },
       {
+        "id": "arxiv:2610.28432",
+        "arxiv_id": "2610.28432",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Physical AI for Intralogistics: Benchmarking the NVIDIA Sim-to-Real Ecosystem for Cosmos-Enhanced COMPASS Navigation on Industrial Mobile Robots",
+        "title_zh": "面向内部物流的物理AI：在工业移动机器人上对用于Cosmos增强COMPASS导航的NVIDIA仿真到现实生态系统进行基准测试",
+        "abstract_en": "Classical robot navigation stacks are reliable but often require re-engineering for each new robot type and site. Learning-based navigation shifts this effort from hand-tuned parameters to data generation and training, where a policy adapts to each new embodiment or facility by fine-tuning in simulation. Whether policies adapted this way stay reliable on real industrial robots has seen little systematic testing. We study this for NVIDIA's X-Mobility and COMPASS workflow for training learned navigation policies on Idealworks robots. In simulation, we extend the COMPASS benchmark with two embodiments, the differential-drive iw$\\mkern-1.5mu.\\mkern-1.5mu$hub and an omnidirectional Humanoid Mobile Platform (HMP), and with a digital twin of the Idealworks R&D center. For the real world, we fine-tune X-Mobility on data from this digital twin, with and without sim-to-real variants generated by NVIDIA Cosmos, train COMPASS on top of it from scratch in the digital twin, deploy the resulting policies on the iw$\\mkern-1.5mu.\\mkern-1.5mu$hub's onboard Jetson AGX Xavier, and benchmark them in the Idealworks R&D center against COMPASS trained only on NVIDIA's environments and the existing Idealworks navigation stack on task success, efficiency, safety, smoothness and onboard compute. Running every static scenario both in a digital-twin replica and in the real facility measures the sim-to-real gap and how far Cosmos-augmented data closes it. Training in the digital twin with Cosmos sim-to-real augmentation raises the real-world success rate of learned navigation from 65.3% to 91.7% across four scenarios and nearly halves its weighted travel time compared with simulation-only training, bringing it within 8.3 points of the production navigation stack, fully onboard; with an integrated global planner, it also reaches far, occluded goals in every trial.",
+        "abstract_zh": "经典机器人导航栈可靠，但通常需要为每种新机器人类型和现场重新工程化。基于学习的导航将这项工作从手工调参转向数据生成和训练，其中策略通过在仿真中微调来适应每种新本体或设施。以这种方式适应的策略能否在真实工业机器人上保持可靠，尚缺乏系统测试。我们针对NVIDIA的X-Mobility和COMPASS工作流研究这一点，该工作流用于在Idealworks机器人上训练学习型导航策略。在仿真中，我们用两种本体——差速驱动的iw.hub和全向Humanoid Mobile Platform（HMP）——以及Idealworks研发中心的数字孪生来扩展COMPASS基准。在真实世界方面，我们在此数字孪生的数据上微调X-Mobility，分别使用和不使用NVIDIA Cosmos生成的仿真到现实变体；在数字孪生中从零开始在其上训练COMPASS；将所得策略部署到iw.hub的板载Jetson AGX Xavier上；并在Idealworks研发中心，将其与仅在NVIDIA环境中训练的COMPASS以及现有Idealworks导航栈进行基准比较，指标包括任务成功率、效率、安全性、平滑性和板载计算。在数字孪生副本和真实设施中分别运行每个静态场景，测量仿真到现实的差距以及Cosmos增强数据在多大程度上缩小该差距。在数字孪生中使用Cosmos仿真到现实增强进行训练，使学习型导航在四个场景中的真实世界成功率从65.3%提高到91.7%，与仅仿真训练相比，其加权行驶时间几乎减半，并在完全板载的情况下使其与生产导航栈的差距缩小到8.3个百分点；配合集成的全局规划器，它还能在每次试验中到达远处被遮挡的目标。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Charbel Abi Hana",
+          "Rayan Zaitouni",
+          "Kameel Amareen",
+          "Mohamad Mostafa",
+          "Hasan Sayour",
+          "Wei Liu",
+          "Yan Chang",
+          "Mihir Acharya"
+        ],
+        "url": "https://arxiv.org/abs/2610.28432v3",
+        "pdf_url": "https://arxiv.org/pdf/2610.28432",
+        "html_url": "https://arxiv.org/abs/2610.28432",
+        "published_at": "2026-10-20T15:59:27.000Z",
+        "upvotes": 0,
+        "heat": 1599.831687777778,
+        "featured": false,
+        "categories": [
+          "nav"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 39,
+        "rule_matches": [
+          {
+            "task_id": "sentry",
+            "task": "哨兵机器人自主导航与决策",
+            "keywords": []
+          }
+        ],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "nav",
+              "label_zh": "地面自主导航",
+              "label_en": "Ground Navigation"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "地面自主导航的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2610.28432v3"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "基于数字孪生与Cosmos sim-to-real增强的学得导航策略，可借鉴到哨兵导航：在RM场地数字孪生中训练避障/路径策略再迁移实机；但依赖Isaac/COMPASS整套工具链与Jetson级算力，需裁剪后验证。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "mid",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
+        }
+      },
+      {
         "id": "arxiv:2610.22306",
         "arxiv_id": "2610.22306",
         "source": "arXiv",
@@ -3970,6 +5007,71 @@
           "usage": "IMM卡尔曼滤波加不确定度自适应关联门限的思路，可参考用于雷达多目标跟踪中机动目标的关联与短暂丢失后的身份保持，或自瞄中装甲目标的运动模型切换；需替换为RM目标运动特性并重调参数。",
           "task_id": "",
           "task": "",
+          "value": "mid",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
+        }
+      },
+      {
+        "id": "arxiv:2611.13769",
+        "arxiv_id": "2611.13769",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.CV"
+        ],
+        "title_en": "From Depth to Safe Depth: Uncertainty-Aware Monocular Perception for Mobile Robot Navigation",
+        "title_zh": "从深度到安全深度：面向移动机器人导航的不确定性感知单目感知",
+        "abstract_en": "Monocular depth foundation models make it tempting to replace depth sensors on mobile robots with a single RGB camera. We show that, used off the shelf, this is unsafe: in a simulated indoor navigation benchmark, a standard Nav2 stack driven by Depth Anything V2 (metric) collides in 63\\% of 120 episodes, because the model systematically over-estimates the distance to nearby obstacles. We propose a lightweight plug-in module that turns predicted depth into \\emph{safe depth}. A 0.58\\,M-parameter head on top of the \\emph{frozen} depth model predicts, per pixel, a log-depth correction $μ$ and an uncertainty $σ$, trained with a $β$-weighted Gaussian negative log-likelihood. The navigation stack consumes the one-sided bound $\\hat d_{\\text{safe}}=d\\,e^{μ-kσ}$, where $k$ is set by conformal calibration on a held-out world, and uncertainty also decides which pixels may be treated as floor. The correction halves the depth error (AbsRel $0.262\\rightarrow0.134$) and reduces near-range over-estimation from 59.8\\% to 12.0\\%. In navigation, safe depth raises the success rate from 37\\% to 70\\% and lowers collisions from 63\\% to 3\\%, close to the 2\\% of ground-truth depth. A constant safety margin calibrated to the same pixel coverage reaches only 30\\% success because it freezes the robot; uncertainty-aware safety wins 52 of 56 discordant paired episodes against it. Gains hold on glass, texture-less walls and dark regions.",
+        "abstract_zh": "单目深度基础模型使人们倾向于用单个RGB相机替代移动机器人上的深度传感器。我们表明，直接开箱使用这种方式是不安全的：在仿真室内导航基准中，由Depth Anything V2（metric）驱动的标准Nav2栈在120个回合中有63%发生碰撞，因为该模型系统性地高估到附近障碍物的距离。我们提出一种轻量级即插即用模块，将预测深度转换为“安全深度”。在冻结深度模型之上，一个0.58 M参数的头部件对每个像素预测对数深度校正$μ$和不确定性$σ$，并使用$β$加权高斯负对数似然训练。导航栈使用单侧边界$\\hat d_{\\text{safe}}=d\\,e^{μ-kσ}$，其中$k$通过在留出世界上的共形校准设定，不确定性还决定哪些像素可被视为地面。该校正将深度误差减半（AbsRel $0.262\\rightarrow0.134$），并将近距高估从59.8%降低到12.0%。在导航中，安全深度将成功率从37%提高到70%，并将碰撞率从63%降低到3%，接近真实深度2%的碰撞率。校准到相同像素覆盖率的恒定安全裕度仅达到30%的成功率，因为它使机器人冻结；不确定性感知安全在56个不一致的配对回合中对其赢得52个。增益在玻璃、无纹理墙壁和暗区域上仍然成立。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Saeid Firouzi Daghigh",
+          "Saeed Ayat"
+        ],
+        "url": "https://arxiv.org/abs/2611.13769v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.13769",
+        "html_url": "https://arxiv.org/abs/2611.13769",
+        "published_at": "2026-11-10T09:07:44.000Z",
+        "upvotes": 0,
+        "heat": 2096.969954166667,
+        "featured": false,
+        "categories": [
+          "nav"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 38,
+        "rule_matches": [
+          {
+            "task_id": "sentry",
+            "task": "哨兵机器人自主导航与决策",
+            "keywords": []
+          }
+        ],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "nav",
+              "label_zh": "地面自主导航",
+              "label_en": "Ground Navigation"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "地面自主导航的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2611.13769v1"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "单目深度估计的不确定性修正模块，可提升哨兵（及轻量机载感知）基于单目相机的避障安全性——把预测深度转为保守安全深度，减少近距障碍低估导致的碰撞；需在RM场地光照、玻璃/暗区与算力条件下复核。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
           "value": "mid",
           "rules_fingerprint": "0c84c6c447662688",
           "season": "2027"
@@ -4293,6 +5395,130 @@
         }
       },
       {
+        "id": "arxiv:2611.13528",
+        "arxiv_id": "2611.13528",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.CV"
+        ],
+        "title_en": "GEMOR-GS: Global Extrinsic-calibration-refined Mapping and Online Relocalization for 3D Gaussian-Splatting SLAM",
+        "title_zh": "GEMOR-GS：面向3D高斯泼溅SLAM的全局外参标定精化建图与在线重定位",
+        "abstract_en": "Photorealistic and metrically consistent world representations are a primary requirement for LiDAR--inertial--visual SLAM systems that serve robots over continuous operation. 3D Gaussian splatting makes such representations attainable by supplying an explicit, renderable, and queryable scene model. We present GEMOR-GS (Global Extrinsic-calibration-refined Mapping and Online Relocalization for 3D Gaussian-Splatting SLAM) to make the Gaussian map geometrically accurate, globally refined, and re-enterable, providing a better appearance for robot perception and decision-making. To improve the 3DGS map, the LiDAR--camera extrinsic is first estimated offline by direct-method alignment over dedicated calibration segments and reused by all following online and offline processes. Under the calibrated geometry, keyframe poses and Gaussian parameters are refined alternately under a gated differentiable-rendering and LiDAR--projection objective. The final global reconstruction is then rebuilt from the refined keyframe schema with all online constraints lifted. For the robot SLAM lifecycle, the method recovers the pose from the 3DGS map after tracking loss through an XFeat bypass map, RANSAC-PnP coarse localization, and Gaussian RGB-D warp refinement. Experiments on one self-collected and five public sequences quantify each element: the offline reconstruction wins all paired keyframes against the online map by 14.3--19.9 dB, improves PSNR by approximately 9 dB over Gaussian-LIC2, and achieves 86--100% held-out relocalization success tied to extrinsic quality. The results show that GEMOR-GS improves the geometric accuracy, appearance fidelity, and re-enterability of the 3DGS map, serving as a dependable robot world model for SLAM and downstream tasks.",
+        "abstract_zh": "逼真且度量一致的世界表示是在连续运行中为机器人服务的LiDAR--惯性--视觉SLAM系统的主要需求。3D高斯泼溅通过提供显式、可渲染且可查询的场景模型，使此类表示成为可能。我们提出GEMOR-GS（面向3D高斯泼溅SLAM的全局外参标定精化建图与在线重定位），使高斯地图在几何上准确、全局精化且可重新进入，为机器人感知和决策提供更好的外观。为改进3DGS地图，首先在专用标定段上通过直接法对齐离线估计LiDAR--相机外参，并将其复用于所有后续在线和离线过程。在标定几何下，关键帧位姿和高斯参数在门控可微渲染与LiDAR--投影目标下交替精化。随后，在解除所有在线约束的情况下，从精化后的关键帧模式重建最终全局重建。针对机器人SLAM生命周期，该方法在跟踪丢失后通过XFeat旁路地图、RANSAC-PnP粗定位和高斯RGB-D warp精化，从3DGS地图中恢复位姿。在一个自采集序列和五个公开序列上的实验量化了每个要素：离线重建在所有配对关键帧上以14.3--19.9 dB优于在线地图，相比Gaussian-LIC2将PSNR提高约9 dB，并取得与外参质量相关的86--100%留出集重定位成功率。结果表明，GEMOR-GS提高了3DGS地图的几何精度、外观保真度和可重新进入性，可作为SLAM及下游任务的可靠机器人世界模型。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Yuchen Yang",
+          "Ming Ding",
+          "Xinyu Wu",
+          "Hesheng Wang"
+        ],
+        "url": "https://arxiv.org/abs/2611.13528v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.13528",
+        "html_url": "https://arxiv.org/abs/2611.13528",
+        "published_at": "2026-11-10T03:51:43.000Z",
+        "upvotes": 0,
+        "heat": 2091.7030080555555,
+        "featured": false,
+        "categories": [
+          "slam"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 37,
+        "rule_matches": [],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "slam",
+              "label_zh": "定位与建图",
+              "label_en": "Localization & Mapping"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "定位与建图的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；里程计、配准或建图不等于完整导航；须验证退化场景、重定位、传感器与标定条件；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2611.13528v1"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "LiDAR-惯性-视觉3DGS SLAM与在线重定位，与RM赛题关联较弱；仅跟踪丢失后的重定位思路对雷达/哨兵建图有间接参考，但依赖LiDAR与较大算力，赛场难直接部署。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
+        }
+      },
+      {
+        "id": "arxiv:2611.11934",
+        "arxiv_id": "2611.11934",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV",
+          "cs.RO"
+        ],
+        "title_en": "Scale-Consistent Monocular Fisheye Visual Odometry via Spherical Bundle Adjustment-Guided Unsupervised Depth Learning",
+        "title_zh": "通过球面光束法平差引导的无监督深度学习实现尺度一致的单目鱼眼视觉里程计",
+        "abstract_en": "The wide field of view of fisheye cameras and the simplicity of a monocular setup make monocular fisheye visual odometry (VO) attractive for robotic localization and mapping. Nevertheless, scale drift remains a major challenge over long trajectories. Unsupervised depth learning can help to mitigate this issue, but the pronounced distortion of fisheye images poses challenges for accurate depth estimation. This article presents S$^2$D-FVO, a monocular fisheye VO framework integrating spherical bundle adjustment (SBA)-guided unsupervised depth learning to improve scale consistency and depth estimation accuracy. Given that pixel reprojection residuals do not uniformly reflect angular deviations between viewing rays and that the first-order linearization of a scalar angular reprojection residual is insensitive to perturbations along one tangent direction, SBA employs tangent-space angular reprojection residuals derived from the spherical logarithmic map. These residuals retain sensitivity along both tangent directions, with their norms equal to the corresponding scalar angular residuals. A median depth-based scale regularization term is further integrated into SBA to constrain the reconstruction scale. Building on these formulations, SBA replaces the pose estimation network during unsupervised depth learning, providing more reliable relative poses for view synthesis. In turn, depth estimates from the well-trained depth estimation network provide scale references for SBA, improving scale consistency while allowing individual 3-D landmark positions to be refined. Extensive experiments conducted on multiple public datasets, as well as two newly collected large-scale datasets, demonstrate that the proposed framework outperforms representative existing approaches in both depth and trajectory estimation accuracy and is applicable to different camera models.",
+        "abstract_zh": "鱼眼相机的宽视场和单目设置的简单性，使单目鱼眼视觉里程计（VO）对机器人定位与建图具有吸引力。然而，尺度漂移在长轨迹上仍是主要挑战。无监督深度学习有助于缓解该问题，但鱼眼图像的显著畸变给准确深度估计带来挑战。本文提出S$^2$D-FVO，一种集成球面光束法平差（SBA）引导的无监督深度学习的单目鱼眼VO框架，以提高尺度一致性和深度估计精度。鉴于像素重投影残差不能一致地反映视线之间的角度偏差，且标量角度重投影残差的一阶线性化对沿一个切线方向的扰动不敏感，SBA采用由球面对数映射导出的切空间角度重投影残差。这些残差在两个切线方向上均保持敏感性，其范数等于对应的标量角度残差。进一步将基于中值深度的尺度正则项集成到SBA中，以约束重建尺度。基于这些公式，SBA在无监督深度学习期间替代位姿估计网络，为视图合成提供更可靠的相对位姿。反过来，训练良好的深度估计网络提供的深度估计为SBA提供尺度参考，在提高尺度一致性的同时允许精化各个三维路标位置。在多个公开数据集以及两个新采集的大规模数据集上进行的大量实验表明，所提框架在深度和轨迹估计精度上均优于代表性现有方法，并适用于不同相机模型。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Wanhui Luo",
+          "Hongbo Zhao",
+          "Yi Zhou",
+          "Qijun Chen",
+          "Yiming Nie",
+          "Rui Fan"
+        ],
+        "url": "https://arxiv.org/abs/2611.11934v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.11934",
+        "html_url": "https://arxiv.org/abs/2611.11934",
+        "published_at": "2026-11-09T06:06:13.000Z",
+        "upvotes": 0,
+        "heat": 2069.944669722222,
+        "featured": false,
+        "categories": [
+          "slam"
+        ],
+        "image": "",
+        "comment": "34 pages, 18 figures",
+        "relevance": 37,
+        "rule_matches": [],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "slam",
+              "label_zh": "定位与建图",
+              "label_en": "Localization & Mapping"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "定位与建图的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；里程计、配准或建图不等于完整导航；须验证退化场景、重定位、传感器与标定条件；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2611.11934v1"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "鱼眼单目视觉里程计加球面光束法平差抑制尺度漂移，可作为哨兵/无人机室内定位前端的一条参考路线（宽视场利于近距大角度运动），但需自备IMU/轮速等尺度来源与嵌入式验证，不能当作完整导航系统；该类无监督深度学习对机载算力要求高。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
+        }
+      },
+      {
         "id": "arxiv:2611.09118",
         "arxiv_id": "2611.09118",
         "source": "arXiv",
@@ -4353,6 +5579,131 @@
         }
       },
       {
+        "id": "arxiv:2610.26395",
+        "arxiv_id": "2610.26395",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.LG"
+        ],
+        "title_en": "ForagerSim: Evaluating Embodied Map-Based Reasoning in Large-Scale Dynamic Worlds",
+        "title_zh": "ForagerSim：在大规模动态世界中评估具身地图推理",
+        "abstract_en": "Animals build cognitive maps of vast environments, use them to perform map-based navigation, and might even be reusing the same circuitry used in spatial reasoning for creating and using maps of arbitrary task-spaces. In contrast, current embodied AI systems either rely on hand-engineered mapping pipelines, which break in the presence of unmodeled dynamics and are restricted to metric space, or on learned policies that rarely form map-like representations at all. Developing architectures that could learn to build and use map-like representations as flexibly as animals is, however, difficult because few embodied AI benchmarks actually require map-based reasoning. To address this, we present ForagerSim --- an interdisciplinary research platform and simulation environment focused on embodied tasks that require map-based reasoning, with scenarios ranging from mobile-robot search and rescue to animal foraging in both complex mazes and vast, potentially infinite open areas. ForagerSim is highly modular and allows modifying independent axes of difficulty related to perception (abstract 2D sensing to full RGB or LiDAR), scale (room-scale to multi-km scale), topology (open-fields to complex mazes), dynamics (smoke, debris, sensorimotor failures and others) and tasks (from simple 2D coverage to foraging-inspired well-alternation tasks). We compare reinforcement learning baselines with a simple engineered robotics stack and a human player on 8 example worlds which show how different difficulty axes affect existing methods. Our results show that, when sensing is simplified to 2D, learned policies can perform multi-object search and well-alternation tasks surprisingly well in simple topologies, but they fall short of human performance in larger or more complex-topology environments where map-based baselines perform well, suggesting that map-based reasoning is the bottleneck in these scenarios.",
+        "abstract_zh": "动物会为广阔环境构建认知地图，利用它们执行基于地图的导航，甚至可能复用空间推理中用于创建和使用任意任务空间地图的同一神经回路。相比之下，当前具身AI系统要么依赖手工设计的建图流水线，这些流水线在存在未建模动态时会失效且局限于度量空间；要么依赖学习型策略，而这些策略很少形成类似地图的表示。然而，开发能够像动物一样灵活学习构建和使用类似地图表示的架构是困难的，因为很少有具身AI基准真正要求基于地图的推理。为解决这一问题，我们提出ForagerSim——一个跨学科研究平台和仿真环境，聚焦于需要基于地图推理的具身任务，场景范围从移动机器人搜救到动物在复杂迷宫以及广阔、可能无限的开放区域中觅食。ForagerSim高度模块化，允许修改与感知（从抽象2D感知到完整RGB或LiDAR）、尺度（从房间尺度到多公里尺度）、拓扑（从开阔场地到复杂迷宫）、动态（烟雾、碎片、感觉运动故障等）和任务（从简单2D覆盖到受觅食启发的well-alternation任务）相关的独立难度轴。我们在8个示例世界上将强化学习基线、一个简单的工程化机器人栈和一名人类玩家进行比较，展示不同难度轴如何影响现有方法。我们的结果表明，当感知简化为2D时，学习型策略在简单拓扑中执行多目标搜索和well-alternation任务的表现出奇地好，但在更大或拓扑更复杂的环境中，它们达不到人类表现，而基于地图的基线在这些环境中表现良好，这表明基于地图的推理是这些场景中的瓶颈。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Tomáš Musil",
+          "Martin Kotík",
+          "Michal Vavrečka",
+          "Karla Štěpánová",
+          "Sebastian Scherer",
+          "Martin Saska"
+        ],
+        "url": "https://arxiv.org/abs/2610.26395v1",
+        "pdf_url": "https://arxiv.org/pdf/2610.26395",
+        "html_url": "https://arxiv.org/abs/2610.26395",
+        "published_at": "2026-10-19T13:40:47.000Z",
+        "upvotes": 0,
+        "heat": 1573.5205733333332,
+        "featured": false,
+        "categories": [
+          "rl"
+        ],
+        "image": "",
+        "comment": "Code and data: https://github.com/MrTomzor/foragersim",
+        "relevance": 37,
+        "rule_matches": [],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "rl",
+              "label_zh": "机器人策略学习",
+              "label_en": "Robot Policy Learning"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "机器人策略学习的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；策略学习框架不自带RM战术环境、奖励函数或已验证策略；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2610.26395v1"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "面向地图式推理的仿真平台与难度维度设计思路，可借鉴到自建RM仿真中做导航/决策评测与RL基线对比，但平台场景（搜救、觅食、公里级开阔地）与RM场地差异大，需重写地图与任务接口。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
+        }
+      },
+      {
+        "id": "arxiv:2610.25436",
+        "arxiv_id": "2610.25436",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Intent-Informed Model Predictive Control for Shared Autonomy in Remote Manipulation Tasks",
+        "title_zh": "用于远程操作任务中共享自主的意图信息驱动模型预测控制",
+        "abstract_en": "Shared autonomy is a control paradigm that combines human cognitive abilities with robot precision to enable effective remote manipulation in complex environments. A key challenge is how to adapt the level of autonomy using information extracted from the human, task, and/or environment. In this paper, we propose a novel arbitration strategy that dynamically adjusts the level of autonomy in the system using the entropy of a belief distribution derived from a multimodal intent inference. Human intent is modeled with a Dynamic Bayesian Network (DBN), which updates beliefs over goals given real-time operator gaze data and robot arm motion during teleoperation. We then formulate the blending of human input and autonomous control as a Model Predictive Control (MPC) problem, where the system's autonomous behavior is guided by the belief distribution. This approach enables continuous, gradual transitions across the full spectrum of autonomy levels, from direct teleoperation to full autonomy. To validate our approach, we conducted experiments to compare the performance of our proposed algorithm against two MPC-based shared autonomy methods. Compared to the baselines, our approach achieved reductions of at least 61% in object retrieval time, 44% in trajectory length, and 60% in human control input. Participants reported high perceived control, predictability, intent recognition, and responsiveness, along with low workload.",
+        "abstract_zh": "共享自主是一种控制范式，它将人类认知能力与机器人精度相结合，以在复杂环境中实现有效的远程操作。一个关键挑战是如何利用从人类、任务和/或环境中提取的信息来调整自主水平。在本文中，我们提出了一种新颖的仲裁策略，该策略利用由多模态意图推断得到的信念分布的熵来动态调整系统中的自主水平。人类意图使用动态贝叶斯网络（DBN）建模，该网络在遥操作期间根据实时操作员注视数据和机器人手臂运动来更新对目标的信念。然后，我们将人类输入与自主控制的融合表述为一个模型预测控制（MPC）问题，其中系统的自主行为由信念分布引导。该方法能够实现从直接遥操作到完全自主的整个自主水平范围内的连续、渐进过渡。为验证我们的方法，我们进行了实验，将所提出算法的性能与两种基于MPC的共享自主方法进行比较。与基线相比，我们的方法在物体检索时间上至少减少了61%，轨迹长度减少了44%，人类控制输入减少了60%。参与者报告了较高的感知控制感、可预测性、意图识别和响应性，以及较低的工作负荷。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Lorena Maria Genua",
+          "Camilla Tabasso",
+          "Mya Schroder",
+          "Joshua Migdal",
+          "Tye Brady",
+          "Taskin Padir"
+        ],
+        "url": "https://arxiv.org/abs/2610.25436v1",
+        "pdf_url": "https://arxiv.org/pdf/2610.25436",
+        "html_url": "https://arxiv.org/abs/2610.25436",
+        "published_at": "2026-10-18T17:59:38.000Z",
+        "upvotes": 0,
+        "heat": 1553.83468,
+        "featured": false,
+        "categories": [
+          "control"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 37,
+        "rule_matches": [],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "control",
+              "label_zh": "机器人控制",
+              "label_en": "Robot Control"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "机器人控制的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2610.25436v1"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "面向遥操作共享自治的意图推断与MPC仲裁，与RM全自动作战关联很弱；仅在操作手辅助调试界面或工程机器人半自动遥操作实验中有间接参考价值，不建议引入比赛回路。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
+        }
+      },
+      {
         "id": "cvf:CVPR2026:Generalized-CVO: Fast and Correspondence-Free Local Point Cl",
         "arxiv_id": "",
         "source": "CVPR",
@@ -4404,6 +5755,131 @@
         },
         "rm": {
           "usage": "属于通用LiDAR/RGB-D帧间局部配准，可作为哨兵或雷达点云里程计前端提速的候选，但需自备激光雷达并验证RM场地的几何退化与重定位；配准本身不等于完整定位导航。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
+        }
+      },
+      {
+        "id": "arxiv:2611.13204",
+        "arxiv_id": "2611.13204",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "eess.SY"
+        ],
+        "title_en": "Ground Reaction Force-Aware Model Predictive Control for Underactuated Upright Physical Assistance",
+        "title_zh": "用于欠驱动直立物理辅助的地面反作用力感知模型预测控制",
+        "abstract_en": "Many rehabilitation robots execute prescribed motions using reactive tracking controllers that do not explicitly incorporate the user's instantaneous human-ground interaction. This paper presents Ground Reaction Force-Aware Model Predictive Control (GRF-MPC), a framework for upright physical assistance. By integrating live GRF and center of pressure (CoP) measurements directly into a human centroidal dynamics model, GRF-MPC formulates a real-time quadratic program (QP) that optimizes assistive forces and moments over a receding horizon. We deployed GRF-MPC on the Robotic Upright Stand Trainer (RobUST) in an underactuated 4-cable configuration and evaluated it against a fully actuated 8-cable Cartesian impedance baseline in nearly 300 trials across six healthy participants. Across tasks spanning impulsive perturbations, lunge trajectories, and voluntary limits of stability, GRF-MPC reduced peak planar center-of-mass (CoM) error by 19.6% during perturbations, lowered trajectory tracking error by 24.1%, required 28.7% less net mechanical work, and permitted a 45.9% greater normalized voluntary excursion area. The underlying QP solves in under 1 ms, comfortably enabling 100 Hz replanning and demonstrating that incorporating live human-ground interaction into predictive control yields stronger, more transparent physical assistance with half the actuators.",
+        "abstract_zh": "许多康复机器人使用反应式跟踪控制器执行规定运动，这些控制器并未明确纳入用户瞬时的人-地交互。本文提出地面反作用力感知模型预测控制（GRF-MPC），一种用于直立物理辅助的框架。通过将实时GRF和压力中心（CoP）测量直接集成到人体质心动力学模型中，GRF-MPC构建一个实时二次规划（QP），在滚动时域上优化辅助力和力矩。我们将GRF-MPC部署在Robotic Upright Stand Trainer（RobUST）上，采用欠驱动的4缆绳配置，并在六名健康参与者的近300次试验中，将其与全驱动的8缆绳笛卡尔阻抗基线进行比较。在涵盖脉冲扰动、弓步轨迹和自主稳定性极限的任务中，GRF-MPC在扰动期间将峰值平面质心（CoM）误差降低了19.6%，将轨迹跟踪误差降低了24.1%，所需净机械功减少了28.7%，并允许归一化自主偏移面积增加45.9%。底层QP求解时间低于1 ms，可轻松实现100 Hz重规划，并表明将实时人-地交互纳入预测控制能够以一半的执行器产生更强、更透明的物理辅助。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Darren Biskup",
+          "Jeonghan Yu",
+          "Zibo Yu",
+          "Sunil K. Agrawal"
+        ],
+        "url": "https://arxiv.org/abs/2611.13204v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.13204",
+        "html_url": "https://arxiv.org/abs/2611.13204",
+        "published_at": "2026-11-09T20:29:14.000Z",
+        "upvotes": 0,
+        "heat": 2084.328018888889,
+        "featured": false,
+        "categories": [
+          "control"
+        ],
+        "image": "",
+        "comment": "Accepted for publication in IEEE Robotics and Automation Letters (RA-L), October 2026. 8 pages, 5 figures",
+        "relevance": 36,
+        "rule_matches": [],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "control",
+              "label_zh": "机器人控制",
+              "label_en": "Robot Control"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "机器人控制的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2611.13204v1"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "人体-地面反作用力感知的MPC用于康复助立，与RM机器人运动控制无直接对应；其把外部接触力纳入质心动力学模型的建模思路对底盘抗冲击控制有极弱的启发，基本用不上。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
+        }
+      },
+      {
+        "id": "arxiv:2611.11169",
+        "arxiv_id": "2611.11169",
+        "source": "arXiv",
+        "cats": [
+          "cs.CV"
+        ],
+        "title_en": "Map2SLAM: From Streaming Map Prediction to Real-Time SLAM",
+        "title_zh": "Map2SLAM：从流式地图预测到实时SLAM",
+        "abstract_en": "Streaming 3D foundation models (3DFMs) estimate camera poses and dense geometry online, but they fall short of SLAM: their predictions are fixed once emitted, so loop closures cannot correct accumulated drift. With such models already providing strong geometric capability, a central question for SLAM becomes how to schedule their inference and how to keep its results as revisable state. We present Map2SLAM, which keeps LingBot-Map frozen, trains only a lightweight retrieval head, and builds SLAM on the model's inference interface, turning its predictions into observations of an external persistent SLAM state. The front-end tracks every incoming frame with the model's causal streaming inference and decides which frames are written to the persistent state as keyframes. The back-end asynchronously decides when and which past frames to re-observe, re-running the model's joint inference over them with fresh context; verified loop observations correct the trajectory online, and segment observations refine dense geometry after the sequence. All invocations share a single frame encoder pass per image, whose cached features also drive loop retrieval, so frequent re-invocation incurs no additional encoding cost. Map2SLAM achieves state-of-the-art performance on KITTI, VBR, and Oxford Spires, reducing mean ATE by over 40% compared with the best uncalibrated baselines, while maintaining real-time tracking at over 28 FPS at a resolution of $518\\times154$ on an NVIDIA RTX 5090D GPU. Please visit our project page at https://robbyant-research.github.io/Map2SLAM/.",
+        "abstract_zh": "流式3D基础模型（3DFM）可在线估计相机位姿和稠密几何，但它们尚不能达到SLAM的要求：其预测一旦输出便固定不变，因此回环闭合无法校正累积漂移。由于此类模型已提供强大的几何能力，SLAM的一个核心问题变成如何调度其推理，以及如何将其结果保持为可修正状态。我们提出Map2SLAM，它保持LingBot-Map冻结，仅训练一个轻量级检索头，并在模型的推理接口之上构建SLAM，将其预测转化为外部持久SLAM状态的观测。前端使用模型的因果流式推理跟踪每个输入帧，并决定哪些帧作为关键帧写入持久状态。后端异步决定何时以及重新观测哪些过去帧，并在新的上下文下对这些帧重新运行模型的联合推理；经验证的回环观测在线校正轨迹，分段观测在序列结束后细化稠密几何。所有调用对每幅图像共享一次帧编码器前向传播，其缓存特征也用于驱动回环检索，因此频繁重新调用不会产生额外编码成本。Map2SLAM在KITTI、VBR和Oxford Spires上取得最先进性能，与最佳未标定基线相比，平均ATE降低超过40%，同时在NVIDIA RTX 5090D GPU上以518×154分辨率保持超过28 FPS的实时跟踪。请访问我们的项目页面 https://robbyant-research.github.io/Map2SLAM/。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Jian Gao",
+          "Lin-Zhuo Chen",
+          "Yihang Chen",
+          "Jiagang Chen",
+          "Jiacheng Dong",
+          "Xun Cao",
+          "Nan Xue",
+          "Yinghao Xu"
+        ],
+        "url": "https://arxiv.org/abs/2611.11169v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.11169",
+        "html_url": "https://arxiv.org/abs/2611.11169",
+        "published_at": "2026-11-08T06:16:26.000Z",
+        "upvotes": 0,
+        "heat": 2046.1149458333334,
+        "featured": false,
+        "categories": [
+          "slam"
+        ],
+        "image": "",
+        "comment": "17 pages, 10 figures. Project page: https://robbyant-research.github.io/Map2SLAM/",
+        "relevance": 36,
+        "rule_matches": [],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "slam",
+              "label_zh": "定位与建图",
+              "label_en": "Localization & Mapping"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "定位与建图的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；里程计、配准或建图不等于完整导航；须验证退化场景、重定位、传感器与标定条件；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2611.11169v1"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "用3D基础模型做流式建图并保留可修正状态、异步回环的思路，可用于哨兵/无人机定位建图的架构参考；但论文实测需RTX 5090D级GPU、28FPS，机载端无法直接部署，也缺少RM场地退化与重定位验证。",
           "task_id": "",
           "task": "",
           "value": "low",
@@ -4483,6 +5959,67 @@
         }
       },
       {
+        "id": "arxiv:2610.41667",
+        "arxiv_id": "2610.41667",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "GPU-accelerated Incremental Euclidean Distance Transform for Online Motion Planning of Mobile Robots",
+        "title_zh": "用于移动机器人在线运动规划的GPU加速增量欧氏距离变换",
+        "abstract_en": "In this letter, we present a volumetric mapping system that effectively calculates Occupancy Grid Maps (OGMs) and Euclidean Distance Transforms (EDTs) with parallel computing. Unlike these mappers for high-precision structural reconstruction, our system incrementally constructs global EDT and outputs high-frequency local distance information for online robot motion planning. The proposed system constructs OGM with massive amount of data from multiple types of sensor inputs. Using GPU programming techniques, the system quickly computes EDT in parallel within local volume. The new observation is continuously integrated into the global EDT using the parallel wavefront algorithm while preserving the historical observations. Experiments with datasets have shown that our proposed approach outperforms existing state-of-the-art robot mapping systems and is particularly suitable for mapping unexplored areas. In its actual implementations on aerial and ground vehicles, the proposed system achieves real-time performance with limited onboard computational resources.",
+        "abstract_zh": "在这封信中，我们提出一种体积建图系统，它利用并行计算有效计算占据栅格地图（OGM）和欧氏距离变换（EDT）。与用于高精度结构重建的这些建图器不同，我们的系统增量构建全局EDT，并输出高频局部距离信息，用于在线机器人运动规划。所提出系统利用来自多种类型传感器输入的大量数据构建OGM。使用GPU编程技术，系统在局部体积内并行快速计算EDT。新观测通过并行波前算法持续集成到全局EDT中，同时保留历史观测。数据集实验表明，我们提出的方法优于现有最先进的机器人建图系统，并且特别适合建图未探索区域。在飞行器和地面车辆上的实际实现中，所提出系统在有限车载计算资源下实现了实时性能。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Yizhou Chen",
+          "Shupeng Lai",
+          "Jinqiang Cui",
+          "Biao Wang",
+          "Ben M. Chen"
+        ],
+        "url": "https://arxiv.org/abs/2610.41667v1",
+        "pdf_url": "https://arxiv.org/pdf/2610.41667",
+        "html_url": "https://arxiv.org/abs/2610.41667",
+        "published_at": "2026-10-30T12:35:49.000Z",
+        "upvotes": 0,
+        "heat": 1836.4378105555556,
+        "featured": false,
+        "categories": [
+          "planning"
+        ],
+        "image": "",
+        "comment": "Published in RA-L 2022. Author-accepted manuscript. Code: https://github.com/JINXER000/GIE-mapping",
+        "relevance": 36,
+        "rule_matches": [],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "planning",
+              "label_zh": "运动规划",
+              "label_en": "Motion Planning"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "运动规划的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2610.41667v1"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "GPU并行增量EDT与占据栅格，可为哨兵导航和空中避障提供高频局部距离场用于轨迹规划与紧急避让，论文已在空中/地面平台验证实时性；但需按机载算力（如Jetson）重建管线，且不解决定位与目标决策。",
+          "task_id": "",
+          "task": "",
+          "value": "mid",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
+        }
+      },
+      {
         "id": "cvf:CVPR2026:An Efficient Token Compression Framework for Visual Object T",
         "arxiv_id": "",
         "source": "CVPR",
@@ -4536,6 +6073,69 @@
           "usage": "模板token压缩可在精度小幅下降下大幅减少计算量，适合把自瞄/哨兵的目标跟踪网络压到嵌入式或机载算力；但论文未验证装甲板点阵屏幕识别、反陀螺与弹道闭环，需自行改造与实测。",
           "task_id": "",
           "task": "",
+          "value": "mid",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
+        }
+      },
+      {
+        "id": "arxiv:2601.06527",
+        "arxiv_id": "2601.06527",
+        "source": "arXiv",
+        "cats": [
+          "cs.IT",
+          "cs.RO",
+          "eess.IV"
+        ],
+        "title_en": "Visible Light Communication using Led-Based AR Markers for Robot Localization",
+        "title_zh": "用于机器人定位的基于LED AR标记的可见光通信",
+        "abstract_en": "A method of information transmission using visual markers has been widely studied. In this approach, information or identifiers (IDs) are encoded in the black-and-white pattern of each marker. By analyzing the geometric properties of the marker frame - such as its size, distortion, and coordinates - the relative position and orientation between the camera and the marker can be estimated. Furthermore, by associating the positional information of each marker with its corresponding ID, the position of the camera that takes the image picture can be calculated. In the field of mobile robotics, such markers are commonly utilized for robot localization. As mobile robots become more widely used in everyday environments, such visual markers are expected to be utilized across various contexts. In environments where robots collaborate with humans - such as in cell-based manufacturing systems in factories or in domestic settings with partner robots - it is desirable for such markers to be designed in a manner that appears natural and unobtrusive to humans. In this paper, we propose a method for implementing an ArUco marker in the form of illumination. In the proposed method, LEDs are arranged in accordance with the grid pattern of the marker, and the blinking frequency of each LED is determined based on the corresponding black or white cell. As a result, the illumination appears uniformly bright to the human eye, while the camera can capture variations in the blinking frequency. From these differences, the black-and-white pattern can be reconstructed, enabling the identification of the marker's tag information. We develop a prototype system, and conduct experiments which are conducted to evaluate its performance in terms of recognition accuracy under varying distances and viewing angles with respect to the ArUco marker.",
+        "abstract_zh": "使用视觉标记进行信息传输的方法已被广泛研究。在该方法中，信息或标识符（ID）被编码在每个标记的黑白图案中。通过分析标记边框的几何特性——如其尺寸、畸变和坐标——可以估计相机与标记之间的相对位置和姿态。此外，通过将每个标记的位置信息与其对应ID关联，可以计算拍摄图像的相机位置。在移动机器人领域，此类标记通常用于机器人定位。随着移动机器人在日常环境中得到更广泛使用，此类视觉标记有望在多种场景中得到应用。在机器人与人类协作的环境中——例如工厂中的单元制造系统或家庭环境中的伙伴机器人——期望此类标记被设计成对人类而言显得自然且不突兀。在本文中，我们提出一种以照明形式实现ArUco标记的方法。在所提出方法中，LED按照标记的网格图案排列，每个LED的闪烁频率根据对应的黑色或白色单元格确定。结果，照明对人眼显得均匀明亮，而相机能够捕捉闪烁频率的变化。根据这些差异，可以重建黑白图案，从而能够识别标记的标签信息。我们开发了一个原型系统，并进行了实验，以评估其在不同距离和相对于ArUco标记的观察角度下的识别准确率性能。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Wataru Uemura",
+          "Shogo Kawasaki"
+        ],
+        "url": "https://arxiv.org/abs/2601.06527v1",
+        "pdf_url": "https://arxiv.org/pdf/2601.06527",
+        "html_url": "https://arxiv.org/abs/2601.06527",
+        "published_at": "2026-01-10T11:12:56.000Z",
+        "upvotes": 0,
+        "heat": 0,
+        "featured": false,
+        "categories": [
+          "optical"
+        ],
+        "image": "",
+        "comment": "",
+        "optical_query": true,
+        "relevance": 36,
+        "rule_matches": [
+          {
+            "task_id": "optical",
+            "task": "空中系统可见光通信链路",
+            "keywords": [
+              "visible light communication",
+              "可见光通信"
+            ]
+          }
+        ],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "lane": "recent",
+          "score": 32,
+          "reason_zh": "LED–相机数据链路，可参考编码、同步与接收解码；近一年发表",
+          "receiver": "camera",
+          "evidence_url": "https://arxiv.org/abs/2601.06527v1",
+          "limitations_zh": "",
+          "quality": "implementation"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "把LED按标记黑白格以不同闪烁频率排布，相机侧从频率差异重建图案与ID，可直接对应空中系统可见光链路：机库侧用额外通信LED（红/蓝、40mm内照度≤300Lux，绝不可调制七颗航行外观灯）承载编号/坐标信息，无人机相机做识别与解调，兼顾返航对位。需自行补充运动模糊、环境光与同步的实测，且注意不能模拟机器人/场地视觉特征。",
+          "task_id": "optical",
+          "task": "空中系统可见光通信链路",
           "value": "mid",
           "rules_fingerprint": "0c84c6c447662688",
           "season": "2027"
@@ -4615,6 +6215,127 @@
         }
       },
       {
+        "id": "arxiv:2611.04357",
+        "arxiv_id": "2611.04357",
+        "source": "arXiv",
+        "cats": [
+          "eess.SY"
+        ],
+        "title_en": "Moving Horizon Estimation and Constrained Model Predictive Control for Balancing a Wheel-Legged Robot Under Unknown Disturbances",
+        "title_zh": "未知扰动下轮腿机器人平衡的滚动时域估计与约束模型预测控制",
+        "abstract_en": "Wheel-legged robots balance on two wheels while using articulated legs to change height, absorb impacts, and cross uneven terrain. On hardware, the balance controller must rely on noisy inertial and encoder measurements, and it must reject disturbances that are not known in advance, such as payloads and wind, without exceeding motor torque limits. This paper presents a moving horizon estimator (MHE) combined with an offset-free, constrained model predictive controller (MPC) for the sagittal balance of a 9.95 kg wheel-legged robot. The estimator uses a virtual-leg model augmented with a horizontal hip force, a body pitch torque, and a gyroscope bias. Its accelerometer model removes the predicted hip acceleration, and its process noise is increased when an impact is detected. We evaluate the approach in MuJoCo with simulated sensor noise, bias, quantization, and delay, and compare it with LQR baselines that use ground-truth state, a complementary filter, or the same MHE. In a driving, squatting, reversing, and bowing sequence, MPC with MHE reduced the RMS speed error to 0.11 m/s, compared with 0.24 m/s for LQR with ground-truth state. Under an unknown 2 kg payload and a 10 N headwind, the mean position error in wind was 6 cm, compared with 81 cm for LQR with ground-truth state. Across a 3 $\\times$ 4 grid of payloads and headwinds, LQR with the same estimator fell in 3 of 12 combinations, compared with 1 of 12 for MPC. These results are limited to simulation on flat ground, and experimental validation on hardware remains future work.",
+        "abstract_zh": "轮腿机器人依靠两个轮子保持平衡，同时使用关节腿改变高度、吸收冲击并穿越不平地形。在硬件上，平衡控制器必须依赖带噪声的惯性测量和编码器测量，并且必须在不超过电机力矩限制的情况下抑制事先未知的扰动，例如负载和风。本文提出一种滚动时域估计器（MHE），与无偏约束模型预测控制器（MPC）相结合，用于一台9.95 kg轮腿机器人的矢状面平衡。该估计器使用一个虚拟腿模型，并加入水平髋部力、身体俯仰力矩和陀螺仪偏置。其加速度计模型去除预测的髋部加速度，并在检测到冲击时增大过程噪声。我们在MuJoCo中对该方法进行评估，模拟传感器噪声、偏置、量化和延迟，并将其与使用真值状态、互补滤波器或相同MHE的LQR基线进行比较。在驾驶、下蹲、倒车和鞠躬序列中，采用MHE的MPC将RMS速度误差降至0.11 m/s，而使用真值状态的LQR为0.24 m/s。在未知2 kg负载和10 N逆风下，风中的平均位置误差为6 cm，而使用真值状态的LQR为81 cm。在负载和逆风的3×4网格中，使用相同估计器的LQR在12种组合中有3种摔倒，而MPC在12种组合中有1种摔倒。这些结果仅限于平坦地面上的仿真，硬件实验验证仍是未来工作。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Haitham El-Hussieny"
+        ],
+        "url": "https://arxiv.org/abs/2611.04357v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.04357",
+        "html_url": "https://arxiv.org/abs/2611.04357",
+        "published_at": "2026-11-03T05:40:45.000Z",
+        "upvotes": 0,
+        "heat": 1925.5199602777777,
+        "featured": false,
+        "categories": [
+          "control"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 35,
+        "rule_matches": [],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "control",
+              "label_zh": "机器人控制",
+              "label_en": "Robot Control"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "机器人控制的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2611.04357v1"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "轮腿机器人平衡的移动地平线估计与约束MPC，与RM兵种（轮式底盘/麦轮、无平衡控制需求）不匹配；仅其中的扰动观测与执行器限幅建模思路可作底盘控制的泛化参考，实用度很低。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
+        }
+      },
+      {
+        "id": "arxiv:2610.29356",
+        "arxiv_id": "2610.29356",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "eess.SY"
+        ],
+        "title_en": "Payload generalization on feedforward control actions for trajectory tracking in robots with rigid and elastic joints",
+        "title_zh": "刚性与弹性关节机器人轨迹跟踪中前馈控制动作的负载泛化",
+        "abstract_en": "Industries employ robots for repetitive tasks due to their high precision and performance, typically achieved through feedforward control actions based on an accurate robot description. However, an exact dynamic model can be difficult to obtain, especially for robots with elastic elements or when the payload changes. Learning-based feedforward approaches are promising for trajectory tracking under model uncertainties, but typically face generalization issues when task parameters vary. This paper proposes a novel method to generalize the feedforward control action with respect to payload parameters, independently of the underlying controller. Firstly, the minimal number of example objects needed for payload generalization is derived. Then, an algorithm is proposed to execute the same trajectory with a new payload, given only its parameters, without knowledge of the robot's dynamic model and even in the presence of elastic joints. The effectiveness of the proposed algorithm is validated in simulations and experiments on tracking tasks with different robots and controllers. Two sets of experiments are performed: on a standard Franka Emika Panda robot, and on a Franka Emika Panda robot equipped with an elastic wrist.",
+        "abstract_zh": "工业界使用机器人执行重复性任务，因为其具有高精度和高性能，这通常通过基于精确机器人描述的前馈控制动作来实现。然而，精确的动力学模型可能难以获得，尤其是对于具有弹性元件的机器人或负载发生变化时。基于学习的前馈方法在模型不确定性下的轨迹跟踪中具有前景，但当任务参数变化时通常面临泛化问题。本文提出一种新方法，使前馈控制动作相对于负载参数进行泛化，且不依赖于底层控制器。首先，推导负载泛化所需的最少示例物体数量。然后，提出一种算法，在仅已知新负载参数的情况下，用新负载执行相同轨迹，无需知道机器人动力学模型，甚至在有弹性关节的情况下也可行。所提算法在不同机器人和控制器的跟踪任务中通过仿真和实验验证了有效性。进行了两组实验：一组在标准Franka Emika Panda机器人上，另一组在配备弹性腕部的Franka Emika Panda机器人上。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Giorgia Pazzi",
+          "Giorgio Simonini",
+          "Michele Pierallini",
+          "Paolo Salaris",
+          "Giorgio Grioli",
+          "Manolo Garabini",
+          "Franco Angelini"
+        ],
+        "url": "https://arxiv.org/abs/2610.29356v1",
+        "pdf_url": "https://arxiv.org/pdf/2610.29356",
+        "html_url": "https://arxiv.org/abs/2610.29356",
+        "published_at": "2026-10-21T07:49:11.000Z",
+        "upvotes": 0,
+        "heat": 1615.6605147222222,
+        "featured": false,
+        "categories": [
+          "control"
+        ],
+        "image": "",
+        "comment": "18 pages, 17 figures. Accepted for publication in Control Engineering Practice",
+        "relevance": 35,
+        "rule_matches": [],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "control",
+              "label_zh": "机器人控制",
+              "label_en": "Robot Control"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "机器人控制的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2610.29356v1"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "论文给出的是机械臂在负载质量变化（含弹性关节）下的前馈轨迹跟踪泛化方法，可作重装机器人机械臂抓取/安装不同质量模块（42mm发射机构、能量单元）时前馈补偿与轨迹精度的思路参考；但实验平台是 Franka Panda 及弹性腕，须按RM机械臂构型、负载范围与机载算力重新建模验证，不能直接移植。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
+        }
+      },
+      {
         "id": "arxiv:2208.01710",
         "arxiv_id": "2208.01710",
         "source": "arXiv",
@@ -4685,6 +6406,70 @@
           "usage": "可直接作为空中机器人机间/机库—空中可见光链路的可复现基线：LED 高频调制 + 事件相机异步解调，参考其速率-距离-误码率曲线做链路预算与同步方案；注意需自备事件相机，且只能用于制作规范允许的额外通信 LED（照度按 S24 在 40mm 内≤300Lux），不可对七颗航行外观灯做调制。",
           "task_id": "optical",
           "task": "空中系统可见光通信链路",
+          "value": "mid",
+          "rules_fingerprint": "0c84c6c447662688",
+          "season": "2027"
+        }
+      },
+      {
+        "id": "arxiv:2611.12452",
+        "arxiv_id": "2611.12452",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.CV"
+        ],
+        "title_en": "V3DSAM: Semantic-Geometric Loop Verification and Geometry-Anchored Persistent Instance Mapping for Feed-Forward Dense SLAM",
+        "title_zh": "V3DSAM：面向前馈稠密SLAM的语义-几何回环验证与几何锚定的持久实例建图",
+        "abstract_en": "To address unreliable cross-view association in long-sequence feed-forward dense SLAM, this letter presents V3DSAM, an open-vocabulary semantic dense SLAM system that establishes physical correspondences at both the scene and object levels. The system combines feed-forward geometric estimates from VGGT-SLAM 2.0 with open-vocabulary semantic observations from SAM3. We introduce semantic-geometric dual-scale loop verification, which identifies false loop closures using pixel-level bidirectional reprojection and object-level 3D spatial correspondences, without accessing backbone-internal features. We further propose geometry-anchored persistent instance mapping, which defines physical instances through class-constrained 3D connectivity in an optimized global coordinate system and assigns global IDs without inter-frame identity propagation. The proposed verifier rejects all four false loop candidates in our TUM RGB-D evaluation, while long-sequence ScanNet experiments show improved instance identity consistency. Thus, V3DSAM reduces dependence on internal backbone features and temporal ID propagation for robust long-term cross-view association.",
+        "abstract_zh": "为解决长序列前馈稠密SLAM中不可靠的跨视角关联问题，本文提出V3DSAM，一种开放词汇语义稠密SLAM系统，在场景和对象两个层面建立物理对应关系。该系统将来自VGGT-SLAM 2.0的前馈几何估计与来自SAM3的开放词汇语义观测相结合。我们引入语义-几何双尺度回环验证，利用像素级双向重投影和对象级三维空间对应来识别错误回环闭合，而无需访问骨干网络内部特征。我们进一步提出几何锚定的持久实例建图，在优化后的全局坐标系中通过类别约束的三维连通性定义物理实例，并在不进行帧间身份传播的情况下分配全局ID。在TUM RGB-D评估中，所提出的验证器拒绝了全部四个错误回环候选，而ScanNet长序列实验显示实例身份一致性得到提升。因此，V3DSAM减少了对骨干网络内部特征和时间ID传播的依赖，以实现稳健的长期跨视角关联。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Maolin Ye",
+          "Dongqing Zhao",
+          "Linyang Li",
+          "Shuai Xue",
+          "Yuan Liu",
+          "Yiyuan Wang",
+          "Wen Li"
+        ],
+        "url": "https://arxiv.org/abs/2611.12452v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.12452",
+        "html_url": "https://arxiv.org/abs/2611.12452",
+        "published_at": "2026-11-09T14:07:07.000Z",
+        "upvotes": 0,
+        "heat": 2077.9596733333333,
+        "featured": false,
+        "categories": [
+          "slam"
+        ],
+        "image": "",
+        "comment": "8 pages, 6 figures, 4 tables. Submitted to IEEE Robotics and Automation Letters (RA-L)",
+        "relevance": 34,
+        "rule_matches": [],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "slam",
+              "label_zh": "定位与建图",
+              "label_en": "Localization & Mapping"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "定位与建图的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；里程计、配准或建图不等于完整导航；须验证退化场景、重定位、传感器与标定条件；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2611.12452v1"
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z",
+        "rm": {
+          "usage": "其语义-几何双尺度回环校验（像素级重投影+物体级3D对应）和持久实例建图，可为哨兵长时间运行中的定位漂移纠正、误回环剔除与地图一致性维护提供方法思路，也可借鉴其全局实例ID管理做场地目标/障碍的长期跟踪；但系统依赖 VGGT-SLAM 2.0 与 SAM3 等大模型，机载算力难以承受，只能作为离线验证或大幅轻量化改造后的参考。",
+          "task_id": "",
+          "task": "",
           "value": "mid",
           "rules_fingerprint": "0c84c6c447662688",
           "season": "2027"
@@ -5001,7 +6786,7 @@
         "pushed_at": "2026-11-12T15:42:18.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:01.890Z",
+        "metadata_fetched_at": "2026-11-13T00:09:59.603Z",
         "categories": [
           "control",
           "sim"
@@ -5040,7 +6825,7 @@
             "value": 256,
             "source": "GitHub",
             "source_url": "https://github.com/xrobot-org/XRobot",
-            "checked_at": "2026-11-12T18:43:01.890Z"
+            "checked_at": "2026-11-13T00:09:59.603Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -5070,7 +6855,7 @@
         "pushed_at": "2022-04-07T15:12:20.000Z",
         "license": "NOASSERTION",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:42:57.644Z",
+        "metadata_fetched_at": "2026-11-13T00:09:55.942Z",
         "categories": [
           "nav",
           "planning"
@@ -5109,7 +6894,7 @@
             "value": 899,
             "source": "GitHub",
             "source_url": "https://github.com/RoboMaster/RoboRTS",
-            "checked_at": "2026-11-12T18:42:57.644Z"
+            "checked_at": "2026-11-13T00:09:55.942Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -5140,7 +6925,7 @@
         "pushed_at": "2026-11-09T22:44:08.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:01.890Z",
+        "metadata_fetched_at": "2026-11-13T00:09:59.602Z",
         "categories": [
           "nav"
         ],
@@ -5173,7 +6958,7 @@
             "value": 464,
             "source": "GitHub",
             "source_url": "https://github.com/SMBU-PolarBear-Robotics-Team/pb2025_sentry_nav",
-            "checked_at": "2026-11-12T18:43:01.890Z"
+            "checked_at": "2026-11-13T00:09:59.602Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -5204,7 +6989,7 @@
         "pushed_at": "2024-11-08T07:08:13.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:42:57.644Z",
+        "metadata_fetched_at": "2026-11-13T00:09:55.942Z",
         "categories": [
           "aim"
         ],
@@ -5237,7 +7022,7 @@
             "value": 246,
             "source": "GitHub",
             "source_url": "https://github.com/chenjunnn/rm_vision",
-            "checked_at": "2026-11-12T18:42:57.644Z"
+            "checked_at": "2026-11-13T00:09:55.942Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -5266,7 +7051,7 @@
         "pushed_at": "2024-06-08T04:57:53.000Z",
         "license": "MIT",
         "archived": true,
-        "metadata_fetched_at": "2026-11-12T18:42:57.644Z",
+        "metadata_fetched_at": "2026-11-13T00:09:55.942Z",
         "categories": [
           "sim"
         ],
@@ -5275,7 +7060,9 @@
           {
             "task_id": "sim",
             "task": "算法仿真与验证",
-            "keywords": []
+            "keywords": [
+              "仿真"
+            ]
           }
         ],
         "rules_fingerprint": "0c84c6c447662688",
@@ -5299,7 +7086,7 @@
             "value": 349,
             "source": "GitHub",
             "source_url": "https://github.com/LihanChen2004/pb_rm_simulation",
-            "checked_at": "2026-11-12T18:42:57.644Z"
+            "checked_at": "2026-11-13T00:09:55.942Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -5332,7 +7119,7 @@
         "pushed_at": "2023-04-19T10:41:35.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:42:51.137Z",
+        "metadata_fetched_at": "2026-11-13T00:09:50.077Z",
         "categories": [
           "aim",
           "control"
@@ -5371,7 +7158,7 @@
             "value": 45,
             "source": "GitHub",
             "source_url": "https://github.com/ittuann/RoboMaster-NEFU-Ares-UAVGimbal",
-            "checked_at": "2026-11-12T18:42:51.137Z"
+            "checked_at": "2026-11-13T00:09:50.077Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -5397,7 +7184,7 @@
         "pushed_at": "2026-08-13T04:54:40.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:42:57.644Z",
+        "metadata_fetched_at": "2026-11-13T00:09:55.942Z",
         "categories": [
           "aim"
         ],
@@ -5424,7 +7211,7 @@
             "value": 735,
             "source": "GitHub",
             "source_url": "https://github.com/TongjiSuperPower/sp_vision_25",
-            "checked_at": "2026-11-12T18:42:57.644Z"
+            "checked_at": "2026-11-13T00:09:55.942Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -5448,7 +7235,7 @@
         "pushed_at": "2024-09-20T17:06:01.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:10.202Z",
+        "metadata_fetched_at": "2026-11-13T00:10:08.288Z",
         "categories": [
           "aim"
         ],
@@ -5483,7 +7270,7 @@
             "value": 212,
             "source": "GitHub",
             "source_url": "https://github.com/HHgzs/TJURM-2024",
-            "checked_at": "2026-11-12T18:43:10.202Z"
+            "checked_at": "2026-11-13T00:10:08.288Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -5512,7 +7299,7 @@
         "pushed_at": "2023-05-27T01:24:43.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:01.890Z",
+        "metadata_fetched_at": "2026-11-13T00:09:59.603Z",
         "categories": [
           "aim"
         ],
@@ -5545,7 +7332,7 @@
             "value": 86,
             "source": "GitHub",
             "source_url": "https://github.com/chenjunnn/rm_auto_aim",
-            "checked_at": "2026-11-12T18:43:01.890Z"
+            "checked_at": "2026-11-13T00:09:59.603Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -5569,7 +7356,7 @@
         "pushed_at": "2021-03-29T06:45:54.000Z",
         "license": "NOASSERTION",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:42:57.644Z",
+        "metadata_fetched_at": "2026-11-13T00:09:55.942Z",
         "categories": [
           "control"
         ],
@@ -5596,7 +7383,7 @@
             "value": 410,
             "source": "GitHub",
             "source_url": "https://github.com/RoboMaster/RoboRTS-Firmware",
-            "checked_at": "2026-11-12T18:42:57.644Z"
+            "checked_at": "2026-11-13T00:09:55.942Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -5624,7 +7411,7 @@
         "pushed_at": "2026-08-15T10:43:21.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:27.087Z",
+        "metadata_fetched_at": "2026-11-13T00:10:23.329Z",
         "categories": [
           "aim",
           "rune"
@@ -5634,7 +7421,9 @@
           {
             "task_id": "rune",
             "task": "能量机关识别与击打",
-            "keywords": []
+            "keywords": [
+              "能量机关"
+            ]
           }
         ],
         "rules_fingerprint": "0c84c6c447662688",
@@ -5663,7 +7452,7 @@
             "value": 23,
             "source": "GitHub",
             "source_url": "https://github.com/SZURPVision/RuneDetectionModel",
-            "checked_at": "2026-11-12T18:43:27.087Z"
+            "checked_at": "2026-11-13T00:10:23.329Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -5694,7 +7483,7 @@
         "pushed_at": "2026-10-23T13:58:09.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:17.294Z",
+        "metadata_fetched_at": "2026-11-13T00:10:14.725Z",
         "categories": [
           "radar",
           "sim"
@@ -5742,7 +7531,7 @@
             "value": 14,
             "source": "GitHub",
             "source_url": "https://github.com/diaofenyuan/RMUC_2027map_unity",
-            "checked_at": "2026-11-12T18:43:17.294Z"
+            "checked_at": "2026-11-13T00:10:14.725Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -5776,7 +7565,7 @@
         "pushed_at": "2025-05-19T10:06:49.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:01.890Z",
+        "metadata_fetched_at": "2026-11-13T00:09:59.603Z",
         "categories": [
           "aim"
         ],
@@ -5803,7 +7592,7 @@
             "value": 110,
             "source": "GitHub",
             "source_url": "https://github.com/WayneMao/RoboMatrix",
-            "checked_at": "2026-11-12T18:43:01.890Z"
+            "checked_at": "2026-11-13T00:09:59.603Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -5831,7 +7620,7 @@
         "pushed_at": "2026-07-21T09:26:22.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:01.890Z",
+        "metadata_fetched_at": "2026-11-13T00:09:59.603Z",
         "categories": [
           "aim"
         ],
@@ -5864,7 +7653,7 @@
             "value": 113,
             "source": "GitHub",
             "source_url": "https://github.com/WUST-RM/awakening",
-            "checked_at": "2026-11-12T18:43:01.890Z"
+            "checked_at": "2026-11-13T00:09:59.603Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -5897,7 +7686,7 @@
         "pushed_at": "2023-08-08T17:08:01.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:01.890Z",
+        "metadata_fetched_at": "2026-11-13T00:09:59.603Z",
         "categories": [
           "control"
         ],
@@ -5924,7 +7713,7 @@
             "value": 76,
             "source": "GitHub",
             "source_url": "https://github.com/rm-controls/rm_usb2can",
-            "checked_at": "2026-11-12T18:43:01.890Z"
+            "checked_at": "2026-11-13T00:09:59.603Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -5952,7 +7741,7 @@
         "pushed_at": "2026-11-09T22:40:45.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:01.890Z",
+        "metadata_fetched_at": "2026-11-13T00:09:59.603Z",
         "categories": [
           "nav"
         ],
@@ -5988,7 +7777,7 @@
             "value": 47,
             "source": "GitHub",
             "source_url": "https://github.com/SMBU-PolarBear-Robotics-Team/pb2025_sentry_behavior",
-            "checked_at": "2026-11-12T18:43:01.890Z"
+            "checked_at": "2026-11-13T00:09:59.603Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -6016,7 +7805,7 @@
         "pushed_at": "2021-12-04T08:48:47.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:01.890Z",
+        "metadata_fetched_at": "2026-11-13T00:09:59.603Z",
         "categories": [
           "aim"
         ],
@@ -6043,7 +7832,7 @@
             "value": 40,
             "source": "GitHub",
             "source_url": "https://github.com/wildwolf-team/WolfVision",
-            "checked_at": "2026-11-12T18:43:01.890Z"
+            "checked_at": "2026-11-13T00:09:59.603Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -6074,7 +7863,7 @@
         "pushed_at": "2026-03-11T10:18:41.000Z",
         "license": "GPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:01.890Z",
+        "metadata_fetched_at": "2026-11-13T00:09:59.603Z",
         "categories": [
           "radar"
         ],
@@ -6109,7 +7898,7 @@
             "value": 29,
             "source": "GitHub",
             "source_url": "https://github.com/BreCaspian/LiDAR-Camera_Calibration_Validator",
-            "checked_at": "2026-11-12T18:43:01.890Z"
+            "checked_at": "2026-11-13T00:09:59.603Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -6140,7 +7929,7 @@
         "pushed_at": "2026-08-11T09:52:37.000Z",
         "license": "NOASSERTION",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:17.294Z",
+        "metadata_fetched_at": "2026-11-13T00:10:14.725Z",
         "categories": [
           "aim",
           "radar"
@@ -6181,7 +7970,7 @@
             "value": 19,
             "source": "GitHub",
             "source_url": "https://github.com/coach114514/TCR-RM2026-Radar-OpenSource",
-            "checked_at": "2026-11-12T18:43:17.294Z"
+            "checked_at": "2026-11-13T00:10:14.725Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -6212,7 +8001,7 @@
         "pushed_at": "2021-11-13T13:13:17.000Z",
         "license": "LGPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:42:57.644Z",
+        "metadata_fetched_at": "2026-11-13T00:09:55.942Z",
         "categories": [
           "rl",
           "sim"
@@ -6229,7 +8018,9 @@
           {
             "task_id": "sim",
             "task": "算法仿真与验证",
-            "keywords": []
+            "keywords": [
+              "仿真"
+            ]
           }
         ],
         "rules_fingerprint": "0c84c6c447662688",
@@ -6258,7 +8049,7 @@
             "value": 150,
             "source": "GitHub",
             "source_url": "https://github.com/yizhengzhang1/RoboMaster-Simulator",
-            "checked_at": "2026-11-12T18:42:57.644Z"
+            "checked_at": "2026-11-13T00:09:55.942Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -6285,7 +8076,7 @@
         "pushed_at": "2026-08-14T08:15:40.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:01.890Z",
+        "metadata_fetched_at": "2026-11-13T00:09:59.603Z",
         "categories": [
           "nav"
         ],
@@ -6318,7 +8109,7 @@
             "value": 144,
             "source": "GitHub",
             "source_url": "https://github.com/Polyacetone/HWSentryNav26",
-            "checked_at": "2026-11-12T18:43:01.890Z"
+            "checked_at": "2026-11-13T00:09:59.603Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -6347,7 +8138,7 @@
         "pushed_at": "2023-08-30T08:46:21.000Z",
         "license": "Apache-2.0",
         "archived": true,
-        "metadata_fetched_at": "2026-11-12T18:43:01.890Z",
+        "metadata_fetched_at": "2026-11-13T00:09:59.603Z",
         "categories": [
           "aim",
           "rune"
@@ -6393,7 +8184,7 @@
             "value": 133,
             "source": "GitHub",
             "source_url": "https://github.com/zRzRzRzRzRzRzR/YOLO-of-RoboMaster-Keypoints-Detection-2023",
-            "checked_at": "2026-11-12T18:43:01.890Z"
+            "checked_at": "2026-11-13T00:09:59.603Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -6423,7 +8214,7 @@
         "pushed_at": "2026-08-18T04:51:00.000Z",
         "license": "AGPL-3.0",
         "archived": true,
-        "metadata_fetched_at": "2026-11-12T18:43:01.890Z",
+        "metadata_fetched_at": "2026-11-13T00:09:59.603Z",
         "categories": [
           "aim",
           "sim"
@@ -6433,7 +8224,10 @@
           {
             "task_id": "sim",
             "task": "算法仿真与验证",
-            "keywords": []
+            "keywords": [
+              "仿真",
+              "算法验证"
+            ]
           }
         ],
         "rules_fingerprint": "0c84c6c447662688",
@@ -6462,7 +8256,7 @@
             "value": 81,
             "source": "GitHub",
             "source_url": "https://github.com/Blackjack200/at_vision_simulator",
-            "checked_at": "2026-11-12T18:43:01.890Z"
+            "checked_at": "2026-11-13T00:09:59.603Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -6493,7 +8287,7 @@
         "pushed_at": "2026-06-03T02:56:54.000Z",
         "license": "AGPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:01.890Z",
+        "metadata_fetched_at": "2026-11-13T00:09:59.603Z",
         "categories": [
           "aerial",
           "aim"
@@ -6529,7 +8323,7 @@
             "value": 30,
             "source": "GitHub",
             "source_url": "https://github.com/BreCaspian/LaserTracking-2026",
-            "checked_at": "2026-11-12T18:43:01.890Z"
+            "checked_at": "2026-11-13T00:09:59.603Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -6553,7 +8347,7 @@
         "pushed_at": "2026-04-21T07:34:25.000Z",
         "license": "NOASSERTION",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:42:57.644Z",
+        "metadata_fetched_at": "2026-11-13T00:09:55.942Z",
         "categories": [
           "aerial",
           "sim"
@@ -6563,7 +8357,9 @@
           {
             "task_id": "aerial",
             "task": "空中系统自主飞行与机库交互",
-            "keywords": []
+            "keywords": [
+              "无人机"
+            ]
           },
           {
             "task_id": "sim",
@@ -6592,7 +8388,7 @@
             "value": 237,
             "source": "GitHub",
             "source_url": "https://github.com/RoboMaster/IntelligentUAVChampionshipSimulator",
-            "checked_at": "2026-11-12T18:42:57.644Z"
+            "checked_at": "2026-11-13T00:09:55.942Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -6622,7 +8418,7 @@
         "pushed_at": "2026-11-09T22:45:47.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:01.890Z",
+        "metadata_fetched_at": "2026-11-13T00:09:59.603Z",
         "categories": [
           "sim"
         ],
@@ -6631,7 +8427,9 @@
           {
             "task_id": "sim",
             "task": "算法仿真与验证",
-            "keywords": []
+            "keywords": [
+              "仿真"
+            ]
           }
         ],
         "rules_fingerprint": "0c84c6c447662688",
@@ -6655,7 +8453,7 @@
             "value": 111,
             "source": "GitHub",
             "source_url": "https://github.com/SMBU-PolarBear-Robotics-Team/rmu_gazebo_simulator",
-            "checked_at": "2026-11-12T18:43:01.890Z"
+            "checked_at": "2026-11-13T00:09:59.603Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -6679,7 +8477,7 @@
         "pushed_at": "2024-06-19T15:40:33.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:42:57.644Z",
+        "metadata_fetched_at": "2026-11-13T00:09:55.942Z",
         "categories": [
           "aim"
         ],
@@ -6706,7 +8504,7 @@
             "value": 184,
             "source": "GitHub",
             "source_url": "https://github.com/FaterYU/rm_vision",
-            "checked_at": "2026-11-12T18:42:57.644Z"
+            "checked_at": "2026-11-13T00:09:55.942Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -6730,7 +8528,7 @@
         "pushed_at": "2026-11-11T12:08:09.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:06.385Z",
+        "metadata_fetched_at": "2026-11-13T00:10:04.518Z",
         "categories": [
           "aim"
         ],
@@ -6763,7 +8561,7 @@
             "value": 54,
             "source": "GitHub",
             "source_url": "https://github.com/Alliance-Algorithm/rmcs_auto_aim_v2",
-            "checked_at": "2026-11-12T18:43:06.385Z"
+            "checked_at": "2026-11-13T00:10:04.518Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -6794,7 +8592,7 @@
         "pushed_at": "2026-08-26T04:46:24.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:01.890Z",
+        "metadata_fetched_at": "2026-11-13T00:09:59.603Z",
         "categories": [
           "sim"
         ],
@@ -6827,7 +8625,7 @@
             "value": 36,
             "source": "GitHub",
             "source_url": "https://github.com/ClearWei/RM26_Client",
-            "checked_at": "2026-11-12T18:43:01.890Z"
+            "checked_at": "2026-11-13T00:09:59.603Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -6859,7 +8657,7 @@
         "pushed_at": "2026-06-17T02:17:30.000Z",
         "license": "GPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:01.890Z",
+        "metadata_fetched_at": "2026-11-13T00:09:59.603Z",
         "categories": [
           "control"
         ],
@@ -6886,7 +8684,7 @@
             "value": 33,
             "source": "GitHub",
             "source_url": "https://github.com/buke18/robomaster-soldier-robot",
-            "checked_at": "2026-11-12T18:43:01.890Z"
+            "checked_at": "2026-11-13T00:09:59.603Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -6914,7 +8712,7 @@
         "pushed_at": "2026-01-25T11:51:13.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:01.890Z",
+        "metadata_fetched_at": "2026-11-13T00:09:59.603Z",
         "categories": [
           "sim"
         ],
@@ -6949,7 +8747,7 @@
             "value": 32,
             "source": "GitHub",
             "source_url": "https://github.com/robomaster-oss/rmoss_gazebo",
-            "checked_at": "2026-11-12T18:43:01.890Z"
+            "checked_at": "2026-11-13T00:09:59.603Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -6977,7 +8775,7 @@
         "pushed_at": "2025-05-29T04:05:50.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:01.890Z",
+        "metadata_fetched_at": "2026-11-13T00:09:59.603Z",
         "categories": [
           "aim",
           "rune"
@@ -6988,7 +8786,8 @@
             "task_id": "rune",
             "task": "能量机关识别与击打",
             "keywords": [
-              "rune detection"
+              "rune detection",
+              "能量机关"
             ]
           }
         ],
@@ -7018,7 +8817,7 @@
             "value": 53,
             "source": "GitHub",
             "source_url": "https://github.com/zmsbruce/rm_power_rune",
-            "checked_at": "2026-11-12T18:43:01.890Z"
+            "checked_at": "2026-11-13T00:09:59.603Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -7042,7 +8841,7 @@
         "pushed_at": "2026-11-05T08:23:01.000Z",
         "license": "BSD-3-Clause",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:42:57.644Z",
+        "metadata_fetched_at": "2026-11-13T00:09:55.942Z",
         "categories": [
           "sim"
         ],
@@ -7051,7 +8850,9 @@
           {
             "task_id": "sim",
             "task": "算法仿真与验证",
-            "keywords": []
+            "keywords": [
+              "仿真"
+            ]
           }
         ],
         "rules_fingerprint": "0c84c6c447662688",
@@ -7075,7 +8876,7 @@
             "value": 311,
             "source": "GitHub",
             "source_url": "https://github.com/rm-controls/rm_control",
-            "checked_at": "2026-11-12T18:42:57.644Z"
+            "checked_at": "2026-11-13T00:09:55.942Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -7105,7 +8906,7 @@
         "pushed_at": "2026-08-23T17:34:55.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:42:57.644Z",
+        "metadata_fetched_at": "2026-11-13T00:09:55.942Z",
         "categories": [
           "aim"
         ],
@@ -7132,7 +8933,7 @@
             "value": 391,
             "source": "GitHub",
             "source_url": "https://github.com/NeoZng/vision_tutorial",
-            "checked_at": "2026-11-12T18:42:57.644Z"
+            "checked_at": "2026-11-13T00:09:55.942Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -7166,7 +8967,7 @@
         "pushed_at": "2025-07-19T17:11:48.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:42:57.644Z",
+        "metadata_fetched_at": "2026-11-13T00:09:55.942Z",
         "categories": [
           "aim"
         ],
@@ -7201,7 +9002,7 @@
             "value": 299,
             "source": "GitHub",
             "source_url": "https://github.com/julyfun/rm.cv.fans",
-            "checked_at": "2026-11-12T18:42:57.644Z"
+            "checked_at": "2026-11-13T00:09:55.942Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -7228,7 +9029,7 @@
         "pushed_at": "2024-07-23T01:41:01.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:01.890Z",
+        "metadata_fetched_at": "2026-11-13T00:09:59.603Z",
         "categories": [
           "aim"
         ],
@@ -7261,7 +9062,7 @@
             "value": 144,
             "source": "GitHub",
             "source_url": "https://github.com/robomaster-oss/rmoss_core",
-            "checked_at": "2026-11-12T18:43:01.890Z"
+            "checked_at": "2026-11-13T00:09:59.603Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -7285,7 +9086,7 @@
         "pushed_at": "2026-05-20T11:55:55.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:10.202Z",
+        "metadata_fetched_at": "2026-11-13T00:10:08.288Z",
         "categories": [
           "aim"
         ],
@@ -7320,7 +9121,7 @@
             "value": 116,
             "source": "GitHub",
             "source_url": "https://github.com/chiguayeshao/obs-snap-detector",
-            "checked_at": "2026-11-12T18:43:10.202Z"
+            "checked_at": "2026-11-13T00:10:08.288Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -7344,7 +9145,7 @@
         "pushed_at": "2024-06-16T01:48:03.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:10.202Z",
+        "metadata_fetched_at": "2026-11-13T00:10:08.288Z",
         "categories": [
           "aim",
           "radar"
@@ -7390,7 +9191,7 @@
             "value": 92,
             "source": "GitHub",
             "source_url": "https://github.com/SCAU-RM-NAV/RM2023_Radar_Dataset",
-            "checked_at": "2026-11-12T18:43:10.202Z"
+            "checked_at": "2026-11-13T00:10:08.288Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -7419,7 +9220,7 @@
         "pushed_at": "2026-03-20T17:31:42.000Z",
         "license": "NOASSERTION",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:01.890Z",
+        "metadata_fetched_at": "2026-11-13T00:09:59.603Z",
         "categories": [
           "control"
         ],
@@ -7446,7 +9247,7 @@
             "value": 52,
             "source": "GitHub",
             "source_url": "https://github.com/ZhuaX0/RoboMasterSuperCapCtrller_Adernal",
-            "checked_at": "2026-11-12T18:43:01.890Z"
+            "checked_at": "2026-11-13T00:09:59.603Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -7475,7 +9276,7 @@
         "pushed_at": "2023-08-30T08:19:48.000Z",
         "license": "Apache-2.0",
         "archived": true,
-        "metadata_fetched_at": "2026-11-12T18:43:17.294Z",
+        "metadata_fetched_at": "2026-11-13T00:10:14.725Z",
         "categories": [
           "radar"
         ],
@@ -7511,7 +9312,7 @@
             "value": 18,
             "source": "GitHub",
             "source_url": "https://github.com/zRzRzRzRzRzRzR/Mult-YOLO-alogorithm-of-RoboMaster-Radar-Detection-2023",
-            "checked_at": "2026-11-12T18:43:17.294Z"
+            "checked_at": "2026-11-13T00:10:14.725Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -7535,7 +9336,7 @@
         "pushed_at": "2026-08-13T09:08:29.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:17.294Z",
+        "metadata_fetched_at": "2026-11-13T00:10:14.725Z",
         "categories": [
           "radar"
         ],
@@ -7545,7 +9346,8 @@
             "task_id": "radar",
             "task": "雷达目标探测与信息融合",
             "keywords": [
-              "robomaster radar"
+              "robomaster radar",
+              "雷达"
             ]
           }
         ],
@@ -7570,10 +9372,67 @@
             "value": 11,
             "source": "GitHub",
             "source_url": "https://github.com/JNU-SHARK/shark-radar-system",
-            "checked_at": "2026-11-12T18:43:17.294Z"
+            "checked_at": "2026-11-13T00:10:14.725Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
+      },
+      {
+        "id": "Ruakker/dart_vision_26",
+        "full_name": "Ruakker/dart_vision_26",
+        "name": "dart_vision_26",
+        "owner": "Ruakker",
+        "owner_avatar": "https://avatars.githubusercontent.com/u/69740822?v=4",
+        "description_en": "面向 RoboMaster 制导镖的镖体视觉系统",
+        "description_zh": "面向 RoboMaster 制导镖的镖体视觉系统",
+        "highlight_zh": "",
+        "stars": 10,
+        "forks": 1,
+        "language": "C",
+        "topics": [],
+        "url": "https://github.com/Ruakker/dart_vision_26",
+        "homepage": "https://bbs.robomaster.com/article/1972727",
+        "created_at": "2026-10-29T13:28:40Z",
+        "pushed_at": "2026-11-04T09:04:29.000Z",
+        "license": "MIT",
+        "archived": false,
+        "metadata_fetched_at": "2026-11-13T00:10:26.397Z",
+        "categories": [
+          "aim"
+        ],
+        "relevance": 45.52,
+        "rule_matches": [
+          {
+            "task_id": "dart",
+            "task": "飞镖系统制导与发射",
+            "keywords": []
+          }
+        ],
+        "rules_fingerprint": "0c84c6c447662688",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "aim",
+              "label_zh": "检测与目标跟踪",
+              "label_en": "Detection & Tracking"
+            }
+          ],
+          "lane": "recent",
+          "score": 37,
+          "quality": "reference",
+          "reason_zh": "直接面向RoboMaster的实现或研究；近一年有代码更新",
+          "limitations_zh": "RM项目仍需核对2027赛季的目标外观、地图、硬件和裁判协议；历史赛季代码不代表已适配新规则",
+          "evidence_url": "https://github.com/Ruakker/dart_vision_26",
+          "metric": {
+            "label": "GitHub Stars",
+            "value": 10,
+            "source": "GitHub",
+            "source_url": "https://github.com/Ruakker/dart_vision_26",
+            "checked_at": "2026-11-13T00:10:26.397Z"
+          }
+        },
+        "first_seen": "2026-11-13T00:11:47.845Z"
       },
       {
         "id": "zmsbruce/rm_radar",
@@ -7601,7 +9460,7 @@
         "pushed_at": "2025-05-29T04:08:31.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:01.890Z",
+        "metadata_fetched_at": "2026-11-13T00:09:59.603Z",
         "categories": [
           "aim",
           "radar"
@@ -7612,7 +9471,8 @@
             "task_id": "radar",
             "task": "雷达目标探测与信息融合",
             "keywords": [
-              "robomaster radar"
+              "robomaster radar",
+              "雷达"
             ]
           }
         ],
@@ -7642,7 +9502,7 @@
             "value": 52,
             "source": "GitHub",
             "source_url": "https://github.com/zmsbruce/rm_radar",
-            "checked_at": "2026-11-12T18:43:01.890Z"
+            "checked_at": "2026-11-13T00:09:59.603Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -7666,7 +9526,7 @@
         "pushed_at": "2022-09-23T09:09:07.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:42:51.137Z",
+        "metadata_fetched_at": "2026-11-13T00:09:50.077Z",
         "categories": [
           "aerial",
           "planning",
@@ -7713,7 +9573,7 @@
             "value": 14,
             "source": "GitHub",
             "source_url": "https://github.com/BSSNBSSN/Ego-plannerforIntelligentUAVChampionshipSimulator",
-            "checked_at": "2026-11-12T18:42:51.137Z"
+            "checked_at": "2026-11-13T00:09:50.077Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -7745,7 +9605,7 @@
         "pushed_at": "2023-06-09T17:04:49.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:01.890Z",
+        "metadata_fetched_at": "2026-11-13T00:09:59.603Z",
         "categories": [
           "sim"
         ],
@@ -7778,7 +9638,7 @@
             "value": 93,
             "source": "GitHub",
             "source_url": "https://github.com/Spphire/RM-labeling-tool",
-            "checked_at": "2026-11-12T18:43:01.890Z"
+            "checked_at": "2026-11-13T00:09:59.603Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -7802,7 +9662,7 @@
         "pushed_at": "2019-10-09T09:14:22.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:06.385Z",
+        "metadata_fetched_at": "2026-11-13T00:10:04.518Z",
         "categories": [
           "aim"
         ],
@@ -7837,7 +9697,7 @@
             "value": 79,
             "source": "GitHub",
             "source_url": "https://github.com/EinstainBohr/RM-computer-vision",
-            "checked_at": "2026-11-12T18:43:06.385Z"
+            "checked_at": "2026-11-13T00:10:04.518Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -7861,7 +9721,7 @@
         "pushed_at": "2024-06-16T19:50:16.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:06.385Z",
+        "metadata_fetched_at": "2026-11-13T00:10:04.518Z",
         "categories": [
           "aim"
         ],
@@ -7894,7 +9754,7 @@
             "value": 76,
             "source": "GitHub",
             "source_url": "https://github.com/FaterYU/rm_auto_aim",
-            "checked_at": "2026-11-12T18:43:06.385Z"
+            "checked_at": "2026-11-13T00:10:04.518Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -7926,7 +9786,7 @@
         "pushed_at": "2024-08-12T03:53:11.000Z",
         "license": "GPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:01.890Z",
+        "metadata_fetched_at": "2026-11-13T00:09:59.603Z",
         "categories": [
           "sim"
         ],
@@ -7959,7 +9819,7 @@
             "value": 71,
             "source": "GitHub",
             "source_url": "https://github.com/scutrobotlab/SimulatorX",
-            "checked_at": "2026-11-12T18:43:01.890Z"
+            "checked_at": "2026-11-13T00:09:59.603Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -7986,7 +9846,7 @@
         "pushed_at": "2025-03-19T12:59:10.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:13.049Z",
+        "metadata_fetched_at": "2026-11-13T00:10:10.842Z",
         "categories": [
           "nav"
         ],
@@ -8019,7 +9879,7 @@
             "value": 67,
             "source": "GitHub",
             "source_url": "https://github.com/IRobot-Algorithm/sentry_navigation",
-            "checked_at": "2026-11-12T18:43:13.049Z"
+            "checked_at": "2026-11-13T00:10:10.842Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
@@ -8043,7 +9903,7 @@
         "pushed_at": "2022-10-07T08:41:29.000Z",
         "license": "GPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:24.603Z",
+        "metadata_fetched_at": "2026-11-13T00:10:20.781Z",
         "categories": [
           "aim"
         ],
@@ -8076,64 +9936,7 @@
             "value": 63,
             "source": "GitHub",
             "source_url": "https://github.com/XianMengxi/AutoAim_HUST",
-            "checked_at": "2026-11-12T18:43:24.603Z"
-          }
-        },
-        "first_seen": "2026-11-12T18:43:43.134Z"
-      },
-      {
-        "id": "Ericsii/rm_vision",
-        "full_name": "Ericsii/rm_vision",
-        "name": "rm_vision",
-        "owner": "Ericsii",
-        "owner_avatar": "https://avatars.githubusercontent.com/u/30063838?v=4",
-        "description_en": "基于 chenjunnn rm_vision 的机器人视觉算法仓库，用于RoboMaster机器人装甲板检测/车辆状态估计/弹道计算",
-        "description_zh": "基于 chenjunnn rm_vision 的机器人视觉算法仓库，用于RoboMaster机器人装甲板检测/车辆状态估计/弹道计算",
-        "highlight_zh": "",
-        "stars": 62,
-        "forks": 7,
-        "language": "C++",
-        "topics": [],
-        "url": "https://github.com/Ericsii/rm_vision",
-        "homepage": "",
-        "created_at": "2023-06-02T14:54:54Z",
-        "pushed_at": "2024-01-04T04:48:26.000Z",
-        "license": "Apache-2.0",
-        "archived": false,
-        "metadata_fetched_at": "2026-11-12T18:43:06.385Z",
-        "categories": [
-          "aim"
-        ],
-        "relevance": 42.9,
-        "rule_matches": [
-          {
-            "task_id": "autoaim",
-            "task": "装甲板自瞄与射击控制",
-            "keywords": []
-          }
-        ],
-        "rules_fingerprint": "0c84c6c447662688",
-        "recommendation": {
-          "scope": "rm",
-          "topics": [
-            {
-              "key": "aim",
-              "label_zh": "检测与目标跟踪",
-              "label_en": "Detection & Tracking"
-            }
-          ],
-          "lane": "reference",
-          "score": 31,
-          "quality": "reference",
-          "reason_zh": "直接面向RoboMaster的实现或研究；参考资料，近期或长期影响证据不足",
-          "limitations_zh": "RM项目仍需核对2027赛季的目标外观、地图、硬件和裁判协议；历史赛季代码不代表已适配新规则；超过一年未有代码更新，兼容性与依赖需复核",
-          "evidence_url": "https://github.com/Ericsii/rm_vision",
-          "metric": {
-            "label": "GitHub Stars",
-            "value": 62,
-            "source": "GitHub",
-            "source_url": "https://github.com/Ericsii/rm_vision",
-            "checked_at": "2026-11-12T18:43:06.385Z"
+            "checked_at": "2026-11-13T00:10:20.781Z"
           }
         },
         "first_seen": "2026-11-12T18:43:43.134Z"
