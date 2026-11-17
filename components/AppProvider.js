@@ -24,7 +24,7 @@ export default function AppProvider({ children }) {
   const [theme, setTheme] = useState("dark");
   const [lang, setLang] = useState("zh"); // zh | en | both
   const [role, setRole] = useState("student");
-  const [favs, setFavs] = useState(new Set());
+  const [{ favs, favoritePaperMeta }, setFavorites] = useState({ favs: new Set(), favoritePaperMeta: {} });
   const [reads, setReads] = useState(new Set());
   const [ready, setReady] = useState(false);
 
@@ -36,7 +36,12 @@ export default function AppProvider({ children }) {
     setTheme(t);
     setLang(l);
     setRole(r);
-    setFavs(loadSet("favs"));
+    let paperMeta = {};
+    try {
+      const stored = JSON.parse(localStorage.getItem("favoritePaperMeta") || "{}");
+      if (stored && typeof stored === "object" && !Array.isArray(stored)) paperMeta = stored;
+    } catch {}
+    setFavorites({ favs: loadSet("favs"), favoritePaperMeta: paperMeta });
     setReads(loadSet("reads"));
     setReady(true);
   }, []);
@@ -56,12 +61,26 @@ export default function AppProvider({ children }) {
     if (ready) localStorage.setItem("role", role);
   }, [role, ready]);
 
-  const toggleFav = (id) => {
-    setFavs((prev) => {
-      const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
-      localStorage.setItem("favs", JSON.stringify([...next]));
-      return next;
+  useEffect(() => {
+    if (!ready) return;
+    localStorage.setItem("favs", JSON.stringify([...favs]));
+    localStorage.setItem("favoritePaperMeta", JSON.stringify(favoritePaperMeta));
+  }, [favs, favoritePaperMeta, ready]);
+
+  const toggleFav = (id, paper) => {
+    setFavorites((previous) => {
+      const next = new Set(previous.favs);
+      const meta = { ...previous.favoritePaperMeta };
+      if (next.has(id)) {
+        next.delete(id);
+        delete meta[id];
+      } else {
+        next.add(id);
+        if (paper?.title_en || paper?.title_zh) {
+          meta[id] = { title_zh: paper.title_zh || "", title_en: paper.title_en || "", url: paper.url || "" };
+        }
+      }
+      return { favs: next, favoritePaperMeta: meta };
     });
   };
 
@@ -83,10 +102,10 @@ export default function AppProvider({ children }) {
     role,
     setRole,
     favs,
+    favoritePaperMeta,
     reads,
     toggleFav,
     toggleRead,
-    ready,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
