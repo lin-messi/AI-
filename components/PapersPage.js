@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PapersGrid from "@/components/PapersGrid";
@@ -8,6 +9,22 @@ import DateNav from "@/components/DateNav";
 import { useApp } from "@/components/AppProvider";
 import { STRINGS } from "@/lib/i18n";
 import { formatDateLong } from "@/lib/format";
+
+export function AcademicNav({ frontier = false }) {
+  const { lang } = useApp();
+  const en = lang === "en";
+
+  return (
+    <nav className="filters academic-nav" aria-label={en ? "Academic collections" : "学术栏目"}>
+      <Link className={`btn ${frontier ? "" : "active"}`} aria-current={frontier ? undefined : "page"} href="/papers/">
+        {en ? "Academic papers" : "学术论文"}
+      </Link>
+      <Link className={`btn ${frontier ? "active" : ""}`} aria-current={frontier ? "page" : undefined} href="/papers/ai-frontier/">
+        {en ? "AI Frontier" : "AI 前沿"}
+      </Link>
+    </nav>
+  );
+}
 
 export default function PapersPage({ day, dates = [], latest }) {
   const { lang } = useApp();
@@ -25,6 +42,7 @@ export default function PapersPage({ day, dates = [], latest }) {
           <div className="hero-date">{formatDateLong(day.date, lang)}</div>
           <h1 className="hero-title">{t.papersTitle}</h1>
           <p className="hero-desc">{t.papersDesc}</p>
+          <AcademicNav />
           {isLatest && <LiveStatus kind="papers" generatedAt={day.generatedAt} />}
           <div className="hero-stats">
             <div className="stat">

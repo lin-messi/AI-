@@ -6,7 +6,7 @@ import { STRINGS } from "@/lib/i18n";
 import PaperCard from "./PaperCard";
 import PaperReader from "./PaperReader";
 
-export default function PapersGrid({ items, fields }) {
+export default function PapersGrid({ items, fields, aiFrontier = false }) {
   const { lang, favs } = useApp();
   const t = STRINGS[lang === "en" ? "en" : "zh"];
 
@@ -14,6 +14,7 @@ export default function PapersGrid({ items, fields }) {
   const [field, setField] = useState("all");
   const [sort, setSort] = useState("recommendation");
   const [lane, setLane] = useState("all");
+  const [onlyWithResources, setOnlyWithResources] = useState(false);
   const [onlyFav, setOnlyFav] = useState(false);
   const [onlyFeatured, setOnlyFeatured] = useState(false);
   const [active, setActive] = useState(null); // 当前打开的论文
@@ -29,21 +30,28 @@ export default function PapersGrid({ items, fields }) {
 
   const filtered = useMemo(() => {
     let list = [...items];
-    if (field === "frontier") list = list.filter((p) => p.frontier);
-    else if (field !== "all") list = list.filter((p) => p.field === field);
+    if (field !== "all") {
+      if (aiFrontier) list = list.filter((p) => p.ai_frontier?.topics?.includes(field));
+      else if (field === "frontier") list = list.filter((p) => p.frontier);
+      else list = list.filter((p) => p.field === field);
+    }
     if (onlyFav) list = list.filter((p) => favs.has(p.id));
     if (onlyFeatured) list = list.filter((p) => p.featured);
     if (lane !== "all") list = list.filter((p) => p.recommendation?.lane === lane);
+    if (onlyWithResources) list = list.filter((p) => p.ai_frontier?.resources?.length > 0);
     if (query.trim()) {
       const q = query.toLowerCase();
       list = list.filter((p) =>
-        [p.title_zh, p.title_en, p.abstract_zh, p.abstract_en, ...(p.subtags || [])]
+        [p.title_zh, p.title_en, p.abstract_zh, p.abstract_en, ...(p.subtags || []),
+          ...(p.ai_frontier?.topics || []).map((key) => labelMap[key])]
           .join(" ")
           .toLowerCase()
           .includes(q)
       );
     }
     if (sort === "recommendation") {
+      // The AI Frontier snapshot already interleaves directions and evidence lanes.
+      if (aiFrontier) return list;
       list.sort((a, b) => {
         const ar = Number.isFinite(a.recommendation?.score), br = Number.isFinite(b.recommendation?.score);
         return ar && br ? b.recommendation.score - a.recommendation.score || (b.heat || 0) - (a.heat || 0)
@@ -65,12 +73,12 @@ export default function PapersGrid({ items, fields }) {
     else if (sort === "heat") list.sort((a, b) => (b.heat || 0) - (a.heat || 0));
     else list.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
     return list;
-  }, [items, fields, field, sort, lane, onlyFav, onlyFeatured, query, favs]);
+  }, [items, fields, field, sort, lane, onlyFav, onlyFeatured, onlyWithResources, query, favs, aiFrontier, labelMap]);
 
   // 切换筛选/搜索/排序时重置可见数量，回到第一批
   useEffect(() => {
     setVisible(PAGE);
-  }, [field, sort, lane, onlyFav, onlyFeatured, query]);
+  }, [field, sort, lane, onlyFav, onlyFeatured, onlyWithResources, query]);
 
   const shown = filtered.slice(0, visible);
 
@@ -82,6 +90,7 @@ export default function PapersGrid({ items, fields }) {
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            aria-label={lang === "en" ? "Search papers" : "搜索论文"}
             placeholder={t.searchPh}
           />
         </div>
@@ -89,24 +98,24 @@ export default function PapersGrid({ items, fields }) {
           <button className={`btn ${sort === "recommendation" ? "active" : ""}`} onClick={() => setSort("recommendation")}>
             {lang === "en" ? "Recommended" : "综合推荐"}
           </button>
-          <button
+          {!aiFrontier && <button
             className={`btn ${sort === "heat" ? "active" : ""}`}
             onClick={() => setSort("heat")}
           >
             {t.sortHeat}
-          </button>
+          </button>}
           <button
             className={`btn ${sort === "time" ? "active" : ""}`}
             onClick={() => setSort("time")}
           >
             {t.sortNew}
           </button>
-          <button
+          {!aiFrontier && <button
             className={`btn ${onlyFeatured ? "active" : ""}`}
             onClick={() => setOnlyFeatured((v) => !v)}
           >
             ✦ {t.onlyFeatured}
-          </button>
+          </button>}
           <button
             className={`btn ${onlyFav ? "active" : ""}`}
             onClick={() => setOnlyFav((v) => !v)}
@@ -116,19 +125,26 @@ export default function PapersGrid({ items, fields }) {
         </div>
       </div>
 
-      <label className="evidence-filter">
-        {lang === "en" ? "Recommendation type: " : "推荐类型："}
-        <select value={lane} onChange={e => setLane(e.target.value)}>
-          <option value="all">{t.all}</option>
-          <option value="recent">{lang === "en" ? "Recent research" : "近期成果"}</option>
-          <option value="established">{lang === "en" ? "Established references" : "长期参考"}</option>
-          <option value="reference">{lang === "en" ? "Research references" : "研究 / 实现参考"}</option>
-        </select>
-      </label>
+      <div className={aiFrontier ? "frontier-filters" : undefined}>
+        <label className="evidence-filter">
+          {lang === "en" ? "Recommendation type: " : "推荐类型："}
+          <select value={lane} onChange={e => setLane(e.target.value)}>
+            <option value="all">{t.all}</option>
+            <option value="recent">{aiFrontier ? (lang === "en" ? "Last 30 days" : "近 30 天") : (lang === "en" ? "Recent research" : "近期成果")}</option>
+            <option value="established">{lang === "en" ? "Established references" : "长期参考"}</option>
+            {!aiFrontier && <option value="reference">{lang === "en" ? "Research references" : "研究 / 实现参考"}</option>}
+          </select>
+        </label>
+        {aiFrontier && <label className="evidence-filter">
+          <input type="checkbox" checked={onlyWithResources} onChange={e => setOnlyWithResources(e.target.checked)} />
+          {lang === "en" ? "Has author resources" : "有作者资源"}
+        </label>}
+      </div>
 
       <div className="filters" style={{ marginTop: 4 }}>
         <button
           className={`btn ${field === "all" ? "active" : ""}`}
+          aria-pressed={field === "all"}
           onClick={() => setField("all")}
         >
           {t.all}
@@ -137,6 +153,7 @@ export default function PapersGrid({ items, fields }) {
           <button
             key={f.key}
             className={`btn ${field === f.key ? "active" : ""}`}
+            aria-pressed={field === f.key}
             onClick={() => setField(f.key)}
           >
             {lang === "en" ? f.label_en : f.label_zh}
@@ -144,15 +161,18 @@ export default function PapersGrid({ items, fields }) {
         ))}
       </div>
 
+      {aiFrontier && <p className="frontier-result-count" aria-live="polite">
+        {lang === "en" ? `${filtered.length} papers` : `${filtered.length} 篇论文`}
+      </p>}
       {filtered.length === 0 ? (
-        <div className="empty">{t.papersEmpty}</div>
+        <div className="empty">{aiFrontier ? (lang === "en" ? "No papers match these filters." : "没有符合当前筛选条件的论文。") : t.papersEmpty}</div>
       ) : (
         <div className="grid">
           {shown.map((p) => (
             <PaperCard
               key={p.id}
               paper={p}
-              fieldLabel={labelMap[p.field] || p.field}
+              fieldLabel={labelMap[aiFrontier ? p.ai_frontier?.primary_topic : p.field] || p.field}
               onOpen={setActive}
             />
           ))}
