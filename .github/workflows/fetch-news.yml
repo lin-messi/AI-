@@ -73,6 +73,13 @@ jobs:
           AI_BASE_URL: ${{ secrets.AI_BASE_URL }}
           AI_MODEL: ${{ secrets.AI_MODEL }}
 
+      - name: 更新 AI 前沿的引用、点赞与热力图
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '23 0,12 * * *'
+        continue-on-error: true
+        run: npm run fetch:ai-frontier-attention
+        env:
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+
       - name: 抓取 GitHub 推荐开源项目（含中文简介翻译；仅 01:00 计划或手动触发，每天 1 次）
         run: |
           # 同样用 github.event.schedule 判断，避免 Actions 执行延迟跨过整点导致永不更新。
@@ -121,6 +128,8 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/archive data/index.json data/papers data/papers-index.json data/github data/github-index.json data/robomaster data/robomaster-index.json data/robomaster-general.json data/rm-rules-qa.json data/rm-optical-library.json data/research-reference-library.json
           if [ -f data/ai-frontier.json ]; then git add data/ai-frontier.json; fi
+          if [ -f data/ai-frontier-attention.json ]; then git add data/ai-frontier-attention.json; fi
+          if [ -f data/ai-frontier-citations.json ]; then git add data/ai-frontier-citations.json; fi
           if git diff --staged --quiet; then
             echo "没有新数据，跳过提交"
           else
