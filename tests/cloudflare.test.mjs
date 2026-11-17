@@ -9,7 +9,7 @@ const request = (path, body, extra = {}) => new Request(`https://example.com${pa
 });
 
 test("export includes every indexed archive, current pages and a real 404", async () => {
-  for (const page of ["", "papers/", "papers/ai-frontier/", "github/", "robomaster/", "404/"]) {
+  for (const page of ["", "papers/", "papers/ai-frontier/", "papers/tracking/", "papers/compare/", "papers/topics/", "github/", "robomaster/", "404/"]) {
     await fs.access(`.cloudflare-build/out/${page}index.html`);
   }
   for (const [index, route] of [["index", "archive"], ["papers-index", "papers"], ["github-index", "github"], ["robomaster-index", "robomaster"]]) {

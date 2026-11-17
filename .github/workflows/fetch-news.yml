@@ -80,6 +80,13 @@ jobs:
         env:
           SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
 
+      - name: 核对学术论文版本和作者资源
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '23 0,12 * * *'
+        continue-on-error: true
+        run: npm run fetch:academic-watch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: 抓取 GitHub 推荐开源项目（含中文简介翻译；仅 01:00 计划或手动触发，每天 1 次）
         run: |
           # 同样用 github.event.schedule 判断，避免 Actions 执行延迟跨过整点导致永不更新。
@@ -130,6 +137,7 @@ jobs:
           if [ -f data/ai-frontier.json ]; then git add data/ai-frontier.json; fi
           if [ -f data/ai-frontier-attention.json ]; then git add data/ai-frontier-attention.json; fi
           if [ -f data/ai-frontier-citations.json ]; then git add data/ai-frontier-citations.json; fi
+          if [ -f data/academic-watch.json ]; then git add data/academic-watch.json; fi
           if git diff --staged --quiet; then
             echo "没有新数据，跳过提交"
           else

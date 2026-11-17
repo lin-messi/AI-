@@ -118,7 +118,7 @@ export default function PaperCard({ paper, fieldLabel, onOpen, isNew, interestMe
         <div className="card-actions">
           <button
             className={`iconbtn ${isFav ? "on" : ""}`}
-            onClick={() => toggleFav(paper.id)}
+            onClick={() => toggleFav(paper.id, paper)}
             title={t.fav}
             aria-label={t.fav}
           >

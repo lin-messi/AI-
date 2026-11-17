@@ -10,18 +10,24 @@ import { useApp } from "@/components/AppProvider";
 import { STRINGS } from "@/lib/i18n";
 import { formatDateLong } from "@/lib/format";
 
-export function AcademicNav({ frontier = false }) {
+export function AcademicNav({ frontier = false, tab }) {
   const { lang } = useApp();
   const en = lang === "en";
+  const active = tab || (frontier ? "frontier" : "papers");
+  const links = [
+    ["papers", "/papers/", "学术论文", "Academic papers"],
+    ["frontier", "/papers/ai-frontier/", "AI 前沿", "AI Frontier"],
+    ["tracking", "/papers/tracking/", "收藏追踪", "Saved paper updates"],
+    ["compare", "/papers/compare/", "论文对照", "Compare papers"],
+    ["topics", "/papers/topics/", "专题进展", "Topic updates"],
+  ];
 
   return (
     <nav className="filters academic-nav" aria-label={en ? "Academic collections" : "学术栏目"}>
-      <Link className={`btn ${frontier ? "" : "active"}`} aria-current={frontier ? undefined : "page"} href="/papers/">
-        {en ? "Academic papers" : "学术论文"}
-      </Link>
-      <Link className={`btn ${frontier ? "active" : ""}`} aria-current={frontier ? "page" : undefined} href="/papers/ai-frontier/">
-        {en ? "AI Frontier" : "AI 前沿"}
-      </Link>
+      {links.map(([key, href, zh, english]) => <Link key={key} href={href}
+        className={active === key ? "btn active" : "btn"} aria-current={active === key ? "page" : undefined}>
+        {en ? english : zh}
+      </Link>)}
     </nav>
   );
 }
