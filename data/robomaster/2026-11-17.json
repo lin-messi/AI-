@@ -1,6 +1,6 @@
 {
   "date": "2026-11-17",
-  "generatedAt": "2026-11-16T19:06:04.686Z",
+  "generatedAt": "2026-11-17T03:22:08.642Z",
   "categories": [
     {
       "key": "optical",
@@ -71,8 +71,86 @@
   "rules_fingerprint": "0d38b088047076a4",
   "rules_season": "2027",
   "papers": {
-    "count": 70,
+    "count": 80,
     "items": [
+      {
+        "id": "arxiv:2611.19534",
+        "arxiv_id": "2611.19534",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Depth-Aware Path Planning and Collision Avoidance for Robotic Nursing Assistants Using Real-Time 3D Vision",
+        "title_zh": "基于实时3D视觉的机器人护理助手深度感知路径规划与避障",
+        "abstract_en": "This paper presents a depth-aware path planning and collision avoidance framework for the safe navigation of robotic nursing assistants in cluttered environments with low-height obstacles. Conventional LiDAR-based navigation systems, while accurate for mapping and localization, fail to detect transparent or low-height obstacles, whereas vision-based systems are prone to noise and occlusion. The proposed framework integrates RGB-D depth sensing, rule-based obstacle avoidance, and the NavfnROS global path planner to drive the robot from an initial point to a goal point. The proposed approach is implemented on the Husky A200 robot, equipped with a Kinova Gen3 arm, to form a complete setup for a robotic nursing assistant. This system features a multi-layer architecture for global planning, perception fusion, and real-time control in the ROS-Gazebo environment. Experimental evaluations in a simulated cluttered environment demonstrate up to 40\\% higher success rate and 35\\% improvement in minimum clearance compared with single-sensor baselines. Furthermore, real-world experimental results validate the proposed approach as a computationally efficient and safety-aware navigation solution for autonomous healthcare robots.",
+        "abstract_zh": "本文提出一种深度感知的路径规划与避障框架，用于机器护理助手在含低矮障碍物的杂乱环境中安全导航。传统LiDAR导航虽建图与定位准确，却难以检测透明或低矮障碍；视觉系统则易受噪声和遮挡影响。该框架集成RGB-D深度传感、基于规则的避障和NavfnROS全局路径规划器，驱动机器人从起点到达目标点。作者在配备Kinova Gen3机械臂的Husky A200机器人上实现完整护理助手设置，并在ROS-Gazebo环境中采用多层架构完成全局规划、感知融合与实时控制。仿真实验表明，与单传感器基线相比，成功率最高提升40%，最小间隙改善35%；真实实验验证了该方法计算高效且具备安全感知能力。",
+        "highlight_zh": "RGB-D融合规则避障提升护理机器人低矮障碍导航安全",
+        "digest_zh": "这篇论文关注医院或护理场景中，机器人助手如何在拥挤且存在低矮、透明障碍物的走廊里安全移动。问题在于：LiDAR建图定位准，却容易漏掉透明或贴地障碍；纯视觉又受噪声、遮挡干扰。作者把RGB-D深度相机、基于规则的局部避障和NavfnROS全局路径规划结合起来，让机器人从起点规划到目标点，并在ROS-Gazebo中搭建全局规划、感知融合和实时控制的多层系统。硬件平台是Husky A200移动底座加Kinova Gen3机械臂，构成护理助手原型。仿真对比显示，该多传感器融合方案相较单一传感器基线，任务成功率最高提高40%，最小安全间隙改善35%；真实环境实验也表明计算开销可控、导航更安全。其意义在于为自主医疗机器人提供一种兼顾实时性与安全性的导航思路，尤其补足低矮和透明障碍检测短板。",
+        "authors": [
+          "Peeyush Thakur",
+          "Dharmendra Sharma",
+          "Archit Sharma",
+          "Sandeep Gupta",
+          "Anuj Nandanwar",
+          "Laxmidhar Behera"
+        ],
+        "url": "https://arxiv.org/abs/2611.19534v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.19534",
+        "html_url": "https://arxiv.org/abs/2611.19534",
+        "published_at": "2026-11-14T17:58:27.000Z",
+        "upvotes": 0,
+        "heat": 2102.635945277778,
+        "featured": true,
+        "categories": [
+          "nav",
+          "planning"
+        ],
+        "image": "",
+        "comment": "12 pages, 14 figures",
+        "relevance": 49,
+        "rule_matches": [
+          {
+            "task_id": "sentry",
+            "task": "哨兵机器人自主导航与决策",
+            "keywords": [
+              "obstacle avoidance",
+              "路径规划",
+              "避障"
+            ]
+          }
+        ],
+        "rules_fingerprint": "0d38b088047076a4",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "nav",
+              "label_zh": "地面自主导航",
+              "label_en": "Ground Navigation"
+            },
+            {
+              "key": "planning",
+              "label_zh": "运动规划",
+              "label_en": "Motion Planning"
+            }
+          ],
+          "lane": "recent",
+          "score": 38,
+          "quality": "implementation",
+          "reason_zh": "地面自主导航、运动规划的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统",
+          "evidence_url": "https://arxiv.org/abs/2611.19534v1"
+        },
+        "first_seen": "2026-11-17T03:21:43.098Z",
+        "rm": {
+          "usage": "可借鉴其RGB-D深度感知检测低矮/透明障碍并结合全局规划器的思路，用于哨兵在RM场地内的局部避障与路径规划；需在RM传感器、算力和场地条件下验证，不能视为完整哨兵导航系统。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "mid",
+          "rules_fingerprint": "0d38b088047076a4",
+          "season": "2027"
+        }
+      },
       {
         "id": "arxiv:2611.11164",
         "arxiv_id": "2611.11164",
@@ -587,6 +665,71 @@
           "task_id": "aerial",
           "task": "空中系统自主飞行与机库交互",
           "value": "mid",
+          "rules_fingerprint": "0d38b088047076a4",
+          "season": "2027"
+        }
+      },
+      {
+        "id": "arxiv:2611.19720",
+        "arxiv_id": "2611.19720",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Sim-to-Real Room-Mediated Object-Goal Navigation with ROS 2 and Nav2",
+        "title_zh": "基于ROS 2与Nav2的仿真到真实房间介导目标物体导航",
+        "abstract_en": "Although object-goal navigation (ObjectNav) approaches are usually evaluated in simulation, which offers scale and repeatable environments, real-world deployments are rarely examined beyond feasibility demonstrations. This paper presents the deployment of Room-Mediated Co-occurrence, an ObjectNav policy that reasons over Room Probability Vectors (RPVs), on two robotic platforms (Boston Dynamics Spot and Clearpath Robotics TurtleBot 4) through a robot-agnostic ROS 2 bridge. We study how these semantic priors generalise to physical environments and describe the adaptations required to transfer RPV from simulation to hardware, covering sensing, localisation, and the action interface. Across 66 trials on Spot, searching for 11 object categories from two starting positions in a university postgraduate research facility, RPV achieves a raw Success Rate (SR) of 0.455. Our analysis identifies undetected glass walls, entry into off-limits areas, limited usable depth range, target size, and mismatch between the room lexicon and physical layout as plausible contributors to the 8.4 percentage-point gap between the real-world SR and the reported simulated SR of 0.539. Code is available at https://github.com/Matthew-K-Chua/rpv-ros2-bridge.",
+        "abstract_zh": "尽管目标物体导航（ObjectNav）方法通常在仿真中评估，仿真提供了规模化且可重复的环境，但真实世界部署很少在可行性演示之外得到检验。本文介绍通过机器人无关的ROS 2桥接，将Room-Mediated Co-occurrence（一种基于房间概率向量（RPV）推理的ObjectNav策略）部署到两个机器人平台（Boston Dynamics Spot和Clearpath Robotics TurtleBot 4）上。我们研究这些语义先验如何泛化到物理环境，并描述将RPV从仿真迁移到硬件所需的适配，涵盖传感、定位和动作接口。在Spot上的66次试验中，在大学研究生研究设施内从两个起始位置搜索11个物体类别，RPV取得0.455的原始成功率（SR）。我们的分析指出，未被检测到的玻璃墙、进入禁区、可用深度范围有限、目标尺寸，以及房间词库与物理布局之间的不匹配，可能是真实世界SR与报道的仿真SR 0.539之间8.4个百分点差距的促成因素。代码见https://github.com/Matthew-K-Chua/rpv-ros2-bridge。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Matthew Chua",
+          "Adam Scicluna",
+          "Gavin Paul"
+        ],
+        "url": "https://arxiv.org/abs/2611.19720v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.19720",
+        "html_url": "https://arxiv.org/abs/2611.19720",
+        "published_at": "2026-11-15T02:07:36.000Z",
+        "upvotes": 0,
+        "heat": 2110.788448611111,
+        "featured": false,
+        "categories": [
+          "nav"
+        ],
+        "image": "",
+        "comment": "9 pages. Accepted to ACRA (Australasian Conference on Robotics and Automation) 2026",
+        "relevance": 46,
+        "rule_matches": [
+          {
+            "task_id": "sentry",
+            "task": "哨兵机器人自主导航与决策",
+            "keywords": []
+          }
+        ],
+        "rules_fingerprint": "0d38b088047076a4",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "nav",
+              "label_zh": "地面自主导航",
+              "label_en": "Ground Navigation"
+            }
+          ],
+          "lane": "recent",
+          "score": 36,
+          "quality": "implementation",
+          "reason_zh": "地面自主导航的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统",
+          "evidence_url": "https://arxiv.org/abs/2611.19720v1"
+        },
+        "first_seen": "2026-11-17T03:21:43.098Z",
+        "rm": {
+          "usage": "其ROS 2/Nav2的仿真到实机迁移经验与失败因素分析可作哨兵导航部署的参考，但ObjectNav的室内房间语义先验与RM战场任务差异较大，直接用途有限。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "low",
           "rules_fingerprint": "0d38b088047076a4",
           "season": "2027"
         }
@@ -1644,6 +1787,149 @@
         }
       },
       {
+        "id": "arxiv:2611.19190",
+        "arxiv_id": "2611.19190",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Distilling Safety Filters for Filter-free Multi-agent RL",
+        "title_zh": "面向无滤波器多智能体强化学习的安全滤波器蒸馏",
+        "abstract_en": "Reinforcement learning (RL) can teach robot teams to navigate shared spaces, but trial and error causes collisions that real robots cannot afford. Control barrier function (CBF) safety filters prevent these collisions by correcting unsafe actions, yet in a team the filter becomes a centralized optimization whose number of constraints grows quadratically with the team size. We propose an approach that builds the filter's safety into the RL policy and examine how such a system behaves during filter-free deployment. However, the filter that keeps training safe also hides what the policy must learn: it masks the cost of unsafe actions, which actor-critic methods then overvalue, and it keeps near-collision states out of the training data. Our approach therefore learns only from executed safe actions with implicit Q-learning and distills the filter into the policy at synthetic near-collision states. We prove that filter distillation loss bounds the policy's constraint violation and hence how far agents can cross their safety margin, so errors never accumulate. When distillation states cover deployed states, the loss also bounds the collision probability at every step. Without a filter and acting only on local observations, our policies have no collisions in 1,800 test episodes with multiple agents. A policy trained with three agents transfers zero-shot to teams of twenty at constant per-agent computation and stays collision-free with up to eight agents. We test our policies on Crazyflie quadrotors with up to five flying at the same time.",
+        "abstract_zh": "强化学习（RL）可以教会机器人团队在共享空间中导航，但试错会导致碰撞，而真实机器人无法承受这些碰撞。控制屏障函数（CBF）安全滤波器通过纠正不安全动作来防止这些碰撞，但在团队中，滤波器变成集中式优化，其约束数量随团队规模二次增长。我们提出一种将滤波器安全性内建到RL策略中的方法，并考察此类系统在无滤波器部署期间的行为。然而，保持训练安全的滤波器也隐藏了策略必须学习的内容：它掩盖不安全动作的代价，actor-critic方法因此会高估这些代价，并且它将接近碰撞的状态排除在训练数据之外。因此，我们的方法仅通过隐式Q学习从已执行的安全动作中学习，并在合成的近碰撞状态下将滤波器蒸馏到策略中。我们证明，滤波器蒸馏损失界定了策略的约束违反程度，从而界定了智能体能够越过其安全裕度的距离，因此误差不会累积。当蒸馏状态覆盖部署状态时，该损失还界定了每一步的碰撞概率。在没有滤波器且仅基于局部观测行动的情况下，我们的策略在包含多个智能体的1,800个测试回合中无碰撞。用三个智能体训练的策略在每智能体计算量恒定的情况下零样本迁移到二十个智能体的团队，并在最多八个智能体时保持无碰撞。我们在Crazyflie四旋翼上测试策略，最多五架同时飞行。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Srikar Babu Gadipudi",
+          "Somayeh Sojoudi",
+          "Claire J. Tomlin"
+        ],
+        "url": "https://arxiv.org/abs/2611.19190v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.19190",
+        "html_url": "https://arxiv.org/abs/2611.19190",
+        "published_at": "2026-11-14T06:11:45.000Z",
+        "upvotes": 0,
+        "heat": 2090.85761,
+        "featured": false,
+        "categories": [
+          "aerial",
+          "control"
+        ],
+        "image": "",
+        "comment": "23 pages, 4 figures and 6 tables",
+        "relevance": 43,
+        "rule_matches": [
+          {
+            "task_id": "aerial",
+            "task": "空中系统自主飞行与机库交互",
+            "keywords": [
+              "四旋翼"
+            ]
+          }
+        ],
+        "rules_fingerprint": "0d38b088047076a4",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "control",
+              "label_zh": "机器人控制",
+              "label_en": "Robot Control"
+            }
+          ],
+          "lane": "recent",
+          "score": 36,
+          "quality": "implementation",
+          "reason_zh": "机器人控制的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场",
+          "evidence_url": "https://arxiv.org/abs/2611.19190v1"
+        },
+        "first_seen": "2026-11-17T03:21:43.098Z",
+        "rm": {
+          "usage": "可借鉴其将CBF安全滤波蒸馏进多无人机分散策略、仅用局部观测避免碰撞的思路，用于空中机器人同时飞行时的机间避障；需核对室内定位与通信前提，不能依赖场外动捕、GPS或Wi-Fi/UWB组网，也不能据此加装发射机构。",
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "value": "mid",
+          "rules_fingerprint": "0d38b088047076a4",
+          "season": "2027"
+        }
+      },
+      {
+        "id": "arxiv:2611.18855",
+        "arxiv_id": "2611.18855",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.CV",
+          "eess.SY"
+        ],
+        "title_en": "Technical Report of Auriga's 1:10 Scale Autonomous Vehicle Robot",
+        "title_zh": "Auriga 1:10比例自动驾驶车辆机器人的技术报告",
+        "abstract_en": "This report presents the design and implementation of Auriga Robotics' 1:10 scale autonomous vehicle, developed at Shahid Beheshti University's Robotics and Intelligent Automation Laboratory. The platform integrates a custom mechanical chassis, a distributed embedded system based on ESP32 microcontrollers, and a Jetson Orin NX module for high-level perception and control. The embedded layer manages sensor interfacing, real-time data acquisition, and actuator control, while the Jetson handles environment perception through deep-learning--based lane, sign, and traffic light detection, as well as decision-making and trajectory control. System communication is achieved via structured UART links, ensuring synchronized operation between perception and control subsystems. The vehicle's software stack incorporates ROS, modular firmware design, and multiple control algorithms---Stanley, PID, and Pure Pursuit---to achieve stable autonomous navigation in structured driving scenarios. The overall system demonstrates robust performance and reliability in urban-like environments, serving as a modular research platform for future autonomous driving studies.",
+        "abstract_zh": "本报告介绍Auriga Robotics的1:10比例自动驾驶车辆的设计与实现，该车辆在Shahid Beheshti大学机器人与智能自动化实验室开发。该平台集成定制机械底盘、基于ESP32微控制器的分布式嵌入式系统，以及用于高层感知与控制的Jetson Orin NX模块。嵌入式层管理传感器接口、实时数据采集和执行器控制，而Jetson通过基于深度学习的车道、标志和交通灯检测处理环境感知，以及决策和轨迹控制。系统通信通过结构化UART链路实现，确保感知与控制子系统之间的同步运行。车辆软件栈包含ROS、模块化固件设计以及多种控制算法——Stanley、PID和Pure Pursuit——以在结构化驾驶场景中实现稳定的自主导航。整体系统在类城市环境中表现出稳健的性能和可靠性，可作为未来自动驾驶研究的模块化研究平台。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Marya Sabouri Dodaran",
+          "Ali Taheri Garakani",
+          "Mandana Shabanzadeh Nasrollah-Abadi",
+          "Yousef Ashrafi",
+          "Mohammad Mahdi Azimi",
+          "Erfan Nekouei Ghahfarokhi",
+          "Amirhossein Kheiri Holighi",
+          "Seyyed Sobhan Hosseini Hajibakandeh"
+        ],
+        "url": "https://arxiv.org/abs/2611.18855v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.18855",
+        "html_url": "https://arxiv.org/abs/2611.18855",
+        "published_at": "2026-11-13T19:07:45.000Z",
+        "upvotes": 0,
+        "heat": 2079.7909391666667,
+        "featured": false,
+        "categories": [
+          "nav"
+        ],
+        "image": "",
+        "comment": "62 pages, 32 figures, 11 tables, 1 algorithm. Technical report of Team Auriga's 2025 1:10 scale autonomous vehicle platform (Robotics and Intelligent Automation Laboratory, Shahid Beheshti University)",
+        "relevance": 43,
+        "rule_matches": [
+          {
+            "task_id": "sentry",
+            "task": "哨兵机器人自主导航与决策",
+            "keywords": [
+              "autonomous navigation",
+              "decision making"
+            ]
+          }
+        ],
+        "rules_fingerprint": "0d38b088047076a4",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "nav",
+              "label_zh": "地面自主导航",
+              "label_en": "Ground Navigation"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "地面自主导航的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2611.18855v1"
+        },
+        "first_seen": "2026-11-17T03:21:43.098Z",
+        "rm": {
+          "usage": "其Jetson/ROS与Stanley、Pure Pursuit等路径跟踪方案可作为地面自主导航的工程参考，但面向结构化道路的1:10小车与RM哨兵的全向底盘和战场任务不匹配，关联较弱。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "low",
+          "rules_fingerprint": "0d38b088047076a4",
+          "season": "2027"
+        }
+      },
+      {
         "id": "arxiv:2611.15781",
         "arxiv_id": "2611.15781",
         "source": "arXiv",
@@ -2307,6 +2593,73 @@
         }
       },
       {
+        "id": "arxiv:2611.18877",
+        "arxiv_id": "2611.18877",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Passage-Focused Soft Coordination for Hierarchical Multi-Robot Navigation in Bottleneck Environments",
+        "title_zh": "面向瓶颈环境分层多机器人导航的通道聚焦软协调",
+        "abstract_en": "In multi-robot navigation, rigid global schedules are sensitive to execution deviations, while local methods lack long-horizon coordination. We propose a passage-focused framework combining soft global coordination with flexible local execution. A passage-induced graph of convex sets supports priority-ordered planning with two levels of soft coordination. Passage-aware route selection accounts for passage usage and traversal directions, while route-restricted continuous space-time planning penalizes temporal conflicts. The resulting references guide a model predictive path integral controller that avoids collisions online. Adaptive temporal and geometric tracking accommodates execution deviations, while selective replanning maintains coordination without rigid trajectory reservations. Across 1,200 instances in 4 different environments with 5-30 robots, the framework achieves a near-perfect success rate and outperforms evaluated baselines in makespan and flowtime. Hardware experiments with 8 robots demonstrate successful completion of all trials without collisions. These results highlight the effectiveness of passage-focused coordination in balancing long-horizon cooperation with flexible execution.",
+        "abstract_zh": "在多机器人导航中，刚性的全局调度对执行偏差敏感，而局部方法缺乏长时程协调。我们提出一种通道聚焦框架，将软全局协调与灵活的局部执行相结合。由通道诱导的凸集图支持具有两级软协调的优先级排序规划。通道感知的路径选择考虑通道使用和通行方向，而路线受限的连续时空规划对时间冲突施加惩罚。生成的参考轨迹引导模型预测路径积分控制器在线避碰。自适应时间与几何跟踪适应执行偏差，而选择性重规划在没有刚性轨迹预留的情况下维持协调。在4个不同环境、5–30个机器人的1,200个实例中，该框架达到接近完美的成功率，并在完工时间和流时间上优于所评估的基线。8个机器人的硬件实验表明所有试验均成功完成且无碰撞。这些结果凸显了通道聚焦协调在平衡长时程合作与灵活执行方面的有效性。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Haoze Dong",
+          "Stepan Dergachev",
+          "Meng Guo",
+          "Konstantin Yakovlev",
+          "Zhongkui Li"
+        ],
+        "url": "https://arxiv.org/abs/2611.18877v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.18877",
+        "html_url": "https://arxiv.org/abs/2611.18877",
+        "published_at": "2026-11-13T19:31:43.000Z",
+        "upvotes": 0,
+        "heat": 2080.1903844444446,
+        "featured": false,
+        "categories": [
+          "nav"
+        ],
+        "image": "",
+        "comment": "9 pages, 8 figures, 5 tables. Submitted to IEEE Robotics and Automation Letters",
+        "relevance": 42,
+        "rule_matches": [
+          {
+            "task_id": "sentry",
+            "task": "哨兵机器人自主导航与决策",
+            "keywords": []
+          }
+        ],
+        "rules_fingerprint": "0d38b088047076a4",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "nav",
+              "label_zh": "地面自主导航",
+              "label_en": "Ground Navigation"
+            }
+          ],
+          "lane": "recent",
+          "score": 36,
+          "quality": "implementation",
+          "reason_zh": "地面自主导航的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统",
+          "evidence_url": "https://arxiv.org/abs/2611.18877v1"
+        },
+        "first_seen": "2026-11-17T03:21:43.098Z",
+        "rm": {
+          "usage": "多机器人瓶颈通道协调与时空规划可用于理解狭窄区域通行，但RM哨兵主要是单机自主导航且通信受限，该多机刚性协调框架难以直接落地。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "low",
+          "rules_fingerprint": "0d38b088047076a4",
+          "season": "2027"
+        }
+      },
+      {
         "id": "arxiv:2611.10451",
         "arxiv_id": "2611.10451",
         "source": "arXiv",
@@ -2581,6 +2934,79 @@
         }
       },
       {
+        "id": "arxiv:2610.27414",
+        "arxiv_id": "2610.27414",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "eess.SY"
+        ],
+        "title_en": "Real-Time Disturbance-Aware Koopman Model Predictive Control for Quadrotors in Spatially Varying Winds",
+        "title_zh": "空间变化风场中四旋翼的实时扰动感知Koopman模型预测控制",
+        "abstract_en": "Reliable quadrotor flight in disturbed environments requires predictive models that remain accurate as unmodeled aerodynamic effects change during deployment. We introduce a disturbance-aware Koopman Control Family (DA-KCF) framework that preserves an offline-identified nominal model while learning only a disturbance-induced correction online. A reference-dependent KCF is first learned from simulation data and calibrated using limited hardware data. During deployment, the nominal KCF remains fixed while a lightweight residual ensemble learns a low-dimensional disturbance correction from causal state-command-state transitions. The Adaptive DA-KCF model is incorporated into MPC, where disturbance corrections are evaluated along the prediction horizon to optimize position and yaw references sent to the onboard stabilizing controller. Hardware experiments on a nano-quadrotor under uniform wind and a spatially varying wake demonstrate that online adaptation improves multi-step prediction and trajectory tracking as disturbance-induced model mismatch increases, while satisfying real-time control requirements.",
+        "abstract_zh": "在受扰环境中可靠的四旋翼飞行要求预测模型在部署期间未建模气动效应变化时仍保持准确。我们提出扰动感知Koopman控制族（DA-KCF）框架，该框架保留离线辨识的标称模型，同时仅在线学习由扰动引起的修正。首先从仿真数据学习依赖参考的KCF，并使用有限的硬件数据进行校准。在部署期间，标称KCF保持固定，而轻量级残差集成从因果的状态-指令-状态转移中学习低维扰动修正。自适应DA-KCF模型被纳入MPC，其中沿预测时域评估扰动修正，以优化发送至机载稳定控制器的位置和偏航参考。在均匀风和空间变化尾流下的纳米四旋翼硬件实验表明，随着扰动引起的模型失配增加，在线自适应改善了多步预测和轨迹跟踪，同时满足实时控制要求。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Stella Kombo",
+          "Masih Haseli",
+          "Alejandro A. Stefan-Zavala",
+          "Peter I. Renn",
+          "Morteza Gharib",
+          "Joel W. Burdick"
+        ],
+        "url": "https://arxiv.org/abs/2610.27414v2",
+        "pdf_url": "https://arxiv.org/pdf/2610.27414",
+        "html_url": "https://arxiv.org/abs/2610.27414",
+        "published_at": "2026-10-20T00:09:22.000Z",
+        "upvotes": 0,
+        "heat": 1484.8178047222223,
+        "featured": false,
+        "categories": [
+          "aerial",
+          "control"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 42,
+        "rule_matches": [
+          {
+            "task_id": "aerial",
+            "task": "空中系统自主飞行与机库交互",
+            "keywords": [
+              "quadrotor",
+              "四旋翼"
+            ]
+          }
+        ],
+        "rules_fingerprint": "0d38b088047076a4",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "control",
+              "label_zh": "机器人控制",
+              "label_en": "Robot Control"
+            }
+          ],
+          "lane": "recent",
+          "score": 36,
+          "quality": "implementation",
+          "reason_zh": "机器人控制的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场",
+          "evidence_url": "https://arxiv.org/abs/2610.27414v2"
+        },
+        "first_seen": "2026-11-17T03:21:43.098Z",
+        "rm": {
+          "usage": "其扰动感知Koopman-MPC可用于空中机器人在机库附近或其他无人机气流扰动下的稳定悬停与轨迹跟踪；需具备可靠机载状态估计和实时算力，不能把外部动捕/GPS条件直接搬入赛场。",
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "value": "mid",
+          "rules_fingerprint": "0d38b088047076a4",
+          "season": "2027"
+        }
+      },
+      {
         "id": "arxiv:2611.15342",
         "arxiv_id": "2611.15342",
         "source": "arXiv",
@@ -2723,6 +3149,76 @@
         }
       },
       {
+        "id": "arxiv:2611.15277",
+        "arxiv_id": "2611.15277",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "DroneDiffusion: Uncertainty-Guided Diffusion Path Planner for UAV Navigation",
+        "title_zh": "DroneDiffusion：面向无人机导航的不确定性引导扩散路径规划器",
+        "abstract_en": "We present DroneDiffusion, a perception-aware diffusion planner for local 3-D UAV trajectory generation that explicitly models and avoids failure zones caused by lens flare, overexposure, and reflective surfaces. A vision-language perceptual safety estimator produces a pixel-aligned reliability map that highlights regions of degraded sensing. A denoising diffusion probabilistic model (DDPM) is conditioned on this map together with the onboard RGB image, goal point, and initial velocity to generate egocentric 3-D trajectories. To enforce obstacle avoidance at inference time without retraining, we apply training-free CHOMP guidance over a 3-D Euclidean signed distance field. The model is trained entirely in simulation and deployed zero-shot on a real drone. Reliability conditioning raises the mean perceptual reliability along generated trajectories to 0.71, compared with 0.63 for a geometric baseline, while guidance halves the collision rate of the learned prior from 14.7% to 7.8%. Perceptual safety conditioning and geometric guidance are therefore complementary: treating sensor reliability as a first-class signal reduces incursions into unreliable regions while maintaining competitive navigation performance.",
+        "abstract_zh": "我们提出 DroneDiffusion，一种具备感知意识的扩散规划器，用于局部三维无人机轨迹生成，显式建模并避开由镜头眩光、过曝和反射表面导致的失效区域。一个视觉-语言感知安全估计器生成像素对齐的可靠性图，突出显示感知退化的区域。去噪扩散概率模型（DDPM）以该图以及机载 RGB 图像、目标点和初始速度为条件，生成以自我为中心的三维轨迹。为了在推理时无需重新训练即可强制避障，我们在三维欧几里得符号距离场上应用免训练的 CHOMP 引导。模型完全在仿真中训练，并以零样本方式部署在真实无人机上。可靠性条件将生成轨迹沿线的平均感知可靠性提高到 0.71，而几何基线为 0.63；引导将学习先验的碰撞率从 14.7% 降低到 7.8%。因此，感知安全条件与几何引导是互补的：将传感器可靠性视为一等信号可减少进入不可靠区域的情况，同时保持有竞争力的导航性能。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Ivan Valuev",
+          "Iana Zhura",
+          "Valerii Serpiva",
+          "Miguel Altamirano Cabrera",
+          "Dzmitry Tsetserukou"
+        ],
+        "url": "https://arxiv.org/abs/2611.15277v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.15277",
+        "html_url": "https://arxiv.org/abs/2611.15277",
+        "published_at": "2026-11-11T10:08:50.000Z",
+        "upvotes": 0,
+        "heat": 2022.8089761111112,
+        "featured": false,
+        "categories": [
+          "aerial",
+          "planning"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 41,
+        "rule_matches": [
+          {
+            "task_id": "aerial",
+            "task": "空中系统自主飞行与机库交互",
+            "keywords": [
+              "无人机"
+            ]
+          }
+        ],
+        "rules_fingerprint": "0d38b088047076a4",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "planning",
+              "label_zh": "运动规划",
+              "label_en": "Motion Planning"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "运动规划的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2611.15277v1"
+        },
+        "first_seen": "2026-11-17T03:21:43.098Z",
+        "rm": {
+          "usage": "其感知可靠性图引导的局部三维轨迹规划思路，可启发空中机器人在反光、过曝、眩光区域附近避障与选路；但扩散规划器和CHOMP引导算力较重，需大幅轻量化并验证室内定位前提。",
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "value": "mid",
+          "rules_fingerprint": "0d38b088047076a4",
+          "season": "2027"
+        }
+      },
+      {
         "id": "cvf:CVPR2026:ConceptPose: Training-Free Zero-Shot Object Pose Estimation ",
         "arxiv_id": "",
         "source": "CVPR",
@@ -2790,83 +3286,6 @@
         }
       },
       {
-        "id": "arxiv:2608.16858",
-        "arxiv_id": "2608.16858",
-        "source": "arXiv",
-        "cats": [
-          "eess.SP",
-          "cs.CR",
-          "cs.IT",
-          "cs.NI",
-          "eess.SY"
-        ],
-        "title_en": "ECO-ID: Event-Camera based Optical System for Secure Multi-User Ultra-Low Latency Identification",
-        "title_zh": "ECO-ID：基于事件相机的多用户超低时延安全光学识别系统",
-        "abstract_en": "Time-critical interactive systems increasingly require ultra-low-latency device identification for multiple users, yet prevailing approaches such as passwords, QR codes, and RFID/NFC are constrained by human input, frame-based sensing, or near-contact range. This paper presents ECO-ID, an event-camera-based optical system for multi-user, ultra-low-latency identification over visible light communication (VLC). Leveraging microsecond-resolution, asynchronous observations of brightness transitions, ECO-ID employs a spatiotemporal coding design: disjoint LED subsets provide spatial separation among users, while user-specific timing delays encode identities without inter-user synchronization. The optical channel and event-driven sensing reduce full-scene capture relative to frame cameras and limit the RF attack surface, while enabling rapid token verification with freshness and replay protection. We implement a prototype and demonstrate that ECO-ID can practically achieve approximately 99.8\\% localization and 98.7\\% identification with 0.64 ms mean latency, while theoretically supporting identification at the scale of tens of concurrent users. Overall, ECO-ID provides a fast, privacy-conscious, and security-aware alternative for scalable multi-user identification in time-critical interactive environments.",
-        "abstract_zh": "时间敏感的交互系统日益需要面向多用户的超低时延设备识别，而密码、二维码、RFID/NFC等主流方式受限于人工输入、帧式传感或近距接触。本文提出ECO-ID，一种基于事件相机、通过可见光通信（VLC）实现多用户超低时延识别的光学系统。它利用事件相机对亮度跃变微秒级、异步的观测能力，采用时空编码设计：互不相交的LED子集在空间上区分不同用户，用户特定的时延则在不需用户间同步的情况下编码身份。光学信道与事件驱动传感减少了对整幅场景的采集，也缩小了射频攻击面，同时支持带新鲜性校验与重放保护的快速凭证验证。原型实验表明，ECO-ID 可实现约99.8%的定位率与98.7%的识别率，平均时延 0.64 ms，理论上可支持数十个并发用户。",
-        "highlight_zh": "事件相机+LED时空编码，实现0.64毫秒多用户光学身份识别",
-        "digest_zh": "一、研究了什么问题：在需要即时响应的交互场景（如多人同时操作的大屏、AR/VR、门禁）中，设备要快速认出“现在是谁在操作”。密码要人输入、二维码要人举起来对准、RFID/NFC则要求贴近，且基于帧的摄像头天生有延迟。作者要解决的是：如何让多个用户几乎无感地、在毫秒级被识别出来。\n\n二、用了什么方法：用事件相机作为接收器。事件相机不像普通摄像头那样逐帧曝光，而是只在像素亮度发生变化时异步输出事件，时间分辨率达微秒级。作者设计了时空联合编码：空间上，给不同用户分配互不重叠的LED子集，靠位置区分人；时间上，给每个用户设定专属的发光时延，靠“节奏”编码身份，而且不需要用户之间做时钟同步。安全方面，光信道不易被远程窃听，事件相机只记录变化而非整幅画面，也缩小了射频攻击面，并配合新鲜性校验与防重放机制。\n\n三、有什么结果：作者做出原型系统，实测定位准确率约99.8%、身份识别准确率约98.7%，平均时延仅0.64 ms；分析表明该方案在原理上可扩展到数十个并发用户。\n\n四、为何重要：它给出了一条不依赖人工操作、不依赖射频、且兼顾隐私与安全的识别路径，适用于对延迟极敏感的多人交互场景，是对二维码与RFID等方案的有力补充。",
-        "authors": [
-          "Subham Sabud",
-          "Chengling Xu",
-          "Feng Ye"
-        ],
-        "url": "https://arxiv.org/abs/2608.16858v1",
-        "pdf_url": "https://arxiv.org/pdf/2608.16858",
-        "html_url": "https://arxiv.org/abs/2608.16858",
-        "published_at": "2026-08-17T17:41:11.000Z",
-        "upvotes": 0,
-        "heat": 0,
-        "featured": false,
-        "categories": [
-          "optical"
-        ],
-        "image": "",
-        "comment": "6 pages, 5 figures, and 2 tables. Submitted to IEEE globecom",
-        "optical_query": true,
-        "relevance": 41,
-        "optical_review": {
-          "arxiv_id": "2608.16858",
-          "doi": "10.48550/arXiv.2608.16858",
-          "receiver": "event_camera",
-          "reason_zh": "2026年的ECO-ID使用LED时空编码和事件相机实现异步光源身份识别，可参考其ROI关联和相对时延编码来区分机库或机间可见光信标。",
-          "limitations_zh": "实机原型将同一八LED面板划分为两组来模拟两位用户，不能当作已验证的多无人机组网；更多用户容量主要来自理论分析，移动与环境光鲁棒性仍列为后续工作，也不能将抗重放设计等同于完整安全验证；未核验公开代码，arXiv注明投稿GLOBECOM。",
-          "source_url": "https://arxiv.org/abs/2608.16858",
-          "kind": "implementation",
-          "verified": true,
-          "checked_at": "2026-11-12T14:03:33.807Z"
-        },
-        "first_seen": "2026-11-05T11:58:13.189Z",
-        "rule_matches": [
-          {
-            "task_id": "optical",
-            "task": "空中系统可见光通信链路",
-            "keywords": [
-              "visible light communication",
-              "可见光通信"
-            ]
-          }
-        ],
-        "rules_fingerprint": "0d38b088047076a4",
-        "recommendation": {
-          "lane": "recent",
-          "score": 38,
-          "reason_zh": "2026年的ECO-ID使用LED时空编码和事件相机实现异步光源身份识别，可参考其ROI关联和相对时延编码来区分机库或机间可见光信标；近一年发表",
-          "receiver": "event_camera",
-          "evidence_url": "https://arxiv.org/abs/2608.16858",
-          "limitations_zh": "实机原型将同一八LED面板划分为两组来模拟两位用户，不能当作已验证的多无人机组网；更多用户容量主要来自理论分析，移动与环境光鲁棒性仍列为后续工作，也不能将抗重放设计等同于完整安全验证；未核验公开代码，arXiv注明投稿GLOBECOM。",
-          "quality": "implementation"
-        },
-        "rm": {
-          "usage": "该工作用额外LED的空间分组加相对时延编码，配合事件相机的微秒级异步观测，实现多用户身份识别与同步，可直接迁移到机库对多架空中机器人的可见光识别，以及机间低速数据链的编码/同步设计。需要注意：调制只能加在规则允许的额外红/蓝通信LED上（答疑#184），不能调制七颗航行外观灯；论文的运动与环境光鲁棒性尚未验证，且实机只演示了两用户，因此不能当作已验证的多机组网方案。",
-          "task_id": "optical",
-          "task": "空中系统可见光通信链路",
-          "value": "mid",
-          "rules_fingerprint": "0d38b088047076a4",
-          "season": "2027"
-        }
-      },
-      {
         "id": "arxiv:2611.18562",
         "arxiv_id": "2611.18562",
         "source": "arXiv",
@@ -2924,6 +3343,73 @@
         },
         "rm": {
           "usage": "该工作在仿真中用强化学习训练推理模型原生操控真实机器人，其中“仿真—真机迁移”的思路可以借鉴，但不包含任何RM战术环境、奖励或赛场约束，与自瞄、导航、决策等具体任务没有直接对应，参考价值有限。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "0d38b088047076a4",
+          "season": "2027"
+        }
+      },
+      {
+        "id": "arxiv:2611.19059",
+        "arxiv_id": "2611.19059",
+        "source": "arXiv",
+        "cats": [
+          "stat.ML",
+          "cs.LG",
+          "math.PR",
+          "math.ST"
+        ],
+        "title_en": "High-dimensional limit theorems for adaptive variants of SGD I: Ballistic limits",
+        "title_zh": "SGD 自适应变体的高维极限定理 I：弹道极限",
+        "abstract_en": "We develop the high-dimensional effective dynamics for adaptive, momentum-based variants of Stochastic Gradient Descent (SGD). These effective dynamics are given by a Markov process. They key observation is that the non-Markovianity in the algorithm due to the exponential moving average and preconditioning can be treated using the method of averaging. Our approach applies to a broad class of algorithms including to Adaptive momentum estimation (ADAM), Momentum orthogonalized by Newton-Schultz (MUON), and its variants. It also applies to a broad class of learning tasks, such at tensor PCA, Gaussian projective models, teacher-student networks, and a multi-layer neural network trained on the XOR problem using a hybrid of MUON and ADAM as commonly done in practice. We demonstrate how to this technique can give precise, quantitative comparisons between algorithms. In particular, we find interesting phenomena, such as the cross-over phenomenon where online SGD has better generalization than ADAM early in training until the learning curves cross and ADAM dominates. Furthermore, we prove a version of the Edge of Stability phenomenon. In particular, we introduce an analogue of the infinity Laplacian that sharply characterizes the Edge of Stability.",
+        "abstract_zh": "我们为随机梯度下降（SGD）的自适应、基于动量的变体建立了高维有效动力学。这些有效动力学由一个马尔可夫过程给出。关键观察是，算法中由指数移动平均和预条件导致的非马尔可夫性可以用平均法处理。我们的方法适用于广泛的算法类别，包括自适应动量估计（ADAM）、由 Newton-Schultz 正交化的动量（MUON）及其变体。它也适用于广泛的学习任务，例如张量 PCA、高斯投影模型、教师-学生网络，以及在使用 MUON 与 ADAM 混合（实践中常见做法）训练的 XOR 问题上的多层神经网络。我们展示了该技术如何给出算法之间精确的定量比较。特别地，我们发现了一些有趣现象，例如交叉现象：在线 SGD 在训练早期具有比 ADAM 更好的泛化能力，直到学习曲线交叉后 ADAM 占优。此外，我们证明了稳定性边缘现象的一个版本。特别地，我们引入了无穷拉普拉斯算子的一个类似物，它精确刻画了稳定性边缘。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Aukosh Jagannath",
+          "Varnan Sarangian"
+        ],
+        "url": "https://arxiv.org/abs/2611.19059v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.19059",
+        "html_url": "https://arxiv.org/abs/2611.19059",
+        "published_at": "2026-11-14T01:06:05.000Z",
+        "upvotes": 0,
+        "heat": 2085.7630908333335,
+        "featured": false,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 40,
+        "rule_matches": [
+          {
+            "task_id": "autoaim",
+            "task": "装甲板自瞄与射击控制",
+            "keywords": []
+          }
+        ],
+        "rules_fingerprint": "0d38b088047076a4",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "aim",
+              "label_zh": "检测与目标跟踪",
+              "label_en": "Detection & Tracking"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "检测与目标跟踪的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；未证明装甲板/点阵屏幕识别、反陀螺预测与弹道闭环；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2611.19059v1"
+        },
+        "first_seen": "2026-11-17T03:21:43.098Z",
+        "rm": {
+          "usage": "该文是自适应SGD的高维极限理论，与装甲板检测、目标跟踪、弹道预测和射击控制没有直接关系，至多作为训练优化器的理论背景，实战用途很弱。",
           "task_id": "",
           "task": "",
           "value": "low",
@@ -3259,6 +3745,83 @@
           "task_id": "",
           "task": "",
           "value": "low",
+          "rules_fingerprint": "0d38b088047076a4",
+          "season": "2027"
+        }
+      },
+      {
+        "id": "arxiv:2608.16858",
+        "arxiv_id": "2608.16858",
+        "source": "arXiv",
+        "cats": [
+          "eess.SP",
+          "cs.CR",
+          "cs.IT",
+          "cs.NI",
+          "eess.SY"
+        ],
+        "title_en": "ECO-ID: Event-Camera based Optical System for Secure Multi-User Ultra-Low Latency Identification",
+        "title_zh": "ECO-ID：基于事件相机的多用户超低时延安全光学识别系统",
+        "abstract_en": "Time-critical interactive systems increasingly require ultra-low-latency device identification for multiple users, yet prevailing approaches such as passwords, QR codes, and RFID/NFC are constrained by human input, frame-based sensing, or near-contact range. This paper presents ECO-ID, an event-camera-based optical system for multi-user, ultra-low-latency identification over visible light communication (VLC). Leveraging microsecond-resolution, asynchronous observations of brightness transitions, ECO-ID employs a spatiotemporal coding design: disjoint LED subsets provide spatial separation among users, while user-specific timing delays encode identities without inter-user synchronization. The optical channel and event-driven sensing reduce full-scene capture relative to frame cameras and limit the RF attack surface, while enabling rapid token verification with freshness and replay protection. We implement a prototype and demonstrate that ECO-ID can practically achieve approximately 99.8\\% localization and 98.7\\% identification with 0.64 ms mean latency, while theoretically supporting identification at the scale of tens of concurrent users. Overall, ECO-ID provides a fast, privacy-conscious, and security-aware alternative for scalable multi-user identification in time-critical interactive environments.",
+        "abstract_zh": "时间敏感的交互系统日益需要面向多用户的超低时延设备识别，而密码、二维码、RFID/NFC等主流方式受限于人工输入、帧式传感或近距接触。本文提出ECO-ID，一种基于事件相机、通过可见光通信（VLC）实现多用户超低时延识别的光学系统。它利用事件相机对亮度跃变微秒级、异步的观测能力，采用时空编码设计：互不相交的LED子集在空间上区分不同用户，用户特定的时延则在不需用户间同步的情况下编码身份。光学信道与事件驱动传感减少了对整幅场景的采集，也缩小了射频攻击面，同时支持带新鲜性校验与重放保护的快速凭证验证。原型实验表明，ECO-ID 可实现约99.8%的定位率与98.7%的识别率，平均时延 0.64 ms，理论上可支持数十个并发用户。",
+        "highlight_zh": "事件相机+LED时空编码，实现0.64毫秒多用户光学身份识别",
+        "digest_zh": "一、研究了什么问题：在需要即时响应的交互场景（如多人同时操作的大屏、AR/VR、门禁）中，设备要快速认出“现在是谁在操作”。密码要人输入、二维码要人举起来对准、RFID/NFC则要求贴近，且基于帧的摄像头天生有延迟。作者要解决的是：如何让多个用户几乎无感地、在毫秒级被识别出来。\n\n二、用了什么方法：用事件相机作为接收器。事件相机不像普通摄像头那样逐帧曝光，而是只在像素亮度发生变化时异步输出事件，时间分辨率达微秒级。作者设计了时空联合编码：空间上，给不同用户分配互不重叠的LED子集，靠位置区分人；时间上，给每个用户设定专属的发光时延，靠“节奏”编码身份，而且不需要用户之间做时钟同步。安全方面，光信道不易被远程窃听，事件相机只记录变化而非整幅画面，也缩小了射频攻击面，并配合新鲜性校验与防重放机制。\n\n三、有什么结果：作者做出原型系统，实测定位准确率约99.8%、身份识别准确率约98.7%，平均时延仅0.64 ms；分析表明该方案在原理上可扩展到数十个并发用户。\n\n四、为何重要：它给出了一条不依赖人工操作、不依赖射频、且兼顾隐私与安全的识别路径，适用于对延迟极敏感的多人交互场景，是对二维码与RFID等方案的有力补充。",
+        "authors": [
+          "Subham Sabud",
+          "Chengling Xu",
+          "Feng Ye"
+        ],
+        "url": "https://arxiv.org/abs/2608.16858v1",
+        "pdf_url": "https://arxiv.org/pdf/2608.16858",
+        "html_url": "https://arxiv.org/abs/2608.16858",
+        "published_at": "2026-08-17T17:41:11.000Z",
+        "upvotes": 0,
+        "heat": 0,
+        "featured": false,
+        "categories": [
+          "optical"
+        ],
+        "image": "",
+        "comment": "6 pages, 5 figures, and 2 tables. Submitted to IEEE globecom",
+        "optical_query": true,
+        "relevance": 40,
+        "optical_review": {
+          "arxiv_id": "2608.16858",
+          "doi": "10.48550/arXiv.2608.16858",
+          "receiver": "event_camera",
+          "reason_zh": "2026年的ECO-ID使用LED时空编码和事件相机实现异步光源身份识别，可参考其ROI关联和相对时延编码来区分机库或机间可见光信标。",
+          "limitations_zh": "实机原型将同一八LED面板划分为两组来模拟两位用户，不能当作已验证的多无人机组网；更多用户容量主要来自理论分析，移动与环境光鲁棒性仍列为后续工作，也不能将抗重放设计等同于完整安全验证；未核验公开代码，arXiv注明投稿GLOBECOM。",
+          "source_url": "https://arxiv.org/abs/2608.16858",
+          "kind": "implementation",
+          "verified": true,
+          "checked_at": "2026-11-12T14:03:33.807Z"
+        },
+        "first_seen": "2026-11-05T11:58:13.189Z",
+        "rule_matches": [
+          {
+            "task_id": "optical",
+            "task": "空中系统可见光通信链路",
+            "keywords": [
+              "visible light communication",
+              "可见光通信"
+            ]
+          }
+        ],
+        "rules_fingerprint": "0d38b088047076a4",
+        "recommendation": {
+          "lane": "recent",
+          "score": 37,
+          "reason_zh": "2026年的ECO-ID使用LED时空编码和事件相机实现异步光源身份识别，可参考其ROI关联和相对时延编码来区分机库或机间可见光信标；近一年发表",
+          "receiver": "event_camera",
+          "evidence_url": "https://arxiv.org/abs/2608.16858",
+          "limitations_zh": "实机原型将同一八LED面板划分为两组来模拟两位用户，不能当作已验证的多无人机组网；更多用户容量主要来自理论分析，移动与环境光鲁棒性仍列为后续工作，也不能将抗重放设计等同于完整安全验证；未核验公开代码，arXiv注明投稿GLOBECOM。",
+          "quality": "implementation"
+        },
+        "rm": {
+          "usage": "该工作用额外LED的空间分组加相对时延编码，配合事件相机的微秒级异步观测，实现多用户身份识别与同步，可直接迁移到机库对多架空中机器人的可见光识别，以及机间低速数据链的编码/同步设计。需要注意：调制只能加在规则允许的额外红/蓝通信LED上（答疑#184），不能调制七颗航行外观灯；论文的运动与环境光鲁棒性尚未验证，且实机只演示了两用户，因此不能当作已验证的多机组网方案。",
+          "task_id": "optical",
+          "task": "空中系统可见光通信链路",
+          "value": "mid",
           "rules_fingerprint": "0d38b088047076a4",
           "season": "2027"
         }
@@ -4729,6 +5292,69 @@
         }
       },
       {
+        "id": "arxiv:2601.06527",
+        "arxiv_id": "2601.06527",
+        "source": "arXiv",
+        "cats": [
+          "cs.IT",
+          "cs.RO",
+          "eess.IV"
+        ],
+        "title_en": "Visible Light Communication using Led-Based AR Markers for Robot Localization",
+        "title_zh": "基于 LED 的 AR 标记用于机器人定位的可见光通信",
+        "abstract_en": "A method of information transmission using visual markers has been widely studied. In this approach, information or identifiers (IDs) are encoded in the black-and-white pattern of each marker. By analyzing the geometric properties of the marker frame - such as its size, distortion, and coordinates - the relative position and orientation between the camera and the marker can be estimated. Furthermore, by associating the positional information of each marker with its corresponding ID, the position of the camera that takes the image picture can be calculated. In the field of mobile robotics, such markers are commonly utilized for robot localization. As mobile robots become more widely used in everyday environments, such visual markers are expected to be utilized across various contexts. In environments where robots collaborate with humans - such as in cell-based manufacturing systems in factories or in domestic settings with partner robots - it is desirable for such markers to be designed in a manner that appears natural and unobtrusive to humans. In this paper, we propose a method for implementing an ArUco marker in the form of illumination. In the proposed method, LEDs are arranged in accordance with the grid pattern of the marker, and the blinking frequency of each LED is determined based on the corresponding black or white cell. As a result, the illumination appears uniformly bright to the human eye, while the camera can capture variations in the blinking frequency. From these differences, the black-and-white pattern can be reconstructed, enabling the identification of the marker's tag information. We develop a prototype system, and conduct experiments which are conducted to evaluate its performance in terms of recognition accuracy under varying distances and viewing angles with respect to the ArUco marker.",
+        "abstract_zh": "使用视觉标记进行信息传输的方法已被广泛研究。在这种方法中，信息或标识符（ID）被编码在每个标记的黑白图案中。通过分析标记框的几何属性——例如其尺寸、畸变和坐标——可以估计相机与标记之间的相对位置和姿态。此外，通过将每个标记的位置信息与其对应的 ID 关联，可以计算出拍摄图像的相机位置。在移动机器人领域，此类标记通常用于机器人定位。随着移动机器人在日常环境中得到更广泛使用，此类视觉标记有望在各种场景中得到应用。在机器人与人类协作的环境中——例如工厂中基于单元的生产系统，或与伙伴机器人共处的家庭环境——此类标记宜设计得对人类显得自然且不突兀。本文提出一种以照明形式实现 ArUco 标记的方法。在所提方法中，LED 按照标记的网格图案排列，每个 LED 的闪烁频率根据对应的黑色或白色单元格确定。因此，该照明对人眼呈现为均匀明亮，而相机可以捕捉闪烁频率的变化。根据这些差异，可以重建黑白图案，从而能够识别标记的标签信息。我们开发了一个原型系统，并开展实验，评估其在相对于 ArUco 标记的不同距离和视角下的识别准确率性能。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Wataru Uemura",
+          "Shogo Kawasaki"
+        ],
+        "url": "https://arxiv.org/abs/2601.06527v1",
+        "pdf_url": "https://arxiv.org/pdf/2601.06527",
+        "html_url": "https://arxiv.org/abs/2601.06527",
+        "published_at": "2026-01-10T11:12:56.000Z",
+        "upvotes": 0,
+        "heat": 0,
+        "featured": false,
+        "categories": [
+          "optical"
+        ],
+        "image": "",
+        "comment": "",
+        "optical_query": true,
+        "relevance": 36,
+        "rule_matches": [
+          {
+            "task_id": "optical",
+            "task": "空中系统可见光通信链路",
+            "keywords": [
+              "visible light communication",
+              "可见光通信"
+            ]
+          }
+        ],
+        "rules_fingerprint": "0d38b088047076a4",
+        "recommendation": {
+          "lane": "recent",
+          "score": 32,
+          "reason_zh": "LED–相机数据链路，可参考编码、同步与接收解码；近一年发表",
+          "receiver": "camera",
+          "evidence_url": "https://arxiv.org/abs/2601.06527v1",
+          "limitations_zh": "",
+          "quality": "implementation"
+        },
+        "first_seen": "2026-11-17T03:21:43.098Z",
+        "rm": {
+          "usage": "用「LED 阵列按 ArUco 网格排布、按闪烁频率编码黑白格」的思路，实现机库侧或空中机器人侧的可见光下行/上行链路：额外通信 LED（注意与七颗航行外观灯严格区分，#184 只允许对额外通信 LED 做 PWM/OOK 调制）发包，相机端通过对频闪的检测重建 ID 与码字，同时借标记几何解算相对位姿，可用于返航对准机库、库内/近场与离库后可见光链路的识别与同步。照度须按 #168/#288/#533 控制在 40mm 处 300Lux 以内，且光源颜色按对象核对；论文是相机接收方案，落地上需自建码表与帧同步、验证运动模糊与环境光影响。",
+          "task_id": "optical",
+          "task": "空中系统可见光通信链路",
+          "value": "mid",
+          "rules_fingerprint": "0d38b088047076a4",
+          "season": "2027"
+        }
+      },
+      {
         "id": "arxiv:2611.08872",
         "arxiv_id": "2611.08872",
         "source": "arXiv",
@@ -5007,6 +5633,78 @@
           "rules_fingerprint": "0d38b088047076a4",
           "season": "2027"
         }
+      },
+      {
+        "id": "arxiv:2611.08368",
+        "arxiv_id": "2611.08368",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.AI",
+          "cs.CV"
+        ],
+        "title_en": "VisionSIM: Beyond Idealized Sensors - A Multi-Modal Simulator for Robot Perception",
+        "title_zh": "VisionSIM：超越理想化传感器——面向机器人感知的多模态模拟器",
+        "abstract_en": "Robotic perception increasingly relies on heterogeneous sensor suites combining cameras with emerging modalities (event, SPAD, iToF/dToF, and thermal). Yet existing simulators idealize these sensors, hiding critical modality-specific failure modes that limit real-world deployment. We present VisionSIM, a unified, physically grounded simulation platform that elevates sensor realism to a first-class concern by modeling the raw physical measurement process for diverse conventional and emerging modalities. We expose fine-grained control over physical sensor parameters, reproducing failure modes overlooked by general-purpose simulators: pileup and glare for LiDAR; phase wrapping, saturation, and motion artifacts for iToF; refractory drops for event cameras; and history-dependent emission for thermal cameras. This enables principled cross-modality comparison on identical scenes and trajectories. We release the platform and a large indoor dataset with synchronized raw measurements and rich ground-truth annotations.",
+        "abstract_zh": "机器人感知日益依赖异构传感器套件，这些套件将相机与新兴模态（事件、SPAD、iToF/dToF 和热成像）相结合。然而，现有模拟器将这些传感器理想化，掩盖了限制实际部署的关键模态特定失效模式。我们提出 VisionSIM，一个统一的、基于物理的模拟平台，通过对多种传统和新兴模态的原始物理测量过程进行建模，将传感器真实感提升为首要关注点。我们提供对物理传感器参数的细粒度控制，复现通用模拟器所忽视的失效模式：LiDAR 的堆积和眩光；iToF 的相位卷绕、饱和和运动伪影；事件相机的不应期丢事件；以及热成像相机的历史依赖发射。这能够在相同场景和轨迹上进行有原则的跨模态比较。我们发布该平台以及一个大型室内数据集，其中包含同步的原始测量和丰富的真值标注。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Sacha Jungerman",
+          "Kaustubh Sadekar",
+          "Avery Gump",
+          "Sriram Narayanan",
+          "Shantanu Gupta",
+          "Bhuyashi Deka",
+          "Srinivasa Narasimhan",
+          "Atul Ingle"
+        ],
+        "url": "https://arxiv.org/abs/2611.08368v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.08368",
+        "html_url": "https://arxiv.org/abs/2611.08368",
+        "published_at": "2026-11-05T17:48:00.000Z",
+        "upvotes": 0,
+        "heat": 1886.4617105555556,
+        "featured": false,
+        "categories": [
+          "sim"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 31,
+        "rule_matches": [
+          {
+            "task_id": "sim",
+            "task": "算法仿真与验证",
+            "keywords": []
+          }
+        ],
+        "rules_fingerprint": "0d38b088047076a4",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "sim",
+              "label_zh": "机器人仿真与工具",
+              "label_en": "Robot Simulation & Tools"
+            }
+          ],
+          "lane": "recent",
+          "score": 24,
+          "quality": "simulation",
+          "reason_zh": "机器人仿真与工具的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；仿真能力不代表已完成实机验证",
+          "evidence_url": "https://arxiv.org/abs/2611.08368v1"
+        },
+        "first_seen": "2026-11-17T03:21:43.098Z",
+        "rm": {
+          "usage": "通用多模态传感器仿真平台，重在建模 event/SPAD/iToF/热成像等非常规模态的物理噪声（如 pileup、相位卷绕、运动伪影）。RM 的视觉链路以普通工业相机为主，只有少数场景（如机库激光雷达 #372、事件相机探索）可能受益；若要自建 sim 环境评估相机/传感器失效模式可作参考框架，但无 RM 场地与器材模型，需大量改造，不能直接产出可用仿真或训练环境。",
+          "task_id": "sim",
+          "task": "算法仿真与验证",
+          "value": "low",
+          "rules_fingerprint": "0d38b088047076a4",
+          "season": "2027"
+        }
       }
     ]
   },
@@ -5044,7 +5742,7 @@
         "pushed_at": "2026-11-12T15:42:18.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:50.815Z",
+        "metadata_fetched_at": "2026-11-17T03:20:44.687Z",
         "categories": [
           "control",
           "sim"
@@ -5083,7 +5781,7 @@
             "value": 260,
             "source": "GitHub",
             "source_url": "https://github.com/xrobot-org/XRobot",
-            "checked_at": "2026-11-16T19:02:50.815Z"
+            "checked_at": "2026-11-17T03:20:44.687Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -5113,7 +5811,7 @@
         "pushed_at": "2022-04-07T15:12:20.000Z",
         "license": "NOASSERTION",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:46.632Z",
+        "metadata_fetched_at": "2026-11-17T03:20:41.281Z",
         "categories": [
           "nav",
           "planning"
@@ -5152,7 +5850,7 @@
             "value": 900,
             "source": "GitHub",
             "source_url": "https://github.com/RoboMaster/RoboRTS",
-            "checked_at": "2026-11-16T19:02:46.632Z"
+            "checked_at": "2026-11-17T03:20:41.281Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -5180,10 +5878,10 @@
         "url": "https://github.com/SMBU-PolarBear-Robotics-Team/pb2025_sentry_nav",
         "homepage": "",
         "created_at": "2024-09-05T10:36:44Z",
-        "pushed_at": "2026-11-09T22:44:08.000Z",
+        "pushed_at": "2026-11-16T22:46:08.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:50.815Z",
+        "metadata_fetched_at": "2026-11-17T03:20:44.687Z",
         "categories": [
           "nav"
         ],
@@ -5216,7 +5914,7 @@
             "value": 466,
             "source": "GitHub",
             "source_url": "https://github.com/SMBU-PolarBear-Robotics-Team/pb2025_sentry_nav",
-            "checked_at": "2026-11-16T19:02:50.815Z"
+            "checked_at": "2026-11-17T03:20:44.687Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -5247,7 +5945,7 @@
         "pushed_at": "2024-11-08T07:08:13.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:46.632Z",
+        "metadata_fetched_at": "2026-11-17T03:20:41.281Z",
         "categories": [
           "aim"
         ],
@@ -5280,7 +5978,7 @@
             "value": 246,
             "source": "GitHub",
             "source_url": "https://github.com/chenjunnn/rm_vision",
-            "checked_at": "2026-11-16T19:02:46.632Z"
+            "checked_at": "2026-11-17T03:20:41.281Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -5309,7 +6007,7 @@
         "pushed_at": "2024-06-08T04:57:53.000Z",
         "license": "MIT",
         "archived": true,
-        "metadata_fetched_at": "2026-11-16T19:02:46.632Z",
+        "metadata_fetched_at": "2026-11-17T03:20:41.281Z",
         "categories": [
           "sim"
         ],
@@ -5318,7 +6016,9 @@
           {
             "task_id": "sim",
             "task": "算法仿真与验证",
-            "keywords": []
+            "keywords": [
+              "仿真"
+            ]
           }
         ],
         "rules_fingerprint": "0d38b088047076a4",
@@ -5342,7 +6042,7 @@
             "value": 349,
             "source": "GitHub",
             "source_url": "https://github.com/LihanChen2004/pb_rm_simulation",
-            "checked_at": "2026-11-16T19:02:46.632Z"
+            "checked_at": "2026-11-17T03:20:41.281Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -5375,7 +6075,7 @@
         "pushed_at": "2023-04-19T10:41:35.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:40.561Z",
+        "metadata_fetched_at": "2026-11-17T03:20:35.173Z",
         "categories": [
           "aim",
           "control"
@@ -5414,7 +6114,7 @@
             "value": 45,
             "source": "GitHub",
             "source_url": "https://github.com/ittuann/RoboMaster-NEFU-Ares-UAVGimbal",
-            "checked_at": "2026-11-16T19:02:40.561Z"
+            "checked_at": "2026-11-17T03:20:35.173Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -5440,7 +6140,7 @@
         "pushed_at": "2026-08-13T04:54:40.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:46.632Z",
+        "metadata_fetched_at": "2026-11-17T03:20:41.281Z",
         "categories": [
           "aim"
         ],
@@ -5467,7 +6167,7 @@
             "value": 742,
             "source": "GitHub",
             "source_url": "https://github.com/TongjiSuperPower/sp_vision_25",
-            "checked_at": "2026-11-16T19:02:46.632Z"
+            "checked_at": "2026-11-17T03:20:41.281Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -5491,7 +6191,7 @@
         "pushed_at": "2024-09-20T17:06:01.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:59.564Z",
+        "metadata_fetched_at": "2026-11-17T03:20:51.914Z",
         "categories": [
           "aim"
         ],
@@ -5526,7 +6226,7 @@
             "value": 212,
             "source": "GitHub",
             "source_url": "https://github.com/HHgzs/TJURM-2024",
-            "checked_at": "2026-11-16T19:02:59.564Z"
+            "checked_at": "2026-11-17T03:20:51.914Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -5555,7 +6255,7 @@
         "pushed_at": "2023-05-27T01:24:43.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:50.815Z",
+        "metadata_fetched_at": "2026-11-17T03:20:44.687Z",
         "categories": [
           "aim"
         ],
@@ -5588,7 +6288,7 @@
             "value": 87,
             "source": "GitHub",
             "source_url": "https://github.com/chenjunnn/rm_auto_aim",
-            "checked_at": "2026-11-16T19:02:50.815Z"
+            "checked_at": "2026-11-17T03:20:44.687Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -5612,7 +6312,7 @@
         "pushed_at": "2021-03-29T06:45:54.000Z",
         "license": "NOASSERTION",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:46.632Z",
+        "metadata_fetched_at": "2026-11-17T03:20:41.281Z",
         "categories": [
           "control"
         ],
@@ -5639,7 +6339,7 @@
             "value": 410,
             "source": "GitHub",
             "source_url": "https://github.com/RoboMaster/RoboRTS-Firmware",
-            "checked_at": "2026-11-16T19:02:46.632Z"
+            "checked_at": "2026-11-17T03:20:41.281Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -5667,7 +6367,7 @@
         "pushed_at": "2026-08-15T10:43:21.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:03:16.260Z",
+        "metadata_fetched_at": "2026-11-17T03:21:07.567Z",
         "categories": [
           "aim",
           "rune"
@@ -5677,7 +6377,9 @@
           {
             "task_id": "rune",
             "task": "能量机关识别与击打",
-            "keywords": []
+            "keywords": [
+              "能量机关"
+            ]
           }
         ],
         "rules_fingerprint": "0d38b088047076a4",
@@ -5706,7 +6408,7 @@
             "value": 24,
             "source": "GitHub",
             "source_url": "https://github.com/SZURPVision/RuneDetectionModel",
-            "checked_at": "2026-11-16T19:03:16.260Z"
+            "checked_at": "2026-11-17T03:21:07.567Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -5737,7 +6439,7 @@
         "pushed_at": "2026-10-23T13:58:09.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:03:06.642Z",
+        "metadata_fetched_at": "2026-11-17T03:20:58.700Z",
         "categories": [
           "radar",
           "sim"
@@ -5785,7 +6487,7 @@
             "value": 14,
             "source": "GitHub",
             "source_url": "https://github.com/diaofenyuan/RMUC_2027map_unity",
-            "checked_at": "2026-11-16T19:03:06.642Z"
+            "checked_at": "2026-11-17T03:20:58.700Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -5819,7 +6521,7 @@
         "pushed_at": "2025-05-19T10:06:49.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:50.815Z",
+        "metadata_fetched_at": "2026-11-17T03:20:44.687Z",
         "categories": [
           "aim"
         ],
@@ -5846,7 +6548,7 @@
             "value": 110,
             "source": "GitHub",
             "source_url": "https://github.com/WayneMao/RoboMatrix",
-            "checked_at": "2026-11-16T19:02:50.815Z"
+            "checked_at": "2026-11-17T03:20:44.687Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -5874,7 +6576,7 @@
         "pushed_at": "2026-07-21T09:26:22.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:50.815Z",
+        "metadata_fetched_at": "2026-11-17T03:20:44.687Z",
         "categories": [
           "aim"
         ],
@@ -5907,7 +6609,7 @@
             "value": 114,
             "source": "GitHub",
             "source_url": "https://github.com/WUST-RM/awakening",
-            "checked_at": "2026-11-16T19:02:50.815Z"
+            "checked_at": "2026-11-17T03:20:44.687Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -5940,7 +6642,7 @@
         "pushed_at": "2023-08-08T17:08:01.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:50.815Z",
+        "metadata_fetched_at": "2026-11-17T03:20:44.687Z",
         "categories": [
           "control"
         ],
@@ -5967,7 +6669,7 @@
             "value": 77,
             "source": "GitHub",
             "source_url": "https://github.com/rm-controls/rm_usb2can",
-            "checked_at": "2026-11-16T19:02:50.815Z"
+            "checked_at": "2026-11-17T03:20:44.687Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -5992,10 +6694,10 @@
         "url": "https://github.com/SMBU-PolarBear-Robotics-Team/pb2025_sentry_behavior",
         "homepage": "",
         "created_at": "2025-01-29T15:45:51Z",
-        "pushed_at": "2026-11-09T22:40:45.000Z",
+        "pushed_at": "2026-11-16T22:46:10.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:50.815Z",
+        "metadata_fetched_at": "2026-11-17T03:20:44.687Z",
         "categories": [
           "nav"
         ],
@@ -6031,7 +6733,7 @@
             "value": 47,
             "source": "GitHub",
             "source_url": "https://github.com/SMBU-PolarBear-Robotics-Team/pb2025_sentry_behavior",
-            "checked_at": "2026-11-16T19:02:50.815Z"
+            "checked_at": "2026-11-17T03:20:44.687Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -6059,7 +6761,7 @@
         "pushed_at": "2021-12-04T08:48:47.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:50.815Z",
+        "metadata_fetched_at": "2026-11-17T03:20:44.687Z",
         "categories": [
           "aim"
         ],
@@ -6086,7 +6788,7 @@
             "value": 40,
             "source": "GitHub",
             "source_url": "https://github.com/wildwolf-team/WolfVision",
-            "checked_at": "2026-11-16T19:02:50.815Z"
+            "checked_at": "2026-11-17T03:20:44.687Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -6117,7 +6819,7 @@
         "pushed_at": "2026-03-11T10:18:41.000Z",
         "license": "GPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:50.815Z",
+        "metadata_fetched_at": "2026-11-17T03:20:44.687Z",
         "categories": [
           "radar"
         ],
@@ -6152,7 +6854,7 @@
             "value": 29,
             "source": "GitHub",
             "source_url": "https://github.com/BreCaspian/LiDAR-Camera_Calibration_Validator",
-            "checked_at": "2026-11-16T19:02:50.815Z"
+            "checked_at": "2026-11-17T03:20:44.687Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -6183,7 +6885,7 @@
         "pushed_at": "2026-08-11T09:52:37.000Z",
         "license": "NOASSERTION",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:03:06.642Z",
+        "metadata_fetched_at": "2026-11-17T03:20:58.700Z",
         "categories": [
           "aim",
           "radar"
@@ -6224,7 +6926,7 @@
             "value": 20,
             "source": "GitHub",
             "source_url": "https://github.com/coach114514/TCR-RM2026-Radar-OpenSource",
-            "checked_at": "2026-11-16T19:03:06.642Z"
+            "checked_at": "2026-11-17T03:20:58.700Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -6255,7 +6957,7 @@
         "pushed_at": "2021-11-13T13:13:17.000Z",
         "license": "LGPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:46.632Z",
+        "metadata_fetched_at": "2026-11-17T03:20:41.281Z",
         "categories": [
           "rl",
           "sim"
@@ -6272,7 +6974,9 @@
           {
             "task_id": "sim",
             "task": "算法仿真与验证",
-            "keywords": []
+            "keywords": [
+              "仿真"
+            ]
           }
         ],
         "rules_fingerprint": "0d38b088047076a4",
@@ -6301,7 +7005,7 @@
             "value": 150,
             "source": "GitHub",
             "source_url": "https://github.com/yizhengzhang1/RoboMaster-Simulator",
-            "checked_at": "2026-11-16T19:02:46.632Z"
+            "checked_at": "2026-11-17T03:20:41.281Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -6328,7 +7032,7 @@
         "pushed_at": "2026-08-14T08:15:40.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:50.815Z",
+        "metadata_fetched_at": "2026-11-17T03:20:44.687Z",
         "categories": [
           "nav"
         ],
@@ -6361,7 +7065,7 @@
             "value": 148,
             "source": "GitHub",
             "source_url": "https://github.com/Polyacetone/HWSentryNav26",
-            "checked_at": "2026-11-16T19:02:50.815Z"
+            "checked_at": "2026-11-17T03:20:44.687Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -6390,7 +7094,7 @@
         "pushed_at": "2023-08-30T08:46:21.000Z",
         "license": "Apache-2.0",
         "archived": true,
-        "metadata_fetched_at": "2026-11-16T19:02:50.815Z",
+        "metadata_fetched_at": "2026-11-17T03:20:44.687Z",
         "categories": [
           "aim",
           "rune"
@@ -6436,7 +7140,7 @@
             "value": 133,
             "source": "GitHub",
             "source_url": "https://github.com/zRzRzRzRzRzRzR/YOLO-of-RoboMaster-Keypoints-Detection-2023",
-            "checked_at": "2026-11-16T19:02:50.815Z"
+            "checked_at": "2026-11-17T03:20:44.687Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -6466,7 +7170,7 @@
         "pushed_at": "2026-08-18T04:51:00.000Z",
         "license": "AGPL-3.0",
         "archived": true,
-        "metadata_fetched_at": "2026-11-16T19:02:50.815Z",
+        "metadata_fetched_at": "2026-11-17T03:20:44.687Z",
         "categories": [
           "aim",
           "sim"
@@ -6476,7 +7180,10 @@
           {
             "task_id": "sim",
             "task": "算法仿真与验证",
-            "keywords": []
+            "keywords": [
+              "仿真",
+              "算法验证"
+            ]
           }
         ],
         "rules_fingerprint": "0d38b088047076a4",
@@ -6505,7 +7212,7 @@
             "value": 81,
             "source": "GitHub",
             "source_url": "https://github.com/Blackjack200/at_vision_simulator",
-            "checked_at": "2026-11-16T19:02:50.815Z"
+            "checked_at": "2026-11-17T03:20:44.687Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -6536,7 +7243,7 @@
         "pushed_at": "2026-06-03T02:56:54.000Z",
         "license": "AGPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:50.815Z",
+        "metadata_fetched_at": "2026-11-17T03:20:44.687Z",
         "categories": [
           "aerial",
           "aim"
@@ -6572,7 +7279,7 @@
             "value": 30,
             "source": "GitHub",
             "source_url": "https://github.com/BreCaspian/LaserTracking-2026",
-            "checked_at": "2026-11-16T19:02:50.815Z"
+            "checked_at": "2026-11-17T03:20:44.687Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -6596,7 +7303,7 @@
         "pushed_at": "2026-04-21T07:34:25.000Z",
         "license": "NOASSERTION",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:46.632Z",
+        "metadata_fetched_at": "2026-11-17T03:20:41.281Z",
         "categories": [
           "aerial",
           "sim"
@@ -6606,7 +7313,9 @@
           {
             "task_id": "aerial",
             "task": "空中系统自主飞行与机库交互",
-            "keywords": []
+            "keywords": [
+              "无人机"
+            ]
           },
           {
             "task_id": "sim",
@@ -6635,7 +7344,7 @@
             "value": 238,
             "source": "GitHub",
             "source_url": "https://github.com/RoboMaster/IntelligentUAVChampionshipSimulator",
-            "checked_at": "2026-11-16T19:02:46.632Z"
+            "checked_at": "2026-11-17T03:20:41.281Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -6662,10 +7371,10 @@
         "url": "https://github.com/SMBU-PolarBear-Robotics-Team/rmu_gazebo_simulator",
         "homepage": "",
         "created_at": "2024-06-29T12:25:40Z",
-        "pushed_at": "2026-11-09T22:45:47.000Z",
+        "pushed_at": "2026-11-16T22:47:44.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:50.815Z",
+        "metadata_fetched_at": "2026-11-17T03:20:44.687Z",
         "categories": [
           "sim"
         ],
@@ -6674,7 +7383,9 @@
           {
             "task_id": "sim",
             "task": "算法仿真与验证",
-            "keywords": []
+            "keywords": [
+              "仿真"
+            ]
           }
         ],
         "rules_fingerprint": "0d38b088047076a4",
@@ -6698,7 +7409,7 @@
             "value": 112,
             "source": "GitHub",
             "source_url": "https://github.com/SMBU-PolarBear-Robotics-Team/rmu_gazebo_simulator",
-            "checked_at": "2026-11-16T19:02:50.815Z"
+            "checked_at": "2026-11-17T03:20:44.687Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -6722,7 +7433,7 @@
         "pushed_at": "2024-06-19T15:40:33.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:46.632Z",
+        "metadata_fetched_at": "2026-11-17T03:20:41.281Z",
         "categories": [
           "aim"
         ],
@@ -6749,7 +7460,7 @@
             "value": 184,
             "source": "GitHub",
             "source_url": "https://github.com/FaterYU/rm_vision",
-            "checked_at": "2026-11-16T19:02:46.632Z"
+            "checked_at": "2026-11-17T03:20:41.281Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -6763,7 +7474,7 @@
         "description_en": "Auto Aim System Of RoboMaster Control System",
         "description_zh": "RoboMaster控制系统的自动瞄准系统。",
         "highlight_zh": "",
-        "stars": 54,
+        "stars": 55,
         "forks": 14,
         "language": "C++",
         "topics": [],
@@ -6773,7 +7484,7 @@
         "pushed_at": "2026-11-11T12:08:09.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:55.763Z",
+        "metadata_fetched_at": "2026-11-17T03:20:48.512Z",
         "categories": [
           "aim"
         ],
@@ -6803,10 +7514,10 @@
           "evidence_url": "https://github.com/Alliance-Algorithm/rmcs_auto_aim_v2",
           "metric": {
             "label": "GitHub Stars",
-            "value": 54,
+            "value": 55,
             "source": "GitHub",
             "source_url": "https://github.com/Alliance-Algorithm/rmcs_auto_aim_v2",
-            "checked_at": "2026-11-16T19:02:55.763Z"
+            "checked_at": "2026-11-17T03:20:48.512Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -6821,7 +7532,7 @@
         "description_zh": "RoboMaster 2026 自定义客户端与比赛模拟器，基于 Qt 6、QML、C++、MQTT 与 Protobuf。",
         "highlight_zh": "",
         "stars": 37,
-        "forks": 3,
+        "forks": 4,
         "language": "C++",
         "topics": [
           "cpp",
@@ -6837,7 +7548,7 @@
         "pushed_at": "2026-08-26T04:46:24.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:50.815Z",
+        "metadata_fetched_at": "2026-11-17T03:20:44.687Z",
         "categories": [
           "sim"
         ],
@@ -6870,7 +7581,7 @@
             "value": 37,
             "source": "GitHub",
             "source_url": "https://github.com/ClearWei/RM26_Client",
-            "checked_at": "2026-11-16T19:02:50.815Z"
+            "checked_at": "2026-11-17T03:20:44.687Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -6902,7 +7613,7 @@
         "pushed_at": "2026-06-17T02:17:30.000Z",
         "license": "GPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:50.815Z",
+        "metadata_fetched_at": "2026-11-17T03:20:44.687Z",
         "categories": [
           "control"
         ],
@@ -6929,7 +7640,7 @@
             "value": 33,
             "source": "GitHub",
             "source_url": "https://github.com/buke18/robomaster-soldier-robot",
-            "checked_at": "2026-11-16T19:02:50.815Z"
+            "checked_at": "2026-11-17T03:20:44.687Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -6957,7 +7668,7 @@
         "pushed_at": "2026-01-25T11:51:13.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:50.815Z",
+        "metadata_fetched_at": "2026-11-17T03:20:44.687Z",
         "categories": [
           "sim"
         ],
@@ -6992,7 +7703,7 @@
             "value": 33,
             "source": "GitHub",
             "source_url": "https://github.com/robomaster-oss/rmoss_gazebo",
-            "checked_at": "2026-11-16T19:02:50.815Z"
+            "checked_at": "2026-11-17T03:20:44.687Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -7020,7 +7731,7 @@
         "pushed_at": "2025-05-29T04:05:50.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:50.815Z",
+        "metadata_fetched_at": "2026-11-17T03:20:44.687Z",
         "categories": [
           "aim",
           "rune"
@@ -7031,7 +7742,8 @@
             "task_id": "rune",
             "task": "能量机关识别与击打",
             "keywords": [
-              "rune detection"
+              "rune detection",
+              "能量机关"
             ]
           }
         ],
@@ -7061,7 +7773,7 @@
             "value": 53,
             "source": "GitHub",
             "source_url": "https://github.com/zmsbruce/rm_power_rune",
-            "checked_at": "2026-11-16T19:02:50.815Z"
+            "checked_at": "2026-11-17T03:20:44.687Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -7085,7 +7797,7 @@
         "pushed_at": "2026-11-05T08:23:01.000Z",
         "license": "BSD-3-Clause",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:46.632Z",
+        "metadata_fetched_at": "2026-11-17T03:20:41.281Z",
         "categories": [
           "sim"
         ],
@@ -7094,7 +7806,9 @@
           {
             "task_id": "sim",
             "task": "算法仿真与验证",
-            "keywords": []
+            "keywords": [
+              "仿真"
+            ]
           }
         ],
         "rules_fingerprint": "0d38b088047076a4",
@@ -7118,7 +7832,7 @@
             "value": 311,
             "source": "GitHub",
             "source_url": "https://github.com/rm-controls/rm_control",
-            "checked_at": "2026-11-16T19:02:46.632Z"
+            "checked_at": "2026-11-17T03:20:41.281Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -7148,7 +7862,7 @@
         "pushed_at": "2026-08-23T17:34:55.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:46.632Z",
+        "metadata_fetched_at": "2026-11-17T03:20:41.281Z",
         "categories": [
           "aim"
         ],
@@ -7175,7 +7889,7 @@
             "value": 392,
             "source": "GitHub",
             "source_url": "https://github.com/NeoZng/vision_tutorial",
-            "checked_at": "2026-11-16T19:02:46.632Z"
+            "checked_at": "2026-11-17T03:20:41.281Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -7209,7 +7923,7 @@
         "pushed_at": "2025-07-19T17:11:48.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:46.632Z",
+        "metadata_fetched_at": "2026-11-17T03:20:41.281Z",
         "categories": [
           "aim"
         ],
@@ -7244,7 +7958,7 @@
             "value": 300,
             "source": "GitHub",
             "source_url": "https://github.com/julyfun/rm.cv.fans",
-            "checked_at": "2026-11-16T19:02:46.632Z"
+            "checked_at": "2026-11-17T03:20:41.281Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -7271,7 +7985,7 @@
         "pushed_at": "2024-07-23T01:41:01.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:50.815Z",
+        "metadata_fetched_at": "2026-11-17T03:20:44.687Z",
         "categories": [
           "aim"
         ],
@@ -7304,7 +8018,7 @@
             "value": 144,
             "source": "GitHub",
             "source_url": "https://github.com/robomaster-oss/rmoss_core",
-            "checked_at": "2026-11-16T19:02:50.815Z"
+            "checked_at": "2026-11-17T03:20:44.687Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -7328,7 +8042,7 @@
         "pushed_at": "2026-05-20T11:55:55.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:59.564Z",
+        "metadata_fetched_at": "2026-11-17T03:20:51.914Z",
         "categories": [
           "aim"
         ],
@@ -7363,7 +8077,7 @@
             "value": 116,
             "source": "GitHub",
             "source_url": "https://github.com/chiguayeshao/obs-snap-detector",
-            "checked_at": "2026-11-16T19:02:59.564Z"
+            "checked_at": "2026-11-17T03:20:51.914Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -7387,7 +8101,7 @@
         "pushed_at": "2024-06-16T01:48:03.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:59.564Z",
+        "metadata_fetched_at": "2026-11-17T03:20:51.914Z",
         "categories": [
           "aim",
           "radar"
@@ -7433,7 +8147,7 @@
             "value": 92,
             "source": "GitHub",
             "source_url": "https://github.com/SCAU-RM-NAV/RM2023_Radar_Dataset",
-            "checked_at": "2026-11-16T19:02:59.564Z"
+            "checked_at": "2026-11-17T03:20:51.914Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -7462,7 +8176,7 @@
         "pushed_at": "2026-03-20T17:31:42.000Z",
         "license": "NOASSERTION",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:50.815Z",
+        "metadata_fetched_at": "2026-11-17T03:20:44.687Z",
         "categories": [
           "control"
         ],
@@ -7489,7 +8203,7 @@
             "value": 52,
             "source": "GitHub",
             "source_url": "https://github.com/ZhuaX0/RoboMasterSuperCapCtrller_Adernal",
-            "checked_at": "2026-11-16T19:02:50.815Z"
+            "checked_at": "2026-11-17T03:20:44.687Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -7518,7 +8232,7 @@
         "pushed_at": "2023-08-30T08:19:48.000Z",
         "license": "Apache-2.0",
         "archived": true,
-        "metadata_fetched_at": "2026-11-16T19:03:06.642Z",
+        "metadata_fetched_at": "2026-11-17T03:20:58.700Z",
         "categories": [
           "radar"
         ],
@@ -7554,7 +8268,7 @@
             "value": 18,
             "source": "GitHub",
             "source_url": "https://github.com/zRzRzRzRzRzRzR/Mult-YOLO-alogorithm-of-RoboMaster-Radar-Detection-2023",
-            "checked_at": "2026-11-16T19:03:06.642Z"
+            "checked_at": "2026-11-17T03:20:58.700Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -7578,7 +8292,7 @@
         "pushed_at": "2026-08-13T09:08:29.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:03:06.642Z",
+        "metadata_fetched_at": "2026-11-17T03:20:58.700Z",
         "categories": [
           "radar"
         ],
@@ -7588,7 +8302,8 @@
             "task_id": "radar",
             "task": "雷达目标探测与信息融合",
             "keywords": [
-              "robomaster radar"
+              "robomaster radar",
+              "雷达"
             ]
           }
         ],
@@ -7613,7 +8328,7 @@
             "value": 11,
             "source": "GitHub",
             "source_url": "https://github.com/JNU-SHARK/shark-radar-system",
-            "checked_at": "2026-11-16T19:03:06.642Z"
+            "checked_at": "2026-11-17T03:20:58.700Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -7637,7 +8352,7 @@
         "pushed_at": "2026-11-04T09:04:29.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:03:19.797Z",
+        "metadata_fetched_at": "2026-11-17T03:21:11.183Z",
         "categories": [
           "aim"
         ],
@@ -7670,7 +8385,7 @@
             "value": 10,
             "source": "GitHub",
             "source_url": "https://github.com/Ruakker/dart_vision_26",
-            "checked_at": "2026-11-16T19:03:19.797Z"
+            "checked_at": "2026-11-17T03:21:11.183Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -7701,7 +8416,7 @@
         "pushed_at": "2025-05-29T04:08:31.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:50.815Z",
+        "metadata_fetched_at": "2026-11-17T03:20:44.687Z",
         "categories": [
           "aim",
           "radar"
@@ -7712,7 +8427,8 @@
             "task_id": "radar",
             "task": "雷达目标探测与信息融合",
             "keywords": [
-              "robomaster radar"
+              "robomaster radar",
+              "雷达"
             ]
           }
         ],
@@ -7742,7 +8458,7 @@
             "value": 52,
             "source": "GitHub",
             "source_url": "https://github.com/zmsbruce/rm_radar",
-            "checked_at": "2026-11-16T19:02:50.815Z"
+            "checked_at": "2026-11-17T03:20:44.687Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -7766,7 +8482,7 @@
         "pushed_at": "2022-09-23T09:09:07.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:40.561Z",
+        "metadata_fetched_at": "2026-11-17T03:20:35.173Z",
         "categories": [
           "aerial",
           "planning",
@@ -7813,7 +8529,7 @@
             "value": 14,
             "source": "GitHub",
             "source_url": "https://github.com/BSSNBSSN/Ego-plannerforIntelligentUAVChampionshipSimulator",
-            "checked_at": "2026-11-16T19:02:40.561Z"
+            "checked_at": "2026-11-17T03:20:35.173Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -7845,7 +8561,7 @@
         "pushed_at": "2023-06-09T17:04:49.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:50.815Z",
+        "metadata_fetched_at": "2026-11-17T03:20:44.687Z",
         "categories": [
           "sim"
         ],
@@ -7878,7 +8594,7 @@
             "value": 93,
             "source": "GitHub",
             "source_url": "https://github.com/Spphire/RM-labeling-tool",
-            "checked_at": "2026-11-16T19:02:50.815Z"
+            "checked_at": "2026-11-17T03:20:44.687Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -7902,7 +8618,7 @@
         "pushed_at": "2019-10-09T09:14:22.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:55.763Z",
+        "metadata_fetched_at": "2026-11-17T03:20:48.512Z",
         "categories": [
           "aim"
         ],
@@ -7937,7 +8653,7 @@
             "value": 79,
             "source": "GitHub",
             "source_url": "https://github.com/EinstainBohr/RM-computer-vision",
-            "checked_at": "2026-11-16T19:02:55.763Z"
+            "checked_at": "2026-11-17T03:20:48.512Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -7961,7 +8677,7 @@
         "pushed_at": "2024-06-16T19:50:16.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:55.763Z",
+        "metadata_fetched_at": "2026-11-17T03:20:48.512Z",
         "categories": [
           "aim"
         ],
@@ -7994,7 +8710,7 @@
             "value": 76,
             "source": "GitHub",
             "source_url": "https://github.com/FaterYU/rm_auto_aim",
-            "checked_at": "2026-11-16T19:02:55.763Z"
+            "checked_at": "2026-11-17T03:20:48.512Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -8026,7 +8742,7 @@
         "pushed_at": "2024-08-12T03:53:11.000Z",
         "license": "GPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:02:50.815Z",
+        "metadata_fetched_at": "2026-11-17T03:20:44.687Z",
         "categories": [
           "sim"
         ],
@@ -8059,7 +8775,7 @@
             "value": 71,
             "source": "GitHub",
             "source_url": "https://github.com/scutrobotlab/SimulatorX",
-            "checked_at": "2026-11-16T19:02:50.815Z"
+            "checked_at": "2026-11-17T03:20:44.687Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -8086,7 +8802,7 @@
         "pushed_at": "2025-03-19T12:59:10.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:03:02.486Z",
+        "metadata_fetched_at": "2026-11-17T03:20:54.704Z",
         "categories": [
           "nav"
         ],
@@ -8119,7 +8835,7 @@
             "value": 67,
             "source": "GitHub",
             "source_url": "https://github.com/IRobot-Algorithm/sentry_navigation",
-            "checked_at": "2026-11-16T19:03:02.486Z"
+            "checked_at": "2026-11-17T03:20:54.704Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
@@ -8143,7 +8859,7 @@
         "pushed_at": "2022-10-07T08:41:29.000Z",
         "license": "GPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-16T19:03:13.781Z",
+        "metadata_fetched_at": "2026-11-17T03:21:05.097Z",
         "categories": [
           "aim"
         ],
@@ -8176,7 +8892,7 @@
             "value": 63,
             "source": "GitHub",
             "source_url": "https://github.com/XianMengxi/AutoAim_HUST",
-            "checked_at": "2026-11-16T19:03:13.781Z"
+            "checked_at": "2026-11-17T03:21:05.097Z"
           }
         },
         "first_seen": "2026-11-16T19:03:32.848Z"
