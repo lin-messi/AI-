@@ -6,8 +6,9 @@ import { STRINGS } from "@/lib/i18n";
 import { timeAgo } from "@/lib/format";
 import { downloadItem } from "@/lib/paperDownload";
 import RecommendationNote from "./RecommendationNote";
+import { CommunityInterestBadge } from "./FrontierAttention";
 
-export default function PaperCard({ paper, fieldLabel, onOpen, isNew }) {
+export default function PaperCard({ paper, fieldLabel, onOpen, isNew, interestMetric, interestSource }) {
   const { lang, favs, reads, toggleFav, toggleRead, ready } = useApp();
   const t = STRINGS[lang === "en" ? "en" : "zh"];
 
@@ -48,7 +49,8 @@ export default function PaperCard({ paper, fieldLabel, onOpen, isNew }) {
           <span className="source-dot" />
           {paper.source}
         </span>
-        {!paper.ai_frontier && <span className="heat" title={paper.upvotes > 0
+        {paper.ai_frontier ? <CommunityInterestBadge interest={paper.community_interest} metric={interestMetric} source={interestSource} en={lang === "en"} />
+          : <span className="heat" title={paper.upvotes > 0
           ? (lang === "en" ? `Hugging Face community likes: ${paper.upvotes}; not citations or peer review.` : `Hugging Face 社区点赞：${paper.upvotes}；非论文引用或同行评审结论。`)
           : (lang === "en" ? "Computed interest score; not citations or a quality guarantee." : "本站热度分，非论文引用或质量认证。") }>
           🔥 {paper.upvotes > 0 ? paper.upvotes : Math.round(paper.heat)}
