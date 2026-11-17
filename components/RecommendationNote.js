@@ -6,6 +6,19 @@ export default function RecommendationNote({ item }) {
   const rec = item.recommendation;
   if (!rec) return null;
   const en = lang === "en";
+  const frontier = item.ai_frontier;
+  const stageLabel = {
+    preprint: en ? "Preprint" : "预印本",
+    published: en ? "Published paper" : "正式发表",
+  }[frontier?.stage];
+  const resourceLabels = {
+    code: en ? "Author code" : "作者代码",
+    data: en ? "Author data" : "作者数据",
+    weights: en ? "Model weights" : "模型权重",
+  };
+  const resources = (frontier?.resources || []).filter(resource =>
+    Object.hasOwn(resourceLabels, resource.kind) && /^https:\/\//i.test(resource.url)
+  );
   const receivers = {
     camera: en ? "Frame camera" : "帧相机接收",
     rolling_shutter_camera: en ? "Rolling-shutter camera" : "滚动快门相机接收",
@@ -29,12 +42,13 @@ export default function RecommendationNote({ item }) {
   const metricNote = metricSource.includes("github") ? (en ? "Total stars; not recent growth or a quality guarantee." : "累计星标，非近期增长或质量认证。")
     : /hugging|^hf$/.test(metricSource) ? (en ? "Community likes; not citations or peer review." : "社区点赞，非论文引用或同行评审结论。") : "";
   const date = item.full_name ? item.pushed_at : item.published_at;
-  const codeUrl = rec.code_url || item.reference_review?.code_url || item.optical_review?.code_url;
+  const codeUrl = !frontier && (rec.code_url || item.reference_review?.code_url || item.optical_review?.code_url);
   const dateLabel = date?.slice(0, item.published_precision === "year" ? 4 : item.published_precision === "month" ? 7 : 10);
   return (
     <div className="recommendation-note">
       <div className="subtags">
         <span className="conf-badge">{lane}</span>
+        {stageLabel && <span className="field-chip">{stageLabel}</span>}
         {rec.receiver && <span className="field-chip">{receivers[rec.receiver] || receivers.unknown}</span>}
         {rec.source_type && <span className="field-chip">{sourceTypes[rec.source_type] || sourceTypes.unknown}</span>}
         {(rec.topics || []).slice(0, 3).map(topic => <span className="field-chip" key={topic.key}>{en ? topic.label_en || topic.label_zh : topic.label_zh || topic.label_en}</span>)}
@@ -46,8 +60,14 @@ export default function RecommendationNote({ item }) {
       {rec.limitations_zh && <p><b>{rec.scope === "news" ? (en ? "Reading note: " : "阅读提示：") : (en ? "Adaptation needed: " : "适用限制：")}</b>{rec.limitations_zh}</p>}
       {item.optical_review?.license_note && <p><b>{en ? "License: " : "许可说明："}</b>{item.optical_review.license_note}</p>}
       {codeUrl && <a href={codeUrl} target="_blank" rel="noopener noreferrer">{en ? "Author resources" : "作者代码 / 资源"} ↗</a>}
+      {resources.length > 0 && <div className="paper-resource-links">
+        {resources.map(({ kind, url }) => (
+          <a key={`${kind}:${url}`} href={url} target="_blank" rel="noopener noreferrer">{resourceLabels[kind]} ↗</a>
+        ))}
+      </div>}
+      {frontier && resources.length === 0 && <p><small>{en ? "No author resources verified yet." : "暂无已核验的作者资源。"}</small></p>}
       {rec.metric && <p><a href={rec.metric.source_url} target="_blank" rel="noopener noreferrer">{rec.metric.source}: {rec.metric.value}{metricUnit}</a>{rec.metric.checked_at && <small> · {rec.metric.checked_at.slice(0, 10)}</small>}{metricNote && <small className="evidence-caveat">{metricNote}</small>}</p>}
-      {rec.evidence_url && <a href={rec.evidence_url} target="_blank" rel="noopener noreferrer">{en ? "Check source" : "核验来源"} ↗</a>}
+      {rec.evidence_url && (!frontier || rec.evidence_url !== item.url) && <a href={rec.evidence_url} target="_blank" rel="noopener noreferrer">{en ? "Check source" : "核验来源"} ↗</a>}
     </div>
   );
 }
