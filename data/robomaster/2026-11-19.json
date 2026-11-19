@@ -1,6 +1,6 @@
 {
   "date": "2026-11-19",
-  "generatedAt": "2026-11-18T22:29:01.723Z",
+  "generatedAt": "2026-11-19T04:04:04.466Z",
   "categories": [
     {
       "key": "optical",
@@ -71,7 +71,7 @@
   "rules_fingerprint": "2a8e2ea876442787",
   "rules_season": "2027",
   "papers": {
-    "count": 70,
+    "count": 77,
     "items": [
       {
         "id": "arxiv:2611.19534",
@@ -985,6 +985,81 @@
         }
       },
       {
+        "id": "arxiv:2611.23544",
+        "arxiv_id": "2611.23544",
+        "source": "arXiv",
+        "cats": [
+          "eess.SY"
+        ],
+        "title_en": "Sample-Efficient Model Predictive Control via Proximal Policy Optimization",
+        "title_zh": "通过近端策略优化实现样本高效的模型预测控制",
+        "abstract_en": "Sampling-based model predictive control (MPC) enables real-time control of complex nonlinear systems but often incurs substantial computational costs due to repeated trajectory simulations. In this paper, we bridge policy optimization in reinforcement learning and sampling-based MPC to improve computational efficiency through sample reuse. Starting from a KL-regularized distributional formulation of trajectory optimization, we derive an exact performance-difference identity based on a signed exponential advantage function. This identity motivates two algorithms, PPO-MPPI and SPO-MPPI, which adapt proximal policy optimization techniques to sampling-based MPC, enabling multiple optimization updates using previously evaluated trajectories without additional forward simulations. We establish population-level monotonic improvement guarantees for both methods and prove convergence to first-order stationarity for PPO-MPPI under fixed-covariance Gaussian sampling distributions. Experiments on quadruped velocity tracking and quadrotor path tracking demonstrate that the proposed methods achieve competitive control performance at substantially lower computational cost than multi-stage sampling approaches. Our results establish a principled connection between policy optimization and sampling-based MPC and highlight the potential of trajectory reuse for sample-efficient predictive control.",
+        "abstract_zh": "基于采样的模型预测控制（MPC）能够对复杂非线性系统进行实时控制，但由于重复轨迹仿真，通常会产生大量计算成本。本文将强化学习中的策略优化与基于采样的MPC联系起来，通过样本复用来提高计算效率。从轨迹优化的KL正则化分布形式出发，我们推导出基于带符号指数优势函数的精确性能差恒等式。该恒等式启发了两种算法PPO-MPPI和SPO-MPPI，它们将近端策略优化技术适配到基于采样的MPC，使得能够利用先前评估过的轨迹进行多次优化更新，而无需额外的前向仿真。我们为两种方法建立了群体层面的单调改进保证，并在固定协方差高斯采样分布下证明了PPO-MPPI收敛到一阶平稳性。在四足机器人速度跟踪和四旋翼路径跟踪上的实验表明，所提方法以显著低于多阶段采样方法的计算成本实现了有竞争力的控制性能。我们的结果在策略优化与基于采样的MPC之间建立了有原则的联系，并突出了轨迹复用于样本高效预测控制的潜力。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Jiarui Wang",
+          "Sina Sharifi",
+          "Mahyar Fazlyab"
+        ],
+        "url": "https://arxiv.org/abs/2611.23544v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.23544",
+        "html_url": "https://arxiv.org/abs/2611.23544",
+        "published_at": "2026-11-17T21:50:41.000Z",
+        "upvotes": 0,
+        "heat": 2129.810614722222,
+        "featured": false,
+        "categories": [
+          "aerial",
+          "planning",
+          "control"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 45,
+        "rule_matches": [
+          {
+            "task_id": "aerial",
+            "task": "空中系统自主飞行与机库交互",
+            "keywords": [
+              "quadrotor",
+              "四旋翼"
+            ]
+          }
+        ],
+        "rules_fingerprint": "2a8e2ea876442787",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "planning",
+              "label_zh": "运动规划",
+              "label_en": "Motion Planning"
+            },
+            {
+              "key": "control",
+              "label_zh": "机器人控制",
+              "label_en": "Robot Control"
+            }
+          ],
+          "lane": "recent",
+          "score": 34,
+          "quality": "method",
+          "reason_zh": "运动规划、机器人控制的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2611.23544v1"
+        },
+        "first_seen": "2026-11-19T04:03:37.835Z",
+        "rm": {
+          "usage": "可用于空中机器人轨迹跟踪控制层，利用轨迹复用降低采样MPC计算量，适合机载算力受限下的稳定悬停/航迹跟踪；但需自行接入室内定位与状态估计，不能视为完整自主飞行系统。",
+          "task_id": "aerial",
+          "task": "空中系统自主飞行与机库交互",
+          "value": "mid",
+          "rules_fingerprint": "2a8e2ea876442787",
+          "season": "2027"
+        }
+      },
+      {
         "id": "arxiv:2611.15658",
         "arxiv_id": "2611.15658",
         "source": "arXiv",
@@ -1490,6 +1565,141 @@
           "reason_zh": "运动规划的可迁移方法或工具；近一年发表",
           "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；核对载荷、室内定位和通信前提；外部动捕、GPS或Wi-Fi条件不能直接搬入赛场；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
           "evidence_url": "https://arxiv.org/abs/2611.19818v1"
+        }
+      },
+      {
+        "id": "arxiv:2611.24155",
+        "arxiv_id": "2611.24155",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "BEV-Diffusion: Camera-Only Traversability Navigation with BEV Memory and Efficient Cross-Robot Adaptation",
+        "title_zh": "BEV-Diffusion：具有BEV记忆和高效跨机器人适应的纯相机可通行性导航",
+        "abstract_en": "Robot navigation requires both an understanding of the scene and an efficient adaptation to new robots, yet current methods rely on expensive LiDAR sensors, long mapping and modular pipelines. We present BEV-Diffusion, a camera-only model that learns a bird's-eye view (BEV) traversability map, its uncertainty and the path in a single network. A frozen DINOv2 backbone encodes consecutive RGB frames, which inverse perspective mapping and Bayesian fusion lift into the BEV, and a ranking loss keeps outdoor traversability graded rather than binary, separating asphalt from grass (median 0.94 vs. 0.75). On this map, a transformer denoiser generates polar waypoints in a few DDIM steps, and uncertainty-aware guidance refines the path and ends it where the map is no longer reliable. At deployment, a metric BEV memory keeps obstacles after they leave the camera view and warm starts each sample from the previous, ego-motion compensated path. Because the planner jointly learns the path, the map, and its uncertainty, it selects routes through terrain it can confidently traverse. In an unseen courtyard, a wheeled-legged robot autonomously traveled 120 m, completing 96% of the route without intervention, compared with 75-88% for the baselines. Even under low-light conditions after sunset, the proposed model completed the route without requiring any intervention. Retraining only the BEV head, about 3% of the parameters, adapts the model to a small legged robot in 2.3 min. Indoors, the memory gets this robot out of maze-like traps: it retains 62-66% of the nearby out-of-view obstacles, against at most 3% for the baselines, and the robot achieves 67-100% task progress, compared with 20-40% for the evaluated baselines.",
+        "abstract_zh": "机器人导航既需要理解场景，也需要高效适应新机器人，然而当前方法依赖昂贵的LiDAR传感器、长时间建图和模块化流程。我们提出BEV-Diffusion，一种仅使用相机的模型，在单一网络中学习鸟瞰图（BEV）可通行性地图、其不确定性以及路径。冻结的DINOv2主干网络对连续RGB帧进行编码，逆透视映射和贝叶斯融合将其提升到BEV中，排序损失使室外可通行性保持分级而非二值，将沥青与草地分开（中位数0.94对0.75）。在该地图上，Transformer去噪器在少量DDIM步骤中生成极坐标路点，不确定性感知引导细化路径，并在地图不再可靠处终止路径。在部署时，度量BEV记忆在障碍物离开相机视野后仍保留它们，并用先前经自运动补偿的路径热启动每个样本。由于规划器联合学习路径、地图及其不确定性，它选择通过其能够自信穿越的地形的路线。在一个未见过的庭院中，轮腿机器人自主行驶了120 m，在无干预情况下完成了96%的路线，而基线为75-88%。即使在日落后低光照条件下，所提模型也无需任何干预即完成了路线。仅重新训练BEV头（约3%的参数），即可在2.3分钟内使模型适应小型足式机器人。在室内，该记忆使该机器人摆脱迷宫式陷阱：它保留了62-66%的附近视野外障碍物，而基线至多为3%，机器人达到67-100%的任务进度，而所评估基线为20-40%。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Iana Zhura",
+          "Timofei Kozlov",
+          "Dmitrii Plotnikov",
+          "Ivan Valuev",
+          "Miguel Altamirano Cabrera",
+          "Dzmitry Tsetserukou"
+        ],
+        "url": "https://arxiv.org/abs/2611.24155v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.24155",
+        "html_url": "https://arxiv.org/abs/2611.24155",
+        "published_at": "2026-11-18T09:58:54.000Z",
+        "upvotes": 0,
+        "heat": 2141.947832777778,
+        "featured": false,
+        "categories": [
+          "nav"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 43,
+        "rule_matches": [
+          {
+            "task_id": "sentry",
+            "task": "哨兵机器人自主导航与决策",
+            "keywords": []
+          }
+        ],
+        "rules_fingerprint": "2a8e2ea876442787",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "nav",
+              "label_zh": "地面自主导航",
+              "label_en": "Ground Navigation"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "地面自主导航的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2611.24155v1"
+        },
+        "first_seen": "2026-11-19T04:03:37.835Z",
+        "rm": {
+          "usage": "可用于哨兵相机-only可通行地图与记忆式避障思路，尤其是视场外障碍保持和跨机器人小样本微调；需在RM场地数据上重训并核验机载算力，不能直接作为完整导航系统。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "mid",
+          "rules_fingerprint": "2a8e2ea876442787",
+          "season": "2027"
+        }
+      },
+      {
+        "id": "arxiv:2611.23894",
+        "arxiv_id": "2611.23894",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "Navigating Robots from Unknown and Uncalibrated Exocentric Cameras via Map Estimation",
+        "title_zh": "通过地图估计从未知且未标定的外置相机导航机器人",
+        "abstract_en": "Exocentric cameras, mounted on walls or ceilings in indoor environments, offer wider vantage points and are less easily occluded than robot-mounted cameras, making them an appealing alternative for perception in robot navigation algorithms. Previous methods that use such cameras, however, require their pose and intrinsics to be known before deployment, demanding calibration that is time-consuming, requires specialized personnel, and must be repeated whenever a camera moves or a new room is navigated. We propose Robot-centric Obstacle Maps from Unknown and uncalibrated eXocentric cameras (ROMUX), an agent that navigates a robot toward point goals while avoiding obstacles using exocentric cameras that are both uncalibrated, meaning the system does not require their pose or intrinsic information as input, and unknown, meaning it is not fit to a specific camera during training and does not require pre-deployment fine-tuning. We train a cross-view transformer on large-scale simulation data to predict metric robot-centric obstacle maps from exocentric images, without conditioning image tokens on camera information. A small policy trained with Proximal Policy Optimization (PPO) then navigates on the predicted maps toward a goal coordinate relative to the robot. We benchmark our agent in simulation with cameras randomized per episode, and it matches the success rates of a PPO policy that navigates from a robot-mounted camera. Further, ROMUX works with one camera or multiple cameras with partial views and has been transferred zero-shot to a real robot using a camera at varying positions and orientations across various room layouts.",
+        "abstract_zh": "安装在室内环境墙壁或天花板上的外置相机提供更宽的视角，且比机器人搭载相机更不易被遮挡，因此成为机器人导航算法中颇具吸引力的感知替代方案。然而，先前使用此类相机的方法要求部署前已知其位姿和内参，这需要耗时、需专业人员且每当相机移动或导航新房间时必须重复的标定。我们提出ROMUX（Robot-centric Obstacle Maps from Unknown and uncalibrated eXocentric cameras），一种智能体，利用既未标定（即系统不要求将其位姿或内参信息作为输入）又未知（即训练期间不针对特定相机拟合，且不需要部署前微调）的外置相机，引导机器人朝向点目标导航并避开障碍物。我们在大规模仿真数据上训练跨视图Transformer，从外置图像预测以机器人为中心的度量障碍物地图，而不将图像token以相机信息为条件。随后，一个用近端策略优化（PPO）训练的小型策略在预测地图上朝相对于机器人的目标坐标导航。我们在每个回合随机化相机的仿真中对该智能体进行基准测试，其成功率与从机器人搭载相机导航的PPO策略相匹配。此外，ROMUX可适用于一个相机或多个具有部分视图的相机，并已零样本迁移到真实机器人上，在不同房间布局中使用位置和方向变化的相机。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Raul Steinmetz",
+          "Raphael Druon",
+          "Yusuke Yoshiyasu",
+          "Akihisa Ohya",
+          "Ayanori Yorozu"
+        ],
+        "url": "https://arxiv.org/abs/2611.23894v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.23894",
+        "html_url": "https://arxiv.org/abs/2611.23894",
+        "published_at": "2026-11-18T05:45:24.000Z",
+        "upvotes": 0,
+        "heat": 2137.7228288888887,
+        "featured": false,
+        "categories": [
+          "nav"
+        ],
+        "image": "",
+        "comment": "8 pages, 4 figures",
+        "relevance": 43,
+        "rule_matches": [
+          {
+            "task_id": "sentry",
+            "task": "哨兵机器人自主导航与决策",
+            "keywords": []
+          }
+        ],
+        "rules_fingerprint": "2a8e2ea876442787",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "nav",
+              "label_zh": "地面自主导航",
+              "label_en": "Ground Navigation"
+            }
+          ],
+          "lane": "recent",
+          "score": 36,
+          "quality": "implementation",
+          "reason_zh": "地面自主导航的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统",
+          "evidence_url": "https://arxiv.org/abs/2611.23894v1"
+        },
+        "first_seen": "2026-11-19T04:03:37.835Z",
+        "rm": {
+          "usage": "无标定外置相机建图对哨兵本体导航帮助有限，RM哨兵不能默认拥有可标定外置相机；若借场端相机辅助也需额外链路与坐标对齐，关联较弱。",
+          "task_id": "sentry",
+          "task": "哨兵机器人自主导航与决策",
+          "value": "low",
+          "rules_fingerprint": "2a8e2ea876442787",
+          "season": "2027"
         }
       },
       {
@@ -2196,6 +2406,73 @@
           "evidence_url": "https://arxiv.org/abs/2608.24705",
           "limitations_zh": "论文验证的是单发单收链路，不能据此认定已支持多机网络；需事件相机，未核验到公开实现仓库，arXiv仅注明MobiHoc 2026有条件接收。",
           "quality": "implementation"
+        }
+      },
+      {
+        "id": "arxiv:2611.23531",
+        "arxiv_id": "2611.23531",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "RESCUE Jumper: A Centimeter-Scale Rolling and Jumping Robot for Search and Rescue",
+        "title_zh": "RESCUE Jumper：用于搜救的厘米级滚动与跳跃机器人",
+        "abstract_en": "Centimeter-scale robots are promising for urban search and rescue because they can enter confined spaces that are inaccessible or unsafe for humans. However, their small size limits obstacle traversal after deployment. This paper presents the RESCUE Jumper, a 125 g mobile robot with a 6.2 cm width and 6.2 cm diameter wheels that combines ground rolling with jumping to traverse steps and gaps that exceeds its rolling capability. The RESCUE Jumper uses its two actuators for both rolling mode and jumping by reversing the direction of wheel motion. Forward wheel motion enables rolling, while reverse wheel motion winds a spring steel tail to store elastic potential energy and release it for jumping. The RESCUE Jumper varies tail winding speed to control jump direction, transitioning from backward to forward jumps as winding speed increases from 0.75 rad/s to 8.73 rad/s. The launch angle of the jumps ranges from 45 degree to -11 degree with respect to the vertical axis, reaching a maximum height of 9.2 cm and a maximum lateral displacement of 11.2 cm. We model the winding speed-dependent jumping behavior in three phases: tail release to determine the contact point and robot orientation, tail straightening until liftoff, and ballistic flight to predict jump height and lateral displacement. Finally, qualitative tests highlight the robot's locomotion in cluttered, real-world environments. The model and experiments presented in this work can inform future designs of space-constrained jump mechanisms in centimeter-scale robots for search and rescue and inspection in unstructured environments.",
+        "abstract_zh": "厘米级机器人有望用于城市搜救，因为它们可以进入人类无法到达或不安全的狭窄空间。然而，其小尺寸限制了部署后的越障能力。本文提出RESCUE Jumper，一种125 g的移动机器人，宽6.2 cm，轮径6.2 cm，结合地面滚动与跳跃，以穿越超出其滚动能力的台阶和间隙。RESCUE Jumper通过反转轮子运动方向，将两个执行器同时用于滚动模式和跳跃。轮子正向运动实现滚动，而反向运动卷绕弹簧钢尾以储存弹性势能并释放用于跳跃。RESCUE Jumper通过改变尾部卷绕速度来控制跳跃方向，随着卷绕速度从0.75 rad/s增加到8.73 rad/s，跳跃从向后跳转为向前跳。跳跃发射角相对于垂直轴的范围为45度至-11度，达到最大高度9.2 cm和最大横向位移11.2 cm。我们将依赖卷绕速度的跳跃行为建模为三个阶段：尾部释放以确定接触点和机器人姿态，尾部伸直直至离地，以及弹道飞行以预测跳跃高度和横向位移。最后，定性测试突出了该机器人在杂乱真实环境中的运动能力。本文提出的模型和实验可为未来用于非结构化环境中搜救和检查的厘米级机器人空间受限跳跃机构设计提供参考。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Kiran Marques",
+          "Shashwat Singh",
+          "Ben D'Ambrosia",
+          "Zeynep Temel",
+          "Melisa Orta Martinez"
+        ],
+        "url": "https://arxiv.org/abs/2611.23531v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.23531",
+        "html_url": "https://arxiv.org/abs/2611.23531",
+        "published_at": "2026-11-17T21:37:10.000Z",
+        "upvotes": 0,
+        "heat": 2129.5855991666667,
+        "featured": false,
+        "categories": [
+          "aim"
+        ],
+        "image": "",
+        "comment": "8 pages, 9 figures, IEEE International Symposium on Safety, Security, and Rescue Robotics 2026, Best Paper Award",
+        "relevance": 42,
+        "rule_matches": [
+          {
+            "task_id": "autoaim",
+            "task": "装甲板自瞄与射击控制",
+            "keywords": []
+          }
+        ],
+        "rules_fingerprint": "2a8e2ea876442787",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "aim",
+              "label_zh": "检测与目标跟踪",
+              "label_en": "Detection & Tracking"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "检测与目标跟踪的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；未证明装甲板/点阵屏幕识别、反陀螺预测与弹道闭环；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2611.23531v1"
+        },
+        "first_seen": "2026-11-19T04:03:37.835Z",
+        "rm": {
+          "usage": "厘米级滚动跳跃机器人机构与自瞄、射击控制无直接关系，其跳跃建模不能解决装甲板识别、目标跟踪或弹道预测，基本用不上。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "2a8e2ea876442787",
+          "season": "2027"
         }
       },
       {
@@ -3765,6 +4042,69 @@
         }
       },
       {
+        "id": "arxiv:2611.23620",
+        "arxiv_id": "2611.23620",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO",
+          "cs.CV",
+          "cs.LG"
+        ],
+        "title_en": "How Uncertain Is My Action? Self-Correcting Visual Planning with Frozen World Models",
+        "title_zh": "我的动作有多不确定？使用冻结世界模型的自校正视觉规划",
+        "abstract_en": "A frozen latent world model combined with sampling-based model predictive control is a visual planner. At deployment, the executed action can depart from the commanded one, and the frozen model has no way to notice. We show that the model can be run in reverse: for any hypothesized actuation shift, it predicts what it should have observed under that shift, and comparing this prediction with what was actually observed quantifies the shift and lets the planner correct itself. Unlike the residual energy, which mixes the shift with the model's own error, the score keeps only the part of the residual that a shift can produce. This shift score detects the shift with a locally optimal test, estimates it with Cramer-Rao error bars, names the dominant generator, and compensates the planner once an alarm fires. On PushT, TwoRoom and OGBench-Cube with a frozen latent world model, measured detection follows the prediction to within 0.05 AUROC. Self-correction raises success from 0.650 to 0.862 on PushT and from 0.378 to 0.432 on the harder Cube task, levels with an oracle that is told the true shift at the same block, better than five common test-time adaptation methods. On a real robotic arm, the score identifies a base-joint offset that no joint encoder registers and reduces the reach error from 36 mm to 3-5 mm, and under shifts drawn at random and sealed before the session, estimates recover 92-94% of the error reduction achieved with the true shift. The broader implication is that a frozen world model can act as a filter by predicting the future, testing action-interface uncertainty and validity, and finally correcting failures.",
+        "abstract_zh": "冻结的潜世界模型与基于采样的模型预测控制相结合构成视觉规划器。在部署时，执行动作可能偏离指令动作，而冻结模型无法察觉。我们表明该模型可以反向运行：对于任何假设的执行偏移，它预测在该偏移下本应观察到的内容，并将该预测与实际观察到的内容进行比较，从而量化该偏移并使规划器自我校正。与将偏移与模型自身误差混合的残差能量不同，该评分仅保留偏移可能产生的那部分残差。该偏移评分使用局部最优检验检测偏移，用Cramer-Rao误差条估计偏移，识别主导生成源，并在警报触发后补偿规划器。在使用冻结潜世界模型的PushT、TwoRoom和OGBench-Cube上，实测检测结果与预测的偏差在0.05 AUROC以内。自校正将PushT上的成功率从0.650提高到0.862，在更难的Cube任务上从0.378提高到0.432，与在同一区块被告知真实偏移的oracle持平，优于五种常见的测试时自适应方法。在真实机械臂上，该评分识别出没有关节编码器记录的基座关节偏移，并将到达误差从36 mm降低到3-5 mm；在会话前密封并随机抽取的偏移下，估计值恢复了使用真实偏移所实现误差降低的92-94%。更广泛的含义是，冻结世界模型可以通过预测未来、检验动作接口的不确定性和有效性，并最终校正失败，从而充当滤波器。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Siqing Li",
+          "Luming Yang",
+          "Yijia Jiao",
+          "Junze Deng",
+          "Alper Yilmaz"
+        ],
+        "url": "https://arxiv.org/abs/2611.23620v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.23620",
+        "html_url": "https://arxiv.org/abs/2611.23620",
+        "published_at": "2026-11-17T23:23:42.000Z",
+        "upvotes": 0,
+        "heat": 2131.3611580555557,
+        "featured": false,
+        "categories": [
+          "control"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 39,
+        "rule_matches": [],
+        "rules_fingerprint": "2a8e2ea876442787",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "control",
+              "label_zh": "机器人控制",
+              "label_en": "Robot Control"
+            }
+          ],
+          "lane": "recent",
+          "score": 36,
+          "quality": "implementation",
+          "reason_zh": "机器人控制的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统",
+          "evidence_url": "https://arxiv.org/abs/2611.23620v1"
+        },
+        "first_seen": "2026-11-19T04:03:37.835Z",
+        "rm": {
+          "usage": "冻结世界模型的动作偏差检测可作为视觉伺服/规划的在线自校正思路，但需要学习世界模型与在线采样，和自瞄、导航、雷达等RM任务无直接接口，关联较弱。",
+          "task_id": "",
+          "task": "",
+          "value": "low",
+          "rules_fingerprint": "2a8e2ea876442787",
+          "season": "2027"
+        }
+      },
+      {
         "id": "arxiv:2611.21209",
         "arxiv_id": "2611.21209",
         "source": "arXiv",
@@ -4212,6 +4552,72 @@
         }
       },
       {
+        "id": "arxiv:2611.24191",
+        "arxiv_id": "2611.24191",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "High-Precision Docking of Differential-Drive Mobile Robots Through LiDAR and Vision Collaboration",
+        "title_zh": "通过LiDAR与视觉协同的差速驱动移动机器人高精度对接",
+        "abstract_en": "Precise docking requires a differential-drive robot to correct lateral offset through coupled rotation and translation within a short approach distance. We combine global navigation with terminal control using complementary LiDAR and visual observations. A line fitted to the cabinet front gives normal distance and heading. An AprilTag identifies the workstation; intersecting its center ray with the LiDAR plane determines tangential position. Taught observations define the docking reference and can cancel repeatable fixed biases under unchanged mounting and geometry. Lateral pre-alignment and continuous visual servoing coordinate the approach, with predictive stopping to account for low-speed actuation lag. Across two sessions using the same navigation and docking code at five workstations on Robot 2, all 111 tasks completed, including 101 on the first attempt. Relative to the taught observations, onboard longitudinal, lateral and heading residual root-mean-square values were 1.51 mm, 5.93 mm and 0.238 degrees, respectively. Joint acceptance within plus or minus 10 mm per position axis and plus or minus 1 degree heading was 96.4% (107/111), or 95.5% (106/111) with a plus or minus 0.5 degree heading limit.",
+        "abstract_zh": "精确对接要求差速驱动机器人在短接近距离内通过旋转与平移耦合来校正横向偏移。我们利用互补的LiDAR和视觉观测，将全局导航与终端控制相结合。对柜体正面拟合的直线给出法向距离和航向。AprilTag识别工作站；将其中心射线与LiDAR平面相交确定切向位置。示教观测定义对接参考，并可在安装和几何不变的情况下消除可重复的固定偏差。横向预对准和连续视觉伺服协调接近过程，并通过预测性停止来考虑低速执行滞后。在Robot 2上五个工作站使用相同导航与对接代码的两个会话中，全部111项任务均完成，其中101项首次尝试即完成。相对于示教观测，车载纵向、横向和航向残差均方根值分别为1.51 mm、5.93 mm和0.238度。在每个位置轴±10 mm和航向±1度内的联合接受率为96.4%（107/111），在航向±0.5度限制下为95.5%（106/111）。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Zaide Zhang",
+          "Zheyuan Zhang"
+        ],
+        "url": "https://arxiv.org/abs/2611.24191v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.24191",
+        "html_url": "https://arxiv.org/abs/2611.24191",
+        "published_at": "2026-11-18T10:28:37.000Z",
+        "upvotes": 0,
+        "heat": 2142.4431119444444,
+        "featured": false,
+        "categories": [
+          "assembly"
+        ],
+        "image": "",
+        "comment": "",
+        "relevance": 38,
+        "rule_matches": [
+          {
+            "task_id": "engineer",
+            "task": "重装机器人视觉装配",
+            "keywords": [
+              "visual servoing"
+            ]
+          }
+        ],
+        "rules_fingerprint": "2a8e2ea876442787",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "assembly",
+              "label_zh": "视觉伺服与装配",
+              "label_en": "Visual Servoing & Assembly"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "视觉伺服与装配的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；须验证科技核心标签、刚体位姿与装配精度，人体姿态不能替代物体位姿；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2611.24191v1"
+        },
+        "first_seen": "2026-11-19T04:03:37.835Z",
+        "rm": {
+          "usage": "可用于重装机器人末端对接/装配站的粗到精停靠：LiDAR拟合台面加AprilTag定切向位置，配合预测停机和视觉伺服；需替换为科技核心标签与机械臂/底盘构型验证。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "mid",
+          "rules_fingerprint": "2a8e2ea876442787",
+          "season": "2027"
+        }
+      },
+      {
         "id": "arxiv:2610.27618",
         "arxiv_id": "2610.27618",
         "source": "arXiv",
@@ -4465,6 +4871,76 @@
           "evidence_url": "https://arxiv.org/abs/2602.08474",
           "limitations_zh": "需确认相机支持滚动快门并能控制曝光；文中实验使用专用LED、USRP和测量设备，不能将实验带宽直接套到机载相机；未核验公开代码，arXiv仅注明已投稿ICC。",
           "quality": "implementation"
+        }
+      },
+      {
+        "id": "arxiv:2611.23575",
+        "arxiv_id": "2611.23575",
+        "source": "arXiv",
+        "cats": [
+          "cs.RO"
+        ],
+        "title_en": "LuxTac: A Flexible, Scalable, and Open-Source Optical Taxel Array with Distributed Three-Axis Force Sensing for Tactile Robot Learning",
+        "title_zh": "LuxTac：一种用于触觉机器人学习的柔性、可扩展、开源且具备分布式三轴力感知的光学触觉像素阵列",
+        "abstract_en": "Low-cost tactile arrays have made touch a practical input for robot learning, but piezoresistive designs sense only pressure, while camera-based sensors that also resolve shear are too bulky to tile over a gripper. To solve this problem, we present LuxTac, a flexible, scalable optical taxel array, about 3.5 mm thick and built from off-the-shelf parts. Each taxel is a digital RGBC light-to-digital converter under a translucent white silicone layer capped by an opaque black film, so the back-scattered LED light falls monotonically with local indentation depth. The same board accepts two interchangeable gel cartridges: a plain one for normal sensing, and one with colored walls that encodes the local shear in the color of the returned light, with no camera, magnets, or bump overlay, making LuxTac, to our knowledge, the first optical taxel array to resolve shear at individual taxels. Characterized with an automated CNC indenter and a six-axis force/torque sensor, the normal cartridge responds linearly to force ($R^2$ = 0.999) from 104 mN to at least 5.8 N, with 2.0% repeatability, 5.9% hysteresis, and a taxel-to-taxel variation of 6-10% after normalization. With the shear cartridge, per-taxel models estimate the three-axis force at every taxel; across three indenter shapes and nine held-out sessions, the summed estimates reach $R^2$ = 0.96/0.96/0.92 in x/y/z, each taxel's estimate 0.92/0.93/0.94, and the median shear-direction error is 4.8 degrees. Adding LuxTac pressure readings to an Action Chunking Transformer policy substantially improves peg-in-hole success over a vision-only baseline. Design files, code, and videos are available at https://luxtac.github.io.",
+        "abstract_zh": "低成本触觉阵列使触觉成为机器人学习的一种实用输入，但压阻式设计仅感知压力，而同时可解析剪切力的基于相机的传感器又过于笨重，难以在夹爪上铺满。为解决此问题，我们提出 LuxTac，一种柔性、可扩展的光学触觉像素阵列，厚度约 3.5 mm，由现成部件构建。每个触觉像素是一个数字 RGBC 光数字转换器，位于半透明白色硅胶层下，并由不透明黑色薄膜覆盖，因此背散射 LED 光随局部压入深度单调下降。同一块板可接受两种可互换的凝胶盒：普通凝胶盒用于法向感知；带彩色壁的凝胶盒将局部剪切编码到返回光的颜色中，无需相机、磁体或凸点覆盖层，据我们所知，这使 LuxTac 成为首个在单个触觉像素上解析剪切力的光学触觉像素阵列。使用自动 CNC 压头和六轴力/力矩传感器进行表征，普通凝胶盒在 104 mN 至至少 5.8 N 范围内对力呈线性响应（R² = 0.999），重复性为 2.0%，滞回为 5.9%，归一化后触觉像素间差异为 6–10%。使用剪切凝胶盒时，逐触觉像素模型估计每个触觉像素处的三轴力；在三种压头形状和九个留出会话中，求和估计在 x/y/z 方向达到 R² = 0.96/0.96/0.92，每个触觉像素的估计为 0.92/0.93/0.94，剪切方向误差中位数为 4.8 度。将 LuxTac 压力读数加入 Action Chunking Transformer 策略后，相比仅视觉基线，插孔任务成功率显著提高。设计文件、代码和视频见 https://luxtac.github.io。",
+        "highlight_zh": "",
+        "digest_zh": "",
+        "authors": [
+          "Md Rakibul Islam Prince",
+          "John Pelan",
+          "Zhiyuan Zhang",
+          "Adyaa Khera",
+          "Katherine Pesetski",
+          "Adeesh Desai",
+          "Akimizu Sugiyama",
+          "Minwoo Ki"
+        ],
+        "url": "https://arxiv.org/abs/2611.23575v1",
+        "pdf_url": "https://arxiv.org/pdf/2611.23575",
+        "html_url": "https://arxiv.org/abs/2611.23575",
+        "published_at": "2026-11-17T22:21:50.000Z",
+        "upvotes": 0,
+        "heat": 2130.3300447222223,
+        "featured": false,
+        "categories": [
+          "assembly"
+        ],
+        "image": "",
+        "comment": "11 pages, 9 figures, 5 tables. Project page: https://luxtac.github.io",
+        "relevance": 37,
+        "rule_matches": [
+          {
+            "task_id": "engineer",
+            "task": "重装机器人视觉装配",
+            "keywords": []
+          }
+        ],
+        "rules_fingerprint": "2a8e2ea876442787",
+        "recommendation": {
+          "scope": "rm",
+          "topics": [
+            {
+              "key": "assembly",
+              "label_zh": "视觉伺服与装配",
+              "label_en": "Visual Servoing & Assembly"
+            }
+          ],
+          "lane": "recent",
+          "score": 32,
+          "quality": "method",
+          "reason_zh": "视觉伺服与装配的可迁移方法或工具；近一年发表",
+          "limitations_zh": "通用方法需在RM场地、传感器与算力条件下验证，不能视为可直接参赛的完整系统；须验证科技核心标签、刚体位姿与装配精度，人体姿态不能替代物体位姿；当前元数据只支持方法参考，未据此核验完整代码或实机复现",
+          "evidence_url": "https://arxiv.org/abs/2611.23575v1"
+        },
+        "first_seen": "2026-11-19T04:03:37.835Z",
+        "rm": {
+          "usage": "若重装机械臂额外加装此类光学触觉阵列，可在插装时补充接触力与剪切信息；但这是额外硬件且不能替代科技核心视觉位姿，当前规则未要求，关联较弱。",
+          "task_id": "engineer",
+          "task": "重装机器人视觉装配",
+          "value": "low",
+          "rules_fingerprint": "2a8e2ea876442787",
+          "season": "2027"
         }
       },
       {
@@ -5026,7 +5502,7 @@
         "pushed_at": "2026-11-12T15:42:18.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:18.145Z",
+        "metadata_fetched_at": "2026-11-19T04:02:28.844Z",
         "categories": [
           "control",
           "sim"
@@ -5065,7 +5541,7 @@
             "value": 262,
             "source": "GitHub",
             "source_url": "https://github.com/xrobot-org/XRobot",
-            "checked_at": "2026-11-18T22:27:18.145Z"
+            "checked_at": "2026-11-19T04:02:28.844Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -5095,7 +5571,7 @@
         "pushed_at": "2022-04-07T15:12:20.000Z",
         "license": "NOASSERTION",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:14.317Z",
+        "metadata_fetched_at": "2026-11-19T04:02:25.097Z",
         "categories": [
           "nav",
           "planning"
@@ -5134,7 +5610,7 @@
             "value": 901,
             "source": "GitHub",
             "source_url": "https://github.com/RoboMaster/RoboRTS",
-            "checked_at": "2026-11-18T22:27:14.317Z"
+            "checked_at": "2026-11-19T04:02:25.097Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -5165,7 +5641,7 @@
         "pushed_at": "2026-11-16T22:46:08.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:18.145Z",
+        "metadata_fetched_at": "2026-11-19T04:02:28.844Z",
         "categories": [
           "nav"
         ],
@@ -5198,7 +5674,7 @@
             "value": 467,
             "source": "GitHub",
             "source_url": "https://github.com/SMBU-PolarBear-Robotics-Team/pb2025_sentry_nav",
-            "checked_at": "2026-11-18T22:27:18.145Z"
+            "checked_at": "2026-11-19T04:02:28.844Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -5229,7 +5705,7 @@
         "pushed_at": "2024-11-08T07:08:13.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:14.317Z",
+        "metadata_fetched_at": "2026-11-19T04:02:25.097Z",
         "categories": [
           "aim"
         ],
@@ -5262,7 +5738,7 @@
             "value": 247,
             "source": "GitHub",
             "source_url": "https://github.com/chenjunnn/rm_vision",
-            "checked_at": "2026-11-18T22:27:14.317Z"
+            "checked_at": "2026-11-19T04:02:25.097Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -5291,7 +5767,7 @@
         "pushed_at": "2024-06-08T04:57:53.000Z",
         "license": "MIT",
         "archived": true,
-        "metadata_fetched_at": "2026-11-18T22:27:14.317Z",
+        "metadata_fetched_at": "2026-11-19T04:02:25.097Z",
         "categories": [
           "sim"
         ],
@@ -5300,7 +5776,9 @@
           {
             "task_id": "sim",
             "task": "算法仿真与验证",
-            "keywords": []
+            "keywords": [
+              "仿真"
+            ]
           }
         ],
         "rules_fingerprint": "2a8e2ea876442787",
@@ -5324,7 +5802,7 @@
             "value": 349,
             "source": "GitHub",
             "source_url": "https://github.com/LihanChen2004/pb_rm_simulation",
-            "checked_at": "2026-11-18T22:27:14.317Z"
+            "checked_at": "2026-11-19T04:02:25.097Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -5357,7 +5835,7 @@
         "pushed_at": "2023-04-19T10:41:35.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:07.939Z",
+        "metadata_fetched_at": "2026-11-19T04:02:18.783Z",
         "categories": [
           "aim",
           "control"
@@ -5396,7 +5874,7 @@
             "value": 45,
             "source": "GitHub",
             "source_url": "https://github.com/ittuann/RoboMaster-NEFU-Ares-UAVGimbal",
-            "checked_at": "2026-11-18T22:27:07.939Z"
+            "checked_at": "2026-11-19T04:02:18.783Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -5422,7 +5900,7 @@
         "pushed_at": "2026-08-13T04:54:40.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:14.317Z",
+        "metadata_fetched_at": "2026-11-19T04:02:25.097Z",
         "categories": [
           "aim"
         ],
@@ -5449,7 +5927,7 @@
             "value": 744,
             "source": "GitHub",
             "source_url": "https://github.com/TongjiSuperPower/sp_vision_25",
-            "checked_at": "2026-11-18T22:27:14.317Z"
+            "checked_at": "2026-11-19T04:02:25.097Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -5473,7 +5951,7 @@
         "pushed_at": "2024-09-20T17:06:01.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:26.456Z",
+        "metadata_fetched_at": "2026-11-19T04:02:36.253Z",
         "categories": [
           "aim"
         ],
@@ -5508,7 +5986,7 @@
             "value": 212,
             "source": "GitHub",
             "source_url": "https://github.com/HHgzs/TJURM-2024",
-            "checked_at": "2026-11-18T22:27:26.456Z"
+            "checked_at": "2026-11-19T04:02:36.253Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -5537,7 +6015,7 @@
         "pushed_at": "2023-05-27T01:24:43.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:18.145Z",
+        "metadata_fetched_at": "2026-11-19T04:02:28.844Z",
         "categories": [
           "aim"
         ],
@@ -5570,7 +6048,7 @@
             "value": 87,
             "source": "GitHub",
             "source_url": "https://github.com/chenjunnn/rm_auto_aim",
-            "checked_at": "2026-11-18T22:27:18.145Z"
+            "checked_at": "2026-11-19T04:02:28.844Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -5594,7 +6072,7 @@
         "pushed_at": "2021-03-29T06:45:54.000Z",
         "license": "NOASSERTION",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:14.317Z",
+        "metadata_fetched_at": "2026-11-19T04:02:25.097Z",
         "categories": [
           "control"
         ],
@@ -5621,7 +6099,7 @@
             "value": 411,
             "source": "GitHub",
             "source_url": "https://github.com/RoboMaster/RoboRTS-Firmware",
-            "checked_at": "2026-11-18T22:27:14.317Z"
+            "checked_at": "2026-11-19T04:02:25.097Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -5649,7 +6127,7 @@
         "pushed_at": "2026-08-15T10:43:21.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:42.475Z",
+        "metadata_fetched_at": "2026-11-19T04:02:51.782Z",
         "categories": [
           "aim",
           "rune"
@@ -5659,7 +6137,9 @@
           {
             "task_id": "rune",
             "task": "能量机关识别与击打",
-            "keywords": []
+            "keywords": [
+              "能量机关"
+            ]
           }
         ],
         "rules_fingerprint": "2a8e2ea876442787",
@@ -5688,7 +6168,7 @@
             "value": 24,
             "source": "GitHub",
             "source_url": "https://github.com/SZURPVision/RuneDetectionModel",
-            "checked_at": "2026-11-18T22:27:42.475Z"
+            "checked_at": "2026-11-19T04:02:51.782Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -5719,7 +6199,7 @@
         "pushed_at": "2026-10-23T13:58:09.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:33.297Z",
+        "metadata_fetched_at": "2026-11-19T04:02:42.748Z",
         "categories": [
           "radar",
           "sim"
@@ -5767,7 +6247,7 @@
             "value": 14,
             "source": "GitHub",
             "source_url": "https://github.com/diaofenyuan/RMUC_2027map_unity",
-            "checked_at": "2026-11-18T22:27:33.297Z"
+            "checked_at": "2026-11-19T04:02:42.748Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -5801,7 +6281,7 @@
         "pushed_at": "2025-05-19T10:06:49.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:18.145Z",
+        "metadata_fetched_at": "2026-11-19T04:02:28.844Z",
         "categories": [
           "aim"
         ],
@@ -5828,7 +6308,7 @@
             "value": 110,
             "source": "GitHub",
             "source_url": "https://github.com/WayneMao/RoboMatrix",
-            "checked_at": "2026-11-18T22:27:18.145Z"
+            "checked_at": "2026-11-19T04:02:28.844Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -5856,7 +6336,7 @@
         "pushed_at": "2026-07-21T09:26:22.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:18.145Z",
+        "metadata_fetched_at": "2026-11-19T04:02:28.844Z",
         "categories": [
           "aim"
         ],
@@ -5889,7 +6369,7 @@
             "value": 114,
             "source": "GitHub",
             "source_url": "https://github.com/WUST-RM/awakening",
-            "checked_at": "2026-11-18T22:27:18.145Z"
+            "checked_at": "2026-11-19T04:02:28.844Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -5922,7 +6402,7 @@
         "pushed_at": "2023-08-08T17:08:01.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:18.145Z",
+        "metadata_fetched_at": "2026-11-19T04:02:28.844Z",
         "categories": [
           "control"
         ],
@@ -5949,7 +6429,7 @@
             "value": 77,
             "source": "GitHub",
             "source_url": "https://github.com/rm-controls/rm_usb2can",
-            "checked_at": "2026-11-18T22:27:18.145Z"
+            "checked_at": "2026-11-19T04:02:28.844Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -5977,7 +6457,7 @@
         "pushed_at": "2026-11-16T22:46:10.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:18.145Z",
+        "metadata_fetched_at": "2026-11-19T04:02:28.844Z",
         "categories": [
           "nav"
         ],
@@ -6013,7 +6493,7 @@
             "value": 47,
             "source": "GitHub",
             "source_url": "https://github.com/SMBU-PolarBear-Robotics-Team/pb2025_sentry_behavior",
-            "checked_at": "2026-11-18T22:27:18.145Z"
+            "checked_at": "2026-11-19T04:02:28.844Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -6041,7 +6521,7 @@
         "pushed_at": "2021-12-04T08:48:47.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:18.145Z",
+        "metadata_fetched_at": "2026-11-19T04:02:28.844Z",
         "categories": [
           "aim"
         ],
@@ -6068,7 +6548,7 @@
             "value": 40,
             "source": "GitHub",
             "source_url": "https://github.com/wildwolf-team/WolfVision",
-            "checked_at": "2026-11-18T22:27:18.145Z"
+            "checked_at": "2026-11-19T04:02:28.844Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -6099,7 +6579,7 @@
         "pushed_at": "2026-03-11T10:18:41.000Z",
         "license": "GPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:18.145Z",
+        "metadata_fetched_at": "2026-11-19T04:02:28.844Z",
         "categories": [
           "radar"
         ],
@@ -6134,7 +6614,7 @@
             "value": 29,
             "source": "GitHub",
             "source_url": "https://github.com/BreCaspian/LiDAR-Camera_Calibration_Validator",
-            "checked_at": "2026-11-18T22:27:18.145Z"
+            "checked_at": "2026-11-19T04:02:28.844Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -6165,7 +6645,7 @@
         "pushed_at": "2026-08-11T09:52:37.000Z",
         "license": "NOASSERTION",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:33.297Z",
+        "metadata_fetched_at": "2026-11-19T04:02:42.748Z",
         "categories": [
           "aim",
           "radar"
@@ -6206,7 +6686,7 @@
             "value": 20,
             "source": "GitHub",
             "source_url": "https://github.com/coach114514/TCR-RM2026-Radar-OpenSource",
-            "checked_at": "2026-11-18T22:27:33.297Z"
+            "checked_at": "2026-11-19T04:02:42.748Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -6237,7 +6717,7 @@
         "pushed_at": "2021-11-13T13:13:17.000Z",
         "license": "LGPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:14.317Z",
+        "metadata_fetched_at": "2026-11-19T04:02:25.097Z",
         "categories": [
           "rl",
           "sim"
@@ -6254,7 +6734,9 @@
           {
             "task_id": "sim",
             "task": "算法仿真与验证",
-            "keywords": []
+            "keywords": [
+              "仿真"
+            ]
           }
         ],
         "rules_fingerprint": "2a8e2ea876442787",
@@ -6283,7 +6765,7 @@
             "value": 150,
             "source": "GitHub",
             "source_url": "https://github.com/yizhengzhang1/RoboMaster-Simulator",
-            "checked_at": "2026-11-18T22:27:14.317Z"
+            "checked_at": "2026-11-19T04:02:25.097Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -6297,7 +6779,7 @@
         "description_en": "浙江大学Hello World战队26赛季轮腿哨兵导航",
         "description_zh": "浙江大学 Hello World 战队 26 赛季轮腿哨兵导航",
         "highlight_zh": "",
-        "stars": 149,
+        "stars": 150,
         "forks": 9,
         "language": "C++",
         "topics": [
@@ -6310,7 +6792,7 @@
         "pushed_at": "2026-08-14T08:15:40.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:18.145Z",
+        "metadata_fetched_at": "2026-11-19T04:02:28.844Z",
         "categories": [
           "nav"
         ],
@@ -6340,10 +6822,10 @@
           "evidence_url": "https://github.com/Polyacetone/HWSentryNav26",
           "metric": {
             "label": "GitHub Stars",
-            "value": 149,
+            "value": 150,
             "source": "GitHub",
             "source_url": "https://github.com/Polyacetone/HWSentryNav26",
-            "checked_at": "2026-11-18T22:27:18.145Z"
+            "checked_at": "2026-11-19T04:02:28.844Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -6372,7 +6854,7 @@
         "pushed_at": "2023-08-30T08:46:21.000Z",
         "license": "Apache-2.0",
         "archived": true,
-        "metadata_fetched_at": "2026-11-18T22:27:18.145Z",
+        "metadata_fetched_at": "2026-11-19T04:02:28.844Z",
         "categories": [
           "aim",
           "rune"
@@ -6418,7 +6900,7 @@
             "value": 133,
             "source": "GitHub",
             "source_url": "https://github.com/zRzRzRzRzRzRzR/YOLO-of-RoboMaster-Keypoints-Detection-2023",
-            "checked_at": "2026-11-18T22:27:18.145Z"
+            "checked_at": "2026-11-19T04:02:28.844Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -6448,7 +6930,7 @@
         "pushed_at": "2026-08-18T04:51:00.000Z",
         "license": "AGPL-3.0",
         "archived": true,
-        "metadata_fetched_at": "2026-11-18T22:27:18.145Z",
+        "metadata_fetched_at": "2026-11-19T04:02:28.844Z",
         "categories": [
           "aim",
           "sim"
@@ -6458,7 +6940,10 @@
           {
             "task_id": "sim",
             "task": "算法仿真与验证",
-            "keywords": []
+            "keywords": [
+              "仿真",
+              "算法验证"
+            ]
           }
         ],
         "rules_fingerprint": "2a8e2ea876442787",
@@ -6487,7 +6972,7 @@
             "value": 81,
             "source": "GitHub",
             "source_url": "https://github.com/Blackjack200/at_vision_simulator",
-            "checked_at": "2026-11-18T22:27:18.145Z"
+            "checked_at": "2026-11-19T04:02:28.844Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -6518,7 +7003,7 @@
         "pushed_at": "2026-06-03T02:56:54.000Z",
         "license": "AGPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:18.145Z",
+        "metadata_fetched_at": "2026-11-19T04:02:28.844Z",
         "categories": [
           "aerial",
           "aim"
@@ -6554,7 +7039,7 @@
             "value": 30,
             "source": "GitHub",
             "source_url": "https://github.com/BreCaspian/LaserTracking-2026",
-            "checked_at": "2026-11-18T22:27:18.145Z"
+            "checked_at": "2026-11-19T04:02:28.844Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -6578,7 +7063,7 @@
         "pushed_at": "2026-04-21T07:34:25.000Z",
         "license": "NOASSERTION",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:14.317Z",
+        "metadata_fetched_at": "2026-11-19T04:02:25.097Z",
         "categories": [
           "aerial",
           "sim"
@@ -6588,7 +7073,9 @@
           {
             "task_id": "aerial",
             "task": "空中系统自主飞行与机库交互",
-            "keywords": []
+            "keywords": [
+              "无人机"
+            ]
           },
           {
             "task_id": "sim",
@@ -6617,7 +7104,7 @@
             "value": 238,
             "source": "GitHub",
             "source_url": "https://github.com/RoboMaster/IntelligentUAVChampionshipSimulator",
-            "checked_at": "2026-11-18T22:27:14.317Z"
+            "checked_at": "2026-11-19T04:02:25.097Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -6647,7 +7134,7 @@
         "pushed_at": "2026-11-16T22:47:44.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:18.145Z",
+        "metadata_fetched_at": "2026-11-19T04:02:28.844Z",
         "categories": [
           "sim"
         ],
@@ -6656,7 +7143,9 @@
           {
             "task_id": "sim",
             "task": "算法仿真与验证",
-            "keywords": []
+            "keywords": [
+              "仿真"
+            ]
           }
         ],
         "rules_fingerprint": "2a8e2ea876442787",
@@ -6680,7 +7169,7 @@
             "value": 112,
             "source": "GitHub",
             "source_url": "https://github.com/SMBU-PolarBear-Robotics-Team/rmu_gazebo_simulator",
-            "checked_at": "2026-11-18T22:27:18.145Z"
+            "checked_at": "2026-11-19T04:02:28.844Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -6704,7 +7193,7 @@
         "pushed_at": "2024-06-19T15:40:33.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:14.317Z",
+        "metadata_fetched_at": "2026-11-19T04:02:25.097Z",
         "categories": [
           "aim"
         ],
@@ -6731,7 +7220,7 @@
             "value": 184,
             "source": "GitHub",
             "source_url": "https://github.com/FaterYU/rm_vision",
-            "checked_at": "2026-11-18T22:27:14.317Z"
+            "checked_at": "2026-11-19T04:02:25.097Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -6755,7 +7244,7 @@
         "pushed_at": "2026-11-17T04:12:13.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:22.666Z",
+        "metadata_fetched_at": "2026-11-19T04:02:32.908Z",
         "categories": [
           "aim"
         ],
@@ -6788,7 +7277,7 @@
             "value": 55,
             "source": "GitHub",
             "source_url": "https://github.com/Alliance-Algorithm/rmcs_auto_aim_v2",
-            "checked_at": "2026-11-18T22:27:22.666Z"
+            "checked_at": "2026-11-19T04:02:32.908Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -6819,7 +7308,7 @@
         "pushed_at": "2026-08-26T04:46:24.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:18.145Z",
+        "metadata_fetched_at": "2026-11-19T04:02:28.844Z",
         "categories": [
           "sim"
         ],
@@ -6852,7 +7341,7 @@
             "value": 38,
             "source": "GitHub",
             "source_url": "https://github.com/ClearWei/RM26_Client",
-            "checked_at": "2026-11-18T22:27:18.145Z"
+            "checked_at": "2026-11-19T04:02:28.844Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -6884,7 +7373,7 @@
         "pushed_at": "2026-06-17T02:17:30.000Z",
         "license": "GPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:18.145Z",
+        "metadata_fetched_at": "2026-11-19T04:02:28.844Z",
         "categories": [
           "control"
         ],
@@ -6911,7 +7400,7 @@
             "value": 33,
             "source": "GitHub",
             "source_url": "https://github.com/buke18/robomaster-soldier-robot",
-            "checked_at": "2026-11-18T22:27:18.145Z"
+            "checked_at": "2026-11-19T04:02:28.844Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -6939,7 +7428,7 @@
         "pushed_at": "2026-01-25T11:51:13.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:18.145Z",
+        "metadata_fetched_at": "2026-11-19T04:02:28.844Z",
         "categories": [
           "sim"
         ],
@@ -6974,7 +7463,7 @@
             "value": 33,
             "source": "GitHub",
             "source_url": "https://github.com/robomaster-oss/rmoss_gazebo",
-            "checked_at": "2026-11-18T22:27:18.145Z"
+            "checked_at": "2026-11-19T04:02:28.844Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -7002,7 +7491,7 @@
         "pushed_at": "2025-05-29T04:05:50.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:18.145Z",
+        "metadata_fetched_at": "2026-11-19T04:02:28.844Z",
         "categories": [
           "aim",
           "rune"
@@ -7013,7 +7502,8 @@
             "task_id": "rune",
             "task": "能量机关识别与击打",
             "keywords": [
-              "rune detection"
+              "rune detection",
+              "能量机关"
             ]
           }
         ],
@@ -7043,7 +7533,7 @@
             "value": 53,
             "source": "GitHub",
             "source_url": "https://github.com/zmsbruce/rm_power_rune",
-            "checked_at": "2026-11-18T22:27:18.145Z"
+            "checked_at": "2026-11-19T04:02:28.844Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -7067,7 +7557,7 @@
         "pushed_at": "2026-11-05T08:23:01.000Z",
         "license": "BSD-3-Clause",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:14.317Z",
+        "metadata_fetched_at": "2026-11-19T04:02:25.097Z",
         "categories": [
           "sim"
         ],
@@ -7076,7 +7566,9 @@
           {
             "task_id": "sim",
             "task": "算法仿真与验证",
-            "keywords": []
+            "keywords": [
+              "仿真"
+            ]
           }
         ],
         "rules_fingerprint": "2a8e2ea876442787",
@@ -7100,7 +7592,7 @@
             "value": 311,
             "source": "GitHub",
             "source_url": "https://github.com/rm-controls/rm_control",
-            "checked_at": "2026-11-18T22:27:14.317Z"
+            "checked_at": "2026-11-19T04:02:25.097Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -7130,7 +7622,7 @@
         "pushed_at": "2026-08-23T17:34:55.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:14.317Z",
+        "metadata_fetched_at": "2026-11-19T04:02:25.097Z",
         "categories": [
           "aim"
         ],
@@ -7157,7 +7649,7 @@
             "value": 393,
             "source": "GitHub",
             "source_url": "https://github.com/NeoZng/vision_tutorial",
-            "checked_at": "2026-11-18T22:27:14.317Z"
+            "checked_at": "2026-11-19T04:02:25.097Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -7191,7 +7683,7 @@
         "pushed_at": "2025-07-19T17:11:48.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:14.317Z",
+        "metadata_fetched_at": "2026-11-19T04:02:25.097Z",
         "categories": [
           "aim"
         ],
@@ -7226,7 +7718,7 @@
             "value": 301,
             "source": "GitHub",
             "source_url": "https://github.com/julyfun/rm.cv.fans",
-            "checked_at": "2026-11-18T22:27:14.317Z"
+            "checked_at": "2026-11-19T04:02:25.097Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -7253,7 +7745,7 @@
         "pushed_at": "2024-07-23T01:41:01.000Z",
         "license": "Apache-2.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:18.145Z",
+        "metadata_fetched_at": "2026-11-19T04:02:28.844Z",
         "categories": [
           "aim"
         ],
@@ -7286,7 +7778,7 @@
             "value": 144,
             "source": "GitHub",
             "source_url": "https://github.com/robomaster-oss/rmoss_core",
-            "checked_at": "2026-11-18T22:27:18.145Z"
+            "checked_at": "2026-11-19T04:02:28.844Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -7310,7 +7802,7 @@
         "pushed_at": "2026-05-20T11:55:55.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:26.457Z",
+        "metadata_fetched_at": "2026-11-19T04:02:36.253Z",
         "categories": [
           "aim"
         ],
@@ -7345,7 +7837,7 @@
             "value": 116,
             "source": "GitHub",
             "source_url": "https://github.com/chiguayeshao/obs-snap-detector",
-            "checked_at": "2026-11-18T22:27:26.457Z"
+            "checked_at": "2026-11-19T04:02:36.253Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -7369,7 +7861,7 @@
         "pushed_at": "2024-06-16T01:48:03.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:26.457Z",
+        "metadata_fetched_at": "2026-11-19T04:02:36.253Z",
         "categories": [
           "aim",
           "radar"
@@ -7415,7 +7907,7 @@
             "value": 92,
             "source": "GitHub",
             "source_url": "https://github.com/SCAU-RM-NAV/RM2023_Radar_Dataset",
-            "checked_at": "2026-11-18T22:27:26.457Z"
+            "checked_at": "2026-11-19T04:02:36.253Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -7444,7 +7936,7 @@
         "pushed_at": "2026-03-20T17:31:42.000Z",
         "license": "NOASSERTION",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:18.145Z",
+        "metadata_fetched_at": "2026-11-19T04:02:28.844Z",
         "categories": [
           "control"
         ],
@@ -7471,7 +7963,7 @@
             "value": 52,
             "source": "GitHub",
             "source_url": "https://github.com/ZhuaX0/RoboMasterSuperCapCtrller_Adernal",
-            "checked_at": "2026-11-18T22:27:18.145Z"
+            "checked_at": "2026-11-19T04:02:28.844Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -7500,7 +7992,7 @@
         "pushed_at": "2023-08-30T08:19:48.000Z",
         "license": "Apache-2.0",
         "archived": true,
-        "metadata_fetched_at": "2026-11-18T22:27:33.297Z",
+        "metadata_fetched_at": "2026-11-19T04:02:42.748Z",
         "categories": [
           "radar"
         ],
@@ -7536,7 +8028,7 @@
             "value": 18,
             "source": "GitHub",
             "source_url": "https://github.com/zRzRzRzRzRzRzR/Mult-YOLO-alogorithm-of-RoboMaster-Radar-Detection-2023",
-            "checked_at": "2026-11-18T22:27:33.297Z"
+            "checked_at": "2026-11-19T04:02:42.748Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -7560,7 +8052,7 @@
         "pushed_at": "2026-08-13T09:08:29.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:33.297Z",
+        "metadata_fetched_at": "2026-11-19T04:02:42.748Z",
         "categories": [
           "radar"
         ],
@@ -7570,7 +8062,8 @@
             "task_id": "radar",
             "task": "雷达目标探测与信息融合",
             "keywords": [
-              "robomaster radar"
+              "robomaster radar",
+              "雷达"
             ]
           }
         ],
@@ -7595,7 +8088,7 @@
             "value": 11,
             "source": "GitHub",
             "source_url": "https://github.com/JNU-SHARK/shark-radar-system",
-            "checked_at": "2026-11-18T22:27:33.297Z"
+            "checked_at": "2026-11-19T04:02:42.748Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -7619,7 +8112,7 @@
         "pushed_at": "2026-11-04T09:04:29.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:45.818Z",
+        "metadata_fetched_at": "2026-11-19T04:02:55.530Z",
         "categories": [
           "aim"
         ],
@@ -7652,7 +8145,7 @@
             "value": 10,
             "source": "GitHub",
             "source_url": "https://github.com/Ruakker/dart_vision_26",
-            "checked_at": "2026-11-18T22:27:45.818Z"
+            "checked_at": "2026-11-19T04:02:55.530Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -7683,7 +8176,7 @@
         "pushed_at": "2025-05-29T04:08:31.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:18.145Z",
+        "metadata_fetched_at": "2026-11-19T04:02:28.844Z",
         "categories": [
           "aim",
           "radar"
@@ -7694,7 +8187,8 @@
             "task_id": "radar",
             "task": "雷达目标探测与信息融合",
             "keywords": [
-              "robomaster radar"
+              "robomaster radar",
+              "雷达"
             ]
           }
         ],
@@ -7724,7 +8218,7 @@
             "value": 52,
             "source": "GitHub",
             "source_url": "https://github.com/zmsbruce/rm_radar",
-            "checked_at": "2026-11-18T22:27:18.145Z"
+            "checked_at": "2026-11-19T04:02:28.844Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -7748,7 +8242,7 @@
         "pushed_at": "2022-09-23T09:09:07.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:07.939Z",
+        "metadata_fetched_at": "2026-11-19T04:02:18.783Z",
         "categories": [
           "aerial",
           "planning",
@@ -7795,7 +8289,7 @@
             "value": 14,
             "source": "GitHub",
             "source_url": "https://github.com/BSSNBSSN/Ego-plannerforIntelligentUAVChampionshipSimulator",
-            "checked_at": "2026-11-18T22:27:07.939Z"
+            "checked_at": "2026-11-19T04:02:18.783Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -7827,7 +8321,7 @@
         "pushed_at": "2023-06-09T17:04:49.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:18.145Z",
+        "metadata_fetched_at": "2026-11-19T04:02:28.844Z",
         "categories": [
           "sim"
         ],
@@ -7860,7 +8354,7 @@
             "value": 93,
             "source": "GitHub",
             "source_url": "https://github.com/Spphire/RM-labeling-tool",
-            "checked_at": "2026-11-18T22:27:18.145Z"
+            "checked_at": "2026-11-19T04:02:28.844Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -7884,7 +8378,7 @@
         "pushed_at": "2019-10-09T09:14:22.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:22.666Z",
+        "metadata_fetched_at": "2026-11-19T04:02:32.908Z",
         "categories": [
           "aim"
         ],
@@ -7919,7 +8413,7 @@
             "value": 79,
             "source": "GitHub",
             "source_url": "https://github.com/EinstainBohr/RM-computer-vision",
-            "checked_at": "2026-11-18T22:27:22.666Z"
+            "checked_at": "2026-11-19T04:02:32.908Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -7943,7 +8437,7 @@
         "pushed_at": "2024-06-16T19:50:16.000Z",
         "license": "MIT",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:22.666Z",
+        "metadata_fetched_at": "2026-11-19T04:02:32.908Z",
         "categories": [
           "aim"
         ],
@@ -7976,7 +8470,7 @@
             "value": 76,
             "source": "GitHub",
             "source_url": "https://github.com/FaterYU/rm_auto_aim",
-            "checked_at": "2026-11-18T22:27:22.666Z"
+            "checked_at": "2026-11-19T04:02:32.908Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -8008,7 +8502,7 @@
         "pushed_at": "2024-08-12T03:53:11.000Z",
         "license": "GPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:18.145Z",
+        "metadata_fetched_at": "2026-11-19T04:02:28.844Z",
         "categories": [
           "sim"
         ],
@@ -8041,7 +8535,7 @@
             "value": 71,
             "source": "GitHub",
             "source_url": "https://github.com/scutrobotlab/SimulatorX",
-            "checked_at": "2026-11-18T22:27:18.145Z"
+            "checked_at": "2026-11-19T04:02:28.844Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -8068,7 +8562,7 @@
         "pushed_at": "2025-03-19T12:59:10.000Z",
         "license": null,
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:29.183Z",
+        "metadata_fetched_at": "2026-11-19T04:02:38.946Z",
         "categories": [
           "nav"
         ],
@@ -8101,7 +8595,7 @@
             "value": 67,
             "source": "GitHub",
             "source_url": "https://github.com/IRobot-Algorithm/sentry_navigation",
-            "checked_at": "2026-11-18T22:27:29.183Z"
+            "checked_at": "2026-11-19T04:02:38.946Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
@@ -8125,7 +8619,7 @@
         "pushed_at": "2022-10-07T08:41:29.000Z",
         "license": "GPL-3.0",
         "archived": false,
-        "metadata_fetched_at": "2026-11-18T22:27:39.981Z",
+        "metadata_fetched_at": "2026-11-19T04:02:49.381Z",
         "categories": [
           "aim"
         ],
@@ -8158,7 +8652,7 @@
             "value": 63,
             "source": "GitHub",
             "source_url": "https://github.com/XianMengxi/AutoAim_HUST",
-            "checked_at": "2026-11-18T22:27:39.981Z"
+            "checked_at": "2026-11-19T04:02:49.381Z"
           }
         },
         "first_seen": "2026-11-18T22:28:42.240Z"
