@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-18",
-  "generatedAt": "2026-11-18T07:56:43.340Z",
+  "date": "2026-11-19",
+  "generatedAt": "2026-11-19T07:55:59.936Z",
   "topics": [
     {
       "key": "learning",
@@ -81,7 +81,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 66.61,
+        "score": 66.34,
         "reason_zh": "比较智能体如何存储与检索长期记忆，并在记忆中记录信息来源。作者提供框架实现。",
         "limitations_zh": "端到端效果依赖数据库、检索配置与被测智能体，仓库本身不能证明可达到论文的评测成绩。",
         "evidence_url": "https://arxiv.org/abs/2611.12068"
@@ -152,7 +152,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 68.93,
+        "score": 68.66,
         "reason_zh": "从全图和放大区域的识别差异中构造细粒度监督，覆盖计数、文字识别等任务，并提供训练和评测代码。",
         "limitations_zh": "本论文的任务与图像分辨率有明确范围，读小字或细节的结果不能直接外推到开放场景。",
         "evidence_url": "https://arxiv.org/abs/2611.14076"
@@ -224,7 +224,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 66.43,
+        "score": 66.17,
         "reason_zh": "提高深度压缩视觉词元的表示容量，用于自回归生成。作者实现包含训练与推理，可对照压缩率和生成质量。",
         "limitations_zh": "对照作者使用的模型、分辨率和 GPU 配置评估速度，同时核对权重与训练数据条款。",
         "evidence_url": "https://arxiv.org/abs/2611.13004"
@@ -285,7 +285,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 69.26,
+        "score": 68.99,
         "reason_zh": "把预训练图像生成器改造成分割、深度等任务共用的视觉感知模型，可用作者流程比较统一模型和专用模型。",
         "limitations_zh": "各视觉任务使用不同的数据与指标，部署时还需要核对算力、模型权重和基础模型许可。",
         "evidence_url": "https://arxiv.org/abs/2611.15844"
@@ -389,7 +389,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 67.78,
+        "score": 67.51,
         "reason_zh": "为视觉语言模型改进推测解码，作者仓库提供实现和基准脚本，可对照生成吞吐量。",
         "limitations_zh": "加速幅度取决于主模型、草稿模型、硬件与解码配置。比较时应使用同样的负载。",
         "evidence_url": "https://arxiv.org/abs/2611.18482"
@@ -463,7 +463,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 68.29,
+        "score": 68.03,
         "reason_zh": "基准考虑人类与机械臂共享工作空间的情况，作者提供 Genesis 仿真环境、评测及示范生成脚本。",
         "limitations_zh": "实机实验只覆盖一类任务，训练数据需要按作者提供的流程生成。",
         "evidence_url": "https://arxiv.org/abs/2611.11123"
@@ -519,7 +519,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 58.43,
+        "score": 58.17,
         "reason_zh": "用任务反馈改进自蒸馏中的教师输出，再按监督可靠性给学生样本加权。适合对照不同后训练方法如何处理错误监督。",
         "limitations_zh": "结果取决于任务有可核查反馈、教师可访问的信息和所用模型规模。",
         "evidence_url": "https://arxiv.org/abs/2610.38637"
@@ -576,7 +576,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 60.52,
+        "score": 60.26,
         "reason_zh": "分开分析多模态模型的视觉编码与后续处理，适合判断视觉表示本身与训练设计分别贡献了什么。",
         "limitations_zh": "先看论文和项目页的对照实验。本站未核验到作者公开的实现。",
         "evidence_url": "https://arxiv.org/abs/2611.17334"
@@ -597,38 +597,33 @@
       }
     },
     {
-      "id": "arxiv:2611.15433",
-      "arxiv_id": "2611.15433",
+      "id": "arxiv:2611.24433",
+      "arxiv_id": "2611.24433",
       "source": "arXiv",
-      "title_en": "Verifier Choice is a Benchmark Design Variable: Auditing Structural Counting Evaluation in Text-to-Image Models",
-      "abstract_en": "Automatic evaluation is now central to text-to-image benchmarking, but the verifier that converts generated images into scores is often treated as an implementation detail. We argue that this is unsafe: an automatic benchmark score is a property of the image generator, prompt distribution, verifier, verifier-use protocol, and scoring rule, not of the generator alone. We study this issue in structural counting, a controlled setting where human-visible counts can be audited. We construct a verifier-centric audit suite over seven counting objects: cell phones, chairs, and traffic lights for object counting, and clover leaflets, dresser drawer fronts, power-strip sockets, and turbine blades for substructure counting. Across 6,240 generated images from Qwen-Image-2512 and FLUX.2-dev, we compare open MLLM verifiers under count-only, reject-aware, zero-shot and few-shot protocols, plus TIFA-like target queries, a detector baseline, and frontier closed-model checks on two hard objects. On a balanced 2,280-image evaluation split, aggregate score matching can coexist with image-level disagreement, and verifier-use protocols and generator distributions change the measured reliability. Every verifier-protocol configuration also shrinks the human score difference between the two generators, by 7.5-25.0 pp, and with a third generator, Z-Image, all four tested protocols reverse the human ordering of Z-Image and FLUX.2-dev on our fixed prompt suite. GPT-5.5 and Claude Opus 4.7 checks do not remove the failure modes: GPT-5.5 still has only 59.92% clover valid-count fidelity, while Claude Opus 4.7 has lower same-slice agreement ($κ=0.432$). We propose reporting automatic benchmark scores with a factorized verifier reliability profile: aggregate score gap, image-level agreement, generator-comparison distortion, valid-image count fidelity, rejection behavior, output compliance, and directional bias.",
-      "source_comment": "Accepted at NeurIPS 2026 (Evaluations and Datasets Track). 24 pages. Data: https://huggingface.co/datasets/neurips2026-ed443/audit-release . Code: https://github.com/AzusaCat1111/verifier-choice-audit",
-      "published_at": "2026-11-11T13:04:28.000Z",
+      "title_en": "MLIE-CoT: Chain-of-Thought Reasoning via Multi-Level Image Editing",
+      "abstract_en": "Chain-of-thought (CoT) reasoning has proven effective in improving the reasoning abilities of large language models by breaking complex tasks into step-by-step solutions. In recent years, researchers have attempted to extend CoT reasoning to visual generative models to improve their ability to handle complex tasks. However, existing CoT methods for text-to-image generation still rely mainly on textual reasoning and therefore cannot fully use and preserve the correct semantic information already present in an image, as even the most detailed language cannot capture all visual information. With advances in image generation, models such as FLUX and BAGEL can generate images conditioned on visual inputs. Recent work has attempted to carry images forward as context in the chain of thought, but this introduces another limitation: unsuitable earlier images can strongly interfere with the model, while repeated whole-image regeneration introduces new hallucinations at each round and causes them to accumulate. To address these issues, we propose MLIE-CoT, a visual chain-of-thought framework based on multi-level image editing. MLIE-CoT learns to select the repair granularity from three levels, preserving correct semantics whenever possible during reasoning while reducing the effect of incorrect content. To improve the ability of multimodal models to route errors of different severity to appropriate repair levels, we construct an image-repair dataset covering different error cases and use it to train a repair-level router. Extensive experiments demonstrate that MLIE-CoT significantly outperforms both its base models and methods using fixed repair strategies, producing clear improvements across multiple benchmarks.",
+      "source_comment": "11 pages, 5 figures. Code: https://github.com/yang031119/MLIE-CoT",
+      "published_at": "2026-11-18T13:49:34.000Z",
       "published_precision": "day",
       "authors": [
-        "Shurun Li",
-        "Michael Hua Wang",
-        "Haibo Zeng",
-        "Long Wang"
+        "Baichuan Yang",
+        "Dongyuan Xu",
+        "Zhao Yang",
+        "Yong Liu",
+        "Bing Su"
       ],
       "cats": [
-        "cs.CV",
-        "cs.LG"
+        "cs.CV"
       ],
-      "url": "https://arxiv.org/abs/2611.15433",
-      "html_url": "https://arxiv.org/abs/2611.15433",
-      "pdf_url": "https://arxiv.org/pdf/2611.15433",
+      "url": "https://arxiv.org/abs/2611.24433",
+      "html_url": "https://arxiv.org/abs/2611.24433",
+      "pdf_url": "https://arxiv.org/pdf/2611.24433",
       "field": "vision",
       "frontier_resources": [
         {
-          "kind": "data",
-          "url": "https://huggingface.co/datasets/neurips2026-ed443/audit-release",
-          "checked_at": "2026-11-17T02:55:45.712Z"
-        },
-        {
           "kind": "code",
-          "url": "https://github.com/AzusaCat1111/verifier-choice-audit",
-          "checked_at": "2026-11-17T08:21:25.398Z"
+          "url": "https://github.com/yang031119/MLIE-CoT",
+          "checked_at": "2026-11-19T07:55:59.936Z"
         }
       ],
       "ai_frontier": {
@@ -638,14 +633,9 @@
         ],
         "resources": [
           {
-            "kind": "data",
-            "url": "https://huggingface.co/datasets/neurips2026-ed443/audit-release",
-            "checked_at": "2026-11-17T02:55:45.712Z"
-          },
-          {
             "kind": "code",
-            "url": "https://github.com/AzusaCat1111/verifier-choice-audit",
-            "checked_at": "2026-11-17T08:21:25.398Z"
+            "url": "https://github.com/yang031119/MLIE-CoT",
+            "checked_at": "2026-11-19T07:55:59.936Z"
           }
         ],
         "stage": "preprint"
@@ -653,13 +643,13 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 51.19,
+        "score": 52.8,
         "reason_zh": "研究的题目或主要贡献对应「视觉生成与编辑」。原文摘要包含实验或评测说明。",
         "limitations_zh": "对照输出分辨率、采样设置和硬件条件，生成质量、时延与显存通常需要分别比较。",
-        "evidence_url": "https://arxiv.org/abs/2611.15433"
+        "evidence_url": "https://arxiv.org/abs/2611.24433"
       },
-      "title_zh": "验证器选择是基准设计变量：审计文本到图像模型中的结构计数评估",
-      "abstract_zh": "自动评估如今已成为文本到图像基准测试的核心，但将生成图像转换为分数的验证器往往被视为实现细节。我们认为这不安全：自动基准分数是图像生成器、提示分布、验证器、验证器使用协议和评分规则的属性，而不仅是生成器本身的属性。我们在结构计数这一可控设置中研究该问题，其中人类可见的计数可以被审计。我们构建了一个以验证器为中心的审计套件，覆盖七个计数对象：用于目标计数的手机、椅子和交通灯，以及用于子结构计数的三叶草小叶、梳妆台抽屉面板、电源插排插座和涡轮叶片。在来自 Qwen-Image-2512 和 FLUX.2-dev 的 6,240 张生成图像上，我们比较了开放 MLLM 验证器在仅计数、拒绝感知、零样本和少样本协议下的表现，并加入类似 TIFA 的目标查询、一个检测器基线，以及对两个困难对象的前沿闭源模型检查。在一个平衡的 2,280 张图像评估划分上，聚合分数匹配可以与图像级不一致并存，且验证器使用协议和生成器分布会改变所测得的可靠性。每一种验证器-协议配置还都会缩小两个生成器之间的人类分数差，缩小幅度为 7.5–25.0 个百分点；并且加入第三个生成器 Z-Image 后，在我们固定的提示套件上，所有四种测试协议都逆转了 Z-Image 与 FLUX.2-dev 的人类排序。GPT-5.5 和 Claude Opus 4.7 的检查并未消除这些失效模式：GPT-5.5 在三叶草有效计数保真度上仍仅为 59.92%，而 Claude Opus 4.7 的同切片一致性更低（κ=0.432）。我们提出用分解式验证器可靠性画像来报告自动基准分数：聚合分数差、图像级一致性、生成器比较失真、有效图像计数保真度、拒绝行为、输出合规性和方向性偏差。"
+      "title_zh": "MLIE-CoT：基于多级图像编辑的思维链推理",
+      "abstract_zh": "思维链（CoT）推理已被证明能通过将复杂任务分解为逐步解决方案来有效提升大语言模型的推理能力。近年来，研究者尝试将CoT推理扩展到视觉生成模型，以提升其处理复杂任务的能力。然而，现有用于文本到图像生成的CoT方法仍主要依赖文本推理，因此无法充分利用并保留图像中已有的正确语义信息，因为即使最详细的文本也无法捕捉所有视觉信息。随着图像生成技术的进步，FLUX和BAGEL等模型能够以视觉输入为条件生成图像。近期工作尝试在思维链中将图像作为上下文向前传递，但这带来了另一个限制：不合适的早期图像会强烈干扰模型，而重复的整图重生成会在每一轮引入新的幻觉并使其累积。为解决这些问题，我们提出MLIE-CoT，一种基于多级图像编辑的视觉思维链框架。MLIE-CoT学习从三个层级中选择修复粒度，在推理过程中尽可能保留正确语义，同时减少错误内容的影响。为提升多模态模型将不同严重程度的错误路由到适当修复层级的能力，我们构建了一个涵盖不同错误情况的图像修复数据集，并用其训练修复层级路由器。大量实验表明，MLIE-CoT显著优于其基础模型和使用固定修复策略的方法，在多个基准上取得明显提升。"
     },
     {
       "id": "arxiv:2611.08264",
@@ -700,7 +690,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 67.63,
+        "score": 67.36,
         "reason_zh": "以前馈三维重建处理稀疏输入视角。作者实现位于 InfiniSplat 仓库的 InfiniSplat_v3 目录。",
         "limitations_zh": "对照相机输入和论文的稀疏视角基准，其他拍摄环境及尺度精度需要重新验证。",
         "evidence_url": "https://arxiv.org/abs/2611.08264"
@@ -742,57 +732,40 @@
       }
     },
     {
-      "id": "arxiv:2611.09825",
-      "arxiv_id": "2611.09825",
+      "id": "arxiv:2611.23807",
+      "arxiv_id": "2611.23807",
       "source": "arXiv",
-      "cats": [
-        "cs.AI",
-        "cs.AR",
-        "cs.CL",
-        "cs.PF"
-      ],
-      "title_en": "BitDecoding-FP4: Native FP4 KV Cache Decoding via Algorithm-System Co-Design",
-      "title_zh": "BitDecoding-FP4：通过算法-系统协同设计实现原生 FP4 KV 缓存解码",
-      "abstract_en": "The key-value (KV) cache dominates memory capacity and bandwidth in long-context LLM serving. While 4-bit microscaling formats (NVFP4, MXFP4) shrink the cache and run attention on FP4 Tensor Cores, a fundamental gap remains between algorithmic quantization and system-aware acceleration: existing FP4 KV systems use vanilla quantization that causes severe accuracy drops, whereas accuracy-oriented 4-bit algorithms rely on vector codebooks whose lookup overhead degrades decoding throughput. We present BitDecoding-FP4, an algorithm--system co-design for accurate and efficient native FP4 KV decoding. We mitigate three error sources: Dual-Residual Query Quantization splits queries into two FP4 tensors, cutting query logit error from 60% to 1%; Underflow-Aware Probability Scaling prevents E4M3 scales from rounding long-context probabilities to zero; and Outlier-Aware Key Quantization combines static smoothing, Hadamard rotation, and scale search to suppress key outliers under token-wise scaling. At the system level, we remove the softmax bottleneck via transposed softmax with fused probability quantization and stacked query MMA on paged KV caches. Across dense and MoE models with GQA and MLA, BitDecoding-FP4 stays within 0.5 points of BF16 KV accuracy with NVFP4 (1 point with MXFP4), and tracks BF16 KV in RL training rollouts. In end-to-end serving on NVIDIA B300 with Qwen3-4B and Qwen3-30B-A3B, it delivers 2.4-3.0$\\times$ higher peak serving throughput than BF16 KV. The implementation is available at https://github.com/OpenBitSys/BitDecoding-FP4.",
-      "abstract_zh": "键值（KV）缓存主导长上下文 LLM 服务中的内存容量和带宽。虽然 4 位微缩放格式（NVFP4、MXFP4）可缩小缓存并在 FP4 Tensor Core 上运行注意力，但算法量化与系统感知加速之间仍存在根本差距：现有 FP4 KV 系统使用朴素量化，导致严重精度下降；而面向精度的 4 位算法依赖向量码本，其查找开销会降低解码吞吐。我们提出 BitDecoding-FP4，一种用于准确高效原生 FP4 KV 解码的算法-系统协同设计。我们缓解三个误差来源：双残差查询量化（Dual-Residual Query Quantization）将查询拆分为两个 FP4 张量，将查询 logit 误差从 60% 降至 1%；下溢感知概率缩放（Underflow-Aware Probability Scaling）防止 E4M3 缩放因子将长上下文概率舍入为零；离群值感知键量化（Outlier-Aware Key Quantization）结合静态平滑、Hadamard 旋转和缩放搜索，在逐 token 缩放条件下抑制键离群值。在系统层面，我们通过转置 softmax（融合概率量化）以及在分页 KV 缓存上堆叠查询 MMA，消除 softmax 瓶颈。在采用 GQA 和 MLA 的稠密与 MoE 模型中，BitDecoding-FP4 在 NVFP4 下与 BF16 KV 精度的差距保持在 0.5 分以内（MXFP4 下为 1 分），并在 RL 训练 rollout 中与 BF16 KV 保持一致。在 NVIDIA B300 上使用 Qwen3-4B 和 Qwen3-30B-A3B 进行端到端服务时，其峰值服务吞吐量比 BF16 KV 高 2.4-3.0 倍。实现见 https://github.com/OpenBitSys/BitDecoding-FP4。",
-      "highlight_zh": "",
-      "digest_zh": "",
+      "title_en": "Sightline: Long-Window Speculative Decoding for Fast SVG Generation",
+      "abstract_en": "Scalable Vector Graphics (SVG) generation models write a graphic as code with one forward pass per token, so drawing is slow. Speculative decoding speeds them up losslessly, and block drafters guess many tokens per pass. On SVG, many of their rounds accept the whole draft and end only at the verification window. We find that their misses are rare and clumped, and that they stay accurate far deeper into a block than on natural language. A run-length identity and three propositions show that a longer window pays once the candidates are wide, up to the drafter's horizon. We propose Sightline, which pairs a window as long as the drafter's horizon with a draft tree wide enough to fill it. Experiments cover text-to-SVG and image-to-SVG with three models on six benchmarks from MMSVG, MMSVG-2M and SArena. In every setting, Sightline is the fastest of the compared lossless decoders. On SArena, it stays the fastest when every decoder shares one loop control. It also leads in almost every setting of six models from four other families, which write SVG code, compressed SVG tokens or Lottie JSON. Analyses trace the lead to rounds that shorter windows cut off, both in loop-free content and in loops. Speculative decoding also saves time for choosing samples by rendering, which beats choosing by likelihood. These results suggest that speculative decoding on vector graphics should verify as far as the drafter sees. Code and data are available at https://github.com/LiZaiyuan0619/Sightline.",
+      "source_comment": "45 pages, 23 figures, 34 tables. Code: https://github.com/LiZaiyuan0619/Sightline",
+      "published_at": "2026-11-18T04:12:31.000Z",
+      "published_precision": "day",
       "authors": [
-        "Dayou Du",
-        "Woon Yee Ng",
-        "Guangming Sheng",
-        "Nick Lau",
-        "Jianyi Cheng",
-        "Luo Mai"
+        "Yanchao Li",
+        "Ben Gao",
+        "Jiaqing Xie",
+        "Yusu Zhang",
+        "Beilun Wang",
+        "Yanbo Wang",
+        "Xiaohua Xu",
+        "Nanqing Dong",
+        "Tianfan Fu",
+        "Zhongyu Huang"
       ],
-      "url": "https://arxiv.org/abs/2611.09825",
-      "pdf_url": "https://arxiv.org/pdf/2611.09825",
-      "html_url": "https://arxiv.org/abs/2611.09825",
-      "published_at": "2026-11-06T18:13:54.000Z",
-      "upvotes": 0,
-      "heat": 0,
-      "featured": false,
-      "subtags": [
-        "大模型"
+      "cats": [
+        "cs.CV",
+        "cs.CL",
+        "cs.LG"
       ],
-      "image": "",
-      "frontier": true,
-      "crossTag": "AI+芯片",
-      "field": "nlp",
-      "recommendation": {
-        "scope": "ai-frontier",
-        "lane": "recent",
-        "score": 47.91,
-        "reason_zh": "研究的题目或主要贡献对应「高效训练与推理」。可查阅原文的方法描述。",
-        "limitations_zh": "比较速度前应对齐硬件、批量、上下文长度与精度设置，作者环境的加速比不能直接外推。",
-        "evidence_url": "https://arxiv.org/abs/2611.09825"
-      },
-      "frontierScore": "high",
+      "url": "https://arxiv.org/abs/2611.23807",
+      "html_url": "https://arxiv.org/abs/2611.23807",
+      "pdf_url": "https://arxiv.org/pdf/2611.23807",
+      "field": "vision",
       "frontier_resources": [
         {
           "kind": "code",
-          "url": "https://github.com/OpenBitSys/BitDecoding-FP4",
-          "checked_at": "2026-11-17T08:21:25.398Z"
+          "url": "https://github.com/LiZaiyuan0619/Sightline",
+          "checked_at": "2026-11-19T07:55:59.936Z"
         }
       ],
       "ai_frontier": {
@@ -803,12 +776,22 @@
         "resources": [
           {
             "kind": "code",
-            "url": "https://github.com/OpenBitSys/BitDecoding-FP4",
-            "checked_at": "2026-11-17T08:21:25.398Z"
+            "url": "https://github.com/LiZaiyuan0619/Sightline",
+            "checked_at": "2026-11-19T07:55:59.936Z"
           }
         ],
         "stage": "preprint"
-      }
+      },
+      "recommendation": {
+        "scope": "ai-frontier",
+        "lane": "recent",
+        "score": 52.69,
+        "reason_zh": "研究的题目或主要贡献对应「高效训练与推理」。原文摘要包含实验或评测说明。",
+        "limitations_zh": "比较速度前应对齐硬件、批量、上下文长度与精度设置，作者环境的加速比不能直接外推。",
+        "evidence_url": "https://arxiv.org/abs/2611.23807"
+      },
+      "title_zh": "Sightline：用于快速SVG生成的长窗口投机解码",
+      "abstract_zh": "可缩放矢量图形（SVG）生成模型将图形写为代码，每个token需要一次前向传播，因此绘制速度较慢。投机解码可以在无损情况下加速它们，而块式草稿器每次可猜测多个token。在SVG上，它们的许多轮次会接受整个草稿，并只在验证窗口处结束。我们发现其未命中很少且成簇出现，并且它们在块内比在自然语言中深入得多仍能保持准确。一个游程恒等式和三个命题表明，一旦候选足够宽，更长的窗口是有益的，直至草稿器的视野上限。我们提出Sightline，将窗口长度设为与草稿器视野一样长，并配以足够宽以填满该窗口的草稿树。实验涵盖文本到SVG和图像到SVG，使用三个模型，在来自MMSVG、MMSVG-2M和SArena的六个基准上进行。在每种设置下，Sightline都是所比较的无损解码器中最快的。在SArena上，当所有解码器共享同一循环控制时，它仍然最快。在来自另外四个模型家族的六个模型（其输出SVG代码、压缩SVG token或Lottie JSON）的几乎所有设置中，它也领先。分析将这一领先追溯到较短窗口会截断的轮次，无论是在无循环内容还是在循环中。投机解码也为通过渲染选择样本节省时间，这优于按似然选择。这些结果表明，在矢量图形上的投机解码应验证到草稿器所能看到的程度。代码和数据见 https://github.com/LiZaiyuan0619/Sightline。"
     },
     {
       "id": "arxiv:2611.14834",
@@ -845,7 +828,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 60.04,
+        "score": 59.77,
         "reason_zh": "为冻结的视觉语言动作模型增加低时延动作验证，适合了解如何比较动作质量和控制开销。",
         "limitations_zh": "论文使用 LIBERO-10 和作者台架机械臂进行实验，迁移到不同机械臂和控制频率要另行评估。",
         "evidence_url": "https://arxiv.org/abs/2611.14834"
@@ -948,32 +931,38 @@
       }
     },
     {
-      "id": "arxiv:2611.23127",
-      "arxiv_id": "2611.23127",
+      "id": "arxiv:2611.24578",
+      "arxiv_id": "2611.24578",
       "source": "arXiv",
-      "title_en": "The Illusion of Grounding: Do Vision-Language Models Weigh Retrieved Text and Images Like an Ideal Observer?",
-      "abstract_en": "Retrieval-augmented vision-language models (VLMs) answer from two sources of evidence that can each fail: the retrieved text can be wrong or noisy, and the image can be degraded or contradicted. We introduce GIB-200K, 200,000 image-question items built from COCO and Visual Genome, each expanded into controlled stress conditions: hard-negative retrieval noise (1-20 documents), visual ambiguity (Gaussian and motion blur, low-resource crops) and cross-modal conflict with counterfactual flip pairs. Instead of only measuring degradation, we ask how models combine the two modalities. From ideal Bayesian cue combination we derive a testable prediction that yields formal definitions of Knowledge Inertia (text over-weighted relative to the model's own image evidence) and Sensory Capture (the reverse), and we estimate the weights with a measurement-error-corrected regression whose recovery of known weights we verify. A counterfactual flip decomposition separates modality bias from concept priors, and a Grounding Illusion Score measures how much clean accuracy is not grounded in the image. We evaluate 4 open models on one frozen, seeded evaluation split of 2,000 GIB-200K items. All models are accurate on clean inputs (92.5%-94.2%) but adverse accuracy falls to 41.3%-59.9%. The two LLaVA models over-weight the text (Knowledge Inertia, w_T/w_I = 1.229 and 1.322), whereas InternVL3 favours the image (w_T/w_I = 0.680); between 34.8% and 71.4% of the clean answers that are correct are abandoned when the document lies. A training-free consistency check that compares the answer with and without retrieval trades coverage for accuracy under misleading documents, while falling back to the image fails when the image is heavily degraded. All per-instance outputs, code, and an audit that recomputes every reported open-model number are released.",
-      "source_comment": "10 pages, 5 figures, 11 tables. Code and data: https://github.com/Basavarajearlybird/GIB-200K (archived at https://doi.org/10.5281/zenodo.24320174)",
-      "published_at": "2026-11-17T17:45:28.000Z",
+      "title_en": "BaseRSI: Recursive Self-Improvement of a Base Vision-Language Model via Training-Free Harness Internalization",
+      "abstract_en": "Recursive self-improvement (RSI) is moving from the harness of prompts and tools around a base model toward the model itself. However, existing RSI still faces key challenges, including harness-bound gains that stay outside the base model, black-box supervision that reads only the model's outputs, and imprecise edits whose site and strength are fixed in advance. To address these challenges, we propose BaseRSI, a new paradigm of Recursive Harness Internalization: the base model improves its harness, then writes what the harness adds into its own weights through training-free edits, round after round on its own responses. To support this paradigm, we introduce ReGap, a mechanism that supervises every transformer block with the high-dimensional activation difference that the harness makes at that block alone, and updates the block's weights along this signal in a low-dimensional subspace. Building on this mechanism, we further propose ReKey, an algorithm that writes this signal by regression into a few key-value neurons of every block, and measures the site and strength of each edit on the model's own responses. Moreover, the base model fills every role of this recursion with forward passes alone, and its edits, written at different sites, compose in one checkpoint without refitting. Experimental results on ten visual reasoning benchmarks show that BaseRSI consistently improves a base vision-language model both in distribution and on held-out benchmarks. Our code is available at https://github.com/beita6969/BaseRSI.",
+      "published_at": "2026-11-18T15:10:11.000Z",
       "published_precision": "day",
       "authors": [
-        "Basavaraj R M",
-        "Harshal Chandel"
+        "Mingda Zhang",
+        "Yuanhao Dong",
+        "Qiang Huang",
+        "Rui Qian",
+        "Yanjin Li",
+        "Zhenyu Liu",
+        "Xiao Huang",
+        "Zihao Yang",
+        "Jian Wang",
+        "Pinjia He"
       ],
       "cats": [
-        "cs.LG",
-        "cs.CL",
-        "cs.CV"
+        "cs.CV",
+        "cs.AI"
       ],
-      "url": "https://arxiv.org/abs/2611.23127",
-      "html_url": "https://arxiv.org/abs/2611.23127",
-      "pdf_url": "https://arxiv.org/pdf/2611.23127",
-      "field": "ml",
+      "url": "https://arxiv.org/abs/2611.24578",
+      "html_url": "https://arxiv.org/abs/2611.24578",
+      "pdf_url": "https://arxiv.org/pdf/2611.24578",
+      "field": "vision",
       "frontier_resources": [
         {
           "kind": "code",
-          "url": "https://github.com/Basavarajearlybird/GIB-200K",
-          "checked_at": "2026-11-18T07:56:43.340Z"
+          "url": "https://github.com/beita6969/BaseRSI",
+          "checked_at": "2026-11-19T07:55:59.936Z"
         }
       ],
       "ai_frontier": {
@@ -984,8 +973,8 @@
         "resources": [
           {
             "kind": "code",
-            "url": "https://github.com/Basavarajearlybird/GIB-200K",
-            "checked_at": "2026-11-18T07:56:43.340Z"
+            "url": "https://github.com/beita6969/BaseRSI",
+            "checked_at": "2026-11-19T07:55:59.936Z"
           }
         ],
         "stage": "preprint"
@@ -993,53 +982,46 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 52.84,
+        "score": 52.81,
         "reason_zh": "研究的题目或主要贡献对应「多模态理解」。原文摘要包含实验或评测说明。",
         "limitations_zh": "对照图像分辨率、视频采样频率和任务数据，论文中的基准分数只适用于相应评测设置。",
-        "evidence_url": "https://arxiv.org/abs/2611.23127"
+        "evidence_url": "https://arxiv.org/abs/2611.24578"
       },
-      "title_zh": "Grounding 的错觉：视觉语言模型会像理想观察者一样权衡检索文本和图像吗？",
-      "abstract_zh": "检索增强的视觉语言模型（VLM）从两种都可能失败的证据来源作答：检索文本可能错误或有噪声，图像可能退化或与文本矛盾。我们提出 GIB-200K，包含由 COCO 和 Visual Genome 构建的 200,000 个图像-问题条目，每个条目扩展为受控压力条件：难负例检索噪声（1-20 篇文档）、视觉歧义（高斯模糊和运动模糊、低资源裁剪）以及与反事实翻转对形成的跨模态冲突。我们不止衡量性能退化，还考察模型如何组合两种模态。从理想贝叶斯线索组合中，我们推导出一个可检验预测，并据此给出知识惯性（文本相对于模型自身图像证据被过度加权）和感官俘获（相反情况）的形式化定义，并用测量误差校正回归估计权重，且验证了该回归对已知权重的恢复。反事实翻转分解将模态偏置与概念先验分离，Grounding 错觉分数衡量有多少干净准确率并非基于图像。我们在 GIB-200K 的 2,000 个条目构成的一个冻结、固定随机种子的评估划分上评估 4 个开源模型。所有模型在干净输入上准确（92.5%-94.2%），但不利条件下的准确率降至 41.3%-59.9%。两个 LLaVA 模型过度加权文本（知识惯性，w_T/w_I = 1.229 和 1.322），而 InternVL3 更偏好图像（w_T/w_I = 0.680）；当文档提供错误信息时，34.8% 到 71.4% 原本正确的干净答案被放弃。一种无需训练的一致性检查比较有无检索时的答案，在误导性文档下以覆盖率换取准确率；而当图像严重退化时，回退到图像会失败。所有逐实例输出、代码，以及重新计算每个所报告开源模型数值的审计均已发布。"
+      "title_zh": "BaseRSI：通过免训练执行框架内化实现基础视觉-语言模型的递归自我改进",
+      "abstract_zh": "递归自我改进（RSI）正从基础模型周围的提示与工具框架转向模型本身。然而，现有RSI仍面临关键挑战，包括受限于执行框架、仍停留在基础模型之外的增益，仅读取模型输出的黑盒监督，以及编辑位置和强度预先固定的不精确编辑。为解决这些挑战，我们提出BaseRSI，一种递归执行框架内化的新范式：基础模型改进其执行框架，然后通过免训练编辑将执行框架所增加的内容写入自身权重，并在自身响应上逐轮进行。为支持该范式，我们引入ReGap，一种用执行框架在单个Transformer块上造成的高维激活差异来监督每个Transformer块的机制，并在低维子空间中沿该信号更新该块权重。在此机制基础上，我们进一步提出ReKey，一种通过回归将该信号写入每个块的少量键值神经元的算法，并在模型自身响应上测量每次编辑的位置和强度。此外，基础模型仅通过前向传播担任该递归中的每个角色，其写入不同位置的编辑可在一个检查点中组合而无需重新拟合。在十个视觉推理基准上的实验结果表明，BaseRSI在分布内和留出基准上均持续提升基础视觉-语言模型。代码见 https://github.com/beita6969/BaseRSI。"
     },
     {
-      "id": "arxiv:2611.06838",
-      "arxiv_id": "2611.06838",
+      "id": "arxiv:2611.15433",
+      "arxiv_id": "2611.15433",
       "source": "arXiv",
-      "cats": [
-        "cs.CV"
-      ],
-      "title_en": "Context-Aware Autoregressive Image Generation for Emerging Reasoning Properties",
-      "title_zh": "面向涌现推理特性的上下文感知自回归图像生成",
-      "abstract_en": "Autoregressive image generation has recently emerged as a competitive visual generation paradigm, yet its generation order is often predefined or heuristic, such as next-patch prediction, random-order prediction, or one-step generation for specific scales. We observe that these strategies can cause models to overlook important structural dependencies in images, thereby limiting both structural robustness and reasoning capability. In this work, we propose a context-aware autoregressive generation framework, where the model dynamically determines the next token location based on global context and current local information. Rather than following a fixed or random order, our method allows the generation process to adapt to image structure and semantic dependencies. Extensive experiments show that context-aware generation significantly improves structural robustness across different image AR paradigms, including masked autoregressive and scale-wise autoregressive models. Beyond quantitative improvements, we further observe emerging reasoning properties: the model can better understand complex semantic instructions and generate images that more faithfully follow the given guidance. These findings suggest that generation order is a critical yet underexplored factor in image autoregressive modeling, and that context-aware decoding can unlock stronger reasoning-aware visual generation capabilities. Code is available at https://github.com/Hpesojyjx/Saccades-AR.",
-      "abstract_zh": "自回归图像生成最近已成为一种具有竞争力的视觉生成范式，但其生成顺序通常是预定义或启发式的，例如下一图块预测、随机顺序预测，或针对特定尺度的一步生成。我们观察到，这些策略会导致模型忽略图像中重要的结构依赖关系，从而限制结构鲁棒性和推理能力。在这项工作中，我们提出一种上下文感知的自回归生成框架，其中模型基于全局上下文和当前局部信息动态确定下一个 token 的位置。我们的方法不遵循固定或随机顺序，而是使生成过程能够适应图像结构和语义依赖。大量实验表明，上下文感知生成在不同图像自回归范式（包括掩码自回归和尺度式自回归模型）中显著提升了结构鲁棒性。除定量改进外，我们进一步观察到涌现出的推理特性：模型能够更好地理解复杂的语义指令，并生成更忠实地遵循给定引导的图像。这些发现表明，生成顺序是图像自回归建模中一个关键但尚未被充分探索的因素，并且上下文感知解码可以释放更强的推理感知视觉生成能力。代码见 https://github.com/Hpesojyjx/Saccades-AR。",
-      "highlight_zh": "",
-      "digest_zh": "",
+      "title_en": "Verifier Choice is a Benchmark Design Variable: Auditing Structural Counting Evaluation in Text-to-Image Models",
+      "abstract_en": "Automatic evaluation is now central to text-to-image benchmarking, but the verifier that converts generated images into scores is often treated as an implementation detail. We argue that this is unsafe: an automatic benchmark score is a property of the image generator, prompt distribution, verifier, verifier-use protocol, and scoring rule, not of the generator alone. We study this issue in structural counting, a controlled setting where human-visible counts can be audited. We construct a verifier-centric audit suite over seven counting objects: cell phones, chairs, and traffic lights for object counting, and clover leaflets, dresser drawer fronts, power-strip sockets, and turbine blades for substructure counting. Across 6,240 generated images from Qwen-Image-2512 and FLUX.2-dev, we compare open MLLM verifiers under count-only, reject-aware, zero-shot and few-shot protocols, plus TIFA-like target queries, a detector baseline, and frontier closed-model checks on two hard objects. On a balanced 2,280-image evaluation split, aggregate score matching can coexist with image-level disagreement, and verifier-use protocols and generator distributions change the measured reliability. Every verifier-protocol configuration also shrinks the human score difference between the two generators, by 7.5-25.0 pp, and with a third generator, Z-Image, all four tested protocols reverse the human ordering of Z-Image and FLUX.2-dev on our fixed prompt suite. GPT-5.5 and Claude Opus 4.7 checks do not remove the failure modes: GPT-5.5 still has only 59.92% clover valid-count fidelity, while Claude Opus 4.7 has lower same-slice agreement ($κ=0.432$). We propose reporting automatic benchmark scores with a factorized verifier reliability profile: aggregate score gap, image-level agreement, generator-comparison distortion, valid-image count fidelity, rejection behavior, output compliance, and directional bias.",
+      "source_comment": "Accepted at NeurIPS 2026 (Evaluations and Datasets Track). 24 pages. Data: https://huggingface.co/datasets/neurips2026-ed443/audit-release . Code: https://github.com/AzusaCat1111/verifier-choice-audit",
+      "published_at": "2026-11-11T13:04:28.000Z",
+      "published_precision": "day",
       "authors": [
-        "Jixuan Ying",
-        "Haoyu Liu",
-        "Timing Yang",
-        "Tingyu Zhu",
-        "Predrag Neskovic",
-        "Anand Bhattad",
-        "Cihang Xie",
-        "Zeyu Zheng"
+        "Shurun Li",
+        "Michael Hua Wang",
+        "Haibo Zeng",
+        "Long Wang"
       ],
-      "url": "https://arxiv.org/abs/2611.06838v1",
-      "pdf_url": "https://arxiv.org/pdf/2611.06838",
-      "html_url": "https://arxiv.org/abs/2611.06838",
-      "published_at": "2026-11-04T17:54:14.000Z",
-      "upvotes": 0,
-      "heat": 106.77584583333334,
-      "featured": false,
-      "subtags": [],
-      "image": "",
-      "frontier": false,
-      "crossTag": "",
+      "cats": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "url": "https://arxiv.org/abs/2611.15433",
+      "html_url": "https://arxiv.org/abs/2611.15433",
+      "pdf_url": "https://arxiv.org/pdf/2611.15433",
       "field": "vision",
       "frontier_resources": [
         {
+          "kind": "data",
+          "url": "https://huggingface.co/datasets/neurips2026-ed443/audit-release",
+          "checked_at": "2026-11-17T02:55:45.712Z"
+        },
+        {
           "kind": "code",
-          "url": "https://github.com/Hpesojyjx/Saccades-AR",
+          "url": "https://github.com/AzusaCat1111/verifier-choice-audit",
           "checked_at": "2026-11-17T08:21:25.398Z"
         }
       ],
@@ -1050,8 +1032,13 @@
         ],
         "resources": [
           {
+            "kind": "data",
+            "url": "https://huggingface.co/datasets/neurips2026-ed443/audit-release",
+            "checked_at": "2026-11-17T02:55:45.712Z"
+          },
+          {
             "kind": "code",
-            "url": "https://github.com/Hpesojyjx/Saccades-AR",
+            "url": "https://github.com/AzusaCat1111/verifier-choice-audit",
             "checked_at": "2026-11-17T08:21:25.398Z"
           }
         ],
@@ -1060,11 +1047,13 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 49.38,
+        "score": 50.92,
         "reason_zh": "研究的题目或主要贡献对应「视觉生成与编辑」。原文摘要包含实验或评测说明。",
         "limitations_zh": "对照输出分辨率、采样设置和硬件条件，生成质量、时延与显存通常需要分别比较。",
-        "evidence_url": "https://arxiv.org/abs/2611.06838v1"
-      }
+        "evidence_url": "https://arxiv.org/abs/2611.15433"
+      },
+      "title_zh": "验证器选择是基准设计变量：审计文本到图像模型中的结构计数评估",
+      "abstract_zh": "自动评估如今已成为文本到图像基准测试的核心，但将生成图像转换为分数的验证器往往被视为实现细节。我们认为这不安全：自动基准分数是图像生成器、提示分布、验证器、验证器使用协议和评分规则的属性，而不仅是生成器本身的属性。我们在结构计数这一可控设置中研究该问题，其中人类可见的计数可以被审计。我们构建了一个以验证器为中心的审计套件，覆盖七个计数对象：用于目标计数的手机、椅子和交通灯，以及用于子结构计数的三叶草小叶、梳妆台抽屉面板、电源插排插座和涡轮叶片。在来自 Qwen-Image-2512 和 FLUX.2-dev 的 6,240 张生成图像上，我们比较了开放 MLLM 验证器在仅计数、拒绝感知、零样本和少样本协议下的表现，并加入类似 TIFA 的目标查询、一个检测器基线，以及对两个困难对象的前沿闭源模型检查。在一个平衡的 2,280 张图像评估划分上，聚合分数匹配可以与图像级不一致并存，且验证器使用协议和生成器分布会改变所测得的可靠性。每一种验证器-协议配置还都会缩小两个生成器之间的人类分数差，缩小幅度为 7.5–25.0 个百分点；并且加入第三个生成器 Z-Image 后，在我们固定的提示套件上，所有四种测试协议都逆转了 Z-Image 与 FLUX.2-dev 的人类排序。GPT-5.5 和 Claude Opus 4.7 的检查并未消除这些失效模式：GPT-5.5 在三叶草有效计数保真度上仍仅为 59.92%，而 Claude Opus 4.7 的同切片一致性更低（κ=0.432）。我们提出用分解式验证器可靠性画像来报告自动基准分数：聚合分数差、图像级一致性、生成器比较失真、有效图像计数保真度、拒绝行为、输出合规性和方向性偏差。"
     },
     {
       "id": "arxiv:2003.08934",
@@ -1160,49 +1149,73 @@
       }
     },
     {
-      "id": "arxiv:2611.22728",
-      "arxiv_id": "2611.22728",
+      "id": "arxiv:2611.09825",
+      "arxiv_id": "2611.09825",
       "source": "arXiv",
-      "title_en": "LoopZip: Visual Token Compression for Efficient Looped Vision-Language Models",
-      "abstract_en": "Looped vision-language models (VLMs) deepen computation by reusing shared layers, approaching larger models' capabilities with fewer parameters and easing the storage and deployment burden of stacking independent layers. However, repeatedly processing long visual sequences still incurs substantial compute and GPU memory costs. Visual token compression reduces these costs by shortening sequences. Existing methods mainly select original tokens directly or combine selection with aggregation. In looped models, the former may overlook changing token importance across calls and discard information needed later; the latter lack joint consideration of output changes across calls, limiting information preservation. We propose LoopZip, a training-free visual token compression algorithm addressing both issues. Visual aggregation builds a compact candidate pool before the looped backbone, and cross-invocation selection averages instruction attention from the first two existing calls of the same shared attention layer to retain tokens needed by both states. Weight-tied value correction then jointly fits shared visual-value adjustments to both pre-selection layer outputs, reducing output deviations across states. To validate LoopZip's effectiveness, we conduct extensive experiments covering two open-source looped VLMs, eleven benchmarks, and three pruning ratios. On LoopVL-1B, LoopZip retains 97.16% of the original model's performance at 50% pruning ratio and exceeds the strongest baseline by 5.36% at 87.5% pruning ratio. Across Hugging Face Transformers, vLLM, and SGLang, LoopVL-1B with LoopZip reduces peak allocated GPU memory by 58.36%-58.98% and achieves 2.01-2.47x end-to-end speedups over the original model.",
-      "source_comment": "11 pages, 10 figures",
-      "published_at": "2026-11-17T13:01:13.000Z",
-      "published_precision": "day",
-      "authors": [
-        "Weizhong Huang",
-        "Zhicheng Liu",
-        "Yan Zhang",
-        "Fei Chao",
-        "Xiawu Zheng",
-        "Liujuan Cao"
-      ],
       "cats": [
-        "cs.CV",
-        "cs.LG"
+        "cs.AI",
+        "cs.AR",
+        "cs.CL",
+        "cs.PF"
       ],
-      "url": "https://arxiv.org/abs/2611.22728",
-      "html_url": "https://arxiv.org/abs/2611.22728",
-      "pdf_url": "https://arxiv.org/pdf/2611.22728",
-      "field": "vision",
-      "ai_frontier": {
-        "primary_topic": "efficiency",
-        "topics": [
-          "efficiency",
-          "multimodal"
-        ],
-        "resources": [],
-        "stage": "preprint"
-      },
+      "title_en": "BitDecoding-FP4: Native FP4 KV Cache Decoding via Algorithm-System Co-Design",
+      "title_zh": "BitDecoding-FP4：通过算法-系统协同设计实现原生 FP4 KV 缓存解码",
+      "abstract_en": "The key-value (KV) cache dominates memory capacity and bandwidth in long-context LLM serving. While 4-bit microscaling formats (NVFP4, MXFP4) shrink the cache and run attention on FP4 Tensor Cores, a fundamental gap remains between algorithmic quantization and system-aware acceleration: existing FP4 KV systems use vanilla quantization that causes severe accuracy drops, whereas accuracy-oriented 4-bit algorithms rely on vector codebooks whose lookup overhead degrades decoding throughput. We present BitDecoding-FP4, an algorithm--system co-design for accurate and efficient native FP4 KV decoding. We mitigate three error sources: Dual-Residual Query Quantization splits queries into two FP4 tensors, cutting query logit error from 60% to 1%; Underflow-Aware Probability Scaling prevents E4M3 scales from rounding long-context probabilities to zero; and Outlier-Aware Key Quantization combines static smoothing, Hadamard rotation, and scale search to suppress key outliers under token-wise scaling. At the system level, we remove the softmax bottleneck via transposed softmax with fused probability quantization and stacked query MMA on paged KV caches. Across dense and MoE models with GQA and MLA, BitDecoding-FP4 stays within 0.5 points of BF16 KV accuracy with NVFP4 (1 point with MXFP4), and tracks BF16 KV in RL training rollouts. In end-to-end serving on NVIDIA B300 with Qwen3-4B and Qwen3-30B-A3B, it delivers 2.4-3.0$\\times$ higher peak serving throughput than BF16 KV. The implementation is available at https://github.com/OpenBitSys/BitDecoding-FP4.",
+      "abstract_zh": "键值（KV）缓存主导长上下文 LLM 服务中的内存容量和带宽。虽然 4 位微缩放格式（NVFP4、MXFP4）可缩小缓存并在 FP4 Tensor Core 上运行注意力，但算法量化与系统感知加速之间仍存在根本差距：现有 FP4 KV 系统使用朴素量化，导致严重精度下降；而面向精度的 4 位算法依赖向量码本，其查找开销会降低解码吞吐。我们提出 BitDecoding-FP4，一种用于准确高效原生 FP4 KV 解码的算法-系统协同设计。我们缓解三个误差来源：双残差查询量化（Dual-Residual Query Quantization）将查询拆分为两个 FP4 张量，将查询 logit 误差从 60% 降至 1%；下溢感知概率缩放（Underflow-Aware Probability Scaling）防止 E4M3 缩放因子将长上下文概率舍入为零；离群值感知键量化（Outlier-Aware Key Quantization）结合静态平滑、Hadamard 旋转和缩放搜索，在逐 token 缩放条件下抑制键离群值。在系统层面，我们通过转置 softmax（融合概率量化）以及在分页 KV 缓存上堆叠查询 MMA，消除 softmax 瓶颈。在采用 GQA 和 MLA 的稠密与 MoE 模型中，BitDecoding-FP4 在 NVFP4 下与 BF16 KV 精度的差距保持在 0.5 分以内（MXFP4 下为 1 分），并在 RL 训练 rollout 中与 BF16 KV 保持一致。在 NVIDIA B300 上使用 Qwen3-4B 和 Qwen3-30B-A3B 进行端到端服务时，其峰值服务吞吐量比 BF16 KV 高 2.4-3.0 倍。实现见 https://github.com/OpenBitSys/BitDecoding-FP4。",
+      "highlight_zh": "",
+      "digest_zh": "",
+      "authors": [
+        "Dayou Du",
+        "Woon Yee Ng",
+        "Guangming Sheng",
+        "Nick Lau",
+        "Jianyi Cheng",
+        "Luo Mai"
+      ],
+      "url": "https://arxiv.org/abs/2611.09825",
+      "pdf_url": "https://arxiv.org/pdf/2611.09825",
+      "html_url": "https://arxiv.org/abs/2611.09825",
+      "published_at": "2026-11-06T18:13:54.000Z",
+      "upvotes": 0,
+      "heat": 0,
+      "featured": false,
+      "subtags": [
+        "大模型"
+      ],
+      "image": "",
+      "frontier": true,
+      "crossTag": "AI+芯片",
+      "field": "nlp",
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 45.79,
-        "reason_zh": "研究的题目或主要贡献对应「高效训练与推理」。原文摘要包含实验或评测说明。",
+        "score": 47.65,
+        "reason_zh": "研究的题目或主要贡献对应「高效训练与推理」。可查阅原文的方法描述。",
         "limitations_zh": "比较速度前应对齐硬件、批量、上下文长度与精度设置，作者环境的加速比不能直接外推。",
-        "evidence_url": "https://arxiv.org/abs/2611.22728"
+        "evidence_url": "https://arxiv.org/abs/2611.09825"
       },
-      "title_zh": "LoopZip：用于高效循环视觉语言模型的视觉 token 压缩",
-      "abstract_zh": "循环视觉语言模型（VLM）通过复用共享层来加深计算，以更少参数接近更大模型的能力，并缓解堆叠独立层带来的存储和部署负担。然而，重复处理长视觉序列仍会带来大量计算和 GPU 内存开销。视觉 token 压缩通过缩短序列来降低这些开销。现有方法主要直接选择原始 token，或将选择与聚合结合。在循环模型中，前者可能忽略 token 重要性在不同调用间的变化，并丢弃后续需要的信息；后者缺乏对跨调用输出变化的联合考虑，限制了信息保留。我们提出 LoopZip，一种无需训练的视觉 token 压缩算法，同时解决这两个问题。视觉聚合在循环骨干网络之前构建紧凑候选池；跨调用选择对同一共享注意力层前两次现有调用中的指令注意力取平均，以保留两种状态都需要的 token。随后，权重共享的值校正联合拟合面向两个预选择层输出的共享视觉值调整，减少不同状态间的输出偏差。为验证 LoopZip 的有效性，我们开展了大量实验，覆盖两个开源循环 VLM、十一个基准和三个剪枝比例。在 LoopVL-1B 上，LoopZip 在 50% 剪枝比例下保留原模型 97.16% 的性能，并在 87.5% 剪枝比例下超过最强基线 5.36%。在 Hugging Face Transformers、vLLM 和 SGLang 中，使用 LoopZip 的 LoopVL-1B 将峰值分配 GPU 内存降低 58.36%-58.98%，并相较原模型实现 2.01-2.47 倍端到端加速。"
+      "frontierScore": "high",
+      "frontier_resources": [
+        {
+          "kind": "code",
+          "url": "https://github.com/OpenBitSys/BitDecoding-FP4",
+          "checked_at": "2026-11-17T08:21:25.398Z"
+        }
+      ],
+      "ai_frontier": {
+        "primary_topic": "efficiency",
+        "topics": [
+          "efficiency"
+        ],
+        "resources": [
+          {
+            "kind": "code",
+            "url": "https://github.com/OpenBitSys/BitDecoding-FP4",
+            "checked_at": "2026-11-17T08:21:25.398Z"
+          }
+        ],
+        "stage": "preprint"
+      }
     },
     {
       "id": "arxiv:2611.13160",
@@ -1241,7 +1254,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 50.73,
+        "score": 50.46,
         "reason_zh": "研究的题目或主要贡献对应「具身智能与机器人学习」。原文摘要包含实验或评测说明。",
         "limitations_zh": "区分仿真和实机实验，并检查机械臂、相机和控制接口能否匹配自身环境。",
         "evidence_url": "https://arxiv.org/abs/2611.13160"
@@ -1322,7 +1335,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 52.31,
+        "score": 52.04,
         "reason_zh": "研究的题目或主要贡献对应「学习方法与推理」。原文摘要包含实验或评测说明。",
         "limitations_zh": "对照论文中的训练数据、模型规模和评测任务，检查结果是否能迁移到其他模型。",
         "evidence_url": "https://arxiv.org/abs/2611.20144"
@@ -1331,61 +1344,31 @@
       "abstract_zh": "记忆系统使 AI 智能体能够在多次交互中持久保存信息，从而使其更加个性化，并在长时程任务中更具能力。这种持久化引入了新的风险：存储的信息可能在不当情境中被披露、抵制更正或删除、在超出用户意愿的情况下被保留，或被投毒以影响后续智能体行为。然而，记忆系统通常仅根据任务性能和效率进行评估。我们认为，记忆系统应被理解为用户持久信息的保管者，其责任超越帮助智能体完成任务，并且应针对所有这些责任对其进行整体评估。我们提出智能体记忆系统整体评估（HEAMS），一个以这种方式评估智能体记忆系统的开源框架。首先，我们将智能体记忆系统的责任表述为明确的行为期望，涵盖性能、效率、安全性、隐私和用户主权。其次，我们构建一个覆盖这些期望的基准套件，并承认仍存在的空白。第三，我们开发 MilaMem，一个原型记忆系统，以及一个可包裹任何记忆系统的治理层，从而能够对记忆系统设计选择进行受控研究。第四，我们在完整的 HEAMS 基准套件上比较记忆系统。我们发现，没有任何记忆系统在每项性能基准上都领先，并且强性能分数可能与较差的隐私、用户主权和安全性分数并存。治理会强烈影响结果：召回策略可以降低不当披露，但以有用性为代价；而召回策略和保留策略都能提高抗投毒能力。因此，仅凭性能和效率基准无法揭示记忆系统在多大程度上履行其责任。代码：https://github.com/milatechtransfer/heams"
     },
     {
-      "id": "arxiv:2611.22415",
-      "arxiv_id": "2611.22415",
+      "id": "arxiv:2611.23127",
+      "arxiv_id": "2611.23127",
       "source": "arXiv",
-      "cats": [
-        "cs.CV",
-        "cs.CG"
-      ],
-      "title_en": "SpatialMind: Adaptive Multi-Level Geometric Fusion for Spatial Reasoning in Multimodal Large Language Models",
-      "title_zh": "SpatialMind：面向多模态大语言模型空间推理的自适应多层级几何融合",
-      "abstract_en": "Multimodal Large Language Models (MLLMs) demonstrate promising capabilities in 2D visual understanding, yet remain limited in 3D spatial reasoning. Recent studies explore integrating 3D reconstruction models into MLLMs. However, these approaches either use a single geometric granularity across all tasks or adopt a fixed multi-level fusion scheme, regardless of task-specific reasoning requirements. Through systematic experiments on multi-level geometric fusion, we find that spatial tasks at different cognitive levels (e.g., distance estimation vs. route planning) require geometric representations of different granularities, revealing that fixed fusion cannot accommodate diverse spatial reasoning requirements. To bridge this gap, we propose SpatialMind, a task-adaptive framework for dynamically integrating multi-level geometric representations. SpatialMind employs GeoFus, a multi-layer geometric fusion module built around a gating network jointly conditioned on textual instructions, visual semantics, and geometric representations. This network adaptively modulates the contributions of shallow, intermediate, and deep geometric features across the layers of the LLM decoder. Furthermore, we introduce a negative-entropy regularization loss to mitigate gate collapse. Gate visualizations indicate that GeoFus adapts geometric granularity to task requirements. Experiments demonstrate that SpatialMind achieves competitive performance across spatial benchmarks, attaining a state-of-the-art score of 72.3 on VSI-Bench. The source code is publicly available at https://github.com/zhaosb-star/SpatialMind.",
-      "abstract_zh": "多模态大语言模型（MLLMs）在2D视觉理解方面展现出有前景的能力，但在3D空间推理方面仍然有限。近期研究探索将3D重建模型集成到MLLMs中。然而，这些方法要么在所有任务中使用单一几何粒度，要么采用固定的多层级融合方案，而不考虑任务特定的推理需求。通过对多层级几何融合的系统实验，我们发现不同认知层次的空间任务（例如距离估计与路径规划）需要不同粒度的几何表示，这表明固定融合无法适应多样的空间推理需求。为弥合这一差距，我们提出SpatialMind，一个用于动态整合多层级几何表示的任务自适应框架。SpatialMind采用GeoFus，一个多层几何融合模块，其核心是一个同时以文本指令、视觉语义和几何表示为条件的门控网络。该网络在LLM解码器各层中自适应地调节浅层、中层和深层几何特征的贡献。此外，我们引入负熵正则化损失以缓解门控崩溃。门控可视化表明，GeoFus能够根据任务需求调整几何粒度。实验表明，SpatialMind在多个空间基准上取得有竞争力的性能，在VSI-Bench上达到72.3的最先进分数。源代码公开于 https://github.com/zhaosb-star/SpatialMind。",
-      "highlight_zh": "",
-      "digest_zh": "",
-      "authors": [
-        "Shibin Zhao",
-        "Hao Tan",
-        "Fan Yang",
-        "Haixin Wang",
-        "Feilong Chen",
-        "Yidong Ma",
-        "Chaoyang Zhao",
-        "Ming Tang",
-        "Jinqiao Wang"
-      ],
-      "url": "https://arxiv.org/abs/2611.22415",
-      "pdf_url": "https://arxiv.org/pdf/2611.22415",
-      "html_url": "https://arxiv.org/abs/2611.22415",
-      "published_at": "2026-11-17T08:51:37.000Z",
-      "upvotes": 0,
-      "heat": 0,
-      "featured": false,
-      "subtags": [
-        "3D",
-        "多模态",
-        "大模型",
-        "智能体"
-      ],
-      "image": "",
-      "frontier": false,
-      "crossTag": "",
-      "field": "vision",
-      "recommendation": {
-        "scope": "ai-frontier",
-        "lane": "recent",
-        "score": 52.74,
-        "reason_zh": "研究的题目或主要贡献对应「多模态理解」。原文摘要包含实验或评测说明。",
-        "limitations_zh": "对照图像分辨率、视频采样频率和任务数据，论文中的基准分数只适用于相应评测设置。",
-        "evidence_url": "https://arxiv.org/abs/2611.22415"
-      },
-      "source_comment": "Includes supplementary material. Code available at https://github.com/zhaosb-star/SpatialMind",
+      "title_en": "The Illusion of Grounding: Do Vision-Language Models Weigh Retrieved Text and Images Like an Ideal Observer?",
+      "abstract_en": "Retrieval-augmented vision-language models (VLMs) answer from two sources of evidence that can each fail: the retrieved text can be wrong or noisy, and the image can be degraded or contradicted. We introduce GIB-200K, 200,000 image-question items built from COCO and Visual Genome, each expanded into controlled stress conditions: hard-negative retrieval noise (1-20 documents), visual ambiguity (Gaussian and motion blur, low-resource crops) and cross-modal conflict with counterfactual flip pairs. Instead of only measuring degradation, we ask how models combine the two modalities. From ideal Bayesian cue combination we derive a testable prediction that yields formal definitions of Knowledge Inertia (text over-weighted relative to the model's own image evidence) and Sensory Capture (the reverse), and we estimate the weights with a measurement-error-corrected regression whose recovery of known weights we verify. A counterfactual flip decomposition separates modality bias from concept priors, and a Grounding Illusion Score measures how much clean accuracy is not grounded in the image. We evaluate 4 open models on one frozen, seeded evaluation split of 2,000 GIB-200K items. All models are accurate on clean inputs (92.5%-94.2%) but adverse accuracy falls to 41.3%-59.9%. The two LLaVA models over-weight the text (Knowledge Inertia, w_T/w_I = 1.229 and 1.322), whereas InternVL3 favours the image (w_T/w_I = 0.680); between 34.8% and 71.4% of the clean answers that are correct are abandoned when the document lies. A training-free consistency check that compares the answer with and without retrieval trades coverage for accuracy under misleading documents, while falling back to the image fails when the image is heavily degraded. All per-instance outputs, code, and an audit that recomputes every reported open-model number are released.",
+      "source_comment": "10 pages, 5 figures, 11 tables. Code and data: https://github.com/Basavarajearlybird/GIB-200K (archived at https://doi.org/10.5281/zenodo.24320174)",
+      "published_at": "2026-11-17T17:45:28.000Z",
       "published_precision": "day",
+      "authors": [
+        "Basavaraj R M",
+        "Harshal Chandel"
+      ],
+      "cats": [
+        "cs.LG",
+        "cs.CL",
+        "cs.CV"
+      ],
+      "url": "https://arxiv.org/abs/2611.23127",
+      "html_url": "https://arxiv.org/abs/2611.23127",
+      "pdf_url": "https://arxiv.org/pdf/2611.23127",
+      "field": "ml",
       "frontier_resources": [
         {
           "kind": "code",
-          "url": "https://github.com/zhaosb-star/SpatialMind",
+          "url": "https://github.com/Basavarajearlybird/GIB-200K",
           "checked_at": "2026-11-18T07:56:43.340Z"
         }
       ],
@@ -1397,54 +1380,87 @@
         "resources": [
           {
             "kind": "code",
-            "url": "https://github.com/zhaosb-star/SpatialMind",
+            "url": "https://github.com/Basavarajearlybird/GIB-200K",
             "checked_at": "2026-11-18T07:56:43.340Z"
           }
         ],
-        "stage": "preprint"
-      }
-    },
-    {
-      "id": "arxiv:2611.23155",
-      "arxiv_id": "2611.23155",
-      "source": "arXiv",
-      "title_en": "TextSphere: Efficient Text-to-Image Generation via Shared Hyperspherical Alignment and Uniformity",
-      "abstract_en": "Recent advances in text-to-image generation have substantially improved image quality, particularly through diffusion-based methods that require multiple inference steps. In contrast, Sphere Encoder offers an efficient generative framework capable of producing images with fewer forward steps. However, extending it to free-form text is nontrivial, because its class-conditioned design lacks cross-modal alignment. To address this challenge, we propose TextSphere, an efficient text-to-image generative framework that extends Sphere Encoder with language conditioning and cross-modal alignment. We incorporate pretrained CLIP text embeddings through adaptive layer normalization (AdaLN) to guide image generation while retaining the original spherical sampling mechanism. To bridge the cross-modal representation gap, we introduce a Spherical Semantic Alignment and Uniformity (SSAU) objective that jointly promotes semantic alignment and representation uniformity on the hypersphere. Experiments on CUB-200-2011, MS-COCO-2014, and Flickr30k demonstrate that TextSphere consistently reduces generation FID (gFID) over the text-conditioned baseline while achieving reconstruction FID (rFID) below 1.0. With only 4 and 6 sampling steps, TextSphere achieves lower gFID than the compared diffusion- and GAN-based models trained from scratch on CUB-200-2011 and MS-COCO-2014, respectively. We further observe that improved reconstruction fidelity does not necessarily yield better generation quality. In addition, we use Partial Least Squares Singular Value Decomposition (PLS-SVD) to analyze cross-modal alignment and modality gap, offering insight into the effectiveness of our approach.",
-      "source_comment": "21 pages, 8 figures",
-      "published_at": "2026-11-17T18:08:53.000Z",
-      "published_precision": "day",
-      "authors": [
-        "Yixia Zhang",
-        "Girish A. Koushik",
-        "Xilu Wang",
-        "Wenwu Wang"
-      ],
-      "cats": [
-        "cs.CV",
-        "cs.CL"
-      ],
-      "url": "https://arxiv.org/abs/2611.23155",
-      "html_url": "https://arxiv.org/abs/2611.23155",
-      "pdf_url": "https://arxiv.org/pdf/2611.23155",
-      "field": "vision",
-      "ai_frontier": {
-        "primary_topic": "generation",
-        "topics": [
-          "generation"
-        ],
-        "resources": [],
         "stage": "preprint"
       },
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 45.85,
+        "score": 52.58,
+        "reason_zh": "研究的题目或主要贡献对应「多模态理解」。原文摘要包含实验或评测说明。",
+        "limitations_zh": "对照图像分辨率、视频采样频率和任务数据，论文中的基准分数只适用于相应评测设置。",
+        "evidence_url": "https://arxiv.org/abs/2611.23127"
+      },
+      "title_zh": "Grounding 的错觉：视觉语言模型会像理想观察者一样权衡检索文本和图像吗？",
+      "abstract_zh": "检索增强的视觉语言模型（VLM）从两种都可能失败的证据来源作答：检索文本可能错误或有噪声，图像可能退化或与文本矛盾。我们提出 GIB-200K，包含由 COCO 和 Visual Genome 构建的 200,000 个图像-问题条目，每个条目扩展为受控压力条件：难负例检索噪声（1-20 篇文档）、视觉歧义（高斯模糊和运动模糊、低资源裁剪）以及与反事实翻转对形成的跨模态冲突。我们不止衡量性能退化，还考察模型如何组合两种模态。从理想贝叶斯线索组合中，我们推导出一个可检验预测，并据此给出知识惯性（文本相对于模型自身图像证据被过度加权）和感官俘获（相反情况）的形式化定义，并用测量误差校正回归估计权重，且验证了该回归对已知权重的恢复。反事实翻转分解将模态偏置与概念先验分离，Grounding 错觉分数衡量有多少干净准确率并非基于图像。我们在 GIB-200K 的 2,000 个条目构成的一个冻结、固定随机种子的评估划分上评估 4 个开源模型。所有模型在干净输入上准确（92.5%-94.2%），但不利条件下的准确率降至 41.3%-59.9%。两个 LLaVA 模型过度加权文本（知识惯性，w_T/w_I = 1.229 和 1.322），而 InternVL3 更偏好图像（w_T/w_I = 0.680）；当文档提供错误信息时，34.8% 到 71.4% 原本正确的干净答案被放弃。一种无需训练的一致性检查比较有无检索时的答案，在误导性文档下以覆盖率换取准确率；而当图像严重退化时，回退到图像会失败。所有逐实例输出、代码，以及重新计算每个所报告开源模型数值的审计均已发布。"
+    },
+    {
+      "id": "arxiv:2611.06838",
+      "arxiv_id": "2611.06838",
+      "source": "arXiv",
+      "cats": [
+        "cs.CV"
+      ],
+      "title_en": "Context-Aware Autoregressive Image Generation for Emerging Reasoning Properties",
+      "title_zh": "面向涌现推理特性的上下文感知自回归图像生成",
+      "abstract_en": "Autoregressive image generation has recently emerged as a competitive visual generation paradigm, yet its generation order is often predefined or heuristic, such as next-patch prediction, random-order prediction, or one-step generation for specific scales. We observe that these strategies can cause models to overlook important structural dependencies in images, thereby limiting both structural robustness and reasoning capability. In this work, we propose a context-aware autoregressive generation framework, where the model dynamically determines the next token location based on global context and current local information. Rather than following a fixed or random order, our method allows the generation process to adapt to image structure and semantic dependencies. Extensive experiments show that context-aware generation significantly improves structural robustness across different image AR paradigms, including masked autoregressive and scale-wise autoregressive models. Beyond quantitative improvements, we further observe emerging reasoning properties: the model can better understand complex semantic instructions and generate images that more faithfully follow the given guidance. These findings suggest that generation order is a critical yet underexplored factor in image autoregressive modeling, and that context-aware decoding can unlock stronger reasoning-aware visual generation capabilities. Code is available at https://github.com/Hpesojyjx/Saccades-AR.",
+      "abstract_zh": "自回归图像生成最近已成为一种具有竞争力的视觉生成范式，但其生成顺序通常是预定义或启发式的，例如下一图块预测、随机顺序预测，或针对特定尺度的一步生成。我们观察到，这些策略会导致模型忽略图像中重要的结构依赖关系，从而限制结构鲁棒性和推理能力。在这项工作中，我们提出一种上下文感知的自回归生成框架，其中模型基于全局上下文和当前局部信息动态确定下一个 token 的位置。我们的方法不遵循固定或随机顺序，而是使生成过程能够适应图像结构和语义依赖。大量实验表明，上下文感知生成在不同图像自回归范式（包括掩码自回归和尺度式自回归模型）中显著提升了结构鲁棒性。除定量改进外，我们进一步观察到涌现出的推理特性：模型能够更好地理解复杂的语义指令，并生成更忠实地遵循给定引导的图像。这些发现表明，生成顺序是图像自回归建模中一个关键但尚未被充分探索的因素，并且上下文感知解码可以释放更强的推理感知视觉生成能力。代码见 https://github.com/Hpesojyjx/Saccades-AR。",
+      "highlight_zh": "",
+      "digest_zh": "",
+      "authors": [
+        "Jixuan Ying",
+        "Haoyu Liu",
+        "Timing Yang",
+        "Tingyu Zhu",
+        "Predrag Neskovic",
+        "Anand Bhattad",
+        "Cihang Xie",
+        "Zeyu Zheng"
+      ],
+      "url": "https://arxiv.org/abs/2611.06838v1",
+      "pdf_url": "https://arxiv.org/pdf/2611.06838",
+      "html_url": "https://arxiv.org/abs/2611.06838",
+      "published_at": "2026-11-04T17:54:14.000Z",
+      "upvotes": 0,
+      "heat": 106.77584583333334,
+      "featured": false,
+      "subtags": [],
+      "image": "",
+      "frontier": false,
+      "crossTag": "",
+      "field": "vision",
+      "frontier_resources": [
+        {
+          "kind": "code",
+          "url": "https://github.com/Hpesojyjx/Saccades-AR",
+          "checked_at": "2026-11-17T08:21:25.398Z"
+        }
+      ],
+      "ai_frontier": {
+        "primary_topic": "generation",
+        "topics": [
+          "generation"
+        ],
+        "resources": [
+          {
+            "kind": "code",
+            "url": "https://github.com/Hpesojyjx/Saccades-AR",
+            "checked_at": "2026-11-17T08:21:25.398Z"
+          }
+        ],
+        "stage": "preprint"
+      },
+      "recommendation": {
+        "scope": "ai-frontier",
+        "lane": "recent",
+        "score": 49.11,
         "reason_zh": "研究的题目或主要贡献对应「视觉生成与编辑」。原文摘要包含实验或评测说明。",
         "limitations_zh": "对照输出分辨率、采样设置和硬件条件，生成质量、时延与显存通常需要分别比较。",
-        "evidence_url": "https://arxiv.org/abs/2611.23155"
-      },
-      "title_zh": "TextSphere：通过共享超球面对齐与均匀性实现高效文本到图像生成",
-      "abstract_zh": "文本到图像生成的近期进展显著提升了图像质量，尤其是需要多步推理的扩散方法。相比之下，Sphere Encoder 提供了一种高效生成框架，能够以更少前向步骤生成图像。然而，将其扩展到自由形式文本并非易事，因为其类别条件设计缺乏跨模态对齐。为应对这一挑战，我们提出 TextSphere，一种高效的文本到图像生成框架，通过语言条件和跨模态对齐扩展 Sphere Encoder。我们通过自适应层归一化（AdaLN）引入预训练 CLIP 文本嵌入来引导图像生成，同时保留原始球面采样机制。为弥合跨模态表示差距，我们引入球面语义对齐与均匀性（SSAU）目标，在超球面上联合促进语义对齐和表示均匀性。在 CUB-200-2011、MS-COCO-2014 和 Flickr30k 上的实验表明，TextSphere 相比文本条件基线持续降低生成 FID（gFID），同时实现低于 1.0 的重建 FID（rFID）。仅用 4 步和 6 步采样，TextSphere 在 CUB-200-2011 和 MS-COCO-2014 上分别取得比从头训练的对比扩散模型和 GAN 模型更低的 gFID。我们进一步观察到，重建保真度提升并不必然带来更好的生成质量。此外，我们使用偏最小二乘奇异值分解（PLS-SVD）分析跨模态对齐和模态差距，为理解我们方法的有效性提供洞见。"
+        "evidence_url": "https://arxiv.org/abs/2611.06838v1"
+      }
     },
     {
       "id": "arxiv:2611.19773",
@@ -1494,7 +1510,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 52.16,
+        "score": 51.89,
         "reason_zh": "研究的题目或主要贡献对应「视觉感知与三维」。原文摘要包含实验或评测说明。",
         "limitations_zh": "对照数据集、传感器、标定和计算条件，遮挡、动态场景与端侧实时性需要另行评估。",
         "evidence_url": "https://arxiv.org/abs/2611.19773"
@@ -1503,26 +1519,30 @@
       "abstract_zh": "轻量级三维建筑模型可支持城市空间分析，但其生产通常需要稠密场景重建、建筑提取和网格简化。尽管三维高斯泼溅（3DGS）比传统多视图立体更高效，但现有大规模方法缺乏语义选择与并行实例级训练。我们提出 SemLite-GS，一个以建筑为中心的框架，可从大规模无人机倾斜影像重建轻量级建筑网格。首先，正交参考图建立全局一致的建筑身份，并将其传播到倾斜视图，以形成相机-实例对和感兴趣区域。其次，语义选择性并行 PGSR 训练在相关图像区域内联合处理多个对，同时仅更新目标高斯；上下文高斯保持固定以保持可见性。第三，从渲染深度图、不透明度图和法线图中提取的建筑平面引导有符号距离场优化，生成具有自适应多边形分配和明确定义结构边界的网格。在多个大规模无人机数据集上的实验表明，与代表性的全场景 3DGS 方法相比，我们的 SemLite-GS 显著减少了建筑重建时间。在相当的多边形预算下，与传统的稠密重建后接网格简化相比，SemLite-GS 在保留主要平面结构和锐利建筑过渡方面表现更优。源代码见 https://github.com/IRIS-LAB-whu/SemLite-GS。"
     },
     {
-      "id": "arxiv:2611.22296",
-      "arxiv_id": "2611.22296",
+      "id": "arxiv:2611.24301",
+      "arxiv_id": "2611.24301",
       "source": "arXiv",
-      "title_en": "SpecSearch: Towards Hardware-Aware Efficient Speculative Decoding",
-      "abstract_en": "Speculative decoding (SD) accelerates large language model (LLM) inference, but its optimal configuration depends jointly on workload characteristics, GPU hardware, and available memory. For example, on the RTX~5090, the state-of-the-art speculative drafter DFlash achieves $3.50\\times$ the throughput of autoregressive (AR) decoding at low concurrency, but only $0.76\\times$ at high concurrency with short outputs. We present SpecSearch, a hardware-aware search engine that jointly optimizes decoding strategy, draft length, and precision across workload--GPU pairs. Its analytical cost model captures memory and compute constraints to identify feasible configurations and narrow the search space for throughput optimization. Guided by this model, calibration measurements are collected from multiple GPUs. Using the measurements, a Jev-based predictor learns to select high-throughput decoding configurations on held-out GPUs without requiring deployment-GPU calibration. The predictor is parameter-efficiently trained on calibration data, while adapting a frozen Qwen3-4B using LoRA adapters and a linear correction layer. Across NVIDIA RTX~5090, H100, L40 and AMD MI300X GPUs, SpecSearch with full calibration achieves an average of $2.01\\times$ the throughput of AR and $1.36\\times$ the throughput of SD, both served by vLLM. The proposed Jev-based predictor closely matches this search performance with $1.30\\times$ throughput improvement over SD with vLLM, while eliminating the need for held-out GPU calibration. Additionally, it retains $97.36\\%$ of the throughput achieved by SpecSearch that utilizes full calibration.",
-      "published_at": "2026-11-17T06:53:30.000Z",
+      "title_en": "LoopCache: Accelerating Long-Context Self-Speculative Decoding for Looped Transformers",
+      "abstract_en": "Looped Transformers achieve large effective depth with compact models by repeatedly applying a weight-shared block across R recurrent steps, each maintaining a loop-specific key-value (KV) cache. To accelerate sequential loop execution, recent wave-style self-speculative methods like WaveFront Decoding (WFD) and LoopSpec pipeline draft and target tokens across loops in a single step. However, they face two critical limitations. First, they draft only at fixed loops and ignore intermediate prediction changes, wasting computation on stale trajectories. Second, batching tokens from different loops loads up to Rx the KV cache per step, severely amplifying memory traffic in long-context scenarios. To address these challenges, we propose LoopCache, an efficient self-speculative decoding framework for long-context Looped Transformers. Based on the correlation between prediction switches and output confidence, LoopCache introduces confidence-guided dynamic draft updating to refine drafts in flight across all intermediate loops. Furthermore, LoopCache employs a cyclic loop KV cache strategy that rotates through loop-specific KV caches, restricting per-step KV traffic to a single loop while batching tokens at the nearest matching cycle for lossless verification. By also selectively retaining independent KV caches for a few loop-sensitive shallow layers, LoopCache improves acceptance rates with negligible overhead. Experiments show that LoopCache achieves average 10.25x and 14.56x speedup over WFD and LoopSpec.",
+      "published_at": "2026-11-18T12:11:43.000Z",
       "published_precision": "day",
       "authors": [
-        "Selin Yildirim",
-        "Ali Zeyrek",
-        "Deming Chen"
+        "Zizhuo Fu",
+        "Haochen Huang",
+        "Shengxuan Qiu",
+        "Linye Wei",
+        "Ziyu Tang",
+        "Runsheng Wang",
+        "Meng Li"
       ],
       "cats": [
-        "cs.AI",
-        "cs.DC"
+        "cs.CL",
+        "cs.LG"
       ],
-      "url": "https://arxiv.org/abs/2611.22296",
-      "html_url": "https://arxiv.org/abs/2611.22296",
-      "pdf_url": "https://arxiv.org/pdf/2611.22296",
-      "field": "ml",
+      "url": "https://arxiv.org/abs/2611.24301",
+      "html_url": "https://arxiv.org/abs/2611.24301",
+      "pdf_url": "https://arxiv.org/pdf/2611.24301",
+      "field": "nlp",
       "ai_frontier": {
         "primary_topic": "efficiency",
         "topics": [
@@ -1534,13 +1554,13 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 45.72,
+        "score": 45.78,
         "reason_zh": "研究的题目或主要贡献对应「高效训练与推理」。原文摘要包含实验或评测说明。",
         "limitations_zh": "比较速度前应对齐硬件、批量、上下文长度与精度设置，作者环境的加速比不能直接外推。",
-        "evidence_url": "https://arxiv.org/abs/2611.22296"
+        "evidence_url": "https://arxiv.org/abs/2611.24301"
       },
-      "title_zh": "SpecSearch：迈向硬件感知的高效投机解码",
-      "abstract_zh": "投机解码（SD）可加速大语言模型（LLM）推理，但其最优配置共同取决于工作负载特征、GPU 硬件和可用内存。例如，在 RTX~5090 上，最先进的投机草稿器 DFlash 在低并发下达到自回归（AR）解码吞吐量的 3.50 倍，但在高并发且输出较短时仅为 0.76 倍。我们提出 SpecSearch，一种硬件感知搜索引擎，跨工作负载—GPU 对联合优化解码策略、草稿长度和精度。其解析成本模型捕捉内存和计算约束，以识别可行配置并缩小吞吐优化的搜索空间。在该模型指导下，从多个 GPU 收集校准测量。利用这些测量，基于 Jev 的预测器学习在留出 GPU 上选择高吞吐解码配置，而无需部署 GPU 校准。该预测器在校准数据上以参数高效方式训练，同时使用 LoRA 适配器和线性校正层适配冻结的 Qwen3-4B。在 NVIDIA RTX~5090、H100、L40 和 AMD MI300X GPU 上，经完整校准的 SpecSearch 平均达到 AR 吞吐量的 2.01 倍和 SD 吞吐量的 1.36 倍，二者均由 vLLM 服务。所提出的基于 Jev 的预测器接近该搜索性能，相较使用 vLLM 的 SD 实现 1.30 倍吞吐提升，同时消除对留出 GPU 校准的需求。此外，它保留了利用完整校准的 SpecSearch 所达到吞吐量的 97.36%。"
+      "title_zh": "LoopCache：加速循环Transformer的长上下文自投机解码",
+      "abstract_zh": "循环Transformer通过在R个循环步骤中重复应用权重共享块，以紧凑模型实现较大的有效深度，每个步骤维护一个循环特定的键值（KV）缓存。为加速顺序循环执行，近期WaveFront Decoding（WFD）和LoopSpec等波式自投机方法在单步内跨循环流水化草稿token和目标token。然而，它们面临两个关键限制。第一，它们仅在固定循环处草稿，忽略中间预测变化，在过时轨迹上浪费计算。第二，将来自不同循环的token批处理会在每步加载最多R倍的KV缓存，在长上下文场景中严重放大内存流量。为解决这些挑战，我们提出LoopCache，一种用于长上下文循环Transformer的高效自投机解码框架。基于预测切换与输出置信度之间的相关性，LoopCache引入置信度引导的动态草稿更新，以在所有中间循环中对进行中的草稿进行细化。此外，LoopCache采用循环循环KV缓存策略，在循环特定KV缓存之间轮转，将每步KV流量限制在单个循环，同时在最近匹配的循环处批处理token以进行无损验证。通过还有选择地为少数对循环敏感的浅层保留独立KV缓存，LoopCache以可忽略的开销提高接受率。实验显示，LoopCache相对WFD和LoopSpec平均分别取得10.25倍和14.56倍加速。"
     },
     {
       "id": "arxiv:2611.12382",
@@ -1584,7 +1604,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 50.66,
+        "score": 50.39,
         "reason_zh": "研究的题目或主要贡献对应「具身智能与机器人学习」。原文摘要包含实验或评测说明。",
         "limitations_zh": "区分仿真和实机实验，并检查机械臂、相机和控制接口能否匹配自身环境。",
         "evidence_url": "https://arxiv.org/abs/2611.12382"
@@ -1650,7 +1670,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 49.48,
+        "score": 49.21,
         "reason_zh": "研究的题目或主要贡献对应「学习方法与推理」。可查阅原文的方法描述。",
         "limitations_zh": "对照论文中的训练数据、模型规模和评测任务，检查结果是否能迁移到其他模型。",
         "evidence_url": "https://arxiv.org/abs/2611.16895"
@@ -1690,32 +1710,39 @@
       }
     },
     {
-      "id": "arxiv:2611.23228",
-      "arxiv_id": "2611.23228",
+      "id": "arxiv:2611.22415",
+      "arxiv_id": "2611.22415",
       "source": "arXiv",
       "cats": [
         "cs.CV",
-        "cs.LG"
+        "cs.CG"
       ],
-      "title_en": "Spool: Low-Latency Streaming Inference for Hybrid Vision-Language Models",
-      "title_zh": "Spool：面向混合视觉语言模型的低延迟流式推理",
-      "abstract_en": "Applications such as visual accessibility agents and robotics require answering questions about recent video content promptly, over a bounded window of past frames (e.g., the last two minutes). Hybrid vision-language models (VLMs), which interleave attention with linear recurrent layers such as Gated DeltaNet (GDN), are attractive for this setting, but maintaining a sliding window is expensive. The reason is that recurrent layers combine all past frames into a shared state, so expiring old frames normally requires re-running the entire window through the model. We observe that the recurrent update is affine in the state with input-dependent coefficients, so the effect of each frame can be captured as a transformation that composes associatively. We present Spool, a training-free framework that caches per-frame state transformations and composes them efficiently as the window advances, removing expired frames from each recurrent layer's state without replaying frames through the backbone. Removal is exact within each layer; as with key-value eviction in attention, expired frames can retain residual influence through the cached inputs computed by earlier layers. We design a dedicated data structure and GPU kernels to achieve low caching and composition overhead. Across five open-source hybrid VLMs and four video reasoning benchmarks, Spool achieves the lowest p95 time-to-first-token in all 20 model-benchmark tests, reducing it by a geometric mean of $6.6\\times$ over the faster of two recent vLLM baselines, while improving accuracy by 2.3 percentage points on average.",
-      "abstract_zh": "视觉辅助智能体、机器人等应用需要在有限的过去帧窗口（如最近两分钟）内及时回答关于近期视频的问题。混合视觉语言模型（VLM）将注意力层与 Gated DeltaNet（GDN）等线性循环层交错，适合这类场景，但维护滑动窗口代价高昂：循环层把所有历史帧压缩进一个共享状态，淘汰旧帧通常需要重跑整个窗口。作者观察到循环层的状态更新对状态是仿射的、系数由输入决定，因此每帧的影响可表示为一个可按结合律复合的变换。据此提出免训练框架 Spool：缓存逐帧状态变换，并随窗口推进高效复合，从而在不重放帧的情况下从各循环层状态中移除过期帧。",
-      "highlight_zh": "免训练缓存帧级状态变换，首字延迟降低约6.6倍",
-      "digest_zh": "• 研究了什么问题：视频问答类应用（视觉无障碍助手、机器人）需要在一个有界的近端时间窗口内快速作答。混合 VLM（注意力 + GDN 等线性循环层）很适合这种流式场景，但一旦要“滑动窗口”就麻烦了：循环层把全部历史帧压成一个共享状态，想丢掉最老的帧，常规做法是把整个窗口重新喂一遍模型，延迟极高。\n• 用了什么方法：作者发现循环层的状态更新是仿射变换，系数由输入决定，于是每一帧对状态的贡献可以写成一个变换，而这些变换可以按结合律复合。Spool 免训练地缓存每帧的变换，窗口前进时快速复合变换，并用逆操作把过期帧从状态中精确剔除，不必重放主干；为了让缓存的入队、复合开销够低，作者还设计了专用数据结构与 GPU kernel。\n• 有什么结果：在 5 个开源混合 VLM 与 4 个视频推理基准共 20 组测试中，Spool 的 p95 首字延迟全部最低，相比两个 vLLM 基线中较快者，几何平均加速 6.6 倍，同时准确率平均提升 2.3 个百分点。\n• 为何重要：无需重训模型、无需改动架构，就能让长视频流式推理又快又准。作者也如实说明边界：层内移除是精确的，但如同注意力中的 KV 淘汰，过期帧仍可能通过前层已缓存的输入留下残余影响。",
+      "title_en": "SpatialMind: Adaptive Multi-Level Geometric Fusion for Spatial Reasoning in Multimodal Large Language Models",
+      "title_zh": "SpatialMind：面向多模态大语言模型空间推理的自适应多层级几何融合",
+      "abstract_en": "Multimodal Large Language Models (MLLMs) demonstrate promising capabilities in 2D visual understanding, yet remain limited in 3D spatial reasoning. Recent studies explore integrating 3D reconstruction models into MLLMs. However, these approaches either use a single geometric granularity across all tasks or adopt a fixed multi-level fusion scheme, regardless of task-specific reasoning requirements. Through systematic experiments on multi-level geometric fusion, we find that spatial tasks at different cognitive levels (e.g., distance estimation vs. route planning) require geometric representations of different granularities, revealing that fixed fusion cannot accommodate diverse spatial reasoning requirements. To bridge this gap, we propose SpatialMind, a task-adaptive framework for dynamically integrating multi-level geometric representations. SpatialMind employs GeoFus, a multi-layer geometric fusion module built around a gating network jointly conditioned on textual instructions, visual semantics, and geometric representations. This network adaptively modulates the contributions of shallow, intermediate, and deep geometric features across the layers of the LLM decoder. Furthermore, we introduce a negative-entropy regularization loss to mitigate gate collapse. Gate visualizations indicate that GeoFus adapts geometric granularity to task requirements. Experiments demonstrate that SpatialMind achieves competitive performance across spatial benchmarks, attaining a state-of-the-art score of 72.3 on VSI-Bench. The source code is publicly available at https://github.com/zhaosb-star/SpatialMind.",
+      "abstract_zh": "多模态大语言模型（MLLMs）在2D视觉理解方面展现出有前景的能力，但在3D空间推理方面仍然有限。近期研究探索将3D重建模型集成到MLLMs中。然而，这些方法要么在所有任务中使用单一几何粒度，要么采用固定的多层级融合方案，而不考虑任务特定的推理需求。通过对多层级几何融合的系统实验，我们发现不同认知层次的空间任务（例如距离估计与路径规划）需要不同粒度的几何表示，这表明固定融合无法适应多样的空间推理需求。为弥合这一差距，我们提出SpatialMind，一个用于动态整合多层级几何表示的任务自适应框架。SpatialMind采用GeoFus，一个多层几何融合模块，其核心是一个同时以文本指令、视觉语义和几何表示为条件的门控网络。该网络在LLM解码器各层中自适应地调节浅层、中层和深层几何特征的贡献。此外，我们引入负熵正则化损失以缓解门控崩溃。门控可视化表明，GeoFus能够根据任务需求调整几何粒度。实验表明，SpatialMind在多个空间基准上取得有竞争力的性能，在VSI-Bench上达到72.3的最先进分数。源代码公开于 https://github.com/zhaosb-star/SpatialMind。",
+      "highlight_zh": "",
+      "digest_zh": "",
       "authors": [
-        "Rui Ning",
-        "Om Chabra",
-        "Hari Balakrishnan"
+        "Shibin Zhao",
+        "Hao Tan",
+        "Fan Yang",
+        "Haixin Wang",
+        "Feilong Chen",
+        "Yidong Ma",
+        "Chaoyang Zhao",
+        "Ming Tang",
+        "Jinqiao Wang"
       ],
-      "url": "https://arxiv.org/abs/2611.23228",
-      "pdf_url": "https://arxiv.org/pdf/2611.23228",
-      "html_url": "https://arxiv.org/abs/2611.23228",
-      "published_at": "2026-11-17T18:59:27.000Z",
+      "url": "https://arxiv.org/abs/2611.22415",
+      "pdf_url": "https://arxiv.org/pdf/2611.22415",
+      "html_url": "https://arxiv.org/abs/2611.22415",
+      "published_at": "2026-11-17T08:51:37.000Z",
       "upvotes": 0,
       "heat": 0,
-      "featured": true,
+      "featured": false,
       "subtags": [
+        "3D",
         "多模态",
         "大模型",
         "智能体"
@@ -1727,48 +1754,62 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 45.86,
+        "score": 52.48,
         "reason_zh": "研究的题目或主要贡献对应「多模态理解」。原文摘要包含实验或评测说明。",
         "limitations_zh": "对照图像分辨率、视频采样频率和任务数据，论文中的基准分数只适用于相应评测设置。",
-        "evidence_url": "https://arxiv.org/abs/2611.23228"
+        "evidence_url": "https://arxiv.org/abs/2611.22415"
       },
+      "source_comment": "Includes supplementary material. Code available at https://github.com/zhaosb-star/SpatialMind",
       "published_precision": "day",
+      "frontier_resources": [
+        {
+          "kind": "code",
+          "url": "https://github.com/zhaosb-star/SpatialMind",
+          "checked_at": "2026-11-18T07:56:43.340Z"
+        }
+      ],
       "ai_frontier": {
         "primary_topic": "multimodal",
         "topics": [
           "multimodal"
         ],
-        "resources": [],
+        "resources": [
+          {
+            "kind": "code",
+            "url": "https://github.com/zhaosb-star/SpatialMind",
+            "checked_at": "2026-11-18T07:56:43.340Z"
+          }
+        ],
         "stage": "preprint"
       }
     },
     {
-      "id": "arxiv:2611.22925",
-      "arxiv_id": "2611.22925",
+      "id": "arxiv:2611.24419",
+      "arxiv_id": "2611.24419",
       "source": "arXiv",
-      "title_en": "Code World Model 2.0: Towards Infinite Controllable Video Generation",
-      "abstract_en": "Visual proxies decouple explicit world-state simulation from photorealistic video synthesis, offering a controllable interface for both offline clip creation and real-time interactive streaming. Yet a practical renderer must address two challenges. Upstream proxies vary from coarse layouts to fine articulated geometry depending on the interaction, and streaming inference must operate in a few causal steps without accumulating drift across self-generated history. We present Invoker-Render, pairing a bidirectional creation model with a causal four-step streaming model under a shared conditioning interface over structural proxies, an appearance reference, and language. Trained on an aligned approximately 200-hour multi-granularity corpus, Invoker-Render honors fine geometric constraints when supplied while synthesizing plausible local motion under coarse proxies, enabling runtime selection of input detail. To bridge bidirectional creation and real-time streaming without compounding step compression and rollout drift, we introduce Progressive Forcing (ProForcing). ProForcing first trains a causal predictor and distills it into a four-step renderer using histories derived from training videos. Training then shifts to continuous self-generated rollouts. A pipelined serving stack supports efficient streaming inference. Experiments show versatile control across proxy families, granularities, and camera paths, consistent gains over recent streaming baselines, and stable 30-minute racing rollouts that preserve scene and subject appearance.",
-      "source_comment": "Project Page: https://www.inclusion-ai.org/CodeWorldModel/",
-      "published_at": "2026-11-17T15:23:57.000Z",
+      "title_en": "PhysResponse: Probing the Physics of Video Generation with Controlled Interventions",
+      "abstract_en": "Video generation models are increasingly viewed as world simulators, which requires not only plausible motion but dynamics that respond correctly to specified physical parameters. Existing models, datasets and benchmarks, however, largely target physical plausibility, leaving this physical parameter responsiveness insufficiently explored. We introduce PhysResponse, a benchmark that measures it at two levels: scene-conditioned simulator inversion recovers the effective gravity, friction and initial speed of generated motion, and event evaluation tests outcomes near and across critical transitions. Evaluating ten image-to-video models, we find that even the lowest parameter errors exceed those of physically correct videos by over an order of magnitude, that models rarely reproduce both outcomes of a transition pair, and that the two levels expose complementary failures that visual metrics such as PSNR miss. To supply the missing training signal, we construct 72,000 simulated videos of 20 multi-object interaction types with controlled parameters; fine-tuning on them lowers parameter errors, even on held-out interaction types, and transfers to real videos and an external physics benchmark. Continued training with a numerical encoder further lowers all three errors on held-out types. PhysResponse provides a foundation for world simulators that follow physical conditions, not just appearances.",
+      "source_comment": "11 pages. This version contains the main paper and references only. Supplementary material will be added in a later revision",
+      "published_at": "2026-11-18T13:42:16.000Z",
       "published_precision": "day",
       "authors": [
-        "Ruoyu Wang",
-        "Hao Zhong",
-        "Yanming Yang",
-        "Jiahao Tian",
-        "Lin Liu",
-        "Biao Gong",
-        "Guoshan Lu",
-        "Yiding Tian",
-        "Chunhua Shen",
-        "Zhenzhong Lan"
+        "Yuhan Li",
+        "Shuran Zhang",
+        "Haixin Tian",
+        "Baonuo Rao",
+        "Weipeng Li",
+        "Yujia Hou",
+        "Zhenyu Wang",
+        "Zijun Wang",
+        "Luoyang Lin",
+        "Lijing Luo"
       ],
       "cats": [
         "cs.CV"
       ],
-      "url": "https://arxiv.org/abs/2611.22925",
-      "html_url": "https://arxiv.org/abs/2611.22925",
-      "pdf_url": "https://arxiv.org/pdf/2611.22925",
+      "url": "https://arxiv.org/abs/2611.24419",
+      "html_url": "https://arxiv.org/abs/2611.24419",
+      "pdf_url": "https://arxiv.org/pdf/2611.24419",
       "field": "vision",
       "ai_frontier": {
         "primary_topic": "generation",
@@ -1781,13 +1822,13 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 45.82,
+        "score": 45.8,
         "reason_zh": "研究的题目或主要贡献对应「视觉生成与编辑」。原文摘要包含实验或评测说明。",
         "limitations_zh": "对照输出分辨率、采样设置和硬件条件，生成质量、时延与显存通常需要分别比较。",
-        "evidence_url": "https://arxiv.org/abs/2611.22925"
+        "evidence_url": "https://arxiv.org/abs/2611.24419"
       },
-      "title_zh": "Code World Model 2.0：迈向无限可控视频生成",
-      "abstract_zh": "视觉代理将显式世界状态模拟与照片级真实视频合成解耦，为离线片段创建和实时交互式流式生成提供可控接口。然而，实用渲染器必须应对两个挑战。上游代理会随交互不同而从粗粒度布局变化到精细关节几何；流式推理必须在少量因果步骤内运行，且不能沿自生成历史累积漂移。我们提出 Invoker-Render，将双向创建模型与因果四步流式模型配对，并在结构代理、外观参考和语言之上共享条件接口。在对齐的约 200 小时多粒度语料上训练后，Invoker-Render 在提供精细几何约束时能遵守这些约束，同时在粗粒度代理下合成合理的局部运动，从而支持运行时选择输入细节。为在双向创建与实时流式生成之间架桥，同时避免步骤压缩和推演漂移叠加，我们引入渐进强制（ProForcing）。ProForcing 首先训练因果预测器，并使用来自训练视频的历史将其蒸馏为四步渲染器。随后训练转向连续自生成推演。流水线化服务栈支持高效流式推理。实验表明，该方法在代理家族、粒度和相机路径上具有多样控制能力，相较近期流式基线取得一致增益，并实现稳定的 30 分钟赛车推演，保持场景和主体外观。"
+      "title_zh": "PhysResponse：通过受控干预探究视频生成的物理规律",
+      "abstract_zh": "视频生成模型正日益被视为世界模拟器，这不仅要求运动看似合理，还要求其动力学能正确响应指定的物理参数。然而，现有模型、数据集和基准主要针对物理合理性，使这种物理参数响应性尚未得到充分探索。我们引入PhysResponse，一个在两个层面测量该响应性的基准：场景条件化的模拟器反演恢复生成运动的有效重力、摩擦和初速度，事件评估测试临界转变附近及跨越临界转变的结果。在评估十个图像到视频模型后，我们发现即使最低的参数误差也比物理正确视频的误差高出一个数量级以上；模型很少同时复现一个转变对的两种结果；这两个层面暴露出PSNR等视觉指标遗漏的互补性失败。为提供缺失的训练信号，我们构建了20种多物体交互类型、参数受控的72,000个模拟视频；在其上微调可降低参数误差，即使在留出交互类型上也是如此，并可迁移到真实视频和外部物理基准。使用数值编码器继续训练进一步降低了留出类型上的全部三项误差。PhysResponse为遵循物理条件而不仅是外观的世界模拟器提供了基础。"
     },
     {
       "id": "arxiv:2611.18519",
@@ -1827,7 +1868,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 51.79,
+        "score": 51.52,
         "reason_zh": "研究的题目或主要贡献对应「视觉感知与三维」。原文摘要包含实验或评测说明。",
         "limitations_zh": "对照数据集、传感器、标定和计算条件，遮挡、动态场景与端侧实时性需要另行评估。",
         "evidence_url": "https://arxiv.org/abs/2611.18519"
@@ -1843,30 +1884,35 @@
       ]
     },
     {
-      "id": "arxiv:2611.22243",
-      "arxiv_id": "2611.22243",
+      "id": "arxiv:2611.22728",
+      "arxiv_id": "2611.22728",
       "source": "arXiv",
-      "title_en": "From Token Changes to Task Failures: Bit Flips in a Shared KV-Cache Block",
-      "abstract_en": "In LLM serving systems with prefix caching, each KV block of a shared system prompt is held in GPU memory as a single physical copy, which every request with that prompt reads. Our earlier work measured change and showed that one bit flip in such a block changes many later responses without making them visibly degenerate. This paper extends that work by measuring how often the changed responses are wrong. Using software fault injection into vLLM serving Qwen3-8B, we flip the most significant mantissa bit or the sign bit of a value in such a block. We score responses on four tasks: code generation, short-answer questions, multiple-choice reasoning, and refusal under a policy. The fraction of changes that turned a correct response wrong depended strongly on the task: 0.023 on MBPP+ and 0.59 on held-out TriviaQA at the mantissa bit, and 0.019 and 0.60 at the sign bit. Harm fell on requests whose sampled answers are sometimes wrong, so the damage of a flip depends on how common such requests are. Harmed responses looked like ordinary errors, so a flip should be detected by checking cached blocks rather than by monitoring outputs.",
-      "source_comment": "19 pages, 4 figures. Extended version of arXiv:2604.17249 (SECRYPT 2026, 23rd International Conference on Security and Cryptography). Submitted to Springer Communications in Computer and Information Science (CCIS)",
-      "published_at": "2026-11-17T05:46:02.000Z",
+      "title_en": "LoopZip: Visual Token Compression for Efficient Looped Vision-Language Models",
+      "abstract_en": "Looped vision-language models (VLMs) deepen computation by reusing shared layers, approaching larger models' capabilities with fewer parameters and easing the storage and deployment burden of stacking independent layers. However, repeatedly processing long visual sequences still incurs substantial compute and GPU memory costs. Visual token compression reduces these costs by shortening sequences. Existing methods mainly select original tokens directly or combine selection with aggregation. In looped models, the former may overlook changing token importance across calls and discard information needed later; the latter lack joint consideration of output changes across calls, limiting information preservation. We propose LoopZip, a training-free visual token compression algorithm addressing both issues. Visual aggregation builds a compact candidate pool before the looped backbone, and cross-invocation selection averages instruction attention from the first two existing calls of the same shared attention layer to retain tokens needed by both states. Weight-tied value correction then jointly fits shared visual-value adjustments to both pre-selection layer outputs, reducing output deviations across states. To validate LoopZip's effectiveness, we conduct extensive experiments covering two open-source looped VLMs, eleven benchmarks, and three pruning ratios. On LoopVL-1B, LoopZip retains 97.16% of the original model's performance at 50% pruning ratio and exceeds the strongest baseline by 5.36% at 87.5% pruning ratio. Across Hugging Face Transformers, vLLM, and SGLang, LoopVL-1B with LoopZip reduces peak allocated GPU memory by 58.36%-58.98% and achieves 2.01-2.47x end-to-end speedups over the original model.",
+      "source_comment": "11 pages, 10 figures",
+      "published_at": "2026-11-17T13:01:13.000Z",
       "published_precision": "day",
       "authors": [
-        "Yuji Yamamoto",
-        "Satoshi Matsuura"
+        "Weizhong Huang",
+        "Zhicheng Liu",
+        "Yan Zhang",
+        "Fei Chao",
+        "Xiawu Zheng",
+        "Liujuan Cao"
       ],
       "cats": [
-        "cs.CR",
-        "cs.AR"
+        "cs.CV",
+        "cs.LG"
       ],
-      "url": "https://arxiv.org/abs/2611.22243",
-      "html_url": "https://arxiv.org/abs/2611.22243",
-      "pdf_url": "https://arxiv.org/pdf/2611.22243",
-      "field": "ml",
+      "url": "https://arxiv.org/abs/2611.22728",
+      "html_url": "https://arxiv.org/abs/2611.22728",
+      "pdf_url": "https://arxiv.org/pdf/2611.22728",
+      "field": "vision",
       "ai_frontier": {
         "primary_topic": "efficiency",
         "topics": [
-          "efficiency"
+          "efficiency",
+          "multimodal"
         ],
         "resources": [],
         "stage": "preprint"
@@ -1874,13 +1920,13 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 45.71,
+        "score": 45.52,
         "reason_zh": "研究的题目或主要贡献对应「高效训练与推理」。原文摘要包含实验或评测说明。",
         "limitations_zh": "比较速度前应对齐硬件、批量、上下文长度与精度设置，作者环境的加速比不能直接外推。",
-        "evidence_url": "https://arxiv.org/abs/2611.22243"
+        "evidence_url": "https://arxiv.org/abs/2611.22728"
       },
-      "title_zh": "从 token 变化到任务失败：共享 KV-Cache 块中的位翻转",
-      "abstract_zh": "在带前缀缓存的 LLM 服务系统中，共享系统提示的每个 KV 块在 GPU 内存中以单一物理副本保存，每个具有该提示的请求都会读取它。我们早先的工作测量了变化，并表明此类块中的一个位翻转会改变许多后续响应，而不会使其明显退化。本文扩展该工作，测量被改变的响应出错的频率。我们通过向服务 Qwen3-8B 的 vLLM 注入软件故障，翻转此类块中某个值的最高有效尾数位或符号位。我们在四类任务上对响应评分：代码生成、简答题、多项选择推理和策略下的拒答。将正确响应变为错误的改变比例强烈依赖任务：在尾数位上，MBPP+ 为 0.023，留出 TriviaQA 为 0.59；在符号位上分别为 0.019 和 0.60。损害落在采样答案有时会出错的请求上，因此一次翻转的破坏取决于此类请求有多常见。受损响应看起来像普通错误，因此应通过检查缓存块而非监控输出来检测翻转。"
+      "title_zh": "LoopZip：用于高效循环视觉语言模型的视觉 token 压缩",
+      "abstract_zh": "循环视觉语言模型（VLM）通过复用共享层来加深计算，以更少参数接近更大模型的能力，并缓解堆叠独立层带来的存储和部署负担。然而，重复处理长视觉序列仍会带来大量计算和 GPU 内存开销。视觉 token 压缩通过缩短序列来降低这些开销。现有方法主要直接选择原始 token，或将选择与聚合结合。在循环模型中，前者可能忽略 token 重要性在不同调用间的变化，并丢弃后续需要的信息；后者缺乏对跨调用输出变化的联合考虑，限制了信息保留。我们提出 LoopZip，一种无需训练的视觉 token 压缩算法，同时解决这两个问题。视觉聚合在循环骨干网络之前构建紧凑候选池；跨调用选择对同一共享注意力层前两次现有调用中的指令注意力取平均，以保留两种状态都需要的 token。随后，权重共享的值校正联合拟合面向两个预选择层输出的共享视觉值调整，减少不同状态间的输出偏差。为验证 LoopZip 的有效性，我们开展了大量实验，覆盖两个开源循环 VLM、十一个基准和三个剪枝比例。在 LoopVL-1B 上，LoopZip 在 50% 剪枝比例下保留原模型 97.16% 的性能，并在 87.5% 剪枝比例下超过最强基线 5.36%。在 Hugging Face Transformers、vLLM 和 SGLang 中，使用 LoopZip 的 LoopVL-1B 将峰值分配 GPU 内存降低 58.36%-58.98%，并相较原模型实现 2.01-2.47 倍端到端加速。"
     },
     {
       "id": "arxiv:2611.18176",
@@ -1922,7 +1968,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 49.73,
+        "score": 49.46,
         "reason_zh": "研究的题目或主要贡献对应「具身智能与机器人学习」。可查阅原文的方法描述。",
         "limitations_zh": "区分仿真和实机实验，并检查机械臂、相机和控制接口能否匹配自身环境。",
         "evidence_url": "https://arxiv.org/abs/2611.18176"
@@ -1954,11 +2000,11 @@
   ],
   "sources": {
     "archive": {
-      "date": "2026-11-18",
-      "generatedAt": "2026-11-18T07:50:07.901Z"
+      "date": "2026-11-19",
+      "generatedAt": "2026-11-19T07:46:23.328Z"
     },
     "arxiv": {
-      "checkedAt": "2026-11-18T07:56:43.340Z",
+      "checkedAt": "2026-11-19T07:55:59.936Z",
       "queriesSucceeded": 6,
       "queriesAttempted": 6
     }
