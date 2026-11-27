@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-27",
-  "generatedAt": "2026-11-27T08:57:57.100Z",
+  "date": "2026-11-28",
+  "generatedAt": "2026-11-27T21:46:52.496Z",
   "topics": [
     {
       "key": "learning",
@@ -81,7 +81,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 64.2,
+        "score": 64.05,
         "reason_zh": "比较智能体如何存储与检索长期记忆，并在记忆中记录信息来源。作者提供框架实现。",
         "limitations_zh": "端到端效果依赖数据库、检索配置与被测智能体，仓库本身不能证明可达到论文的评测成绩。",
         "evidence_url": "https://arxiv.org/abs/2611.12068"
@@ -152,7 +152,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 66.52,
+        "score": 66.38,
         "reason_zh": "从全图和放大区域的识别差异中构造细粒度监督，覆盖计数、文字识别等任务，并提供训练和评测代码。",
         "limitations_zh": "本论文的任务与图像分辨率有明确范围，读小字或细节的结果不能直接外推到开放场景。",
         "evidence_url": "https://arxiv.org/abs/2611.14076"
@@ -224,7 +224,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 64.02,
+        "score": 63.88,
         "reason_zh": "提高深度压缩视觉词元的表示容量，用于自回归生成。作者实现包含训练与推理，可对照压缩率和生成质量。",
         "limitations_zh": "对照作者使用的模型、分辨率和 GPU 配置评估速度，同时核对权重与训练数据条款。",
         "evidence_url": "https://arxiv.org/abs/2611.13004"
@@ -285,7 +285,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 66.84,
+        "score": 66.7,
         "reason_zh": "把预训练图像生成器改造成分割、深度等任务共用的视觉感知模型，可用作者流程比较统一模型和专用模型。",
         "limitations_zh": "各视觉任务使用不同的数据与指标，部署时还需要核对算力、模型权重和基础模型许可。",
         "evidence_url": "https://arxiv.org/abs/2611.15844"
@@ -389,7 +389,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 65.37,
+        "score": 65.22,
         "reason_zh": "为视觉语言模型改进推测解码，作者仓库提供实现和基准脚本，可对照生成吞吐量。",
         "limitations_zh": "加速幅度取决于主模型、草稿模型、硬件与解码配置。比较时应使用同样的负载。",
         "evidence_url": "https://arxiv.org/abs/2611.18482"
@@ -463,7 +463,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 65.88,
+        "score": 65.74,
         "reason_zh": "基准考虑人类与机械臂共享工作空间的情况，作者提供 Genesis 仿真环境、评测及示范生成脚本。",
         "limitations_zh": "实机实验只覆盖一类任务，训练数据需要按作者提供的流程生成。",
         "evidence_url": "https://arxiv.org/abs/2611.11123"
@@ -485,53 +485,64 @@
       }
     },
     {
-      "id": "arxiv:2610.38637",
-      "arxiv_id": "2610.38637",
+      "id": "arxiv:2611.34068",
+      "arxiv_id": "2611.34068",
       "source": "arXiv",
-      "title_en": "On-Policy Self-Distillation with Teacher Evolution",
-      "abstract_en": "On-Policy Self-Distillation (OPSD), which aligns a student model's token-level distribution with that of its self-teacher prompted by privileged context, has emerged as a promising direction to mitigate reward sparsity in sequence-level post-training paradigms. However, OPSD often fails to achieve continuous performance gains during training. In this paper, we find that the model's limited self-teaching capability underlies this phenomenon by generating unreliable guidance on certain samples. To address this problem, we propose Teacher-Evolution Self-Distillation (TESD), which enables the self-teacher to generate rollouts and receive environmental feedback based on task correctness and context independence. First, using these rewards as training objectives, we perform teacher-oriented optimization to continuously enhance the model's self-teaching capability during distillation. Second, by estimating teacher guidance reliability from these rewards, we apply adaptive student-oriented optimization to down-weight samples with unreliable guidance. Extensive experiments across multiple datasets and model scales show that TESD consistently outperforms representative token-level and sequence-level methods, highlighting the necessity of improving supervision quality in OPSD.",
-      "published_at": "2026-10-28T10:51:52.000Z",
+      "title_en": "Budget, Readout or Reasoning? Where Small Reasoning Models Lose Value in Auction Bidding",
+      "abstract_en": "Ad platforms and marketplaces show bidders a bid landscape, the estimated chance of winning at each candidate bid, and increasingly let agents built on reasoning language models choose the bid. We give six open reasoning models of 4B to 14B parameters such landscapes, with win curves from eBay closing prices and from a simulated advertising market (AuctionNet), and score their bids on held-out auctions against an exact calculator. Because the agent is handed the estimates, the lost value can be split by cause. Two failures belong to the models. They pass over the best option even when the values written in their own trace already rank it first, and their wrong answers lean toward the highest bid on the menu. The lean is about the bid's size, not its place in the list, and it survives sampling. At 768 forced tokens on eBay, under pay-your-bid pricing, the wrong answers cost bidders 7-17% of the surplus the calculator's bids earn. Arithmetic errors are rare. Two further losses come from operator choices. A token cap cuts traces short: allowed to stop on their own within 4,096 tokens, five models recover 91-100% of the calculator's lead over a model that does no reasoning. Asking for the answer while the reasoning block is still open misreads it: closing the block first lifts the weakest model from 42% to 84% on eBay and from 24% to 81% on AuctionNet. Finally, an audit that flags bids disagreeing with the trace's own numbers, and overrides them with the calculator's bid, raises the share of the calculator's lead recovered at 768 forced tokens from 42-85% to 84-100% on eBay under nested cross-validation, and the same reader settings transfer from eBay to AuctionNet.",
+      "source_comment": "19 pages, 2 figures, 23 tables. Code and data: https://github.com/DataismLab/bid-reasoning",
+      "published_at": "2026-11-25T09:40:08.000Z",
       "published_precision": "day",
       "authors": [
-        "Shufan Shen",
-        "Zhongni Hou",
-        "Chao Bi",
-        "Yufei Zhang",
-        "Guojun Yin",
-        "Shuhui Wang"
+        "Mahbod Khaleti",
+        "Seyed Reza Tavakoli",
+        "Baran Hoseini",
+        "Alireza Noori",
+        "Amir Amini",
+        "Koorosh Aslansefat",
+        "Marjan Alirezaie",
+        "Ali Habibnia"
       ],
       "cats": [
-        "cs.LG",
-        "cs.AI"
+        "cs.AI",
+        "cs.CL",
+        "econ.GN"
       ],
-      "url": "https://arxiv.org/abs/2610.38637",
-      "html_url": "https://arxiv.org/abs/2610.38637",
-      "pdf_url": "https://arxiv.org/pdf/2610.38637",
-      "field": "ml",
+      "url": "https://arxiv.org/abs/2611.34068",
+      "html_url": "https://arxiv.org/abs/2611.34068",
+      "pdf_url": "https://arxiv.org/pdf/2611.34068",
+      "field": "nlp",
+      "frontier_resources": [
+        {
+          "kind": "code",
+          "url": "https://github.com/DataismLab/bid-reasoning",
+          "checked_at": "2026-11-26T08:53:21.196Z"
+        }
+      ],
       "ai_frontier": {
         "primary_topic": "learning",
         "topics": [
           "learning"
         ],
-        "resources": [],
+        "resources": [
+          {
+            "kind": "code",
+            "url": "https://github.com/DataismLab/bid-reasoning",
+            "checked_at": "2026-11-26T08:53:21.196Z"
+          }
+        ],
         "stage": "preprint"
       },
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 56.02,
-        "reason_zh": "用任务反馈改进自蒸馏中的教师输出，再按监督可靠性给学生样本加权。适合对照不同后训练方法如何处理错误监督。",
-        "limitations_zh": "结果取决于任务有可核查反馈、教师可访问的信息和所用模型规模。",
-        "evidence_url": "https://arxiv.org/abs/2610.38637"
+        "score": 52.33,
+        "reason_zh": "研究的题目或主要贡献对应「学习方法与推理」。原文摘要包含实验或评测说明。",
+        "limitations_zh": "对照论文中的训练数据、模型规模和评测任务，检查结果是否能迁移到其他模型。",
+        "evidence_url": "https://arxiv.org/abs/2611.34068"
       },
-      "title_zh": "基于教师进化的同策略自蒸馏",
-      "abstract_zh": "同策略自蒸馏（On-Policy Self-Distillation, OPSD）通过特权上下文提示的自教师，将学生模型的 token 级分布与其对齐，已成为缓解序列级后训练范式中奖励稀疏性的一个有前景方向。然而，OPSD 在训练过程中往往无法实现持续的性能提升。在本文中，我们发现，模型有限的自教学能力是这一现象的根本原因，因为它会在某些样本上生成不可靠的指导。为解决该问题，我们提出教师进化自蒸馏（Teacher-Evolution Self-Distillation, TESD），使自教师能够生成 rollout，并基于任务正确性和上下文独立性接收环境反馈。首先，利用这些奖励作为训练目标，我们执行面向教师的优化，以在蒸馏过程中持续增强模型的自教学能力。其次，通过从这些奖励估计教师指导的可靠性，我们应用自适应的面向学生优化，对指导不可靠的样本降权。跨多个数据集和模型规模的广泛实验表明，TESD 始终优于代表性的 token 级和序列级方法，突显了提升 OPSD 中监督质量的必要性。",
-      "frontier_review": {
-        "id": "2610.38637",
-        "topic": "learning",
-        "reason_zh": "用任务反馈改进自蒸馏中的教师输出，再按监督可靠性给学生样本加权。适合对照不同后训练方法如何处理错误监督。",
-        "limitations_zh": "结果取决于任务有可核查反馈、教师可访问的信息和所用模型规模。"
-      }
+      "title_zh": "预算、读出还是推理？小型推理模型在拍卖竞价中何处损失价值",
+      "abstract_zh": "广告平台和市场向竞标者展示竞价景观（bid landscape），即每个候选出价的预计获胜概率，并越来越多地让基于推理语言模型的智能体选择出价。我们向六个 4B 至 14B 参数的开源推理模型提供此类景观，获胜曲线来自 eBay 成交价和模拟广告市场（AuctionNet），并在留出拍卖上将其出价与精确计算器进行评分。由于智能体已获得估计值，价值损失可按原因拆分。两类失败属于模型本身。即使其自身轨迹中写出的数值已将该选项排在第一，它们仍会略过最佳选项；并且其错误答案倾向于菜单上的最高出价。这种倾向与出价大小有关，而非其在列表中的位置，并且在采样后仍然存在。在 eBay 上、按出价付费（pay-your-bid）定价、强制 768 个 token 时，错误答案使竞标者损失计算器出价所获盈余的 7-17%。算术错误很少。另外两类损失来自操作者选择。token 上限会截断轨迹：若允许在 4,096 个 token 内自行停止，五个模型可恢复计算器相对于不进行推理的模型所具领先优势的 91-100%。在推理块仍打开时索取答案会造成误读：先关闭该块可将最弱模型在 eBay 上从 42% 提升至 84%，在 AuctionNet 上从 24% 提升至 81%。最后，一项审计会标记与轨迹自身数值不一致的出价，并用计算器出价覆盖它们，在嵌套交叉验证下，将强制 768 个 token 时恢复计算器领先优势的比例在 eBay 上从 42-85% 提升至 84-100%，且相同的读取器设置可从 eBay 迁移到 AuctionNet。"
     },
     {
       "id": "arxiv:2611.17334",
@@ -576,7 +587,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 58.11,
+        "score": 57.97,
         "reason_zh": "分开分析多模态模型的视觉编码与后续处理，适合判断视觉表示本身与训练设计分别贡献了什么。",
         "limitations_zh": "先看论文和项目页的对照实验。本站未核验到作者公开的实现。",
         "evidence_url": "https://arxiv.org/abs/2611.17334"
@@ -643,7 +654,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 50.65,
+        "score": 50.51,
         "reason_zh": "研究的题目或主要贡献对应「视觉生成与编辑」。原文摘要包含实验或评测说明。",
         "limitations_zh": "对照输出分辨率、采样设置和硬件条件，生成质量、时延与显存通常需要分别比较。",
         "evidence_url": "https://arxiv.org/abs/2611.24433"
@@ -690,7 +701,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 65.22,
+        "score": 65.08,
         "reason_zh": "以前馈三维重建处理稀疏输入视角。作者实现位于 InfiniSplat 仓库的 InfiniSplat_v3 目录。",
         "limitations_zh": "对照相机输入和论文的稀疏视角基准，其他拍摄环境及尺度精度需要重新验证。",
         "evidence_url": "https://arxiv.org/abs/2611.08264"
@@ -785,7 +796,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 50.55,
+        "score": 50.4,
         "reason_zh": "研究的题目或主要贡献对应「高效训练与推理」。原文摘要包含实验或评测说明。",
         "limitations_zh": "比较速度前应对齐硬件、批量、上下文长度与精度设置，作者环境的加速比不能直接外推。",
         "evidence_url": "https://arxiv.org/abs/2611.23807"
@@ -828,7 +839,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 57.63,
+        "score": 57.49,
         "reason_zh": "为冻结的视觉语言动作模型增加低时延动作验证，适合了解如何比较动作质量和控制开销。",
         "limitations_zh": "论文使用 LIBERO-10 和作者台架机械臂进行实验，迁移到不同机械臂和控制频率要另行评估。",
         "evidence_url": "https://arxiv.org/abs/2611.14834"
@@ -864,7 +875,7 @@
       "heat": 0,
       "upvotes": 0,
       "featured": false,
-      "metadata_fetched_at": "2026-11-20T20:39:36.972Z",
+      "metadata_fetched_at": "2026-11-27T21:38:04.622Z",
       "reference_review": {
         "field": "ml",
         "arxiv_id": "1603.02754",
@@ -877,8 +888,8 @@
       },
       "impact": {
         "source": "Crossref",
-        "citations": 52135,
-        "checked_at": "2026-11-20T20:39:36.972Z",
+        "citations": 52854,
+        "checked_at": "2026-11-27T21:38:04.622Z",
         "source_url": "https://api.crossref.org/works/10.1145%2F2939672.2939785"
       },
       "frontier_resources": [
@@ -911,9 +922,9 @@
         "evidence_url": "https://arxiv.org/abs/1603.02754",
         "metric": {
           "source": "Crossref",
-          "value": 52135,
+          "value": 52854,
           "source_url": "https://api.crossref.org/works/10.1145%2F2939672.2939785",
-          "checked_at": "2026-11-20T20:39:36.972Z"
+          "checked_at": "2026-11-27T21:38:04.622Z"
         }
       },
       "title_zh": "XGBoost：一个可扩展的树提升系统",
@@ -978,7 +989,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 52.41,
+        "score": 52.27,
         "reason_zh": "研究的题目或主要贡献对应「多模态理解」。原文摘要包含实验或评测说明。",
         "limitations_zh": "对照图像分辨率、视频采样频率和任务数据，论文中的基准分数只适用于相应评测设置。",
         "evidence_url": "https://arxiv.org/abs/2611.33751"
@@ -1011,7 +1022,7 @@
         {
           "kind": "code",
           "url": "https://github.com/jhlee0619/candor",
-          "checked_at": "2026-11-20T20:47:11.376Z"
+          "checked_at": "2026-11-27T21:46:52.496Z"
         }
       ],
       "ai_frontier": {
@@ -1023,7 +1034,7 @@
           {
             "kind": "code",
             "url": "https://github.com/jhlee0619/candor",
-            "checked_at": "2026-11-20T20:47:11.376Z"
+            "checked_at": "2026-11-27T21:46:52.496Z"
           }
         ],
         "stage": "preprint"
@@ -1031,7 +1042,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 48.81,
+        "score": 48.67,
         "reason_zh": "研究的题目或主要贡献对应「视觉生成与编辑」。可查阅原文的方法描述。",
         "limitations_zh": "对照输出分辨率、采样设置和硬件条件，生成质量、时延与显存通常需要分别比较。",
         "evidence_url": "https://arxiv.org/abs/2611.25457"
@@ -1066,7 +1077,7 @@
       "heat": 0,
       "upvotes": 0,
       "featured": false,
-      "metadata_fetched_at": "2026-11-20T20:39:36.972Z",
+      "metadata_fetched_at": "2026-11-27T21:38:04.622Z",
       "reference_review": {
         "field": "vision",
         "arxiv_id": "2003.08934",
@@ -1079,8 +1090,8 @@
       },
       "impact": {
         "source": "Crossref",
-        "citations": 4692,
-        "checked_at": "2026-11-20T20:39:36.972Z",
+        "citations": 4751,
+        "checked_at": "2026-11-27T21:38:04.622Z",
         "source_url": "https://api.crossref.org/works/10.1007%2F978-3-030-58452-8_24"
       },
       "frontier_resources": [
@@ -1113,9 +1124,9 @@
         "evidence_url": "https://www.matthewtancik.com/nerf",
         "metric": {
           "source": "Crossref",
-          "value": 4692,
+          "value": 4751,
           "source_url": "https://api.crossref.org/works/10.1007%2F978-3-030-58452-8_24",
-          "checked_at": "2026-11-20T20:39:36.972Z"
+          "checked_at": "2026-11-27T21:38:04.622Z"
         }
       },
       "title_zh": "NeRF：将场景表示为用于视图合成的神经辐射场",
@@ -1177,7 +1188,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 50.39,
+        "score": 50.25,
         "reason_zh": "研究的题目或主要贡献对应「高效训练与推理」。原文摘要包含实验或评测说明。",
         "limitations_zh": "比较速度前应对齐硬件、批量、上下文长度与精度设置，作者环境的加速比不能直接外推。",
         "evidence_url": "https://arxiv.org/abs/2611.33625"
@@ -1229,7 +1240,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 52.3,
+        "score": 52.15,
         "reason_zh": "研究的题目或主要贡献对应「具身智能与机器人学习」。原文摘要包含实验或评测说明。",
         "limitations_zh": "区分仿真和实机实验，并检查机械臂、相机和控制接口能否匹配自身环境。",
         "evidence_url": "https://arxiv.org/abs/2611.33010"
@@ -1259,38 +1270,58 @@
       }
     },
     {
-      "id": "arxiv:2611.34068",
-      "arxiv_id": "2611.34068",
+      "id": "arxiv:2611.26510",
+      "arxiv_id": "2611.26510",
       "source": "arXiv",
-      "title_en": "Budget, Readout or Reasoning? Where Small Reasoning Models Lose Value in Auction Bidding",
-      "abstract_en": "Ad platforms and marketplaces show bidders a bid landscape, the estimated chance of winning at each candidate bid, and increasingly let agents built on reasoning language models choose the bid. We give six open reasoning models of 4B to 14B parameters such landscapes, with win curves from eBay closing prices and from a simulated advertising market (AuctionNet), and score their bids on held-out auctions against an exact calculator. Because the agent is handed the estimates, the lost value can be split by cause. Two failures belong to the models. They pass over the best option even when the values written in their own trace already rank it first, and their wrong answers lean toward the highest bid on the menu. The lean is about the bid's size, not its place in the list, and it survives sampling. At 768 forced tokens on eBay, under pay-your-bid pricing, the wrong answers cost bidders 7-17% of the surplus the calculator's bids earn. Arithmetic errors are rare. Two further losses come from operator choices. A token cap cuts traces short: allowed to stop on their own within 4,096 tokens, five models recover 91-100% of the calculator's lead over a model that does no reasoning. Asking for the answer while the reasoning block is still open misreads it: closing the block first lifts the weakest model from 42% to 84% on eBay and from 24% to 81% on AuctionNet. Finally, an audit that flags bids disagreeing with the trace's own numbers, and overrides them with the calculator's bid, raises the share of the calculator's lead recovered at 768 forced tokens from 42-85% to 84-100% on eBay under nested cross-validation, and the same reader settings transfer from eBay to AuctionNet.",
-      "source_comment": "19 pages, 2 figures, 23 tables. Code and data: https://github.com/DataismLab/bid-reasoning",
-      "published_at": "2026-11-25T09:40:08.000Z",
-      "published_precision": "day",
-      "authors": [
-        "Mahbod Khaleti",
-        "Seyed Reza Tavakoli",
-        "Baran Hoseini",
-        "Alireza Noori",
-        "Amir Amini",
-        "Koorosh Aslansefat",
-        "Marjan Alirezaie",
-        "Ali Habibnia"
-      ],
       "cats": [
-        "cs.AI",
-        "cs.CL",
-        "econ.GN"
+        "cs.CL"
       ],
-      "url": "https://arxiv.org/abs/2611.34068",
-      "html_url": "https://arxiv.org/abs/2611.34068",
-      "pdf_url": "https://arxiv.org/pdf/2611.34068",
+      "title_en": "AutoMaster: Autonomous Post-Training by Making the Same Model a Better Teacher",
+      "title_zh": "AutoMaster：通过使同一模型成为更好的教师实现自主后训练",
+      "abstract_en": "Task success alone does not specify which behaviors post-training should reinforce. Even successful teacher trajectories can contain unsupported assumptions, unproductive repetition, or superficial verification. We propose Skill-FT (Skill-Guided Fine-Tuning), which uses natural-language skills to suppress undesirable habits and elicit underrepresented effective behaviors during teacher rollouts, then fine-tunes a student model on the resulting trajectories. We introduce AutoMaster, an autonomous post-training system in which an LLM agent develops these interventions through trajectory analysis, skill design, data selection, and feedback from rollouts and evaluation. Across Terminal, Search, and software engineering tasks with 4B and 9B student models, AutoMaster improves mean performance over Vanilla SFT on successful unguided teacher trajectories by 1.42-8.99 percentage points, with the teacher, task pool, training set size, and SFT recipe held fixed. Together with the ablations and trajectory analyses, these results suggest that behavioral shaping can make a fixed model a more effective teacher. We further find that retaining skill instructions during SFT yields higher mean performance than removing them across all six settings, despite their absence at evaluation and identical supervised outputs. These findings suggest that preserving skill context as part of a training demonstration can support better behavioral internalization.",
+      "abstract_zh": "仅凭任务成功并不能确定后训练应强化哪些行为。即使是成功的教师轨迹也可能包含无依据的假设、无效重复或表面化验证。我们提出 Skill-FT（Skill-Guided Fine-Tuning），它使用自然语言技能在教师 rollout 期间抑制不良习惯并引出代表性不足的有效行为，然后在所得轨迹上微调目标模型。我们提出 AutoMaster，一种自主后训练系统，其中 LLM 智能体通过轨迹分析、技能设计、数据选择以及来自 rollout 和目标模型评估的反馈来开发这些干预。在使用 4B 和 9B 目标模型的 Terminal、Search 和软件工程任务中，在教师、任务池、训练集规模和 SFT 配方保持固定的情况下，AutoMaster 相较于在成功的无引导教师轨迹上进行 Vanilla SFT，将平均性能提高 1.42–8.99 个百分点。结合消融和轨迹分析，这些结果表明行为塑造可以使固定模型成为更有效的教师。我们进一步发现，在所有六种设置中，SFT 期间保留技能指令比移除它们获得更高的平均性能，尽管评估时这些指令不存在且监督输出相同。这些发现表明，将技能上下文保留为训练示范的一部分可以支持更好的行为内化。",
+      "highlight_zh": "",
+      "digest_zh": "",
+      "authors": [
+        "Guoxin Chen",
+        "Shuang Sun",
+        "Fanzhe Meng",
+        "Xinyu Tang",
+        "Ruihua Song",
+        "Wayne Xin Zhao"
+      ],
+      "url": "https://arxiv.org/abs/2611.26510",
+      "pdf_url": "https://arxiv.org/pdf/2611.26510",
+      "html_url": "https://arxiv.org/abs/2611.26510",
+      "published_at": "2026-11-19T17:57:59.000Z",
+      "upvotes": 15,
+      "heat": 8,
+      "featured": false,
+      "subtags": [
+        "基因组",
+        "大模型",
+        "智能体"
+      ],
+      "image": "",
+      "frontier": false,
+      "crossTag": "",
       "field": "nlp",
+      "interest_checked_at": "2026-11-23T08:04:51.878Z",
+      "recommendation": {
+        "scope": "ai-frontier",
+        "lane": "recent",
+        "score": 50.82,
+        "reason_zh": "研究的题目或主要贡献对应「学习方法与推理」。原文摘要包含实验或评测说明。",
+        "limitations_zh": "对照论文中的训练数据、模型规模和评测任务，检查结果是否能迁移到其他模型。",
+        "evidence_url": "https://arxiv.org/abs/2611.26510"
+      },
+      "source_comment": "Website: https://aweai-team.github.io/AutoMaster/ Code: https://github.com/RUCAIBox/AutoMaster Models: https://huggingface.co/collections/RUC-AIBOX/automaster",
+      "published_precision": "day",
       "frontier_resources": [
         {
           "kind": "code",
-          "url": "https://github.com/DataismLab/bid-reasoning",
-          "checked_at": "2026-11-26T08:53:21.196Z"
+          "url": "https://github.com/RUCAIBox/AutoMaster",
+          "checked_at": "2026-11-27T08:57:57.100Z"
         }
       ],
       "ai_frontier": {
@@ -1301,22 +1332,12 @@
         "resources": [
           {
             "kind": "code",
-            "url": "https://github.com/DataismLab/bid-reasoning",
-            "checked_at": "2026-11-26T08:53:21.196Z"
+            "url": "https://github.com/RUCAIBox/AutoMaster",
+            "checked_at": "2026-11-27T08:57:57.100Z"
           }
         ],
         "stage": "preprint"
-      },
-      "recommendation": {
-        "scope": "ai-frontier",
-        "lane": "recent",
-        "score": 52.47,
-        "reason_zh": "研究的题目或主要贡献对应「学习方法与推理」。原文摘要包含实验或评测说明。",
-        "limitations_zh": "对照论文中的训练数据、模型规模和评测任务，检查结果是否能迁移到其他模型。",
-        "evidence_url": "https://arxiv.org/abs/2611.34068"
-      },
-      "title_zh": "预算、读出还是推理？小型推理模型在拍卖竞价中何处损失价值",
-      "abstract_zh": "广告平台和市场向竞标者展示竞价景观（bid landscape），即每个候选出价的预计获胜概率，并越来越多地让基于推理语言模型的智能体选择出价。我们向六个 4B 至 14B 参数的开源推理模型提供此类景观，获胜曲线来自 eBay 成交价和模拟广告市场（AuctionNet），并在留出拍卖上将其出价与精确计算器进行评分。由于智能体已获得估计值，价值损失可按原因拆分。两类失败属于模型本身。即使其自身轨迹中写出的数值已将该选项排在第一，它们仍会略过最佳选项；并且其错误答案倾向于菜单上的最高出价。这种倾向与出价大小有关，而非其在列表中的位置，并且在采样后仍然存在。在 eBay 上、按出价付费（pay-your-bid）定价、强制 768 个 token 时，错误答案使竞标者损失计算器出价所获盈余的 7-17%。算术错误很少。另外两类损失来自操作者选择。token 上限会截断轨迹：若允许在 4,096 个 token 内自行停止，五个模型可恢复计算器相对于不进行推理的模型所具领先优势的 91-100%。在推理块仍打开时索取答案会造成误读：先关闭该块可将最弱模型在 eBay 上从 42% 提升至 84%，在 AuctionNet 上从 24% 提升至 81%。最后，一项审计会标记与轨迹自身数值不一致的出价，并用计算器出价覆盖它们，在嵌套交叉验证下，将强制 768 个 token 时恢复计算器领先优势的比例在 eBay 上从 42-85% 提升至 84-100%，且相同的读取器设置可从 eBay 迁移到 AuctionNet。"
+      }
     },
     {
       "id": "arxiv:2611.32344",
@@ -1368,7 +1389,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 52.22,
+        "score": 52.07,
         "reason_zh": "研究的题目或主要贡献对应「多模态理解」。原文摘要包含实验或评测说明。",
         "limitations_zh": "对照图像分辨率、视频采样频率和任务数据，论文中的基准分数只适用于相应评测设置。",
         "evidence_url": "https://arxiv.org/abs/2611.32344"
@@ -1433,7 +1454,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 48.78,
+        "score": 48.64,
         "reason_zh": "研究的题目或主要贡献对应「视觉生成与编辑」。原文摘要包含实验或评测说明。",
         "limitations_zh": "对照输出分辨率、采样设置和硬件条件，生成质量、时延与显存通常需要分别比较。",
         "evidence_url": "https://arxiv.org/abs/2611.15433"
@@ -1489,7 +1510,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 49.74,
+        "score": 49.6,
         "reason_zh": "研究的题目或主要贡献对应「视觉感知与三维」。原文摘要包含实验或评测说明。",
         "limitations_zh": "对照数据集、传感器、标定和计算条件，遮挡、动态场景与端侧实时性需要另行评估。",
         "evidence_url": "https://arxiv.org/abs/2611.19773"
@@ -1542,7 +1563,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 49.88,
+        "score": 49.74,
         "reason_zh": "研究的题目或主要贡献对应「高效训练与推理」。可查阅原文的方法描述。",
         "limitations_zh": "比较速度前应对齐硬件、批量、上下文长度与精度设置，作者环境的加速比不能直接外推。",
         "evidence_url": "https://arxiv.org/abs/2611.30027"
@@ -1597,7 +1618,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 52.21,
+        "score": 52.07,
         "reason_zh": "研究的题目或主要贡献对应「具身智能与机器人学习」。原文摘要包含实验或评测说明。",
         "limitations_zh": "区分仿真和实机实验，并检查机械臂、相机和控制接口能否匹配自身环境。",
         "evidence_url": "https://arxiv.org/abs/2611.32304"
@@ -1606,74 +1627,46 @@
       "abstract_zh": "视觉-语言-动作（VLA）模型推动了机器人操作的发展，但其对演示数据的依赖使其面临后门威胁。在这些威胁中，轨迹级定向后门尤其具有挑战性，并且可能比破坏行为的攻击带来更大的安全风险：它们不仅要造成任务失败或局部动作偏差，还必须维持闭环重定向以完成攻击者指定的多步骤任务。为可靠地诱导此类行为，现有方法通常依赖高投毒率以获得足够的目标轨迹监督。然而，高投毒率可能损害干净任务性能，而低投毒率会使目标轨迹监督稀缺，并使后门学习易受占主导的干净任务更新的干扰。为在低投毒率下解决这一权衡，我们提出一个由视觉、语言和动作引导的两阶段协同优化框架。阶段I冻结策略，并使用可微渲染和多模态监督来优化3D触发器的纹理、平移和尺度，从有限的投毒演示中增强触发器与目标之间的关联。在优化后的触发器基础上，阶段II应用源选择性双LoRA适配来解耦干净更新和后门更新并减轻其相互干扰，随后进行学习到的按列校准并解析融合为统一策略。在OpenVLA、OpenVLA-OFT、π0和π0.5上跨四个LIBERO套件的实验表明，相对于所有评估的攻击基线均取得一致增益。仅使用1%投毒数据，我们的方法在LIBERO-Spatial中的OpenVLA-OFT上达到86.4%的目标成功率和95.2%的干净任务成功率。真实机器人试验也展示了轨迹级劫持。"
     },
     {
-      "id": "arxiv:2611.26510",
-      "arxiv_id": "2611.26510",
+      "id": "arxiv:2611.34035",
+      "arxiv_id": "2611.34035",
       "source": "arXiv",
-      "cats": [
-        "cs.CL"
-      ],
-      "title_en": "AutoMaster: Autonomous Post-Training by Making the Same Model a Better Teacher",
-      "title_zh": "AutoMaster：通过使同一模型成为更好的教师实现自主后训练",
-      "abstract_en": "Task success alone does not specify which behaviors post-training should reinforce. Even successful teacher trajectories can contain unsupported assumptions, unproductive repetition, or superficial verification. We propose Skill-FT (Skill-Guided Fine-Tuning), which uses natural-language skills to suppress undesirable habits and elicit underrepresented effective behaviors during teacher rollouts, then fine-tunes a student model on the resulting trajectories. We introduce AutoMaster, an autonomous post-training system in which an LLM agent develops these interventions through trajectory analysis, skill design, data selection, and feedback from rollouts and evaluation. Across Terminal, Search, and software engineering tasks with 4B and 9B student models, AutoMaster improves mean performance over Vanilla SFT on successful unguided teacher trajectories by 1.42-8.99 percentage points, with the teacher, task pool, training set size, and SFT recipe held fixed. Together with the ablations and trajectory analyses, these results suggest that behavioral shaping can make a fixed model a more effective teacher. We further find that retaining skill instructions during SFT yields higher mean performance than removing them across all six settings, despite their absence at evaluation and identical supervised outputs. These findings suggest that preserving skill context as part of a training demonstration can support better behavioral internalization.",
-      "abstract_zh": "仅凭任务成功并不能确定后训练应强化哪些行为。即使是成功的教师轨迹也可能包含无依据的假设、无效重复或表面化验证。我们提出 Skill-FT（Skill-Guided Fine-Tuning），它使用自然语言技能在教师 rollout 期间抑制不良习惯并引出代表性不足的有效行为，然后在所得轨迹上微调目标模型。我们提出 AutoMaster，一种自主后训练系统，其中 LLM 智能体通过轨迹分析、技能设计、数据选择以及来自 rollout 和目标模型评估的反馈来开发这些干预。在使用 4B 和 9B 目标模型的 Terminal、Search 和软件工程任务中，在教师、任务池、训练集规模和 SFT 配方保持固定的情况下，AutoMaster 相较于在成功的无引导教师轨迹上进行 Vanilla SFT，将平均性能提高 1.42–8.99 个百分点。结合消融和轨迹分析，这些结果表明行为塑造可以使固定模型成为更有效的教师。我们进一步发现，在所有六种设置中，SFT 期间保留技能指令比移除它们获得更高的平均性能，尽管评估时这些指令不存在且监督输出相同。这些发现表明，将技能上下文保留为训练示范的一部分可以支持更好的行为内化。",
-      "highlight_zh": "",
-      "digest_zh": "",
-      "authors": [
-        "Guoxin Chen",
-        "Shuang Sun",
-        "Fanzhe Meng",
-        "Xinyu Tang",
-        "Ruihua Song",
-        "Wayne Xin Zhao"
-      ],
-      "url": "https://arxiv.org/abs/2611.26510",
-      "pdf_url": "https://arxiv.org/pdf/2611.26510",
-      "html_url": "https://arxiv.org/abs/2611.26510",
-      "published_at": "2026-11-19T17:57:59.000Z",
-      "upvotes": 15,
-      "heat": 8,
-      "featured": false,
-      "subtags": [
-        "基因组",
-        "大模型",
-        "智能体"
-      ],
-      "image": "",
-      "frontier": false,
-      "crossTag": "",
-      "field": "nlp",
-      "interest_checked_at": "2026-11-23T08:04:51.878Z",
-      "recommendation": {
-        "scope": "ai-frontier",
-        "lane": "recent",
-        "score": 50.97,
-        "reason_zh": "研究的题目或主要贡献对应「学习方法与推理」。原文摘要包含实验或评测说明。",
-        "limitations_zh": "对照论文中的训练数据、模型规模和评测任务，检查结果是否能迁移到其他模型。",
-        "evidence_url": "https://arxiv.org/abs/2611.26510"
-      },
-      "source_comment": "Website: https://aweai-team.github.io/AutoMaster/ Code: https://github.com/RUCAIBox/AutoMaster Models: https://huggingface.co/collections/RUC-AIBOX/automaster",
+      "title_en": "Post-Training Policy Replication for Strategy-Following Multi-Agent Deep Reinforcement Learning across Team Sizes",
+      "abstract_en": "Although multi-agent deep reinforcement learning enables coordinated behavior, aligning it with managerial intent remains difficult due to complex agent interactions. Although the strategy-following distributed attentional actor architecture (sfDA7-X) improves controllability via regional instructions, instruction combinations scale exponentially with team and instruction sizes, leading to prohibitive training costs and poor transferability. To reduce this computational cost, we introduce a team-size-independent observation architecture and reconstruct collective behavior by replicating a single trained policy across agents in teams of different sizes, thereby eliminating the need to train from scratch. Additionally, we evaluate warm-start retraining by initializing policy networks with a pre-trained policy to significantly lower computational overhead. In an object collection game, a policy trained in a four-agent team is deployed to teams of three to eight agents. Experiments demonstrate that training with the proposed aggregated observation matrix achieves performance comparable to that of the baseline method, sfDA7-X. Furthermore, policy replication preserves performance without substantial degradation in three- and five-agent teams, and warm-start retraining outperforms training from scratch while reducing required training episodes by up to 90%. Deployments to six- and eight-agent teams further confirm effective spatial region allocation following given instructions. These results demonstrate that the proposed method enables zero-shot collective behavior reconstruction via policy replication.",
+      "source_comment": "Accepted to the 19th International Conference on Agents and Artificial Intelligence (ICAART 2027), 12 pages, 12 figures, 4 tables",
+      "published_at": "2026-11-25T09:18:04.000Z",
       "published_precision": "day",
-      "frontier_resources": [
-        {
-          "kind": "code",
-          "url": "https://github.com/RUCAIBox/AutoMaster",
-          "checked_at": "2026-11-27T08:57:57.100Z"
-        }
+      "authors": [
+        "Yamato Takahagi",
+        "Yoshinari Motokawa",
+        "Toshiharu Sugawara"
       ],
+      "cats": [
+        "cs.MA",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "url": "https://arxiv.org/abs/2611.34035",
+      "html_url": "https://arxiv.org/abs/2611.34035",
+      "pdf_url": "https://arxiv.org/pdf/2611.34035",
+      "field": "ml",
       "ai_frontier": {
         "primary_topic": "learning",
         "topics": [
           "learning"
         ],
-        "resources": [
-          {
-            "kind": "code",
-            "url": "https://github.com/RUCAIBox/AutoMaster",
-            "checked_at": "2026-11-27T08:57:57.100Z"
-          }
-        ],
+        "resources": [],
         "stage": "preprint"
-      }
+      },
+      "recommendation": {
+        "scope": "ai-frontier",
+        "lane": "recent",
+        "score": 45.33,
+        "reason_zh": "研究的题目或主要贡献对应「学习方法与推理」。原文摘要包含实验或评测说明。",
+        "limitations_zh": "对照论文中的训练数据、模型规模和评测任务，检查结果是否能迁移到其他模型。",
+        "evidence_url": "https://arxiv.org/abs/2611.34035"
+      },
+      "title_zh": "面向跨团队规模的策略跟随多智能体深度强化学习的训练后策略复制",
+      "abstract_zh": "尽管多智能体深度强化学习能够实现协调行为，但由于智能体交互复杂，使其与管理意图保持一致仍然困难。尽管策略跟随的分布式注意力行动者架构（sfDA7-X）通过区域指令提高了可控性，但指令组合会随团队规模和指令规模呈指数增长，导致训练成本过高且可迁移性差。为降低这一计算成本，我们引入了一种与团队规模无关的观测架构，并通过在不同规模团队的智能体间复制单个已训练策略来重构集体行为，从而无需从头训练。此外，我们评估了热启动再训练，即用预训练策略初始化策略网络，以显著降低计算开销。在一个物体收集游戏中，将在四智能体团队中训练的策略部署到三至八智能体团队。实验表明，使用所提出的聚合观测矩阵进行训练，其性能与基线方法 sfDA7-X 相当。此外，策略复制在三智能体和五智能体团队中保持了性能且未出现显著退化，而热启动再训练优于从头训练，并将所需训练回合数减少最多 90%。部署到六智能体和八智能体团队进一步证实了按照给定指令进行有效的空间区域分配。这些结果表明，所提出的方法能够通过策略复制实现零样本集体行为重构。"
     },
     {
       "id": "arxiv:2611.25722",
@@ -1713,7 +1706,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 50.86,
+        "score": 50.72,
         "reason_zh": "研究的题目或主要贡献对应「多模态理解」。原文摘要包含实验或评测说明。",
         "limitations_zh": "对照图像分辨率、视频采样频率和任务数据，论文中的基准分数只适用于相应评测设置。",
         "evidence_url": "https://arxiv.org/abs/2611.25722"
@@ -1801,7 +1794,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 46.97,
+        "score": 46.82,
         "reason_zh": "研究的题目或主要贡献对应「视觉生成与编辑」。原文摘要包含实验或评测说明。",
         "limitations_zh": "对照输出分辨率、采样设置和硬件条件，生成质量、时延与显存通常需要分别比较。",
         "evidence_url": "https://arxiv.org/abs/2611.06838v1"
@@ -1845,7 +1838,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 49.37,
+        "score": 49.23,
         "reason_zh": "研究的题目或主要贡献对应「视觉感知与三维」。原文摘要包含实验或评测说明。",
         "limitations_zh": "对照数据集、传感器、标定和计算条件，遮挡、动态场景与端侧实时性需要另行评估。",
         "evidence_url": "https://arxiv.org/abs/2611.18519"
@@ -1906,7 +1899,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 48.46,
+        "score": 48.32,
         "reason_zh": "研究的题目或主要贡献对应「高效训练与推理」。可查阅原文的方法描述。",
         "limitations_zh": "比较速度前应对齐硬件、批量、上下文长度与精度设置，作者环境的加速比不能直接外推。",
         "evidence_url": "https://arxiv.org/abs/2611.23463"
@@ -1966,7 +1959,7 @@
       "recommendation": {
         "scope": "ai-frontier",
         "lane": "recent",
-        "score": 50.99,
+        "score": 50.84,
         "reason_zh": "研究的题目或主要贡献对应「具身智能与机器人学习」。原文摘要包含实验或评测说明。",
         "limitations_zh": "区分仿真和实机实验，并检查机械臂、相机和控制接口能否匹配自身环境。",
         "evidence_url": "https://arxiv.org/abs/2611.26745"
@@ -1977,11 +1970,11 @@
   ],
   "sources": {
     "archive": {
-      "date": "2026-11-27",
-      "generatedAt": "2026-11-27T08:55:31.060Z"
+      "date": "2026-11-28",
+      "generatedAt": "2026-11-27T21:38:05.142Z"
     },
     "arxiv": {
-      "checkedAt": "2026-11-27T08:57:57.100Z",
+      "checkedAt": "2026-11-27T21:46:52.496Z",
       "queriesSucceeded": 6,
       "queriesAttempted": 6
     }
